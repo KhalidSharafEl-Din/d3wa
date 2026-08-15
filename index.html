@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دعوة D3wa — دعوات رقمية أنيقة | Digital Invitations</title>
+<meta name="description" content="دعوات خطوبة وزفاف رقمية أنيقة — عدّاد تنازلي، تأكيد حضور واتساب، عربي وإنجليزي. D3wa: elegant digital wedding &amp; engagement invitations for Egypt.">
+<meta name="theme-color" content="#16213c">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="D3wa دعوة — دعوات رقمية أنيقة">
+<meta property="og:description" content="دعوتك الرقمية بلينك خاص: عدّاد، خريطة، تأكيد حضور واتساب — تبدأ من ١٠٠٠ جنيه">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316213c'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23cfa658' stroke-width='2.6'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Amiri:ital,wght@0,400;0,700;1,400&family=Italiana&family=Aref+Ruqaa&display=swap">
+
+<style>
+:root{
+  --navy:#16213c; --navy-2:#1d2b4d; --navy-3:#0d1730;
+  --gold:#cfa658; --gold-lt:#e3cf9b; --ivory:#f2ecdf; --muted:#a8a294;
+  --line:rgba(207,166,88,.30); --line-soft:rgba(207,166,88,.15);
+  --ar:"Cairo",sans-serif; --ar-d:"Aref Ruqaa","Amiri",serif; --lat:"Italiana",serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ivory);font-family:var(--ar);
+  background:var(--navy);
+  background-image:radial-gradient(130% 70% at 50% 0%, #26375f 0%, #16213c 55%, #0b1428 100%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+}
+html.en .t-ar{display:none}
+html:not(.en) .t-en{display:none}
+html.en body,html.en .btn,html.en .chip{font-family:"Cairo",ui-sans-serif,sans-serif}
+
+.wrap{width:min(100%,1080px);margin:0 auto;padding:0 20px}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(13,23,48,.75);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ivory)}
+.brand svg{width:34px;height:34px}
+.brand b{font-family:var(--lat);font-weight:400;font-size:22px;letter-spacing:.04em}
+.brand span{font-family:var(--ar-d);color:var(--gold);font-size:20px}
+.lang{min-height:38px;padding:0 16px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--gold);cursor:pointer;font-family:var(--ar);font-size:13px;font-weight:600}
+.lang:hover{background:rgba(207,166,88,.12)}
+
+/* hero */
+.hero{padding:clamp(56px,10vw,110px) 0 clamp(40px,7vw,70px);text-align:center}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin:0 0 14px}
+h1{font-family:var(--ar-d);font-weight:400;font-size:clamp(34px,7vw,58px);line-height:1.45;margin:0}
+html.en h1{font-family:var(--lat);line-height:1.15}
+.hero p.sub{max-width:640px;margin:18px auto 30px;font-size:clamp(15px,3.6vw,18px);font-weight:300;line-height:1.9;color:var(--muted)}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:0 26px;border:1px solid var(--gold);border-radius:3px;color:var(--gold);text-decoration:none;font-weight:600;font-size:14.5px;transition:.3s}
+.btn:hover{background:rgba(207,166,88,.12);transform:translateY(-1px)}
+.btn.solid{background:var(--gold);color:#111c36}
+.btn.solid:hover{background:#b58c41}
+.btn svg{width:17px;height:17px}
+
+/* section titles */
+section{padding:clamp(44px,8vw,80px) 0}
+.sec-title{text-align:center;margin:0 0 8px;font-family:var(--ar-d);font-weight:400;font-size:clamp(26px,5.4vw,38px)}
+html.en .sec-title{font-family:var(--lat)}
+.sec-sub{text-align:center;color:var(--muted);font-weight:300;margin:0 0 40px;font-size:15px}
+.orn{display:flex;align-items:center;justify-content:center;gap:12px;margin:14px 0 34px}
+.orn i{display:block;width:90px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.orn i:last-child{background:linear-gradient(270deg,transparent,var(--gold))}
+.orn span{color:var(--gold);font-size:13px}
+
+/* template cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{border:1px solid var(--line-soft);border-radius:10px;overflow:hidden;background:rgba(255,255,255,.03);display:flex;flex-direction:column;transition:transform .3s,border-color .3s}
+.card:hover{transform:translateY(-4px);border-color:var(--line)}
+.mini{height:230px;display:flex;align-items:flex-end;justify-content:center;padding:0 22px;position:relative;overflow:hidden}
+.mini .arch{width:100%;max-width:190px;height:200px;border-radius:110px 110px 0 0;border:1px solid;border-bottom:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px 10px 8px;text-align:center}
+.mini .nm{font-family:var(--lat);font-size:21px;line-height:1.2}
+.mini .anm{font-family:var(--ar-d);font-size:15px}
+.mini .amp{font-family:Georgia,serif;font-style:italic;font-size:13px}
+.mini .dt{font-size:9.5px;letter-spacing:.16em;margin-top:4px;opacity:.85}
+.mini .ring-dot{width:26px;height:26px;border-radius:50%;border:2.5px solid}
+/* palettes */
+.p-gold .mini{background:radial-gradient(120% 100% at 50% 0%,#fffdf8,#efe4cd)}
+.p-gold .arch{background:rgba(255,253,248,.8);border-color:rgba(169,132,63,.4);color:#332f28}
+.p-gold .amp,.p-gold .dt,.p-gold .ring-dot{color:#a9843f;border-color:#a9843f}
+.p-rose .mini{background:radial-gradient(120% 100% at 50% 0%,#fffafb,#f6dee7)}
+.p-rose .arch{background:rgba(255,251,252,.85);border-color:rgba(179,48,92,.35);color:#3a2e33}
+.p-rose .amp,.p-rose .dt,.p-rose .ring-dot{color:#b3305c;border-color:#b3305c}
+.p-rustic .mini{background:radial-gradient(120% 100% at 50% 0%,#fffdf6,#eeddc2)}
+.p-rustic .arch{background:rgba(255,252,246,.85);border-color:rgba(158,63,52,.4);color:#22304a}
+.p-rustic .amp,.p-rustic .dt,.p-rustic .ring-dot{color:#9e3f34;border-color:#9e3f34}
+.p-navy .mini{background:radial-gradient(120% 100% at 50% 0%,#2a3a63,#0d1730)}
+.p-navy .arch{background:rgba(13,23,48,.55);border-color:rgba(207,166,88,.45);color:#f2ecdf}
+.p-navy .amp,.p-navy .dt,.p-navy .ring-dot{color:#cfa658;border-color:#cfa658}
+.p-emerald .mini{background:radial-gradient(120% 100% at 50% 0%,#1a5a44,#0e3b2e)}
+.p-emerald .arch{background:rgba(14,59,46,.5);border-color:rgba(201,162,75,.5);color:#f4efe3}
+.p-emerald .amp,.p-emerald .dt,.p-emerald .ring-dot{color:#c9a24b;border-color:#c9a24b}
+.p-sahara .mini{background:radial-gradient(120% 100% at 50% 0%,#f3d9b8,#e0a878)}
+.p-sahara .arch{background:rgba(251,246,236,.82);border-color:rgba(196,106,74,.4);color:#4a3a30}
+.p-sahara .amp,.p-sahara .dt,.p-sahara .ring-dot{color:#c46a4a;border-color:#c46a4a}
+.p-lotus .mini{background:radial-gradient(120% 100% at 50% 0%,#fdf8f0,#f3d9de)}
+.p-lotus .arch{background:rgba(253,248,240,.85);border-color:rgba(168,195,160,.55);color:#5a4a42}
+.p-lotus .amp,.p-lotus .dt,.p-lotus .ring-dot{color:#a8c3a0;border-color:#a8c3a0}
+.card-body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.card h3{margin:0;font-size:18px;font-weight:800}
+.price{color:var(--gold);font-weight:800;font-size:17px;white-space:nowrap}
+.price small{font-weight:400;font-size:11px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11px;padding:4px 10px;border:1px solid var(--line-soft);border-radius:999px;color:var(--muted)}
+.badge{position:absolute;top:12px;inset-inline-start:12px;background:var(--gold);color:#111c36;font-size:11px;font-weight:800;padding:4px 12px;border-radius:999px}
+.card-actions{margin-top:auto;display:flex;gap:8px}
+.card-actions .btn{flex:1;min-height:44px;padding:0 10px;font-size:13px}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.step{border:1px solid var(--line-soft);border-radius:10px;padding:22px 18px;background:rgba(255,255,255,.03)}
+.step .n{width:34px;height:34px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-weight:800;margin-bottom:12px}
+.step h4{margin:0 0 6px;font-size:15.5px}
+.step p{margin:0;font-size:13.5px;font-weight:300;color:var(--muted);line-height:1.8}
+
+/* included + payments */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.panel{border:1px solid var(--line-soft);border-radius:10px;padding:26px 24px;background:rgba(255,255,255,.03)}
+.panel h3{margin:0 0 14px;font-size:17px;color:var(--gold-lt)}
+.panel ul{margin:0;padding:0;list-style:none}
+.panel li{padding:7px 0;font-size:14px;font-weight:300;display:flex;gap:10px;align-items:flex-start;line-height:1.7}
+.panel li::before{content:"✦";color:var(--gold);font-size:11px;margin-top:5px}
+
+/* faq */
+details{border:1px solid var(--line-soft);border-radius:8px;margin-bottom:10px;background:rgba(255,255,255,.03)}
+summary{cursor:pointer;padding:16px 18px;font-weight:600;font-size:14.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+summary::after{content:"+";color:var(--gold);font-size:19px}
+details[open] summary::after{content:"−"}
+details p{margin:0;padding:0 18px 16px;font-weight:300;font-size:14px;color:var(--muted);line-height:1.9}
+
+footer{border-top:1px solid var(--line-soft);padding:34px 0 44px;text-align:center;color:var(--muted);font-size:13px;font-weight:300}
+footer .brand{justify-content:center;margin-bottom:10px}
+.floating-wa{position:fixed;bottom:18px;inset-inline-end:18px;z-index:60;width:54px;height:54px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+.floating-wa svg{width:28px;height:28px;fill:#fff}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap nav">
+  <a class="brand" href="#">
+    <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#0d1730" stroke="#cfa658" stroke-width="1"/><circle cx="16" cy="16" r="8" fill="none" stroke="#cfa658" stroke-width="2.2"/></svg>
+    <b>D3wa</b><span>دعوة</span>
+  </a>
+  <button class="lang" id="langBtn" type="button"><span class="t-ar">English</span><span class="t-en">العربية</span></button>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <p class="eyebrow"><span class="t-ar">دعوات رقمية فاخرة</span><span class="t-en">Luxury digital invitations</span></p>
+  <h1>
+    <span class="t-ar">دعوتك.. بلينك يليق بفرحتك</span>
+    <span class="t-en">Your celebration deserves more than paper</span>
+  </h1>
+  <p class="sub">
+    <span class="t-ar">صفحة دعوة خاصة باسمكما: عدّاد تنازلي، تأكيد حضور بضغطة واتساب، خريطة القاعة، عربي وإنجليزي، ووضع ليلي أنيق. تُشارك على واتساب بصورة معاينة فخمة — وتوصل لكل ضيوفك في ثواني.</span>
+    <span class="t-en">A private invitation page for your names: live countdown, one-tap WhatsApp RSVP, venue map, Arabic &amp; English, and an elegant dark mode. Shared on WhatsApp with a premium preview card.</span>
+  </p>
+  <div class="cta-row">
+    <a class="btn solid" id="heroOrder" target="_blank" rel="noopener" href="https://wa.me/201005509418?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%21%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AF%D8%B9%D9%88%D8%A9%20%D8%B1%D9%82%D9%85%D9%8A%D8%A9%20%F0%9F%A4%8D">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.94.56 3.75 1.5 5.29L2 22l4.96-1.6a9.9 9.9 0 0 0 5.08 1.4h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+      <span class="t-ar">اطلب دعوتك الآن</span><span class="t-en">Order yours now</span>
+    </a>
+    <a class="btn" href="#templates"><span class="t-ar">شاهد القوالب</span><span class="t-en">Browse templates</span></a>
+  </div>
+</div></section>
+
+<section id="templates"><div class="wrap">
+  <h2 class="sec-title"><span class="t-ar">القوالب والأسعار</span><span class="t-en">Templates &amp; pricing</span></h2>
+  <div class="orn"><i></i><span>◆</span><i></i></div>
+  <div class="grid">
+
+    <div class="card p-gold">
+      <div class="mini"><div class="arch"><div class="ring-dot"></div><div class="nm">Omar <span class="amp">&amp;</span> Salma</div><div class="anm">عمر وسلمى</div><div class="dt">22 · 08 · 2026</div></div></div>
+      <div class="card-body">
+        <div class="card-top"><h3><span class="t-ar">كلاسيك جولد</span><span class="t-en">Classic Gold</span></h3><div class="price">1,000 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
+        <div class="chips"><span class="chip"><span class="t-ar">عدّاد تنازلي</span><span class="t-en">Countdown</span></span><span class="chip"><span class="t-ar">عربي/إنجليزي</span><span class="t-en">AR/EN</span></span><span class="chip"><span class="t-ar">RSVP واتساب</span><span class="t-en">WhatsApp RSVP</span></span></div>
+        <div class="card-actions">
+          <a class="btn" href="demos/gold.html" target="_blank" rel="noopener"><span class="t-ar">ديمو مباشر</span><span class="t-en">Live demo</span></a>
+          <a class="btn solid ord" data-t="Classic Gold" target="_blank" rel="noopener" href="#"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-rose">
+      <div class="mini"><div class="arch"><div class="ring-dot"></div><div class="nm">Omar <span class="amp">&amp;</span> Salma</div><div class="anm">عمر وسلمى</div><div class="dt">22 · 08 · 2026</div></div></div>
+      <div class="card-body">
+        <div class="card-top"><h3><span class="t-ar">روز &amp; وايت</span><span class="t-en">Rose &amp; White</span></h3><div class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
+        <div class="chips"><span class="chip"><span class="t-ar">كل مميزات كلاسيك</span><span class="t-en">All Classic features</span></span><span class="chip"><span class="t-ar">اقتباس خاص</span><span class="t-en">Custom quote</span></span><span class="chip"><span class="t-ar">صورة للعروسين</span><span class="t-en">Couple photo</span></span></div>
+        <div class="card-actions">
+          <a class="btn" href="demos/rose.html" target="_blank" rel="noopener"><span class="t-ar">ديمو مباشر</span><span class="t-en">Live demo</span></a>
+          <a class="btn solid ord" data-t="Rose & White" target="_blank" rel="noopener" href="#"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-rustic">
+      <div class="mini"><div class="arch"><div class="ring-dot"></div><div class="nm">Omar <span class="amp">&amp;</span> Salma</div><div class="anm">عمر وسلمى</div><div class="dt">22 · 08 · 2026</div></div></div>
+      <div class="card-body">
+        <div class="card-top"><h3><span class="t-ar">رستيك</span><span class="t-en">Rustic Red</span></h3><div class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
+        <div class="chips"><span class="chip"><span class="t-ar">كل مميزات كلاسيك</span><span class="t-en">All Classic features</span></span><span class="chip"><span class="t-ar">ألوان مخصصة</span><span class="t-en">Custom palette</span></span><span class="chip"><span class="t-ar">اقتباس خاص</span><span class="t-en">Custom quote</span></span></div>
+        <div class="card-actions">
+          <a class="btn" href="demos/rustic.html" target="_blank" rel="noopener"><span class="t-ar">ديمو مباشر</span><span class="t-en">Live demo</span></a>
+          <a class="btn solid ord" data-t="Rustic Red" target="_blank" rel="noopener" href="#"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-navy" style="position:relative">
+      <span class="badge"><span class="t-ar">الأفخم ✨</span><span class="t-en">Flagship ✨</span></span>
+      <div class="mini"><div class="arch"><div class="ring-dot"></div><div class="nm">Omar <span class="amp">&amp;</span> Salma</div><div class="anm">عمر وسلمى</div><div class="dt">22 · 08 · 2026</div></div></div>
+      <div class="card-body">
+        <div class="card-top"><h3><span class="t-ar">رويال نايفي</span><span class="t-en">Royal Navy</span></h3><div class="price">2,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
+        <div class="chips"><span class="chip"><span class="t-ar">وضع ليلي + نهاري</span><span class="t-en">Dark + light mode</span></span><span class="chip"><span class="t-ar">شيت قائمة الضيوف</span><span class="t-en">Guest-list sheet</span></span><span class="chip"><span class="t-ar">تسليم أولوية ٢٤ س</span><span class="t-en">24h priority</span></span></div>
+        <div class="card-actions">
+          <a class="btn" href="demos/navy.html" target="_blank" rel="noopener"><span class="t-ar">ديمو مباشر</span><span class="t-en">Live demo</span></a>
+          <a class="btn solid ord" data-t="Royal Navy" target="_blank" rel="noopener" href="#"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-emerald">
+      <div class="mini"><div class="arch"><div class="ring-dot"></div><div class="nm">Omar <span class="amp">&amp;</span> Salma</div><div class="anm">عمر وسلمى</div><div class="dt">22 · 08 · 2026</div></div></div>
+      <div class="card-body">
+        <div class="card-top"><h3><span class="t-ar">إميرالد أندلسي</span><span class="t-en">Emerald Andalusi</span></h3><div class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
+        <div class="chips"><span class="chip"><span class="t-ar">زخارف أندلسية</span><span class="t-en">Andalusian geometry</span></span><span class="chip"><span class="t-ar">مثالي لكتب الكتاب</span><span class="t-en">Perfect for katb kitab</span></span><span class="chip"><span class="t-ar">اقتباس خاص</span><span class="t-en">Custom quote</span></span></div>
+        <div class="card-actions">
+          <a class="btn" href="demos/emerald.html" target="_blank" rel="noopener"><span class="t-ar">ديمو مباشر</span><span class="t-en">Live demo</span></a>
+          <a class="btn solid ord" data-t="Emerald Andalusi" target="_blank" rel="noopener" href="#"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-sahara">
+      <div class="mini"><div class="arch"><div class="ring-dot"></div><div class="nm">Omar <span class="amp">&amp;</span> Salma</div><div class="anm">عمر وسلمى</div><div class="dt">22 · 08 · 2026</div></div></div>
+      <div class="card-body">
+        <div class="card-top"><h3><span class="t-ar">صحارى بوهو</span><span class="t-en">Sahara Boho</span></h3><div class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
+        <div class="chips"><span class="chip"><span class="t-ar">أجواء الساحل</span><span class="t-en">Sahel vibes</span></span><span class="chip"><span class="t-ar">كل مميزات كلاسيك</span><span class="t-en">All Classic features</span></span><span class="chip"><span class="t-ar">اقتباس خاص</span><span class="t-en">Custom quote</span></span></div>
+        <div class="card-actions">
+          <a class="btn" href="demos/sahara.html" target="_blank" rel="noopener"><span class="t-ar">ديمو مباشر</span><span class="t-en">Live demo</span></a>
+          <a class="btn solid ord" data-t="Sahara Boho" target="_blank" rel="noopener" href="#"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-lotus" style="position:relative">
+      <span class="badge"><span class="t-ar">جديد 👶</span><span class="t-en">New 👶</span></span>
+      <div class="mini"><div class="arch"><div class="ring-dot"></div><div class="nm">Adam</div><div class="anm">آدم</div><div class="dt">04 · 09 · 2026</div></div></div>
+      <div class="card-body">
+        <div class="card-top"><h3><span class="t-ar">سبوع اللوتس</span><span class="t-en">Lotus Sebou3</span></h3><div class="price">1,000 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
+        <div class="chips"><span class="chip"><span class="t-ar">سبوع وعقيقة</span><span class="t-en">Sebou3 &amp; aqiqa</span></span><span class="chip"><span class="t-ar">عدّاد تنازلي</span><span class="t-en">Countdown</span></span><span class="chip"><span class="t-ar">RSVP واتساب</span><span class="t-en">WhatsApp RSVP</span></span></div>
+        <div class="card-actions">
+          <a class="btn" href="demos/lotus.html" target="_blank" rel="noopener"><span class="t-ar">ديمو مباشر</span><span class="t-en">Live demo</span></a>
+          <a class="btn solid ord" data-t="Lotus Sebou3" target="_blank" rel="noopener" href="#"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p class="sec-sub" style="margin-top:26px"><span class="t-ar">كل قالب يُخصص بالكامل: الأسماء، التاريخ، القاعة، الألوان، والرسائل — دعوتك تكون باسمكما على لينك خاص بيكما.</span><span class="t-en">Every template is fully personalized: names, date, venue, colors and messages — delivered on your own private link.</span></p>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <h2 class="sec-title"><span class="t-ar">إزاي بتطلب؟</span><span class="t-en">How it works</span></h2>
+  <div class="orn"><i></i><span>◆</span><i></i></div>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h4><span class="t-ar">اختار القالب</span><span class="t-en">Pick a template</span></h4><p><span class="t-ar">شوف الديمو المباشر واختار اللي يناسب فرحتك، وابعتلنا على واتساب.</span><span class="t-en">Try the live demos, pick your favorite, message us on WhatsApp.</span></p></div>
+    <div class="step"><div class="n">2</div><h4><span class="t-ar">ابعت التفاصيل</span><span class="t-en">Send your details</span></h4><p><span class="t-ar">الأسماء، التاريخ، القاعة، الألوان — وادفع ٥٠٪ مقدم إنستاباي أو فودافون كاش.</span><span class="t-en">Names, date, venue, colors — with a 50% deposit via Instapay or Vodafone Cash.</span></p></div>
+    <div class="step"><div class="n">3</div><h4><span class="t-ar">راجع المعاينة</span><span class="t-en">Review your preview</span></h4><p><span class="t-ar">خلال ٤٨ ساعة بنبعتلك لينك معاينة، وتعديل مجاني قبل النشر.</span><span class="t-en">Within 48 hours you get a preview link, with a free revision round.</span></p></div>
+    <div class="step"><div class="n">4</div><h4><span class="t-ar">استلم وشارك</span><span class="t-en">Publish &amp; share</span></h4><p><span class="t-ar">دعوتك تتنشر على لينك باسمكما + صورة معاينة واتساب + رسائل جاهزة للإرسال.</span><span class="t-en">Your invitation goes live on your own link, with a WhatsApp preview card and ready-to-send messages.</span></p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap two">
+  <div class="panel">
+    <h3><span class="t-ar">كل دعوة بتشمل</span><span class="t-en">Every invitation includes</span></h3>
+    <ul>
+      <li><span class="t-ar">لينك خاص باسم العروسين</span><span class="t-en">A private link with the couple's names</span></li>
+      <li><span class="t-ar">عدّاد تنازلي مباشر ليوم الفرح</span><span class="t-en">Live countdown to the big day</span></li>
+      <li><span class="t-ar">تأكيد حضور بضغطة واحدة على واتساب</span><span class="t-en">One-tap WhatsApp RSVP</span></li>
+      <li><span class="t-ar">خريطة القاعة + إضافة للتقويم</span><span class="t-en">Venue map + add-to-calendar</span></li>
+      <li><span class="t-ar">عربي وإنجليزي بتبديل فوري</span><span class="t-en">Arabic &amp; English with instant toggle</span></li>
+      <li><span class="t-ar">صورة معاينة فخمة عند المشاركة على واتساب</span><span class="t-en">Premium WhatsApp link preview card</span></li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3><span class="t-ar">الدفع</span><span class="t-en">Payment</span></h3>
+    <ul>
+      <li><span class="t-ar">إنستاباي أو فودافون كاش — ٥٠٪ مقدم و٥٠٪ عند الاستلام</span><span class="t-en">Instapay or Vodafone Cash — 50% deposit, 50% on delivery</span></li>
+      <li><span class="t-ar">تعديل إضافي بعد الجولة المجانية: ١٥٠ جنيه</span><span class="t-en">Extra revision after the free round: 150 EGP</span></li>
+      <li><span class="t-ar">تسليم مستعجل ٢٤ ساعة: +٣٠٠ جنيه (مجاني في رويال نايفي)</span><span class="t-en">24h rush: +300 EGP (free with Royal Navy)</span></li>
+      <li><span class="t-ar">الدفع بالكارت قريباً</span><span class="t-en">Card payments coming soon</span></li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap" style="max-width:760px">
+  <h2 class="sec-title"><span class="t-ar">أسئلة شائعة</span><span class="t-en">FAQ</span></h2>
+  <div class="orn"><i></i><span>◆</span><i></i></div>
+  <details><summary><span class="t-ar">الدعوة بتفضل شغالة لحد امتى؟</span><span class="t-en">How long does the invitation stay live?</span></summary><p><span class="t-ar">لمدة سنة كاملة من تاريخ النشر — تقدر تحتفظ بيها كذكرى بعد الفرح كمان.</span><span class="t-en">A full year from publish date — keep it as a memory after the celebration too.</span></p></details>
+  <details><summary><span class="t-ar">أقدر أغيّر التفاصيل بعد النشر؟</span><span class="t-en">Can I change details after publishing?</span></summary><p><span class="t-ar">تعديلات النصوص البسيطة (معاد، قاعة) مجانية قبل الفرح بأسبوع. تغيير التصميم بيتحسب كتعديل إضافي.</span><span class="t-en">Simple text changes (time, venue) are free up to a week before the event. Design changes count as an extra revision.</span></p></details>
+  <details><summary><span class="t-ar">بتشتغل على كل الموبايلات؟</span><span class="t-en">Does it work on all phones?</span></summary><p><span class="t-ar">أيوه — أي موبايل أو كمبيوتر، من غير أي تطبيقات. لينك بيتفتح في المتصفح مباشرة.</span><span class="t-en">Yes — any phone or computer, no apps needed. The link opens right in the browser.</span></p></details>
+  <details><summary><span class="t-ar">بتعملوا دعوات لمناسبات تانية؟</span><span class="t-en">Do you make invitations for other occasions?</span></summary><p><span class="t-ar">أيوه — خطوبة وفرح وكتب كتاب، وكمان سبوع وعقيقة بقالب «سبوع اللوتس». وقريباً تخرج ومناسبات تانية — كلمنا وقولنا مناسبتك.</span><span class="t-en">Yes — engagements, weddings and katb kitab, plus sebou3 &amp; aqiqa with our Lotus template. Graduations coming soon — message us about your occasion.</span></p></details>
+</div></section>
+
+<footer><div class="wrap">
+  <a class="brand" href="#"><b>D3wa</b><span>دعوة</span></a>
+  <p><span class="t-ar">دعوات رقمية أنيقة — صُنعت بحب في مصر 🤍</span><span class="t-en">Elegant digital invitations — made with love in Egypt 🤍</span></p>
+</div></footer>
+
+<a class="floating-wa" id="floatWa" target="_blank" rel="noopener" aria-label="WhatsApp" href="https://wa.me/201005509418">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.94.56 3.75 1.5 5.29L2 22l4.96-1.6a9.9 9.9 0 0 0 5.08 1.4h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.07c-.25.7-1.45 1.34-2 1.43-.5.08-1.13.11-1.83-.12-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.37-.15-.2-1.18-1.57-1.18-3 0-1.42.74-2.12 1-2.41.25-.28.55-.35.74-.35h.53c.17 0 .4-.03.62.48.25.58.84 2.02.91 2.17.07.15.12.32.02.51-.09.2-.16.32-.31.49-.15.17-.32.38-.45.51-.15.15-.3.31-.13.6.18.3.8 1.32 1.71 2.13 1.18 1.05 2.17 1.38 2.5 1.53.25.12.55.1.74-.11.25-.28.55-.74.86-1.2.22-.32.49-.36.82-.24.34.12 2.15 1.01 2.51 1.2.37.18.61.27.7.43.1.16.1.9-.15 1.6z"/></svg>
+</a>
+
+<script>
+(function () {
+  "use strict";
+  var docEl = document.documentElement, isEn = false;
+  var PHONE = "201005509418";
+  function orderMsg (tpl) {
+    return isEn
+      ? "Hello! I'd like to order the " + tpl + " invitation template from D3wa 🤍"
+      : "أهلاً! أريد طلب دعوة بقالب «" + tpl + "» من دعوة D3wa 🤍";
+  }
+  function apply () {
+    docEl.classList.toggle("en", isEn);
+    docEl.lang = isEn ? "en" : "ar";
+    docEl.dir = isEn ? "ltr" : "rtl";
+    document.querySelectorAll(".ord").forEach(function (a) {
+      a.href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(orderMsg(a.getAttribute("data-t")));
+    });
+    var hero = document.getElementById("heroOrder");
+    if (hero) hero.href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(
+      isEn ? "Hello! I'd like to order a digital invitation from D3wa 🤍" : "أهلاً! أريد طلب دعوة رقمية من دعوة D3wa 🤍");
+  }
+  document.getElementById("langBtn").addEventListener("click", function () { isEn = !isEn; apply(); });
+  try { if ((navigator.language || "").toLowerCase().indexOf("ar") !== 0) { /* keep Arabic default for launch market */ } } catch (e) {}
+  apply();
+})();
+</script>
+
+</body>
+</html>
