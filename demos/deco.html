@@ -582,7 +582,7 @@ html:not(.en) .cd-num{font-family:var(--kufi);font-weight:500}
      n_ar / n_en · d (ISO date) · t (24h time) · v_ar / v_en · map · q · wa
      Any missing param keeps the placeholder content; no params → page unchanged. */
   var qs = null;
-  try { qs = new URLSearchParams(location.search); } catch (e) {}
+  try { qs = new URLSearchParams(window.__D3WA__ || location.search); } catch (e) {}
   function qp (k) { var v = qs && qs.get(k); return (v && v.trim()) ? v.trim() : null; }
   var pNamesEn = qp("n_en"), pNamesAr = qp("n_ar"), pDate = qp("d"), pTime = qp("t"),
       pVenEn = qp("v_en"), pVenAr = qp("v_ar"), pMap = qp("map"), pQuote = qp("q"), pWa = qp("wa");

@@ -1,0 +1,13 @@
+# Files at the repo root that must never be uploaded as public static assets.
+worker/
+docs/
+.git/
+.claude/
+.github/
+*.md
+!README.md
+.assetsignore
+.gitignore
+d3wa-business-plan.md
+PRODUCT.md
+DESIGN.md

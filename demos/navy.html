@@ -583,7 +583,7 @@ html:not(.ar) .names .t-ar{display:none}
   /* ── URL-parameter personalization (shared D3wa param contract) ──
      n_ar / n_en · d (ISO date) · t (24h time) · v_ar / v_en · map · q · wa
      Any missing param keeps the hardcoded content untouched. */
-  var Q = window.URLSearchParams ? new URLSearchParams(location.search) : null;
+  var Q = window.URLSearchParams ? new URLSearchParams(window.__D3WA__ || location.search) : null;
   function qp (k) { var v = Q && Q.get(k); return v && v.trim() ? v.trim() : null; }
   var pNAr = qp("n_ar"), pNEn = qp("n_en"), pD = qp("d"), pT = qp("t"),
       pVAr = qp("v_ar"), pVEn = qp("v_en"), pMap = qp("map"), pQuote = qp("q"), pWa = qp("wa");

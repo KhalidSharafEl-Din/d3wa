@@ -643,21 +643,54 @@ input.bad{border-color:var(--err)}
     return L.join("\n");
   }
 
-  el("paidBtn").addEventListener("click", function () {
-    var url = previewURL();
-    el("doneSlug").textContent = PUBLIC_HOST + "/" + slug();
-    el("openPv").href = url;
-    el("doneMsg").innerHTML =
-      '<span class="t-ar">دي معاينة دعوتكم الحقيقية بكل تفاصيلكم. بمجرد ما نأكد وصول التحويل بننشرها على اللينك اللي تحت — عادةً خلال ساعات قليلة، ومش محتاج منكم أي حاجة تانية.</span>' +
-      '<span class="t-en">This is your real invitation with your details. As soon as we confirm the transfer we publish it to the link below, usually within a few hours, with nothing more needed from you.</span>';
+  function showDone (link, ref, viaApi) {
+    el("doneSlug").textContent = link;
+    el("openPv").href = viaApi ? link : previewURL();
+    el("doneMsg").innerHTML = viaApi
+      ? '<span class="t-ar">اللينك ده بقى محجوز باسمكم، وفيه دعوتكم بكل تفاصيلها. بمجرد ما نأكد وصول التحويل بتتنشر عليه ويختفي شريط «معاينة» — من غير ما تعملوا أي حاجة تانية.</span>' +
+        '<span class="t-en">This link is now reserved for you and already holds your invitation. Once we confirm the transfer it publishes there and the "preview" bar disappears, with nothing more needed from you.</span>'
+      : '<span class="t-ar">دي معاينة دعوتكم الحقيقية بكل تفاصيلكم. بنأكد وصول التحويل وننشرها على اللينك ده — عادةً خلال ساعات قليلة.</span>' +
+        '<span class="t-en">This is your real invitation with your details. We confirm the transfer and publish it to this link, usually within a few hours.</span>';
     el("doneWhy").innerHTML =
-      '<span class="t-ar">اللينك ده محجوز باسمكم برقم الطلب <b>#' + state.uid.toUpperCase() + '</b>.</span>' +
-      '<span class="t-en">This link is reserved for you under order <b>#' + state.uid.toUpperCase() + '</b>.</span>';
+      '<span class="t-ar">رقم طلبكم <b>#' + ref + '</b> — احتفظوا بيه لو حبيتوا تكلمونا.</span>' +
+      '<span class="t-en">Your order reference is <b>#' + ref + '</b>; keep it if you need to reach us.</span>';
     steps.forEach(function (s) { s.classList.toggle("on", +s.getAttribute("data-step") === 6); });
     rails.forEach(function (r) { r.classList.add("on"); });
     window.scrollTo({ top: 0, behavior: "smooth" });
-    /* hand the structured order to the studio via WhatsApp until the backend lands */
-    window.open("https://wa.me/" + SUPPORT + "?text=" + encodeURIComponent(orderMessage()), "_blank", "noopener");
+  }
+
+  el("paidBtn").addEventListener("click", function () {
+    var btn = this;
+    btn.disabled = true;
+
+    var payload = {
+      template: state.tpl, package: state.pkg, occasion: el("fOcc").value,
+      n_ar: el("n_ar").value.trim(), n_en: el("n_en").value.trim(),
+      event_date: el("d").value, event_time: el("t").value,
+      v_ar: el("v_ar").value.trim(), v_en: el("v_en").value.trim(),
+      map_url: el("map").value.trim(), quote: el("q").value.trim(),
+      rsvp_wa: el("wa").value.replace(/\D/g, "").replace(/^0/, "20"),
+      contact_wa: el("contact").value.replace(/\D/g, "").replace(/^0/, "20"),
+      rush: el("rush").checked ? 1 : 0, pay_method: state.pay
+    };
+
+    /* The backend reserves the permanent slug. Until it is deployed the page
+       still works: we fall back to handing the order over on WhatsApp. */
+    fetch("/api/orders", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(payload)
+    })
+      .then(function (r) { if (!r.ok) throw new Error("api " + r.status); return r.json(); })
+      .then(function (o) {
+        try { localStorage.removeItem("d3wa-build"); } catch (e) {}
+        showDone(location.origin + "/" + o.slug, o.id, true);
+      })
+      .catch(function () {
+        showDone(PUBLIC_HOST + "/" + slug(), state.uid.toUpperCase(), false);
+        window.open("https://wa.me/" + SUPPORT + "?text=" + encodeURIComponent(orderMessage()), "_blank", "noopener");
+      })
+      .then(function () { btn.disabled = false; });
   });
 
   el("copyLink").addEventListener("click", function () {

@@ -603,7 +603,7 @@ html:not(.en) .cd-num{font-family:var(--arabic)}
      n_ar / n_en · d (ISO date) · t (24h time) · v_ar / v_en · map · q · wa
      Missing param → the placeholder content above stays as-is. */
   var qs = null;
-  try { qs = new URLSearchParams(location.search); } catch (e) {}
+  try { qs = new URLSearchParams(window.__D3WA__ || location.search); } catch (e) {}
   function qp (k) { var v = qs && qs.get(k); return (v && v.trim()) ? v.trim() : null; }
   var pNamesAr = qp("n_ar"), pNamesEn = qp("n_en"), pDate = qp("d"), pTime = qp("t"),
       pVenAr = qp("v_ar"), pVenEn = qp("v_en"), pMap = qp("map"), pQuote = qp("q"), pWa = qp("wa");

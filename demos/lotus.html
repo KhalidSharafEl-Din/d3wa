@@ -648,7 +648,7 @@ html:not(.en) .cd-num{font-family:var(--arabic)}
      v_ar / v_en · map · q · wa
      Any missing param keeps the hardcoded content; no params → page unchanged. */
   var qs = null;
-  try { qs = new URLSearchParams(location.search); } catch (e) {}
+  try { qs = new URLSearchParams(window.__D3WA__ || location.search); } catch (e) {}
   function qp (k) { var v = qs && qs.get(k); return (v && v.trim()) ? v.trim() : null; }
   var pNameEn = qp("n_en"), pNameAr = qp("n_ar"), pParEn = qp("p_en"), pParAr = qp("p_ar"),
       pDate = qp("d"), pTime = qp("t"),
