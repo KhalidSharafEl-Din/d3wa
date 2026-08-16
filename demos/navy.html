@@ -542,13 +542,13 @@ html:not(.ar) .names .t-ar{display:none}
         <span class="t-ar">تأكيد الحضور</span>
       </a>
 
-      <a class="btn" href="https://maps.app.goo.gl/K2izAmdtfuKVcS138" target="_blank" rel="noopener noreferrer">
+      <a class="btn" id="mapBtn" href="https://maps.app.goo.gl/K2izAmdtfuKVcS138" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21s-7-7.2-7-12a7 7 0 1 1 14 0c0 4.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
         <span class="t-en">View location</span>
         <span class="t-ar">الموقع على الخريطة</span>
       </a>
 
-      <a class="btn" target="_blank" rel="noopener noreferrer"
+      <a class="btn" id="calBtn" target="_blank" rel="noopener noreferrer"
          href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Engagement%20%E2%80%94%20Omar%20%26%20Salma&amp;dates=20260822T200000/20260822T230000&amp;ctz=Africa/Cairo&amp;location=Villa%20Rose%2C%20Maadi%2C%20Cairo&amp;details=Two%20hearts%2C%20one%20beautiful%20beginning.">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
         <span class="t-en">Add to calendar</span>
@@ -579,6 +579,119 @@ html:not(.ar) .names .t-ar{display:none}
   "use strict";
   var docEl = document.documentElement;
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ── URL-parameter personalization (shared D3wa param contract) ──
+     n_ar / n_en · d (ISO date) · t (24h time) · v_ar / v_en · map · q · wa
+     Any missing param keeps the hardcoded content untouched. */
+  var Q = window.URLSearchParams ? new URLSearchParams(location.search) : null;
+  function qp (k) { var v = Q && Q.get(k); return v && v.trim() ? v.trim() : null; }
+  var pNAr = qp("n_ar"), pNEn = qp("n_en"), pD = qp("d"), pT = qp("t"),
+      pVAr = qp("v_ar"), pVEn = qp("v_en"), pMap = qp("map"), pQuote = qp("q"), pWa = qp("wa");
+  function arDigits (s) { return String(s).replace(/[0-9]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩"[+d]; }); }
+  function two (n) { return (n < 10 ? "0" : "") + n; }
+  function esc (s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  var evDate = null;
+  if (pD && /^\d{4}-\d{2}-\d{2}$/.test(pD)) {
+    var dparts = pD.split("-");
+    evDate = new Date(+dparts[0], +dparts[1] - 1, +dparts[2], 12, 0, 0);
+    if (isNaN(evDate.getTime())) evDate = null;
+  }
+  var evH = 20, evM = 0, hasTime = false;
+  if (pT && /^\d{1,2}:\d{2}$/.test(pT)) {
+    var tparts = pT.split(":");
+    if (+tparts[0] < 24 && +tparts[1] < 60) { evH = +tparts[0]; evM = +tparts[1]; hasTime = true; }
+  }
+  var timeEn = null, timeAr = null;
+  if (hasTime) {
+    var h12 = evH % 12 || 12, isPM = evH >= 12;
+    timeEn = h12 + ":" + two(evM) + " " + (isPM ? "PM" : "AM");
+    timeAr = arDigits(h12 + ":" + two(evM)) + (isPM ? " مساءً" : " صباحاً");
+  }
+  var weekdayEn = null, weekdayAr = null, dateEnMain = null, dateArMain = null, dateEnFull = null, dateArFull = null;
+  if (evDate) {
+    try {
+      weekdayEn = new Intl.DateTimeFormat("en-GB", { weekday: "long" }).format(evDate);
+      dateEnMain = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(evDate);
+      weekdayAr = new Intl.DateTimeFormat("ar-EG", { weekday: "long" }).format(evDate);
+      dateArMain = new Intl.DateTimeFormat("ar-EG", { day: "numeric", month: "long", year: "numeric" }).format(evDate);
+      dateEnFull = weekdayEn + ", " + dateEnMain;
+      dateArFull = weekdayAr + "، " + dateArMain;
+    } catch (e) { evDate = null; }
+  }
+  /* message building blocks — defaults reproduce the hardcoded texts exactly */
+  var msgNamesEn = pNEn || "Omar & Salma";
+  var msgNamesAr = pNAr || "عمر وسلمى";
+  var msgDateEn = dateEnFull || "Saturday, 22 August 2026";
+  var msgDateAr = dateArFull || "السبت ٢٢ أغسطس ٢٠٢٦";
+  var msgTimeEn = timeEn || "8:00 PM";
+  var msgTimeAr = timeAr || "٨:٠٠ مساءً";
+  var shareTimeAr = timeAr || "الثامنة مساءً";
+  var msgVenueEn = pVEn || "Villa Rose, Maadi";
+  var msgVenueAr = pVAr || "فيلا روز، المعادي";
+  var waNum = ((pWa || "").replace(/\D/g, "")) || "201005509418";
+
+  function nameHTML (txt, isArName, isCard) {
+    var parts = isArName ? txt.split(/\s+و(?=\S)/) : txt.split(/\s*&\s*/);
+    if (parts.length !== 2 || !parts[0] || !parts[1]) return esc(txt);
+    var sep = isArName ? "و" : "&amp;";
+    if (isCard) {
+      return esc(parts[0]) + ' <span class="amp" aria-hidden="true">' + sep + "</span>" +
+             (isArName ? " " : '<span class="sr-only">and</span> ') + esc(parts[1]);
+    }
+    return esc(parts[0]) + " <i>" + sep + "</i> " + esc(parts[1]);
+  }
+  function venueHTML (v) {
+    var m = v.match(/^([^,،]+)[,،]\s*(.+)$/);
+    return m ? esc(m[1]) + "<small>" + esc(m[2]) + "</small>" : esc(v);
+  }
+  function applyParams () {
+    if (!Q) return;
+    if (pNEn || pNAr) document.title = msgNamesEn + " — Engagement | " + msgNamesAr;
+    var gate = document.querySelector(".gate-names");
+    var cardNames = document.getElementById("names");
+    if (pNEn) {
+      if (gate) gate.querySelector(".t-en").innerHTML = nameHTML(pNEn, false, false);
+      if (cardNames) cardNames.querySelector(".t-en").innerHTML = nameHTML(pNEn, false, true);
+    }
+    if (pNAr) {
+      if (gate) gate.querySelector(".t-ar").innerHTML = nameHTML(pNAr, true, false);
+      if (cardNames) cardNames.querySelector(".t-ar").innerHTML = nameHTML(pNAr, true, true);
+    }
+    var dl = document.querySelectorAll(".details li");
+    if (evDate && dl[0]) {
+      dl[0].querySelector(".val .t-en").innerHTML = esc(dateEnMain) + "<small>" + esc(weekdayEn) + "</small>";
+      dl[0].querySelector(".val .t-ar").innerHTML = esc(dateArMain) + "<small>يوم " + esc(weekdayAr) + "</small>";
+    }
+    if (hasTime && dl[1]) {
+      dl[1].querySelector(".val .t-en").innerHTML = esc(timeEn) + "<small>Doors open at " + esc(timeEn) + "</small>";
+      dl[1].querySelector(".val .t-ar").innerHTML = esc(timeAr) + "<small>الأبواب تُفتح في تمام " + esc(timeAr) + "</small>";
+    }
+    if (pVEn && dl[2]) dl[2].querySelector(".val .t-en").innerHTML = venueHTML(pVEn);
+    if (pVAr && dl[2]) dl[2].querySelector(".val .t-ar").innerHTML = venueHTML(pVAr);
+    var quoteEl = document.querySelector(".quote");
+    if (pQuote && quoteEl) {
+      quoteEl.querySelector(".t-en").textContent = "“" + pQuote + "”";
+      quoteEl.querySelector(".t-ar").textContent = "«" + pQuote + "»";
+    }
+    var mapBtn = document.getElementById("mapBtn");
+    if (pMap && mapBtn && /^https?:\/\//.test(pMap)) mapBtn.href = pMap;
+    var calBtn = document.getElementById("calBtn");
+    if (calBtn && (pNEn || evDate || hasTime || pVEn || pQuote)) {
+      var cs = evDate
+        ? new Date(evDate.getFullYear(), evDate.getMonth(), evDate.getDate(), evH, evM)
+        : new Date(2026, 7, 22, evH, evM);
+      var ce = new Date(cs.getTime() + 3 * 36e5);
+      var gc = function (x) {
+        return "" + x.getFullYear() + two(x.getMonth() + 1) + two(x.getDate()) + "T" + two(x.getHours()) + two(x.getMinutes()) + "00";
+      };
+      calBtn.href = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+        "&text=" + encodeURIComponent("Engagement — " + msgNamesEn) +
+        "&dates=" + gc(cs) + "/" + gc(ce) +
+        "&ctz=Africa/Cairo" +
+        "&location=" + encodeURIComponent(pVEn || "Villa Rose, Maadi, Cairo") +
+        "&details=" + encodeURIComponent(pQuote || "Two hearts, one beautiful beginning.");
+    }
+  }
 
   /* ── Dark / light mode: follows the device setting, button overrides ── */
   function setTheme (dark) {
@@ -613,7 +726,9 @@ html:not(.ar) .names .t-ar{display:none}
   try { if ((navigator.language || "").toLowerCase().indexOf("ar") === 0) { isAr = true; } } catch (e) {}
 
   /* ── Countdown to Saturday 22 Aug 2026, 8:00 PM Cairo ── */
-  var target = new Date("2026-08-22T20:00:00+03:00").getTime();
+  var target = evDate
+    ? new Date(pD + "T" + two(evH) + ":" + two(evM) + ":00+02:00").getTime()
+    : new Date("2026-08-22T20:00:00+03:00").getTime();
   var wrap = document.getElementById("cdWrap");
   var elD = document.getElementById("cdD"), elH = document.getElementById("cdH"),
       elM = document.getElementById("cdM"), elS = document.getElementById("cdS");
@@ -649,13 +764,13 @@ html:not(.ar) .names .t-ar{display:none}
     var url = "https://d3wa.io/demo/";
     if (location.protocol !== "file:") url = location.href.split("#")[0];
     var share = isAr
-      ? "أنتم مدعوون 🤍 حفل خطوبة عمر وسلمى — السبت ٢٢ أغسطس ٢٠٢٦ في تمام الثامنة مساءً، فيلا روز، المعادي. افتحوا دعوتكم: " + url
-      : "You're invited 🤍 The engagement of Omar & Salma — Saturday, 22 August 2026 at 8:00 PM, Villa Rose, Maadi. Open your invitation: " + url;
+      ? "أنتم مدعوون 🤍 حفل خطوبة " + msgNamesAr + " — " + msgDateAr + " في تمام " + shareTimeAr + "، " + msgVenueAr + ". افتحوا دعوتكم: " + url
+      : "You're invited 🤍 The engagement of " + msgNamesEn + " — " + msgDateEn + " at " + msgTimeEn + ", " + msgVenueEn + ". Open your invitation: " + url;
     var rsvp = isAr
-      ? "مرحباً! يسعدني تأكيد حضوري حفل خطوبة عمر وسلمى — السبت ٢٢ أغسطس ٢٠٢٦، ٨:٠٠ مساءً، فيلا روز، المعادي 🤍"
-      : "Hello! I'd love to confirm my attendance at the engagement of Omar & Salma — Saturday, 22 August 2026, 8:00 PM, Villa Rose, Maadi 🤍";
+      ? "مرحباً! يسعدني تأكيد حضوري حفل خطوبة " + msgNamesAr + " — " + msgDateAr + "، " + msgTimeAr + "، " + msgVenueAr + " 🤍"
+      : "Hello! I'd love to confirm my attendance at the engagement of " + msgNamesEn + " — " + msgDateEn + ", " + msgTimeEn + ", " + msgVenueEn + " 🤍";
     if (waBtn) waBtn.href = "https://wa.me/?text=" + encodeURIComponent(share);
-    if (rsvpBtn) rsvpBtn.href = "https://wa.me/201005509418?text=" + encodeURIComponent(rsvp);
+    if (rsvpBtn) rsvpBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(rsvp);
   }
 
   /* ── Reveal the card when it scrolls into view ── */
@@ -688,6 +803,7 @@ html:not(.ar) .names .t-ar{display:none}
     document.body.appendChild(frag);
   }
 
+  applyParams();
   applyLang();
 })();
 </script>

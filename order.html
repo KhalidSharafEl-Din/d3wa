@@ -3,489 +3,699 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>اطلب دعوتك — دعوة D3wa | Order your invitation</title>
-<meta name="description" content="اطلب دعوتك الرقمية في ٥ دقايق: اختار القالب، املا التفاصيل، واستلم المعاينة خلال ٤٨ ساعة. Order your D3wa digital invitation in minutes.">
-<meta name="theme-color" content="#16213c">
+<title>اصنع دعوتك — دعوة D3wa | Build your invitation</title>
+<meta name="description" content="اصنع دعوتك خطوة بخطوة وشوف المعاينة الحقيقية وهي بتتبني قدامك. Build your D3wa invitation with a live preview.">
+<meta name="theme-color" content="#f5efe3">
+<meta name="robots" content="noindex">
 
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://khalidsharafel-din.github.io/d3wa/assets/og/index.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/order.html">
-<link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/order.html">
-<meta property="og:title" content="اطلب دعوتك — دعوة D3wa">
-<meta property="og:description" content="فورم بسيط: الأسماء والمعاد والقاعة، والمعاينة توصلك خلال ٤٨ ساعة">
-
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316213c'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23cfa658' stroke-width='2.6'/%3E%3C/svg%3E">
-
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f5efe3'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%239c4a1a' stroke-width='2.6'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Amiri:ital,wght@0,400;0,700;1,400&family=Italiana&family=Aref+Ruqaa&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;600;800&family=Reem+Kufi:wght@400;500;600;700&display=swap">
 
 <style>
 :root{
-  --navy:#16213c; --navy-2:#1d2b4d; --navy-3:#0d1730;
-  --gold:#cfa658; --gold-lt:#e3cf9b; --ivory:#f2ecdf; --muted:#a8a294;
-  --wa:#25d366;
-  --line:rgba(207,166,88,.30); --line-soft:rgba(207,166,88,.15);
-  --ar:"Cairo",sans-serif; --ar-d:"Aref Ruqaa","Amiri",serif; --lat:"Italiana",serif;
+  --paper:#f5efe3; --paper-2:#fbf7ee; --paper-3:#ede4d2;
+  --ink:#231a10; --ink-2:#6d5f4b;
+  --copper:#9c4a1a; --copper-d:#7e3a12;
+  --wa:#1fa855; --ok:#22633a; --err:#b1382f;
+  --line:rgba(35,26,16,.14); --line-soft:rgba(35,26,16,.08); --line-c:rgba(156,74,26,.28);
+  --disp:"Reem Kufi",sans-serif; --body:"Alexandria",sans-serif;
+  --field:#fff; --shadow:rgba(35,26,16,.13); --on-copper:#fdf8f0;
 }
+html[data-theme="dark"]{
+  --paper:#141d33; --paper-2:#1b2542; --paper-3:#0e1628;
+  --ink:#f0e9dc; --ink-2:#a2adc3;
+  --copper:#d98a53; --copper-d:#e8a877;
+  --wa:#25d366; --ok:#5fd08a; --err:#ea8b83;
+  --line:rgba(240,233,220,.16); --line-soft:rgba(240,233,220,.09); --line-c:rgba(217,138,83,.34);
+  --field:#0e1628; --shadow:rgba(0,0,0,.45); --on-copper:#1a1204;
+}
+html{color-scheme:light}
+html[data-theme="dark"]{color-scheme:dark}
+
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;color:var(--ivory);font-family:var(--ar);
-  background:var(--navy);
-  background-image:radial-gradient(130% 70% at 50% 0%, #26375f 0%, #16213c 55%, #0b1428 100%);
-  background-attachment:fixed;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:clip;
-}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:clip}
 html.en .t-ar{display:none}
 html:not(.en) .t-en{display:none}
-html.en body{font-family:"Cairo",ui-sans-serif,sans-serif}
 
-.wrap{width:min(100%,760px);margin:0 auto;padding:0 20px}
+/* header */
+header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:1px solid var(--line-soft)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:62px;width:min(100%,1240px);margin:0 auto;padding:0 20px}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink)}
+.brand svg{width:31px;height:31px}
+.brand b{font-family:var(--disp);font-weight:700;font-size:19px}
+.brand span{font-family:var(--disp);color:var(--copper);font-size:18px;font-weight:600}
+.hdr-actions{display:flex;align-items:center;gap:8px}
+.icon-btn{width:37px;height:37px;display:grid;place-items:center;border:1px solid var(--line-c);border-radius:999px;background:transparent;color:var(--copper);cursor:pointer;padding:0}
+.icon-btn:hover{background:rgba(156,74,26,.08)}
+.icon-btn svg{width:17px;height:17px}
+.icon-btn .i-moon{display:none}
+html[data-theme="dark"] .icon-btn .i-moon{display:block}
+html[data-theme="dark"] .icon-btn .i-sun{display:none}
+.lang{min-height:37px;padding:0 15px;border:1px solid var(--line-c);border-radius:999px;background:transparent;color:var(--copper);cursor:pointer;font-family:var(--body);font-size:12.5px;font-weight:600}
+.lang:hover{background:rgba(156,74,26,.08)}
 
-header{position:sticky;top:0;z-index:50;background:rgba(13,23,48,.78);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
-.nav{display:flex;align-items:center;justify-content:space-between;min-height:64px;width:min(100%,1080px);margin:0 auto;padding:0 20px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ivory)}
-.brand svg{width:34px;height:34px}
-.brand b{font-family:var(--lat);font-weight:400;font-size:22px;letter-spacing:.04em}
-.brand span{font-family:var(--ar-d);color:var(--gold);font-size:20px}
-.lang{min-height:38px;padding:0 16px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--gold);cursor:pointer;font-family:var(--ar);font-size:13px;font-weight:600}
-.lang:hover{background:rgba(207,166,88,.12)}
+/* layout: form + live preview */
+.shell{width:min(100%,1240px);margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1fr 400px;gap:clamp(24px,4vw,52px);align-items:start}
+@media (max-width:980px){.shell{grid-template-columns:1fr}}
 
-.head{padding:clamp(36px,6vw,56px) 0 8px;text-align:center}
-.head h1{font-family:var(--ar-d);font-weight:400;font-size:clamp(28px,5.6vw,42px);margin:0 0 10px;line-height:1.5}
-html.en .head h1{font-family:var(--lat);line-height:1.15}
-.head p{color:var(--muted);font-weight:300;font-size:14.5px;margin:0;line-height:1.9}
+.formcol{padding:clamp(24px,4vw,40px) 0 120px;min-width:0}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:600;letter-spacing:.13em;color:var(--copper);text-transform:uppercase;margin:0 0 14px}
+.kicker::before{content:"";width:28px;height:1.5px;background:var(--copper)}
+h1{font-family:var(--disp);font-weight:600;font-size:clamp(27px,4.6vw,40px);margin:0 0 8px;line-height:1.4}
+.lede{color:var(--ink-2);font-size:14.5px;line-height:2;margin:0 0 26px;max-width:58ch}
 
-/* progress */
-.prog{display:flex;justify-content:center;gap:10px;padding:26px 0 8px}
-.prog i{width:34px;height:4px;border-radius:99px;background:rgba(207,166,88,.18);transition:background .4s}
-.prog i.on{background:var(--gold)}
+/* progress rail */
+.rail{display:flex;gap:6px;margin-bottom:26px}
+.rail i{flex:1;height:3px;border-radius:99px;background:var(--line);transition:background .4s}
+.rail i.on{background:var(--copper)}
 
-.panel{border:1px solid var(--line-soft);border-radius:16px;background:rgba(255,255,255,.03);padding:clamp(22px,4.5vw,34px);margin:22px 0 60px}
+/* steps */
 .stepEl{display:none}
-.stepEl.on{display:block;animation:fade .45s ease-out}
-@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.stepEl h2{font-size:19px;font-weight:800;margin:0 0 4px}
-.stepEl .hint{color:var(--muted);font-weight:300;font-size:13.5px;margin:0 0 22px;line-height:1.9}
+.stepEl.on{display:block;animation:fade .4s ease-out}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.stepEl h2{font-family:var(--disp);font-weight:600;font-size:20px;margin:0 0 6px}
+.stepEl .hint{color:var(--ink-2);font-size:13.5px;line-height:1.95;margin:0 0 22px}
 
-/* option tiles */
-.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
-.tile{border:1px solid var(--line-soft);border-radius:12px;background:rgba(255,255,255,.02);padding:14px;cursor:pointer;text-align:center;transition:border-color .3s,background .3s;position:relative}
-.tile:hover{border-color:var(--line)}
-.tile.sel{border-color:var(--gold);background:rgba(207,166,88,.08)}
-.tile.sel::after{content:"✓";position:absolute;top:8px;inset-inline-end:10px;color:var(--gold);font-weight:800;font-size:13px}
-.tile .sw{height:64px;border-radius:8px;margin-bottom:10px}
-.tile b{display:block;font-size:13.5px;font-weight:700}
-.tile small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px;font-weight:300}
-.sw-gold{background:radial-gradient(130% 110% at 50% 0%,#fffdf8,#efe4cd)}
-.sw-rose{background:radial-gradient(130% 110% at 50% 0%,#fffafb,#f6dee7)}
-.sw-rustic{background:radial-gradient(130% 110% at 50% 0%,#fffdf6,#eeddc2)}
-.sw-navy{background:radial-gradient(130% 110% at 50% 0%,#2a3a63,#0d1730)}
-.sw-emerald{background:radial-gradient(130% 110% at 50% 0%,#1a5a44,#0e3b2e)}
-.sw-sahara{background:radial-gradient(130% 110% at 50% 0%,#fbf6ec,#e0a878)}
-.sw-lotus{background:radial-gradient(130% 110% at 50% 0%,#fdf8f0,#f3d9de)}
+/* template picker */
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:11px}
+.tile{border:1px solid var(--line);border-radius:6px;background:var(--paper-2);padding:9px;cursor:pointer;text-align:center;transition:border-color .25s,transform .25s;position:relative}
+.tile:hover{transform:translateY(-2px)}
+.tile.sel{border:1.5px solid var(--copper);box-shadow:0 8px 22px var(--shadow)}
+.tile.sel::after{content:"✓";position:absolute;top:6px;inset-inline-end:8px;color:var(--copper);font-weight:800;font-size:12px}
+.tile .sw{height:58px;border-radius:4px;margin-bottom:8px;display:grid;place-items:center}
+.tile .sw i{width:15px;height:15px;border-radius:50%;border:2px solid;font-style:normal}
+.tile b{display:block;font-size:11.5px;font-weight:600;line-height:1.4}
+.tile small{display:block;color:var(--ink-2);font-size:9.5px;margin-top:2px;letter-spacing:.06em}
 
-.tiles.pk{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));margin-top:26px}
-.tiles.pk .tile{text-align:start;padding:16px}
-.tiles.pk .price{color:var(--gold);font-weight:800;font-size:15px}
+/* packages */
+.pks{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px;margin-top:24px}
+.pk{border:1px solid var(--line);border-radius:6px;background:var(--paper-2);padding:16px;cursor:pointer;transition:border-color .25s;position:relative}
+.pk.sel{border:1.5px solid var(--copper)}
+.pk.sel::after{content:"✓";position:absolute;top:10px;inset-inline-end:12px;color:var(--copper);font-weight:800;font-size:12px}
+.pk b{display:block;font-size:13.5px;font-weight:800}
+.pk .p{color:var(--copper);font-weight:800;font-size:16px;margin-top:5px}
+.pk small{display:block;color:var(--ink-2);font-size:11.5px;line-height:1.7;margin-top:5px}
 
 /* fields */
-label{display:block;font-size:13px;font-weight:600;color:var(--gold-lt);margin:18px 0 7px}
-label small{color:var(--muted);font-weight:300}
-input[type=text],input[type=date],input[type=time],input[type=url],textarea,select{
-  width:100%;min-height:48px;padding:12px 14px;border:1px solid var(--line-soft);border-radius:10px;
-  background:rgba(13,23,48,.55);color:var(--ivory);font-family:inherit;font-size:15px;transition:border-color .3s;
-}
-textarea{min-height:90px;resize:vertical;line-height:1.8}
-input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold)}
-input.err{border-color:#c0564f}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:block;font-size:12.5px;font-weight:600;margin:17px 0 6px}
+label small{color:var(--ink-2);font-weight:300}
+input,select,textarea{width:100%;min-height:47px;padding:11px 13px;border:1px solid var(--line);border-radius:5px;background:var(--field);color:var(--ink);font-family:inherit;font-size:14.5px;font-weight:300;transition:border-color .25s}
+textarea{min-height:82px;resize:vertical;line-height:1.85}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--copper)}
+input.bad{border-color:var(--err)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
 @media (max-width:560px){.row2{grid-template-columns:1fr}}
-.errmsg{display:none;color:#e2938d;font-size:12.5px;margin-top:6px}
-.errmsg.show{display:block}
-
-/* live preview */
-.preview{margin:26px auto 0;width:200px;border-radius:22px 22px 0 0;border:1px solid var(--line);border-bottom:none;background:radial-gradient(120% 90% at 50% 0%,#26375f,#0d1730);padding:22px 12px 18px;text-align:center;box-shadow:0 18px 40px rgba(0,0,0,.35)}
-.preview .o{color:var(--gold);font-size:10px;letter-spacing:.4em;margin-bottom:10px}
-.preview .a{font-family:var(--ar-d);font-size:21px;color:var(--gold-lt);line-height:1.7;min-height:36px;overflow-wrap:break-word}
-.preview .e{font-family:var(--lat);font-size:12.5px;letter-spacing:.12em;margin-top:3px;color:var(--ivory);min-height:16px;overflow-wrap:break-word}
-.preview .d{font-size:9.5px;letter-spacing:.2em;color:var(--muted);margin-top:9px}
-.preview-cap{text-align:center;color:var(--muted);font-size:11.5px;font-weight:300;margin-top:10px}
+.msg{display:none;color:var(--err);font-size:12.5px;margin-top:6px}
+.msg.show{display:block}
+.note{font-size:12px;color:var(--ink-2);line-height:1.9;margin-top:7px}
 
 /* toggles */
-.opt{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--line-soft);border-radius:12px;padding:15px 16px;margin-top:12px;cursor:pointer;transition:border-color .3s}
-.opt:hover{border-color:var(--line)}
-.opt input{width:18px;height:18px;margin-top:3px;accent-color:var(--gold);flex:none}
-.opt b{font-size:14px;font-weight:700}
-.opt small{display:block;color:var(--muted);font-weight:300;font-size:12.5px;margin-top:3px;line-height:1.7}
-.opt .pd{margin-inline-start:auto;color:var(--gold);font-weight:800;font-size:13px;white-space:nowrap}
+.opt{display:flex;align-items:flex-start;gap:11px;border:1px solid var(--line);border-radius:6px;background:var(--paper-2);padding:14px 15px;margin-top:11px;cursor:pointer}
+.opt:hover{border-color:var(--line-c)}
+.opt input{width:17px;height:17px;min-height:0;margin-top:2px;accent-color:var(--copper);flex:none}
+.opt b{font-size:13.5px;font-weight:700}
+.opt small{display:block;color:var(--ink-2);font-size:12px;line-height:1.7;margin-top:3px}
+.opt .pd{margin-inline-start:auto;color:var(--copper);font-weight:800;font-size:12.5px;white-space:nowrap}
+
+/* link slug */
+.slug{border:1px solid var(--line-c);border-radius:6px;background:var(--paper-2);padding:15px 16px;margin-top:18px}
+.slug .lab{font-size:11.5px;font-weight:600;color:var(--copper);letter-spacing:.1em;text-transform:uppercase}
+.slug .val{direction:ltr;text-align:left;font-size:14px;font-weight:600;margin-top:7px;word-break:break-all;line-height:1.6}
+.slug .val u{text-decoration:none;color:var(--copper)}
+.slug .why{font-size:11.5px;color:var(--ink-2);line-height:1.8;margin-top:8px}
 
 /* review */
-.review{border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;margin-top:6px}
-.review div{display:flex;justify-content:space-between;gap:14px;padding:12px 16px;font-size:13.5px;border-bottom:1px solid var(--line-soft)}
-.review div:last-child{border-bottom:none}
-.review dt{color:var(--muted);font-weight:300;flex:none}
-.review dd{margin:0;font-weight:600;text-align:end;overflow-wrap:anywhere}
-.total{display:flex;justify-content:space-between;padding:14px 16px;background:rgba(207,166,88,.07);font-weight:800;font-size:15px}
-.total span:last-child{color:var(--gold)}
+.rev{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper-2)}
+.rev > div{display:flex;justify-content:space-between;gap:16px;padding:12px 15px;font-size:13.5px;border-bottom:1px solid var(--line-soft)}
+.rev > div:last-child{border-bottom:none}
+.rev dt{color:var(--ink-2);flex:none}
+.rev dd{margin:0;font-weight:600;text-align:end;overflow-wrap:anywhere}
+.total{display:flex;justify-content:space-between;padding:15px;background:var(--paper-3);font-weight:800;font-size:15.5px;border-radius:0 0 6px 6px}
+.total span:last-child{color:var(--copper)}
+
+/* pay */
+.pays{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin-top:8px}
+.pay{border:1px solid var(--line);border-radius:6px;background:var(--paper-2);padding:14px;cursor:pointer;text-align:center;position:relative}
+.pay.sel{border:1.5px solid var(--copper)}
+.pay.off{opacity:.5;cursor:not-allowed}
+.pay b{display:block;font-size:13px;font-weight:700}
+.pay small{display:block;color:var(--ink-2);font-size:11px;margin-top:4px}
+.paybox{border:1px dashed var(--line-c);border-radius:6px;background:var(--paper-2);padding:16px;margin-top:14px;font-size:13.5px;line-height:2}
+.paybox .num{direction:ltr;display:inline-block;font-weight:800;color:var(--copper);letter-spacing:.04em}
 
 /* buttons */
-.btns{display:flex;gap:12px;margin-top:28px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:0 26px;border:1px solid var(--gold);border-radius:3px;color:var(--gold);text-decoration:none;font-weight:600;font-size:14.5px;transition:background .3s;cursor:pointer;background:transparent;font-family:inherit}
-.btn:hover{background:rgba(207,166,88,.12)}
-.btn.solid{background:var(--gold);color:#111c36}
-.btn.solid:hover{background:#b58c41}
-.btn.wa{background:var(--wa);border-color:var(--wa);color:#062e1d}
-.btn.wa:hover{background:#1fb959}
-.btn.ghost{border-color:var(--line-soft);color:var(--muted)}
-.btn.next,.btn.wa{flex:1}
-.btn svg{width:17px;height:17px;flex:none;fill:currentColor}
-.note{color:var(--muted);font-size:12.5px;font-weight:300;line-height:1.9;margin-top:16px;text-align:center}
+.btns{display:flex;gap:11px;margin-top:26px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 26px;border:1.5px solid var(--copper);border-radius:2px;color:var(--copper);text-decoration:none;font-weight:600;font-size:14px;cursor:pointer;background:transparent;font-family:inherit;transition:background .25s}
+.btn:hover{background:rgba(156,74,26,.08)}
+.btn.solid{background:var(--copper);color:var(--on-copper)}
+.btn.solid:hover{background:var(--copper-d)}
+.btn.ghost{border-color:var(--line);color:var(--ink-2)}
+.btn.wa{background:var(--wa);border-color:var(--wa);color:#fff}
+.btn.grow{flex:1}
+.btn svg{width:16px;height:16px;fill:currentColor;flex:none}
 
-footer{border-top:1px solid var(--line-soft);padding:28px 0 40px;text-align:center;color:var(--muted);font-size:13px;font-weight:300}
-footer a{color:var(--gold);text-decoration:none}
+/* done state */
+.done{text-align:center;padding:10px 0}
+.done .ring{width:58px;height:58px;border-radius:50%;border:2.5px solid var(--copper);display:grid;place-items:center;margin:0 auto 18px;color:var(--copper);font-size:24px}
+.help{margin-top:28px;padding-top:18px;border-top:1px solid var(--line-soft);font-size:12.5px;color:var(--ink-2);line-height:1.95}
+.help a{color:var(--copper);font-weight:600;text-decoration:none}
 
+/* preview pane */
+.previewcol{position:sticky;top:78px;padding-top:clamp(24px,4vw,40px)}
+@media (max-width:980px){
+  .previewcol{position:fixed;inset:auto 0 0 0;top:auto;z-index:70;padding:0;transform:translateY(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);background:var(--paper);border-top:1px solid var(--line);max-height:88vh;overflow:auto;box-shadow:0 -18px 44px var(--shadow)}
+  .previewcol.open{transform:none}
+}
+.pv-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;padding:0 2px}
+.pv-title{font-size:12px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-2)}
+.pv-live{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ok);font-weight:600}
+.pv-live i{width:6px;height:6px;border-radius:50%;background:var(--ok);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.pv-frame{border-radius:34px;border:1px solid var(--line);background:#12100e;padding:9px;box-shadow:0 26px 60px var(--shadow)}
+.pv-frame iframe{width:100%;aspect-ratio:9/18.5;border:0;border-radius:26px;background:var(--paper-2);display:block}
+.pv-foot{display:flex;gap:8px;margin-top:11px}
+.pv-foot .btn{flex:1;min-height:40px;font-size:12px;padding:0 12px}
+.pv-close{display:none}
+@media (max-width:980px){
+  .previewcol .inner{padding:16px 20px 22px}
+  .pv-close{display:inline-flex}
+}
+.pv-fab{display:none}
+@media (max-width:980px){
+  .pv-fab{display:inline-flex;align-items:center;gap:8px;position:fixed;bottom:16px;inset-inline-start:50%;transform:translateX(50%);z-index:65;min-height:46px;padding:0 22px;border-radius:999px;background:var(--ink);color:var(--paper);border:0;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 12px 30px var(--shadow)}
+  html.en .pv-fab{transform:translateX(-50%)}
+}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
+<script>
+(function(){try{var t=localStorage.getItem("d3wa-theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}})();
+</script>
 </head>
 <body>
 
 <header><div class="nav">
   <a class="brand" href="index.html">
-    <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#0d1730" stroke="#cfa658" stroke-width="1"/><circle cx="16" cy="16" r="8" fill="none" stroke="#cfa658" stroke-width="2.2"/></svg>
+    <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="var(--paper-2)" stroke="var(--copper)" stroke-width="1.2"/><circle cx="16" cy="16" r="8" fill="none" stroke="var(--copper)" stroke-width="2.2"/></svg>
     <b>D3wa</b><span>دعوة</span>
   </a>
-  <button class="lang" id="langBtn" type="button"><span class="t-ar">English</span><span class="t-en">العربية</span></button>
+  <div class="hdr-actions">
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle dark mode">
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M21.4 12h-2.2M4.8 12H2.6M18.6 5.4l-1.6 1.6M7 17l-1.6 1.6M18.6 18.6L17 17M7 7 5.4 5.4"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
+    </button>
+    <button class="lang" id="langBtn" type="button"><span class="t-ar">English</span><span class="t-en">العربية</span></button>
+  </div>
 </div></header>
 
-<div class="wrap">
-  <div class="head">
-    <h1><span class="t-ar">اطلب دعوتك</span><span class="t-en">Start your order</span></h1>
-    <p><span class="t-ar">٥ دقايق وهيوصلنا طلبك مرتب على واتساب، والمعاينة عندك خلال ٤٨ ساعة</span><span class="t-en">Five minutes; your order reaches us neatly on WhatsApp, preview within 48 hours</span></p>
-  </div>
+<div class="shell">
 
-  <div class="prog" id="prog"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+  <!-- ══ FORM ══ -->
+  <div class="formcol">
+    <p class="kicker"><span class="t-ar">اصنع دعوتك</span><span class="t-en">Build your invitation</span></p>
+    <h1><span class="t-ar">دعوتكم بتتبني قدامكم دلوقتي</span><span class="t-en">Watch your invitation build itself</span></h1>
+    <p class="lede"><span class="t-ar">كل حاجة بتكتبها بتظهر في المعاينة على طول. مفيش انتظار ومفيش رسايل رايحة جاية — تخلص، تدفع، ويطلعلك لينك دعوتكم.</span><span class="t-en">Everything you type appears in the preview instantly. No waiting, no back-and-forth: finish, pay, and your invitation link is yours.</span></p>
 
-  <div class="panel">
+    <div class="rail" id="rail"><i class="on"></i><i></i><i></i><i></i><i></i></div>
 
-    <!-- step 1: template + package -->
-    <div class="stepEl on" data-step="1">
-      <h2><span class="t-ar">١ · اختار القالب</span><span class="t-en">1 · Pick your template</span></h2>
-      <p class="hint"><span class="t-ar">مش متأكد؟ افتح الديموهات من الصفحة الرئيسية الأول.</span><span class="t-en">Not sure? Open the live demos from the home page first.</span></p>
-      <div class="tiles" id="tplTiles">
-        <div class="tile" data-v="gold"><div class="sw sw-gold"></div><b><span class="t-ar">كلاسيك جولد</span><span class="t-en">Classic Gold</span></b><small>D3-001</small></div>
-        <div class="tile" data-v="rose"><div class="sw sw-rose"></div><b><span class="t-ar">روز آند وايت</span><span class="t-en">Rose &amp; White</span></b><small>D3-002</small></div>
-        <div class="tile" data-v="rustic"><div class="sw sw-rustic"></div><b><span class="t-ar">رستيك</span><span class="t-en">Rustic Red</span></b><small>D3-003</small></div>
-        <div class="tile" data-v="navy"><div class="sw sw-navy"></div><b><span class="t-ar">رويال نايفي</span><span class="t-en">Royal Navy</span></b><small>D3-004</small></div>
-        <div class="tile" data-v="emerald"><div class="sw sw-emerald"></div><b><span class="t-ar">إميرالد أندلسي</span><span class="t-en">Emerald Andalusi</span></b><small>D3-005</small></div>
-        <div class="tile" data-v="sahara"><div class="sw sw-sahara"></div><b><span class="t-ar">صحارى بوهو</span><span class="t-en">Sahara Boho</span></b><small>D3-006</small></div>
-        <div class="tile" data-v="lotus"><div class="sw sw-lotus"></div><b><span class="t-ar">سبوع اللوتس</span><span class="t-en">Lotus Sebou3</span></b><small>D3-007</small></div>
-      </div>
-      <div class="tiles pk" id="pkTiles">
-        <div class="tile" data-v="classic"><b><span class="t-ar">كلاسيك</span><span class="t-en">Classic</span></b><small><span class="t-ar">التخصيص الأساسي</span><span class="t-en">Core personalization</span></small><div class="price">1,000 <span class="t-ar">جنيه</span><span class="t-en">EGP</span></div></div>
-        <div class="tile" data-v="signature"><b><span class="t-ar">سيجنتشر</span><span class="t-en">Signature</span></b><small><span class="t-ar">اقتباس خاص وصورة وجولتين تعديل</span><span class="t-en">Quote, photo, two revisions</span></small><div class="price">1,500 <span class="t-ar">جنيه</span><span class="t-en">EGP</span></div></div>
-        <div class="tile" data-v="royale"><b><span class="t-ar">رويال</span><span class="t-en">Royale</span></b><small><span class="t-ar">وضع ليلي وشيت ضيوف وأولوية ٢٤س</span><span class="t-en">Dark mode, guest sheet, 24h priority</span></small><div class="price">2,500 <span class="t-ar">جنيه</span><span class="t-en">EGP</span></div></div>
-      </div>
-      <div class="errmsg" id="e1"><span class="t-ar">اختار قالب وباقة الأول 🤍</span><span class="t-en">Pick a template and a package first 🤍</span></div>
-      <div class="btns"><button class="btn solid next" data-next="2"><span class="t-ar">التالي</span><span class="t-en">Next</span></button></div>
-    </div>
+    <!-- 1 · template -->
+    <section class="stepEl on" data-step="1">
+      <h2><span class="t-ar">١ · اختاروا التصميم</span><span class="t-en">1 · Choose your design</span></h2>
+      <p class="hint"><span class="t-ar">دوس على أي تصميم وشوفه في المعاينة على طول. ١٢ تصميم لكل المناسبات.</span><span class="t-en">Tap any design and see it in the preview right away. Twelve designs for every occasion.</span></p>
+      <div class="tiles" id="tplTiles"></div>
+      <div class="pks" id="pkTiles"></div>
+      <div class="msg" id="m1"><span class="t-ar">اختاروا تصميم وباقة عشان نكمل</span><span class="t-en">Pick a design and a package to continue</span></div>
+      <div class="btns"><button class="btn solid grow" data-go="2"><span class="t-ar">التالي</span><span class="t-en">Next</span></button></div>
+    </section>
 
-    <!-- step 2: occasion + names -->
-    <div class="stepEl" data-step="2">
+    <!-- 2 · names -->
+    <section class="stepEl" data-step="2">
       <h2><span class="t-ar">٢ · المناسبة والأسماء</span><span class="t-en">2 · Occasion and names</span></h2>
-      <p class="hint"><span class="t-ar">اكتب الأسماء زي ما تحب تشوفها في الدعوة بالظبط.</span><span class="t-en">Write the names exactly as you want them to appear.</span></p>
-      <label><span class="t-ar">نوع المناسبة</span><span class="t-en">Occasion</span></label>
+      <p class="hint"><span class="t-ar">اكتبوا الأسماء زي ما تحبوها تظهر بالظبط — هتشوفوها في المعاينة وانتوا بتكتبوا.</span><span class="t-en">Type the names exactly as you want them to appear; you'll see them land in the preview as you type.</span></p>
+      <label><span class="t-ar">المناسبة</span><span class="t-en">Occasion</span></label>
       <select id="fOcc">
-        <option value="wedding"  data-ar="فرح" data-en="Wedding">فرح · Wedding</option>
+        <option value="wedding" data-ar="فرح" data-en="Wedding">فرح · Wedding</option>
         <option value="engagement" data-ar="خطوبة" data-en="Engagement">خطوبة · Engagement</option>
         <option value="katb" data-ar="كتب كتاب" data-en="Katb kitab">كتب كتاب · Katb kitab</option>
-        <option value="sebou3" data-ar="سبوع / عقيقة" data-en="Sebou3 / aqiqa">سبوع أو عقيقة · Sebou3</option>
-        <option value="other" data-ar="مناسبة تانية" data-en="Other">مناسبة تانية · Other</option>
+        <option value="henna" data-ar="ليلة حنة" data-en="Henna night">ليلة حنة · Henna night</option>
+        <option value="sebou3" data-ar="سبوع أو عقيقة" data-en="Sebou3 / aqiqa">سبوع أو عقيقة · Sebou3</option>
+        <option value="grad" data-ar="حفلة تخرج" data-en="Graduation">حفلة تخرج · Graduation</option>
+        <option value="other" data-ar="مناسبة تانية" data-en="Other occasion">مناسبة تانية · Other</option>
       </select>
       <div class="row2">
         <div>
-          <label id="lblAr"><span class="t-ar">الأسماء بالعربي</span><span class="t-en">Names in Arabic</span></label>
-          <input type="text" id="fNamesAr" placeholder="عمر وسلمى" autocomplete="off">
-          <div class="errmsg" id="e2"><span class="t-ar">محتاجين الأسماء بالعربي على الأقل</span><span class="t-en">We need at least the Arabic names</span></div>
+          <label><span class="t-ar">الأسماء بالعربي</span><span class="t-en">Names in Arabic</span></label>
+          <input type="text" id="n_ar" placeholder="عمر وسلمى" autocomplete="off">
+          <div class="msg" id="m2"><span class="t-ar">محتاجين الأسماء بالعربي على الأقل</span><span class="t-en">We need at least the Arabic names</span></div>
         </div>
         <div>
-          <label><span class="t-ar">بالإنجليزي <small>(اختياري)</small></span><span class="t-en">In English <small>(optional)</small></span></label>
-          <input type="text" id="fNamesEn" placeholder="Omar &amp; Salma" autocomplete="off">
+          <label><span class="t-ar">بالإنجليزي <small>(بتتحط في اللينك)</small></span><span class="t-en">In English <small>(used in your link)</small></span></label>
+          <input type="text" id="n_en" placeholder="Omar &amp; Salma" dir="ltr" autocomplete="off">
         </div>
       </div>
-      <div class="preview" aria-hidden="true">
-        <div class="o">✦ ✦ ✦</div>
-        <div class="a" id="pvAr">عمر وسلمى</div>
-        <div class="e" id="pvEn">OMAR &amp; SALMA</div>
-        <div class="d" id="pvDt">— · — · —</div>
-      </div>
-      <p class="preview-cap"><span class="t-ar">معاينة مبدئية لشكل الأسماء، التصميم النهائي على قالبك المختار</span><span class="t-en">A rough preview of your names; the final design uses your chosen template</span></p>
+      <label><span class="t-ar">اقتباس أو آية <small>(اختياري)</small></span><span class="t-en">A quote or verse <small>(optional)</small></span></label>
+      <textarea id="q" placeholder="«وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا…»"></textarea>
       <div class="btns">
-        <button class="btn ghost" data-back="1"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
-        <button class="btn solid next" data-next="3"><span class="t-ar">التالي</span><span class="t-en">Next</span></button>
+        <button class="btn ghost" data-go="1"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
+        <button class="btn solid grow" data-go="3"><span class="t-ar">التالي</span><span class="t-en">Next</span></button>
       </div>
-    </div>
+    </section>
 
-    <!-- step 3: date + venue -->
-    <div class="stepEl" data-step="3">
-      <h2><span class="t-ar">٣ · المعاد والمكان</span><span class="t-en">3 · Date and venue</span></h2>
-      <p class="hint"><span class="t-ar">لو لسه محددتوش، اكتب اللي متأكد منه وكمّل الباقي معانا على واتساب.</span><span class="t-en">Not finalized yet? Fill what you know and complete the rest with us on WhatsApp.</span></p>
+    <!-- 3 · when & where -->
+    <section class="stepEl" data-step="3">
+      <h2><span class="t-ar">٣ · المعاد والمكان</span><span class="t-en">3 · When and where</span></h2>
+      <p class="hint"><span class="t-ar">العدّاد التنازلي في الدعوة بيشتغل من التاريخ ده على طول.</span><span class="t-en">The countdown in your invitation runs from this date automatically.</span></p>
       <div class="row2">
         <div>
           <label><span class="t-ar">تاريخ المناسبة</span><span class="t-en">Event date</span></label>
-          <input type="date" id="fDate">
-          <div class="errmsg" id="e3"><span class="t-ar">محتاجين تاريخ المناسبة</span><span class="t-en">We need the event date</span></div>
+          <input type="date" id="d">
+          <div class="msg" id="m3"><span class="t-ar">محتاجين تاريخ المناسبة</span><span class="t-en">We need the event date</span></div>
         </div>
         <div>
-          <label><span class="t-ar">الساعة <small>(اختياري)</small></span><span class="t-en">Time <small>(optional)</small></span></label>
-          <input type="time" id="fTime" value="20:00">
+          <label><span class="t-ar">الساعة</span><span class="t-en">Time</span></label>
+          <input type="time" id="t" value="20:00">
         </div>
       </div>
-      <label><span class="t-ar">اسم القاعة أو المكان</span><span class="t-en">Venue name</span></label>
-      <input type="text" id="fVenue" placeholder="فيلا روز، المعادي" autocomplete="off">
+      <div class="row2">
+        <div>
+          <label><span class="t-ar">المكان بالعربي</span><span class="t-en">Venue in Arabic</span></label>
+          <input type="text" id="v_ar" placeholder="قاعة النيل، الزمالك" autocomplete="off">
+        </div>
+        <div>
+          <label><span class="t-ar">بالإنجليزي <small>(اختياري)</small></span><span class="t-en">In English <small>(optional)</small></span></label>
+          <input type="text" id="v_en" placeholder="Nile Hall, Zamalek" dir="ltr" autocomplete="off">
+        </div>
+      </div>
       <label><span class="t-ar">لينك جوجل مابس <small>(اختياري)</small></span><span class="t-en">Google Maps link <small>(optional)</small></span></label>
-      <input type="url" id="fMap" placeholder="https://maps.app.goo.gl/..." dir="ltr" autocomplete="off">
+      <input type="url" id="map" placeholder="https://maps.app.goo.gl/…" dir="ltr" autocomplete="off">
       <div class="btns">
-        <button class="btn ghost" data-back="2"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
-        <button class="btn solid next" data-next="4"><span class="t-ar">التالي</span><span class="t-en">Next</span></button>
+        <button class="btn ghost" data-go="2"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
+        <button class="btn solid grow" data-go="4"><span class="t-ar">التالي</span><span class="t-en">Next</span></button>
       </div>
-    </div>
+    </section>
 
-    <!-- step 4: extras -->
-    <div class="stepEl" data-step="4">
-      <h2><span class="t-ar">٤ · لمسات إضافية</span><span class="t-en">4 · Finishing touches</span></h2>
-      <p class="hint"><span class="t-ar">كله اختياري، والأسعار واضحة قبل ما تضيف.</span><span class="t-en">All optional, with the price shown before you add.</span></p>
-      <label class="opt"><input type="checkbox" id="xRush"><span><b><span class="t-ar">استعجال ٢٤ ساعة</span><span class="t-en">24-hour rush</span></b><small><span class="t-ar">معاينتك توصل خلال يوم واحد بدل يومين. مجاني في باقة رويال.</span><span class="t-en">Preview in one day instead of two. Free on Royale.</span></small></span><span class="pd" id="rushPd">+300 <span class="t-ar">جنيه</span><span class="t-en">EGP</span></span></label>
-      <label><span class="t-ar">اقتباس أو آية تحبوا تظهر في الدعوة <small>(اختياري، لباقة سيجنتشر وأعلى)</small></span><span class="t-en">A quote or verse for the invitation <small>(optional; Signature and above)</small></span></label>
-      <textarea id="fQuote" placeholder="«وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا...»"></textarea>
-      <label><span class="t-ar">ملاحظات تانية <small>(اختياري)</small></span><span class="t-en">Anything else <small>(optional)</small></span></label>
-      <textarea id="fNotes" placeholder=""></textarea>
+    <!-- 4 · contact -->
+    <section class="stepEl" data-step="4">
+      <h2><span class="t-ar">٤ · تأكيدات الحضور والتواصل</span><span class="t-en">4 · RSVPs and contact</span></h2>
+      <p class="hint"><span class="t-ar">لما ضيف يدوس «هحضر»، الرسالة بتروح على الرقم ده مباشرة — مش علينا.</span><span class="t-en">When a guest taps "I'll be there", the message goes straight to this number, not to us.</span></p>
+      <label><span class="t-ar">رقم واتساب اللي هيستقبل تأكيدات الحضور</span><span class="t-en">WhatsApp number that receives RSVPs</span></label>
+      <input type="tel" id="wa" placeholder="01012345678" dir="ltr" inputmode="tel" autocomplete="tel">
+      <div class="msg" id="m4"><span class="t-ar">اكتبوا رقم واتساب صحيح (١١ رقم)</span><span class="t-en">Enter a valid WhatsApp number (11 digits)</span></div>
+      <p class="note"><span class="t-ar">ممكن يكون رقم العروسة أو العريس أو حد من العيلة بيتابع الردود.</span><span class="t-en">It can be either partner's number, or a family member tracking replies.</span></p>
+
+      <label><span class="t-ar">رقمكم للتواصل معانا <small>(لو مختلف)</small></span><span class="t-en">Your number for us <small>(if different)</small></span></label>
+      <input type="tel" id="contact" placeholder="01012345678" dir="ltr" inputmode="tel">
+      <p class="note"><span class="t-ar">مش هنكلمكم غير لو في مشكلة في الطلب أو حاجة ناقصة.</span><span class="t-en">We only reach out if something's wrong with the order or a detail is missing.</span></p>
+
+      <label class="opt"><input type="checkbox" id="rush"><span><b><span class="t-ar">استعجال ٢٤ ساعة</span><span class="t-en">24-hour rush</span></b><small><span class="t-ar">مجاني في باقة رويال</span><span class="t-en">Free on the Royale package</span></small></span><span class="pd" id="rushPd">+300</span></label>
+
+      <div class="slug">
+        <div class="lab"><span class="t-ar">لينك دعوتكم</span><span class="t-en">Your invitation link</span></div>
+        <div class="val" id="slugVal">d3wa.io/<u>—</u></div>
+        <p class="why"><span class="t-ar">بنضيف كود قصير في آخر اللينك عشان أي عروسين ليهم نفس الأسماء ما يتلغبطوش مع بعض، ويفضل اللينك بتاعكم انتوا بس.</span><span class="t-en">We add a short code at the end so two couples with the same names never collide; your link stays uniquely yours.</span></p>
+      </div>
+
       <div class="btns">
-        <button class="btn ghost" data-back="3"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
-        <button class="btn solid next" data-next="5"><span class="t-ar">راجع الطلب</span><span class="t-en">Review order</span></button>
+        <button class="btn ghost" data-go="3"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
+        <button class="btn solid grow" data-go="5"><span class="t-ar">مراجعة ودفع</span><span class="t-en">Review and pay</span></button>
       </div>
-    </div>
+    </section>
 
-    <!-- step 5: review + send -->
-    <div class="stepEl" data-step="5">
-      <h2><span class="t-ar">٥ · راجع وابعت</span><span class="t-en">5 · Review and send</span></h2>
-      <p class="hint"><span class="t-ar">ده اللي هيوصلنا بالظبط. الضغط على الزرار بيفتح واتساب برسالة جاهزة، ومفيش أي التزام لحد ما نتكلم ونتفق.</span><span class="t-en">This is exactly what we receive. The button opens WhatsApp with a ready message; nothing is final until we talk and agree.</span></p>
-      <div class="review" id="reviewBox"></div>
-      <div class="total"><span><span class="t-ar">الإجمالي التقريبي</span><span class="t-en">Estimated total</span></span><span id="totalEl">—</span></div>
+    <!-- 5 · review & pay -->
+    <section class="stepEl" data-step="5">
+      <h2><span class="t-ar">٥ · مراجعة ودفع</span><span class="t-en">5 · Review and pay</span></h2>
+      <p class="hint"><span class="t-ar">راجعوا التفاصيل، وبعد تأكيد الدفع دعوتكم بتتنشر على اللينك بتاعكم.</span><span class="t-en">Check the details; once payment is confirmed your invitation publishes to your link.</span></p>
+      <div class="rev" id="revBox"></div>
+      <div class="total"><span><span class="t-ar">الإجمالي</span><span class="t-en">Total</span></span><span id="totalVal">—</span></div>
+
+      <label style="margin-top:24px"><span class="t-ar">طريقة الدفع</span><span class="t-en">Payment method</span></label>
+      <div class="pays" id="pays">
+        <div class="pay sel" data-v="instapay"><b>InstaPay</b><small><span class="t-ar">تحويل فوري</span><span class="t-en">Instant transfer</span></small></div>
+        <div class="pay" data-v="vcash"><b><span class="t-ar">فودافون كاش</span><span class="t-en">Vodafone Cash</span></b><small><span class="t-ar">محفظة</span><span class="t-en">Wallet</span></small></div>
+        <div class="pay off" data-v="card"><b><span class="t-ar">كارت بنكي</span><span class="t-en">Card</span></b><small><span class="t-ar">قريبًا</span><span class="t-en">Coming soon</span></small></div>
+      </div>
+      <div class="paybox" id="payBox"></div>
+
       <div class="btns">
-        <button class="btn ghost" data-back="4"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
-        <a class="btn wa" id="sendBtn" target="_blank" rel="noopener" href="#">
-          <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.94.56 3.75 1.5 5.29L2 22l4.96-1.6a9.9 9.9 0 0 0 5.08 1.4h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
-          <span class="t-ar">ابعت الطلب على واتساب</span><span class="t-en">Send order on WhatsApp</span>
-        </a>
+        <button class="btn ghost" data-go="4"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
+        <button class="btn solid grow" id="paidBtn"><span class="t-ar">تم التحويل — أكّدوا طلبي</span><span class="t-en">I've paid — confirm my order</span></button>
       </div>
-      <p class="note"><span class="t-ar">بعد ما نستلم طلبك: بنأكد التفاصيل، تدفع ٥٠٪ مقدم إنستاباي أو فودافون كاش، والمعاينة توصلك خلال ٤٨ ساعة. النشر النهائي بعد سداد الباقي.</span><span class="t-en">After we receive your order: we confirm the details, you pay a 50% deposit via Instapay or Vodafone Cash, and your preview arrives within 48 hours. Publishing happens once the balance is settled.</span></p>
-    </div>
+      <p class="help"><span class="t-ar">في مشكلة في الدفع أو حاجة مش مظبوطة؟</span><span class="t-en">Payment trouble or something off?</span> <a id="helpWa" target="_blank" rel="noopener" href="#"><span class="t-ar">كلمنا على واتساب</span><span class="t-en">Message us on WhatsApp</span></a></p>
+    </section>
 
+    <!-- 6 · done -->
+    <section class="stepEl" data-step="6">
+      <div class="done">
+        <div class="ring">✓</div>
+        <h2><span class="t-ar">وصلنا طلبكم</span><span class="t-en">We've got your order</span></h2>
+        <p class="hint" id="doneMsg"></p>
+      </div>
+      <div class="slug">
+        <div class="lab"><span class="t-ar">لينك دعوتكم</span><span class="t-en">Your invitation link</span></div>
+        <div class="val" id="doneSlug">—</div>
+        <p class="why" id="doneWhy"></p>
+      </div>
+      <div class="btns">
+        <a class="btn solid grow" id="openPv" target="_blank" rel="noopener"><span class="t-ar">افتح المعاينة</span><span class="t-en">Open the preview</span></a>
+        <button class="btn ghost" id="copyLink"><span class="t-ar">انسخ اللينك</span><span class="t-en">Copy link</span></button>
+      </div>
+      <p class="help"><span class="t-ar">محتاجين تعديل أو في مشكلة؟</span><span class="t-en">Need a change, or hit a snag?</span> <a id="helpWa2" target="_blank" rel="noopener" href="#"><span class="t-ar">كلمنا على واتساب</span><span class="t-en">Message us on WhatsApp</span></a></p>
+    </section>
   </div>
+
+  <!-- ══ LIVE PREVIEW ══ -->
+  <aside class="previewcol" id="pvCol"><div class="inner">
+    <div class="pv-head">
+      <span class="pv-title"><span class="t-ar">المعاينة المباشرة</span><span class="t-en">Live preview</span></span>
+      <span class="pv-live"><i></i><span class="t-ar">بيتحدث</span><span class="t-en">Updating live</span></span>
+    </div>
+    <div class="pv-frame"><iframe id="pvFrame" title="Live invitation preview" loading="lazy"></iframe></div>
+    <div class="pv-foot">
+      <a class="btn" id="pvOpen" target="_blank" rel="noopener"><span class="t-ar">افتح في تاب</span><span class="t-en">Open in tab</span></a>
+      <button class="btn ghost pv-close" id="pvClose"><span class="t-ar">إغلاق</span><span class="t-en">Close</span></button>
+    </div>
+  </div></aside>
 </div>
 
-<footer>
-  <p><a href="index.html"><span class="t-ar">→ الرجوع للصفحة الرئيسية</span><span class="t-en">← Back to home</span></a></p>
-  <p><span class="t-ar">دعوة D3wa · صُنعت بحب في مصر 🤍</span><span class="t-en">D3wa · made with love in Egypt 🤍</span></p>
-</footer>
+<button class="pv-fab" id="pvFab" type="button">
+  <span class="t-ar">شوف المعاينة</span><span class="t-en">See preview</span>
+</button>
 
 <script>
 (function () {
   "use strict";
   var docEl = document.documentElement, isEn = false;
-  var PHONE = "201005509418";
-  var TPL = {
-    gold:    { code: "D3-001", ar: "كلاسيك جولد",   en: "Classic Gold" },
-    rose:    { code: "D3-002", ar: "روز آند وايت",  en: "Rose & White" },
-    rustic:  { code: "D3-003", ar: "رستيك",         en: "Rustic Red" },
-    navy:    { code: "D3-004", ar: "رويال نايفي",   en: "Royal Navy" },
-    emerald: { code: "D3-005", ar: "إميرالد أندلسي", en: "Emerald Andalusi" },
-    sahara:  { code: "D3-006", ar: "صحارى بوهو",    en: "Sahara Boho" },
-    lotus:   { code: "D3-007", ar: "سبوع اللوتس",   en: "Lotus Sebou3" }
-  };
+  var SUPPORT = "201005509418";
+  var SITE = location.href.replace(/order\.html.*$/, "");
+  var PUBLIC_HOST = "d3wa.io";
+
+  var TPL = [
+    { k:"gold",    code:"D3-001", ar:"كلاسيك جولد",   en:"Classic Gold",      occ:"wedding",    bg:"radial-gradient(130% 110% at 50% 0%,#fffdf8,#efe4cd)", ac:"#a9843f" },
+    { k:"rose",    code:"D3-002", ar:"روز آند وايت",  en:"Rose & White",      occ:"wedding",    bg:"radial-gradient(130% 110% at 50% 0%,#fffafb,#f6dee7)", ac:"#b3305c" },
+    { k:"rustic",  code:"D3-003", ar:"رستيك",         en:"Rustic Red",        occ:"wedding",    bg:"radial-gradient(130% 110% at 50% 0%,#fffdf6,#eeddc2)", ac:"#9e3f34" },
+    { k:"navy",    code:"D3-004", ar:"رويال نايفي",   en:"Royal Navy",        occ:"wedding",    bg:"radial-gradient(130% 110% at 50% 0%,#2a3a63,#0d1730)", ac:"#cfa658" },
+    { k:"emerald", code:"D3-005", ar:"إميرالد أندلسي", en:"Emerald Andalusi",  occ:"katb",       bg:"radial-gradient(130% 110% at 50% 0%,#1a5a44,#0e3b2e)", ac:"#c9a24b" },
+    { k:"sahara",  code:"D3-006", ar:"صحارى بوهو",    en:"Sahara Boho",       occ:"wedding",    bg:"radial-gradient(130% 110% at 50% 0%,#fbf6ec,#f3d9b8)", ac:"#c46a4a" },
+    { k:"lotus",   code:"D3-007", ar:"سبوع اللوتس",   en:"Lotus Sebou3",      occ:"sebou3",     bg:"radial-gradient(130% 110% at 50% 0%,#fdf8f0,#f3d9de)", ac:"#a8c3a0" },
+    { k:"henna",   code:"D3-008", ar:"ليلة حنة",      en:"Henna Night",       occ:"henna",      bg:"radial-gradient(130% 110% at 50% 0%,#fbf3e4,#f4d9a8)", ac:"#a6341b" },
+    { k:"deco",    code:"D3-009", ar:"جاتسبي",        en:"Art Deco",          occ:"wedding",    bg:"radial-gradient(130% 110% at 50% 0%,#1c1c20,#0e0e10)", ac:"#d4af37" },
+    { k:"garden",  code:"D3-010", ar:"جاردن",         en:"Botanical Garden",  occ:"wedding",    bg:"radial-gradient(130% 110% at 50% 0%,#faf8f2,#dbe4d2)", ac:"#5f7161" },
+    { k:"modern",  code:"D3-011", ar:"مودرن",         en:"Modern Editorial",  occ:"wedding",    bg:"#f7f5f0", ac:"#c4552d" },
+    { k:"grad",    code:"D3-012", ar:"تخرج",          en:"Graduation",        occ:"grad",       bg:"radial-gradient(130% 110% at 50% 0%,#f8f5ee,#dfe2ea)", ac:"#e98a15" }
+  ];
   var PKG = {
-    classic:   { ar: "كلاسيك",    en: "Classic",   price: 1000 },
-    signature: { ar: "سيجنتشر",   en: "Signature", price: 1500 },
-    royale:    { ar: "رويال",     en: "Royale",    price: 2500 }
+    classic:   { ar:"كلاسيك",  en:"Classic",   price:1000, desc_ar:"التخصيص الأساسي",           desc_en:"Core personalization" },
+    signature: { ar:"سيجنتشر", en:"Signature", price:1500, desc_ar:"اقتباس وصورة وجولتين تعديل", desc_en:"Quote, photo, 2 revisions" },
+    royale:    { ar:"رويال",   en:"Royale",    price:2500, desc_ar:"وضع ليلي وشيت ضيوف وأولوية", desc_en:"Dark mode, guest sheet, priority" }
   };
-  var state = { tpl: null, pkg: null, step: 1 };
+  var FIELDS = ["n_ar","n_en","d","t","v_ar","v_en","map","q","wa","contact"];
+  var state = { tpl:null, pkg:null, step:1, pay:"instapay", uid:null };
 
-  /* restore saved progress */
-  try {
-    var saved = JSON.parse(localStorage.getItem("d3wa-order") || "{}");
-    ["tpl","pkg","occ","namesAr","namesEn","date","time","venue","map","rush","quote","notes"].forEach(function (k) {
-      if (saved[k] !== undefined) state[k] = saved[k];
-    });
-  } catch (e) {}
-
-  /* url params override */
-  var q = new URLSearchParams(location.search);
-  if (q.get("t") && TPL[q.get("t")]) state.tpl = q.get("t");
-  if (q.get("p") && PKG[q.get("p")]) state.pkg = q.get("p");
-
-  function save () {
-    try {
-      localStorage.setItem("d3wa-order", JSON.stringify({
-        tpl: state.tpl, pkg: state.pkg,
-        occ: el("fOcc").value, namesAr: el("fNamesAr").value, namesEn: el("fNamesEn").value,
-        date: el("fDate").value, time: el("fTime").value, venue: el("fVenue").value, map: el("fMap").value,
-        rush: el("xRush").checked, quote: el("fQuote").value, notes: el("fNotes").value
-      }));
-    } catch (e) {}
-  }
   function el (id) { return document.getElementById(id); }
 
-  /* language */
-  function applyLang () {
-    docEl.classList.toggle("en", isEn);
-    docEl.lang = isEn ? "en" : "ar";
-    docEl.dir = isEn ? "ltr" : "rtl";
-    renderReview();
-  }
-  el("langBtn").addEventListener("click", function () { isEn = !isEn; applyLang(); });
+  /* ── restore ── */
+  try {
+    var saved = JSON.parse(localStorage.getItem("d3wa-build") || "{}");
+    if (saved.tpl) state.tpl = saved.tpl;
+    if (saved.pkg) state.pkg = saved.pkg;
+    if (saved.uid) state.uid = saved.uid;
+    state._fields = saved.fields || {};
+  } catch (e) { state._fields = {}; }
 
-  /* tiles */
-  function bindTiles (wrapId, key) {
-    var tiles = document.querySelectorAll("#" + wrapId + " .tile");
-    tiles.forEach(function (t) {
-      t.addEventListener("click", function () {
-        tiles.forEach(function (x) { x.classList.remove("sel"); });
-        t.classList.add("sel");
-        state[key] = t.getAttribute("data-v");
-        el("e1").classList.remove("show");
-        if (key === "pkg") updateRushPd();
-        save();
+  var q = new URLSearchParams(location.search);
+  if (q.get("t")) { for (var i = 0; i < TPL.length; i++) if (TPL[i].k === q.get("t")) state.tpl = q.get("t"); }
+  if (q.get("p") && PKG[q.get("p")]) state.pkg = q.get("p");
+
+  /* stable per-order short id */
+  if (!state.uid) {
+    var r = new Uint8Array(3);
+    (window.crypto || window.msCrypto).getRandomValues(r);
+    state.uid = Array.prototype.map.call(r, function (b) { return ("0" + b.toString(16)).slice(-2); }).join("").slice(0, 4);
+  }
+
+  function save () {
+    var f = {};
+    FIELDS.forEach(function (k) { f[k] = el(k).value; });
+    f.occ = el("fOcc").value; f.rush = el("rush").checked;
+    try { localStorage.setItem("d3wa-build", JSON.stringify({ tpl:state.tpl, pkg:state.pkg, uid:state.uid, fields:f })); } catch (e) {}
+  }
+
+  /* ── build pickers ── */
+  el("tplTiles").innerHTML = TPL.map(function (t) {
+    return '<div class="tile" data-v="' + t.k + '">' +
+      '<div class="sw" style="background:' + t.bg + '"><i style="border-color:' + t.ac + '"></i></div>' +
+      '<b><span class="t-ar">' + t.ar + '</span><span class="t-en">' + t.en + '</span></b>' +
+      '<small>' + t.code + '</small></div>';
+  }).join("");
+  el("pkTiles").innerHTML = Object.keys(PKG).map(function (k) {
+    var p = PKG[k];
+    return '<div class="pk" data-v="' + k + '">' +
+      '<b><span class="t-ar">' + p.ar + '</span><span class="t-en">' + p.en + '</span></b>' +
+      '<div class="p">' + p.price.toLocaleString("en") + ' <span style="font-size:11px;font-weight:300">' +
+      '<span class="t-ar">جنيه</span><span class="t-en">EGP</span></span></div>' +
+      '<small><span class="t-ar">' + p.desc_ar + '</span><span class="t-en">' + p.desc_en + '</span></small></div>';
+  }).join("");
+
+  function bindPick (sel, key, after) {
+    var nodes = document.querySelectorAll(sel);
+    nodes.forEach(function (n) {
+      n.addEventListener("click", function () {
+        if (n.classList.contains("off")) return;
+        nodes.forEach(function (x) { x.classList.remove("sel"); });
+        n.classList.add("sel");
+        state[key] = n.getAttribute("data-v");
+        el("m1") && el("m1").classList.remove("show");
+        save(); if (after) after();
       });
-      if (state[key] === t.getAttribute("data-v")) t.classList.add("sel");
+      if (state[key] === n.getAttribute("data-v")) n.classList.add("sel");
     });
   }
-  bindTiles("tplTiles", "tpl");
-  bindTiles("pkTiles", "pkg");
+  bindPick("#tplTiles .tile", "tpl", function () { renderPreview(true); });
+  bindPick("#pkTiles .pk", "pkg", function () { rushPrice(); });
+  bindPick("#pays .pay", "pay", payBox);
 
-  function updateRushPd () {
+  function rushPrice () {
     var free = state.pkg === "royale";
     el("rushPd").innerHTML = free
-      ? '<span class="t-ar">مجاني ✨</span><span class="t-en">Free ✨</span>'
-      : '+300 <span class="t-ar">جنيه</span><span class="t-en">EGP</span>';
+      ? '<span class="t-ar">مجاني</span><span class="t-en">Free</span>'
+      : "+300";
   }
 
-  /* steps */
+  /* ── restore field values ── */
+  var sf = state._fields || {};
+  FIELDS.forEach(function (k) { if (sf[k]) el(k).value = sf[k]; });
+  if (sf.occ) el("fOcc").value = sf.occ;
+  if (sf.rush) el("rush").checked = true;
+  rushPrice();
+
+  /* ── slug ── */
+  var AR2LAT = { "ا":"a","أ":"a","إ":"i","آ":"a","ب":"b","ت":"t","ث":"th","ج":"g","ح":"h","خ":"kh","د":"d","ذ":"z","ر":"r","ز":"z","س":"s","ش":"sh","ص":"s","ض":"d","ط":"t","ظ":"z","ع":"a","غ":"gh","ف":"f","ق":"q","ك":"k","ل":"l","م":"m","ن":"n","ه":"h","و":"w","ي":"y","ى":"a","ة":"a","ء":"","ئ":"","ؤ":"" };
+  function slugify (s) {
+    if (!s) return "";
+    s = s.replace(/[ً-ْٰ]/g, "");
+    var out = "";
+    for (var i = 0; i < s.length; i++) {
+      var c = s[i];
+      if (AR2LAT[c] !== undefined) out += AR2LAT[c];
+      else if (/[a-zA-Z0-9]/.test(c)) out += c.toLowerCase();
+      else if (/[\s\-_&+]/.test(c)) out += "-";
+    }
+    return out.replace(/-+/g, "-").replace(/^-|-$/g, "").slice(0, 38);
+  }
+  function slug () {
+    var base = slugify(el("n_en").value.trim()) || slugify(el("n_ar").value.trim());
+    if (!base) base = "d3wa";
+    return base + "-" + state.uid;
+  }
+  function paintSlug () {
+    var s = slug();
+    el("slugVal").innerHTML = PUBLIC_HOST + "/<u>" + s + "</u>";
+  }
+
+  /* ── live preview ── */
+  var pvTimer = null;
+  function previewURL () {
+    if (!state.tpl) return "";
+    var u = new URL("demos/" + state.tpl + ".html", SITE);
+    var map = { n_ar:"n_ar", n_en:"n_en", d:"d", t:"t", v_ar:"v_ar", v_en:"v_en", map:"map", q:"q" };
+    Object.keys(map).forEach(function (k) {
+      var v = el(k).value.trim();
+      if (v) u.searchParams.set(map[k], v);
+    });
+    var w = el("wa").value.replace(/\D/g, "");
+    if (w) u.searchParams.set("wa", w.replace(/^0/, "20"));
+    return u.toString();
+  }
+  function renderPreview (now) {
+    if (!state.tpl) return;
+    clearTimeout(pvTimer);
+    pvTimer = setTimeout(function () {
+      var url = previewURL();
+      el("pvFrame").src = url;
+      el("pvOpen").href = url;
+    }, now ? 0 : 650);
+  }
+
+  /* ── steps ── */
   var steps = document.querySelectorAll(".stepEl");
-  var dots = document.querySelectorAll("#prog i");
-  function goTo (n) {
-    if (n === 2 && (!state.tpl || !state.pkg)) { el("e1").classList.add("show"); return; }
-    if (n === 3 && !el("fNamesAr").value.trim()) { el("e2").classList.add("show"); el("fNamesAr").classList.add("err"); return; }
-    if (n === 4 && !el("fDate").value) { el("e3").classList.add("show"); el("fDate").classList.add("err"); return; }
+  var rails = document.querySelectorAll("#rail i");
+  function digits (v) { return (v || "").replace(/\D/g, ""); }
+  function go (n) {
+    if (n === 2 && (!state.tpl || !state.pkg)) { el("m1").classList.add("show"); return; }
+    if (n === 3 && !el("n_ar").value.trim()) { el("m2").classList.add("show"); el("n_ar").classList.add("bad"); return; }
+    if (n === 4 && !el("d").value) { el("m3").classList.add("show"); el("d").classList.add("bad"); return; }
+    if (n === 5) {
+      var w = digits(el("wa").value);
+      if (w.length < 10 || w.length > 13) { el("m4").classList.add("show"); el("wa").classList.add("bad"); return; }
+      renderReview();
+    }
     state.step = n;
     steps.forEach(function (s) { s.classList.toggle("on", +s.getAttribute("data-step") === n); });
-    dots.forEach(function (d, i) { d.classList.toggle("on", i < n); });
-    if (n === 5) renderReview();
+    rails.forEach(function (r, i) { r.classList.toggle("on", i < Math.min(n, 5)); });
     window.scrollTo({ top: 0, behavior: "smooth" });
     save();
   }
-  document.querySelectorAll("[data-next]").forEach(function (b) { b.addEventListener("click", function () { goTo(+b.getAttribute("data-next")); }); });
-  document.querySelectorAll("[data-back]").forEach(function (b) { b.addEventListener("click", function () { goTo(+b.getAttribute("data-back")); }); });
+  document.querySelectorAll("[data-go]").forEach(function (b) {
+    b.addEventListener("click", function () { go(+b.getAttribute("data-go")); });
+  });
 
-  /* restore field values */
-  if (state.occ) el("fOcc").value = state.occ;
-  if (state.namesAr) el("fNamesAr").value = state.namesAr;
-  if (state.namesEn) el("fNamesEn").value = state.namesEn;
-  if (state.date) el("fDate").value = state.date;
-  if (state.time) el("fTime").value = state.time;
-  if (state.venue) el("fVenue").value = state.venue;
-  if (state.map) el("fMap").value = state.map;
-  if (state.rush) el("xRush").checked = true;
-  if (state.quote) el("fQuote").value = state.quote;
-  if (state.notes) el("fNotes").value = state.notes;
-  updateRushPd();
-
-  /* live name preview */
-  function fmtDate (iso) {
-    if (!iso) return "— · — · —";
-    var p = iso.split("-");
-    return p[2] + " · " + p[1] + " · " + p[0];
-  }
-  function refreshPreview () {
-    el("pvAr").textContent = el("fNamesAr").value.trim() || "عمر وسلمى";
-    el("pvEn").textContent = (el("fNamesEn").value.trim() || "Omar & Salma").toUpperCase();
-    el("pvDt").textContent = fmtDate(el("fDate").value);
-  }
-  ["fNamesAr","fNamesEn","fDate"].forEach(function (id) {
-    el(id).addEventListener("input", function () {
-      refreshPreview();
-      el(id).classList.remove("err");
-      if (id === "fNamesAr") el("e2").classList.remove("show");
-      if (id === "fDate") el("e3").classList.remove("show");
+  /* ── field wiring ── */
+  FIELDS.forEach(function (k) {
+    el(k).addEventListener("input", function () {
+      el(k).classList.remove("bad");
+      var m = { n_ar:"m2", d:"m3", wa:"m4" }[k];
+      if (m) el(m).classList.remove("show");
+      if (k === "n_ar" || k === "n_en") paintSlug();
+      renderPreview();
       save();
     });
   });
-  ["fOcc","fTime","fVenue","fMap","xRush","fQuote","fNotes"].forEach(function (id) {
-    el(id).addEventListener("change", save);
-  });
-  refreshPreview();
+  el("fOcc").addEventListener("change", save);
+  el("rush").addEventListener("change", save);
 
-  /* review + message */
+  /* ── review + pay ── */
   function occText () {
     var o = el("fOcc").selectedOptions[0];
     return isEn ? o.getAttribute("data-en") : o.getAttribute("data-ar");
   }
   function total () {
     var t = PKG[state.pkg] ? PKG[state.pkg].price : 0;
-    if (el("xRush").checked && state.pkg !== "royale") t += 300;
+    if (el("rush").checked && state.pkg !== "royale") t += 300;
     return t;
   }
-  function fmtEGP (n) { return n.toLocaleString(isEn ? "en-EG" : "ar-EG") + (isEn ? " EGP" : " جنيه"); }
+  function egp (n) { return n.toLocaleString(isEn ? "en-EG" : "ar-EG") + (isEn ? " EGP" : " جنيه"); }
+  function tplOf (k) { for (var i = 0; i < TPL.length; i++) if (TPL[i].k === k) return TPL[i]; return null; }
+  function esc (s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+
   function renderReview () {
-    if (!state.tpl || !state.pkg) return;
-    var tp = TPL[state.tpl], pk = PKG[state.pkg];
+    var tp = tplOf(state.tpl), pk = PKG[state.pkg];
+    if (!tp || !pk) return;
     var rows = [
-      [isEn ? "Template" : "القالب", (isEn ? tp.en : tp.ar) + " (" + tp.code + ")"],
-      [isEn ? "Package" : "الباقة", (isEn ? pk.en : pk.ar) + " · " + fmtEGP(pk.price)],
+      [isEn ? "Design" : "التصميم", (isEn ? tp.en : tp.ar) + " · " + tp.code],
+      [isEn ? "Package" : "الباقة", (isEn ? pk.en : pk.ar)],
       [isEn ? "Occasion" : "المناسبة", occText()],
-      [isEn ? "Names" : "الأسماء", el("fNamesAr").value + (el("fNamesEn").value ? " / " + el("fNamesEn").value : "")],
-      [isEn ? "Date" : "التاريخ", el("fDate").value + (el("fTime").value ? " · " + el("fTime").value : ""), true],
-      [isEn ? "Venue" : "المكان", el("fVenue").value || (isEn ? "To be confirmed" : "هنأكده على واتساب")]
+      [isEn ? "Names" : "الأسماء", el("n_ar").value + (el("n_en").value ? " / " + el("n_en").value : "")],
+      [isEn ? "Date" : "التاريخ", el("d").value + (el("t").value ? " · " + el("t").value : ""), 1],
+      [isEn ? "Venue" : "المكان", el("v_ar").value || (isEn ? "To be confirmed" : "هنأكده بعدين")],
+      [isEn ? "RSVPs to" : "الردود تروح لـ", el("wa").value, 1],
+      [isEn ? "Your link" : "لينككم", PUBLIC_HOST + "/" + slug(), 1]
     ];
-    if (el("fMap").value) rows.push([isEn ? "Map" : "الخريطة", el("fMap").value]);
-    if (el("xRush").checked) rows.push([isEn ? "Rush" : "استعجال", state.pkg === "royale" ? (isEn ? "24h (free)" : "٢٤ ساعة (مجاني)") : (isEn ? "24h (+300 EGP)" : "٢٤ ساعة (+٣٠٠ جنيه)")]);
-    if (el("fQuote").value.trim()) rows.push([isEn ? "Quote" : "الاقتباس", el("fQuote").value.trim()]);
-    if (el("fNotes").value.trim()) rows.push([isEn ? "Notes" : "ملاحظات", el("fNotes").value.trim()]);
-    el("reviewBox").innerHTML = rows.map(function (r) {
+    if (el("rush").checked) rows.splice(2, 0, [isEn ? "Rush" : "استعجال",
+      state.pkg === "royale" ? (isEn ? "24h (free)" : "٢٤ ساعة (مجاني)") : (isEn ? "24h (+300 EGP)" : "٢٤ ساعة (+٣٠٠ جنيه)")]);
+    el("revBox").innerHTML = rows.map(function (r) {
       return "<div><dt>" + r[0] + "</dt><dd" + (r[2] ? ' dir="ltr"' : "") + ">" + esc(r[1]) + "</dd></div>";
     }).join("");
-    el("totalEl").textContent = fmtEGP(total());
-    el("sendBtn").href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(waMessage());
+    el("totalVal").textContent = egp(total());
+    payBox();
   }
-  function esc (s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
-  function waMessage () {
-    var tp = TPL[state.tpl], pk = PKG[state.pkg];
+
+  function payBox () {
+    var t = total(), half = Math.round(t / 2);
+    var acct = state.pay === "vcash" ? "0100 550 9418" : "khalid@instapay";
+    var label_ar = state.pay === "vcash" ? "محفظة فودافون كاش" : "حساب إنستاباي";
+    var label_en = state.pay === "vcash" ? "Vodafone Cash wallet" : "InstaPay account";
+    el("payBox").innerHTML =
+      '<span class="t-ar">حوّلوا <b>' + egp(half) + '</b> (٥٠٪ مقدم) على ' + label_ar +
+        ': <span class="num">' + acct + '</span><br>وبعد التحويل دوسوا الزرار تحت، وابعتوا صورة التحويل لو طلبناها.</span>' +
+      '<span class="t-en">Transfer <b>' + egp(half) + '</b> (50% deposit) to the ' + label_en +
+        ': <span class="num">' + acct + '</span><br>Then tap the button below; send the receipt only if we ask.</span>';
+  }
+
+  /* ── confirm ── */
+  function orderMessage () {
+    var tp = tplOf(state.tpl), pk = PKG[state.pkg];
     var L = [];
-    L.push("طلب دعوة جديد 🤍 New order");
-    L.push("");
-    L.push("القالب Template: " + tp.ar + " / " + tp.en + " (" + tp.code + ")");
+    L.push("طلب دعوة · D3wa order #" + state.uid.toUpperCase());
+    L.push("اللينك Link: " + PUBLIC_HOST + "/" + slug());
+    L.push("التصميم Design: " + tp.ar + " / " + tp.en + " (" + tp.code + ")");
     L.push("الباقة Package: " + pk.ar + " / " + pk.en);
-    L.push("المناسبة Occasion: " + el("fOcc").selectedOptions[0].getAttribute("data-ar") + " / " + el("fOcc").selectedOptions[0].getAttribute("data-en"));
-    L.push("الأسماء Names: " + el("fNamesAr").value + (el("fNamesEn").value ? " / " + el("fNamesEn").value : ""));
-    L.push("التاريخ Date: " + el("fDate").value + (el("fTime").value ? " · " + el("fTime").value : ""));
-    if (el("fVenue").value) L.push("المكان Venue: " + el("fVenue").value);
-    if (el("fMap").value) L.push("الخريطة Map: " + el("fMap").value);
-    if (el("xRush").checked) L.push("استعجال Rush: 24h" + (state.pkg === "royale" ? " (مجاني)" : " (+300)"));
-    if (el("fQuote").value.trim()) L.push("الاقتباس Quote: " + el("fQuote").value.trim());
-    if (el("fNotes").value.trim()) L.push("ملاحظات Notes: " + el("fNotes").value.trim());
-    L.push("");
-    L.push("الإجمالي التقريبي Estimated: " + total() + " EGP");
+    L.push("المناسبة Occasion: " + el("fOcc").selectedOptions[0].getAttribute("data-ar"));
+    L.push("الأسماء Names: " + el("n_ar").value + (el("n_en").value ? " / " + el("n_en").value : ""));
+    L.push("التاريخ Date: " + el("d").value + (el("t").value ? " · " + el("t").value : ""));
+    if (el("v_ar").value) L.push("المكان Venue: " + el("v_ar").value);
+    if (el("map").value) L.push("الخريطة Map: " + el("map").value);
+    L.push("ردود الحضور RSVP to: " + el("wa").value);
+    if (el("contact").value) L.push("للتواصل Contact: " + el("contact").value);
+    if (el("q").value.trim()) L.push("اقتباس Quote: " + el("q").value.trim());
+    if (el("rush").checked) L.push("استعجال Rush: 24h");
+    L.push("الدفع Payment: " + state.pay + " · " + total() + " EGP");
     return L.join("\n");
   }
-  el("sendBtn").addEventListener("click", function () {
-    try { localStorage.removeItem("d3wa-order"); } catch (e) {}
+
+  el("paidBtn").addEventListener("click", function () {
+    var url = previewURL();
+    el("doneSlug").textContent = PUBLIC_HOST + "/" + slug();
+    el("openPv").href = url;
+    el("doneMsg").innerHTML =
+      '<span class="t-ar">دي معاينة دعوتكم الحقيقية بكل تفاصيلكم. بمجرد ما نأكد وصول التحويل بننشرها على اللينك اللي تحت — عادةً خلال ساعات قليلة، ومش محتاج منكم أي حاجة تانية.</span>' +
+      '<span class="t-en">This is your real invitation with your details. As soon as we confirm the transfer we publish it to the link below, usually within a few hours, with nothing more needed from you.</span>';
+    el("doneWhy").innerHTML =
+      '<span class="t-ar">اللينك ده محجوز باسمكم برقم الطلب <b>#' + state.uid.toUpperCase() + '</b>.</span>' +
+      '<span class="t-en">This link is reserved for you under order <b>#' + state.uid.toUpperCase() + '</b>.</span>';
+    steps.forEach(function (s) { s.classList.toggle("on", +s.getAttribute("data-step") === 6); });
+    rails.forEach(function (r) { r.classList.add("on"); });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    /* hand the structured order to the studio via WhatsApp until the backend lands */
+    window.open("https://wa.me/" + SUPPORT + "?text=" + encodeURIComponent(orderMessage()), "_blank", "noopener");
   });
 
-  applyLang();
+  el("copyLink").addEventListener("click", function () {
+    var txt = PUBLIC_HOST + "/" + slug();
+    if (navigator.clipboard) navigator.clipboard.writeText(txt);
+  });
+
+  /* ── mobile preview sheet ── */
+  el("pvFab").addEventListener("click", function () { el("pvCol").classList.add("open"); });
+  el("pvClose").addEventListener("click", function () { el("pvCol").classList.remove("open"); });
+
+  /* ── theme + language ── */
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+  function paintMeta () {
+    if (themeMeta) themeMeta.setAttribute("content",
+      docEl.getAttribute("data-theme") === "dark" ? "#0e1628" : "#f5efe3");
+  }
+  el("themeBtn").addEventListener("click", function () {
+    var next = docEl.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    docEl.setAttribute("data-theme", next);
+    try { localStorage.setItem("d3wa-theme", next); } catch (e) {}
+    paintMeta();
+  });
+  function applyLang () {
+    docEl.classList.toggle("en", isEn);
+    docEl.lang = isEn ? "en" : "ar";
+    docEl.dir = isEn ? "ltr" : "rtl";
+    var helpMsg = isEn ? "Hello! I need help with my D3wa order #" + state.uid.toUpperCase()
+                       : "أهلاً! محتاج مساعدة في طلب دعوة رقم #" + state.uid.toUpperCase();
+    var href = "https://wa.me/" + SUPPORT + "?text=" + encodeURIComponent(helpMsg);
+    el("helpWa").href = href; el("helpWa2").href = href;
+    if (state.step === 5) renderReview();
+  }
+  el("langBtn").addEventListener("click", function () { isEn = !isEn; applyLang(); });
+
+  applyLang(); paintMeta(); paintSlug();
+  if (state.tpl) renderPreview(true);
+  else { state.tpl = "gold"; document.querySelector('#tplTiles .tile[data-v="gold"]').classList.add("sel"); renderPreview(true); }
 })();
 </script>
 

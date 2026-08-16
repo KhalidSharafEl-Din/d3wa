@@ -583,6 +583,169 @@ html.en .closing .sig{font-family:var(--en-display);font-weight:400}
   var docEl = document.documentElement;
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ── URL-parameter personalization (D3wa param contract) ──
+     n_ar / n_en · d (ISO date) · t (24h time) · v_ar / v_en · map · q · wa
+     Any missing param keeps the hardcoded content; no params → page unchanged. */
+  var qs = null;
+  try { qs = new URLSearchParams(location.search); } catch (e) {}
+  function qp (k) { var v = qs && qs.get(k); return (v && v.trim()) ? v.trim() : null; }
+  var pNamesEn = qp("n_en"), pNamesAr = qp("n_ar"), pDate = qp("d"), pTime = qp("t"),
+      pVenEn = qp("v_en"), pVenAr = qp("v_ar"), pMap = qp("map"), pQuote = qp("q"), pWa = qp("wa");
+  var pDateOk = (pDate && /^\d{4}-\d{2}-\d{2}$/.test(pDate)) ? pDate : null;
+  var tMatch = pTime ? pTime.match(/^(\d{1,2}):(\d{2})$/) : null;
+  var pTimeNorm = tMatch ? ("0" + tMatch[1]).slice(-2) + ":" + tMatch[2] : null;
+
+  /* Message building blocks — defaults reproduce today's hardcoded texts exactly */
+  var namesEn = "Omar & Salma", namesAr = "عمر وسلمى",
+      dateFullEn = "Saturday, 22 August 2026", dateFullAr = "السبت ٢٢ أغسطس ٢٠٢٦",
+      timeEn = "8:00 PM", timeAr = "٨:٠٠ مساءً",
+      venueMsgEn = "Seashell Bay, North Coast", venueMsgAr = "سي شيل باي، الساحل الشمالي",
+      waNum = "201005509418";
+
+  function applyParams () {
+    var $ = function (s) { return document.querySelector(s); };
+    var arDigits = function (s) { return String(s).replace(/[0-9]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩"[+d]; }); };
+    var buildName = function (el, first, second, conjChar, srWord, whole) {
+      if (!el) return;
+      el.textContent = "";
+      if (first == null) { el.textContent = whole; return; }
+      el.appendChild(document.createTextNode(first + " "));
+      var j = document.createElement("span");
+      j.className = "joint";
+      j.setAttribute("aria-hidden", "true");
+      j.textContent = conjChar;
+      el.appendChild(j);
+      if (srWord) { var sr = document.createElement("span"); sr.className = "sr-only"; sr.textContent = srWord; el.appendChild(sr); }
+      el.appendChild(document.createTextNode(" " + second));
+    };
+    var setVal = function (el, main, small) {
+      if (!el) return;
+      el.textContent = "";
+      el.appendChild(document.createTextNode(main));
+      if (small) { var s = document.createElement("small"); s.textContent = small; el.appendChild(s); }
+    };
+    var setMain = function (el, main) {
+      if (!el) return;
+      var small = el.querySelector("small");
+      el.textContent = "";
+      el.appendChild(document.createTextNode(main));
+      if (small) el.appendChild(small);
+    };
+    var venueParts = function (v) {
+      var i = v.search(/[,،]/);
+      return i < 0 ? [v, ""] : [v.slice(0, i).trim(), v.slice(i + 1).trim()];
+    };
+    var dRows = document.querySelectorAll(".arch-card .detail");
+
+    /* names — hero, closing signature, title */
+    if (pNamesEn) {
+      namesEn = pNamesEn;
+      var iAmp = pNamesEn.indexOf("&");
+      var e1 = iAmp < 0 ? null : pNamesEn.slice(0, iAmp).trim();
+      var e2 = iAmp < 0 ? null : pNamesEn.slice(iAmp + 1).trim();
+      buildName($(".names .t-en"), e1, e2, "&", "and", pNamesEn);
+      var sigEn = $(".closing .sig .t-en");
+      if (sigEn) sigEn.textContent = pNamesEn;
+    }
+    if (pNamesAr) {
+      namesAr = pNamesAr;
+      var mAr = pNamesAr.match(/^(.+?)\s+و\s*(.+)$/);
+      buildName($(".names .t-ar"), mAr ? mAr[1] : null, mAr ? mAr[2] : null, "و", null, pNamesAr);
+      var sigAr = $(".closing .sig .t-ar");
+      if (sigAr) sigAr.textContent = pNamesAr;
+    }
+    if (pNamesEn || pNamesAr) document.title = namesAr + " — فرح على البحر | " + namesEn;
+
+    /* date — details row + hero date line + message strings */
+    if (pDateOk) {
+      var dObj = new Date(pDateOk + "T12:00:00");
+      if (!isNaN(dObj)) {
+        var enMain = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(dObj);
+        var enWd   = new Intl.DateTimeFormat("en-GB", { weekday: "long" }).format(dObj);
+        var arMain = new Intl.DateTimeFormat("ar-EG", { day: "numeric", month: "long", year: "numeric" }).format(dObj);
+        var arWd   = new Intl.DateTimeFormat("ar-EG", { weekday: "long" }).format(dObj);
+        dateFullEn = enWd + ", " + enMain;
+        dateFullAr = arWd + " " + arMain;
+        if (dRows[0]) {
+          setMain(dRows[0].querySelector(".val .t-en"), dateFullEn);
+          setMain(dRows[0].querySelector(".val .t-ar"), dateFullAr);
+        }
+      }
+    }
+    if (pDateOk || pVenAr) {
+      var hdAr = $(".hero-date .t-ar");
+      if (hdAr) hdAr.textContent = dateFullAr + " · " + (pVenAr || "على شاطئ الساحل الشمالي");
+    }
+    if (pDateOk || pVenEn) {
+      var hdEn = $(".hero-date .t-en");
+      if (hdEn) hdEn.textContent = dateFullEn.replace(", ", " · ") + " · " + (pVenEn || "On the North Coast shore");
+    }
+
+    /* time — details row + message strings */
+    if (tMatch) {
+      var hh = +tMatch[1], mm = tMatch[2];
+      var h12 = hh % 12 || 12;
+      timeEn = h12 + ":" + mm + " " + (hh < 12 ? "AM" : "PM");
+      timeAr = arDigits(h12 + ":" + mm) + " " + (hh < 12 ? "صباحاً" : "مساءً");
+      if (dRows[1]) {
+        setMain(dRows[1].querySelector(".val .t-en"), timeEn);
+        setMain(dRows[1].querySelector(".val .t-ar"), timeAr);
+      }
+    }
+
+    /* venue — details row, venue-section line + message strings */
+    if (pVenEn) {
+      venueMsgEn = pVenEn;
+      var vpe = venueParts(pVenEn);
+      if (dRows[2]) setVal(dRows[2].querySelector(".val .t-en"), vpe[0], vpe[1]);
+      var vqEn = $("#venue .quote .t-en");
+      if (vqEn) vqEn.textContent = pVenEn + " · Save the date and let the map guide you";
+    }
+    if (pVenAr) {
+      venueMsgAr = pVenAr;
+      var vpa = venueParts(pVenAr);
+      if (dRows[2]) setVal(dRows[2].querySelector(".val .t-ar"), vpa[0], vpa[1]);
+      var vqAr = $("#venue .quote .t-ar");
+      if (vqAr) vqAr.textContent = pVenAr + " · احفظوا الموعد وشغّلوا الخرائط";
+    }
+
+    /* maps link */
+    if (pMap && /^https:\/\//.test(pMap)) {
+      var mapBtn = $('a[href^="https://www.google.com/maps"]');
+      if (mapBtn) mapBtn.href = pMap;
+    }
+
+    /* quote — the story line under the details card */
+    if (pQuote) {
+      var qAr = $("#details .quote .t-ar"), qEn = $("#details .quote .t-en");
+      if (qAr) qAr.textContent = "«" + pQuote + "»";
+      if (qEn) qEn.textContent = "“" + pQuote + "”";
+    }
+
+    /* Google Calendar link */
+    if (pNamesEn || pNamesAr || pDateOk || tMatch || pVenEn || pQuote) {
+      var calBtn = $('a[href^="https://calendar.google.com"]');
+      if (calBtn) {
+        var startDt = new Date((pDateOk || "2026-08-22") + "T" + (pTimeNorm || "20:00") + ":00");
+        var endDt = new Date(startDt.getTime() + 4 * 36e5);
+        var cal = function (dt) {
+          var p = function (n) { return ("0" + n).slice(-2); };
+          return dt.getFullYear() + p(dt.getMonth() + 1) + p(dt.getDate()) + "T" + p(dt.getHours()) + p(dt.getMinutes()) + "00";
+        };
+        calBtn.href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
+          + "&text=" + encodeURIComponent("Wedding — " + namesEn + " فرح " + namesAr)
+          + "&dates=" + cal(startDt) + "/" + cal(endDt)
+          + "&ctz=Africa/Cairo"
+          + "&location=" + encodeURIComponent(pVenEn || "Seashell Bay, North Coast, Egypt")
+          + "&details=" + encodeURIComponent(pQuote || "Barefoot on the sand, beneath a terracotta sky — see you at sunset!");
+      }
+    }
+
+    /* WhatsApp RSVP number */
+    if (pWa) waNum = pWa.replace(/[^\d]/g, "") || waNum;
+  }
+  try { applyParams(); } catch (e) {}
+
   /* ── Language toggle — Arabic is the default ── */
   var langBtn = document.getElementById("langBtn");
   var isAr = true;
@@ -595,8 +758,10 @@ html.en .closing .sig{font-family:var(--en-display);font-weight:400}
   }
   if (langBtn) langBtn.addEventListener("click", function () { isAr = !isAr; applyLang(); });
 
-  /* ── Countdown to Saturday 22 Aug 2026, 8:00 PM (UTC+2) ── */
-  var target = new Date("2026-08-22T20:00:00+02:00").getTime();
+  /* ── Countdown to Saturday 22 Aug 2026, 8:00 PM (UTC+2) — or ?d= / ?t= params ── */
+  var target = pDateOk
+    ? new Date(pDateOk + "T" + (pTimeNorm || "20:00") + ":00+02:00").getTime()
+    : new Date("2026-08-22T20:00:00+02:00").getTime();
   var wrap = document.getElementById("cdWrap");
   var elD = document.getElementById("cdD"), elH = document.getElementById("cdH"),
       elM = document.getElementById("cdM"), elS = document.getElementById("cdS");
@@ -630,13 +795,13 @@ html.en .closing .sig{font-family:var(--en-display);font-weight:400}
   var declineBtn = document.getElementById("declineBtn");
   function updateLinks () {
     var accept = isAr
-      ? "مرحباً! يسعدني تأكيد حضوري فرح عمر وسلمى — السبت ٢٢ أغسطس ٢٠٢٦، ٨:٠٠ مساءً، سي شيل باي، الساحل الشمالي 🌊"
-      : "Hello! Happy to confirm my attendance at the wedding of Omar & Salma — Saturday, 22 August 2026, 8:00 PM, Seashell Bay, North Coast 🌊";
+      ? "مرحباً! يسعدني تأكيد حضوري فرح " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueMsgAr + " 🌊"
+      : "Hello! Happy to confirm my attendance at the wedding of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueMsgEn + " 🌊";
     var decline = isAr
-      ? "مرحباً، للأسف لن أتمكن من حضور فرح عمر وسلمى — أتمنى لكما كل السعادة وألف مبروك 🤍"
-      : "Hello, unfortunately I won't be able to attend the wedding of Omar & Salma — wishing you both endless happiness, congratulations 🤍";
-    if (acceptBtn) acceptBtn.href = "https://wa.me/201005509418?text=" + encodeURIComponent(accept);
-    if (declineBtn) declineBtn.href = "https://wa.me/201005509418?text=" + encodeURIComponent(decline);
+      ? "مرحباً، للأسف لن أتمكن من حضور فرح " + namesAr + " — أتمنى لكما كل السعادة وألف مبروك 🤍"
+      : "Hello, unfortunately I won't be able to attend the wedding of " + namesEn + " — wishing you both endless happiness, congratulations 🤍";
+    if (acceptBtn) acceptBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(accept);
+    if (declineBtn) declineBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(decline);
   }
 
   /* ── Scroll-triggered reveals (sections animate as they arrive) ── */

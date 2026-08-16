@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>عمر وسلمى — حفل زفاف | Omar &amp; Salma</title>
+<meta name="description" content="دعوة لحضور حفل زفاف عمر وسلمى — السبت ٢٢ أغسطس ٢٠٢٦، ٦:٠٠ مساءً، قاعة الحديقة، الجيزة. You are invited to the wedding of Omar &amp; Salma.">
+<meta name="theme-color" content="#FAF8F2">
+<meta name="color-scheme" content="light">
+
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://khalidsharafel-din.github.io/d3wa/assets/og/garden.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/demos/garden.html">
+<link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/demos/garden.html">
+<meta property="og:title" content="عمر وسلمى — حفل زفاف · Omar &amp; Salma">
+<meta property="og:description" content="السبت ٢٢ أغسطس ٢٠٢٦ · ٦:٠٠ مساءً · قاعة الحديقة، الجيزة — Saturday, 22 August 2026, 6:00 PM">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FAF8F2'/%3E%3Cpath d='M8 26 C10 16 14 9 24 5 C22 16 17 22 8 26 Z' fill='%239CAF88'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap">
+
+<style>
+/* ─────────  TOKENS · D3-010 “جاردن / Botanical Garden”  ───────── */
+:root{
+  --paper:#FAF8F2;
+  --ink:#3F4A3C;
+  --ink-soft:#71796a;
+  --sage:#9CAF88;
+  --euc:#5F7161;
+  --olive:#7A8450;
+  --blush:#E8C4B8;
+  --gold:#B79A5B;          /* one restrained moment: the wax-seal monogram */
+  --hair:rgba(95,113,97,.26);
+  --hair-soft:rgba(95,113,97,.14);
+  --serif:"EB Garamond",Garamond,Georgia,"Times New Roman",serif;
+  --arabic:"Amiri","Traditional Arabic",serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{
+  margin:0;
+  overflow-x:clip;
+  color:var(--ink);
+  font-family:var(--arabic);
+  font-size:16px;
+  line-height:1.6;
+  background:var(--paper);
+  background-image:
+    radial-gradient(90% 46% at 88% -4%, rgba(156,175,136,.16), transparent 62%),
+    radial-gradient(70% 40% at 4% 102%, rgba(232,196,184,.14), transparent 58%),
+    radial-gradient(52% 30% at 12% 24%, rgba(122,132,80,.06), transparent 70%);
+  -webkit-font-smoothing:antialiased;
+}
+html.en body{font-family:var(--serif)}
+/* faint cold-press paper grain */
+body::after{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* ─────────  LANGUAGE — Arabic default, html.en flips  ───────── */
+html.en .t-ar{display:none}
+html:not(.en) .t-en{display:none}
+.t-ar{font-family:var(--arabic);letter-spacing:0 !important;text-indent:0 !important;text-transform:none}
+.t-en{font-family:var(--serif)}
+
+.lang-toggle{
+  position:fixed;
+  top:calc(14px + env(safe-area-inset-top));
+  inset-inline-end:16px;
+  z-index:70;
+  min-height:40px;padding:0 19px;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--hair);border-radius:999px;
+  background:rgba(250,248,242,.85);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  color:var(--euc);cursor:pointer;
+  font-family:var(--serif);font-size:12px;font-weight:500;letter-spacing:.12em;
+  box-shadow:0 6px 16px rgba(63,74,60,.08);
+  transition:background-color .3s ease,color .3s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.lang-toggle:hover,.lang-toggle:active{background:rgba(156,175,136,.18)}
+.lang-toggle:focus-visible{outline:1.5px solid var(--euc);outline-offset:3px}
+.lang-toggle .ar-word{font-family:var(--arabic);font-size:15px;font-weight:700;letter-spacing:0}
+
+/* ─────────  SECTIONS — airy scroll, whitespace as rhythm  ───────── */
+.leaf-scene{position:relative;overflow-x:clip}
+section{position:relative;padding:clamp(56px,14vw,96px) 22px}
+.inner{width:min(100%,430px);margin-inline:auto;position:relative;z-index:2}
+
+/* corner sprays — anchored in two opposite corners, bleeding off-canvas */
+.spray{position:absolute;z-index:1;pointer-events:none;line-height:0}
+.spray svg{width:100%;height:auto;display:block}
+.spray-top{top:-72px;left:-84px;width:min(76vw,360px)}
+.spray-bottom{bottom:-64px;right:-88px;width:min(84vw,400px)}
+.spray-top svg{transform-origin:8% 6%;animation:sway 10s ease-in-out infinite alternate}
+.spray-bottom svg{transform-origin:94% 96%;animation:sway 12s ease-in-out -4s infinite alternate-reverse}
+@keyframes sway{from{transform:rotate(-1.4deg)}to{transform:rotate(1.3deg)}}
+
+/* ─────────  HERO  ───────── */
+.hero{
+  min-height:100vh;min-height:100svh;
+  display:flex;align-items:center;justify-content:center;
+  padding-top:calc(64px + env(safe-area-inset-top));
+  padding-bottom:calc(44px + env(safe-area-inset-bottom));
+}
+.hero .inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(18px,4.6vw,26px)}
+
+.eyebrow{
+  margin:0;color:var(--euc);
+}
+.eyebrow .t-en{font-size:12px;font-weight:500;letter-spacing:.34em;text-indent:.34em;text-transform:uppercase}
+.eyebrow .t-ar{font-size:18px}
+.eyebrow.faded{color:var(--ink-soft)}
+.eyebrow.faded .t-en{font-size:10.5px}
+.eyebrow.faded .t-ar{font-size:15.5px}
+
+/* the greenery arch that frames the names */
+.arch-wrap{
+  position:relative;
+  width:min(92vw,430px);
+  padding:clamp(88px,26vw,120px) 18px clamp(40px,11vw,58px);
+}
+.arch-wrap .arch{
+  position:absolute;inset:0;width:100%;height:100%;
+  pointer-events:none;
+}
+.names{
+  position:relative;z-index:2;
+  margin:0;
+  font-weight:400;
+  font-size:clamp(62px,20vw,96px);   /* ≥5× body scale */
+  line-height:1.04;
+  color:var(--ink);
+}
+.names .t-en,.names .t-ar{display:block}
+html.en .names .t-ar{display:none}
+html:not(.en) .names .t-en{display:none}
+.names .nm{display:block}
+.names .t-ar .nm{line-height:1.28}
+.names .and{
+  display:block;
+  font-size:.34em;line-height:1.35;
+  font-style:italic;color:var(--olive);
+  margin:.08em 0;
+}
+.names .t-ar .and{font-style:normal;font-size:.4em}
+
+.hero-when{
+  margin:0;color:var(--ink-soft);
+  font-size:clamp(16px,4.4vw,18px);
+}
+.hero-when .t-en{font-style:italic;letter-spacing:.04em}
+
+/* wax seal — the single gold moment */
+.seal{width:clamp(76px,20vw,92px);height:auto;filter:drop-shadow(0 8px 16px rgba(63,74,60,.16))}
+.seal text{font-family:var(--serif);font-style:italic;font-weight:500}
+
+.scroll-cue{
+  display:inline-flex;flex-direction:column;align-items:center;gap:6px;
+  color:var(--euc);text-decoration:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.scroll-cue .t-en{font-size:10.5px;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase}
+.scroll-cue .t-ar{font-size:15px}
+.scroll-cue svg{width:14px;height:18px;animation:drip 2.6s ease-in-out infinite}
+@keyframes drip{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(5px);opacity:1}}
+
+/* single-stem line-art divider */
+.stem-divider{display:flex;justify-content:center;margin:0 auto;line-height:0}
+.stem-divider svg{width:min(58vw,220px);height:auto}
+
+/* ─────────  COUNTDOWN  ───────── */
+.count-sec{padding-top:clamp(30px,8vw,48px)}
+.count-sec .inner{text-align:center}
+.count-title{margin:0 0 clamp(20px,6vw,30px)}
+.countdown{
+  display:flex;justify-content:center;align-items:flex-start;
+  gap:clamp(14px,4.6vw,26px);
+}
+.cd-cell{min-width:56px}
+.cd-num{
+  display:block;
+  font-family:var(--serif);
+  font-variant-numeric:tabular-nums;
+  font-size:clamp(34px,10vw,46px);
+  font-weight:500;line-height:1;color:var(--euc);
+  padding-top:12px;
+  border-top:1px solid var(--hair);
+}
+html:not(.en) .cd-num{font-family:var(--arabic)}
+.cd-lbl{display:block;margin-top:8px;color:var(--ink-soft)}
+.cd-lbl .t-en{font-size:10px;letter-spacing:.26em;text-indent:.26em;text-transform:uppercase}
+.cd-lbl .t-ar{font-size:14px}
+.cd-done{display:none;margin:0;font-size:clamp(18px,5vw,21px);color:var(--olive)}
+.cd-done .t-en{font-style:italic}
+.countdown-wrap.is-done .countdown{display:none}
+.countdown-wrap.is-done .cd-done{display:block}
+
+/* ─────────  DETAILS — asymmetric ledger  ───────── */
+.details{list-style:none;margin:0;padding:0;text-align:start}
+.details li{padding:clamp(20px,5.6vw,26px) 0}
+.details li:nth-child(2){margin-inline-start:clamp(24px,9vw,48px)}
+.details li:nth-child(3){margin-inline-start:clamp(10px,4vw,20px)}
+.details .lbl{display:block;color:var(--olive);margin-bottom:6px}
+.details .lbl .t-en{font-size:10.5px;font-weight:500;letter-spacing:.3em;text-transform:uppercase}
+.details .lbl .t-ar{font-size:15px;font-weight:700}
+.details .val{display:block;font-size:clamp(21px,6vw,25px);line-height:1.35;color:var(--ink)}
+.details .val small{display:block;font-size:.68em;color:var(--ink-soft);margin-top:3px}
+.details .val .t-ar small{font-size:.78em}
+.leaf-mark{display:inline-block;vertical-align:-2px;margin-inline-end:9px;line-height:0}
+.leaf-mark svg{width:17px;height:17px}
+.details .row-stem{margin-top:clamp(18px,5vw,24px);line-height:0;opacity:.85}
+.details .row-stem svg{width:min(46vw,180px);height:auto}
+
+/* ─────────  RSVP + ACTIONS  ───────── */
+.rsvp .inner{text-align:center}
+.rsvp-lead{margin:clamp(10px,3vw,14px) 0 clamp(24px,7vw,32px);color:var(--ink-soft);font-size:clamp(16px,4.5vw,18px)}
+.rsvp-lead .t-en{font-style:italic}
+.actions{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:54px;padding:4px 28px;
+  border:1.5px solid var(--euc);border-radius:999px;
+  background:transparent;color:var(--euc);
+  text-decoration:none;cursor:pointer;
+  transition:background-color .3s ease,color .3s ease,transform .3s ease,box-shadow .3s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn .t-en{font-size:13px;font-weight:500;letter-spacing:.2em;text-indent:.2em;text-transform:uppercase}
+.btn .t-ar{font-size:17px;font-weight:700}
+.btn svg{width:16px;height:16px;flex:none}
+.btn.yes{background:var(--euc);border-color:var(--euc);color:#FBFAF5;box-shadow:0 12px 26px rgba(95,113,97,.24)}
+.btn.yes:hover,.btn.yes:active{background:#51624f;border-color:#51624f}
+.btn.no{border-color:var(--hair);color:var(--ink-soft)}
+.btn.no:hover,.btn.no:active{background:rgba(232,196,184,.22);color:var(--ink)}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible{outline:1.5px solid var(--ink);outline-offset:4px}
+.util-links{
+  margin-top:clamp(22px,6vw,28px);
+  display:flex;justify-content:center;gap:clamp(20px,7vw,34px);flex-wrap:wrap;
+}
+.util-links a{
+  display:inline-flex;align-items:center;gap:7px;
+  color:var(--olive);text-decoration:none;
+  border-bottom:1px solid var(--hair);padding-bottom:3px;
+  transition:color .3s ease,border-color .3s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.util-links a:hover{color:var(--euc);border-color:var(--euc)}
+.util-links a:focus-visible{outline:1.5px solid var(--euc);outline-offset:3px}
+.util-links svg{width:15px;height:15px;flex:none}
+.util-links .t-en{font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.util-links .t-ar{font-size:15.5px}
+
+/* ─────────  CLOSING  ───────── */
+.closing{padding-bottom:clamp(120px,32vw,180px)}   /* room for the bottom spray */
+.closing .inner{text-align:center}
+.quote{
+  margin:0 0 clamp(22px,6vw,30px);
+  font-size:clamp(18px,5.2vw,21px);line-height:1.75;color:var(--ink-soft);
+}
+.quote .t-en{font-style:italic}
+.farewell{margin:0;font-size:clamp(20px,5.8vw,24px);color:var(--ink)}
+.credit{margin:clamp(26px,7vw,34px) 0 0;color:var(--ink-soft);opacity:.75}
+.credit .t-en{font-size:10.5px;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase}
+.credit .t-ar{font-size:13.5px}
+
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .9s cubic-bezier(.22,.7,.25,1),transform .9s cubic-bezier(.22,.7,.25,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d2{transition-delay:.15s}
+.rv.d3{transition-delay:.3s}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .spray-top svg,.spray-bottom svg,.scroll-cue svg{animation:none !important}
+  .rv{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+
+<body>
+
+<!-- shared painterly leaf geometry (referenced by every spray/divider below) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- round eucalyptus coin, slightly lopsided -->
+    <path id="lf" d="M0 0 C7 -11 20.5 -10.5 23.6 .8 C26 10.4 16.4 18.8 6.4 15.6 C-2.8 12.6 -4.8 5.2 0 0 Z"/>
+    <!-- smaller wobblier coin -->
+    <path id="lf2" d="M0 0 C8.4 -8 19.2 -6.2 21.4 2.6 C23 11.2 12.6 16.8 4.4 13.2 C-3.4 9.8 -4.6 3.8 0 0 Z"/>
+    <!-- narrow olive leaf -->
+    <path id="ol" d="M0 0 C8.6 -7.2 23.4 -8.4 32.6 -1.2 C23.8 5.8 8.8 6.6 0 0 Z"/>
+    <!-- watercolor petal blob -->
+    <path id="blob" d="M0 -13.6 C9.4 -12.8 14.8 -5 12.8 3.8 C10.8 11.6 2 15.8 -6.2 12.6 C-13.8 9.6 -15.8 -.4 -10.8 -7 C-7.8 -11.6 -4 -14 0 -13.6 Z"/>
+    <!-- layered blush bloom -->
+    <g id="bloom">
+      <use href="#blob" fill="#E8C4B8" opacity=".52"/>
+      <use href="#blob" fill="#E8C4B8" opacity=".42" transform="rotate(48) scale(.84)"/>
+      <use href="#blob" fill="#dfb0a2" opacity=".34" transform="rotate(118) scale(.66)"/>
+      <use href="#blob" fill="#FAF8F2" opacity=".3" transform="rotate(78) scale(.4)"/>
+      <circle r="2.6" fill="#7A8450" opacity=".55"/>
+    </g>
+  </defs>
+</svg>
+
+<button class="lang-toggle" id="langBtn" type="button" aria-label="Switch language / التبديل بين اللغتين">
+  <span class="t-ar">English</span>
+  <span class="t-en"><span class="ar-word">العربية</span></span>
+</button>
+
+<div class="leaf-scene">
+
+<!-- ═════  HERO — arch of greenery, names, wax seal  ═════ -->
+<section class="hero" aria-labelledby="names">
+  <!-- corner spray № 1 · top, bleeding off-canvas -->
+  <div class="spray spray-top" aria-hidden="true">
+    <svg viewBox="0 0 340 360" xmlns="http://www.w3.org/2000/svg">
+      <!-- doubled wobbly stems = wet-brush edge -->
+      <path d="M14 -18 C30 52 52 118 104 182 C142 228 188 268 252 300" fill="none" stroke="#5F7161" stroke-width="2.1" stroke-linecap="round" opacity=".5"/>
+      <path d="M17 -14 C34 54 58 120 110 183 C147 229 191 266 250 296" fill="none" stroke="#9CAF88" stroke-width="1.1" stroke-linecap="round" opacity=".4"/>
+      <path d="M78 96 C112 118 140 148 156 190" fill="none" stroke="#5F7161" stroke-width="1.6" stroke-linecap="round" opacity=".42"/>
+      <!-- eucalyptus coins, two translucent layers each -->
+      <use href="#lf"  transform="translate(30 30) rotate(-40) scale(1.25)" fill="#9CAF88" opacity=".5"/>
+      <use href="#lf2" transform="translate(33 34) rotate(-32) scale(1.05)" fill="#5F7161" opacity=".32"/>
+      <use href="#lf"  transform="translate(56 74) rotate(150) scale(1.1)"  fill="#9CAF88" opacity=".46"/>
+      <use href="#lf2" transform="translate(52 70) rotate(160) scale(.9)"   fill="#7A8450" opacity=".3"/>
+      <use href="#lf"  transform="translate(74 104) rotate(-24) scale(1.3)" fill="#9CAF88" opacity=".52"/>
+      <use href="#lf2" transform="translate(78 109) rotate(-14) scale(1.06)" fill="#5F7161" opacity=".3"/>
+      <use href="#lf"  transform="translate(96 146) rotate(170) scale(1.02)" fill="#7A8450" opacity=".4"/>
+      <use href="#lf2" transform="translate(120 168) rotate(-8) scale(1.24)" fill="#9CAF88" opacity=".5"/>
+      <use href="#lf"  transform="translate(124 173) rotate(4) scale(.98)"   fill="#5F7161" opacity=".28"/>
+      <use href="#lf"  transform="translate(150 206) rotate(196) scale(1.12)" fill="#9CAF88" opacity=".46"/>
+      <use href="#lf2" transform="translate(178 232) rotate(10) scale(1.18)"  fill="#7A8450" opacity=".38"/>
+      <use href="#lf"  transform="translate(206 258) rotate(206) scale(1.02)" fill="#9CAF88" opacity=".48"/>
+      <use href="#lf2" transform="translate(232 280) rotate(24) scale(.92)"   fill="#5F7161" opacity=".34"/>
+      <!-- olive side branch with fruit -->
+      <use href="#ol" transform="translate(104 122) rotate(38) scale(1)"   fill="#7A8450" opacity=".46"/>
+      <use href="#ol" transform="translate(122 146) rotate(52) scale(.85)" fill="#9CAF88" opacity=".5"/>
+      <circle cx="142" cy="170" r="3.6" fill="#7A8450" opacity=".6"/>
+      <circle cx="150" cy="181" r="2.9" fill="#5F7161" opacity=".5"/>
+      <!-- one blush bloom, off-center -->
+      <use href="#bloom" transform="translate(52 132) scale(1.15)"/>
+      <use href="#bloom" transform="translate(176 214) scale(.68) rotate(30)"/>
+    </svg>
+  </div>
+
+  <div class="inner">
+    <p class="eyebrow rv" id="invite-line">
+      <span class="t-ar">بفضلٍ من الله وكرمه، يسعدنا دعوتكم لحضور حفل زفاف</span>
+      <span class="t-en">Together with their families, you are invited to the wedding of</span>
+    </p>
+
+    <div class="arch-wrap rv d2">
+      <!-- arch-shaped frame of trailing greenery — lush on one side, trailing loose on the other -->
+      <svg class="arch" viewBox="0 0 400 360" preserveAspectRatio="xMidYMin meet" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <!-- left rib of the arch: full trail base → past the apex -->
+        <path d="M66 348 C58 268 72 176 118 106 C144 66 176 44 214 36" fill="none" stroke="#5F7161" stroke-width="1.9" stroke-linecap="round" opacity=".5"/>
+        <path d="M71 344 C64 268 79 180 124 112 C149 74 179 50 212 42" fill="none" stroke="#9CAF88" stroke-width="1" stroke-linecap="round" opacity=".42"/>
+        <!-- right rib: shorter, sparser — the asymmetry -->
+        <path d="M338 350 C344 296 336 246 310 202" fill="none" stroke="#5F7161" stroke-width="1.6" stroke-linecap="round" opacity=".44"/>
+        <!-- trailing tip crossing the apex toward the gap -->
+        <path d="M214 36 C244 32 268 42 284 62" fill="none" stroke="#9CAF88" stroke-width="1.2" stroke-linecap="round" opacity=".4"/>
+        <!-- leaves down the lush left rib -->
+        <use href="#lf"  transform="translate(62 320) rotate(-150) scale(1.2)" fill="#9CAF88" opacity=".5"/>
+        <use href="#lf2" transform="translate(66 324) rotate(-140) scale(.95)" fill="#5F7161" opacity=".3"/>
+        <use href="#lf"  transform="translate(64 276) rotate(24) scale(1.05)"  fill="#7A8450" opacity=".42"/>
+        <use href="#lf2" transform="translate(72 232) rotate(-160) scale(1.14)" fill="#9CAF88" opacity=".5"/>
+        <use href="#lf"  transform="translate(86 188) rotate(16) scale(1.02)"  fill="#9CAF88" opacity=".46"/>
+        <use href="#lf2" transform="translate(83 184) rotate(28) scale(.8)"    fill="#5F7161" opacity=".3"/>
+        <use href="#lf"  transform="translate(104 146) rotate(-172) scale(1.1)" fill="#7A8450" opacity=".4"/>
+        <use href="#lf2" transform="translate(128 108) rotate(-2) scale(1.05)"  fill="#9CAF88" opacity=".5"/>
+        <use href="#lf"  transform="translate(156 78) rotate(-186) scale(.95)"  fill="#9CAF88" opacity=".44"/>
+        <use href="#lf2" transform="translate(184 56) rotate(-10) scale(.88)"   fill="#5F7161" opacity=".34"/>
+        <use href="#lf2" transform="translate(212 42) rotate(-196) scale(.78)"  fill="#9CAF88" opacity=".46"/>
+        <!-- tip leaves near the apex gap -->
+        <use href="#lf2" transform="translate(246 38) rotate(-16) scale(.7)"  fill="#9CAF88" opacity=".42"/>
+        <use href="#lf2" transform="translate(272 52) rotate(-206) scale(.6)" fill="#7A8450" opacity=".36"/>
+        <!-- sparse right rib leaves -->
+        <use href="#lf2" transform="translate(336 316) rotate(160) scale(1.05)" fill="#9CAF88" opacity=".46"/>
+        <use href="#lf"  transform="translate(332 272) rotate(-20) scale(.9)"   fill="#7A8450" opacity=".36"/>
+        <use href="#lf2" transform="translate(318 232) rotate(150) scale(.85)"  fill="#9CAF88" opacity=".42"/>
+        <!-- olive sprig at the left base + blush blooms -->
+        <use href="#ol" transform="translate(58 300) rotate(-64) scale(.9)" fill="#7A8450" opacity=".44"/>
+        <circle cx="52" cy="286" r="3" fill="#5F7161" opacity=".5"/>
+        <use href="#bloom" transform="translate(70 340) scale(1.05)"/>
+        <use href="#bloom" transform="translate(306 198) scale(.6) rotate(64)"/>
+      </svg>
+
+      <h1 class="names" id="names">
+        <span class="t-ar" id="namesAr"><span class="nm">عمر</span><span class="and" aria-hidden="true">و</span><span class="nm">سلمى</span></span>
+        <span class="t-en" id="namesEn"><span class="nm">Omar</span><span class="and" aria-hidden="true">&amp;</span><span class="sr-only">and</span><span class="nm">Salma</span></span>
+      </h1>
+    </div>
+
+    <p class="hero-when rv d3" id="heroWhen">
+      <span class="t-ar" id="heroWhenAr">السبت ٢٢ أغسطس ٢٠٢٦ · ٦:٠٠ مساءً</span>
+      <span class="t-en" id="heroWhenEn">Saturday, 22 August 2026 · 6:00 PM</span>
+    </p>
+
+    <!-- wax seal — sage wax, gold monogram: the page's only gold -->
+    <svg class="seal rv d3" viewBox="0 0 96 96" role="img" aria-label="Monogram">
+      <path d="M48 7 C68.5 5.5 86.5 21 88.8 43.5 C91 66 74.5 86.5 50.5 88.8 C27.5 91 8.4 74.5 7.4 49.5 C6.5 27 26.5 8.5 48 7 Z" fill="#9CAF88" opacity=".5"/>
+      <path d="M49 11 C66.5 10 82.5 23.5 84.6 43.8 C86.8 64.5 72 82.5 51 84.6 C30.5 86.5 12.6 72 11.6 50 C10.7 29.5 29 12.2 49 11 Z" fill="#9CAF88" opacity=".72"/>
+      <path d="M52 16 C66 16.5 78.5 27.5 80.2 44.5 C82 61.5 69.5 77 51.5 78.6 C34 80 19.4 67.5 18.4 49.5 C17.5 32 36 15.5 52 16 Z" fill="#7A8450" opacity=".3"/>
+      <circle cx="48" cy="48" r="30.5" fill="none" stroke="#B79A5B" stroke-width="1" stroke-dasharray="2.5 4.5" opacity=".8"/>
+      <text id="sealMono" x="48" y="57" text-anchor="middle" font-size="25" fill="#B79A5B">O·S</text>
+    </svg>
+
+    <a class="scroll-cue rv d3" href="#invite">
+      <span class="t-ar">التفاصيل</span>
+      <span class="t-en">The details</span>
+      <svg viewBox="0 0 14 18" fill="none" aria-hidden="true"><path d="M7 1v13M2.5 10.5 7 15.5l4.5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ═════  COUNTDOWN  ═════ -->
+<section class="count-sec" id="invite" aria-labelledby="count-title">
+  <div class="inner">
+    <p class="eyebrow faded count-title rv" id="count-title">
+      <span class="t-ar">حتى يزهر يومنا</span>
+      <span class="t-en">Until our day blooms</span>
+    </p>
+    <div class="countdown-wrap rv d2" id="cdWrap">
+      <div class="countdown" role="timer" aria-live="off">
+        <div class="cd-cell"><span class="cd-num" id="cdD">–</span><span class="cd-lbl"><span class="t-ar">يوم</span><span class="t-en">Days</span></span></div>
+        <div class="cd-cell"><span class="cd-num" id="cdH">–</span><span class="cd-lbl"><span class="t-ar">ساعة</span><span class="t-en">Hours</span></span></div>
+        <div class="cd-cell"><span class="cd-num" id="cdM">–</span><span class="cd-lbl"><span class="t-ar">دقيقة</span><span class="t-en">Min</span></span></div>
+        <div class="cd-cell"><span class="cd-num" id="cdS">–</span><span class="cd-lbl"><span class="t-ar">ثانية</span><span class="t-en">Sec</span></span></div>
+      </div>
+      <p class="cd-done">
+        <span class="t-ar">اليوم يومنا — نلقاكم بين الورود 🌿</span>
+        <span class="t-en">Today is the day — meet us in the garden 🌿</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="stem-divider" aria-hidden="true">
+  <svg viewBox="0 0 220 30" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 17 C48 14.5 96 18 150 15.5 C176 14.4 196 15.4 212 15" fill="none" stroke="#5F7161" stroke-width="1.3" stroke-linecap="round" opacity=".55"/>
+    <use href="#lf2" transform="translate(56 15) rotate(-158) scale(.52)" fill="#9CAF88" opacity=".6"/>
+    <use href="#lf2" transform="translate(96 17) rotate(16) scale(.46)" fill="#7A8450" opacity=".5"/>
+    <use href="#lf2" transform="translate(138 14) rotate(-168) scale(.5)" fill="#9CAF88" opacity=".55"/>
+    <circle cx="176" cy="15.4" r="2.2" fill="#E8C4B8" opacity=".85"/>
+  </svg>
+</div>
+
+<!-- ═════  DETAILS  ═════ -->
+<section aria-label="Details · التفاصيل">
+  <div class="inner">
+    <ul class="details">
+      <li class="rv">
+        <span class="lbl">
+          <span class="leaf-mark" aria-hidden="true"><svg viewBox="0 0 17 17"><path d="M2.5 14.5 C3.5 8.5 6.5 4.5 14 2.5 C12.5 9.5 9 13 2.5 14.5 Z" fill="#9CAF88" opacity=".8"/></svg></span>
+          <span class="t-ar">التاريخ</span><span class="t-en">The date</span>
+        </span>
+        <span class="val">
+          <span class="t-ar" id="dAr">٢٢ أغسطس ٢٠٢٦<small>يوم السبت</small></span>
+          <span class="t-en" id="dEn">22 August 2026<small>Saturday</small></span>
+        </span>
+        <div class="row-stem" aria-hidden="true">
+          <svg viewBox="0 0 180 22"><path d="M4 12 C40 10 90 13.5 176 11" fill="none" stroke="#9CAF88" stroke-width="1.1" stroke-linecap="round" opacity=".55"/><use href="#lf2" transform="translate(120 11.6) rotate(14) scale(.4)" fill="#9CAF88" opacity=".55"/></svg>
+        </div>
+      </li>
+      <li class="rv">
+        <span class="lbl">
+          <span class="leaf-mark" aria-hidden="true"><svg viewBox="0 0 17 17"><path d="M2.5 14.5 C3.5 8.5 6.5 4.5 14 2.5 C12.5 9.5 9 13 2.5 14.5 Z" fill="#7A8450" opacity=".75"/></svg></span>
+          <span class="t-ar">الوقت</span><span class="t-en">The hour</span>
+        </span>
+        <span class="val">
+          <span class="t-ar" id="tAr">٦:٠٠ مساءً<small>مع غروب الشمس في الحديقة</small></span>
+          <span class="t-en" id="tEn">6:00 PM<small>As the garden turns golden</small></span>
+        </span>
+        <div class="row-stem" aria-hidden="true">
+          <svg viewBox="0 0 180 22"><path d="M4 11 C56 13 110 9.5 176 12" fill="none" stroke="#9CAF88" stroke-width="1.1" stroke-linecap="round" opacity=".55"/><use href="#lf2" transform="translate(52 11.5) rotate(-166) scale(.4)" fill="#7A8450" opacity=".5"/></svg>
+        </div>
+      </li>
+      <li class="rv">
+        <span class="lbl">
+          <span class="leaf-mark" aria-hidden="true"><svg viewBox="0 0 17 17"><path d="M2.5 14.5 C3.5 8.5 6.5 4.5 14 2.5 C12.5 9.5 9 13 2.5 14.5 Z" fill="#E8C4B8" opacity=".9"/></svg></span>
+          <span class="t-ar">المكان</span><span class="t-en">The garden</span>
+        </span>
+        <span class="val">
+          <span class="t-ar" id="vAr">قاعة الحديقة<small>الجيزة</small></span>
+          <span class="t-en" id="vEn">The Garden Hall<small>Giza</small></span>
+        </span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="stem-divider" aria-hidden="true">
+  <svg viewBox="0 0 220 30" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 15 C40 16.5 84 12.5 128 15 C162 16.8 190 14.6 212 15.5" fill="none" stroke="#5F7161" stroke-width="1.3" stroke-linecap="round" opacity=".55"/>
+    <use href="#lf2" transform="translate(44 15.5) rotate(18) scale(.48)" fill="#9CAF88" opacity=".55"/>
+    <use href="#lf2" transform="translate(84 13.5) rotate(-162) scale(.52)" fill="#7A8450" opacity=".5"/>
+    <use href="#bloom" transform="translate(150 15) scale(.38)"/>
+  </svg>
+</div>
+
+<!-- ═════  RSVP  ═════ -->
+<section class="rsvp" aria-labelledby="rsvp-title">
+  <div class="inner">
+    <p class="eyebrow faded rv" id="rsvp-title">
+      <span class="t-ar">شاركونا الفرح</span>
+      <span class="t-en">Kindly respond</span>
+    </p>
+    <p class="rsvp-lead rv">
+      <span class="t-ar">حضوركم أجمل هدية — أخبرونا عبر واتساب</span>
+      <span class="t-en">Your presence is the sweetest gift — let us know on WhatsApp</span>
+    </p>
+
+    <div class="actions rv d2">
+      <a class="btn yes" id="rsvpYes" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        <span class="t-ar">يشرفنا الحضور</span>
+        <span class="t-en">Joyfully accept</span>
+      </a>
+      <a class="btn no" id="rsvpNo" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418">
+        <span class="t-ar">نعتذر عن الحضور</span>
+        <span class="t-en">Regretfully decline</span>
+      </a>
+    </div>
+
+    <div class="util-links rv d3">
+      <a id="mapBtn" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=The+Garden+Hall%2C+Giza">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-7.2-7-12a7 7 0 1 1 14 0c0 4.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <span class="t-ar">الموقع على الخريطة</span>
+        <span class="t-en">Map</span>
+      </a>
+      <a id="calBtn" target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Wedding%20%E2%80%94%20Omar%20%26%20Salma&amp;dates=20260822T180000/20260822T230000&amp;ctz=Africa/Cairo&amp;location=The%20Garden%20Hall%2C%20Giza&amp;details=And%20in%20the%20garden%20of%20our%20days%2C%20love%20bloomed.">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        <span class="t-ar">أضف إلى التقويم</span>
+        <span class="t-en">Calendar</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════  CLOSING  ═════ -->
+<section class="closing" aria-label="Closing · الختام">
+  <!-- corner spray № 2 · bottom opposite corner, bleeding off-canvas -->
+  <div class="spray spray-bottom" aria-hidden="true">
+    <svg viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg">
+      <path d="M372 292 C324 268 274 236 226 190 C192 158 164 122 146 78" fill="none" stroke="#5F7161" stroke-width="2.1" stroke-linecap="round" opacity=".5"/>
+      <path d="M369 288 C322 263 274 230 228 186 C196 155 170 122 152 82" fill="none" stroke="#9CAF88" stroke-width="1.1" stroke-linecap="round" opacity=".4"/>
+      <path d="M288 238 C260 232 232 218 212 196" fill="none" stroke="#5F7161" stroke-width="1.5" stroke-linecap="round" opacity=".42"/>
+      <use href="#lf"  transform="translate(342 274) rotate(140) scale(1.3)"  fill="#9CAF88" opacity=".52"/>
+      <use href="#lf2" transform="translate(338 270) rotate(150) scale(1.04)" fill="#5F7161" opacity=".3"/>
+      <use href="#lf"  transform="translate(306 248) rotate(-36) scale(1.14)" fill="#7A8450" opacity=".42"/>
+      <use href="#lf2" transform="translate(272 224) rotate(132) scale(1.2)"  fill="#9CAF88" opacity=".5"/>
+      <use href="#lf"  transform="translate(240 198) rotate(-52) scale(1.06)" fill="#9CAF88" opacity=".46"/>
+      <use href="#lf2" transform="translate(236 194) rotate(-42) scale(.85)"  fill="#5F7161" opacity=".3"/>
+      <use href="#lf"  transform="translate(212 168) rotate(122) scale(1.16)" fill="#7A8450" opacity=".4"/>
+      <use href="#lf2" transform="translate(188 138) rotate(-62) scale(1.05)" fill="#9CAF88" opacity=".5"/>
+      <use href="#lf"  transform="translate(170 108) rotate(112) scale(.94)"  fill="#9CAF88" opacity=".44"/>
+      <use href="#lf2" transform="translate(156 84) rotate(-72) scale(.8)"    fill="#5F7161" opacity=".36"/>
+      <use href="#ol" transform="translate(252 226) rotate(-148) scale(1)"  fill="#7A8450" opacity=".46"/>
+      <use href="#ol" transform="translate(232 212) rotate(-134) scale(.8)" fill="#9CAF88" opacity=".5"/>
+      <circle cx="206" cy="206" r="3.4" fill="#7A8450" opacity=".6"/>
+      <circle cx="198" cy="216" r="2.7" fill="#5F7161" opacity=".5"/>
+      <use href="#bloom" transform="translate(300 268) scale(1.2) rotate(18)"/>
+      <use href="#bloom" transform="translate(176 128) scale(.66) rotate(84)"/>
+    </svg>
+  </div>
+
+  <div class="inner">
+    <p class="quote rv" id="quoteEl">
+      <span class="t-ar" id="qAr">«وفي حديقة أيّامنا، أزهر الحبّ»</span>
+      <span class="t-en" id="qEn">“And in the garden of our days, love bloomed.”</span>
+    </p>
+    <p class="farewell rv d2">
+      <span class="t-ar">ننتظركم بفارغ الصبر</span>
+      <span class="t-en">We can’t wait to celebrate with you</span>
+    </p>
+    <p class="credit rv d3" aria-hidden="true">
+      <span class="t-ar">دعوة · D3wa</span>
+      <span class="t-en">D3wa · Digital invitations</span>
+    </p>
+  </div>
+</section>
+
+</div><!-- /leaf-scene -->
+
+<script>
+(function () {
+  "use strict";
+  var docEl = document.documentElement;
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ── URL-parameter personalization (D3wa param contract) ──
+     n_ar / n_en · d (ISO date) · t (24h time) · v_ar / v_en · map · q · wa
+     Missing param → the placeholder content above stays as-is. */
+  var qs = null;
+  try { qs = new URLSearchParams(location.search); } catch (e) {}
+  function qp (k) { var v = qs && qs.get(k); return (v && v.trim()) ? v.trim() : null; }
+  var pNamesAr = qp("n_ar"), pNamesEn = qp("n_en"), pDate = qp("d"), pTime = qp("t"),
+      pVenAr = qp("v_ar"), pVenEn = qp("v_en"), pMap = qp("map"), pQuote = qp("q"), pWa = qp("wa");
+  var pDateOk = (pDate && /^\d{4}-\d{2}-\d{2}$/.test(pDate)) ? pDate : null;
+  var tMatch = pTime ? pTime.match(/^(\d{1,2}):(\d{2})$/) : null;
+  var pTimeNorm = tMatch ? ("0" + tMatch[1]).slice(-2) + ":" + tMatch[2] : null;
+
+  /* Message building blocks — defaults mirror the hardcoded placeholder content */
+  var namesAr = "عمر وسلمى", namesEn = "Omar & Salma",
+      dateFullAr = "السبت ٢٢ أغسطس ٢٠٢٦", dateFullEn = "Saturday, 22 August 2026",
+      timeAr = "٦:٠٠ مساءً", timeEn = "6:00 PM",
+      venueAr = "قاعة الحديقة، الجيزة", venueEn = "The Garden Hall, Giza",
+      waNum = "201005509418";
+
+  var arDigits = function (s) { return String(s).replace(/[0-9]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩"[+d]; }); };
+
+  function applyParams () {
+    var $ = function (s) { return document.querySelector(s); };
+    /* rebuild a stacked name block: first / connector / second (or one line if unsplittable) */
+    var buildStack = function (el, whole, sepRe, sepChar, srWord) {
+      if (!el) return;
+      el.textContent = "";
+      var m = whole.match(sepRe);
+      var mk = function (cls, txt) {
+        var s = document.createElement("span"); s.className = cls; s.textContent = txt; return s;
+      };
+      if (!m) { el.appendChild(mk("nm", whole)); return; }
+      el.appendChild(mk("nm", m[1]));
+      var and = mk("and", sepChar); and.setAttribute("aria-hidden", "true");
+      el.appendChild(and);
+      if (srWord) { el.appendChild(mk("sr-only", srWord)); }
+      el.appendChild(mk("nm", m[2]));
+    };
+    var setVal = function (el, main, small) {
+      if (!el) return;
+      el.textContent = "";
+      el.appendChild(document.createTextNode(main));
+      if (small) { var s = document.createElement("small"); s.textContent = small; el.appendChild(s); }
+    };
+    var venueParts = function (v) {
+      var i = v.search(/[,،]/);
+      return i < 0 ? [v, ""] : [v.slice(0, i).trim(), v.slice(i + 1).trim()];
+    };
+
+    /* names — arch block, seal monogram, title */
+    if (pNamesAr) {
+      namesAr = pNamesAr;
+      buildStack($("#namesAr"), pNamesAr, /^(.+?)\s+و\s*(.+)$/, "و", null);
+    }
+    if (pNamesEn) {
+      namesEn = pNamesEn;
+      buildStack($("#namesEn"), pNamesEn, /^(.+?)\s*(?:&|\band\b)\s*(.+)$/i, "&", "and");
+      var seal = $("#sealMono");
+      if (seal) {
+        var em = pNamesEn.match(/^(.+?)\s*(?:&|\band\b)\s*(.+)$/i);
+        seal.textContent = em
+          ? (em[1].trim().charAt(0) + "·" + em[2].trim().charAt(0)).toUpperCase()
+          : pNamesEn.trim().charAt(0).toUpperCase();
+      }
+    }
+    if (pNamesAr || pNamesEn) document.title = namesAr + " — حفل زفاف | " + namesEn;
+
+    /* date — Intl-formatted in both languages, incl. weekday */
+    if (pDateOk) {
+      var dObj = new Date(pDateOk + "T12:00:00");
+      if (!isNaN(dObj)) {
+        var enMain = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(dObj);
+        var enWd   = new Intl.DateTimeFormat("en-GB", { weekday: "long" }).format(dObj);
+        var arMain = new Intl.DateTimeFormat("ar-EG", { day: "numeric", month: "long", year: "numeric" }).format(dObj);
+        var arWd   = new Intl.DateTimeFormat("ar-EG", { weekday: "long" }).format(dObj);
+        setVal($("#dEn"), enMain, enWd);
+        setVal($("#dAr"), arMain, "يوم " + arWd);
+        dateFullEn = enWd + ", " + enMain;
+        dateFullAr = arWd + " " + arMain;
+      }
+    }
+
+    /* time */
+    if (tMatch) {
+      var hh = +tMatch[1], mm = tMatch[2];
+      var h12 = hh % 12 || 12;
+      timeEn = h12 + ":" + mm + " " + (hh < 12 ? "AM" : "PM");
+      timeAr = arDigits(h12 + ":" + mm) + " " + (hh < 12 ? "صباحاً" : "مساءً");
+      setVal($("#tEn"), timeEn, "");
+      setVal($("#tAr"), timeAr, "");
+    }
+
+    /* hero date · time line */
+    if (pDateOk || tMatch) {
+      var hAr = $("#heroWhenAr"), hEn = $("#heroWhenEn");
+      if (hAr) hAr.textContent = dateFullAr + " · " + timeAr;
+      if (hEn) hEn.textContent = dateFullEn + " · " + timeEn;
+    }
+
+    /* venue */
+    if (pVenAr) {
+      venueAr = pVenAr;
+      var vpa = venueParts(pVenAr);
+      setVal($("#vAr"), vpa[0], vpa[1]);
+    }
+    if (pVenEn) {
+      venueEn = pVenEn;
+      var vpe = venueParts(pVenEn);
+      setVal($("#vEn"), vpe[0], vpe[1]);
+    }
+
+    /* maps link */
+    if (pMap && /^https:\/\//.test(pMap)) {
+      var mapBtn = $("#mapBtn");
+      if (mapBtn) mapBtn.href = pMap;
+    }
+
+    /* quote */
+    if (pQuote) {
+      var qEn = $("#qEn"), qAr = $("#qAr");
+      if (qEn) qEn.textContent = "“" + pQuote + "”";
+      if (qAr) qAr.textContent = "«" + pQuote + "»";
+    }
+
+    /* Google Calendar link */
+    if (pNamesEn || pDateOk || tMatch || pVenEn || pQuote) {
+      var calBtn = $("#calBtn");
+      if (calBtn) {
+        var startDt = new Date((pDateOk || "2026-08-22") + "T" + (pTimeNorm || "18:00") + ":00");
+        var endDt = new Date(startDt.getTime() + 5 * 36e5);
+        var cal = function (dt) {
+          var p = function (n) { return ("0" + n).slice(-2); };
+          return dt.getFullYear() + p(dt.getMonth() + 1) + p(dt.getDate()) + "T" + p(dt.getHours()) + p(dt.getMinutes()) + "00";
+        };
+        calBtn.href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
+          + "&text=" + encodeURIComponent("Wedding — " + namesEn)
+          + "&dates=" + cal(startDt) + "/" + cal(endDt)
+          + "&ctz=Africa/Cairo"
+          + "&location=" + encodeURIComponent(venueEn)
+          + "&details=" + encodeURIComponent(pQuote || "And in the garden of our days, love bloomed.");
+      }
+    }
+
+    /* WhatsApp RSVP number */
+    if (pWa) waNum = pWa.replace(/[^\d]/g, "") || waNum;
+  }
+  try { applyParams(); } catch (e) {}
+
+  /* ── Language toggle — Arabic default, html.en flips to English/LTR ── */
+  var langBtn = document.getElementById("langBtn");
+  var isEn = false;
+  function applyLang () {
+    docEl.classList.toggle("en", isEn);
+    docEl.lang = isEn ? "en" : "ar";
+    docEl.dir  = isEn ? "ltr" : "rtl";
+    updateLinks();
+    renderCountdown(true);
+  }
+  if (langBtn) langBtn.addEventListener("click", function () { isEn = !isEn; applyLang(); });
+
+  /* ── Countdown → Saturday 22 Aug 2026, 6:00 PM Cairo (or ?d= / ?t=) ── */
+  var target = pDateOk
+    ? new Date(pDateOk + "T" + (pTimeNorm || "18:00") + ":00+02:00").getTime()
+    : new Date("2026-08-22T18:00:00+02:00").getTime();
+  var wrap = document.getElementById("cdWrap");
+  var elD = document.getElementById("cdD"), elH = document.getElementById("cdH"),
+      elM = document.getElementById("cdM"), elS = document.getElementById("cdS");
+  var last = {};
+  function fmt (n) {
+    var s = String(n).length < 2 ? "0" + n : String(n);
+    if (!isEn) s = arDigits(s);
+    return s;
+  }
+  function renderCountdown (force) {
+    if (!wrap) return;
+    var diff = target - Date.now();
+    if (diff <= 0) { wrap.classList.add("is-done"); return; }
+    wrap.classList.remove("is-done");
+    var d = Math.floor(diff / 864e5),
+        h = Math.floor(diff % 864e5 / 36e5),
+        m = Math.floor(diff % 36e5 / 6e4),
+        s = Math.floor(diff % 6e4 / 1e3);
+    var v = { d: d, h: h, m: m, s: s };
+    for (var k in v) {
+      if (force || v[k] !== last[k]) {
+        ({ d: elD, h: elH, m: elM, s: elS })[k].textContent = fmt(v[k]);
+        last[k] = v[k];
+      }
+    }
+  }
+  setInterval(renderCountdown, 1000);
+
+  /* ── WhatsApp accept / decline links — language-aware, URL-encoded ── */
+  var yesBtn = document.getElementById("rsvpYes");
+  var noBtn = document.getElementById("rsvpNo");
+  function updateLinks () {
+    var accept = isEn
+      ? "Hello! We joyfully confirm our attendance at the wedding of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueEn + " 🌿"
+      : "مرحباً! يسعدنا تأكيد حضورنا حفل زفاف " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueAr + " 🌿";
+    var decline = isEn
+      ? "Hello! We're so sorry we won't be able to attend the wedding of " + namesEn + " on " + dateFullEn + ". Wishing you a lifetime of love and joy 🤍"
+      : "مرحباً! نعتذر بشدة عن عدم تمكننا من حضور حفل زفاف " + namesAr + " يوم " + dateFullAr + "، مع أطيب التمنيات بحياة مليئة بالحب والسعادة 🤍";
+    if (yesBtn) yesBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(accept);
+    if (noBtn)  noBtn.href  = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(decline);
+  }
+
+  /* ── Gentle reveal on scroll ── */
+  var rvs = document.querySelectorAll(".rv");
+  if ("IntersectionObserver" in window && !reduced) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.18 });
+    rvs.forEach(function (el) { io.observe(el); });
+  } else {
+    rvs.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  applyLang();
+})();
+</script>
+
+</body>
+</html>
