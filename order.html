@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>اطلب دعوتك — دعوة D3wa | Order your invitation</title>
+<meta name="description" content="اطلب دعوتك الرقمية في ٥ دقايق: اختار القالب، املا التفاصيل، واستلم المعاينة خلال ٤٨ ساعة. Order your D3wa digital invitation in minutes.">
+<meta name="theme-color" content="#16213c">
+
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://khalidsharafel-din.github.io/d3wa/assets/og/index.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/order.html">
+<link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/order.html">
+<meta property="og:title" content="اطلب دعوتك — دعوة D3wa">
+<meta property="og:description" content="فورم بسيط: الأسماء والمعاد والقاعة، والمعاينة توصلك خلال ٤٨ ساعة">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316213c'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23cfa658' stroke-width='2.6'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Amiri:ital,wght@0,400;0,700;1,400&family=Italiana&family=Aref+Ruqaa&display=swap">
+
+<style>
+:root{
+  --navy:#16213c; --navy-2:#1d2b4d; --navy-3:#0d1730;
+  --gold:#cfa658; --gold-lt:#e3cf9b; --ivory:#f2ecdf; --muted:#a8a294;
+  --wa:#25d366;
+  --line:rgba(207,166,88,.30); --line-soft:rgba(207,166,88,.15);
+  --ar:"Cairo",sans-serif; --ar-d:"Aref Ruqaa","Amiri",serif; --lat:"Italiana",serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ivory);font-family:var(--ar);
+  background:var(--navy);
+  background-image:radial-gradient(130% 70% at 50% 0%, #26375f 0%, #16213c 55%, #0b1428 100%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
+}
+html.en .t-ar{display:none}
+html:not(.en) .t-en{display:none}
+html.en body{font-family:"Cairo",ui-sans-serif,sans-serif}
+
+.wrap{width:min(100%,760px);margin:0 auto;padding:0 20px}
+
+header{position:sticky;top:0;z-index:50;background:rgba(13,23,48,.78);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:64px;width:min(100%,1080px);margin:0 auto;padding:0 20px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ivory)}
+.brand svg{width:34px;height:34px}
+.brand b{font-family:var(--lat);font-weight:400;font-size:22px;letter-spacing:.04em}
+.brand span{font-family:var(--ar-d);color:var(--gold);font-size:20px}
+.lang{min-height:38px;padding:0 16px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--gold);cursor:pointer;font-family:var(--ar);font-size:13px;font-weight:600}
+.lang:hover{background:rgba(207,166,88,.12)}
+
+.head{padding:clamp(36px,6vw,56px) 0 8px;text-align:center}
+.head h1{font-family:var(--ar-d);font-weight:400;font-size:clamp(28px,5.6vw,42px);margin:0 0 10px;line-height:1.5}
+html.en .head h1{font-family:var(--lat);line-height:1.15}
+.head p{color:var(--muted);font-weight:300;font-size:14.5px;margin:0;line-height:1.9}
+
+/* progress */
+.prog{display:flex;justify-content:center;gap:10px;padding:26px 0 8px}
+.prog i{width:34px;height:4px;border-radius:99px;background:rgba(207,166,88,.18);transition:background .4s}
+.prog i.on{background:var(--gold)}
+
+.panel{border:1px solid var(--line-soft);border-radius:16px;background:rgba(255,255,255,.03);padding:clamp(22px,4.5vw,34px);margin:22px 0 60px}
+.stepEl{display:none}
+.stepEl.on{display:block;animation:fade .45s ease-out}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.stepEl h2{font-size:19px;font-weight:800;margin:0 0 4px}
+.stepEl .hint{color:var(--muted);font-weight:300;font-size:13.5px;margin:0 0 22px;line-height:1.9}
+
+/* option tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.tile{border:1px solid var(--line-soft);border-radius:12px;background:rgba(255,255,255,.02);padding:14px;cursor:pointer;text-align:center;transition:border-color .3s,background .3s;position:relative}
+.tile:hover{border-color:var(--line)}
+.tile.sel{border-color:var(--gold);background:rgba(207,166,88,.08)}
+.tile.sel::after{content:"✓";position:absolute;top:8px;inset-inline-end:10px;color:var(--gold);font-weight:800;font-size:13px}
+.tile .sw{height:64px;border-radius:8px;margin-bottom:10px}
+.tile b{display:block;font-size:13.5px;font-weight:700}
+.tile small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px;font-weight:300}
+.sw-gold{background:radial-gradient(130% 110% at 50% 0%,#fffdf8,#efe4cd)}
+.sw-rose{background:radial-gradient(130% 110% at 50% 0%,#fffafb,#f6dee7)}
+.sw-rustic{background:radial-gradient(130% 110% at 50% 0%,#fffdf6,#eeddc2)}
+.sw-navy{background:radial-gradient(130% 110% at 50% 0%,#2a3a63,#0d1730)}
+.sw-emerald{background:radial-gradient(130% 110% at 50% 0%,#1a5a44,#0e3b2e)}
+.sw-sahara{background:radial-gradient(130% 110% at 50% 0%,#fbf6ec,#e0a878)}
+.sw-lotus{background:radial-gradient(130% 110% at 50% 0%,#fdf8f0,#f3d9de)}
+
+.tiles.pk{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));margin-top:26px}
+.tiles.pk .tile{text-align:start;padding:16px}
+.tiles.pk .price{color:var(--gold);font-weight:800;font-size:15px}
+
+/* fields */
+label{display:block;font-size:13px;font-weight:600;color:var(--gold-lt);margin:18px 0 7px}
+label small{color:var(--muted);font-weight:300}
+input[type=text],input[type=date],input[type=time],input[type=url],textarea,select{
+  width:100%;min-height:48px;padding:12px 14px;border:1px solid var(--line-soft);border-radius:10px;
+  background:rgba(13,23,48,.55);color:var(--ivory);font-family:inherit;font-size:15px;transition:border-color .3s;
+}
+textarea{min-height:90px;resize:vertical;line-height:1.8}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold)}
+input.err{border-color:#c0564f}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.row2{grid-template-columns:1fr}}
+.errmsg{display:none;color:#e2938d;font-size:12.5px;margin-top:6px}
+.errmsg.show{display:block}
+
+/* live preview */
+.preview{margin:26px auto 0;width:200px;border-radius:22px 22px 0 0;border:1px solid var(--line);border-bottom:none;background:radial-gradient(120% 90% at 50% 0%,#26375f,#0d1730);padding:22px 12px 18px;text-align:center;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.preview .o{color:var(--gold);font-size:10px;letter-spacing:.4em;margin-bottom:10px}
+.preview .a{font-family:var(--ar-d);font-size:21px;color:var(--gold-lt);line-height:1.7;min-height:36px;overflow-wrap:break-word}
+.preview .e{font-family:var(--lat);font-size:12.5px;letter-spacing:.12em;margin-top:3px;color:var(--ivory);min-height:16px;overflow-wrap:break-word}
+.preview .d{font-size:9.5px;letter-spacing:.2em;color:var(--muted);margin-top:9px}
+.preview-cap{text-align:center;color:var(--muted);font-size:11.5px;font-weight:300;margin-top:10px}
+
+/* toggles */
+.opt{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--line-soft);border-radius:12px;padding:15px 16px;margin-top:12px;cursor:pointer;transition:border-color .3s}
+.opt:hover{border-color:var(--line)}
+.opt input{width:18px;height:18px;margin-top:3px;accent-color:var(--gold);flex:none}
+.opt b{font-size:14px;font-weight:700}
+.opt small{display:block;color:var(--muted);font-weight:300;font-size:12.5px;margin-top:3px;line-height:1.7}
+.opt .pd{margin-inline-start:auto;color:var(--gold);font-weight:800;font-size:13px;white-space:nowrap}
+
+/* review */
+.review{border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;margin-top:6px}
+.review div{display:flex;justify-content:space-between;gap:14px;padding:12px 16px;font-size:13.5px;border-bottom:1px solid var(--line-soft)}
+.review div:last-child{border-bottom:none}
+.review dt{color:var(--muted);font-weight:300;flex:none}
+.review dd{margin:0;font-weight:600;text-align:end;overflow-wrap:anywhere}
+.total{display:flex;justify-content:space-between;padding:14px 16px;background:rgba(207,166,88,.07);font-weight:800;font-size:15px}
+.total span:last-child{color:var(--gold)}
+
+/* buttons */
+.btns{display:flex;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:0 26px;border:1px solid var(--gold);border-radius:3px;color:var(--gold);text-decoration:none;font-weight:600;font-size:14.5px;transition:background .3s;cursor:pointer;background:transparent;font-family:inherit}
+.btn:hover{background:rgba(207,166,88,.12)}
+.btn.solid{background:var(--gold);color:#111c36}
+.btn.solid:hover{background:#b58c41}
+.btn.wa{background:var(--wa);border-color:var(--wa);color:#062e1d}
+.btn.wa:hover{background:#1fb959}
+.btn.ghost{border-color:var(--line-soft);color:var(--muted)}
+.btn.next,.btn.wa{flex:1}
+.btn svg{width:17px;height:17px;flex:none;fill:currentColor}
+.note{color:var(--muted);font-size:12.5px;font-weight:300;line-height:1.9;margin-top:16px;text-align:center}
+
+footer{border-top:1px solid var(--line-soft);padding:28px 0 40px;text-align:center;color:var(--muted);font-size:13px;font-weight:300}
+footer a{color:var(--gold);text-decoration:none}
+
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header><div class="nav">
+  <a class="brand" href="index.html">
+    <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#0d1730" stroke="#cfa658" stroke-width="1"/><circle cx="16" cy="16" r="8" fill="none" stroke="#cfa658" stroke-width="2.2"/></svg>
+    <b>D3wa</b><span>دعوة</span>
+  </a>
+  <button class="lang" id="langBtn" type="button"><span class="t-ar">English</span><span class="t-en">العربية</span></button>
+</div></header>
+
+<div class="wrap">
+  <div class="head">
+    <h1><span class="t-ar">اطلب دعوتك</span><span class="t-en">Start your order</span></h1>
+    <p><span class="t-ar">٥ دقايق وهيوصلنا طلبك مرتب على واتساب، والمعاينة عندك خلال ٤٨ ساعة</span><span class="t-en">Five minutes; your order reaches us neatly on WhatsApp, preview within 48 hours</span></p>
+  </div>
+
+  <div class="prog" id="prog"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+
+  <div class="panel">
+
+    <!-- step 1: template + package -->
+    <div class="stepEl on" data-step="1">
+      <h2><span class="t-ar">١ · اختار القالب</span><span class="t-en">1 · Pick your template</span></h2>
+      <p class="hint"><span class="t-ar">مش متأكد؟ افتح الديموهات من الصفحة الرئيسية الأول.</span><span class="t-en">Not sure? Open the live demos from the home page first.</span></p>
+      <div class="tiles" id="tplTiles">
+        <div class="tile" data-v="gold"><div class="sw sw-gold"></div><b><span class="t-ar">كلاسيك جولد</span><span class="t-en">Classic Gold</span></b><small>D3-001</small></div>
+        <div class="tile" data-v="rose"><div class="sw sw-rose"></div><b><span class="t-ar">روز آند وايت</span><span class="t-en">Rose &amp; White</span></b><small>D3-002</small></div>
+        <div class="tile" data-v="rustic"><div class="sw sw-rustic"></div><b><span class="t-ar">رستيك</span><span class="t-en">Rustic Red</span></b><small>D3-003</small></div>
+        <div class="tile" data-v="navy"><div class="sw sw-navy"></div><b><span class="t-ar">رويال نايفي</span><span class="t-en">Royal Navy</span></b><small>D3-004</small></div>
+        <div class="tile" data-v="emerald"><div class="sw sw-emerald"></div><b><span class="t-ar">إميرالد أندلسي</span><span class="t-en">Emerald Andalusi</span></b><small>D3-005</small></div>
+        <div class="tile" data-v="sahara"><div class="sw sw-sahara"></div><b><span class="t-ar">صحارى بوهو</span><span class="t-en">Sahara Boho</span></b><small>D3-006</small></div>
+        <div class="tile" data-v="lotus"><div class="sw sw-lotus"></div><b><span class="t-ar">سبوع اللوتس</span><span class="t-en">Lotus Sebou3</span></b><small>D3-007</small></div>
+      </div>
+      <div class="tiles pk" id="pkTiles">
+        <div class="tile" data-v="classic"><b><span class="t-ar">كلاسيك</span><span class="t-en">Classic</span></b><small><span class="t-ar">التخصيص الأساسي</span><span class="t-en">Core personalization</span></small><div class="price">1,000 <span class="t-ar">جنيه</span><span class="t-en">EGP</span></div></div>
+        <div class="tile" data-v="signature"><b><span class="t-ar">سيجنتشر</span><span class="t-en">Signature</span></b><small><span class="t-ar">اقتباس خاص وصورة وجولتين تعديل</span><span class="t-en">Quote, photo, two revisions</span></small><div class="price">1,500 <span class="t-ar">جنيه</span><span class="t-en">EGP</span></div></div>
+        <div class="tile" data-v="royale"><b><span class="t-ar">رويال</span><span class="t-en">Royale</span></b><small><span class="t-ar">وضع ليلي وشيت ضيوف وأولوية ٢٤س</span><span class="t-en">Dark mode, guest sheet, 24h priority</span></small><div class="price">2,500 <span class="t-ar">جنيه</span><span class="t-en">EGP</span></div></div>
+      </div>
+      <div class="errmsg" id="e1"><span class="t-ar">اختار قالب وباقة الأول 🤍</span><span class="t-en">Pick a template and a package first 🤍</span></div>
+      <div class="btns"><button class="btn solid next" data-next="2"><span class="t-ar">التالي</span><span class="t-en">Next</span></button></div>
+    </div>
+
+    <!-- step 2: occasion + names -->
+    <div class="stepEl" data-step="2">
+      <h2><span class="t-ar">٢ · المناسبة والأسماء</span><span class="t-en">2 · Occasion and names</span></h2>
+      <p class="hint"><span class="t-ar">اكتب الأسماء زي ما تحب تشوفها في الدعوة بالظبط.</span><span class="t-en">Write the names exactly as you want them to appear.</span></p>
+      <label><span class="t-ar">نوع المناسبة</span><span class="t-en">Occasion</span></label>
+      <select id="fOcc">
+        <option value="wedding"  data-ar="فرح" data-en="Wedding">فرح · Wedding</option>
+        <option value="engagement" data-ar="خطوبة" data-en="Engagement">خطوبة · Engagement</option>
+        <option value="katb" data-ar="كتب كتاب" data-en="Katb kitab">كتب كتاب · Katb kitab</option>
+        <option value="sebou3" data-ar="سبوع / عقيقة" data-en="Sebou3 / aqiqa">سبوع أو عقيقة · Sebou3</option>
+        <option value="other" data-ar="مناسبة تانية" data-en="Other">مناسبة تانية · Other</option>
+      </select>
+      <div class="row2">
+        <div>
+          <label id="lblAr"><span class="t-ar">الأسماء بالعربي</span><span class="t-en">Names in Arabic</span></label>
+          <input type="text" id="fNamesAr" placeholder="عمر وسلمى" autocomplete="off">
+          <div class="errmsg" id="e2"><span class="t-ar">محتاجين الأسماء بالعربي على الأقل</span><span class="t-en">We need at least the Arabic names</span></div>
+        </div>
+        <div>
+          <label><span class="t-ar">بالإنجليزي <small>(اختياري)</small></span><span class="t-en">In English <small>(optional)</small></span></label>
+          <input type="text" id="fNamesEn" placeholder="Omar &amp; Salma" autocomplete="off">
+        </div>
+      </div>
+      <div class="preview" aria-hidden="true">
+        <div class="o">✦ ✦ ✦</div>
+        <div class="a" id="pvAr">عمر وسلمى</div>
+        <div class="e" id="pvEn">OMAR &amp; SALMA</div>
+        <div class="d" id="pvDt">— · — · —</div>
+      </div>
+      <p class="preview-cap"><span class="t-ar">معاينة مبدئية لشكل الأسماء، التصميم النهائي على قالبك المختار</span><span class="t-en">A rough preview of your names; the final design uses your chosen template</span></p>
+      <div class="btns">
+        <button class="btn ghost" data-back="1"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
+        <button class="btn solid next" data-next="3"><span class="t-ar">التالي</span><span class="t-en">Next</span></button>
+      </div>
+    </div>
+
+    <!-- step 3: date + venue -->
+    <div class="stepEl" data-step="3">
+      <h2><span class="t-ar">٣ · المعاد والمكان</span><span class="t-en">3 · Date and venue</span></h2>
+      <p class="hint"><span class="t-ar">لو لسه محددتوش، اكتب اللي متأكد منه وكمّل الباقي معانا على واتساب.</span><span class="t-en">Not finalized yet? Fill what you know and complete the rest with us on WhatsApp.</span></p>
+      <div class="row2">
+        <div>
+          <label><span class="t-ar">تاريخ المناسبة</span><span class="t-en">Event date</span></label>
+          <input type="date" id="fDate">
+          <div class="errmsg" id="e3"><span class="t-ar">محتاجين تاريخ المناسبة</span><span class="t-en">We need the event date</span></div>
+        </div>
+        <div>
+          <label><span class="t-ar">الساعة <small>(اختياري)</small></span><span class="t-en">Time <small>(optional)</small></span></label>
+          <input type="time" id="fTime" value="20:00">
+        </div>
+      </div>
+      <label><span class="t-ar">اسم القاعة أو المكان</span><span class="t-en">Venue name</span></label>
+      <input type="text" id="fVenue" placeholder="فيلا روز، المعادي" autocomplete="off">
+      <label><span class="t-ar">لينك جوجل مابس <small>(اختياري)</small></span><span class="t-en">Google Maps link <small>(optional)</small></span></label>
+      <input type="url" id="fMap" placeholder="https://maps.app.goo.gl/..." dir="ltr" autocomplete="off">
+      <div class="btns">
+        <button class="btn ghost" data-back="2"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
+        <button class="btn solid next" data-next="4"><span class="t-ar">التالي</span><span class="t-en">Next</span></button>
+      </div>
+    </div>
+
+    <!-- step 4: extras -->
+    <div class="stepEl" data-step="4">
+      <h2><span class="t-ar">٤ · لمسات إضافية</span><span class="t-en">4 · Finishing touches</span></h2>
+      <p class="hint"><span class="t-ar">كله اختياري، والأسعار واضحة قبل ما تضيف.</span><span class="t-en">All optional, with the price shown before you add.</span></p>
+      <label class="opt"><input type="checkbox" id="xRush"><span><b><span class="t-ar">استعجال ٢٤ ساعة</span><span class="t-en">24-hour rush</span></b><small><span class="t-ar">معاينتك توصل خلال يوم واحد بدل يومين. مجاني في باقة رويال.</span><span class="t-en">Preview in one day instead of two. Free on Royale.</span></small></span><span class="pd" id="rushPd">+300 <span class="t-ar">جنيه</span><span class="t-en">EGP</span></span></label>
+      <label><span class="t-ar">اقتباس أو آية تحبوا تظهر في الدعوة <small>(اختياري، لباقة سيجنتشر وأعلى)</small></span><span class="t-en">A quote or verse for the invitation <small>(optional; Signature and above)</small></span></label>
+      <textarea id="fQuote" placeholder="«وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا...»"></textarea>
+      <label><span class="t-ar">ملاحظات تانية <small>(اختياري)</small></span><span class="t-en">Anything else <small>(optional)</small></span></label>
+      <textarea id="fNotes" placeholder=""></textarea>
+      <div class="btns">
+        <button class="btn ghost" data-back="3"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
+        <button class="btn solid next" data-next="5"><span class="t-ar">راجع الطلب</span><span class="t-en">Review order</span></button>
+      </div>
+    </div>
+
+    <!-- step 5: review + send -->
+    <div class="stepEl" data-step="5">
+      <h2><span class="t-ar">٥ · راجع وابعت</span><span class="t-en">5 · Review and send</span></h2>
+      <p class="hint"><span class="t-ar">ده اللي هيوصلنا بالظبط. الضغط على الزرار بيفتح واتساب برسالة جاهزة، ومفيش أي التزام لحد ما نتكلم ونتفق.</span><span class="t-en">This is exactly what we receive. The button opens WhatsApp with a ready message; nothing is final until we talk and agree.</span></p>
+      <div class="review" id="reviewBox"></div>
+      <div class="total"><span><span class="t-ar">الإجمالي التقريبي</span><span class="t-en">Estimated total</span></span><span id="totalEl">—</span></div>
+      <div class="btns">
+        <button class="btn ghost" data-back="4"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
+        <a class="btn wa" id="sendBtn" target="_blank" rel="noopener" href="#">
+          <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.94.56 3.75 1.5 5.29L2 22l4.96-1.6a9.9 9.9 0 0 0 5.08 1.4h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+          <span class="t-ar">ابعت الطلب على واتساب</span><span class="t-en">Send order on WhatsApp</span>
+        </a>
+      </div>
+      <p class="note"><span class="t-ar">بعد ما نستلم طلبك: بنأكد التفاصيل، تدفع ٥٠٪ مقدم إنستاباي أو فودافون كاش، والمعاينة توصلك خلال ٤٨ ساعة. النشر النهائي بعد سداد الباقي.</span><span class="t-en">After we receive your order: we confirm the details, you pay a 50% deposit via Instapay or Vodafone Cash, and your preview arrives within 48 hours. Publishing happens once the balance is settled.</span></p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p><a href="index.html"><span class="t-ar">→ الرجوع للصفحة الرئيسية</span><span class="t-en">← Back to home</span></a></p>
+  <p><span class="t-ar">دعوة D3wa · صُنعت بحب في مصر 🤍</span><span class="t-en">D3wa · made with love in Egypt 🤍</span></p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var docEl = document.documentElement, isEn = false;
+  var PHONE = "201005509418";
+  var TPL = {
+    gold:    { code: "D3-001", ar: "كلاسيك جولد",   en: "Classic Gold" },
+    rose:    { code: "D3-002", ar: "روز آند وايت",  en: "Rose & White" },
+    rustic:  { code: "D3-003", ar: "رستيك",         en: "Rustic Red" },
+    navy:    { code: "D3-004", ar: "رويال نايفي",   en: "Royal Navy" },
+    emerald: { code: "D3-005", ar: "إميرالد أندلسي", en: "Emerald Andalusi" },
+    sahara:  { code: "D3-006", ar: "صحارى بوهو",    en: "Sahara Boho" },
+    lotus:   { code: "D3-007", ar: "سبوع اللوتس",   en: "Lotus Sebou3" }
+  };
+  var PKG = {
+    classic:   { ar: "كلاسيك",    en: "Classic",   price: 1000 },
+    signature: { ar: "سيجنتشر",   en: "Signature", price: 1500 },
+    royale:    { ar: "رويال",     en: "Royale",    price: 2500 }
+  };
+  var state = { tpl: null, pkg: null, step: 1 };
+
+  /* restore saved progress */
+  try {
+    var saved = JSON.parse(localStorage.getItem("d3wa-order") || "{}");
+    ["tpl","pkg","occ","namesAr","namesEn","date","time","venue","map","rush","quote","notes"].forEach(function (k) {
+      if (saved[k] !== undefined) state[k] = saved[k];
+    });
+  } catch (e) {}
+
+  /* url params override */
+  var q = new URLSearchParams(location.search);
+  if (q.get("t") && TPL[q.get("t")]) state.tpl = q.get("t");
+  if (q.get("p") && PKG[q.get("p")]) state.pkg = q.get("p");
+
+  function save () {
+    try {
+      localStorage.setItem("d3wa-order", JSON.stringify({
+        tpl: state.tpl, pkg: state.pkg,
+        occ: el("fOcc").value, namesAr: el("fNamesAr").value, namesEn: el("fNamesEn").value,
+        date: el("fDate").value, time: el("fTime").value, venue: el("fVenue").value, map: el("fMap").value,
+        rush: el("xRush").checked, quote: el("fQuote").value, notes: el("fNotes").value
+      }));
+    } catch (e) {}
+  }
+  function el (id) { return document.getElementById(id); }
+
+  /* language */
+  function applyLang () {
+    docEl.classList.toggle("en", isEn);
+    docEl.lang = isEn ? "en" : "ar";
+    docEl.dir = isEn ? "ltr" : "rtl";
+    renderReview();
+  }
+  el("langBtn").addEventListener("click", function () { isEn = !isEn; applyLang(); });
+
+  /* tiles */
+  function bindTiles (wrapId, key) {
+    var tiles = document.querySelectorAll("#" + wrapId + " .tile");
+    tiles.forEach(function (t) {
+      t.addEventListener("click", function () {
+        tiles.forEach(function (x) { x.classList.remove("sel"); });
+        t.classList.add("sel");
+        state[key] = t.getAttribute("data-v");
+        el("e1").classList.remove("show");
+        if (key === "pkg") updateRushPd();
+        save();
+      });
+      if (state[key] === t.getAttribute("data-v")) t.classList.add("sel");
+    });
+  }
+  bindTiles("tplTiles", "tpl");
+  bindTiles("pkTiles", "pkg");
+
+  function updateRushPd () {
+    var free = state.pkg === "royale";
+    el("rushPd").innerHTML = free
+      ? '<span class="t-ar">مجاني ✨</span><span class="t-en">Free ✨</span>'
+      : '+300 <span class="t-ar">جنيه</span><span class="t-en">EGP</span>';
+  }
+
+  /* steps */
+  var steps = document.querySelectorAll(".stepEl");
+  var dots = document.querySelectorAll("#prog i");
+  function goTo (n) {
+    if (n === 2 && (!state.tpl || !state.pkg)) { el("e1").classList.add("show"); return; }
+    if (n === 3 && !el("fNamesAr").value.trim()) { el("e2").classList.add("show"); el("fNamesAr").classList.add("err"); return; }
+    if (n === 4 && !el("fDate").value) { el("e3").classList.add("show"); el("fDate").classList.add("err"); return; }
+    state.step = n;
+    steps.forEach(function (s) { s.classList.toggle("on", +s.getAttribute("data-step") === n); });
+    dots.forEach(function (d, i) { d.classList.toggle("on", i < n); });
+    if (n === 5) renderReview();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    save();
+  }
+  document.querySelectorAll("[data-next]").forEach(function (b) { b.addEventListener("click", function () { goTo(+b.getAttribute("data-next")); }); });
+  document.querySelectorAll("[data-back]").forEach(function (b) { b.addEventListener("click", function () { goTo(+b.getAttribute("data-back")); }); });
+
+  /* restore field values */
+  if (state.occ) el("fOcc").value = state.occ;
+  if (state.namesAr) el("fNamesAr").value = state.namesAr;
+  if (state.namesEn) el("fNamesEn").value = state.namesEn;
+  if (state.date) el("fDate").value = state.date;
+  if (state.time) el("fTime").value = state.time;
+  if (state.venue) el("fVenue").value = state.venue;
+  if (state.map) el("fMap").value = state.map;
+  if (state.rush) el("xRush").checked = true;
+  if (state.quote) el("fQuote").value = state.quote;
+  if (state.notes) el("fNotes").value = state.notes;
+  updateRushPd();
+
+  /* live name preview */
+  function fmtDate (iso) {
+    if (!iso) return "— · — · —";
+    var p = iso.split("-");
+    return p[2] + " · " + p[1] + " · " + p[0];
+  }
+  function refreshPreview () {
+    el("pvAr").textContent = el("fNamesAr").value.trim() || "عمر وسلمى";
+    el("pvEn").textContent = (el("fNamesEn").value.trim() || "Omar & Salma").toUpperCase();
+    el("pvDt").textContent = fmtDate(el("fDate").value);
+  }
+  ["fNamesAr","fNamesEn","fDate"].forEach(function (id) {
+    el(id).addEventListener("input", function () {
+      refreshPreview();
+      el(id).classList.remove("err");
+      if (id === "fNamesAr") el("e2").classList.remove("show");
+      if (id === "fDate") el("e3").classList.remove("show");
+      save();
+    });
+  });
+  ["fOcc","fTime","fVenue","fMap","xRush","fQuote","fNotes"].forEach(function (id) {
+    el(id).addEventListener("change", save);
+  });
+  refreshPreview();
+
+  /* review + message */
+  function occText () {
+    var o = el("fOcc").selectedOptions[0];
+    return isEn ? o.getAttribute("data-en") : o.getAttribute("data-ar");
+  }
+  function total () {
+    var t = PKG[state.pkg] ? PKG[state.pkg].price : 0;
+    if (el("xRush").checked && state.pkg !== "royale") t += 300;
+    return t;
+  }
+  function fmtEGP (n) { return n.toLocaleString(isEn ? "en-EG" : "ar-EG") + (isEn ? " EGP" : " جنيه"); }
+  function renderReview () {
+    if (!state.tpl || !state.pkg) return;
+    var tp = TPL[state.tpl], pk = PKG[state.pkg];
+    var rows = [
+      [isEn ? "Template" : "القالب", (isEn ? tp.en : tp.ar) + " (" + tp.code + ")"],
+      [isEn ? "Package" : "الباقة", (isEn ? pk.en : pk.ar) + " · " + fmtEGP(pk.price)],
+      [isEn ? "Occasion" : "المناسبة", occText()],
+      [isEn ? "Names" : "الأسماء", el("fNamesAr").value + (el("fNamesEn").value ? " / " + el("fNamesEn").value : "")],
+      [isEn ? "Date" : "التاريخ", el("fDate").value + (el("fTime").value ? " · " + el("fTime").value : ""), true],
+      [isEn ? "Venue" : "المكان", el("fVenue").value || (isEn ? "To be confirmed" : "هنأكده على واتساب")]
+    ];
+    if (el("fMap").value) rows.push([isEn ? "Map" : "الخريطة", el("fMap").value]);
+    if (el("xRush").checked) rows.push([isEn ? "Rush" : "استعجال", state.pkg === "royale" ? (isEn ? "24h (free)" : "٢٤ ساعة (مجاني)") : (isEn ? "24h (+300 EGP)" : "٢٤ ساعة (+٣٠٠ جنيه)")]);
+    if (el("fQuote").value.trim()) rows.push([isEn ? "Quote" : "الاقتباس", el("fQuote").value.trim()]);
+    if (el("fNotes").value.trim()) rows.push([isEn ? "Notes" : "ملاحظات", el("fNotes").value.trim()]);
+    el("reviewBox").innerHTML = rows.map(function (r) {
+      return "<div><dt>" + r[0] + "</dt><dd" + (r[2] ? ' dir="ltr"' : "") + ">" + esc(r[1]) + "</dd></div>";
+    }).join("");
+    el("totalEl").textContent = fmtEGP(total());
+    el("sendBtn").href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(waMessage());
+  }
+  function esc (s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function waMessage () {
+    var tp = TPL[state.tpl], pk = PKG[state.pkg];
+    var L = [];
+    L.push("طلب دعوة جديد 🤍 New order");
+    L.push("");
+    L.push("القالب Template: " + tp.ar + " / " + tp.en + " (" + tp.code + ")");
+    L.push("الباقة Package: " + pk.ar + " / " + pk.en);
+    L.push("المناسبة Occasion: " + el("fOcc").selectedOptions[0].getAttribute("data-ar") + " / " + el("fOcc").selectedOptions[0].getAttribute("data-en"));
+    L.push("الأسماء Names: " + el("fNamesAr").value + (el("fNamesEn").value ? " / " + el("fNamesEn").value : ""));
+    L.push("التاريخ Date: " + el("fDate").value + (el("fTime").value ? " · " + el("fTime").value : ""));
+    if (el("fVenue").value) L.push("المكان Venue: " + el("fVenue").value);
+    if (el("fMap").value) L.push("الخريطة Map: " + el("fMap").value);
+    if (el("xRush").checked) L.push("استعجال Rush: 24h" + (state.pkg === "royale" ? " (مجاني)" : " (+300)"));
+    if (el("fQuote").value.trim()) L.push("الاقتباس Quote: " + el("fQuote").value.trim());
+    if (el("fNotes").value.trim()) L.push("ملاحظات Notes: " + el("fNotes").value.trim());
+    L.push("");
+    L.push("الإجمالي التقريبي Estimated: " + total() + " EGP");
+    return L.join("\n");
+  }
+  el("sendBtn").addEventListener("click", function () {
+    try { localStorage.removeItem("d3wa-order"); } catch (e) {}
+  });
+
+  applyLang();
+})();
+</script>
+
+</body>
+</html>
