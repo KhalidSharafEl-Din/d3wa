@@ -18,6 +18,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=1600&q=80" fetchpriority="high">
+
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fcfbf8'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%23a9843f' stroke-width='3'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,6 +44,11 @@
   --sh-2:rgba(120,95,50,.07);
   --btn-text:#fffaf0;
   --gold-hover:#8f6d31;
+  --hero-img-filter:brightness(1.42) contrast(.85) saturate(.6) sepia(.3);
+  --hero-scrim:
+    radial-gradient(120% 70% at 50% 30%, rgba(252,251,248,.34), rgba(252,251,248,0) 62%),
+    linear-gradient(180deg, rgba(252,251,248,.9) 0%, rgba(250,245,234,.66) 35%, rgba(246,240,228,.6) 68%, rgba(232,224,205,.96) 100%);
+  --band-scrim:linear-gradient(180deg, rgba(252,251,248,.96), rgba(242,233,211,.8) 45%, rgba(240,231,208,.82) 70%, rgba(252,251,248,.96));
   --display:"Italiana",Didot,"Bodoni MT",Garamond,Georgia,serif;
   --serif:"Cormorant Garamond",Garamond,Georgia,"Times New Roman",serif;
   --arabic:"Amiri","Traditional Arabic",serif;
@@ -65,6 +72,11 @@ html.dark{
   --sh-2:rgba(0,0,0,.07);
   --btn-text:#111c36;
   --gold-hover:#b58c41;
+  --hero-img-filter:brightness(.9) contrast(1.06) saturate(1.08);
+  --hero-scrim:
+    radial-gradient(90% 55% at 50% 85%, rgba(207,166,88,.16), rgba(207,166,88,0) 70%),
+    linear-gradient(180deg, rgba(13,23,48,.5) 0%, rgba(13,23,48,.26) 38%, rgba(16,28,56,.5) 72%, rgba(13,23,48,.96) 100%);
+  --band-scrim:linear-gradient(180deg, rgba(13,23,48,.95), rgba(13,23,48,.5) 45%, rgba(13,23,48,.55) 70%, rgba(13,23,48,.95));
 }
 @media (prefers-color-scheme: dark){
   html:not(.light){
@@ -83,6 +95,11 @@ html.dark{
   --sh-2:rgba(0,0,0,.07);
   --btn-text:#111c36;
   --gold-hover:#b58c41;
+  --hero-img-filter:brightness(.9) contrast(1.06) saturate(1.08);
+  --hero-scrim:
+    radial-gradient(90% 55% at 50% 85%, rgba(207,166,88,.16), rgba(207,166,88,0) 70%),
+    linear-gradient(180deg, rgba(13,23,48,.5) 0%, rgba(13,23,48,.26) 38%, rgba(16,28,56,.5) 72%, rgba(13,23,48,.96) 100%);
+  --band-scrim:linear-gradient(180deg, rgba(13,23,48,.95), rgba(13,23,48,.5) 45%, rgba(13,23,48,.55) 70%, rgba(13,23,48,.95));
   }
 }
 
@@ -192,6 +209,42 @@ html:not(.dark) .theme-toggle .i-sun{display:none}
   justify-content:center;
   padding:calc(34px + env(safe-area-inset-top)) 18px calc(34px + env(safe-area-inset-bottom));
 }
+
+/* ───────────────  PHOTO HERO + PHOTO BAND  ─────────────── */
+/* The photo layers sit under the palette scrim; if the image ever fails,
+   the layer removes itself and the original gradient background remains. */
+#gate{position:relative;overflow:hidden}
+.hero-photo{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-photo img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  filter:var(--hero-img-filter);
+  transition:filter .4s ease;
+  animation:ken 22s ease-in-out infinite alternate;
+  will-change:transform;
+}
+@keyframes ken{from{transform:scale(1)}to{transform:scale(1.1) translateY(-1.5%)}}
+.hero-photo::after{content:"";position:absolute;inset:0;background:var(--hero-scrim)}
+
+.photo-band{
+  position:relative;z-index:1;
+  min-height:clamp(180px,32vh,300px);
+  display:flex;align-items:center;justify-content:center;
+  padding:30px 22px;
+  background-color:var(--paper);
+  background-image:var(--band-scrim),url("https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?auto=format&fit=crop&w=1600&q=80");
+  background-size:cover;
+  background-position:center;
+  border-top:1px solid var(--line-soft);
+  border-bottom:1px solid var(--line-soft);
+}
+.band-line{
+  margin:0;max-width:520px;
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(17px,5vw,22px);line-height:1.7;
+  color:var(--ink);text-align:center;letter-spacing:.02em;
+}
+.band-line .t-ar{font-family:var(--arabic);font-style:normal;font-size:1.15em}
 
 .eyebrow{
   font-family:var(--sans);
@@ -528,7 +581,7 @@ html.ar .chip{font-family:var(--arabic);font-weight:700}
 
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
-  .ring,.glint,.shine,.gate-inner,.petal{animation:none !important}
+  .ring,.glint,.shine,.gate-inner,.petal,.hero-photo img{animation:none !important}
   .petal{display:none}
   #card:target .rv,.card.in .rv{animation:none !important}
   .intro .drape,.intro-inner{transition:none !important}
@@ -582,6 +635,11 @@ html.ar .chip{font-family:var(--arabic);font-weight:700}
 
 <!-- ═════════  SCREEN 1 — THE OPENING  ═════════ -->
 <section class="scene" id="gate" aria-labelledby="gate-title">
+  <div class="hero-photo" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=1600&q=80"
+         alt="" decoding="async" fetchpriority="high"
+         onerror="this.parentElement.style.display='none'">
+  </div>
   <div class="gate-inner">
     <p class="eyebrow lg" id="gate-title">
       <span class="t-en">You are warmly invited</span>
@@ -653,6 +711,14 @@ html.ar .chip{font-family:var(--arabic);font-weight:700}
       <span class="t-ar">افتح الدعوة</span>
     </a>
   </div>
+</section>
+
+<!-- ═════════  PHOTO BAND — A BREATH OF STARS  ═════════ -->
+<section class="photo-band" aria-label="Verse">
+  <p class="band-line">
+    <span class="t-en">Under one sky, two hearts align</span>
+    <span class="t-ar">تحت سماءٍ واحدة، يلتقي قلبان</span>
+  </p>
 </section>
 
 <!-- ═════════  SCREEN 2 — THE INVITATION  ═════════ -->
@@ -817,6 +883,20 @@ html.ar .chip{font-family:var(--arabic);font-weight:700}
   </article>
 </section>
 
+<script>
+/* Rolling demo date: without a real order date (?d=) the demo always counts
+   down to ~90 days from today, so the countdown never reads as expired. */
+(function () {
+  try {
+    var p = new URLSearchParams(window.__D3WA__ || location.search);
+    if (!p.get("d")) {
+      var t = new Date(Date.now() + 90 * 864e5);
+      p.set("d", t.getFullYear() + "-" + ("0"+(t.getMonth()+1)).slice(-2) + "-" + ("0"+t.getDate()).slice(-2));
+      window.__D3WA__ = p.toString();
+    }
+  } catch (e) {}
+})();
+</script>
 <script>
 (function () {
   "use strict";

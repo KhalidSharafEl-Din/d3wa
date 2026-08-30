@@ -22,6 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&display=swap">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=1600&q=80" fetchpriority="high">
 
 <style>
 /* ───────────────  TOKENS  ─────────────── */
@@ -434,6 +435,77 @@ body.intro-lock{overflow:hidden}
   .intro,.intro *{transition:none !important;animation:none !important}
   .music-toggle{display:none !important}
 }
+
+/* ───────────────  V3 — PHOTO HERO  ─────────────── */
+/* Full-bleed rose-aisle photograph under a blush→plum scrim.
+   The intro's curtains stay pure: parting them reveals this photo hero.
+   If the photo never loads, the body's blush gradient + tint + scrim
+   still render a rose-graded hero — never a white void. */
+#gate{position:relative;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-photo{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transform-origin:50% 40%;
+  /* colour-grade: nudge toward blush/magenta so the photo obeys the rose palette */
+  filter:sepia(.1) saturate(1.12) contrast(1.02) brightness(.94) hue-rotate(-8deg);
+  animation:heroKb 22s ease-in-out infinite alternate;
+}
+@keyframes heroKb{from{transform:scale(1)}to{transform:scale(1.06)}}
+/* multiply tint: blush→plum, welds the stock photo to the template */
+.hero-tint{
+  position:absolute;inset:0;mix-blend-mode:multiply;opacity:.3;
+  background:linear-gradient(180deg,#f6c3d3 0%,#6d2342 100%);
+}
+/* scrim: soft blush→plum vignette, strongest behind the text zone */
+.hero-scrim{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(74% 64% at 50% 46%, rgba(48,14,28,.58) 0%, rgba(48,14,28,.3) 55%, transparent 78%),
+    linear-gradient(180deg, rgba(96,32,56,.42) 0%, rgba(74,24,44,.24) 32%, rgba(52,16,30,.36) 66%, rgba(36,10,22,.68) 100%);
+}
+/* hero typography flips to light-on-photo for AA contrast */
+#gate .eyebrow{color:#f6cfdd;text-shadow:0 1px 10px rgba(40,8,22,.6)}
+#gate .gate-names{color:#fff3f6;text-shadow:0 2px 8px rgba(40,8,22,.55),0 6px 26px rgba(40,8,22,.5)}
+#gate .gate-names i{color:#f2adc6}
+#gate .cd-cell{
+  background:rgba(48,14,28,.46);border-color:rgba(240,168,194,.38);
+  box-shadow:0 10px 24px rgba(0,0,0,.28);
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+}
+#gate .cd-num{color:#fff3f6}
+#gate .cd-lbl{color:#f0b5ca}
+#gate .cd-done{color:#f8d7e2;text-shadow:0 1px 10px rgba(40,8,22,.6)}
+#gate .btn:not(.solid){border-color:rgba(240,168,194,.75);color:#fbe3ec}
+#gate .btn:not(.solid):hover,#gate .btn:not(.solid):active{background:rgba(240,168,194,.16)}
+#gate .ring{filter:drop-shadow(0 12px 26px rgba(0,0,0,.4))}
+
+/* ───────────────  V3 — PHOTO BAND (pastel garden table)  ─────────────── */
+.band{
+  position:relative;overflow:hidden;isolation:isolate;
+  min-height:clamp(190px,32vh,290px);
+  display:flex;align-items:center;justify-content:center;
+  padding:30px 22px;
+}
+.band-photo{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:sepia(.1) saturate(1.1) contrast(1.02) brightness(.94) hue-rotate(-8deg);
+}
+.band-tint{position:absolute;inset:0;mix-blend-mode:multiply;opacity:.3;background:linear-gradient(180deg,#f6c3d3,#6d2342)}
+.band-scrim{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(80% 90% at 50% 50%, rgba(48,14,28,.62) 0%, rgba(48,14,28,.42) 60%, rgba(36,10,22,.54) 100%);
+}
+.band-quote{
+  position:relative;z-index:1;margin:0;max-width:32ch;
+  font-style:italic;font-weight:300;text-align:center;
+  font-size:clamp(17px,5vw,22px);line-height:1.65;color:#fff3f6;
+  text-shadow:0 2px 14px rgba(40,8,22,.65);
+}
+.band-quote .t-ar{font-family:var(--arabic);font-style:normal;font-size:1.1em}
+@media (prefers-reduced-motion: reduce){
+  .hero-photo{animation:none !important}
+}
 </style>
 </head>
 
@@ -476,6 +548,11 @@ body.intro-lock{overflow:hidden}
 
 <!-- ═════════  SCREEN 1 — THE OPENING  ═════════ -->
 <section class="scene" id="gate" aria-labelledby="gate-title">
+  <div class="hero-bg" aria-hidden="true">
+    <img class="hero-photo" src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=1600&q=80" alt="" decoding="async" fetchpriority="high">
+    <span class="hero-tint"></span>
+    <span class="hero-scrim"></span>
+  </div>
   <div class="gate-inner">
     <p class="eyebrow lg" id="gate-title">
       <span class="t-en">You are warmly invited</span>
@@ -547,6 +624,17 @@ body.intro-lock{overflow:hidden}
       <span class="t-ar">افتح الدعوة</span>
     </a>
   </div>
+</section>
+
+<!-- ═════════  V3 — PHOTO BAND  ═════════ -->
+<section class="band">
+  <img class="band-photo" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy" decoding="async" aria-hidden="true">
+  <span class="band-tint" aria-hidden="true"></span>
+  <span class="band-scrim" aria-hidden="true"></span>
+  <p class="band-quote">
+    <span class="t-en">“Every love story is beautiful — ours is our favourite.”</span>
+    <span class="t-ar">«كل قصص الحب جميلة، لكن قصتنا الأقرب إلى قلبينا»</span>
+  </p>
 </section>
 
 <!-- ═════════  SCREEN 2 — THE INVITATION  ═════════ -->
@@ -727,6 +815,20 @@ body.intro-lock{overflow:hidden}
   </article>
 </section>
 
+<script>
+/* Rolling demo date: without a real order date (?d=) the demo always counts
+   down to ~90 days from today, so the countdown never reads as expired. */
+(function () {
+  try {
+    var p = new URLSearchParams(window.__D3WA__ || location.search);
+    if (!p.get("d")) {
+      var t = new Date(Date.now() + 90 * 864e5);
+      p.set("d", t.getFullYear() + "-" + ("0"+(t.getMonth()+1)).slice(-2) + "-" + ("0"+t.getDate()).slice(-2));
+      window.__D3WA__ = p.toString();
+    }
+  } catch (e) {}
+})();
+</script>
 <script>
 (function () {
   "use strict";

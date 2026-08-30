@@ -22,6 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&display=swap">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1510076857177-7470076d4098?auto=format&fit=crop&w=1600&q=80">
 
 <style>
 /* ───────────────  TOKENS  ─────────────── */
@@ -139,6 +140,29 @@ html:not(.ar) .t-ar{display:none}
 }
 
 /* ───────────────  GATE  ─────────────── */
+/* full-bleed barn photo — warm string lights behind the opening screen.
+   If the image fails, the body's parchment gradient shows through. */
+#gate{position:relative;overflow:hidden}
+.hero-photo{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url("https://images.unsplash.com/photo-1510076857177-7470076d4098?auto=format&fit=crop&w=1600&q=80") center 55%/cover no-repeat;
+  filter:sepia(.22) saturate(1.12) contrast(1.04) brightness(1.02);
+  transform-origin:50% 55%;
+  animation:heroKen 22s ease-in-out infinite alternate;
+  will-change:transform;
+}
+@keyframes heroKen{from{transform:scale(1)}to{transform:scale(1.08)}}
+/* autumn-amber grade — parchment-bright behind the ring, barn glow at the edges */
+.hero-scrim{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(125% 88% at 50% 44%,
+      rgba(250,245,236,.94) 0%,
+      rgba(250,245,236,.84) 42%,
+      rgba(250,245,236,.55) 66%,
+      rgba(158,63,52,.22) 86%,
+      rgba(90,40,28,.42) 100%);
+}
 .gate-inner{
   position:relative;z-index:2;
   display:flex;flex-direction:column;align-items:center;
@@ -308,6 +332,7 @@ html:not(.ar) .names .t-ar{display:none}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .ring,.glint,.shine,.gate-inner,.petal{animation:none !important}
+  .hero-photo{animation:none !important}
   .petal{display:none}
   #card:target .rv,.card.in .rv{animation:none !important}
 }
@@ -475,6 +500,8 @@ body.intro-lock{overflow:hidden}
 
 <!-- ═════════  SCREEN 1 — THE OPENING  ═════════ -->
 <section class="scene" id="gate" aria-labelledby="gate-title">
+  <div class="hero-photo" aria-hidden="true"></div>
+  <div class="hero-scrim" aria-hidden="true"></div>
   <div class="gate-inner">
     <p class="eyebrow lg" id="gate-title">
       <span class="t-en">You are warmly invited</span>
@@ -726,6 +753,20 @@ body.intro-lock{overflow:hidden}
   </article>
 </section>
 
+<script>
+/* Rolling demo date: without a real order date (?d=) the demo always counts
+   down to ~90 days from today, so the countdown never reads as expired. */
+(function () {
+  try {
+    var p = new URLSearchParams(window.__D3WA__ || location.search);
+    if (!p.get("d")) {
+      var t = new Date(Date.now() + 90 * 864e5);
+      p.set("d", t.getFullYear() + "-" + ("0"+(t.getMonth()+1)).slice(-2) + "-" + ("0"+t.getDate()).slice(-2));
+      window.__D3WA__ = p.toString();
+    }
+  } catch (e) {}
+})();
+</script>
 <script>
 (function () {
   "use strict";

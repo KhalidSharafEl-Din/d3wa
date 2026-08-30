@@ -827,6 +827,20 @@ html:not(.en) .chip{font-family:var(--kufi);font-weight:500;font-size:15px}
 </div>
 
 <script>
+/* Rolling demo date: without a real order date (?d=) the demo always counts
+   down to ~90 days from today, so the countdown never reads as expired. */
+(function () {
+  try {
+    var p = new URLSearchParams(window.__D3WA__ || location.search);
+    if (!p.get("d")) {
+      var t = new Date(Date.now() + 90 * 864e5);
+      p.set("d", t.getFullYear() + "-" + ("0"+(t.getMonth()+1)).slice(-2) + "-" + ("0"+t.getDate()).slice(-2));
+      window.__D3WA__ = p.toString();
+    }
+  } catch (e) {}
+})();
+</script>
+<script>
 (function () {
   "use strict";
   var docEl = document.documentElement;

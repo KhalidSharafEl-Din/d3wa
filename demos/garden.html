@@ -22,6 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1600&q=80">
 
 <style>
 /* ─────────  TOKENS · D3-010 “جاردن / Botanical Garden”  ───────── */
@@ -110,6 +111,29 @@ section{position:relative;padding:clamp(56px,14vw,96px) 22px}
   display:flex;align-items:center;justify-content:center;
   padding-top:calc(64px + env(safe-area-inset-top));
   padding-bottom:calc(44px + env(safe-area-inset-bottom));
+  overflow:hidden;   /* contains the Ken Burns drift */
+}
+/* full-bleed lakeside-ceremony photo — under sprays/arch/names.
+   If the image fails, the page's paper + watercolor washes show through. */
+.hero-photo{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url("https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1600&q=80") center 58%/cover no-repeat;
+  filter:saturate(.94) sepia(.08) brightness(1.04);
+  transform-origin:50% 55%;
+  animation:heroKen 22s ease-in-out infinite alternate;
+  will-change:transform;
+}
+@keyframes heroKen{from{transform:scale(1)}to{transform:scale(1.08)}}
+/* warm-white / sage grade — paper-bright behind the arch, photo-rich at the edges */
+.hero-scrim{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(120% 82% at 50% 42%,
+      rgba(250,248,242,.94) 0%,
+      rgba(250,248,242,.82) 46%,
+      rgba(250,248,242,.52) 68%,
+      rgba(156,175,136,.3) 86%,
+      rgba(95,113,97,.42) 100%);
 }
 .hero .inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(18px,4.6vw,26px)}
 
@@ -286,7 +310,12 @@ html:not(.en) .cd-num{font-family:var(--arabic)}
 .intro{
   position:fixed;inset:0;z-index:100;
   cursor:pointer;overflow:hidden;
-  background:var(--paper);
+  /* the hero photo breathes faintly behind the greenery curtains;
+     if it fails, the near-opaque paper wash keeps the original look */
+  background:
+    linear-gradient(rgba(250,248,242,.88), rgba(250,248,242,.88)),
+    url("https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1600&q=80") center 58%/cover no-repeat,
+    var(--paper);
   -webkit-tap-highlight-color:transparent;
   transition:opacity .5s ease .5s;
 }
@@ -386,6 +415,31 @@ html:not(.en) .chip{font-family:var(--arabic);font-size:17px}
 .chip[aria-pressed="true"]{background:var(--euc);border-color:var(--euc);color:#FBFAF5}
 .chip:focus-visible{outline:1.5px solid var(--ink);outline-offset:3px}
 
+/* ─────────  SECONDARY PHOTO BAND  ───────── */
+.photo-band{
+  position:relative;overflow:hidden;
+  min-height:clamp(210px,38vw,320px);
+  display:flex;align-items:flex-end;justify-content:center;
+  padding:28px 22px;
+  background-image:
+    url("https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1600&q=80"),
+    linear-gradient(160deg,#9CAF88 0%,#5F7161 100%);
+  background-size:cover,cover;
+  background-position:center 40%,center;
+  background-repeat:no-repeat;
+}
+.photo-band::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(63,74,60,.72) 0%, rgba(63,74,60,.18) 48%, rgba(250,248,242,.14) 100%);
+}
+.pb-line{
+  position:relative;margin:0;text-align:center;max-width:520px;
+  color:#F6F5EE;font-size:clamp(16px,4.6vw,19px);line-height:1.75;font-weight:700;
+  text-shadow:0 1px 2px rgba(30,38,30,.7),0 2px 14px rgba(30,38,30,.55);
+}
+html.en .pb-line{font-weight:500}
+.pb-line .t-en{font-style:italic}
+
 /* ─────────  MUSIC TOGGLE  ───────── */
 .music-toggle{
   position:fixed;
@@ -408,6 +462,7 @@ html:not(.en) .chip{font-family:var(--arabic);font-size:17px}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .spray-top svg,.spray-bottom svg,.scroll-cue svg{animation:none !important}
+  .hero-photo{animation:none !important}
   .rv{opacity:1;transform:none;transition:none}
   .intro-hint{animation:none !important}
   .intro,.intro-leaf,.intro-core{transition:none}
@@ -505,6 +560,8 @@ html:not(.en) .chip{font-family:var(--arabic);font-size:17px}
 
 <!-- ═════  HERO — arch of greenery, names, wax seal  ═════ -->
 <section class="hero" aria-labelledby="names">
+  <div class="hero-photo" aria-hidden="true"></div>
+  <div class="hero-scrim" aria-hidden="true"></div>
   <!-- corner spray № 1 · top, bleeding off-canvas -->
   <div class="spray spray-top" aria-hidden="true">
     <svg viewBox="0 0 340 360" xmlns="http://www.w3.org/2000/svg">
@@ -769,6 +826,14 @@ html:not(.en) .chip{font-family:var(--arabic);font-size:17px}
   </div>
 </section>
 
+<!-- ═════  PHOTO BAND — HAND IN HAND  ═════ -->
+<section class="photo-band" aria-label="يداً بيد / Hand in hand">
+  <p class="pb-line">
+    <span class="t-ar">يداً بيد، بين الخضرة والضي</span>
+    <span class="t-en">Hand in hand, where the garden turns to light</span>
+  </p>
+</section>
+
 <div class="stem-divider" aria-hidden="true">
   <svg viewBox="0 0 220 30" xmlns="http://www.w3.org/2000/svg">
     <path d="M8 15 C40 16.5 84 12.5 128 15 C162 16.8 190 14.6 212 15.5" fill="none" stroke="#5F7161" stroke-width="1.3" stroke-linecap="round" opacity=".55"/>
@@ -879,6 +944,20 @@ html:not(.en) .chip{font-family:var(--arabic);font-size:17px}
   </svg>
 </button>
 
+<script>
+/* Rolling demo date: without a real order date (?d=) the demo always counts
+   down to ~90 days from today, so the countdown never reads as expired. */
+(function () {
+  try {
+    var p = new URLSearchParams(window.__D3WA__ || location.search);
+    if (!p.get("d")) {
+      var t = new Date(Date.now() + 90 * 864e5);
+      p.set("d", t.getFullYear() + "-" + ("0"+(t.getMonth()+1)).slice(-2) + "-" + ("0"+t.getDate()).slice(-2));
+      window.__D3WA__ = p.toString();
+    }
+  } catch (e) {}
+})();
+</script>
 <script>
 (function () {
   "use strict";

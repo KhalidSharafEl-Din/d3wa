@@ -17,6 +17,8 @@
 <meta property="og:title" content="عمر وسلمى — كتب كتاب · Omar &amp; Salma">
 <meta property="og:description" content="السبت ٢٢ أغسطس ٢٠٢٦ · ٨:٠٠ مساءً · فيلا روز، المعادي، القاهرة — Saturday, 22 August 2026 · 8:00 PM">
 
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=1600&q=80" fetchpriority="high">
+
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230e3b2e'/%3E%3Cg fill='none' stroke='%23c9a24b' stroke-width='2'%3E%3Crect x='9' y='9' width='14' height='14'/%3E%3Crect x='9' y='9' width='14' height='14' transform='rotate(45 16 16)'/%3E%3C/g%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,7 +114,62 @@ html:not(.en) .t-en{display:none}
   min-height:100vh;min-height:100svh;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   padding-top:calc(56px + env(safe-area-inset-top));
+  max-width:none;width:100%;
+  position:relative;overflow:hidden;
 }
+
+/* ─────────────── PHOTO HERO + PHOTO BAND ─────────────── */
+/* Zellige-fountain photo graded into the emerald+gold world:
+   multiply tint of the palette green, a warm gold breath, then a scrim
+   that settles the frame into the page gradient. If the image fails,
+   the layer removes itself and the original gradient remains. */
+.hero-photo{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-photo img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  filter:sepia(.22) saturate(.82) contrast(1.03) brightness(.92);
+  animation:ken 22s ease-in-out infinite alternate;
+  will-change:transform;
+}
+@keyframes ken{from{transform:scale(1)}to{transform:scale(1.1)}}
+.hero-photo::before{
+  content:"";position:absolute;inset:0;
+  background:#0e3b2e;
+  mix-blend-mode:multiply;opacity:.62;
+}
+.hero-photo::after{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(64% 46% at 50% 46%, rgba(8,42,32,.55), rgba(8,42,32,0) 76%),
+    radial-gradient(75% 48% at 50% 34%, rgba(201,162,75,.14), rgba(201,162,75,0) 70%),
+    radial-gradient(110% 70% at 50% 45%, rgba(8,42,32,.12), rgba(8,42,32,.52) 85%),
+    linear-gradient(180deg, rgba(8,42,32,.62) 0%, rgba(8,42,32,.22) 30%, rgba(14,59,46,.4) 66%, rgba(8,42,32,.96) 100%);
+}
+.hero-inner{position:relative;z-index:2}
+
+.photo-band{
+  position:relative;z-index:1;
+  min-height:clamp(190px,34vh,320px);
+  display:flex;align-items:center;justify-content:center;
+  padding:32px 22px;
+  text-align:center;
+  background-color:#0b3226;
+  background-image:
+    linear-gradient(180deg, rgba(8,42,32,.95) 0%, rgba(11,50,38,.74) 22%, rgba(8,42,32,.66) 55%, rgba(11,50,38,.7) 80%, rgba(8,42,32,.95) 100%),
+    url("https://images.unsplash.com/photo-1512632578888-169bbbc64f33?auto=format&fit=crop&w=1600&q=80");
+  background-size:cover;
+  background-position:center 82%;
+  border-top:1px solid var(--gold-faint);
+  border-bottom:1px solid var(--gold-faint);
+}
+.band-line{
+  margin:0;max-width:520px;
+  font-size:clamp(18px,5.4vw,24px);line-height:1.9;
+  color:var(--ivory);
+  text-shadow:0 2px 14px rgba(0,0,0,.5);
+}
+.band-line .t-ar{font-family:var(--ar-display)}
+.band-line .t-en{font-family:var(--en-display);letter-spacing:.04em}
 
 .eyebrow{
   margin:0;
@@ -501,7 +558,7 @@ html.en .chip > span{font-family:var(--en-display);font-weight:400}
 
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
-  .hero-inner,.scroll-hint,.arch-glow{animation:none !important}
+  .hero-inner,.scroll-hint,.arch-glow,.hero-photo img{animation:none !important}
   .rv{opacity:1;transform:none;transition:none}
   .intro .door,.intro-inner{transition:none !important}
   .intro-hint{animation:none !important}
@@ -549,6 +606,11 @@ html.en .chip > span{font-family:var(--en-display);font-weight:400}
 
 <!-- ═════════ HERO — THE ANDALUSIAN ARCH ═════════ -->
 <header class="scene first" id="hero" aria-labelledby="heroNames">
+  <div class="hero-photo" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=1600&q=80"
+         alt="" decoding="async" fetchpriority="high"
+         onerror="this.parentElement.style.display='none'">
+  </div>
   <div class="hero-inner">
 
     <p class="bismillah">
@@ -835,6 +897,14 @@ html.en .chip > span{font-family:var(--en-display);font-weight:400}
   </p>
 </section>
 
+<!-- ═════════ PHOTO BAND — DUSK BLESSING ═════════ -->
+<section class="photo-band" aria-label="Blessing">
+  <p class="band-line">
+    <span class="t-ar">على بركة الله، نبدأ حكايتنا</span>
+    <span class="t-en">With God’s blessing, our story begins</span>
+  </p>
+</section>
+
 <!-- ═════════ RSVP ═════════ -->
 <section class="scene" id="rsvp" aria-label="RSVP">
   <div class="divider rv" aria-hidden="true">
@@ -908,6 +978,20 @@ html.en .chip > span{font-family:var(--en-display);font-weight:400}
   <p class="credit rv d3">D3wa · دعوة</p>
 </footer>
 
+<script>
+/* Rolling demo date: without a real order date (?d=) the demo always counts
+   down to ~90 days from today, so the countdown never reads as expired. */
+(function () {
+  try {
+    var p = new URLSearchParams(window.__D3WA__ || location.search);
+    if (!p.get("d")) {
+      var t = new Date(Date.now() + 90 * 864e5);
+      p.set("d", t.getFullYear() + "-" + ("0"+(t.getMonth()+1)).slice(-2) + "-" + ("0"+t.getDate()).slice(-2));
+      window.__D3WA__ = p.toString();
+    }
+  } catch (e) {}
+})();
+</script>
 <script>
 (function () {
   "use strict";
