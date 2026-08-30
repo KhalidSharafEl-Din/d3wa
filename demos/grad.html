@@ -333,6 +333,117 @@ html:not(.en) .cd-num{font-family:var(--ar);font-weight:800}
 .confetti g:nth-child(3){animation-delay:2.8s}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 
+/* ───────────  OPENING MOMENT — the giant year splits apart  ─────────── */
+.intro{
+  position:fixed;inset:0;z-index:100;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;-webkit-tap-highlight-color:transparent;
+  background:var(--cream);
+  background-image:radial-gradient(130% 70% at 50% -10%, #FFFDF6 0%, var(--cream) 58%, #EFE9DA 100%);
+  transition:opacity .45s ease .5s;
+}
+.intro[hidden]{display:none}
+body.intro-lock{overflow:hidden;height:100vh}
+.intro-inner{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:20px}
+.intro-yr{
+  display:flex;direction:ltr;
+  font-family:var(--cond);font-weight:700;
+  font-size:clamp(104px,32vw,200px);line-height:.95;letter-spacing:-.01em;
+  color:transparent;-webkit-text-stroke:3px var(--citrus);
+}
+html:not(.en) .intro-yr{font-family:var(--ar);font-weight:800;font-size:clamp(84px,26vw,164px)}
+@supports not (-webkit-text-stroke:2px #000){.intro-yr{color:var(--citrus)}}
+.intro-yr .y1,.intro-yr .y2{display:inline-block;transition:transform .85s cubic-bezier(.65,.05,.35,1),opacity .85s ease}
+.intro-mid{display:flex;flex-direction:column;align-items:center;gap:8px;transition:opacity .5s ease,transform .5s ease}
+.intro-name{margin:2px 0 0;font-family:var(--serif);font-size:clamp(40px,12vw,58px);line-height:1.1;font-weight:400;color:var(--navy)}
+.intro-name .t-ar{font-family:var(--ar);font-weight:800;font-size:.94em;line-height:1.25}
+.intro-tap{
+  display:inline-flex;align-items:center;justify-content:center;
+  margin-top:10px;min-height:48px;padding:0 26px;
+  border:2px solid var(--navy);border-radius:999px;
+  background:var(--paper);color:var(--navy);
+  font-family:var(--ar);font-weight:700;font-size:14.5px;
+  box-shadow:3px 3px 0 rgba(217,182,92,.55);
+  animation:tapPulse 2.4s ease-in-out infinite;
+}
+.intro-tap .t-en{font-family:var(--cond);font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
+@keyframes tapPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.intro:focus-visible{outline:none}
+.intro:focus-visible .intro-tap{outline:2px solid var(--citrus);outline-offset:3px}
+.intro.open{opacity:0;pointer-events:none}
+.intro.open .y1{transform:translateX(-135%) rotate(-8deg);opacity:0}
+.intro.open .y2{transform:translateX(135%) rotate(8deg);opacity:0}
+.intro.open .intro-mid{opacity:0;transform:translateY(12px)}
+
+/* ───────────  V2 — agenda / dress / gallery / gift (inside the card)  ─────────── */
+.v2sec{margin-top:clamp(20px,5.6vw,26px);text-align:start}
+.v2-title{
+  margin:0 0 4px;text-align:center;
+  font-family:var(--cond);font-size:11px;font-weight:600;
+  letter-spacing:.3em;text-indent:.3em;text-transform:uppercase;color:var(--citrus-deep);
+}
+.v2-title .t-ar{font-family:var(--ar);font-size:14px;font-weight:700;letter-spacing:.08em;text-indent:.08em}
+.agenda-list{list-style:none;margin:8px 0 0;padding:0}
+.agenda-list li{display:flex;align-items:center;gap:12px;padding:11px 2px;border-top:1px solid var(--line-soft)}
+.agenda-list li:last-child{border-bottom:1px solid var(--line-soft)}
+.ag-time{
+  flex:none;min-width:58px;text-align:center;padding:6px 8px;
+  border:2px solid var(--navy);border-radius:10px;background:rgba(217,182,92,.16);
+  font-family:var(--cond);font-weight:600;font-size:13px;font-variant-numeric:tabular-nums;
+  transform:rotate(-2deg);
+}
+.agenda-list li:nth-child(even) .ag-time{transform:rotate(2deg)}
+html:not(.en) .ag-time{font-family:var(--ar);font-weight:700}
+.ag-what{font-weight:700;font-size:clamp(15px,4.3vw,16.5px);color:var(--navy);line-height:1.5}
+.ag-what .t-en{font-weight:600}
+.dress-note{
+  margin:8px 0 0;padding:14px 16px;text-align:center;
+  border:2px solid var(--navy);border-radius:14px;
+  background:rgba(217,182,92,.14);box-shadow:3px 3px 0 rgba(217,182,92,.4);
+  font-size:clamp(14px,4vw,15.5px);font-weight:600;line-height:1.8;color:var(--navy);
+}
+.ph-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,2.6vw,12px);margin-top:14px}
+.ph{position:relative;margin:0;background:#fff;border:2px solid var(--navy);border-radius:6px;padding:5px 5px 18px;box-shadow:3px 3px 0 rgba(217,182,92,.5)}
+.ph:nth-child(1){transform:rotate(-2.4deg)}
+.ph:nth-child(2){transform:rotate(1.6deg)}
+.ph:nth-child(3){transform:rotate(-1.2deg)}
+.ph .tassel-dot{position:absolute;top:-7px;inset-inline-start:50%;transform:translateX(-50%);width:12px;height:12px;border-radius:50%;background:var(--citrus);border:2px solid var(--navy)}
+.ph-frame{position:relative;aspect-ratio:3/4;background:rgba(217,182,92,.18);border:1px dashed rgba(30,42,74,.3);display:grid;place-items:center;overflow:hidden}
+.ph-frame svg{width:46%;height:auto;opacity:.7}
+.ph-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gift-note{margin:8px 0 0;text-align:center;font-weight:700;font-size:clamp(15px,4.3vw,16.5px);line-height:1.8;color:var(--navy)}
+.gift-note .t-en{font-family:var(--serif);font-weight:400}
+
+/* ───────────  RSVP GUEST COUNT  ─────────── */
+.guests{margin:2px 0 6px}
+.guests-lbl{margin:0 0 8px;font-size:clamp(13.5px,3.9vw,15px);font-weight:700;color:var(--navy-soft);text-align:center}
+.guest-chips{display:flex;justify-content:center;gap:9px}
+.gchip{
+  min-width:50px;min-height:46px;
+  border:2px solid var(--navy);border-radius:12px;
+  background:var(--paper);color:var(--navy);
+  font-family:var(--ar);font-weight:700;font-size:15px;cursor:pointer;
+  box-shadow:2px 2px 0 rgba(217,182,92,.55);
+  -webkit-tap-highlight-color:transparent;
+}
+.gchip:nth-child(odd){transform:rotate(-1.5deg)}
+.gchip:nth-child(even){transform:rotate(1.5deg)}
+.gchip[aria-pressed="true"]{background:var(--citrus);border-color:var(--citrus-deep);color:#FDF8EF;box-shadow:2px 2px 0 rgba(30,42,74,.85)}
+.gchip:focus-visible{outline:2px solid var(--citrus);outline-offset:2px}
+
+/* ───────────  MUSIC TOGGLE  ─────────── */
+.music-btn{
+  position:fixed;bottom:calc(14px + env(safe-area-inset-bottom));inset-inline-end:14px;z-index:60;
+  width:48px;height:48px;border-radius:50%;
+  border:2px solid var(--navy);background:var(--paper);color:var(--navy);
+  display:grid;place-items:center;cursor:pointer;
+  box-shadow:3px 3px 0 rgba(217,182,92,.55);
+  -webkit-tap-highlight-color:transparent;
+}
+.music-btn svg{width:20px;height:20px}
+.music-btn[aria-pressed="true"]{background:var(--citrus);border-color:var(--citrus-deep);color:#FDF8EF}
+.music-btn:focus-visible{outline:2px solid var(--citrus);outline-offset:3px}
+
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 @media (max-width:380px){
@@ -345,15 +456,46 @@ html:not(.en) .cd-num{font-family:var(--ar);font-weight:800}
   .cap .draw{stroke-dashoffset:0}
   #card:target .rv,.card.in .rv{animation:none !important}
   .btn:hover,.lang-toggle:hover{transform:none}
+  .intro,.intro-yr .y1,.intro-yr .y2,.intro-mid{transition:none !important}
+  .intro-tap{animation:none !important}
+  .music-btn{display:none}
 }
 </style>
 </head>
 
 <body>
 
+<!-- ═════════  OPENING MOMENT — tap, and the year splits apart  ═════════ -->
+<div class="intro" id="intro" role="button" tabindex="0" hidden
+     aria-label="اضغط للفتح — افتح دعوة حفل التخرج / Tap to open the invitation">
+  <div class="intro-inner">
+    <div class="intro-yr" aria-hidden="true">
+      <span class="y1"><span class="t-ar js-yrh1-ar">٢٠</span><span class="t-en js-yrh1-en">20</span></span><span class="y2"><span class="t-ar js-yrh2-ar">٢٦</span><span class="t-en js-yrh2-en">26</span></span>
+    </div>
+    <div class="intro-mid">
+      <p class="eyebrow">
+        <span class="t-ar">حفل تخرج</span>
+        <span class="t-en">The graduation of</span>
+      </p>
+      <p class="intro-name">
+        <span class="t-ar js-n-ar">ندى</span>
+        <span class="t-en js-n-en">Nada</span>
+      </p>
+      <p class="intro-tap">
+        <span class="t-ar">اضغط للفتح 🎓</span>
+        <span class="t-en">Tap to open 🎓</span>
+      </p>
+    </div>
+  </div>
+</div>
+
 <button class="lang-toggle" id="langBtn" type="button" aria-label="Switch to English / التبديل إلى العربية">
   <span class="t-ar">EN</span>
   <span class="t-en"><span class="ar-word">العربية</span></span>
+</button>
+
+<button class="music-btn" id="musicBtn" type="button" aria-pressed="false" aria-label="تشغيل موسيقى هادئة / Toggle soft music">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18V5l10-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>
 </button>
 
 <!-- ═════════  SCREEN 1 — HERO  ═════════ -->
@@ -524,11 +666,86 @@ html:not(.en) .cd-num{font-family:var(--ar);font-weight:800}
       </li>
     </ul>
 
+    <div class="v2sec rv d3" id="agendaSec">
+      <p class="v2-title">
+        <span class="t-ar">برنامج اليوم</span>
+        <span class="t-en">Programme</span>
+      </p>
+      <ol class="agenda-list" id="agendaList">
+        <li><span class="ag-time"><span class="t-ar">٦:٠٠</span><span class="t-en">6:00</span></span><span class="ag-what"><span class="t-ar">الاستقبال</span><span class="t-en">Guests arrive</span></span></li>
+        <li><span class="ag-time"><span class="t-ar">٦:٣٠</span><span class="t-en">6:30</span></span><span class="ag-what"><span class="t-ar">كلمة الأهل</span><span class="t-en">A word from the family</span></span></li>
+        <li><span class="ag-time"><span class="t-ar">٧:٠٠</span><span class="t-en">7:00</span></span><span class="ag-what"><span class="t-ar">التكريم والتصوير</span><span class="t-en">Honours &amp; photos</span></span></li>
+        <li><span class="ag-time"><span class="t-ar">٨:٠٠</span><span class="t-en">8:00</span></span><span class="ag-what"><span class="t-ar">العشاء</span><span class="t-en">Dinner</span></span></li>
+      </ol>
+    </div>
+
+    <div class="v2sec rv d3" id="dressSec">
+      <p class="v2-title">
+        <span class="t-ar">الدريس كود</span>
+        <span class="t-en">Dress code</span>
+      </p>
+      <p class="dress-note">
+        <span class="t-ar" id="dressAr">سمارت كاجوال — لمسة كحلي أو ذهبي تليق بصور التخرج 🎓</span>
+        <span class="t-en" id="dressEn">Smart casual — a touch of navy or gold looks great in the photos 🎓</span>
+      </p>
+    </div>
+
+    <div class="v2sec rv d4" id="gallerySec">
+      <p class="v2-title">
+        <span class="t-ar">ألبوم التخرج</span>
+        <span class="t-en">Gallery</span>
+      </p>
+      <div class="ph-grid">
+        <figure class="ph" id="ph1">
+          <span class="tassel-dot" aria-hidden="true"></span>
+          <span class="ph-frame">
+            <svg viewBox="0 0 48 34" fill="none" aria-hidden="true"><path d="M6 14 24 6l18 8-18 8z" fill="#1E2A4A"/><path d="M35 18v8" stroke="#E98A15" stroke-width="2.4" stroke-linecap="round"/><circle cx="35" cy="28" r="2" fill="#D9B65C"/></svg>
+          </span>
+        </figure>
+        <figure class="ph" id="ph2">
+          <span class="tassel-dot" aria-hidden="true"></span>
+          <span class="ph-frame">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M32 42C20 32 16 18 22 6" stroke="#D9B65C" stroke-width="2" stroke-linecap="round"/><g fill="#D9B65C"><path d="M28 34c-6 .6-9.6-1.8-10.8-6.6 5.4-.6 9 1.8 10.8 6.6z"/><path d="M23 21c-5.4-.6-8.4-3.6-8.4-8.4 4.8 0 7.8 3 8.4 8.4z"/></g><g fill="#E98A15" opacity=".85"><path d="M31 29c4.8-2.4 9-1.8 12 1.8-4.2 3-8.4 2.4-12-1.8z"/><path d="M26 16c3-4.2 7.2-5.4 11.4-3.6-2.4 4.2-6.6 5.4-11.4 3.6z"/></g></svg>
+          </span>
+        </figure>
+        <figure class="ph" id="ph3">
+          <span class="tassel-dot" aria-hidden="true"></span>
+          <span class="ph-frame">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 8l4 10 10 1.6-7.4 7 2 10.4-8.6-5.4-8.6 5.4 2-10.4L10 19.6 20 18z" fill="#E98A15" opacity=".85"/><circle cx="39" cy="10" r="2.4" fill="#D9B65C"/><circle cx="9" cy="38" r="2" fill="#1E2A4A" opacity=".5"/></svg>
+          </span>
+        </figure>
+      </div>
+    </div>
+
+    <div class="v2sec rv d4" id="giftSec">
+      <p class="v2-title">
+        <span class="t-ar">الهدايا</span>
+        <span class="t-en">A note on gifts</span>
+      </p>
+      <p class="gift-note">
+        <span class="t-ar" id="giftAr">حضوركم ودعواتكم هي أغلى هدية لمهندستنا <span class="js-n-ar">ندى</span> 🧡</span>
+        <span class="t-en" id="giftEn">Your presence and prayers are the sweetest gift for our graduate, <span class="js-n-en">Nada</span> 🧡</span>
+      </p>
+    </div>
+
     <div class="actions rv d4">
       <p class="rsvp-q">
         <span class="t-ar">هل ستشاركونا الفرحة؟</span>
         <span class="t-en">Will you join the celebration?</span>
       </p>
+
+      <div class="guests">
+        <p class="guests-lbl">
+          <span class="t-ar">عدد الحضور</span>
+          <span class="t-en">Number of guests</span>
+        </p>
+        <div class="guest-chips" role="group" aria-label="عدد الحضور / Number of guests">
+          <button type="button" class="gchip" data-n="1" data-n-ar="١" aria-pressed="true"><span class="t-ar">١</span><span class="t-en">1</span></button>
+          <button type="button" class="gchip" data-n="2" data-n-ar="٢" aria-pressed="false"><span class="t-ar">٢</span><span class="t-en">2</span></button>
+          <button type="button" class="gchip" data-n="3" data-n-ar="٣" aria-pressed="false"><span class="t-ar">٣</span><span class="t-en">3</span></button>
+          <button type="button" class="gchip" data-n="4+" data-n-ar="٤+" aria-pressed="false"><span class="t-ar">٤+</span><span class="t-en">4+</span></button>
+        </div>
+      </div>
 
       <a class="btn citrus" id="acceptBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
@@ -603,6 +820,8 @@ html:not(.en) .cd-num{font-family:var(--ar);font-weight:800}
   function qp (k) { var v = qs && qs.get(k); return (v && v.trim()) ? v.trim() : null; }
   var pNAr = qp("n_ar"), pNEn = qp("n_en"), pDate = qp("d"), pTime = qp("t"),
       pVAr = qp("v_ar"), pVEn = qp("v_en"), pMap = qp("map"), pQ = qp("q"), pWa = qp("wa");
+  var pAgenda = qp("agenda"), pDress = qp("dress"), pGift = qp("gift"), pPhotos = qp("photos"),
+      pPh = [qp("ph1"), qp("ph2"), qp("ph3")], pIntro = qp("intro"), pMusic = qp("music");
   var pDateOk = (pDate && /^\d{4}-\d{2}-\d{2}$/.test(pDate)) ? pDate : null;
   var tMatch = pTime ? pTime.match(/^(\d{1,2}):(\d{2})$/) : null;
   var pTimeNorm = tMatch ? ("0" + tMatch[1]).slice(-2) + ":" + tMatch[2] : null;
@@ -623,7 +842,11 @@ html:not(.en) .cd-num{font-family:var(--ar);font-weight:800}
     /* giant year + class chip derive from d */
     if (pDateOk) {
       var yr = pDateOk.slice(0, 4);
-      if (yr !== "2026") { setAll(".js-yr-en", yr); setAll(".js-yr-ar", arDigits(yr)); }
+      if (yr !== "2026") {
+        setAll(".js-yr-en", yr); setAll(".js-yr-ar", arDigits(yr));
+        setAll(".js-yrh1-en", yr.slice(0, 2)); setAll(".js-yrh2-en", yr.slice(2));
+        setAll(".js-yrh1-ar", arDigits(yr.slice(0, 2))); setAll(".js-yrh2-ar", arDigits(yr.slice(2)));
+      }
       var dObj = new Date(pDateOk + "T12:00:00");
       if (!isNaN(dObj)) {
         var enMain = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(dObj);
@@ -678,6 +901,84 @@ html:not(.en) .cd-num{font-family:var(--ar);font-weight:800}
   }
   try { applyParams(); } catch (e) {}
 
+  /* ── v2 content: agenda / dress code / gallery / gift note ── */
+  function applyV2 () {
+    var byId = function (id) { return document.getElementById(id); };
+    var setId = function (id, txt) { var el = byId(id); if (el) el.textContent = txt; };
+    var hide = function (id) { var el = byId(id); if (el) el.hidden = true; };
+    if (pAgenda) {
+      var list = byId("agendaList");
+      if (list) {
+        var frag = document.createDocumentFragment(), rows = pAgenda.split("|");
+        for (var i = 0; i < rows.length; i++) {
+          var parts = rows[i].split("~");
+          var time = (parts[0] || "").trim();
+          if (!time) continue;
+          var li = document.createElement("li");
+          var tm = document.createElement("span"); tm.className = "ag-time";
+          var ta = document.createElement("span"); ta.className = "t-ar"; ta.textContent = arDigits(time);
+          var te = document.createElement("span"); te.className = "t-en"; te.textContent = time;
+          tm.appendChild(ta); tm.appendChild(te);
+          var wh = document.createElement("span"); wh.className = "ag-what";
+          var wa = document.createElement("span"); wa.className = "t-ar"; wa.textContent = (parts[1] || parts[2] || "").trim();
+          var we = document.createElement("span"); we.className = "t-en"; we.textContent = (parts[2] || parts[1] || "").trim();
+          wh.appendChild(wa); wh.appendChild(we);
+          li.appendChild(tm); li.appendChild(wh);
+          frag.appendChild(li);
+        }
+        if (frag.childNodes.length) { list.textContent = ""; list.appendChild(frag); }
+      }
+    }
+    if (pDress === "0") hide("dressSec");
+    else if (pDress) {
+      var dp = pDress.split("~");
+      setId("dressAr", dp[0].trim());
+      setId("dressEn", (dp[1] || dp[0]).trim());
+    }
+    if (pGift === "0") hide("giftSec");
+    else if (pGift) {
+      var gp = pGift.split("~");
+      setId("giftAr", gp[0].trim());
+      setId("giftEn", (gp[1] || gp[0]).trim());
+    }
+    if (pPhotos === "0") hide("gallerySec");
+    else {
+      for (var j = 0; j < 3; j++) {
+        if (pPh[j] && /^https?:\/\//.test(pPh[j])) {
+          var f = byId("ph" + (j + 1));
+          if (f) {
+            var frame = f.querySelector(".ph-frame") || f;
+            var img = document.createElement("img");
+            img.src = pPh[j]; img.alt = ""; img.loading = "lazy";
+            frame.appendChild(img);
+          }
+        }
+      }
+    }
+  }
+  try { applyV2(); } catch (e) {}
+
+  /* ── Opening moment — the giant year splits apart ── */
+  var intro = document.getElementById("intro");
+  if (intro && pIntro !== "0") {
+    intro.hidden = false;
+    document.body.classList.add("intro-lock");
+    var introDone = false;
+    var openIntro = function () {
+      if (introDone) return;
+      introDone = true;
+      document.body.classList.remove("intro-lock");
+      if (reduced) { intro.hidden = true; return; }
+      intro.classList.add("open");
+      window.setTimeout(function () { intro.hidden = true; }, 1000);
+    };
+    intro.addEventListener("click", openIntro);
+    intro.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); openIntro(); }
+    });
+    try { intro.focus({ preventScroll: true }); } catch (e) {}
+  }
+
   /* ── Language toggle — Arabic default, .en flips ── */
   var langBtn = document.getElementById("langBtn");
   var isAr = true;
@@ -730,8 +1031,8 @@ html:not(.en) .cd-num{font-family:var(--ar);font-weight:800}
     var url = "https://khalidsharafel-din.github.io/d3wa/demos/grad.html";
     if (location.protocol !== "file:") url = location.href.split("#")[0];
     var accept = isAr
-      ? "مبروك يا مهندسة " + nAr + "! 🎓 يسعدنا تأكيد حضورنا حفل التخرج — " + dateFullAr + "، " + timeArS + "، " + venAr + " 🧡"
-      : "Congratulations, Engineer " + nEn + "! 🎓 Happy to confirm we'll be at the graduation celebration — " + dateFullEn + ", " + timeEnS + ", " + venEn + " 🧡";
+      ? "مبروك يا مهندسة " + nAr + "! 🎓 يسعدنا تأكيد حضورنا حفل التخرج — " + dateFullAr + "، " + timeArS + "، " + venAr + " 🧡 — عدد الحضور: " + guestAr
+      : "Congratulations, Engineer " + nEn + "! 🎓 Happy to confirm we'll be at the graduation celebration — " + dateFullEn + ", " + timeEnS + ", " + venEn + " 🧡 — Guests: " + guestEn;
     var decline = isAr
       ? "ألف مبروك يا مهندسة " + nAr + "! 🎓 نعتذر عن حضور الحفل، وقلوبنا معكم — عقبال أفراحكم كلها 🧡"
       : "Huge congratulations, Engineer " + nEn + "! 🎓 So sorry we can't make it to the celebration — wishing you the brightest future 🧡";
@@ -741,6 +1042,67 @@ html:not(.en) .cd-num{font-family:var(--ar);font-weight:800}
     if (acceptBtn) acceptBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(accept);
     if (declineBtn) declineBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(decline);
     if (shareBtn) shareBtn.href = "https://wa.me/?text=" + encodeURIComponent(share);
+  }
+
+  /* ── RSVP guest count chips (default ١ / 1) ── */
+  var guestAr = "١", guestEn = "1";
+  var chips = document.querySelectorAll(".gchip");
+  function pickChip (btn) {
+    for (var i = 0; i < chips.length; i++) chips[i].setAttribute("aria-pressed", chips[i] === btn ? "true" : "false");
+    guestEn = btn.getAttribute("data-n") || "1";
+    guestAr = btn.getAttribute("data-n-ar") || "١";
+    updateLinks();
+  }
+  for (var ci = 0; ci < chips.length; ci++) (function (btn) {
+    btn.addEventListener("click", function () { pickChip(btn); });
+  })(chips[ci]);
+
+  /* ── Music toggle — bright, gentle ambience, OFF by default ── */
+  var musicBtn = document.getElementById("musicBtn");
+  if (musicBtn) {
+    var actx = null, master = null, audioEl = null, playing = false;
+    var musicUrl = (pMusic && /^https?:\/\//.test(pMusic)) ? pMusic : null;
+    var startSynth = function () {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return false;
+      actx = new AC();
+      master = actx.createGain();
+      master.gain.value = 0;
+      master.connect(actx.destination);
+      var notes = [261.63, 329.63, 440.0, 587.33]; /* bright, hopeful pad */
+      for (var i = 0; i < notes.length; i++) {
+        var o = actx.createOscillator(); o.type = "sine"; o.frequency.value = notes[i];
+        var og = actx.createGain(); og.gain.value = i === 3 ? 0.09 : 0.26;
+        var lfo = actx.createOscillator(); lfo.type = "sine"; lfo.frequency.value = 0.05 + i * 0.05;
+        var lg = actx.createGain(); lg.gain.value = og.gain.value * 0.5;
+        lfo.connect(lg); lg.connect(og.gain);
+        o.connect(og); og.connect(master);
+        o.start(); lfo.start();
+      }
+      return true;
+    };
+    musicBtn.addEventListener("click", function () {
+      playing = !playing;
+      if (playing) {
+        if (musicUrl) {
+          if (!audioEl) { audioEl = new Audio(musicUrl); audioEl.loop = true; audioEl.volume = 0.55; }
+          audioEl.play()["catch"](function () {});
+        } else if (!actx) {
+          if (!startSynth()) { playing = false; return; }
+          master.gain.linearRampToValueAtTime(0.05, actx.currentTime + 1.5);
+        } else {
+          actx.resume();
+          master.gain.linearRampToValueAtTime(0.05, actx.currentTime + 1);
+        }
+      } else {
+        if (audioEl) audioEl.pause();
+        if (actx) {
+          master.gain.linearRampToValueAtTime(0.0001, actx.currentTime + 0.4);
+          window.setTimeout(function () { if (!playing && actx) actx.suspend(); }, 500);
+        }
+      }
+      musicBtn.setAttribute("aria-pressed", playing ? "true" : "false");
+    });
   }
 
   /* ── Reveal the card when it scrolls into view ── */

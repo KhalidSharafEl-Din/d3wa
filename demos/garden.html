@@ -280,11 +280,140 @@ html:not(.en) .cd-num{font-family:var(--arabic)}
 .rv.d3{transition-delay:.3s}
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+[hidden]{display:none !important}
+
+/* ─────────  INTRO — GREENERY PARTING  ───────── */
+.intro{
+  position:fixed;inset:0;z-index:100;
+  cursor:pointer;overflow:hidden;
+  background:var(--paper);
+  -webkit-tap-highlight-color:transparent;
+  transition:opacity .5s ease .5s;
+}
+.intro-leaf{
+  position:absolute;top:0;height:100%;width:min(46%,300px);
+  pointer-events:none;
+  transition:transform 1.05s cubic-bezier(.65,.05,.35,1) .05s,opacity .9s ease .15s;
+}
+.intro-leaf svg{width:100%;height:100%;display:block}
+.il-l{left:0}
+.il-r{right:0}
+.il-r svg{transform:scaleX(-1)}
+.intro-core{
+  position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(16px,4.5vw,26px);padding:24px;text-align:center;
+  transition:opacity .4s ease;
+}
+.intro-eyebrow{margin:0;color:var(--euc)}
+.intro-eyebrow .t-en{font-size:11px;font-weight:500;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase}
+.intro-eyebrow .t-ar{font-size:17px}
+.intro-names{margin:0;font-weight:400;font-size:clamp(42px,12vw,64px);line-height:1.3;color:var(--ink)}
+.intro-hint{
+  position:relative;margin:clamp(6px,2vw,12px) 0 0;
+  width:116px;height:116px;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  background:rgba(156,175,136,.55);
+  box-shadow:0 8px 18px rgba(63,74,60,.18);
+  color:var(--ink);
+  animation:sealPulse 2.6s ease-in-out infinite;
+}
+.intro-hint::before{content:"";position:absolute;inset:9px;border-radius:50%;border:1px dashed var(--gold);opacity:.85}
+.intro-hint .t-ar{font-size:15px;font-weight:700}
+.intro-hint .t-en{font-size:10px;letter-spacing:.16em;text-indent:.16em;text-transform:uppercase;font-style:italic}
+@keyframes sealPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+.intro:focus-visible{outline:none}
+.intro:focus-visible .intro-hint{outline:1.5px solid var(--euc);outline-offset:4px}
+.intro.open{opacity:0;pointer-events:none}
+.intro.open .intro-core{opacity:0}
+.intro.open .il-l{transform:translateX(-75%) rotate(-6deg);opacity:0}
+.intro.open .il-r{transform:translateX(75%) rotate(6deg);opacity:0}
+
+/* ─────────  SHARED SECTION TITLE (v2 sections)  ───────── */
+.sec-title{margin:0 0 clamp(20px,6vw,30px);text-align:center}
+
+/* ─────────  AGENDA — STEM TIMELINE  ───────── */
+.agenda{
+  list-style:none;margin:0;padding:0;text-align:start;
+  border-inline-start:1px solid var(--hair);
+  padding-inline-start:24px;
+}
+.ag-item{position:relative;padding:clamp(16px,4.5vw,22px) 0}
+.ag-item::before{
+  content:"";position:absolute;inset-inline-start:-29.5px;top:28px;
+  width:10px;height:10px;border-radius:0 60% 0 60%;
+  background:var(--sage);transform:rotate(45deg);opacity:.85;
+}
+.ag-time{display:block;font-family:var(--serif);font-size:clamp(19px,5.2vw,22px);color:var(--euc)}
+html:not(.en) .ag-time{font-family:var(--arabic)}
+.ag-what{display:block;margin-top:2px;color:var(--ink);font-size:clamp(16px,4.4vw,18px)}
+
+/* ─────────  NOTE LINES (dress / gift)  ───────── */
+.note-line{margin:0;text-align:center;color:var(--ink-soft);font-size:clamp(17px,4.8vw,19px);line-height:1.8}
+.note-line .t-en{font-style:italic}
+
+/* ─────────  GALLERY — ARCH FRAMES  ───────── */
+.gallery{display:flex;gap:clamp(10px,3vw,16px);justify-content:center;align-items:stretch}
+.gframe{
+  margin:0;position:relative;overflow:hidden;
+  width:clamp(90px,26vw,130px);aspect-ratio:3/4.2;
+  border-radius:999px 999px 16px 16px;
+  border:1px solid var(--hair);
+  background:rgba(156,175,136,.14);
+  display:flex;align-items:center;justify-content:center;
+}
+.gframe:nth-child(2){background:rgba(232,196,184,.18)}
+.gframe:nth-child(3){background:rgba(122,132,80,.12)}
+.gframe .gph{width:42%;height:auto;opacity:.8}
+.gframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gframe.has-img .gph{display:none}
+
+/* ─────────  GUEST COUNT CHIPS  ───────── */
+.guests{margin:0 0 clamp(24px,7vw,32px)}
+.guests-lbl{display:block;margin-bottom:10px;color:var(--olive)}
+.guests-lbl .t-en{font-size:10.5px;font-weight:500;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase}
+.guests-lbl .t-ar{font-size:15px;font-weight:700}
+.guest-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.chip{
+  min-width:46px;min-height:46px;padding:0 14px;
+  border:1px solid var(--hair);border-radius:999px;
+  background:transparent;color:var(--euc);cursor:pointer;
+  font-family:var(--serif);font-size:16px;
+  transition:background-color .25s ease,color .25s ease,border-color .25s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+html:not(.en) .chip{font-family:var(--arabic);font-size:17px}
+.chip[aria-pressed="true"]{background:var(--euc);border-color:var(--euc);color:#FBFAF5}
+.chip:focus-visible{outline:1.5px solid var(--ink);outline-offset:3px}
+
+/* ─────────  MUSIC TOGGLE  ───────── */
+.music-toggle{
+  position:fixed;
+  bottom:calc(16px + env(safe-area-inset-bottom));
+  inset-inline-start:16px;z-index:70;
+  width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--hair);
+  background:rgba(250,248,242,.88);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  color:var(--euc);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 16px rgba(63,74,60,.1);
+  transition:background-color .25s ease,color .25s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.music-toggle svg{width:19px;height:19px}
+.music-toggle[aria-pressed="true"]{background:var(--euc);border-color:var(--euc);color:#FBFAF5}
+.music-toggle:focus-visible{outline:1.5px solid var(--euc);outline-offset:3px}
 
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .spray-top svg,.spray-bottom svg,.scroll-cue svg{animation:none !important}
   .rv{opacity:1;transform:none;transition:none}
+  .intro-hint{animation:none !important}
+  .intro,.intro-leaf,.intro-core{transition:none}
+  .intro{transition:opacity .25s ease}
+  .intro.open{opacity:0}
+  .music-toggle{display:none}
 }
 </style>
 </head>
@@ -312,6 +441,60 @@ html:not(.en) .cd-num{font-family:var(--arabic)}
     </g>
   </defs>
 </svg>
+
+<!-- ═════  INTRO — TAP TO OPEN (unhidden only via script; intro=0 skips)  ═════ -->
+<div class="intro" id="intro" hidden role="button" tabindex="0"
+     aria-label="افتحوا الدعوة — دوسوا للفتح / Open the invitation — tap to open">
+  <div class="intro-leaf il-l" aria-hidden="true">
+    <svg viewBox="0 0 200 700" preserveAspectRatio="xMinYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40 -20 C80 120 60 300 90 460 C104 540 92 640 60 720" fill="none" stroke="#5F7161" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+      <path d="M45 -16 C84 122 66 300 95 458 C108 538 96 636 66 716" fill="none" stroke="#9CAF88" stroke-width="1.1" stroke-linecap="round" opacity=".4"/>
+      <use href="#lf"  transform="translate(52 60) rotate(-30) scale(1.3)" fill="#9CAF88" opacity=".5"/>
+      <use href="#lf2" transform="translate(70 130) rotate(150) scale(1.1)" fill="#5F7161" opacity=".34"/>
+      <use href="#lf"  transform="translate(64 200) rotate(-16) scale(1.25)" fill="#9CAF88" opacity=".5"/>
+      <use href="#lf2" transform="translate(80 270) rotate(160) scale(1)" fill="#7A8450" opacity=".4"/>
+      <use href="#lf"  transform="translate(84 340) rotate(-6) scale(1.2)" fill="#9CAF88" opacity=".48"/>
+      <use href="#lf2" transform="translate(96 410) rotate(170) scale(1.06)" fill="#5F7161" opacity=".32"/>
+      <use href="#lf"  transform="translate(94 480) rotate(6) scale(1.24)" fill="#9CAF88" opacity=".5"/>
+      <use href="#lf2" transform="translate(86 550) rotate(-178) scale(1)" fill="#7A8450" opacity=".38"/>
+      <use href="#lf"  transform="translate(74 620) rotate(18) scale(1.15)" fill="#9CAF88" opacity=".46"/>
+      <use href="#ol"  transform="translate(60 300) rotate(60) scale(.95)" fill="#7A8450" opacity=".44"/>
+      <use href="#bloom" transform="translate(70 190) scale(.9)"/>
+      <use href="#bloom" transform="translate(92 520) scale(.7) rotate(40)"/>
+    </svg>
+  </div>
+  <div class="intro-leaf il-r" aria-hidden="true">
+    <svg viewBox="0 0 200 700" preserveAspectRatio="xMinYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40 -20 C80 120 60 300 90 460 C104 540 92 640 60 720" fill="none" stroke="#5F7161" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+      <path d="M45 -16 C84 122 66 300 95 458 C108 538 96 636 66 716" fill="none" stroke="#9CAF88" stroke-width="1.1" stroke-linecap="round" opacity=".4"/>
+      <use href="#lf"  transform="translate(52 90) rotate(-26) scale(1.25)" fill="#9CAF88" opacity=".5"/>
+      <use href="#lf2" transform="translate(72 160) rotate(154) scale(1.05)" fill="#5F7161" opacity=".34"/>
+      <use href="#lf"  transform="translate(66 232) rotate(-12) scale(1.2)" fill="#9CAF88" opacity=".48"/>
+      <use href="#lf2" transform="translate(84 304) rotate(164) scale(1)" fill="#7A8450" opacity=".4"/>
+      <use href="#lf"  transform="translate(88 376) rotate(-2) scale(1.22)" fill="#9CAF88" opacity=".5"/>
+      <use href="#lf2" transform="translate(96 446) rotate(174) scale(1.02)" fill="#5F7161" opacity=".32"/>
+      <use href="#lf"  transform="translate(90 516) rotate(10) scale(1.18)" fill="#9CAF88" opacity=".48"/>
+      <use href="#lf2" transform="translate(78 586) rotate(-174) scale(.98)" fill="#7A8450" opacity=".38"/>
+      <use href="#ol"  transform="translate(64 340) rotate(56) scale(.9)" fill="#7A8450" opacity=".44"/>
+      <use href="#bloom" transform="translate(76 250) scale(.82) rotate(20)"/>
+      <use href="#bloom" transform="translate(88 560) scale(.66) rotate(70)"/>
+    </svg>
+  </div>
+  <div class="intro-core">
+    <p class="intro-eyebrow">
+      <span class="t-ar">دعوة زفاف</span>
+      <span class="t-en">A wedding invitation</span>
+    </p>
+    <p class="intro-names">
+      <span class="t-ar" id="introNamesAr">عمر وسلمى</span>
+      <span class="t-en" id="introNamesEn">Omar &amp; Salma</span>
+    </p>
+    <span class="intro-hint" aria-hidden="true">
+      <span class="t-ar">دوسوا للفتح</span>
+      <span class="t-en">Tap to open</span>
+    </span>
+  </div>
+</div>
 
 <button class="lang-toggle" id="langBtn" type="button" aria-label="Switch language / التبديل بين اللغتين">
   <span class="t-ar">English</span>
@@ -500,6 +683,92 @@ html:not(.en) .cd-num{font-family:var(--arabic)}
   </div>
 </section>
 
+<!-- ═════  AGENDA  ═════ -->
+<section id="agenda" aria-labelledby="agenda-title">
+  <div class="inner">
+    <p class="eyebrow faded sec-title rv" id="agenda-title">
+      <span class="t-ar">برنامج اليوم</span>
+      <span class="t-en">How the day blooms</span>
+    </p>
+    <ol class="agenda rv d2" id="agList">
+      <li class="ag-item">
+        <span class="ag-time"><span class="t-ar">٦:٠٠ مساءً</span><span class="t-en">6:00 PM</span></span>
+        <span class="ag-what"><span class="t-ar">الاستقبال في الحديقة</span><span class="t-en">Reception in the garden</span></span>
+      </li>
+      <li class="ag-item">
+        <span class="ag-time"><span class="t-ar">٧:٣٠ مساءً</span><span class="t-en">7:30 PM</span></span>
+        <span class="ag-what"><span class="t-ar">الزفة</span><span class="t-en">The zaffa</span></span>
+      </li>
+      <li class="ag-item">
+        <span class="ag-time"><span class="t-ar">٩:٠٠ مساءً</span><span class="t-en">9:00 PM</span></span>
+        <span class="ag-what"><span class="t-ar">العشاء</span><span class="t-en">Dinner among the blooms</span></span>
+      </li>
+      <li class="ag-item">
+        <span class="ag-time"><span class="t-ar">١٠:٣٠ مساءً</span><span class="t-en">10:30 PM</span></span>
+        <span class="ag-what"><span class="t-ar">قطع الكيك والسهرة</span><span class="t-en">Cake &amp; dancing</span></span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═════  DRESS CODE  ═════ -->
+<section id="dress" aria-labelledby="dress-title">
+  <div class="inner">
+    <p class="eyebrow faded sec-title rv" id="dress-title">
+      <span class="t-ar">ملابس الحضور</span>
+      <span class="t-en">Dress code</span>
+    </p>
+    <p class="note-line rv d2">
+      <span class="t-ar" id="dressAr">درجات ترابية وباستيل ناعم — أناقة تليق بالحديقة</span>
+      <span class="t-en" id="dressEn">Earth tones and soft pastels — garden-party elegance</span>
+    </p>
+  </div>
+</section>
+
+<!-- ═════  GALLERY  ═════ -->
+<section id="gallery" aria-labelledby="gallery-title">
+  <div class="inner">
+    <p class="eyebrow faded sec-title rv" id="gallery-title">
+      <span class="t-ar">لحظاتنا</span>
+      <span class="t-en">Our moments</span>
+    </p>
+    <div class="gallery rv d2">
+      <figure class="gframe">
+        <svg class="gph" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M5 29 C7 17 13 8 29 4 C26 18 19 25 5 29 Z" fill="#9CAF88" opacity=".8"/>
+        </svg>
+        <img id="ph1" alt="" loading="lazy" hidden>
+      </figure>
+      <figure class="gframe">
+        <svg class="gph" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M5 29 C7 17 13 8 29 4 C26 18 19 25 5 29 Z" fill="#dfb0a2" opacity=".85"/>
+        </svg>
+        <img id="ph2" alt="" loading="lazy" hidden>
+      </figure>
+      <figure class="gframe">
+        <svg class="gph" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M5 29 C7 17 13 8 29 4 C26 18 19 25 5 29 Z" fill="#7A8450" opacity=".7"/>
+        </svg>
+        <img id="ph3" alt="" loading="lazy" hidden>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═════  GIFT NOTE  ═════ -->
+<section id="gift" aria-labelledby="gift-title">
+  <div class="inner">
+    <p class="eyebrow faded sec-title rv" id="gift-title">
+      <span class="t-ar">الهدايا</span>
+      <span class="t-en">Gifts</span>
+    </p>
+    <p class="note-line rv d2">
+      <span class="t-ar" id="giftAr">حضوركم ودعواتكم أغلى هدية 🤍</span>
+      <span class="t-en" id="giftEn">Your presence is the greatest gift 🤍</span>
+    </p>
+  </div>
+</section>
+
 <div class="stem-divider" aria-hidden="true">
   <svg viewBox="0 0 220 30" xmlns="http://www.w3.org/2000/svg">
     <path d="M8 15 C40 16.5 84 12.5 128 15 C162 16.8 190 14.6 212 15.5" fill="none" stroke="#5F7161" stroke-width="1.3" stroke-linecap="round" opacity=".55"/>
@@ -520,6 +789,16 @@ html:not(.en) .cd-num{font-family:var(--arabic)}
       <span class="t-ar">حضوركم أجمل هدية — أخبرونا عبر واتساب</span>
       <span class="t-en">Your presence is the sweetest gift — let us know on WhatsApp</span>
     </p>
+
+    <div class="guests rv d2" role="group" aria-label="عدد الحضور / Number of guests">
+      <span class="guests-lbl"><span class="t-ar">عدد الحضور</span><span class="t-en">Guests</span></span>
+      <div class="guest-chips">
+        <button type="button" class="chip" data-n="1" aria-pressed="true"><span class="t-ar">١</span><span class="t-en">1</span></button>
+        <button type="button" class="chip" data-n="2" aria-pressed="false"><span class="t-ar">٢</span><span class="t-en">2</span></button>
+        <button type="button" class="chip" data-n="3" aria-pressed="false"><span class="t-ar">٣</span><span class="t-en">3</span></button>
+        <button type="button" class="chip" data-n="4+" aria-pressed="false"><span class="t-ar">٤+</span><span class="t-en">4+</span></button>
+      </div>
+    </div>
 
     <div class="actions rv d2">
       <a class="btn yes" id="rsvpYes" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418">
@@ -592,6 +871,13 @@ html:not(.en) .cd-num{font-family:var(--arabic)}
 </section>
 
 </div><!-- /leaf-scene -->
+
+<button class="music-toggle" id="musicBtn" type="button" aria-pressed="false"
+        aria-label="موسيقى هادئة / Ambient music on–off">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+    <path d="M9 18V5l10-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>
+  </svg>
+</button>
 
 <script>
 (function () {
@@ -747,6 +1033,56 @@ html:not(.en) .cd-num{font-family:var(--arabic)}
   }
   try { applyParams(); } catch (e) {}
 
+  /* ── v2 content params: agenda / dress / gift / photos ── */
+  function applyV2Params () {
+    var pAgenda = qp("agenda"), pDress = qp("dress"), pGift = qp("gift"), pPhotos = qp("photos");
+    var hideSec = function (id) { var s = document.getElementById(id); if (s) s.hidden = true; };
+    var mkSpan = function (cls, txt) { var s = document.createElement("span"); s.className = cls; s.textContent = txt; return s; };
+    var setPair = function (arId, enId, raw) {
+      var parts = raw.split("~");
+      var arEl = document.getElementById(arId), enEl = document.getElementById(enId);
+      if (arEl) arEl.textContent = parts[0].trim();
+      if (enEl) enEl.textContent = (parts[1] || parts[0]).trim();
+    };
+    if (pAgenda === "0") hideSec("agenda");
+    else if (pAgenda) {
+      var list = document.getElementById("agList");
+      var rows = pAgenda.split("|").map(function (r) { return r.split("~"); })
+        .filter(function (p) { return p.length >= 2 && p[0].trim() && p[1].trim(); });
+      if (list && rows.length) {
+        list.textContent = "";
+        rows.forEach(function (p) {
+          var li = document.createElement("li"); li.className = "ag-item";
+          var tm = document.createElement("span"); tm.className = "ag-time";
+          tm.appendChild(mkSpan("t-ar", arDigits(p[0].trim())));
+          tm.appendChild(mkSpan("t-en", p[0].trim()));
+          var wh = document.createElement("span"); wh.className = "ag-what";
+          wh.appendChild(mkSpan("t-ar", p[1].trim()));
+          wh.appendChild(mkSpan("t-en", (p[2] || p[1]).trim()));
+          li.appendChild(tm); li.appendChild(wh);
+          list.appendChild(li);
+        });
+      }
+    }
+    if (pDress === "0") hideSec("dress");
+    else if (pDress) setPair("dressAr", "dressEn", pDress);
+    if (pGift === "0") hideSec("gift");
+    else if (pGift) setPair("giftAr", "giftEn", pGift);
+    if (pPhotos === "0") hideSec("gallery");
+    for (var gi = 1; gi <= 3; gi++) {
+      var pu = qp("ph" + gi);
+      if (pu && /^https:\/\//.test(pu)) {
+        var img = document.getElementById("ph" + gi);
+        if (img) {
+          img.src = pu;
+          img.hidden = false;
+          if (img.parentNode && img.parentNode.classList) img.parentNode.classList.add("has-img");
+        }
+      }
+    }
+  }
+  try { applyV2Params(); } catch (e) {}
+
   /* ── Language toggle — Arabic default, html.en flips to English/LTR ── */
   var langBtn = document.getElementById("langBtn");
   var isEn = false;
@@ -798,6 +1134,7 @@ html:not(.en) .cd-num{font-family:var(--arabic)}
     var accept = isEn
       ? "Hello! We joyfully confirm our attendance at the wedding of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueEn + " 🌿"
       : "مرحباً! يسعدنا تأكيد حضورنا حفل زفاف " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueAr + " 🌿";
+    accept += isEn ? " — Guests: " + guestN : " — عدد الحضور: " + arDigits(guestN);
     var decline = isEn
       ? "Hello! We're so sorry we won't be able to attend the wedding of " + namesEn + " on " + dateFullEn + ". Wishing you a lifetime of love and joy 🤍"
       : "مرحباً! نعتذر بشدة عن عدم تمكننا من حضور حفل زفاف " + namesAr + " يوم " + dateFullAr + "، مع أطيب التمنيات بحياة مليئة بالحب والسعادة 🤍";
@@ -816,6 +1153,87 @@ html:not(.en) .cd-num{font-family:var(--arabic)}
     rvs.forEach(function (el) { io.observe(el); });
   } else {
     rvs.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* ── Guest-count chips — count rides along in the accept message ── */
+  var guestN = "1";
+  var chips = document.querySelectorAll(".guest-chips .chip");
+  chips.forEach(function (ch) {
+    ch.addEventListener("click", function () {
+      guestN = ch.getAttribute("data-n") || "1";
+      chips.forEach(function (c) { c.setAttribute("aria-pressed", c === ch ? "true" : "false"); });
+      updateLinks();
+    });
+  });
+
+  /* ── Intro overlay — greenery curtains part on tap (intro=0 skips) ── */
+  var intro = document.getElementById("intro");
+  if (intro && qp("intro") !== "0") {
+    var inAr = document.getElementById("introNamesAr"), inEn = document.getElementById("introNamesEn");
+    if (inAr) inAr.textContent = namesAr;
+    if (inEn) inEn.textContent = namesEn;
+    intro.hidden = false;
+    document.body.style.overflow = "hidden";
+    try { intro.focus({ preventScroll: true }); } catch (eF) { try { intro.focus(); } catch (eF2) {} }
+    var introDone = false;
+    var openIntro = function () {
+      if (introDone) return;
+      introDone = true;
+      intro.classList.add("open");
+      document.body.style.overflow = "";
+      setTimeout(function () { intro.hidden = true; }, reduced ? 320 : 1250);
+    };
+    intro.addEventListener("click", openIntro);
+    intro.addEventListener("keydown", function (ev) {
+      if (ev.key === "Enter" || ev.key === " " || ev.key === "Spacebar") { ev.preventDefault(); openIntro(); }
+    });
+  }
+
+  /* ── Ambient music — OFF by default; WebAudio pad, or ?music= audio URL ── */
+  var musicBtn = document.getElementById("musicBtn");
+  if (musicBtn) {
+    var pMusic = qp("music");
+    var musicOn = false, audioEl = null, actx = null, masterG = null;
+    var startPad = function () {
+      if (!actx) {
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        actx = new AC();
+        masterG = actx.createGain();
+        masterG.gain.value = 0;
+        var filt = actx.createBiquadFilter();
+        filt.type = "lowpass"; filt.frequency.value = 780; filt.Q.value = 0.4;
+        masterG.connect(filt); filt.connect(actx.destination);
+        var lfo = actx.createOscillator(), lfoG = actx.createGain();
+        lfo.frequency.value = 0.08; lfoG.gain.value = 0.012;
+        lfo.connect(lfoG); lfoG.connect(masterG.gain); lfo.start();
+        [196, 246.94, 293.66].forEach(function (f, i) {
+          [-4, 3].forEach(function (det) {
+            var o = actx.createOscillator(), g = actx.createGain();
+            o.type = "sine"; o.frequency.value = f; o.detune.value = det;
+            g.gain.value = [0.2, 0.14, 0.1][i];
+            o.connect(g); g.connect(masterG); o.start();
+          });
+        });
+      }
+      if (actx.state === "suspended") actx.resume();
+      masterG.gain.cancelScheduledValues(actx.currentTime);
+      masterG.gain.setTargetAtTime(0.05, actx.currentTime, 0.6);
+    };
+    var stopPad = function () {
+      if (!actx) return;
+      masterG.gain.cancelScheduledValues(actx.currentTime);
+      masterG.gain.setTargetAtTime(0, actx.currentTime, 0.25);
+      setTimeout(function () { if (actx && !musicOn) actx.suspend(); }, 1200);
+    };
+    musicBtn.addEventListener("click", function () {
+      musicOn = !musicOn;
+      musicBtn.setAttribute("aria-pressed", musicOn ? "true" : "false");
+      if (pMusic && /^https:\/\//.test(pMusic)) {
+        if (!audioEl) { audioEl = new Audio(pMusic); audioEl.loop = true; audioEl.volume = 0.25; }
+        if (musicOn) audioEl.play().catch(function () {}); else audioEl.pause();
+      } else if (musicOn) startPad(); else stopPad();
+    });
   }
 
   applyLang();

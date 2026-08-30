@@ -327,6 +327,140 @@ html.en .closing .sig{font-family:var(--en-display);font-weight:400}
 .closing .dots{display:block;margin-top:18px;color:var(--olive);letter-spacing:.7em;text-indent:.7em;font-size:13px}
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+[hidden]{display:none !important}
+
+/* ─────────── INTRO — SUNRISE, HORIZON PARTING ─────────── */
+.intro{
+  position:fixed;inset:0;z-index:100;
+  cursor:pointer;overflow:hidden;
+  -webkit-tap-highlight-color:transparent;
+}
+.intro-sky{
+  position:absolute;left:0;top:0;width:100%;height:56%;
+  background:linear-gradient(to bottom,var(--cream) 0%,#f5ead4 34%,var(--sand) 66%,#ecc99b 88%,#dfa06e 100%);
+  transition:transform 1s cubic-bezier(.7,.02,.32,1) .12s;
+}
+.intro-sea{
+  position:absolute;left:0;bottom:0;width:100%;height:44.2%;
+  background:linear-gradient(to bottom,#dfa06e 0%,#c9744f 42%,#b95f3f 100%);
+  transition:transform 1s cubic-bezier(.7,.02,.32,1) .12s;
+}
+.intro-sea::before{
+  content:"";position:absolute;top:0;left:0;width:100%;height:2px;
+  background:rgba(251,246,236,.65);
+}
+.intro-sun{
+  position:absolute;left:50%;bottom:44%;
+  width:clamp(220px,64vw,340px);height:auto;
+  transform:translate(-50%,0);
+  pointer-events:none;
+  animation:introRise 2.8s cubic-bezier(.2,.6,.3,1) both;
+  transition:transform .9s ease,opacity .5s ease;
+}
+@keyframes introRise{from{transform:translate(-50%,36px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+.intro-core{
+  position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(14px,4vw,22px);padding:24px;text-align:center;
+  transition:opacity .4s ease;
+}
+.intro-eyebrow{margin:0;font-size:clamp(12px,3.4vw,14px);letter-spacing:.28em;text-indent:.28em;text-transform:uppercase;color:var(--terra-deep);font-weight:600;font-family:var(--en-serif)}
+html:not(.en) .intro-eyebrow{font-family:var(--ar-body);letter-spacing:.1em;text-indent:.1em;font-size:clamp(15px,4vw,17px)}
+.intro-names{
+  margin:0;font-size:clamp(40px,11vw,62px);line-height:1.2;color:var(--ink);
+  font-family:var(--ar-display);font-weight:600;text-wrap:balance;
+}
+.intro-names .t-en{font-family:var(--en-display);font-weight:400}
+.intro-hint{
+  margin:clamp(8px,3vw,16px) 0 0;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:46px;padding:0 28px;
+  border:1.5px solid var(--terra);border-radius:999px;
+  color:var(--terra-deep);font-weight:700;font-size:15px;font-family:var(--ar-body);
+  animation:introPulse 2.4s ease-in-out infinite;
+}
+html.en .intro-hint{font-family:var(--en-serif);font-weight:500;letter-spacing:.08em}
+@keyframes introPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.intro:focus-visible{outline:none}
+.intro:focus-visible .intro-hint{outline:2px solid var(--ink);outline-offset:4px}
+.intro.open{pointer-events:none}
+.intro.open .intro-core{opacity:0}
+.intro.open .intro-sun{transform:translate(-50%,-70px);opacity:0}
+.intro.open .intro-sky{transform:translateY(-103%)}
+.intro.open .intro-sea{transform:translateY(103%)}
+
+/* ─────────── AGENDA — DAY TIMELINE ─────────── */
+.agenda{
+  list-style:none;margin:clamp(26px,7vw,36px) auto 0;padding:0;
+  max-width:380px;text-align:start;
+  border-inline-start:1px dashed rgba(196,106,74,.45);
+  padding-inline-start:26px;
+}
+.ag-item{position:relative;padding:15px 0}
+.ag-item + .ag-item{border-top:1px solid rgba(122,122,82,.14)}
+.ag-item::before{
+  content:"";position:absolute;top:24px;inset-inline-start:-31px;
+  width:9px;height:9px;border-radius:50% 50% 50% 0;
+  background:var(--terra);transform:rotate(45deg);
+}
+.ag-time{display:block;font-family:var(--en-display);font-size:clamp(17px,4.6vw,20px);color:var(--terra-deep)}
+html:not(.en) .ag-time{font-family:var(--ar-display);font-weight:600}
+.ag-what{display:block;margin-top:2px;font-size:clamp(15px,4.2vw,17px);color:var(--ink)}
+html.en .ag-what{font-family:var(--en-serif)}
+
+/* ─────────── GALLERY — ORGANIC FRAMES ─────────── */
+.gallery{display:flex;gap:clamp(10px,3vw,18px);justify-content:center;align-items:stretch;margin-top:clamp(26px,7vw,36px)}
+.gframe{
+  margin:0;position:relative;overflow:hidden;
+  width:clamp(90px,26vw,160px);aspect-ratio:3/4;
+  background:linear-gradient(160deg,rgba(234,217,189,.65),rgba(251,246,236,.9));
+  border:1px solid var(--line-terra);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 12px 30px rgba(164,82,47,.08);
+}
+.gframe::after{content:"";position:absolute;inset:7px;border:1px dashed rgba(196,106,74,.35);border-radius:inherit;pointer-events:none}
+.gframe.g1{border-radius:120px 120px 20px 20px}
+.gframe.g2{border-radius:50% / 44%}
+.gframe.g3{border-radius:20px 20px 120px 120px}
+.gframe .gph{width:46%;height:auto;color:var(--terra);opacity:.7}
+.gframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gframe.has-img .gph{display:none}
+
+/* ─────────── GUEST COUNT CHIPS ─────────── */
+.guests{margin-top:clamp(24px,6vw,32px)}
+.guests-lbl{display:block;margin-bottom:12px;font-size:13px;font-weight:600;color:var(--olive)}
+html.en .guests-lbl{font-family:var(--en-serif);letter-spacing:.14em;text-transform:uppercase;font-size:11px}
+.guest-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.chip{
+  min-width:46px;min-height:46px;padding:0 14px;
+  border:1.5px solid var(--line-terra);border-radius:999px;
+  background:rgba(251,246,236,.9);color:var(--terra-deep);
+  font-family:var(--ar-display);font-size:17px;font-weight:600;cursor:pointer;
+  transition:background-color .25s ease,color .25s ease,border-color .25s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+html.en .chip{font-family:var(--en-display);font-size:16px}
+.chip[aria-pressed="true"]{background:var(--terra);border-color:var(--terra);color:#fff8ef}
+.chip:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+/* ─────────── MUSIC TOGGLE ─────────── */
+.music-toggle{
+  position:fixed;
+  bottom:calc(16px + env(safe-area-inset-bottom));
+  inset-inline-start:16px;z-index:80;
+  width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line-terra);
+  background:rgba(251,246,236,.88);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  color:var(--terra-deep);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 20px rgba(164,82,47,.14);
+  transition:background-color .25s ease,color .25s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.music-toggle svg{width:20px;height:20px}
+.music-toggle[aria-pressed="true"]{background:var(--terra);border-color:var(--terra);color:#fff8ef}
+.music-toggle:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 
 /* ─────────── REDUCED MOTION ─────────── */
 @media (prefers-reduced-motion: reduce){
@@ -334,11 +468,44 @@ html.en .closing .sig{font-family:var(--en-display);font-weight:400}
   .sun .core,.sun .ray,.frond.sway,.scroll-cue,.blob{animation:none !important}
   .in .rv{animation:none !important}
   .btn:hover,.lang-toggle:hover{transform:none}
+  .intro-sun,.intro-hint{animation:none !important}
+  .intro-sky,.intro-sea,.intro-sun,.intro-core{transition:none}
+  .intro{transition:opacity .25s ease}
+  .intro.open{opacity:0}
+  .music-toggle{display:none}
 }
 </style>
 </head>
 
 <body>
+
+<!-- ═══════ INTRO — TAP TO OPEN (unhidden only via script; intro=0 skips) ═══════ -->
+<div class="intro" id="intro" hidden role="button" tabindex="0"
+     aria-label="افتحوا الدعوة — دوسوا للفتح / Open the invitation — tap to open">
+  <div class="intro-sky" aria-hidden="true"></div>
+  <div class="intro-sea" aria-hidden="true"></div>
+  <svg class="intro-sun" viewBox="0 0 340 190" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <circle cx="170" cy="170" r="56" fill="rgba(196,106,74,.22)"/>
+    <path d="M80 170a90 90 0 0 1 180 0" stroke="#c46a4a" stroke-width="1.6" opacity=".7"/>
+    <path d="M56 170a114 114 0 0 1 228 0" stroke="#c46a4a" stroke-width="1.2" opacity=".45"/>
+    <path d="M32 170a138 138 0 0 1 276 0" stroke="#7a7a52" stroke-width="1" opacity=".3"/>
+    <path d="M170 24v20M84 58l12 15M256 58l-12 15" stroke="#c46a4a" stroke-width="1.6" stroke-linecap="round"/>
+  </svg>
+  <div class="intro-core">
+    <p class="intro-eyebrow">
+      <span class="t-ar">دعوة فرح على البحر</span>
+      <span class="t-en">A wedding by the sea</span>
+    </p>
+    <p class="intro-names">
+      <span class="t-ar" id="introNamesAr">عمر وسلمى</span>
+      <span class="t-en" id="introNamesEn">Omar &amp; Salma</span>
+    </p>
+    <p class="intro-hint" aria-hidden="true">
+      <span class="t-ar">دوسوا للفتح</span>
+      <span class="t-en">Tap to open</span>
+    </p>
+  </div>
+</div>
 
 <button class="lang-toggle" id="langBtn" type="button" aria-label="Switch language / تبديل اللغة">
   <span class="t-ar">English</span>
@@ -489,38 +656,30 @@ html.en .closing .sig{font-family:var(--en-display);font-weight:400}
   </p>
 </section>
 
-<!-- ═══════ RSVP ═══════ -->
-<section class="section center rsvp" id="rsvp" aria-labelledby="rsvp-title">
-  <h2 class="eyebrow rv" id="rsvp-title">
-    <span class="t-ar">شرفونا بتأكيد الحضور</span>
-    <span class="t-en">Kindly let us know</span>
+<!-- ═══════ AGENDA ═══════ -->
+<section class="section center" id="agenda" aria-labelledby="agenda-title">
+  <h2 class="eyebrow rv" id="agenda-title">
+    <span class="t-ar">برنامج اليوم</span>
+    <span class="t-en">The day's rhythm</span>
   </h2>
-
-  <p class="quote rv d2" style="margin-top:16px">
-    <span class="t-ar">وجودكم معنا يكمل فرحتنا — ياريت تأكدولنا على واتساب</span>
-    <span class="t-en">Your presence completes our joy — a quick tap on WhatsApp is all it takes</span>
-  </p>
-
-  <div class="rsvp-actions rv d3">
-    <a class="btn solid" id="acceptBtn" target="_blank" rel="noopener noreferrer"
-       href="https://wa.me/201005509418?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%21%20%D9%8A%D8%B3%D8%B9%D8%AF%D9%86%D9%8A%20%D8%AA%D8%A3%D9%83%D9%8A%D8%AF%20%D8%AD%D8%B6%D9%88%D8%B1%D9%8A%20%D9%81%D8%B1%D8%AD%20%D8%B9%D9%85%D8%B1%20%D9%88%D8%B3%D9%84%D9%85%D9%89%20%E2%80%94%20%D8%A7%D9%84%D8%B3%D8%A8%D8%AA%20%D9%A2%D9%A2%20%D8%A3%D8%BA%D8%B3%D8%B7%D8%B3%20%D9%A2%D9%A0%D9%A2%D9%A6%D8%8C%20%D9%A8%3A%D9%A0%D9%A0%20%D9%85%D8%B3%D8%A7%D8%A1%D9%8B%D8%8C%20%D8%B3%D9%8A%20%D8%B4%D9%8A%D9%84%20%D8%A8%D8%A7%D9%8A%D8%8C%20%D8%A7%D9%84%D8%B3%D8%A7%D8%AD%D9%84%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%20%F0%9F%8C%8A">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-      <span class="t-ar">أكيد جايين 🤍</span>
-      <span class="t-en">We'll be there 🤍</span>
-    </a>
-
-    <a class="btn ghost-olive" id="declineBtn" target="_blank" rel="noopener noreferrer"
-       href="https://wa.me/201005509418?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D9%84%D9%84%D8%A3%D8%B3%D9%81%20%D9%84%D9%86%20%D8%A3%D8%AA%D9%85%D9%83%D9%86%20%D9%85%D9%86%20%D8%AD%D8%B6%D9%88%D8%B1%20%D9%81%D8%B1%D8%AD%20%D8%B9%D9%85%D8%B1%20%D9%88%D8%B3%D9%84%D9%85%D9%89%20%E2%80%94%20%D8%A3%D8%AA%D9%85%D9%86%D9%89%20%D9%84%D9%83%D9%85%D8%A7%20%D9%83%D9%84%20%D8%A7%D9%84%D8%B3%D8%B9%D8%A7%D8%AF%D8%A9%20%D9%88%D8%A3%D9%84%D9%81%20%D9%85%D8%A8%D8%B1%D9%88%D9%83%20%F0%9F%A4%8D">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg>
-      <span class="t-ar">نعتذر عن الحضور</span>
-      <span class="t-en">Sadly, we can't make it</span>
-    </a>
-  </div>
-
-  <p class="rsvp-note rv d4">
-    <span class="t-ar">الرد يفتح واتساب برسالة جاهزة — إرسالها بضغطة واحدة</span>
-    <span class="t-en">Opens WhatsApp with a ready message — one tap to send</span>
-  </p>
+  <ol class="agenda rv d2" id="agList">
+    <li class="ag-item">
+      <span class="ag-time"><span class="t-ar">٨:٠٠ مساءً</span><span class="t-en">8:00 PM</span></span>
+      <span class="ag-what"><span class="t-ar">استقبال على البحر</span><span class="t-en">Reception by the sea</span></span>
+    </li>
+    <li class="ag-item">
+      <span class="ag-time"><span class="t-ar">٩:٣٠ مساءً</span><span class="t-en">9:30 PM</span></span>
+      <span class="ag-what"><span class="t-ar">الزفة</span><span class="t-en">The zaffa</span></span>
+    </li>
+    <li class="ag-item">
+      <span class="ag-time"><span class="t-ar">١٠:٣٠ مساءً</span><span class="t-en">10:30 PM</span></span>
+      <span class="ag-what"><span class="t-ar">العشاء</span><span class="t-en">Dinner under the stars</span></span>
+    </li>
+    <li class="ag-item">
+      <span class="ag-time"><span class="t-ar">١١:٣٠ مساءً</span><span class="t-en">11:30 PM</span></span>
+      <span class="ag-what"><span class="t-ar">السهرة على الرمل</span><span class="t-en">Dancing on the sand</span></span>
+    </li>
+  </ol>
 </section>
 
 <!-- ═══════ VENUE ═══════ -->
@@ -564,6 +723,105 @@ html.en .closing .sig{font-family:var(--en-display);font-weight:400}
   </svg>
 </section>
 
+<!-- ═══════ DRESS CODE ═══════ -->
+<section class="section center" id="dress" aria-labelledby="dress-title">
+  <h2 class="eyebrow rv" id="dress-title">
+    <span class="t-ar">ملابس الحضور</span>
+    <span class="t-en">Dress code</span>
+  </h2>
+  <p class="quote rv d2" style="margin-top:16px">
+    <span class="t-ar" id="dressAr">ألوان فاتحة وقماش خفيف — أناقة على رمل البحر</span>
+    <span class="t-en" id="dressEn">Light colours, breezy fabrics — beach-formal on the sand</span>
+  </p>
+</section>
+
+<!-- ═══════ GALLERY ═══════ -->
+<section class="section center" id="gallery" aria-labelledby="gallery-title">
+  <h2 class="eyebrow rv" id="gallery-title">
+    <span class="t-ar">لحظاتنا</span>
+    <span class="t-en">Our moments</span>
+  </h2>
+  <div class="gallery rv d2">
+    <figure class="gframe g1">
+      <svg class="gph" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 30a18 18 0 0 1 36 0" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M30 4v6M14 10l4 4M46 10l-4 4M6 34c8-4 16 4 24 0s16-4 24 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <img id="ph1" alt="" loading="lazy" hidden>
+    </figure>
+    <figure class="gframe g2">
+      <svg class="gph" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8 26c8-6 16 6 24 0s16-6 20-2M12 33c6-4 12 4 18 0s12-4 18 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M30 20V8l10 12H30z" stroke="currentColor" stroke-width="1.3"/>
+      </svg>
+      <img id="ph2" alt="" loading="lazy" hidden>
+    </figure>
+    <figure class="gframe g3">
+      <svg class="gph" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="30" cy="18" r="8" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M30 3v4M15 8l3 3M45 8l-3 3M8 33c8-4 14 4 22 0s14-4 22 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <img id="ph3" alt="" loading="lazy" hidden>
+    </figure>
+  </div>
+</section>
+
+<!-- ═══════ GIFT NOTE ═══════ -->
+<section class="section center" id="gift" aria-labelledby="gift-title">
+  <h2 class="eyebrow rv" id="gift-title">
+    <span class="t-ar">الهدايا</span>
+    <span class="t-en">Gifts</span>
+  </h2>
+  <p class="quote rv d2" style="margin-top:16px">
+    <span class="t-ar" id="giftAr">حضوركم ودعواتكم أغلى هدية 🤍</span>
+    <span class="t-en" id="giftEn">Your presence is the greatest gift 🤍</span>
+  </p>
+</section>
+
+<!-- ═══════ RSVP ═══════ -->
+<section class="section center rsvp" id="rsvp" aria-labelledby="rsvp-title">
+  <h2 class="eyebrow rv" id="rsvp-title">
+    <span class="t-ar">شرفونا بتأكيد الحضور</span>
+    <span class="t-en">Kindly let us know</span>
+  </h2>
+
+  <p class="quote rv d2" style="margin-top:16px">
+    <span class="t-ar">وجودكم معنا يكمل فرحتنا — ياريت تأكدولنا على واتساب</span>
+    <span class="t-en">Your presence completes our joy — a quick tap on WhatsApp is all it takes</span>
+  </p>
+
+  <div class="guests rv d3" role="group" aria-label="عدد الحضور / Number of guests">
+    <span class="guests-lbl"><span class="t-ar">عدد الحضور</span><span class="t-en">Guests</span></span>
+    <div class="guest-chips">
+      <button type="button" class="chip" data-n="1" aria-pressed="true"><span class="t-ar">١</span><span class="t-en">1</span></button>
+      <button type="button" class="chip" data-n="2" aria-pressed="false"><span class="t-ar">٢</span><span class="t-en">2</span></button>
+      <button type="button" class="chip" data-n="3" aria-pressed="false"><span class="t-ar">٣</span><span class="t-en">3</span></button>
+      <button type="button" class="chip" data-n="4+" aria-pressed="false"><span class="t-ar">٤+</span><span class="t-en">4+</span></button>
+    </div>
+  </div>
+
+  <div class="rsvp-actions rv d3">
+    <a class="btn solid" id="acceptBtn" target="_blank" rel="noopener noreferrer"
+       href="https://wa.me/201005509418?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%21%20%D9%8A%D8%B3%D8%B9%D8%AF%D9%86%D9%8A%20%D8%AA%D8%A3%D9%83%D9%8A%D8%AF%20%D8%AD%D8%B6%D9%88%D8%B1%D9%8A%20%D9%81%D8%B1%D8%AD%20%D8%B9%D9%85%D8%B1%20%D9%88%D8%B3%D9%84%D9%85%D9%89%20%E2%80%94%20%D8%A7%D9%84%D8%B3%D8%A8%D8%AA%20%D9%A2%D9%A2%20%D8%A3%D8%BA%D8%B3%D8%B7%D8%B3%20%D9%A2%D9%A0%D9%A2%D9%A6%D8%8C%20%D9%A8%3A%D9%A0%D9%A0%20%D9%85%D8%B3%D8%A7%D8%A1%D9%8B%D8%8C%20%D8%B3%D9%8A%20%D8%B4%D9%8A%D9%84%20%D8%A8%D8%A7%D9%8A%D8%8C%20%D8%A7%D9%84%D8%B3%D8%A7%D8%AD%D9%84%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%20%F0%9F%8C%8A">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      <span class="t-ar">أكيد جايين 🤍</span>
+      <span class="t-en">We'll be there 🤍</span>
+    </a>
+
+    <a class="btn ghost-olive" id="declineBtn" target="_blank" rel="noopener noreferrer"
+       href="https://wa.me/201005509418?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D9%84%D9%84%D8%A3%D8%B3%D9%81%20%D9%84%D9%86%20%D8%A3%D8%AA%D9%85%D9%83%D9%86%20%D9%85%D9%86%20%D8%AD%D8%B6%D9%88%D8%B1%20%D9%81%D8%B1%D8%AD%20%D8%B9%D9%85%D8%B1%20%D9%88%D8%B3%D9%84%D9%85%D9%89%20%E2%80%94%20%D8%A3%D8%AA%D9%85%D9%86%D9%89%20%D9%84%D9%83%D9%85%D8%A7%20%D9%83%D9%84%20%D8%A7%D9%84%D8%B3%D8%B9%D8%A7%D8%AF%D8%A9%20%D9%88%D8%A3%D9%84%D9%81%20%D9%85%D8%A8%D8%B1%D9%88%D9%83%20%F0%9F%A4%8D">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg>
+      <span class="t-ar">نعتذر عن الحضور</span>
+      <span class="t-en">Sadly, we can't make it</span>
+    </a>
+  </div>
+
+  <p class="rsvp-note rv d4">
+    <span class="t-ar">الرد يفتح واتساب برسالة جاهزة — إرسالها بضغطة واحدة</span>
+    <span class="t-en">Opens WhatsApp with a ready message — one tap to send</span>
+  </p>
+</section>
+
 <!-- ═══════ CLOSING ═══════ -->
 <footer class="section center closing" id="closing">
   <p class="quote rv" style="margin-top:0">
@@ -576,6 +834,13 @@ html.en .closing .sig{font-family:var(--en-display);font-weight:400}
   </p>
   <span class="dots rv d3" aria-hidden="true">· · ·</span>
 </footer>
+
+<button class="music-toggle" id="musicBtn" type="button" aria-pressed="false"
+        aria-label="موسيقى هادئة / Ambient music on–off">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+    <path d="M9 18V5l10-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>
+  </svg>
+</button>
 
 <script>
 (function () {
@@ -594,6 +859,8 @@ html.en .closing .sig{font-family:var(--en-display);font-weight:400}
   var pDateOk = (pDate && /^\d{4}-\d{2}-\d{2}$/.test(pDate)) ? pDate : null;
   var tMatch = pTime ? pTime.match(/^(\d{1,2}):(\d{2})$/) : null;
   var pTimeNorm = tMatch ? ("0" + tMatch[1]).slice(-2) + ":" + tMatch[2] : null;
+
+  function toArDigits (s) { return String(s).replace(/[0-9]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩"[+d]; }); }
 
   /* Message building blocks — defaults reproduce today's hardcoded texts exactly */
   var namesEn = "Omar & Salma", namesAr = "عمر وسلمى",
@@ -746,6 +1013,56 @@ html.en .closing .sig{font-family:var(--en-display);font-weight:400}
   }
   try { applyParams(); } catch (e) {}
 
+  /* ── v2 content params: agenda / dress / gift / photos ── */
+  function applyV2Params () {
+    var pAgenda = qp("agenda"), pDress = qp("dress"), pGift = qp("gift"), pPhotos = qp("photos");
+    var hideSec = function (id) { var s = document.getElementById(id); if (s) s.hidden = true; };
+    var mkSpan = function (cls, txt) { var s = document.createElement("span"); s.className = cls; s.textContent = txt; return s; };
+    var setPair = function (arId, enId, raw) {
+      var parts = raw.split("~");
+      var arEl = document.getElementById(arId), enEl = document.getElementById(enId);
+      if (arEl) arEl.textContent = parts[0].trim();
+      if (enEl) enEl.textContent = (parts[1] || parts[0]).trim();
+    };
+    if (pAgenda === "0") hideSec("agenda");
+    else if (pAgenda) {
+      var list = document.getElementById("agList");
+      var rows = pAgenda.split("|").map(function (r) { return r.split("~"); })
+        .filter(function (p) { return p.length >= 2 && p[0].trim() && p[1].trim(); });
+      if (list && rows.length) {
+        list.textContent = "";
+        rows.forEach(function (p) {
+          var li = document.createElement("li"); li.className = "ag-item";
+          var tm = document.createElement("span"); tm.className = "ag-time";
+          tm.appendChild(mkSpan("t-ar", toArDigits(p[0].trim())));
+          tm.appendChild(mkSpan("t-en", p[0].trim()));
+          var wh = document.createElement("span"); wh.className = "ag-what";
+          wh.appendChild(mkSpan("t-ar", p[1].trim()));
+          wh.appendChild(mkSpan("t-en", (p[2] || p[1]).trim()));
+          li.appendChild(tm); li.appendChild(wh);
+          list.appendChild(li);
+        });
+      }
+    }
+    if (pDress === "0") hideSec("dress");
+    else if (pDress) setPair("dressAr", "dressEn", pDress);
+    if (pGift === "0") hideSec("gift");
+    else if (pGift) setPair("giftAr", "giftEn", pGift);
+    if (pPhotos === "0") hideSec("gallery");
+    for (var gi = 1; gi <= 3; gi++) {
+      var pu = qp("ph" + gi);
+      if (pu && /^https:\/\//.test(pu)) {
+        var img = document.getElementById("ph" + gi);
+        if (img) {
+          img.src = pu;
+          img.hidden = false;
+          if (img.parentNode && img.parentNode.classList) img.parentNode.classList.add("has-img");
+        }
+      }
+    }
+  }
+  try { applyV2Params(); } catch (e) {}
+
   /* ── Language toggle — Arabic is the default ── */
   var langBtn = document.getElementById("langBtn");
   var isAr = true;
@@ -797,6 +1114,7 @@ html.en .closing .sig{font-family:var(--en-display);font-weight:400}
     var accept = isAr
       ? "مرحباً! يسعدني تأكيد حضوري فرح " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueMsgAr + " 🌊"
       : "Hello! Happy to confirm my attendance at the wedding of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueMsgEn + " 🌊";
+    accept += isAr ? " — عدد الحضور: " + toArDigits(guestN) : " — Guests: " + guestN;
     var decline = isAr
       ? "مرحباً، للأسف لن أتمكن من حضور فرح " + namesAr + " — أتمنى لكما كل السعادة وألف مبروك 🤍"
       : "Hello, unfortunately I won't be able to attend the wedding of " + namesEn + " — wishing you both endless happiness, congratulations 🤍";
@@ -814,6 +1132,87 @@ html.en .closing .sig{font-family:var(--en-display);font-weight:400}
     document.querySelectorAll(".section, .closing").forEach(function (sec) { io.observe(sec); });
   } else {
     document.querySelectorAll(".section, .closing").forEach(function (sec) { sec.classList.add("in"); });
+  }
+
+  /* ── Guest-count chips — count rides along in the accept message ── */
+  var guestN = "1";
+  var chips = document.querySelectorAll(".guest-chips .chip");
+  chips.forEach(function (ch) {
+    ch.addEventListener("click", function () {
+      guestN = ch.getAttribute("data-n") || "1";
+      chips.forEach(function (c) { c.setAttribute("aria-pressed", c === ch ? "true" : "false"); });
+      updateLinks();
+    });
+  });
+
+  /* ── Intro overlay — sunrise cover, horizon parts on tap (intro=0 skips) ── */
+  var intro = document.getElementById("intro");
+  if (intro && qp("intro") !== "0") {
+    var inAr = document.getElementById("introNamesAr"), inEn = document.getElementById("introNamesEn");
+    if (inAr) inAr.textContent = namesAr;
+    if (inEn) inEn.textContent = namesEn;
+    intro.hidden = false;
+    document.body.style.overflow = "hidden";
+    try { intro.focus({ preventScroll: true }); } catch (eF) { try { intro.focus(); } catch (eF2) {} }
+    var introDone = false;
+    var openIntro = function () {
+      if (introDone) return;
+      introDone = true;
+      intro.classList.add("open");
+      document.body.style.overflow = "";
+      setTimeout(function () { intro.hidden = true; }, reduced ? 320 : 1250);
+    };
+    intro.addEventListener("click", openIntro);
+    intro.addEventListener("keydown", function (ev) {
+      if (ev.key === "Enter" || ev.key === " " || ev.key === "Spacebar") { ev.preventDefault(); openIntro(); }
+    });
+  }
+
+  /* ── Ambient music — OFF by default; WebAudio pad, or ?music= audio URL ── */
+  var musicBtn = document.getElementById("musicBtn");
+  if (musicBtn) {
+    var pMusic = qp("music");
+    var musicOn = false, audioEl = null, actx = null, masterG = null;
+    var startPad = function () {
+      if (!actx) {
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        actx = new AC();
+        masterG = actx.createGain();
+        masterG.gain.value = 0;
+        var filt = actx.createBiquadFilter();
+        filt.type = "lowpass"; filt.frequency.value = 850; filt.Q.value = 0.4;
+        masterG.connect(filt); filt.connect(actx.destination);
+        var lfo = actx.createOscillator(), lfoG = actx.createGain();
+        lfo.frequency.value = 0.09; lfoG.gain.value = 0.012;
+        lfo.connect(lfoG); lfoG.connect(masterG.gain); lfo.start();
+        [220, 277.18, 329.63].forEach(function (f, i) {
+          [-4, 3].forEach(function (det) {
+            var o = actx.createOscillator(), g = actx.createGain();
+            o.type = "sine"; o.frequency.value = f; o.detune.value = det;
+            g.gain.value = [0.2, 0.14, 0.1][i];
+            o.connect(g); g.connect(masterG); o.start();
+          });
+        });
+      }
+      if (actx.state === "suspended") actx.resume();
+      masterG.gain.cancelScheduledValues(actx.currentTime);
+      masterG.gain.setTargetAtTime(0.05, actx.currentTime, 0.6);
+    };
+    var stopPad = function () {
+      if (!actx) return;
+      masterG.gain.cancelScheduledValues(actx.currentTime);
+      masterG.gain.setTargetAtTime(0, actx.currentTime, 0.25);
+      setTimeout(function () { if (actx && !musicOn) actx.suspend(); }, 1200);
+    };
+    musicBtn.addEventListener("click", function () {
+      musicOn = !musicOn;
+      musicBtn.setAttribute("aria-pressed", musicOn ? "true" : "false");
+      if (pMusic && /^https:\/\//.test(pMusic)) {
+        if (!audioEl) { audioEl = new Audio(pMusic); audioEl.loop = true; audioEl.volume = 0.25; }
+        if (musicOn) audioEl.play().catch(function () {}); else audioEl.pause();
+      } else if (musicOn) startPad(); else stopPad();
+    });
   }
 
   applyLang();

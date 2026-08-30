@@ -349,10 +349,163 @@ html:not(.en) .cd-num{font-family:var(--ar-body);font-weight:700}
   font-size:10px;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase;
 }
 
+[hidden]{display:none !important}
+
+/* ─────────────── OPENING MOMENT — ANDALUSIAN DOORS ─────────────── */
+html.no-scroll,html.no-scroll body{overflow:hidden}
+.intro{
+  position:fixed;inset:0;z-index:200;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;cursor:pointer;
+  perspective:1400px;
+  -webkit-tap-highlight-color:transparent;
+}
+.intro:focus-visible{outline:2px solid var(--gold);outline-offset:-8px}
+.intro.open{pointer-events:none}
+.intro .door{
+  position:absolute;top:0;bottom:0;width:50.5%;
+  background:var(--emerald);
+  background-image:
+    radial-gradient(120% 90% at 50% 0%, #17614a 0%, #0e3b2e 60%, #082a20 100%);
+  transition:transform 1.5s cubic-bezier(.65,0,.3,1);
+  backface-visibility:hidden;
+}
+/* khatam lattice carved into each leaf */
+.intro .door::before{
+  content:"";position:absolute;inset:0;opacity:.6;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Cg fill='none' stroke='%23c9a24b' stroke-width='.8' opacity='.2'%3E%3Crect x='19' y='19' width='34' height='34'/%3E%3Crect x='19' y='19' width='34' height='34' transform='rotate(45 36 36)'/%3E%3Ccircle cx='36' cy='36' r='3.5'/%3E%3C/g%3E%3C/svg%3E");
+}
+/* gold ring handle beside the meeting line */
+.intro .door::after{
+  content:"";position:absolute;top:50%;margin-top:-12px;
+  width:24px;height:24px;
+  border:2px solid var(--gold);border-radius:50%;
+  box-shadow:0 3px 8px rgba(0,0,0,.4);
+}
+.intro .door.dl{left:0;transform-origin:left center;border-right:1px solid var(--gold-line)}
+.intro .door.dl::after{right:16px}
+.intro .door.dr{right:0;transform-origin:right center;border-left:1px solid var(--gold-line)}
+.intro .door.dr::after{left:16px}
+.intro.open .door.dl{transform:rotateY(-106deg)}
+.intro.open .door.dr{transform:rotateY(106deg)}
+.intro-inner{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;align-items:center;
+  gap:clamp(14px,4vw,22px);
+  padding:24px;text-align:center;
+  transition:opacity .55s ease;
+}
+.intro.open .intro-inner{opacity:0}
+.intro-hint{
+  margin:0;color:var(--gold);
+  font-size:clamp(14px,4vw,16px);
+  animation:hintPulse 2.6s ease-in-out infinite;
+}
+.intro-hint .t-en{font-family:var(--sans);font-size:.72em;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase}
+@keyframes hintPulse{0%,100%{opacity:.55}50%{opacity:1}}
+.intro .arch-names{font-size:clamp(28px,8.6vw,38px)}
+
+/* ─────────────── AGENDA ─────────────── */
+.agenda{
+  list-style:none;margin:0 auto;padding:0;
+  max-width:400px;text-align:start;position:relative;
+}
+.agenda::before{
+  content:"";position:absolute;top:16px;bottom:16px;inset-inline-start:8px;width:1px;
+  background:var(--gold-line);
+}
+.agenda li{
+  position:relative;
+  display:flex;align-items:baseline;gap:16px;
+  padding:11px 0;padding-inline-start:34px;
+}
+.agenda li::before{
+  content:"";position:absolute;inset-inline-start:1px;top:12px;
+  width:15px;height:15px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cg fill='none' stroke='%23c9a24b' stroke-width='1.4'%3E%3Crect x='5.5' y='5.5' width='11' height='11'/%3E%3Crect x='5.5' y='5.5' width='11' height='11' transform='rotate(45 11 11)'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;
+}
+.agenda .tm{
+  flex:none;min-width:60px;
+  color:var(--gold);
+  font-size:clamp(16px,4.6vw,19px);
+  font-variant-numeric:tabular-nums;
+}
+html.en .agenda .tm{font-family:var(--en-display)}
+html:not(.en) .agenda .tm{font-family:var(--ar-body);font-weight:700}
+.agenda .ev{font-size:clamp(17px,4.9vw,20px);line-height:1.6;color:var(--ivory)}
+
+/* ─────────────── DRESS · GIFT ─────────────── */
+.dress-line,.gift-line{
+  margin:0 auto;max-width:400px;
+  font-size:clamp(17px,4.9vw,20px);line-height:1.9;
+  color:var(--ivory);
+}
+.gift-line{color:var(--gold)}
+
+/* ─────────────── GALLERY — HORSESHOE FRAMES ─────────────── */
+.gallery{display:flex;gap:12px;justify-content:center}
+.g-frame{
+  flex:1;max-width:110px;aspect-ratio:3/4.4;
+  border:1px solid var(--gold-line);
+  border-radius:999px 999px 4px 4px;
+  background:rgba(20,92,70,.22);
+  position:relative;overflow:hidden;
+  display:grid;place-items:center;
+}
+.g-frame::before{
+  content:"";position:absolute;inset:5px;z-index:2;
+  border:1px solid var(--gold-faint);
+  border-radius:999px 999px 2px 2px;
+  pointer-events:none;
+}
+.g-frame svg{width:20px;height:20px;color:var(--gold-soft)}
+.g-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* ─────────────── RSVP GUEST COUNT — KHATAM CHIPS ─────────────── */
+.guests{display:flex;flex-direction:column;align-items:center;gap:18px;margin:0 0 26px}
+.guest-lbl{margin:0;color:var(--ivory-soft);font-size:clamp(15px,4.2vw,17px)}
+.guest-row{display:flex;gap:16px;padding:8px 0}
+.chip{
+  width:46px;height:46px;padding:0;
+  border:1px solid var(--gold-line);
+  background:rgba(20,92,70,.3);color:var(--ivory);cursor:pointer;
+  transform:rotate(45deg);
+  display:grid;place-items:center;
+  transition:background-color .3s ease,color .3s ease,border-color .3s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.chip > span{transform:rotate(-45deg);font-size:16px;line-height:1;font-family:var(--ar-body);font-weight:700}
+html.en .chip > span{font-family:var(--en-display);font-weight:400}
+.chip[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#123527}
+.chip:focus-visible{outline:1px solid var(--ivory);outline-offset:4px}
+
+/* ─────────────── MUSIC TOGGLE ─────────────── */
+.music-toggle{
+  position:fixed;
+  bottom:calc(16px + env(safe-area-inset-bottom));
+  inset-inline-end:14px;
+  z-index:60;
+  width:44px;height:44px;padding:0;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--gold-line);border-radius:999px;
+  background:rgba(14,59,46,.78);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  color:var(--gold);cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,.30);
+  transition:background-color .3s ease,color .3s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.music-toggle[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#123527}
+.music-toggle svg{width:17px;height:17px}
+.music-toggle:focus-visible{outline:1px solid var(--ivory);outline-offset:3px}
+
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .hero-inner,.scroll-hint,.arch-glow{animation:none !important}
   .rv{opacity:1;transform:none;transition:none}
+  .intro .door,.intro-inner{transition:none !important}
+  .intro-hint{animation:none !important}
+  .music-toggle{display:none}
 }
 </style>
 </head>
@@ -363,6 +516,36 @@ html:not(.en) .cd-num{font-family:var(--ar-body);font-weight:700}
   <span class="t-ar">English</span>
   <span class="t-en"><span class="ar-word">العربية</span></span>
 </button>
+
+<button class="music-toggle" id="musicBtn" type="button" aria-pressed="false"
+        aria-label="تشغيل الموسيقى الهادئة / Play ambient music">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg>
+</button>
+
+<!-- ═════════ OPENING MOMENT — ANDALUSIAN DOORS (unhidden by JS only) ═════════ -->
+<div class="intro" id="intro" hidden role="button" tabindex="0"
+     aria-label="دوسوا للفتح / Tap to open the invitation">
+  <span class="door dl" aria-hidden="true"></span>
+  <span class="door dr" aria-hidden="true"></span>
+  <div class="intro-inner">
+    <svg width="30" height="30" viewBox="0 0 22 22" fill="none" stroke="#c9a24b" stroke-width="1" aria-hidden="true">
+      <rect x="5.5" y="5.5" width="11" height="11"/>
+      <rect x="5.5" y="5.5" width="11" height="11" transform="rotate(45 11 11)"/>
+    </svg>
+    <p class="arch-eyebrow">
+      <span class="t-ar">كتب كتاب</span>
+      <span class="t-en">The Katb Kitab of</span>
+    </p>
+    <h2 class="arch-names">
+      <span class="t-ar">عمر <span class="conj">و</span> سلمى</span>
+      <span class="t-en">Omar <span class="conj">&amp;</span> Salma</span>
+    </h2>
+    <p class="intro-hint">
+      <span class="t-ar">دوسوا للفتح</span>
+      <span class="t-en">Tap to open</span>
+    </p>
+  </div>
+</div>
 
 <!-- ═════════ HERO — THE ANDALUSIAN ARCH ═════════ -->
 <header class="scene first" id="hero" aria-labelledby="heroNames">
@@ -496,6 +679,30 @@ html:not(.en) .cd-num{font-family:var(--ar-body);font-weight:700}
   </div>
 </section>
 
+<!-- ═════════ AGENDA ═════════ -->
+<section class="scene" id="agendaSec" aria-label="Agenda">
+  <div class="divider rv" aria-hidden="true">
+    <span class="rule"></span>
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1">
+      <rect x="5.5" y="5.5" width="11" height="11"/>
+      <rect x="5.5" y="5.5" width="11" height="11" transform="rotate(45 11 11)"/>
+    </svg>
+    <span class="rule"></span>
+  </div>
+
+  <h2 class="sec-title rv">
+    <span class="t-ar">برنامج اليوم</span>
+    <span class="t-en">The Programme</span>
+  </h2>
+
+  <ol class="agenda rv d2" id="agendaList">
+    <li><span class="tm"><span class="t-ar">٨:٠٠</span><span class="t-en">8:00</span></span><span class="ev"><span class="t-ar">الاستقبال</span><span class="t-en">Reception</span></span></li>
+    <li><span class="tm"><span class="t-ar">٨:٤٥</span><span class="t-en">8:45</span></span><span class="ev"><span class="t-ar">عقد القران</span><span class="t-en">The Aqd</span></span></li>
+    <li><span class="tm"><span class="t-ar">٩:١٥</span><span class="t-en">9:15</span></span><span class="ev"><span class="t-ar">التهنئة</span><span class="t-en">Congratulations</span></span></li>
+    <li><span class="tm"><span class="t-ar">١٠:٠٠</span><span class="t-en">10:00</span></span><span class="ev"><span class="t-ar">العشاء</span><span class="t-en">Dinner</span></span></li>
+  </ol>
+</section>
+
 <!-- ═════════ DETAILS ═════════ -->
 <section class="scene" aria-label="Details">
   <div class="divider rv" aria-hidden="true">
@@ -566,6 +773,68 @@ html:not(.en) .cd-num{font-family:var(--ar-body);font-weight:700}
   </div>
 </section>
 
+<!-- ═════════ DRESS CODE ═════════ -->
+<section class="scene" id="dressSec" aria-label="Dress code">
+  <div class="divider rv" aria-hidden="true">
+    <span class="rule"></span>
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1">
+      <rect x="5.5" y="5.5" width="11" height="11"/>
+      <rect x="5.5" y="5.5" width="11" height="11" transform="rotate(45 11 11)"/>
+    </svg>
+    <span class="rule"></span>
+  </div>
+
+  <h2 class="sec-title rv">
+    <span class="t-ar">الزي المقترح</span>
+    <span class="t-en">Dress Code</span>
+  </h2>
+
+  <p class="dress-line rv d2" id="dressLine">
+    <span class="t-ar">إطلالة رسمية أنيقة بألوان هادئة</span>
+    <span class="t-en">Formal elegance, in soft tones</span>
+  </p>
+</section>
+
+<!-- ═════════ GALLERY ═════════ -->
+<section class="scene" id="gallerySec" aria-label="Gallery">
+  <div class="divider rv" aria-hidden="true">
+    <span class="rule"></span>
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1">
+      <rect x="5.5" y="5.5" width="11" height="11"/>
+      <rect x="5.5" y="5.5" width="11" height="11" transform="rotate(45 11 11)"/>
+    </svg>
+    <span class="rule"></span>
+  </div>
+
+  <h2 class="sec-title rv">
+    <span class="t-ar">لحظاتنا</span>
+    <span class="t-en">Our Moments</span>
+  </h2>
+
+  <div class="gallery rv d2">
+    <span class="g-frame" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1"><rect x="5.5" y="5.5" width="11" height="11"/><rect x="5.5" y="5.5" width="11" height="11" transform="rotate(45 11 11)"/></svg></span>
+    <span class="g-frame" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1"><rect x="5.5" y="5.5" width="11" height="11"/><rect x="5.5" y="5.5" width="11" height="11" transform="rotate(45 11 11)"/></svg></span>
+    <span class="g-frame" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1"><rect x="5.5" y="5.5" width="11" height="11"/><rect x="5.5" y="5.5" width="11" height="11" transform="rotate(45 11 11)"/></svg></span>
+  </div>
+</section>
+
+<!-- ═════════ GIFT NOTE ═════════ -->
+<section class="scene" id="giftSec" aria-label="Gift note">
+  <div class="divider rv" aria-hidden="true">
+    <span class="rule"></span>
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1">
+      <rect x="5.5" y="5.5" width="11" height="11"/>
+      <rect x="5.5" y="5.5" width="11" height="11" transform="rotate(45 11 11)"/>
+    </svg>
+    <span class="rule"></span>
+  </div>
+
+  <p class="gift-line rv" id="giftLine">
+    <span class="t-ar">حضوركم ودعواتكم أغلى هدية 🤍</span>
+    <span class="t-en">Your presence is the greatest gift 🤍</span>
+  </p>
+</section>
+
 <!-- ═════════ RSVP ═════════ -->
 <section class="scene" id="rsvp" aria-label="RSVP">
   <div class="divider rv" aria-hidden="true">
@@ -581,6 +850,19 @@ html:not(.en) .cd-num{font-family:var(--ar-body);font-weight:700}
     <span class="t-ar">شرفونا بالرد</span>
     <span class="t-en">Kindly Respond</span>
   </h2>
+
+  <div class="guests rv d2" id="guestsSec">
+    <p class="guest-lbl" id="guestLbl">
+      <span class="t-ar">عدد الحضور</span>
+      <span class="t-en">Number of guests</span>
+    </p>
+    <div class="guest-row" role="group" aria-labelledby="guestLbl">
+      <button class="chip" type="button" data-count="1" aria-pressed="true"><span><span class="t-ar">١</span><span class="t-en">1</span></span></button>
+      <button class="chip" type="button" data-count="2" aria-pressed="false"><span><span class="t-ar">٢</span><span class="t-en">2</span></span></button>
+      <button class="chip" type="button" data-count="3" aria-pressed="false"><span><span class="t-ar">٣</span><span class="t-en">3</span></span></button>
+      <button class="chip" type="button" data-count="4" aria-pressed="false"><span><span class="t-ar">٤+</span><span class="t-en">4+</span></span></button>
+    </div>
+  </div>
 
   <div class="actions rv d2">
     <a class="btn solid" id="acceptBtn" target="_blank" rel="noopener noreferrer"
@@ -639,7 +921,9 @@ html:not(.en) .cd-num{font-family:var(--ar-body);font-weight:700}
   try { qs = new URLSearchParams(window.__D3WA__ || location.search); } catch (e) {}
   function qp (k) { var v = qs && qs.get(k); return (v && v.trim()) ? v.trim() : null; }
   var pNamesEn = qp("n_en"), pNamesAr = qp("n_ar"), pDate = qp("d"), pTime = qp("t"),
-      pVenEn = qp("v_en"), pVenAr = qp("v_ar"), pMap = qp("map"), pQuote = qp("q"), pWa = qp("wa");
+      pVenEn = qp("v_en"), pVenAr = qp("v_ar"), pMap = qp("map"), pQuote = qp("q"), pWa = qp("wa"),
+      pAgenda = qp("agenda"), pDress = qp("dress"), pGift = qp("gift"), pPhotos = qp("photos"),
+      pPh1 = qp("ph1"), pPh2 = qp("ph2"), pPh3 = qp("ph3"), pIntro = qp("intro"), pMusic = qp("music");
   var pDateOk = (pDate && /^\d{4}-\d{2}-\d{2}$/.test(pDate)) ? pDate : null;
   var tMatch = pTime ? pTime.match(/^(\d{1,2}):(\d{2})$/) : null;
   var pTimeNorm = tMatch ? ("0" + tMatch[1]).slice(-2) + ":" + tMatch[2] : null;
@@ -676,18 +960,22 @@ html:not(.en) .cd-num{font-family:var(--ar-body);font-weight:700}
       return i < 0 ? [v, ""] : [v.slice(0, i).trim(), v.slice(i + 1).trim()];
     };
 
-    /* names — arch hero + title */
+    /* names — arch hero + intro overlay + title (.arch-names covers both) */
     if (pNamesEn) {
       namesEn = pNamesEn;
       var iAmp = pNamesEn.indexOf("&");
       var e1 = iAmp < 0 ? null : pNamesEn.slice(0, iAmp).trim();
       var e2 = iAmp < 0 ? null : pNamesEn.slice(iAmp + 1).trim();
-      buildName($(".arch-names .t-en"), e1, e2, "&", pNamesEn);
+      Array.prototype.forEach.call(document.querySelectorAll(".arch-names .t-en"), function (el) {
+        buildName(el, e1, e2, "&", pNamesEn);
+      });
     }
     if (pNamesAr) {
       namesAr = pNamesAr;
       var mAr = pNamesAr.match(/^(.+?)\s+و\s*(.+)$/);
-      buildName($(".arch-names .t-ar"), mAr ? mAr[1] : null, mAr ? mAr[2] : null, "و", pNamesAr);
+      Array.prototype.forEach.call(document.querySelectorAll(".arch-names .t-ar"), function (el) {
+        buildName(el, mAr ? mAr[1] : null, mAr ? mAr[2] : null, "و", pNamesAr);
+      });
     }
     if (pNamesEn || pNamesAr) document.title = namesAr + " — كتب كتاب | " + namesEn;
 
@@ -766,6 +1054,52 @@ html:not(.en) .cd-num{font-family:var(--ar-body);font-weight:700}
 
     /* WhatsApp RSVP number */
     if (pWa) waNum = pWa.replace(/[^\d]/g, "") || waNum;
+
+    /* ── v2 params: agenda · dress · gift · photos ── */
+    var hideSec = function (id) { var el = document.getElementById(id); if (el) el.hidden = true; };
+    var setPair = function (id, val) {
+      var root = document.getElementById(id); if (!root) return;
+      var parts = val.indexOf("~") >= 0 ? val.split("~") : [val, val];
+      var a = root.querySelector(".t-ar"), b = root.querySelector(".t-en");
+      if (a) a.textContent = parts[0].trim();
+      if (b) b.textContent = (parts[1] || parts[0]).trim();
+    };
+    if (pAgenda) {
+      var list = document.getElementById("agendaList");
+      var entries = pAgenda.split("|").map(function (e) { return e.split("~"); })
+        .filter(function (p) { return p.length >= 3 && p[0] && p[1] && p[2]; });
+      if (list && entries.length) {
+        list.textContent = "";
+        entries.forEach(function (p) {
+          var li = document.createElement("li");
+          var tm = document.createElement("span"); tm.className = "tm";
+          var ta = document.createElement("span"); ta.className = "t-ar"; ta.textContent = arDigits(p[0].trim());
+          var te = document.createElement("span"); te.className = "t-en"; te.textContent = p[0].trim();
+          tm.appendChild(ta); tm.appendChild(te);
+          var ev = document.createElement("span"); ev.className = "ev";
+          var ea = document.createElement("span"); ea.className = "t-ar"; ea.textContent = p[1].trim();
+          var ee = document.createElement("span"); ee.className = "t-en"; ee.textContent = p[2].trim();
+          ev.appendChild(ea); ev.appendChild(ee);
+          li.appendChild(tm); li.appendChild(ev);
+          list.appendChild(li);
+        });
+      }
+    }
+    if (pDress === "0") hideSec("dressSec");
+    else if (pDress) setPair("dressLine", pDress);
+    if (pGift === "0") hideSec("giftSec");
+    else if (pGift) setPair("giftLine", pGift);
+    if (pPhotos === "0") hideSec("gallerySec");
+    else {
+      var frames = document.querySelectorAll("#gallerySec .g-frame");
+      [pPh1, pPh2, pPh3].forEach(function (u, i) {
+        if (u && /^https?:\/\//.test(u) && frames[i]) {
+          var img = document.createElement("img");
+          img.src = u; img.alt = "";
+          frames[i].appendChild(img);
+        }
+      });
+    }
   }
   try { applyParams(); } catch (e) {}
 
@@ -818,14 +1152,99 @@ html:not(.en) .cd-num{font-family:var(--ar-body);font-weight:700}
   var declineBtn = document.getElementById("declineBtn");
   function updateLinks () {
     var accept = isEn
-      ? "Hello! I'm delighted to confirm my attendance at the katb kitab of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueMsgEn + " 🤍"
-      : "مرحباً! يسعدني تأكيد حضوري كتب كتاب " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueMsgAr + " 🤍";
+      ? "Hello! I'm delighted to confirm my attendance at the katb kitab of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueMsgEn + " — Guests: " + GUEST_EN[guestCount] + " 🤍"
+      : "مرحباً! يسعدني تأكيد حضوري كتب كتاب " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueMsgAr + "، عدد الحضور: " + GUEST_AR[guestCount] + " 🤍";
     var decline = isEn
       ? "Hello, I'm sorry I won't be able to attend the katb kitab of " + namesEn + " — wishing them a lifetime of affection and mercy 🤍"
       : "مرحباً، أعتذر عن حضور كتب كتاب " + namesAr + " — أتمنى لهما حياة سعيدة مليئة بالمودة والرحمة 🤍";
     if (acceptBtn) acceptBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(accept);
     if (declineBtn) declineBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(decline);
   }
+
+  /* ── Guest-count chips — appended to the accept WhatsApp message ── */
+  var GUEST_AR = { 1: "١", 2: "٢", 3: "٣", 4: "٤+" };
+  var GUEST_EN = { 1: "1", 2: "2", 3: "3", 4: "4+" };
+  var guestCount = 1;
+  var chips = document.querySelectorAll(".chip");
+  Array.prototype.forEach.call(chips, function (c) {
+    c.addEventListener("click", function () {
+      guestCount = +c.getAttribute("data-count") || 1;
+      Array.prototype.forEach.call(chips, function (x) { x.setAttribute("aria-pressed", x === c ? "true" : "false"); });
+      updateLinks();
+    });
+  });
+
+  /* ── Opening moment — Andalusian doors (only ever shown via JS; intro=0 skips) ── */
+  var intro = document.getElementById("intro");
+  if (intro && pIntro !== "0") {
+    intro.hidden = false;
+    docEl.classList.add("no-scroll");
+    try { window.scrollTo(0, 0); } catch (e) {}
+    var introDone = false;
+    var closeIntro = function () {
+      if (introDone) return;
+      introDone = true;
+      docEl.classList.remove("no-scroll");
+      if (reduced) { intro.hidden = true; return; }
+      intro.classList.add("open");
+      window.setTimeout(function () { intro.hidden = true; }, 1700);
+    };
+    intro.addEventListener("click", closeIntro);
+    intro.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); closeIntro(); }
+    });
+    try { intro.focus(); } catch (e) {}
+  }
+
+  /* ── Ambient music — WebAudio pad (or ?music= URL), OFF by default ── */
+  var musicBtn = document.getElementById("musicBtn");
+  var musicUrl = (pMusic && /^https?:\/\//.test(pMusic)) ? pMusic : null;
+  var audioEl = null, actx = null, padNodes = null, musicOn = false;
+  function padStart () {
+    try {
+      if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+      if (actx.state === "suspended") actx.resume();
+      var master = actx.createGain();
+      master.gain.setValueAtTime(0.0001, actx.currentTime);
+      master.gain.exponentialRampToValueAtTime(0.05, actx.currentTime + 2.5);
+      var filt = actx.createBiquadFilter();
+      filt.type = "lowpass"; filt.frequency.value = 700; filt.Q.value = 0.4;
+      filt.connect(master); master.connect(actx.destination);
+      var lfo = actx.createOscillator(), lfoG = actx.createGain();
+      lfo.frequency.value = 0.07; lfoG.gain.value = 160;
+      lfo.connect(lfoG); lfoG.connect(filt.frequency); lfo.start();
+      var oscs = [lfo];
+      /* G2 · D3 · G3 · A3 · D4 — a warm, open Gsus2 pad */
+      var gains = [0.5, 0.34, 0.3, 0.18, 0.12];
+      [98, 146.83, 196, 220, 293.66].forEach(function (f, i) {
+        var o = actx.createOscillator(), g = actx.createGain();
+        o.type = "sine"; o.frequency.value = f;
+        o.detune.value = i % 2 ? 5 : -5;
+        g.gain.value = gains[i];
+        o.connect(g); g.connect(filt); o.start();
+        oscs.push(o);
+      });
+      padNodes = { master: master, oscs: oscs };
+    } catch (e) {}
+  }
+  function padStop () {
+    if (!padNodes) return;
+    var n = padNodes; padNodes = null;
+    try {
+      n.master.gain.setTargetAtTime(0.0001, actx.currentTime, 0.4);
+      window.setTimeout(function () { n.oscs.forEach(function (o) { try { o.stop(); } catch (e) {} }); }, 1600);
+    } catch (e) {}
+  }
+  if (musicBtn) musicBtn.addEventListener("click", function () {
+    musicOn = !musicOn;
+    musicBtn.setAttribute("aria-pressed", musicOn ? "true" : "false");
+    if (musicUrl) {
+      if (!audioEl) { audioEl = new Audio(musicUrl); audioEl.loop = true; audioEl.volume = 0.4; }
+      if (musicOn) audioEl.play().catch(function () {}); else audioEl.pause();
+      return;
+    }
+    if (musicOn) padStart(); else padStop();
+  });
 
   /* ── Scroll reveals ── */
   var revs = document.querySelectorAll(".rv");

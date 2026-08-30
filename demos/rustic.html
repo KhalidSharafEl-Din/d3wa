@@ -311,10 +311,162 @@ html:not(.ar) .names .t-ar{display:none}
   .petal{display:none}
   #card:target .rv,.card.in .rv{animation:none !important}
 }
+
+/* ───────────────  V2 ADDITIONS  ─────────────── */
+[hidden]{display:none !important}
+
+/* opening moment — arched double doors parting */
+body.intro-lock{overflow:hidden}
+.intro{
+  position:fixed;inset:0;z-index:90;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  perspective:1100px;
+}
+.intro.open{pointer-events:none}
+.intro:focus-visible{outline:1px solid var(--ink);outline-offset:-6px}
+.door{
+  position:absolute;top:0;bottom:0;width:50.5%;
+  background:linear-gradient(180deg,#fffdf6,#f2e3c8);
+  border:1px solid var(--line);
+  box-shadow:0 0 44px rgba(110,60,45,.14);
+  transition:transform 1.1s cubic-bezier(.55,.06,.28,1) .25s;
+}
+.door::before{content:"";position:absolute;inset:16px;border:1px solid var(--line);border-radius:170px 170px 3px 3px}
+.door::after{content:"";position:absolute;inset:24px;border:1px solid var(--line-soft);border-radius:160px 160px 2px 2px}
+.door.left{left:0;transform-origin:left center}
+.door.right{right:0;transform-origin:right center}
+.intro.open .door.left{transform:rotateY(-104deg)}
+.intro.open .door.right{transform:rotateY(104deg)}
+.intro-cover{
+  position:relative;
+  display:flex;flex-direction:column;align-items:center;
+  gap:clamp(18px,5vw,24px);text-align:center;
+  transition:opacity .45s ease;
+  animation:rise 1.1s cubic-bezier(.22,.7,.25,1) backwards;
+}
+.intro.open .intro-cover{opacity:0}
+.intro-names{font-family:var(--display);font-size:clamp(30px,9vw,40px);line-height:1.15;margin:0;color:var(--ink)}
+.intro-names i{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:.72em}
+.intro-names .t-ar{font-family:var(--arabic-display);font-weight:400;font-size:.94em;line-height:1.5}
+.intro-names .t-ar i{font-family:var(--arabic);font-style:normal}
+.intro-hint{
+  margin:0;font-family:var(--sans);font-size:10px;font-weight:600;
+  letter-spacing:.3em;text-indent:.3em;text-transform:uppercase;color:var(--gold);
+  animation:hintPulse 2.6s ease-in-out infinite;
+}
+.intro-hint .t-ar{font-size:1.6em}
+@keyframes hintPulse{0%,100%{opacity:.45}50%{opacity:1}}
+
+/* agenda — برنامج اليوم */
+.agenda{margin:clamp(24px,7vw,32px) 0 0}
+.agenda>.eyebrow{margin-bottom:14px}
+.ag-list{list-style:none;margin:0;padding:0;text-align:start;position:relative}
+.ag-list::before{
+  content:"";position:absolute;top:10px;bottom:10px;inset-inline-start:73px;width:1px;
+  background:linear-gradient(180deg,transparent,var(--gold-lt) 18%,var(--gold-lt) 82%,transparent);
+}
+.ag-list li{position:relative;display:flex;align-items:center;gap:13px;padding:8px 0}
+.ag-time{flex:none;width:57px;text-align:end;font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.06em;color:var(--gold);font-variant-numeric:tabular-nums}
+.ag-time .t-ar{font-family:var(--arabic);font-size:14px;font-weight:700}
+.ag-dot{flex:none;width:7px;height:7px;border-radius:50%;border:1px solid var(--gold);background:var(--paper);position:relative;z-index:1}
+.ag-what{font-size:clamp(16px,4.6vw,18px);line-height:1.35;color:var(--ink)}
+.ag-what .t-ar{font-size:1.04em}
+
+/* small centred notes — dress code, gift */
+.mini{margin:clamp(24px,7vw,30px) 0 0}
+.mini>.eyebrow{margin-bottom:9px}
+.mini p{margin:0;font-style:italic;font-weight:300;font-size:clamp(16px,4.6vw,18px);line-height:1.6;color:var(--ink-soft)}
+.mini p .t-ar{font-size:1.06em}
+
+/* photo gallery — three arch frames */
+.gallery{margin:clamp(24px,7vw,30px) 0 0}
+.gallery>.eyebrow{margin-bottom:13px}
+.ph-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ph{
+  position:relative;aspect-ratio:3/4;overflow:hidden;
+  border:1px solid var(--line);border-radius:999px 999px 3px 3px;
+  background:rgba(255,253,248,.6);
+  display:grid;place-items:center;color:var(--gold-lt);
+}
+.ph::before{content:"";position:absolute;inset:5px;border:1px solid var(--line-soft);border-radius:999px 999px 2px 2px;pointer-events:none;z-index:2}
+.ph svg{width:24px;height:24px}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph.has-img svg{display:none}
+
+/* guest-count chips */
+.guests{display:flex;flex-direction:column;align-items:center;gap:9px;margin:clamp(14px,4vw,18px) 0 4px}
+.chips{display:flex;justify-content:center;gap:8px}
+.chip{
+  min-width:48px;min-height:42px;padding:0 12px;
+  border:1px solid var(--line);border-radius:2px;
+  background:transparent;color:var(--gold);
+  font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.06em;
+  cursor:pointer;-webkit-tap-highlight-color:transparent;
+  transition:background-color .3s ease,color .3s ease,border-color .3s ease;
+}
+.chip .t-ar{font-family:var(--arabic);font-size:16px;font-weight:700}
+.chip[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#fffaf0}
+.chip:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+
+/* floating music toggle */
+.music-toggle{
+  position:fixed;
+  bottom:calc(14px + env(safe-area-inset-bottom));
+  inset-inline-end:14px;z-index:60;
+  width:44px;height:44px;
+  display:none;align-items:center;justify-content:center;
+  border:1px solid var(--line);border-radius:50%;
+  background:rgba(255,253,248,.82);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  color:var(--gold);cursor:pointer;
+  box-shadow:0 6px 18px rgba(110,60,45,.10);
+  transition:background-color .3s ease,color .3s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.music-toggle.show{display:inline-flex}
+.music-toggle svg{width:18px;height:18px}
+.music-toggle[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#fffaf0}
+.music-toggle:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+
+@media (prefers-reduced-motion: reduce){
+  .intro,.intro *{transition:none !important;animation:none !important}
+  .music-toggle{display:none !important}
+}
 </style>
 </head>
 
 <body>
+
+<!-- ═════════  V2 — OPENING MOMENT (unhidden only via JS; ?intro=0 skips it)  ═════════ -->
+<div class="intro" id="intro" hidden role="button" tabindex="0"
+     aria-label="دوسوا للفتح — افتح الدعوة / Tap to open the invitation">
+  <span class="door left" aria-hidden="true"></span>
+  <span class="door right" aria-hidden="true"></span>
+  <div class="intro-cover">
+    <p class="eyebrow lg">
+      <span class="t-en">You are warmly invited</span>
+      <span class="t-ar">يسعدنا دعوتكم</span>
+    </p>
+    <svg width="76" height="14" viewBox="0 0 76 14" fill="none" aria-hidden="true">
+      <path d="M4 7h24M48 7h24" stroke="#d19a83" stroke-width="1" stroke-linecap="round"/>
+      <path d="M38 2c-3 2.6-3 7.4 0 10 3-2.6 3-7.4 0-10z" stroke="#9e3f34" stroke-width="1"/>
+    </svg>
+    <h2 class="intro-names">
+      <span class="t-en">Omar <i>&amp;</i> Salma</span>
+      <span class="t-ar">عمر <i>و</i> سلمى</span>
+    </h2>
+    <p class="intro-hint">
+      <span class="t-en">Tap to open</span>
+      <span class="t-ar">دوسوا للفتح</span>
+    </p>
+  </div>
+</div>
+
+<button class="music-toggle" id="musicBtn" type="button" aria-pressed="false"
+        aria-label="تشغيل الموسيقى الهادئة / Toggle soft music">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>
+</button>
 
 <button class="lang-toggle" id="langBtn" type="button" aria-label="التبديل إلى العربية / Switch language">
   <span class="t-en"><span class="ar-word">العربية</span></span>
@@ -457,12 +609,84 @@ html:not(.ar) .names .t-ar{display:none}
       </li>
     </ul>
 
+    <!-- V2 — agenda / برنامج اليوم -->
+    <div class="agenda rv d4" id="agendaSec">
+      <p class="eyebrow"><span class="t-en">The day&rsquo;s schedule</span><span class="t-ar">برنامج اليوم</span></p>
+      <ul class="ag-list" id="agList">
+        <li>
+          <span class="ag-time"><span class="t-en">7:00 PM</span><span class="t-ar">٧:٠٠ م</span></span>
+          <span class="ag-dot" aria-hidden="true"></span>
+          <span class="ag-what"><span class="t-en">Reception</span><span class="t-ar">الاستقبال</span></span>
+        </li>
+        <li>
+          <span class="ag-time"><span class="t-en">8:00 PM</span><span class="t-ar">٨:٠٠ م</span></span>
+          <span class="ag-dot" aria-hidden="true"></span>
+          <span class="ag-what"><span class="t-en">The Zaffa</span><span class="t-ar">الزفة</span></span>
+        </li>
+        <li>
+          <span class="ag-time"><span class="t-en">9:30 PM</span><span class="t-ar">٩:٣٠ م</span></span>
+          <span class="ag-dot" aria-hidden="true"></span>
+          <span class="ag-what"><span class="t-en">Dinner</span><span class="t-ar">العشاء</span></span>
+        </li>
+        <li>
+          <span class="ag-time"><span class="t-en">11:00 PM</span><span class="t-ar">١١:٠٠ م</span></span>
+          <span class="ag-dot" aria-hidden="true"></span>
+          <span class="ag-what"><span class="t-en">Cake &amp; celebration</span><span class="t-ar">التورتة والسهرة</span></span>
+        </li>
+      </ul>
+    </div>
+
     <p class="quote rv d4">
       <span class="t-en">“Two hearts, one beautiful beginning.”</span>
       <span class="t-ar">«قلبان، وبداية واحدة جميلة»</span>
     </p>
 
+    <!-- V2 — dress code -->
+    <div class="mini rv d4" id="dressSec">
+      <p class="eyebrow"><span class="t-en">Dress code</span><span class="t-ar">الدرس كود</span></p>
+      <p>
+        <span class="t-en">Black tie optional — evening elegance</span>
+        <span class="t-ar">سهرة رسمية: بدل وفساتين سواريه</span>
+      </p>
+    </div>
+
+    <!-- V2 — photo gallery -->
+    <div class="gallery rv d4" id="gallerySec">
+      <p class="eyebrow"><span class="t-en">Our moments</span><span class="t-ar">لحظاتنا</span></p>
+      <div class="ph-row">
+        <span class="ph" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>
+        </span>
+        <span class="ph" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>
+        </span>
+        <span class="ph" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- V2 — gift note -->
+    <div class="mini rv d4" id="giftSec">
+      <p class="eyebrow"><span class="t-en">A note</span><span class="t-ar">كلمة من القلب</span></p>
+      <p>
+        <span class="t-en">Your presence is the greatest gift 🤍</span>
+        <span class="t-ar">حضوركم ودعواتكم أغلى هدية 🤍</span>
+      </p>
+    </div>
+
     <div class="actions rv d5">
+
+      <!-- V2 — guest count -->
+      <div class="guests" id="guestSec">
+        <p class="eyebrow"><span class="t-en">Number of guests</span><span class="t-ar">عدد الحضور</span></p>
+        <div class="chips" role="group" aria-label="عدد الحضور / Number of guests">
+          <button type="button" class="chip" data-count="1" aria-pressed="true"><span class="t-en">1</span><span class="t-ar">١</span></button>
+          <button type="button" class="chip" data-count="2" aria-pressed="false"><span class="t-en">2</span><span class="t-ar">٢</span></button>
+          <button type="button" class="chip" data-count="3" aria-pressed="false"><span class="t-en">3</span><span class="t-ar">٣</span></button>
+          <button type="button" class="chip" data-count="4+" aria-pressed="false"><span class="t-en">4+</span><span class="t-ar">٤+</span></button>
+        </div>
+      </div>
       <a class="btn solid" id="rsvpBtn" target="_blank" rel="noopener noreferrer"
          href="https://wa.me/201005509418?text=Hello!%20I%27d%20love%20to%20confirm%20my%20attendance%20at%20the%20engagement%20of%20Omar%20%26%20Salma%20%E2%80%94%20Saturday%2C%2022%20August%202026%2C%208%3A00%20PM%2C%20Villa%20Rose%2C%20Maadi%20%F0%9F%A4%8D">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
@@ -715,6 +939,200 @@ html:not(.ar) .names .t-ar{display:none}
 
   applyParams();
   applyLang();
+})();
+</script>
+
+<script>
+/* ═════════  V2 FEATURES — additive layer, same D3wa param mechanism  ═════════
+   intro=0 · agenda=time~عربي~english|… · dress / gift = "عربي~english" | 0
+   ph1..ph3 = image URLs · photos=0 · music = audio URL (else WebAudio pad) */
+(function () {
+  "use strict";
+  var docEl = document.documentElement;
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var qs = null;
+  try { qs = new URLSearchParams(window.__D3WA__ || location.search); } catch (e) {}
+  function qp (k) { var v = qs && qs.get(k); return (v && v.trim()) ? v.trim() : null; }
+  function ar9 (s) { return String(s).replace(/[0-9]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩"[+d]; }); }
+  function isArNow () { return docEl.classList.contains("ar"); }
+
+  /* ── Opening moment — page stays usable without JS (overlay ships hidden) ── */
+  var intro = document.getElementById("intro");
+  if (intro && qp("intro") !== "0") {
+    var setIntroName = function (sel, val, isArName) {
+      var el = intro.querySelector(sel);
+      if (!el) return;
+      var m = isArName ? val.match(/^(.+?)\s+و\s*(.+)$/) : null;
+      var parts = isArName ? (m ? [m[1], m[2]] : null) : (val.indexOf("&") > -1 ? val.split(/\s*&\s*/) : null);
+      el.textContent = "";
+      if (parts && parts.length === 2 && parts[0] && parts[1]) {
+        el.appendChild(document.createTextNode(parts[0] + " "));
+        var it = document.createElement("i");
+        it.textContent = isArName ? "و" : "&";
+        el.appendChild(it);
+        el.appendChild(document.createTextNode(" " + parts[1]));
+      } else { el.textContent = val; }
+    };
+    var nEn = qp("n_en"), nAr = qp("n_ar");
+    if (nEn) setIntroName(".intro-names .t-en", nEn, false);
+    if (nAr) setIntroName(".intro-names .t-ar", nAr, true);
+    intro.hidden = false;
+    document.body.classList.add("intro-lock");
+    var opened = false;
+    var openIntro = function () {
+      if (opened) return;
+      opened = true;
+      intro.classList.add("open");
+      document.body.classList.remove("intro-lock");
+      window.setTimeout(function () { intro.hidden = true; }, reduced ? 60 : 1600);
+    };
+    intro.addEventListener("click", openIntro);
+    intro.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); openIntro(); }
+    });
+    try { intro.focus({ preventScroll: true }); } catch (e) {}
+  }
+
+  /* ── Agenda — ?agenda=time~عربي~english|… replaces the demo entries ── */
+  var pAg = qp("agenda");
+  var agList = document.getElementById("agList");
+  if (pAg && agList) {
+    var rows = pAg.split("|").map(function (e) { return e.split("~"); })
+      .filter(function (p) { return p.length >= 3 && p[1] && p[2]; });
+    if (rows.length) {
+      agList.textContent = "";
+      rows.forEach(function (p) {
+        var tEn = p[0], tAr = ar9(p[0]);
+        var m = p[0].match(/^(\d{1,2}):(\d{2})$/);
+        if (m && +m[1] < 24 && +m[2] < 60) {
+          var h = +m[1], h12 = h % 12 || 12;
+          tEn = h12 + ":" + m[2] + " " + (h < 12 ? "AM" : "PM");
+          tAr = ar9(h12 + ":" + m[2]) + (h < 12 ? " ص" : " م");
+        }
+        var mk = function (cls, en, arTxt) {
+          var s = document.createElement("span"); s.className = cls;
+          var se = document.createElement("span"); se.className = "t-en"; se.textContent = en;
+          var sa = document.createElement("span"); sa.className = "t-ar"; sa.textContent = arTxt;
+          s.appendChild(se); s.appendChild(sa); return s;
+        };
+        var li = document.createElement("li");
+        li.appendChild(mk("ag-time", tEn, tAr));
+        var dot = document.createElement("span"); dot.className = "ag-dot"; dot.setAttribute("aria-hidden", "true");
+        li.appendChild(dot);
+        li.appendChild(mk("ag-what", p[2], p[1]));
+        agList.appendChild(li);
+      });
+    }
+  }
+
+  /* ── Dress code / gift note — "عربي~english" overrides, "0" hides ── */
+  function miniParam (key, secId) {
+    var v = qp(key), sec = document.getElementById(secId);
+    if (!sec || !v) return;
+    if (v === "0") { sec.hidden = true; return; }
+    var p = v.split("~");
+    if (p.length >= 2 && p[0] && p[1]) {
+      var a = sec.querySelector("p .t-ar"), e = sec.querySelector("p .t-en");
+      if (a) a.textContent = p[0];
+      if (e) e.textContent = p[1];
+    }
+  }
+  miniParam("dress", "dressSec");
+  miniParam("gift", "giftSec");
+
+  /* ── Gallery — ?ph1..ph3 fill the arch frames; ?photos=0 hides it when empty ── */
+  var galSec = document.getElementById("gallerySec");
+  if (galSec) {
+    var frames = galSec.querySelectorAll(".ph");
+    var any = false;
+    ["ph1", "ph2", "ph3"].forEach(function (k, i) {
+      var u = qp(k);
+      if (!u || !/^https?:\/\//.test(u) || !frames[i]) return;
+      var img = document.createElement("img");
+      img.alt = ""; img.loading = "lazy"; img.src = u;
+      frames[i].appendChild(img);
+      frames[i].classList.add("has-img");
+      any = true;
+    });
+    if (!any && qp("photos") === "0") galSec.hidden = true;
+  }
+
+  /* ── Guest-count chips — the count rides along in the RSVP message ── */
+  var rsvpBtn2 = document.getElementById("rsvpBtn");
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip"));
+  var guestCount = "1";
+  var lastSuffix = null;
+  function syncGuests () {
+    if (!rsvpBtn2) return;
+    var href = rsvpBtn2.getAttribute("href") || "";
+    if (lastSuffix && href.slice(-lastSuffix.length) === lastSuffix) href = href.slice(0, -lastSuffix.length);
+    var txt = isArNow()
+      ? " — عدد الحضور: " + ar9(guestCount)
+      : " — Number of guests: " + guestCount;
+    lastSuffix = encodeURIComponent(txt);
+    rsvpBtn2.setAttribute("href", href + lastSuffix);
+  }
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      chips.forEach(function (x) { x.setAttribute("aria-pressed", x === c ? "true" : "false"); });
+      guestCount = c.getAttribute("data-count") || "1";
+      syncGuests();
+    });
+  });
+  var langBtn2 = document.getElementById("langBtn");
+  /* the original script's click handler runs first and rebuilds the href; ours re-appends */
+  if (langBtn2) langBtn2.addEventListener("click", function () { lastSuffix = null; syncGuests(); });
+  syncGuests();
+
+  /* ── Music toggle — soft WebAudio chord pad (or ?music=<url> file), OFF by default ── */
+  var musicBtn = document.getElementById("musicBtn");
+  var pMusic = qp("music");
+  if (musicBtn && !reduced) {
+    musicBtn.classList.add("show");
+    var playing = false, pad = null, audioEl = null;
+    if (pMusic && /^https?:\/\//.test(pMusic)) {
+      audioEl = new Audio(pMusic);
+      audioEl.loop = true; audioEl.volume = 0.35; audioEl.preload = "none";
+    }
+    var makePad = function () {
+      var Ctx = window.AudioContext || window.webkitAudioContext;
+      if (!Ctx) return null;
+      var ctx = new Ctx();
+      var master = ctx.createGain(); master.gain.value = 0;
+      var lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 880; lp.Q.value = 0.3;
+      lp.connect(master); master.connect(ctx.destination);
+      /* A-major pad: A3 · C#4 · E4 · A4, sine only, slow independent breathing */
+      [[220, .5, .050], [277.18, .42, .061], [329.63, .38, .043], [440, .2, .071]].forEach(function (n, i) {
+        var o = ctx.createOscillator(); o.type = "sine"; o.frequency.value = n[0];
+        o.detune.value = i % 2 ? 4 : -4;
+        var g = ctx.createGain(); g.gain.value = n[1] * 0.72;
+        var lfo = ctx.createOscillator(); lfo.frequency.value = n[2];
+        var lg = ctx.createGain(); lg.gain.value = n[1] * 0.28;
+        lfo.connect(lg); lg.connect(g.gain);
+        o.connect(g); g.connect(lp);
+        o.start(); lfo.start();
+      });
+      return { ctx: ctx, master: master };
+    };
+    musicBtn.addEventListener("click", function () {
+      playing = !playing;
+      musicBtn.setAttribute("aria-pressed", playing ? "true" : "false");
+      if (audioEl) {
+        if (playing) { audioEl.play().catch(function () {}); } else { audioEl.pause(); }
+        return;
+      }
+      if (!pad) pad = makePad();
+      if (!pad) return;
+      var t = pad.ctx.currentTime;
+      pad.master.gain.cancelScheduledValues(t);
+      if (playing) {
+        if (pad.ctx.state === "suspended") pad.ctx.resume();
+        pad.master.gain.setTargetAtTime(0.05, t, 0.9);
+      } else {
+        pad.master.gain.setTargetAtTime(0.0001, t, 0.35);
+      }
+    });
+  }
 })();
 </script>
 

@@ -303,6 +303,118 @@ footer{
 }
 footer .ast{color:var(--accent);letter-spacing:0}
 
+/* ─────────── INTRO — TYPOGRAPHIC SPLIT ─────────── */
+[hidden]{display:none !important}
+.intro{
+  position:fixed;inset:0;z-index:100;
+  cursor:pointer;overflow:hidden;
+  -webkit-tap-highlight-color:transparent;
+}
+.intro-a,.intro-b{
+  position:absolute;left:0;width:100%;height:50.1%;
+  background:var(--paper);
+  transition:transform .85s cubic-bezier(.76,0,.24,1) .12s;
+}
+.intro-a{top:0;border-bottom:1px solid var(--ink)}
+.intro-b{bottom:0}
+.intro-core{
+  position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(18px,4vh,32px);
+  padding:calc(var(--frame) + 24px);text-align:center;
+  transition:opacity .3s ease;
+}
+.intro-kicker{margin:0;font-size:10px;font-weight:700;letter-spacing:.34em;text-transform:uppercase}
+.intro-kicker .t-ar{font-size:12px;font-weight:800;letter-spacing:.14em}
+.intro-names{margin:0;font-weight:800;line-height:1.1;font-size:clamp(40px,11vw,110px)}
+.intro-names .t-en{font-family:var(--lat);text-transform:uppercase;letter-spacing:-.02em;line-height:.95}
+.intro-names .t-ar{font-family:var(--ar)}
+.intro-hint{
+  margin:0;padding-bottom:5px;
+  font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--accent);border-bottom:1px solid var(--accent);
+}
+.intro-hint .t-ar{font-size:13px;letter-spacing:.06em;font-weight:800}
+.intro:focus-visible{outline:none}
+.intro:focus-visible .intro-hint{outline:1px solid var(--accent);outline-offset:5px}
+.intro.open{pointer-events:none}
+.intro.open .intro-core{opacity:0}
+.intro.open .intro-a{transform:translateY(-101%)}
+.intro.open .intro-b{transform:translateY(101%)}
+
+/* ─────────── AGENDA — SCHEDULE LEDGER ─────────── */
+.agenda{margin:0;max-width:560px;list-style:none;padding:0}
+.agenda .ag-item{
+  display:grid;
+  grid-template-columns:minmax(84px,120px) 1fr;
+  gap:16px;align-items:baseline;
+  padding:clamp(14px,2.6vh,20px) 0;
+  border-top:1px solid var(--ink-15);
+}
+.agenda .ag-item:last-child{border-bottom:1px solid var(--ink-15)}
+.ag-time{font-family:var(--lat);font-weight:700;font-variant-numeric:tabular-nums;font-size:15px;letter-spacing:.02em}
+html:not(.en) .ag-time{font-family:var(--ar);font-weight:800}
+.ag-what{font-size:15px}
+.ag-what .t-en{font-weight:500}
+
+/* ─────────── NOTE LINE (dress / gift) ─────────── */
+.note-line{margin:0;font-size:15px;line-height:1.7;max-width:34em}
+.note-line .t-en{font-weight:500}
+
+/* ─────────── GALLERY — STRICT RECTANGLES ─────────── */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,2.4vw,24px);max-width:720px}
+.gframe{
+  margin:0;position:relative;overflow:hidden;
+  border:1px solid var(--ink-15);
+  aspect-ratio:3/4;
+  display:flex;align-items:center;justify-content:center;
+}
+.gnum{position:absolute;top:8px;inset-inline-start:10px;font-family:var(--lat);font-size:9.5px;font-weight:500;letter-spacing:.28em;color:var(--ink-40)}
+.gph{font-family:var(--lat);color:var(--accent);font-size:18px;line-height:1;opacity:.85}
+.gframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gframe.has-img .gph{display:none}
+
+/* ─────────── GUEST COUNT CHIPS ─────────── */
+.guests{margin:0 0 clamp(20px,4vh,36px)}
+.guests-lbl{
+  display:block;margin-bottom:12px;
+  font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--ink-40);
+}
+.guests-lbl .t-ar{font-size:11px;letter-spacing:.1em;font-weight:400}
+.guest-chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{
+  min-width:48px;min-height:44px;padding:0 14px;
+  border:1px solid var(--ink);border-radius:0;
+  background:none;color:var(--ink);
+  font-family:var(--lat);font-size:13px;font-weight:700;letter-spacing:.08em;
+  cursor:pointer;
+  transition:background-color .25s ease,color .25s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-spacing:0}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.chip:hover{color:var(--accent);border-color:var(--accent)}
+.chip[aria-pressed="true"]:hover{color:var(--paper);border-color:var(--ink)}
+.chip:focus-visible{outline:1px solid var(--accent);outline-offset:3px}
+
+/* ─────────── MUSIC TOGGLE ─────────── */
+.music-toggle{
+  position:fixed;
+  bottom:calc(var(--frame) + 12px);
+  inset-inline-start:calc(var(--frame) + 12px);
+  z-index:50;
+  width:44px;height:44px;
+  border:1px solid var(--ink);border-radius:0;
+  background:var(--paper);color:var(--ink);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background-color .25s ease,color .25s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.music-toggle svg{width:18px;height:18px}
+.music-toggle[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.music-toggle:focus-visible{outline:1px solid var(--accent);outline-offset:3px}
+
 /* ─────────── MOTION — restrained ─────────── */
 .rv{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease}
 .rv.in{opacity:1;transform:none}
@@ -310,6 +422,7 @@ footer .ast{color:var(--accent);letter-spacing:0}
   html{scroll-behavior:auto}
   .rv{opacity:1;transform:none;transition:none}
   *,*::before,*::after{animation:none !important;transition:none !important}
+  .music-toggle{display:none}
 }
 
 @media (max-width:420px){
@@ -322,6 +435,27 @@ footer .ast{color:var(--accent);letter-spacing:0}
 <body>
 
 <div class="frame" aria-hidden="true"></div>
+
+<!-- ═══════ INTRO — TAP TO OPEN (unhidden only via script; intro=0 skips) ═══════ -->
+<div class="intro" id="intro" hidden role="button" tabindex="0"
+     aria-label="افتحوا الدعوة — دوسوا للفتح / Open the invitation — tap to open">
+  <div class="intro-a" aria-hidden="true"></div>
+  <div class="intro-b" aria-hidden="true"></div>
+  <div class="intro-core">
+    <p class="intro-kicker">
+      <span class="t-ar">دعوة خطوبة</span>
+      <span class="t-en">An engagement</span>
+    </p>
+    <p class="intro-names">
+      <span class="t-ar" id="introNamesAr">عمر وسلمى</span>
+      <span class="t-en" id="introNamesEn">Omar &amp; Salma</span>
+    </p>
+    <p class="intro-hint" aria-hidden="true">
+      <span class="t-ar">دوسوا للفتح</span>
+      <span class="t-en">Tap to open</span>
+    </p>
+  </div>
+</div>
 
 <button class="lang-toggle" id="langBtn" type="button" aria-label="Switch language / تبديل اللغة">
   <span class="t-ar">EN</span>
@@ -386,10 +520,38 @@ footer .ast{color:var(--accent);letter-spacing:0}
     </div>
   </section>
 
+  <!-- ═══════ 02 — AGENDA ═══════ -->
+  <section id="agenda" aria-labelledby="agLbl">
+    <h2 class="lbl rv" id="agLbl">
+      <span class="no" aria-hidden="true">02</span>
+      <span class="t-ar">برنامج المساء</span>
+      <span class="t-en">The programme</span>
+    </h2>
+
+    <ol class="agenda rv" id="agList">
+      <li class="ag-item">
+        <span class="ag-time"><span class="t-ar">٨:٠٠</span><span class="t-en">8:00</span></span>
+        <span class="ag-what"><span class="t-ar">الاستقبال</span><span class="t-en">Reception</span></span>
+      </li>
+      <li class="ag-item">
+        <span class="ag-time"><span class="t-ar">٩:٠٠</span><span class="t-en">9:00</span></span>
+        <span class="ag-what"><span class="t-ar">تبادل الدبل</span><span class="t-en">The rings</span></span>
+      </li>
+      <li class="ag-item">
+        <span class="ag-time"><span class="t-ar">١٠:٠٠</span><span class="t-en">10:00</span></span>
+        <span class="ag-what"><span class="t-ar">العشاء</span><span class="t-en">Dinner</span></span>
+      </li>
+      <li class="ag-item">
+        <span class="ag-time"><span class="t-ar">١١:٠٠</span><span class="t-en">11:00</span></span>
+        <span class="ag-what"><span class="t-ar">التصوير والسهرة</span><span class="t-en">Photos &amp; music</span></span>
+      </li>
+    </ol>
+  </section>
+
   <!-- ═══════ 03 — DETAILS ═══════ -->
   <section aria-labelledby="dtLbl">
     <h2 class="lbl rv" id="dtLbl">
-      <span class="no" aria-hidden="true">02</span>
+      <span class="no" aria-hidden="true">03</span>
       <span class="t-ar">التفاصيل</span>
       <span class="t-en">The details</span>
     </h2>
@@ -433,10 +595,62 @@ footer .ast{color:var(--accent);letter-spacing:0}
     </div>
   </section>
 
-  <!-- ═══════ 04 — RSVP ═══════ -->
+  <!-- ═══════ 04 — DRESS CODE ═══════ -->
+  <section id="dress" aria-labelledby="drLbl">
+    <h2 class="lbl rv" id="drLbl">
+      <span class="no" aria-hidden="true">04</span>
+      <span class="t-ar">ملابس الحضور</span>
+      <span class="t-en">Dress code</span>
+    </h2>
+    <p class="note-line rv">
+      <span class="t-ar" id="dressAr">أناقة رسمية.</span>
+      <span class="t-en" id="dressEn">Formal. Nothing more to say.</span>
+    </p>
+  </section>
+
+  <!-- ═══════ 05 — GALLERY ═══════ -->
+  <section id="gallery" aria-labelledby="glLbl">
+    <h2 class="lbl rv" id="glLbl">
+      <span class="no" aria-hidden="true">05</span>
+      <span class="t-ar">لحظات</span>
+      <span class="t-en">Moments</span>
+    </h2>
+    <div class="gallery rv">
+      <figure class="gframe">
+        <span class="gnum" aria-hidden="true">01</span>
+        <span class="gph" aria-hidden="true">&#10035;</span>
+        <img id="ph1" alt="" loading="lazy" hidden>
+      </figure>
+      <figure class="gframe">
+        <span class="gnum" aria-hidden="true">02</span>
+        <span class="gph" aria-hidden="true">&#10035;</span>
+        <img id="ph2" alt="" loading="lazy" hidden>
+      </figure>
+      <figure class="gframe">
+        <span class="gnum" aria-hidden="true">03</span>
+        <span class="gph" aria-hidden="true">&#10035;</span>
+        <img id="ph3" alt="" loading="lazy" hidden>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══════ 06 — GIFT NOTE ═══════ -->
+  <section id="gift" aria-labelledby="gfLbl">
+    <h2 class="lbl rv" id="gfLbl">
+      <span class="no" aria-hidden="true">06</span>
+      <span class="t-ar">الهدايا</span>
+      <span class="t-en">Gifts</span>
+    </h2>
+    <p class="note-line rv">
+      <span class="t-ar" id="giftAr">حضوركم ودعواتكم أغلى هدية 🤍</span>
+      <span class="t-en" id="giftEn">Your presence is the greatest gift 🤍</span>
+    </p>
+  </section>
+
+  <!-- ═══════ 07 — RSVP ═══════ -->
   <section aria-labelledby="rsLbl">
     <h2 class="lbl rv" id="rsLbl">
-      <span class="no" aria-hidden="true">03</span>
+      <span class="no" aria-hidden="true">07</span>
       <span class="t-ar">تأكيد الحضور</span>
       <span class="t-en">RSVP</span>
     </h2>
@@ -445,6 +659,16 @@ footer .ast{color:var(--accent);letter-spacing:0}
       <span class="t-ar">كلمة واحدة تكفي — تصلنا على واتساب مباشرةً.</span>
       <span class="t-en">One word is enough &mdash; it reaches us directly on WhatsApp.</span>
     </p>
+
+    <div class="guests rv" role="group" aria-label="عدد الحضور / Number of guests">
+      <span class="guests-lbl"><span class="t-ar">عدد الحضور</span><span class="t-en">Guests</span></span>
+      <div class="guest-chips">
+        <button type="button" class="chip" data-n="1" aria-pressed="true"><span class="t-ar">١</span><span class="t-en">1</span></button>
+        <button type="button" class="chip" data-n="2" aria-pressed="false"><span class="t-ar">٢</span><span class="t-en">2</span></button>
+        <button type="button" class="chip" data-n="3" aria-pressed="false"><span class="t-ar">٣</span><span class="t-en">3</span></button>
+        <button type="button" class="chip" data-n="4+" aria-pressed="false"><span class="t-ar">٤+</span><span class="t-en">4+</span></button>
+      </div>
+    </div>
 
     <div class="rsvp-links rv">
       <a class="rsvp" id="rsvpYes" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418">
@@ -465,6 +689,13 @@ footer .ast{color:var(--accent);letter-spacing:0}
   </footer>
 
 </main>
+
+<button class="music-toggle" id="musicBtn" type="button" aria-pressed="false"
+        aria-label="موسيقى هادئة / Ambient music on–off">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+    <path d="M9 18V5l10-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>
+  </svg>
+</button>
 
 <script>
 (function () {
@@ -621,6 +852,56 @@ footer .ast{color:var(--accent);letter-spacing:0}
   }
   try { applyParams(); } catch (e) {}
 
+  /* ── v2 content params: agenda / dress / gift / photos ── */
+  function applyV2Params () {
+    var pAgenda = qp("agenda"), pDress = qp("dress"), pGift = qp("gift"), pPhotos = qp("photos");
+    var hideSec = function (id) { var s = document.getElementById(id); if (s) s.hidden = true; };
+    var mkSpan = function (cls, txt) { var s = document.createElement("span"); s.className = cls; s.textContent = txt; return s; };
+    var setPair = function (arId, enId, raw) {
+      var parts = raw.split("~");
+      var arEl = document.getElementById(arId), enEl = document.getElementById(enId);
+      if (arEl) arEl.textContent = parts[0].trim();
+      if (enEl) enEl.textContent = (parts[1] || parts[0]).trim();
+    };
+    if (pAgenda === "0") hideSec("agenda");
+    else if (pAgenda) {
+      var list = document.getElementById("agList");
+      var rows = pAgenda.split("|").map(function (r) { return r.split("~"); })
+        .filter(function (p) { return p.length >= 2 && p[0].trim() && p[1].trim(); });
+      if (list && rows.length) {
+        list.textContent = "";
+        rows.forEach(function (p) {
+          var li = document.createElement("li"); li.className = "ag-item";
+          var tm = document.createElement("span"); tm.className = "ag-time";
+          tm.appendChild(mkSpan("t-ar", arDigits(p[0].trim())));
+          tm.appendChild(mkSpan("t-en", p[0].trim()));
+          var wh = document.createElement("span"); wh.className = "ag-what";
+          wh.appendChild(mkSpan("t-ar", p[1].trim()));
+          wh.appendChild(mkSpan("t-en", (p[2] || p[1]).trim()));
+          li.appendChild(tm); li.appendChild(wh);
+          list.appendChild(li);
+        });
+      }
+    }
+    if (pDress === "0") hideSec("dress");
+    else if (pDress) setPair("dressAr", "dressEn", pDress);
+    if (pGift === "0") hideSec("gift");
+    else if (pGift) setPair("giftAr", "giftEn", pGift);
+    if (pPhotos === "0") hideSec("gallery");
+    for (var gi = 1; gi <= 3; gi++) {
+      var pu = qp("ph" + gi);
+      if (pu && /^https:\/\//.test(pu)) {
+        var img = document.getElementById("ph" + gi);
+        if (img) {
+          img.src = pu;
+          img.hidden = false;
+          if (img.parentNode && img.parentNode.classList) img.parentNode.classList.add("has-img");
+        }
+      }
+    }
+  }
+  try { applyV2Params(); } catch (e) {}
+
   /* ── Language toggle — Arabic is the default; html.en switches to English ── */
   var langBtn = document.getElementById("langBtn");
   var isEn = false;
@@ -672,6 +953,7 @@ footer .ast{color:var(--accent);letter-spacing:0}
     var yes = isEn
       ? "Hello! Confirming my attendance at the engagement of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueMsgEn + " ✳"
       : "مرحباً! أؤكد حضوري حفل خطوبة " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueMsgAr + " ✳";
+    yes += isEn ? " — Guests: " + guestN : " — عدد الحضور: " + arDigits(guestN);
     var no = isEn
       ? "Hello! Unfortunately I won't be able to attend the engagement of " + namesEn + " — sending my warmest wishes to you both."
       : "مرحباً! أعتذر عن حضور حفل خطوبة " + namesAr + " — مع خالص تمنياتي لهما بحياة سعيدة.";
@@ -691,6 +973,87 @@ footer .ast{color:var(--accent);letter-spacing:0}
     rvs.forEach(function (el) { io.observe(el); });
   } else {
     rvs.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* ── Guest-count chips — count rides along in the accept message ── */
+  var guestN = "1";
+  var chips = document.querySelectorAll(".guest-chips .chip");
+  chips.forEach(function (ch) {
+    ch.addEventListener("click", function () {
+      guestN = ch.getAttribute("data-n") || "1";
+      chips.forEach(function (c) { c.setAttribute("aria-pressed", c === ch ? "true" : "false"); });
+      updateLinks();
+    });
+  });
+
+  /* ── Intro overlay — typographic split on tap (intro=0 skips) ── */
+  var intro = document.getElementById("intro");
+  if (intro && qp("intro") !== "0") {
+    var inAr = document.getElementById("introNamesAr"), inEn = document.getElementById("introNamesEn");
+    if (inAr) inAr.textContent = namesAr;
+    if (inEn) inEn.textContent = namesEn;
+    intro.hidden = false;
+    document.body.style.overflow = "hidden";
+    try { intro.focus({ preventScroll: true }); } catch (eF) { try { intro.focus(); } catch (eF2) {} }
+    var introDone = false;
+    var openIntro = function () {
+      if (introDone) return;
+      introDone = true;
+      intro.classList.add("open");
+      document.body.style.overflow = "";
+      setTimeout(function () { intro.hidden = true; }, reduced ? 60 : 1100);
+    };
+    intro.addEventListener("click", openIntro);
+    intro.addEventListener("keydown", function (ev) {
+      if (ev.key === "Enter" || ev.key === " " || ev.key === "Spacebar") { ev.preventDefault(); openIntro(); }
+    });
+  }
+
+  /* ── Ambient music — OFF by default; WebAudio pad, or ?music= audio URL ── */
+  var musicBtn = document.getElementById("musicBtn");
+  if (musicBtn) {
+    var pMusic = qp("music");
+    var musicOn = false, audioEl = null, actx = null, masterG = null;
+    var startPad = function () {
+      if (!actx) {
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        actx = new AC();
+        masterG = actx.createGain();
+        masterG.gain.value = 0;
+        var filt = actx.createBiquadFilter();
+        filt.type = "lowpass"; filt.frequency.value = 900; filt.Q.value = 0.4;
+        masterG.connect(filt); filt.connect(actx.destination);
+        var lfo = actx.createOscillator(), lfoG = actx.createGain();
+        lfo.frequency.value = 0.07; lfoG.gain.value = 0.012;
+        lfo.connect(lfoG); lfoG.connect(masterG.gain); lfo.start();
+        [220, 329.63].forEach(function (f, i) {
+          [-4, 3].forEach(function (det) {
+            var o = actx.createOscillator(), g = actx.createGain();
+            o.type = "sine"; o.frequency.value = f; o.detune.value = det;
+            g.gain.value = [0.22, 0.12][i];
+            o.connect(g); g.connect(masterG); o.start();
+          });
+        });
+      }
+      if (actx.state === "suspended") actx.resume();
+      masterG.gain.cancelScheduledValues(actx.currentTime);
+      masterG.gain.setTargetAtTime(0.05, actx.currentTime, 0.6);
+    };
+    var stopPad = function () {
+      if (!actx) return;
+      masterG.gain.cancelScheduledValues(actx.currentTime);
+      masterG.gain.setTargetAtTime(0, actx.currentTime, 0.25);
+      setTimeout(function () { if (actx && !musicOn) actx.suspend(); }, 1200);
+    };
+    musicBtn.addEventListener("click", function () {
+      musicOn = !musicOn;
+      musicBtn.setAttribute("aria-pressed", musicOn ? "true" : "false");
+      if (pMusic && /^https:\/\//.test(pMusic)) {
+        if (!audioEl) { audioEl = new Audio(pMusic); audioEl.loop = true; audioEl.volume = 0.25; }
+        if (musicOn) audioEl.play().catch(function () {}); else audioEl.pause();
+      } else if (musicOn) startPad(); else stopPad();
+    });
   }
 
   applyLang();

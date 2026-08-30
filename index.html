@@ -127,7 +127,7 @@ html.en h1{line-height:1.15}
 .screen .rsvp svg{width:13px;height:13px;fill:currentColor}
 
 /* sections */
-section{padding:clamp(48px,8vw,88px) 0}
+section{padding:clamp(48px,8vw,88px) 0;scroll-margin-top:70px}
 .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:8px}
 .sec-title{font-family:var(--disp);font-weight:600;font-size:clamp(26px,5vw,40px);margin:0;letter-spacing:.01em}
 .sec-count{font-size:13px;color:var(--ink-2)}
@@ -212,6 +212,16 @@ html:not(.en) .chat .msg.reply{align-self:start}
 .moment-copy li{padding:6px 0;font-size:14px;display:flex;gap:11px;align-items:flex-start;line-height:1.9}
 .moment-copy li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--copper);margin-top:11px;flex:none}
 
+/* why comparison */
+.cmp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px;background:var(--paper-2)}
+.cmp{width:100%;min-width:680px;border-collapse:collapse;font-size:13.5px}
+.cmp th,.cmp td{padding:13px 16px;text-align:start;border-bottom:1px solid var(--line-soft);line-height:1.8}
+.cmp thead th{font-size:12.5px;font-weight:800;color:var(--ink-2);border-bottom:1px solid var(--line)}
+.cmp tbody tr:last-child td{border-bottom:none}
+.cmp td:first-child{color:var(--ink-2);font-weight:600;white-space:nowrap}
+.cmp .hl{background:rgba(156,74,26,.07);font-weight:600}
+.cmp thead .hl{color:var(--copper)}
+
 /* how it works */
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--paper-2)}
 .step{padding:26px 22px;position:relative;border-inline-start:1px solid var(--line-soft)}
@@ -283,6 +293,7 @@ footer .brand{justify-content:center;margin-bottom:10px;display:flex}
   </a>
   <nav class="nav-links">
     <a href="#templates"><span class="t-ar">الكولكشن</span><span class="t-en">Collection</span></a>
+    <a href="#why"><span class="t-ar">ليه إحنا</span><span class="t-en">Why us</span></a>
     <a href="#how"><span class="t-ar">إزاي بتطلب</span><span class="t-en">How it works</span></a>
     <a href="#pricing"><span class="t-ar">الباقات</span><span class="t-en">Packages</span></a>
     <a href="#faq"><span class="t-ar">أسئلة</span><span class="t-en">FAQ</span></a>
@@ -521,11 +532,37 @@ footer .brand{justify-content:center;margin-bottom:10px;display:flex}
     <h2><span class="t-ar">اللحظة اللي الضيف يفتح فيها اللينك</span><span class="t-en">The moment a guest opens the link</span></h2>
     <p><span class="t-ar">الدعوة بتوصل على واتساب بصورة معاينة فخمة باسمكم. الضيف يفتح، يلاقي العدّاد شغال، يضغط زرار واحد يأكد حضوره، وياخد الخريطة ويحفظ المعاد في التقويم. من غير ما يحمّل أي تطبيق.</span><span class="t-en">The invitation lands on WhatsApp with a premium preview card in your names. Guests open it, watch the live countdown, confirm with one tap, get the map and save the date. No app required.</span></p>
     <ul>
-      <li><span class="t-ar">صورة معاينة مخصوصة عند المشاركة</span><span class="t-en">Custom preview card when shared</span></li>
-      <li><span class="t-ar">تأكيد الحضور بيوصلك رسالة واتساب جاهزة</span><span class="t-en">RSVPs arrive as ready WhatsApp messages</span></li>
+      <li><span class="t-ar">الدعوة بتتفتح بلمسة، زي ما تكون بتفض ظرف حقيقي</span><span class="t-en">Opens with a tap, like unsealing a real envelope</span></li>
+      <li><span class="t-ar">برنامج اليوم والدرس كود وألبوم صور وموسيقى هادية</span><span class="t-en">Day schedule, dress code, photo gallery and gentle music</span></li>
+      <li><span class="t-ar">تأكيد الحضور وعدد الضيوف بيوصلك رسالة واتساب جاهزة</span><span class="t-en">RSVPs with guest counts arrive as ready WhatsApp messages</span></li>
       <li><span class="t-ar">شغالة على أي موبايل ومن غير تطبيقات</span><span class="t-en">Works on any phone, no apps</span></li>
     </ul>
   </div>
+</div></section>
+
+<section id="why"><div class="wrap">
+  <div class="sec-head"><h2 class="sec-title"><span class="t-ar">ليه دعوة D3wa؟</span><span class="t-en">Why D3wa?</span></h2></div>
+  <p class="sec-sub"><span class="t-ar">قارن بنفسك. الديموهات قدامك حية، والأسعار مكتوبة، ومفيش مفاجآت.</span><span class="t-en">Compare for yourself: the demos are live, the prices are written down, no surprises.</span></p>
+  <div class="cmp-scroll rv"><table class="cmp">
+    <thead><tr>
+      <th></th>
+      <th class="hl"><span class="t-ar">دعوة D3wa</span><span class="t-en">D3wa</span></th><th><span class="t-ar">صورة أو فيديو دعوة</span><span class="t-en">Image or video invite</span></th><th><span class="t-ar">منصات بالدولار واليورو</span><span class="t-en">USD/EUR platforms</span></th>
+    </tr></thead>
+    <tbody>
+      <tr><td><span class="t-ar">اللي بيوصل للضيف</span><span class="t-en">What guests get</span></td>
+        <td class="hl"><span class="t-ar">صفحة حية بلينك باسمكم</span><span class="t-en">A live page on your own link</span></td><td><span class="t-ar">صورة بتضيع في الشات</span><span class="t-en">An image lost in the chat</span></td><td><span class="t-ar">صفحة تفاعلية</span><span class="t-en">Interactive page</span></td></tr>
+      <tr><td><span class="t-ar">تأكيد الحضور</span><span class="t-en">RSVP</span></td>
+        <td class="hl"><span class="t-ar">ضغطة واتساب توصلكم مباشرة</span><span class="t-en">One WhatsApp tap, straight to you</span></td><td><span class="t-ar">مفيش</span><span class="t-en">None</span></td><td><span class="t-ar">فورم وداشبورد</span><span class="t-en">Forms and dashboards</span></td></tr>
+      <tr><td><span class="t-ar">السعر</span><span class="t-en">Price</span></td>
+        <td class="hl"><span class="t-ar">من ١٬٠٠٠ جنيه مصري</span><span class="t-en">From EGP 1,000</span></td><td><span class="t-ar">رخيص بس بيتنسي</span><span class="t-en">Cheap but forgettable</span></td><td><span class="t-ar">٥٠–١٣٥ يورو/دولار</span><span class="t-en">€50–135+</span></td></tr>
+      <tr><td><span class="t-ar">التسليم</span><span class="t-en">Delivery</span></td>
+        <td class="hl"><span class="t-ar">٤٨ ساعة</span><span class="t-en">48 hours</span></td><td><span class="t-ar">على مزاج المصمم</span><span class="t-en">Whenever</span></td><td><span class="t-ar">٤–٧ أيام</span><span class="t-en">4–7 days</span></td></tr>
+      <tr><td><span class="t-ar">الدفع</span><span class="t-en">Payment</span></td>
+        <td class="hl"><span class="t-ar">إنستاباي أو فودافون كاش</span><span class="t-en">InstaPay or Vodafone Cash</span></td><td><span class="t-ar">فودافون كاش</span><span class="t-en">Wallet</span></td><td><span class="t-ar">كارت بنكي دولي</span><span class="t-en">International card only</span></td></tr>
+      <tr><td><span class="t-ar">مناسباتنا</span><span class="t-en">Our occasions</span></td>
+        <td class="hl"><span class="t-ar">كتب كتاب وحنة وسبوع وتخرج كمان</span><span class="t-en">Katb kitab, henna, sebou3, graduation too</span></td><td><span class="t-ar">على حسب</span><span class="t-en">Varies</span></td><td><span class="t-ar">فرح وخطوبة بس غالبًا</span><span class="t-en">Mostly weddings</span></td></tr>
+    </tbody>
+  </table></div>
 </div></section>
 
 <section id="how"><div class="wrap">
@@ -598,6 +635,7 @@ footer .brand{justify-content:center;margin-bottom:10px;display:flex}
 <section id="faq"><div class="wrap" style="max-width:780px">
   <div class="sec-head"><h2 class="sec-title"><span class="t-ar">أسئلة شائعة</span><span class="t-en">FAQ</span></h2></div>
   <div style="margin-top:26px">
+  <details><summary><span class="t-ar">الدعوة فيها إيه غير العدّاد وتأكيد الحضور؟</span><span class="t-en">What's in the invitation besides the countdown and RSVP?</span></summary><p><span class="t-ar">افتتاحية بتتفض بلمسة، برنامج اليوم ساعة بساعة، الدرس كود، ألبوم صور، رسالة هدايا، خريطة القاعة، وإضافة للتقويم — وكله بالعربي والإنجليزي. جربها بنفسك في أي ديمو.</span><span class="t-en">A tap-to-open reveal, an hour-by-hour schedule, dress code, photo gallery, a gifts note, the venue map and add-to-calendar, all bilingual. Try any demo and see.</span></p></details>
   <details><summary><span class="t-ar">الدعوة بتفضل شغالة لحد امتى؟</span><span class="t-en">How long does the invitation stay live?</span></summary><p><span class="t-ar">لمدة سنة كاملة من تاريخ النشر. تقدر تحتفظ بيها كذكرى بعد المناسبة كمان.</span><span class="t-en">A full year from publish date. Keep it as a memory after the celebration too.</span></p></details>
   <details><summary><span class="t-ar">أقدر أغيّر التفاصيل بعد النشر؟</span><span class="t-en">Can I change details after publishing?</span></summary><p><span class="t-ar">تعديلات النصوص البسيطة (معاد، قاعة) مجانية قبل المناسبة بأسبوع. تغيير التصميم بيتحسب كجولة تعديل إضافية.</span><span class="t-en">Simple text changes (time, venue) are free up to a week before the event. Design changes count as an extra revision round.</span></p></details>
   <details><summary><span class="t-ar">بتشتغل على كل الموبايلات؟</span><span class="t-en">Does it work on all phones?</span></summary><p><span class="t-ar">أيوه، أي موبايل أو كمبيوتر ومن غير أي تطبيقات. اللينك بيفتح في المتصفح مباشرة.</span><span class="t-en">Yes, any phone or computer with no apps. The link opens right in the browser.</span></p></details>
