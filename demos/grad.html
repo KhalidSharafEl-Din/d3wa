@@ -690,7 +690,7 @@ html:not(.en) .ag-time{font-family:var(--ar);font-weight:700}
       </p>
     </div>
 
-    <div class="v2sec rv d4" id="gallerySec">
+    <div class="v2sec rv d4" id="gallerySec" style="display:none">
       <p class="v2-title">
         <span class="t-ar">ألبوم التخرج</span>
         <span class="t-en">Gallery</span>
@@ -955,6 +955,7 @@ html:not(.en) .ag-time{font-family:var(--ar);font-weight:700}
       setId("giftAr", gp[0].trim());
       setId("giftEn", (gp[1] || gp[0]).trim());
     }
+    if ((pPhotos && pPhotos !== "0") || qp("ph1")) document.getElementById("gallerySec").style.display = "";
     if (pPhotos === "0") hide("gallerySec");
     else {
       for (var j = 0; j < 3; j++) {
@@ -1134,5 +1135,6 @@ html:not(.en) .ag-time{font-family:var(--ar);font-weight:700}
 })();
 </script>
 
+<p class="d3wa-credit" style="margin:0;padding:28px 16px 96px;text-align:center;font-size:12px;line-height:1.8;opacity:.6"><a href="../index.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><span class="t-ar">دعوة من D3wa · اطلب دعوتك</span><span class="t-en">Invitation by D3wa. Order yours.</span></a></p>
 </body>
 </html>

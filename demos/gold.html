@@ -739,7 +739,7 @@ body.intro-lock{overflow:hidden}
     </div>
 
     <!-- V2 — photo gallery -->
-    <div class="gallery rv d4" id="gallerySec">
+    <div class="gallery rv d4" id="gallerySec" style="display:none">
       <p class="eyebrow"><span class="t-en">Our moments</span><span class="t-ar">لحظاتنا</span></p>
       <div class="ph-row">
         <span class="ph" aria-hidden="true">
@@ -1181,6 +1181,7 @@ body.intro-lock{overflow:hidden}
       any = true;
     });
     if (!any && qp("photos") === "0") galSec.hidden = true;
+    if (any || (qp("photos") && qp("photos") !== "0")) document.getElementById("gallerySec").style.display = "";
   }
 
   /* ── Guest-count chips — the count rides along in the RSVP message ── */
@@ -1262,5 +1263,6 @@ body.intro-lock{overflow:hidden}
 })();
 </script>
 
+<p class="d3wa-credit" style="margin:0;padding:28px 16px 96px;text-align:center;font-size:12px;line-height:1.8;opacity:.6"><a href="../index.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><span class="t-ar">دعوة من D3wa · اطلب دعوتك</span><span class="t-en">Invitation by D3wa. Order yours.</span></a></p>
 </body>
 </html>

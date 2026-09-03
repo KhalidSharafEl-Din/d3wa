@@ -858,7 +858,7 @@ html.en .chip > span{font-family:var(--en-display);font-weight:400}
 </section>
 
 <!-- ═════════ GALLERY ═════════ -->
-<section class="scene" id="gallerySec" aria-label="Gallery">
+<section class="scene" id="gallerySec" aria-label="Gallery" style="display:none">
   <div class="divider rv" aria-hidden="true">
     <span class="rule"></span>
     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1">
@@ -1173,6 +1173,7 @@ html.en .chip > span{font-family:var(--en-display);font-weight:400}
     else if (pDress) setPair("dressLine", pDress);
     if (pGift === "0") hideSec("giftSec");
     else if (pGift) setPair("giftLine", pGift);
+    if ((pPhotos && pPhotos !== "0") || qp("ph1")) document.getElementById("gallerySec").style.display = "";
     if (pPhotos === "0") hideSec("gallerySec");
     else {
       var frames = document.querySelectorAll("#gallerySec .g-frame");
@@ -1347,5 +1348,6 @@ html.en .chip > span{font-family:var(--en-display);font-weight:400}
 })();
 </script>
 
+<p class="d3wa-credit" style="margin:0;padding:28px 16px 96px;text-align:center;font-size:12px;line-height:1.8;opacity:.6"><a href="../index.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><span class="t-ar">دعوة من D3wa · اطلب دعوتك</span><span class="t-en">Invitation by D3wa. Order yours.</span></a></p>
 </body>
 </html>

@@ -746,7 +746,7 @@ html:not(.en) .chip{font-family:var(--kufi);font-weight:500;font-size:15px}
     </div>
 
     <!-- ═════ GALLERY ═════ -->
-    <div class="rise r5" id="gallerySec">
+    <div class="rise r5" id="gallerySec" style="display:none">
       <span class="sec-lbl">
         <span class="t-ar">لحظات من ذهب</span>
         <span class="t-en">Golden Moments</span>
@@ -1039,6 +1039,7 @@ html:not(.en) .chip{font-family:var(--kufi);font-weight:500;font-size:15px}
     else if (pDress) setPair("dressLine", pDress);
     if (pGift === "0") hideSec("giftSec");
     else if (pGift) setPair("giftSec", pGift);
+    if ((pPhotos && pPhotos !== "0") || qp("ph1")) document.getElementById("gallerySec").style.display = "";
     if (pPhotos === "0") hideSec("gallerySec");
     else {
       var frames = document.querySelectorAll("#gallerySec .g-frame");
@@ -1200,5 +1201,6 @@ html:not(.en) .chip{font-family:var(--kufi);font-weight:500;font-size:15px}
 })();
 </script>
 
+<p class="d3wa-credit" style="margin:0;padding:28px 16px 96px;text-align:center;font-size:12px;line-height:1.8;opacity:.6"><a href="../index.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><span class="t-ar">دعوة من D3wa · اطلب دعوتك</span><span class="t-en">Invitation by D3wa. Order yours.</span></a></p>
 </body>
 </html>

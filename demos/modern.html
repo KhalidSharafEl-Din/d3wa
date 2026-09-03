@@ -609,7 +609,7 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
   </section>
 
   <!-- ═══════ 05 — GALLERY ═══════ -->
-  <section id="gallery" aria-labelledby="glLbl">
+  <section id="gallery" aria-labelledby="glLbl" style="display:none">
     <h2 class="lbl rv" id="glLbl">
       <span class="no" aria-hidden="true">05</span>
       <span class="t-ar">لحظات</span>
@@ -901,6 +901,7 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
     else if (pDress) setPair("dressAr", "dressEn", pDress);
     if (pGift === "0") hideSec("gift");
     else if (pGift) setPair("giftAr", "giftEn", pGift);
+    if ((pPhotos && pPhotos !== "0") || qp("ph1")) document.getElementById("gallery").style.display = "";
     if (pPhotos === "0") hideSec("gallery");
     for (var gi = 1; gi <= 3; gi++) {
       var pu = qp("ph" + gi);
@@ -1074,5 +1075,6 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
 })();
 </script>
 
+<p class="d3wa-credit" style="margin:0;padding:28px 16px 96px;text-align:center;font-size:12px;line-height:1.8;opacity:.6"><a href="../index.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><span class="t-ar">دعوة من D3wa · اطلب دعوتك</span><span class="t-en">Invitation by D3wa. Order yours.</span></a></p>
 </body>
 </html>
