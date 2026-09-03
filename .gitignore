@@ -4,3 +4,6 @@ docs/
 
 .claude/
 .DS_Store
+
+# SDD scratch (ledger, briefs, review packages)
+.superpowers/
