@@ -482,11 +482,11 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
 
       <h1 class="names rv in" id="namesH">
         <span class="t-ar">
-          <span class="ln" id="arL1">عمر<span class="mark" aria-hidden="true">✳</span></span>
+          <span class="ln" id="arL1">عمر<span class="mark" aria-hidden="true">✱</span></span>
           <span class="ln" id="arL2">وسلمى</span>
         </span>
         <span class="t-en">
-          <span class="ln" id="enL1">Omar<span class="mark" aria-hidden="true">✳</span></span>
+          <span class="ln" id="enL1">Omar<span class="mark" aria-hidden="true">✱</span></span>
           <span class="ln" id="enL2">&amp; Salma</span>
         </span>
       </h1>
@@ -642,8 +642,8 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
       <span class="t-en">Gifts</span>
     </h2>
     <p class="note-line rv">
-      <span class="t-ar" id="giftAr">حضوركم ودعواتكم أغلى هدية 🤍</span>
-      <span class="t-en" id="giftEn">Your presence is the greatest gift 🤍</span>
+      <span class="t-ar" id="giftAr">حضوركم ودعواتكم أغلى هدية</span>
+      <span class="t-en" id="giftEn">Your presence is the greatest gift</span>
     </p>
   </section>
 
@@ -741,7 +741,7 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
 
   function applyParams () {
     var $ = function (s) { return document.querySelector(s); };
-    /* stacked poster lines: line 1 = first name + ✳ mark, line 2 = connector + second name */
+    /* stacked poster lines: line 1 = first name + ✱ mark, line 2 = connector + second name */
     var buildLines = function (l1, l2, first, joiner, second, whole) {
       if (!l1) return;
       l1.textContent = "";
@@ -755,7 +755,7 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
       var mk = document.createElement("span");
       mk.className = "mark";
       mk.setAttribute("aria-hidden", "true");
-      mk.textContent = "✳";
+      mk.textContent = "✱";
       l1.appendChild(mk);
     };
     var setVal = function (el, main, small) {
@@ -965,8 +965,8 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
   var rsvpNo  = document.getElementById("rsvpNo");
   function updateLinks () {
     var yes = isEn
-      ? "Hello! Confirming my attendance at the engagement of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueMsgEn + " ✳"
-      : "مرحباً! أؤكد حضوري حفل خطوبة " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueMsgAr + " ✳";
+      ? "Hello! Confirming my attendance at the engagement of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueMsgEn
+      : "مرحباً! أؤكد حضوري حفل خطوبة " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueMsgAr;
     yes += isEn ? " — Guests: " + guestN : " — عدد الحضور: " + arDigits(guestN);
     var no = isEn
       ? "Hello! Unfortunately I won't be able to attend the engagement of " + namesEn + " — sending my warmest wishes to you both."

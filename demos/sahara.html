@@ -663,8 +663,8 @@ html.en .chip{font-family:var(--en-display);font-size:16px}
     </div>
 
     <p class="cd-done">
-      <span class="t-ar">اليوم هو الموعد — نلقاكم على البحر 🌊</span>
-      <span class="t-en">Today is the day — see you by the sea 🌊</span>
+      <span class="t-ar">اليوم هو الموعد — نلقاكم على البحر</span>
+      <span class="t-en">Today is the day — see you by the sea</span>
     </p>
   </div>
 </section>
@@ -840,8 +840,8 @@ html.en .chip{font-family:var(--en-display);font-size:16px}
     <span class="t-en">Gifts</span>
   </h2>
   <p class="quote rv d2" style="margin-top:16px">
-    <span class="t-ar" id="giftAr">حضوركم ودعواتكم أغلى هدية 🤍</span>
-    <span class="t-en" id="giftEn">Your presence is the greatest gift 🤍</span>
+    <span class="t-ar" id="giftAr">حضوركم ودعواتكم أغلى هدية</span>
+    <span class="t-en" id="giftEn">Your presence is the greatest gift</span>
   </p>
 </section>
 
@@ -871,8 +871,8 @@ html.en .chip{font-family:var(--en-display);font-size:16px}
     <a class="btn solid" id="acceptBtn" target="_blank" rel="noopener noreferrer"
        href="https://wa.me/201005509418?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%21%20%D9%8A%D8%B3%D8%B9%D8%AF%D9%86%D9%8A%20%D8%AA%D8%A3%D9%83%D9%8A%D8%AF%20%D8%AD%D8%B6%D9%88%D8%B1%D9%8A%20%D9%81%D8%B1%D8%AD%20%D8%B9%D9%85%D8%B1%20%D9%88%D8%B3%D9%84%D9%85%D9%89%20%E2%80%94%20%D8%A7%D9%84%D8%B3%D8%A8%D8%AA%20%D9%A2%D9%A2%20%D8%A3%D8%BA%D8%B3%D8%B7%D8%B3%20%D9%A2%D9%A0%D9%A2%D9%A6%D8%8C%20%D9%A8%3A%D9%A0%D9%A0%20%D9%85%D8%B3%D8%A7%D8%A1%D9%8B%D8%8C%20%D8%B3%D9%8A%20%D8%B4%D9%8A%D9%84%20%D8%A8%D8%A7%D9%8A%D8%8C%20%D8%A7%D9%84%D8%B3%D8%A7%D8%AD%D9%84%20%D8%A7%D9%84%D8%B4%D9%85%D8%A7%D9%84%D9%8A%20%F0%9F%8C%8A">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-      <span class="t-ar">أكيد جايين 🤍</span>
-      <span class="t-en">We'll be there 🤍</span>
+      <span class="t-ar">أكيد جايين</span>
+      <span class="t-en">We'll be there</span>
     </a>
 
     <a class="btn ghost-olive" id="declineBtn" target="_blank" rel="noopener noreferrer"
@@ -1193,12 +1193,12 @@ html.en .chip{font-family:var(--en-display);font-size:16px}
   var declineBtn = document.getElementById("declineBtn");
   function updateLinks () {
     var accept = isAr
-      ? "مرحباً! يسعدني تأكيد حضوري فرح " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueMsgAr + " 🌊"
-      : "Hello! Happy to confirm my attendance at the wedding of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueMsgEn + " 🌊";
+      ? "مرحباً! يسعدني تأكيد حضوري فرح " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueMsgAr + ""
+      : "Hello! Happy to confirm my attendance at the wedding of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueMsgEn;
     accept += isAr ? " — عدد الحضور: " + toArDigits(guestN) : " — Guests: " + guestN;
     var decline = isAr
-      ? "مرحباً، للأسف لن أتمكن من حضور فرح " + namesAr + " — أتمنى لكما كل السعادة وألف مبروك 🤍"
-      : "Hello, unfortunately I won't be able to attend the wedding of " + namesEn + " — wishing you both endless happiness, congratulations 🤍";
+      ? "مرحباً، للأسف لن أتمكن من حضور فرح " + namesAr + " — أتمنى لكما كل السعادة وألف مبروك"
+      : "Hello, unfortunately I won't be able to attend the wedding of " + namesEn + " — wishing you both endless happiness, congratulations";
     if (acceptBtn) acceptBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(accept);
     if (declineBtn) declineBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(decline);
   }

@@ -615,7 +615,7 @@ html.ar .chip{font-family:var(--arabic);font-weight:700}
   <span class="drape dr" aria-hidden="true"></span>
   <div class="intro-inner">
     <p class="eyebrow lg">
-      <span class="t-en">You are warmly invited</span>
+      <span class="t-en">The wedding of</span>
       <span class="t-ar">يسعدنا دعوتكم</span>
     </p>
     <h2 class="gate-names">
@@ -642,7 +642,7 @@ html.ar .chip{font-family:var(--arabic);font-weight:700}
   </div>
   <div class="gate-inner">
     <p class="eyebrow lg" id="gate-title">
-      <span class="t-en">You are warmly invited</span>
+      <span class="t-en">The wedding of</span>
       <span class="t-ar">يسعدنا دعوتكم</span>
     </p>
 
@@ -701,8 +701,8 @@ html.ar .chip{font-family:var(--arabic);font-weight:700}
         <div class="cd-cell"><span class="cd-num" id="cdS">–</span><span class="cd-lbl"><span class="t-en">Sec</span><span class="t-ar">ثانية</span></span></div>
       </div>
       <p class="cd-done">
-        <span class="t-en">Today is the day — see you at eight! 🤍</span>
-        <span class="t-ar">اليوم هو الموعد — نلقاكم في الثامنة 🤍</span>
+        <span class="t-en">Today is the day — see you at eight!</span>
+        <span class="t-ar">اليوم هو الموعد — نلقاكم في الثامنة</span>
       </p>
     </div>
 
@@ -825,8 +825,8 @@ html.ar .chip{font-family:var(--arabic);font-weight:700}
 
     <div class="rv d5" id="giftSec">
       <p class="gift-line" id="giftLine">
-        <span class="t-en">Your presence is the greatest gift 🤍</span>
-        <span class="t-ar">حضوركم ودعواتكم أغلى هدية 🤍</span>
+        <span class="t-en">Your presence is the greatest gift</span>
+        <span class="t-ar">حضوركم ودعواتكم أغلى هدية</span>
       </p>
     </div>
 
@@ -1136,11 +1136,11 @@ html.ar .chip{font-family:var(--arabic);font-weight:700}
     var url = "https://khalidsharafel-din.github.io/d3wa/demos/navy.html";
     if (location.protocol !== "file:") url = location.href.split("#")[0];
     var share = isAr
-      ? "أنتم مدعوون 🤍 حفل خطوبة " + msgNamesAr + " — " + msgDateAr + " في تمام " + shareTimeAr + "، " + msgVenueAr + ". افتحوا دعوتكم: " + url
-      : "You're invited 🤍 The engagement of " + msgNamesEn + " — " + msgDateEn + " at " + msgTimeEn + ", " + msgVenueEn + ". Open your invitation: " + url;
+      ? "أنتم مدعوون لحفل خطوبة " + msgNamesAr + " — " + msgDateAr + " في تمام " + shareTimeAr + "، " + msgVenueAr + ". افتحوا دعوتكم: " + url
+      : "You're invited to the engagement of " + msgNamesEn + " — " + msgDateEn + " at " + msgTimeEn + ", " + msgVenueEn + ". Open your invitation: " + url;
     var rsvp = isAr
-      ? "مرحباً! يسعدني تأكيد حضوري حفل خطوبة " + msgNamesAr + " — " + msgDateAr + "، " + msgTimeAr + "، " + msgVenueAr + "، عدد الحضور: " + GUEST_AR[guestCount] + " 🤍"
-      : "Hello! I'd love to confirm my attendance at the engagement of " + msgNamesEn + " — " + msgDateEn + ", " + msgTimeEn + ", " + msgVenueEn + " — Guests: " + GUEST_EN[guestCount] + " 🤍";
+      ? "مرحباً! يسعدني تأكيد حضوري حفل خطوبة " + msgNamesAr + " — " + msgDateAr + "، " + msgTimeAr + "، " + msgVenueAr + "، عدد الحضور: " + GUEST_AR[guestCount] + ""
+      : "Hello! I'd love to confirm my attendance at the engagement of " + msgNamesEn + " — " + msgDateEn + ", " + msgTimeEn + ", " + msgVenueEn + " — Guests: " + GUEST_EN[guestCount];
     if (waBtn) waBtn.href = "https://wa.me/?text=" + encodeURIComponent(share);
     if (rsvpBtn) rsvpBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(rsvp);
   }
