@@ -783,7 +783,7 @@ html.en .pb-line{font-weight:500}
 </section>
 
 <!-- ═════  GALLERY  ═════ -->
-<section id="gallery" aria-labelledby="gallery-title">
+<section id="gallery" aria-labelledby="gallery-title" style="display:none">
   <div class="inner">
     <p class="eyebrow faded sec-title rv" id="gallery-title">
       <span class="t-ar">لحظاتنا</span>
@@ -1147,6 +1147,7 @@ html.en .pb-line{font-weight:500}
     else if (pDress) setPair("dressAr", "dressEn", pDress);
     if (pGift === "0") hideSec("gift");
     else if (pGift) setPair("giftAr", "giftEn", pGift);
+    if ((pPhotos && pPhotos !== "0") || qp("ph1")) document.getElementById("gallery").style.display = "";
     if (pPhotos === "0") hideSec("gallery");
     for (var gi = 1; gi <= 3; gi++) {
       var pu = qp("ph" + gi);
@@ -1319,5 +1320,6 @@ html.en .pb-line{font-weight:500}
 })();
 </script>
 
+<p class="d3wa-credit" style="margin:0;padding:28px 16px 96px;text-align:center;font-size:12px;line-height:1.8;opacity:.6"><a href="../index.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><span class="t-ar">دعوة من D3wa · اطلب دعوتك</span><span class="t-en">Invitation by D3wa. Order yours.</span></a></p>
 </body>
 </html>
