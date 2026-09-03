@@ -735,8 +735,8 @@ html.en .chip > span{font-family:var(--en-display);font-weight:400}
       <div class="cd-cell"><span class="cd-num" id="cdS">–</span><span class="cd-lbl"><span class="t-ar">ثانية</span><span class="t-en">Sec</span></span></div>
     </div>
     <p class="cd-done">
-      <span class="t-ar">الليلة هي الموعد — نلقاكم في الثامنة 🤍</span>
-      <span class="t-en">Tonight is the night — see you at eight! 🤍</span>
+      <span class="t-ar">الليلة هي الموعد — نلقاكم في الثامنة</span>
+      <span class="t-en">Tonight is the night — see you at eight!</span>
     </p>
   </div>
 </section>
@@ -892,8 +892,8 @@ html.en .chip > span{font-family:var(--en-display);font-weight:400}
   </div>
 
   <p class="gift-line rv" id="giftLine">
-    <span class="t-ar">حضوركم ودعواتكم أغلى هدية 🤍</span>
-    <span class="t-en">Your presence is the greatest gift 🤍</span>
+    <span class="t-ar">حضوركم ودعواتكم أغلى هدية</span>
+    <span class="t-en">Your presence is the greatest gift</span>
   </p>
 </section>
 
@@ -1236,11 +1236,11 @@ html.en .chip > span{font-family:var(--en-display);font-weight:400}
   var declineBtn = document.getElementById("declineBtn");
   function updateLinks () {
     var accept = isEn
-      ? "Hello! I'm delighted to confirm my attendance at the katb kitab of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueMsgEn + " — Guests: " + GUEST_EN[guestCount] + " 🤍"
-      : "مرحباً! يسعدني تأكيد حضوري كتب كتاب " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueMsgAr + "، عدد الحضور: " + GUEST_AR[guestCount] + " 🤍";
+      ? "Hello! I'm delighted to confirm my attendance at the katb kitab of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueMsgEn + " — Guests: " + GUEST_EN[guestCount] + ""
+      : "مرحباً! يسعدني تأكيد حضوري كتب كتاب " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueMsgAr + "، عدد الحضور: " + GUEST_AR[guestCount];
     var decline = isEn
-      ? "Hello, I'm sorry I won't be able to attend the katb kitab of " + namesEn + " — wishing them a lifetime of affection and mercy 🤍"
-      : "مرحباً، أعتذر عن حضور كتب كتاب " + namesAr + " — أتمنى لهما حياة سعيدة مليئة بالمودة والرحمة 🤍";
+      ? "Hello, I'm sorry I won't be able to attend the katb kitab of " + namesEn + " — wishing them a lifetime of affection and mercy"
+      : "مرحباً، أعتذر عن حضور كتب كتاب " + namesAr + " — أتمنى لهما حياة سعيدة مليئة بالمودة والرحمة";
     if (acceptBtn) acceptBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(accept);
     if (declineBtn) declineBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(decline);
   }

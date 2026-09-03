@@ -482,8 +482,8 @@ html:not(.en) .ag-time{font-family:var(--ar);font-weight:700}
         <span class="t-en js-n-en">Nada</span>
       </p>
       <p class="intro-tap">
-        <span class="t-ar">اضغط للفتح 🎓</span>
-        <span class="t-en">Tap to open 🎓</span>
+        <span class="t-ar">اضغط للفتح</span>
+        <span class="t-en">Tap to open</span>
       </p>
     </div>
   </div>
@@ -596,8 +596,8 @@ html:not(.en) .ag-time{font-family:var(--ar);font-weight:700}
         <div class="cd-cell"><span class="cd-num" id="cdS">–</span><span class="cd-lbl"><span class="t-ar">ثانية</span><span class="t-en">Sec</span></span></div>
       </div>
       <p class="cd-done">
-        <span class="t-ar">اليوم يومها — نلقاكم في السادسة! 🎓</span>
-        <span class="t-en">Today's the day — see you at six! 🎓</span>
+        <span class="t-ar">اليوم يومها — نلقاكم في السادسة!</span>
+        <span class="t-en">Today's the day — see you at six!</span>
       </p>
     </div>
 
@@ -685,8 +685,8 @@ html:not(.en) .ag-time{font-family:var(--ar);font-weight:700}
         <span class="t-en">Dress code</span>
       </p>
       <p class="dress-note">
-        <span class="t-ar" id="dressAr">سمارت كاجوال — لمسة كحلي أو ذهبي تليق بصور التخرج 🎓</span>
-        <span class="t-en" id="dressEn">Smart casual — a touch of navy or gold looks great in the photos 🎓</span>
+        <span class="t-ar" id="dressAr">سمارت كاجوال — لمسة كحلي أو ذهبي تليق بصور التخرج</span>
+        <span class="t-en" id="dressEn">Smart casual — a touch of navy or gold looks great in the photos</span>
       </p>
     </div>
 
@@ -723,8 +723,8 @@ html:not(.en) .ag-time{font-family:var(--ar);font-weight:700}
         <span class="t-en">A note on gifts</span>
       </p>
       <p class="gift-note">
-        <span class="t-ar" id="giftAr">حضوركم ودعواتكم هي أغلى هدية لمهندستنا <span class="js-n-ar">ندى</span> 🧡</span>
-        <span class="t-en" id="giftEn">Your presence and prayers are the sweetest gift for our graduate, <span class="js-n-en">Nada</span> 🧡</span>
+        <span class="t-ar" id="giftAr">حضوركم ودعواتكم هي أغلى هدية لمهندستنا <span class="js-n-ar">ندى</span></span>
+        <span class="t-en" id="giftEn">Your presence and prayers are the sweetest gift for our graduate, <span class="js-n-en">Nada</span></span>
       </p>
     </div>
 
@@ -781,8 +781,8 @@ html:not(.en) .ag-time{font-family:var(--ar);font-weight:700}
 
     <div class="closing rv d5">
       <p>
-        <span class="t-ar">حضوركم يكمّل فرحتنا 🧡</span>
-        <span class="t-en">Your presence completes our joy 🧡</span>
+        <span class="t-ar">حضوركم يكمّل فرحتنا</span>
+        <span class="t-en">Your presence completes our joy</span>
       </p>
       <p class="brand" aria-hidden="true">D3wa · D3-012</p>
     </div>
@@ -905,7 +905,7 @@ html:not(.en) .ag-time{font-family:var(--ar);font-weight:700}
           return dt.getFullYear() + p(dt.getMonth() + 1) + p(dt.getDate()) + "T" + p(dt.getHours()) + p(dt.getMinutes()) + "00";
         };
         calBtn.href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
-          + "&text=" + encodeURIComponent("Graduation — " + nEn + " 🎓")
+          + "&text=" + encodeURIComponent("Graduation — " + nEn)
           + "&dates=" + cal(startDt) + "/" + cal(endDt)
           + "&ctz=Africa/Cairo"
           + "&location=" + encodeURIComponent(pVEn || "Family home, Dokki, Giza")
@@ -1045,14 +1045,14 @@ html:not(.en) .ag-time{font-family:var(--ar);font-weight:700}
     var url = "https://khalidsharafel-din.github.io/d3wa/demos/grad.html";
     if (location.protocol !== "file:") url = location.href.split("#")[0];
     var accept = isAr
-      ? "مبروك يا مهندسة " + nAr + "! 🎓 يسعدنا تأكيد حضورنا حفل التخرج — " + dateFullAr + "، " + timeArS + "، " + venAr + " 🧡 — عدد الحضور: " + guestAr
-      : "Congratulations, Engineer " + nEn + "! 🎓 Happy to confirm we'll be at the graduation celebration — " + dateFullEn + ", " + timeEnS + ", " + venEn + " 🧡 — Guests: " + guestEn;
+      ? "مبروك يا مهندسة " + nAr + "! يسعدنا تأكيد حضورنا حفل التخرج — " + dateFullAr + "، " + timeArS + "، " + venAr + " — عدد الحضور: " + guestAr
+      : "Congratulations, Engineer " + nEn + "! Happy to confirm we'll be at the graduation celebration — " + dateFullEn + ", " + timeEnS + ", " + venEn + " — Guests: " + guestEn;
     var decline = isAr
-      ? "ألف مبروك يا مهندسة " + nAr + "! 🎓 نعتذر عن حضور الحفل، وقلوبنا معكم — عقبال أفراحكم كلها 🧡"
-      : "Huge congratulations, Engineer " + nEn + "! 🎓 So sorry we can't make it to the celebration — wishing you the brightest future 🧡";
+      ? "ألف مبروك يا مهندسة " + nAr + "! نعتذر عن حضور الحفل، وقلوبنا معكم — عقبال أفراحكم كلها"
+      : "Huge congratulations, Engineer " + nEn + "! So sorry we can't make it to the celebration — wishing you the brightest future";
     var share = isAr
-      ? "مبروك التخرج! 🎓 تتشرف عائلة " + nAr + " بدعوتكم للاحتفال بتخرجها — " + dateFullAr + "، " + timeArS + "، " + venAr + ". افتحوا الدعوة: " + url
-      : "You're invited! 🎓 The family of " + nEn + " invites you to celebrate her graduation — " + dateFullEn + " at " + timeEnS + ", " + venEn + ". Open the invitation: " + url;
+      ? "مبروك التخرج! تتشرف عائلة " + nAr + " بدعوتكم للاحتفال بتخرجها — " + dateFullAr + "، " + timeArS + "، " + venAr + ". افتحوا الدعوة: " + url
+      : "You're invited! The family of " + nEn + " invites you to celebrate her graduation — " + dateFullEn + " at " + timeEnS + ", " + venEn + ". Open the invitation: " + url;
     if (acceptBtn) acceptBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(accept);
     if (declineBtn) declineBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(decline);
     if (shareBtn) shareBtn.href = "https://wa.me/?text=" + encodeURIComponent(share);

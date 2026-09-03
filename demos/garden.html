@@ -679,8 +679,8 @@ html.en .pb-line{font-weight:500}
         <div class="cd-cell"><span class="cd-num" id="cdS">–</span><span class="cd-lbl"><span class="t-ar">ثانية</span><span class="t-en">Sec</span></span></div>
       </div>
       <p class="cd-done">
-        <span class="t-ar">اليوم يومنا — نلقاكم بين الورود 🌿</span>
-        <span class="t-en">Today is the day — meet us in the garden 🌿</span>
+        <span class="t-ar">اليوم يومنا — نلقاكم بين الورود</span>
+        <span class="t-en">Today is the day — meet us in the garden</span>
       </p>
     </div>
   </div>
@@ -820,8 +820,8 @@ html.en .pb-line{font-weight:500}
       <span class="t-en">Gifts</span>
     </p>
     <p class="note-line rv d2">
-      <span class="t-ar" id="giftAr">حضوركم ودعواتكم أغلى هدية 🤍</span>
-      <span class="t-en" id="giftEn">Your presence is the greatest gift 🤍</span>
+      <span class="t-ar" id="giftAr">حضوركم ودعواتكم أغلى هدية</span>
+      <span class="t-en" id="giftEn">Your presence is the greatest gift</span>
     </p>
   </div>
 </section>
@@ -1211,12 +1211,12 @@ html.en .pb-line{font-weight:500}
   var noBtn = document.getElementById("rsvpNo");
   function updateLinks () {
     var accept = isEn
-      ? "Hello! We joyfully confirm our attendance at the wedding of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueEn + " 🌿"
-      : "مرحباً! يسعدنا تأكيد حضورنا حفل زفاف " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueAr + " 🌿";
+      ? "Hello! We joyfully confirm our attendance at the wedding of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueEn + ""
+      : "مرحباً! يسعدنا تأكيد حضورنا حفل زفاف " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueAr;
     accept += isEn ? " — Guests: " + guestN : " — عدد الحضور: " + arDigits(guestN);
     var decline = isEn
-      ? "Hello! We're so sorry we won't be able to attend the wedding of " + namesEn + " on " + dateFullEn + ". Wishing you a lifetime of love and joy 🤍"
-      : "مرحباً! نعتذر بشدة عن عدم تمكننا من حضور حفل زفاف " + namesAr + " يوم " + dateFullAr + "، مع أطيب التمنيات بحياة مليئة بالحب والسعادة 🤍";
+      ? "Hello! We're so sorry we won't be able to attend the wedding of " + namesEn + " on " + dateFullEn + ". Wishing you a lifetime of love and joy"
+      : "مرحباً! نعتذر بشدة عن عدم تمكننا من حضور حفل زفاف " + namesAr + " يوم " + dateFullAr + "، مع أطيب التمنيات بحياة مليئة بالحب والسعادة";
     if (yesBtn) yesBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(accept);
     if (noBtn)  noBtn.href  = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(decline);
   }

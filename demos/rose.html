@@ -518,7 +518,7 @@ body.intro-lock{overflow:hidden}
   <span class="veil right" aria-hidden="true"></span>
   <div class="intro-cover">
     <p class="eyebrow lg">
-      <span class="t-en">You are warmly invited</span>
+      <span class="t-en">With joy, we invite you to the wedding of</span>
       <span class="t-ar">يسعدنا دعوتكم</span>
     </p>
     <svg width="76" height="14" viewBox="0 0 76 14" fill="none" aria-hidden="true">
@@ -555,7 +555,7 @@ body.intro-lock{overflow:hidden}
   </div>
   <div class="gate-inner">
     <p class="eyebrow lg" id="gate-title">
-      <span class="t-en">You are warmly invited</span>
+      <span class="t-en">With joy, we invite you to the wedding of</span>
       <span class="t-ar">يسعدنا دعوتكم</span>
     </p>
 
@@ -614,8 +614,8 @@ body.intro-lock{overflow:hidden}
         <div class="cd-cell"><span class="cd-num" id="cdS">–</span><span class="cd-lbl"><span class="t-en">Sec</span><span class="t-ar">ثانية</span></span></div>
       </div>
       <p class="cd-done">
-        <span class="t-en">Today is the day — see you at eight! 🤍</span>
-        <span class="t-ar">اليوم هو الموعد — نلقاكم في الثامنة 🤍</span>
+        <span class="t-en">Today is the day — see you at eight!</span>
+        <span class="t-ar">اليوم هو الموعد — نلقاكم في الثامنة</span>
       </p>
     </div>
 
@@ -759,8 +759,8 @@ body.intro-lock{overflow:hidden}
     <div class="mini rv d4" id="giftSec">
       <p class="eyebrow"><span class="t-en">A note</span><span class="t-ar">كلمة من القلب</span></p>
       <p>
-        <span class="t-en">Your presence is the greatest gift 🤍</span>
-        <span class="t-ar">حضوركم ودعواتكم أغلى هدية 🤍</span>
+        <span class="t-en">Your presence is the greatest gift</span>
+        <span class="t-ar">حضوركم ودعواتكم أغلى هدية</span>
       </p>
     </div>
 
@@ -1026,11 +1026,11 @@ body.intro-lock{overflow:hidden}
     var url = "https://khalid-mariam.netlify.app";
     if (location.protocol !== "file:") url = location.href.split("#")[0];
     var share = isAr
-      ? "أنتم مدعوون 🤍 حفل خطوبة " + namesAr + " — " + dateFullAr + " " + shareTimeAr + "، " + venueMsgAr + ". افتحوا دعوتكم: " + url
-      : "You're invited 🤍 The engagement of " + namesEn + " — " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Open your invitation: " + url;
+      ? "أنتم مدعوون لحفل خطوبة " + namesAr + " — " + dateFullAr + " " + shareTimeAr + "، " + venueMsgAr + ". افتحوا دعوتكم: " + url
+      : "You're invited to the engagement of " + namesEn + " — " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Open your invitation: " + url;
     var rsvp = isAr
-      ? "مرحباً! يسعدني تأكيد حضوري حفل خطوبة " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueMsgAr + " 🤍"
-      : "Hello! I'd love to confirm my attendance at the engagement of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueMsgEn + " 🤍";
+      ? "مرحباً! يسعدني تأكيد حضوري حفل خطوبة " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueMsgAr + ""
+      : "Hello! I'd love to confirm my attendance at the engagement of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueMsgEn;
     if (waBtn) waBtn.href = "https://wa.me/?text=" + encodeURIComponent(share);
     if (rsvpBtn) rsvpBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(rsvp);
   }
