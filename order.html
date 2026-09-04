@@ -214,15 +214,15 @@ input.bad{border-color:var(--err)}
   <!-- ══ FORM ══ -->
   <div class="formcol">
     <p class="kicker"><span class="t-ar">اصنع دعوتك</span><span class="t-en">Build your invitation</span></p>
-    <h1><span class="t-ar">دعوتكم بتتبني قدامكم دلوقتي</span><span class="t-en">Watch your invitation build itself</span></h1>
-    <p class="lede"><span class="t-ar">كل حاجة بتكتبها بتظهر في المعاينة على طول. مفيش انتظار ومفيش رسايل رايحة جاية — تخلص، تدفع، ويطلعلك لينك دعوتكم.</span><span class="t-en">Everything you type appears in the preview instantly. No waiting, no back-and-forth: finish, pay, and your invitation link is yours.</span></p>
+    <h1><span class="t-ar">اصنع دعوتك</span><span class="t-en">Build your invitation</span></h1>
+    <p class="lede"><span class="t-ar">كل حاجة بتكتبها بتظهر في المعاينة على طول. تخلص، تدفع، ويطلعلك لينك دعوتكم.</span><span class="t-en">Everything you type shows in the preview as you go. Finish, pay, and the link is yours.</span></p>
 
     <div class="rail" id="rail"><i class="on"></i><i></i><i></i><i></i><i></i></div>
 
     <!-- 1 · template -->
     <section class="stepEl on" data-step="1">
       <h2><span class="t-ar">١ · اختاروا التصميم</span><span class="t-en">1 · Choose your design</span></h2>
-      <p class="hint"><span class="t-ar">دوس على أي تصميم وشوفه في المعاينة على طول. ١٢ تصميم لكل المناسبات.</span><span class="t-en">Tap any design and see it in the preview right away. Twelve designs for every occasion.</span></p>
+      <p class="hint"><span class="t-ar">دوس على أي تصميم وشوفه في المعاينة.</span><span class="t-en">Tap a design to see it in the preview.</span></p>
       <div class="tiles" id="tplTiles"></div>
       <div class="pks" id="pkTiles"></div>
       <div class="msg" id="m1"><span class="t-ar">اختاروا تصميم وباقة عشان نكمل</span><span class="t-en">Pick a design and a package to continue</span></div>
@@ -232,7 +232,7 @@ input.bad{border-color:var(--err)}
     <!-- 2 · names -->
     <section class="stepEl" data-step="2">
       <h2><span class="t-ar">٢ · المناسبة والأسماء</span><span class="t-en">2 · Occasion and names</span></h2>
-      <p class="hint"><span class="t-ar">اكتبوا الأسماء زي ما تحبوها تظهر بالظبط — هتشوفوها في المعاينة وانتوا بتكتبوا.</span><span class="t-en">Type the names exactly as you want them to appear; you'll see them land in the preview as you type.</span></p>
+      <p class="hint"><span class="t-ar">اكتبوا الأسماء زي ما تحبوها تظهر بالظبط.</span><span class="t-en">Type the names exactly as you want them to appear.</span></p>
       <label><span class="t-ar">المناسبة</span><span class="t-en">Occasion</span></label>
       <select id="fOcc">
         <option value="wedding" data-ar="فرح" data-en="Wedding">فرح · Wedding</option>
@@ -265,7 +265,7 @@ input.bad{border-color:var(--err)}
     <!-- 3 · when & where -->
     <section class="stepEl" data-step="3">
       <h2><span class="t-ar">٣ · المعاد والمكان</span><span class="t-en">3 · When and where</span></h2>
-      <p class="hint"><span class="t-ar">العدّاد التنازلي في الدعوة بيشتغل من التاريخ ده على طول.</span><span class="t-en">The countdown in your invitation runs from this date automatically.</span></p>
+      <p class="hint"><span class="t-ar">العدّاد في الدعوة بيعد لحد التاريخ ده.</span><span class="t-en">The countdown runs to this date.</span></p>
       <div class="row2">
         <div>
           <label><span class="t-ar">تاريخ المناسبة</span><span class="t-en">Event date</span></label>
@@ -298,7 +298,7 @@ input.bad{border-color:var(--err)}
     <!-- 4 · contact -->
     <section class="stepEl" data-step="4">
       <h2><span class="t-ar">٤ · تأكيدات الحضور والتواصل</span><span class="t-en">4 · RSVPs and contact</span></h2>
-      <p class="hint"><span class="t-ar">لما ضيف يدوس «هحضر»، الرسالة بتروح على الرقم ده مباشرة — مش علينا.</span><span class="t-en">When a guest taps "I'll be there", the message goes straight to this number, not to us.</span></p>
+      <p class="hint"><span class="t-ar">لما ضيف يدوس «هحضر»، الرسالة بتروح على الرقم ده، مش علينا.</span><span class="t-en">When a guest taps "I'll be there", the message goes to this number, not to us.</span></p>
       <label><span class="t-ar">رقم واتساب اللي هيستقبل تأكيدات الحضور</span><span class="t-en">WhatsApp number that receives RSVPs</span></label>
       <input type="tel" id="wa" placeholder="01012345678" dir="ltr" inputmode="tel" autocomplete="tel">
       <div class="msg" id="m4"><span class="t-ar">اكتبوا رقم واتساب صحيح (١١ رقم)</span><span class="t-en">Enter a valid WhatsApp number (11 digits)</span></div>
@@ -325,7 +325,7 @@ input.bad{border-color:var(--err)}
     <!-- 5 · review & pay -->
     <section class="stepEl" data-step="5">
       <h2><span class="t-ar">٥ · مراجعة ودفع</span><span class="t-en">5 · Review and pay</span></h2>
-      <p class="hint"><span class="t-ar">راجعوا التفاصيل، وبعد تأكيد الدفع دعوتكم بتتنشر على اللينك بتاعكم.</span><span class="t-en">Check the details; once payment is confirmed your invitation publishes to your link.</span></p>
+      <p class="hint"><span class="t-ar">راجعوا التفاصيل. بعد تأكيد الدفع الدعوة بتتنشر على لينككم.</span><span class="t-en">Check the details. Once payment is confirmed, the invitation publishes to your link.</span></p>
       <div class="rev" id="revBox"></div>
       <div class="total"><span><span class="t-ar">الإجمالي</span><span class="t-en">Total</span></span><span id="totalVal">—</span></div>
 
