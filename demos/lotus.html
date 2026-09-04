@@ -1103,7 +1103,7 @@ html:not(.en) .gchip{font-family:var(--arabic)}
   if (langBtn) langBtn.addEventListener("click", function () { isAr = !isAr; applyLang(); });
 
   /* ── Countdown to Friday 4 September 2026, 6:00 PM Cairo ── */
-  var target = new Date("2026-09-04T18:00:00+02:00").getTime();
+  var target = new Date((pDateOk || "2026-09-04") + "T" + (pTimeNorm || "18:00") + ":00+02:00").getTime();
   var wrap = document.getElementById("cdWrap");
   var elD = document.getElementById("cdD"), elH = document.getElementById("cdH"),
       elM = document.getElementById("cdM"), elS = document.getElementById("cdS");
