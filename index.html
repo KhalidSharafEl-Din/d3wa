@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>دعوة D3wa — استوديو دعوات رقمية | Digital Invitation Studio</title>
-<meta name="description" content="استوديو دعوات رقمية مصري: فرح، خطوبة، كتب كتاب، حنة، سبوع، تخرج — ١٢ تصميم بعدّاد تنازلي وتأكيد حضور واتساب، عربي وإنجليزي. D3wa: Egyptian digital invitation studio.">
+<meta name="description" content="استوديو دعوات رقمية من القاهرة. ١٢ تصميم لفرح وخطوبة وكتب كتاب وحنة وسبوع وتخرج، بعدّاد وتأكيد حضور واتساب، عربي وإنجليزي. D3wa: a digital invitation studio in Cairo.">
 <meta name="theme-color" content="#f5efe3">
 
 <meta property="og:type" content="website">
@@ -20,45 +20,37 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;600;800&family=Reem+Kufi:wght@400;500;600;700&family=Aref+Ruqaa&family=Italiana&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;600;800&family=Reem+Kufi:wght@400;500;600;700&display=swap">
 
 <style>
 :root{
   --paper:#f5efe3; --paper-2:#fbf7ee; --paper-3:#ede4d2;
   --ink:#231a10; --ink-2:#6d5f4b;
-  --copper:#9c4a1a; --copper-d:#7e3a12; --copper-lt:#c07347;
+  --copper:#9c4a1a; --copper-d:#7e3a12;
   --wa:#1fa855;
   --line:rgba(35,26,16,.14); --line-soft:rgba(35,26,16,.08); --line-c:rgba(156,74,26,.28);
   --disp:"Reem Kufi",sans-serif; --body:"Alexandria",sans-serif;
-  --hdr:rgba(245,239,227,.88); --mat:#fff; --shadow:rgba(35,26,16,.13);
-  --chat-bg:#fff; --chat-in:#eef3ee; --chat-in-ink:#22301f; --chat-out:#d9efdc; --chat-meta:#f6f2e8; --chat-meta-ink:#8b7c62;
+  --hdr:rgba(245,239,227,.88); --frame:#171310; --shadow:rgba(35,26,16,.13);
   --on-copper:#fdf8f0;
 }
-/* dark: the navy night the invitations are opened in */
 html[data-theme="dark"]{
   --paper:#141d33; --paper-2:#1b2542; --paper-3:#0e1628;
   --ink:#f0e9dc; --ink-2:#a2adc3;
-  --copper:#d98a53; --copper-d:#e8a877; --copper-lt:#e8a877;
+  --copper:#d98a53; --copper-d:#e8a877;
   --wa:#25d366;
   --line:rgba(240,233,220,.16); --line-soft:rgba(240,233,220,.09); --line-c:rgba(217,138,83,.34);
-  --hdr:rgba(14,22,40,.86); --mat:#232e4e; --shadow:rgba(0,0,0,.45);
-  --chat-bg:#0b141a; --chat-in:#1f2c33; --chat-in-ink:#e9edef; --chat-out:#134f38; --chat-meta:#0f1a14; --chat-meta-ink:#9fb8ab;
+  --hdr:rgba(14,22,40,.86); --frame:#0a0f1c; --shadow:rgba(0,0,0,.45);
   --on-copper:#1a1204;
 }
 html{color-scheme:light}
 html[data-theme="dark"]{color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  margin:0;color:var(--ink);font-family:var(--body);font-weight:300;
-  background:var(--paper);
-  -webkit-font-smoothing:antialiased;
-  overflow-x:clip;
-}
+body{margin:0;color:var(--ink);font-family:var(--body);font-weight:300;background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:clip}
 html.en .t-ar{display:none}
 html:not(.en) .t-en{display:none}
-
-.wrap{width:min(100%,1120px);margin:0 auto;padding:0 22px}
+.wrap{width:min(100%,1080px);margin:0 auto;padding:0 22px}
+.narrow{max-width:720px}
 
 /* header */
 header{position:sticky;top:0;z-index:50;background:var(--hdr);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
@@ -82,173 +74,70 @@ html[data-theme="dark"] .icon-btn .i-moon{display:block}
 html[data-theme="dark"] .icon-btn .i-sun{display:none}
 
 /* hero */
-.hero{padding:clamp(44px,7vw,88px) 0 clamp(36px,6vw,64px)}
-.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(30px,6vw,80px);align-items:center}
+.hero{padding:clamp(40px,7vw,84px) 0 clamp(30px,5vw,56px)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,6vw,72px);align-items:center}
 @media (max-width:880px){.hero-grid{grid-template-columns:1fr}}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;letter-spacing:.14em;color:var(--copper);margin:0 0 18px;text-transform:uppercase}
-.eyebrow::before{content:"";width:34px;height:1.5px;background:var(--copper)}
-h1{font-family:var(--disp);font-weight:600;font-size:clamp(38px,6.6vw,66px);line-height:1.35;margin:0;letter-spacing:.01em}
-h1 em{font-style:normal;color:var(--copper);position:relative;white-space:nowrap}
-h1 em svg{position:absolute;inset-inline:0;bottom:-.12em;width:100%;height:.22em;overflow:visible}
-h1 em path{fill:none;stroke:var(--copper);stroke-width:3.2;stroke-linecap:round;opacity:.55}
-html.en h1{line-height:1.15}
-.hero p.sub{max-width:56ch;margin:20px 0 28px;font-size:clamp(14.5px,3.4vw,16.5px);line-height:2.05;color:var(--ink-2)}
+h1{font-family:var(--disp);font-weight:600;font-size:clamp(34px,6vw,60px);line-height:1.35;margin:0;letter-spacing:.01em}
+html.en h1{line-height:1.12}
+.hero .sub{max-width:52ch;margin:18px 0 26px;font-size:clamp(14.5px,3.4vw,16.5px);line-height:2.05;color:var(--ink-2)}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:0 26px;border:1.5px solid var(--copper);border-radius:2px;color:var(--copper);text-decoration:none;font-weight:600;font-size:14px;transition:background .25s,color .25s,transform .25s;cursor:pointer;background:transparent;font-family:inherit}
 .btn:hover{background:rgba(156,74,26,.08);transform:translateY(-1px)}
 .btn.solid{background:var(--copper);color:var(--on-copper)}
 .btn.solid:hover{background:var(--copper-d)}
-.btn svg{width:17px;height:17px;flex:none}
-.trust{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:30px;font-size:13px;color:var(--ink-2)}
-.trust > span{display:flex;align-items:center;gap:8px}
-.trust > span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--copper);flex:none}
-.trust b{color:var(--ink);font-weight:600}
-
-/* phone mockup */
-.stage{display:flex;justify-content:center;position:relative}
-.wa-bubble{position:absolute;top:-6px;inset-inline-start:clamp(0px,2vw,20px);z-index:3;background:var(--chat-bg);color:var(--ink);border-radius:12px;border-start-end-radius:2px;padding:9px 14px;font-size:12.5px;font-weight:400;box-shadow:0 10px 28px rgba(35,26,16,.16);border:1px solid var(--line-soft);display:flex;align-items:center;gap:8px;animation:bob 5s ease-in-out infinite}
-.wa-bubble svg{width:15px;height:15px;fill:var(--wa)}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.phone{width:min(264px,76vw);aspect-ratio:9/19;border-radius:38px;border:1px solid var(--line);background:#171310;padding:10px;box-shadow:0 34px 70px rgba(35,26,16,.28)}
-.screen{height:100%;border-radius:28px;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,#26375f,#0d1730);color:#f2ecdf;display:flex;flex-direction:column;align-items:center;padding:26px 16px 18px;position:relative}
-.screen .notch{width:74px;height:5px;border-radius:99px;background:rgba(242,236,223,.18);margin-bottom:20px}
-.screen .orn-s{color:#cfa658;font-size:11px;letter-spacing:.4em;margin-bottom:12px}
-.screen .inv-ar{font-family:"Aref Ruqaa",serif;font-size:24px;color:#e3cf9b;line-height:1.6}
-.screen .inv-en{font-family:"Italiana",serif;font-size:15px;letter-spacing:.12em;margin-top:2px}
-.screen .inv-dt{font-size:10px;letter-spacing:.22em;color:#a8a294;margin:10px 0 16px;direction:ltr}
-.cd{display:flex;gap:7px;direction:ltr}
-.cd div{width:44px;padding:7px 0 5px;border:1px solid rgba(207,166,88,.3);border-radius:8px;text-align:center;background:rgba(255,255,255,.03)}
-.cd b{display:block;font-size:15px;font-weight:800;color:#f2ecdf}
-.cd small{font-size:8.5px;color:#a8a294}
-.screen .rsvp{margin-top:auto;display:flex;flex-direction:column;gap:8px;width:100%}
-.screen .rsvp > span{display:flex;align-items:center;justify-content:center;gap:7px;min-height:38px;border-radius:99px;font-size:12px;font-weight:600}
-.screen .rsvp .yes{background:#25d366;color:#062e1d}
-.screen .rsvp .no{border:1px solid rgba(207,166,88,.3);color:#cfa658}
-.screen .rsvp svg{width:13px;height:13px;fill:currentColor}
+.btn svg{width:17px;height:17px;flex:none;fill:currentColor}
+.stage{display:flex;justify-content:center}
+.phone{width:min(250px,70vw);border-radius:34px;padding:9px;background:var(--frame);box-shadow:0 30px 60px rgba(35,26,16,.28)}
+.phone img{display:block;width:100%;height:auto;aspect-ratio:390/844;object-fit:cover;object-position:top;border-radius:26px}
 
 /* sections */
-section{padding:clamp(48px,8vw,88px) 0;scroll-margin-top:70px}
-.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:8px}
-.sec-title{font-family:var(--disp);font-weight:600;font-size:clamp(26px,5vw,40px);margin:0;letter-spacing:.01em}
-.sec-count{font-size:13px;color:var(--ink-2)}
-.sec-count b{color:var(--copper);font-weight:800;font-size:16px}
-.sec-sub{color:var(--ink-2);margin:6px 0 30px;font-size:14.5px;max-width:64ch;line-height:2}
+section{padding:clamp(44px,7vw,80px) 0;scroll-margin-top:70px}
+.sec-title{font-family:var(--disp);font-weight:600;font-size:clamp(26px,5vw,38px);margin:0 0 8px;letter-spacing:.01em}
+.sec-sub{color:var(--ink-2);margin:0 0 26px;font-size:14.5px;max-width:60ch;line-height:2}
 
 /* filters */
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
 .filters button{min-height:38px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink-2);font-family:inherit;font-size:13px;font-weight:400;cursor:pointer;transition:.25s}
 .filters button:hover{border-color:var(--copper);color:var(--copper)}
 .filters button.on{background:var(--ink);border-color:var(--ink);color:var(--paper-2);font-weight:600}
 
-/* gallery cards: framed artwork */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:24px}
-.card{border:1px solid var(--line);border-radius:6px;background:var(--paper-2);display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;position:relative}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px}
+.card{border:1px solid var(--line);border-radius:6px;background:var(--paper-2);display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
 .card:hover{transform:translateY(-3px);box-shadow:0 18px 44px var(--shadow)}
 .card.hide{display:none}
-.shot{padding:16px 16px 0;position:relative}
-.mat{background:var(--mat);border:1px solid var(--line-soft);padding:14px 14px 0;display:flex;justify-content:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}
-.mini{width:142px;height:196px;border-radius:16px 16px 0 0;display:flex;flex-direction:column;align-items:center;padding:15px 10px 0;text-align:center;position:relative;overflow:hidden;box-shadow:0 10px 24px rgba(35,26,16,.18)}
-.mini .bar{width:32px;height:3px;border-radius:99px;opacity:.35;background:currentColor;margin-bottom:11px}
-.mini .rng{width:20px;height:20px;border-radius:50%;border:2.5px solid;margin-bottom:8px}
-.mini .nm{font-family:"Italiana",serif;font-size:15.5px;line-height:1.25}
-.mini .anm{font-family:"Aref Ruqaa",serif;font-size:13px;margin-top:3px}
-.mini .dt{font-size:8px;letter-spacing:.18em;margin-top:6px;opacity:.8;direction:ltr}
-.mini .pips{display:flex;gap:4px;margin-top:11px}
-.mini .pips i{width:24px;height:11px;border-radius:99px;border:1px solid;opacity:.6}
-.code{position:absolute;top:26px;inset-inline-start:26px;z-index:2;font-size:10px;letter-spacing:.12em;color:var(--ink-2);background:var(--paper-2);border:1px solid var(--line-soft);border-radius:99px;padding:3px 9px}
-.badge{position:absolute;top:26px;inset-inline-end:26px;z-index:2;background:var(--copper);color:var(--on-copper);font-size:10.5px;font-weight:600;padding:4px 11px;border-radius:999px}
-/* mini palettes */
-.p-gold .mini{background:radial-gradient(130% 110% at 50% 0%,#fffdf8,#efe4cd);color:#332f28}
-.p-gold .mini .rng,.p-gold .mini .dt,.p-gold .mini .pips i{color:#a9843f;border-color:#a9843f}
-.p-rose .mini{background:radial-gradient(130% 110% at 50% 0%,#fffafb,#f6dee7);color:#3a2e33}
-.p-rose .mini .rng,.p-rose .mini .dt,.p-rose .mini .pips i{color:#b3305c;border-color:#b3305c}
-.p-rustic .mini{background:radial-gradient(130% 110% at 50% 0%,#fffdf6,#eeddc2);color:#22304a}
-.p-rustic .mini .rng,.p-rustic .mini .dt,.p-rustic .mini .pips i{color:#9e3f34;border-color:#9e3f34}
-.p-navy .mini{background:radial-gradient(130% 110% at 50% 0%,#2a3a63,#0d1730);color:#f2ecdf}
-.p-navy .mini .rng,.p-navy .mini .dt,.p-navy .mini .pips i{color:#cfa658;border-color:#cfa658}
-.p-emerald .mini{background:radial-gradient(130% 110% at 50% 0%,#1a5a44,#0e3b2e);color:#f4efe3}
-.p-emerald .mini .rng,.p-emerald .mini .dt,.p-emerald .mini .pips i{color:#c9a24b;border-color:#c9a24b}
-.p-sahara .mini{background:radial-gradient(130% 110% at 50% 0%,#fbf6ec,#f3d9b8);color:#4a3a30}
-.p-sahara .mini .rng,.p-sahara .mini .dt,.p-sahara .mini .pips i{color:#c46a4a;border-color:#c46a4a}
-.p-lotus .mini{background:radial-gradient(130% 110% at 50% 0%,#fdf8f0,#f3d9de);color:#5a4a42}
-.p-lotus .mini .rng,.p-lotus .mini .dt,.p-lotus .mini .pips i{color:#a8c3a0;border-color:#a8c3a0}
-.p-henna .mini{background:radial-gradient(130% 110% at 50% 0%,#fbf3e4,#f4d9a8);color:#7a1f1f}
-.p-henna .mini .rng,.p-henna .mini .dt,.p-henna .mini .pips i{color:#a6341b;border-color:#a6341b}
-.p-henna .mini .anm{color:#a6341b}
-.p-deco .mini{background:radial-gradient(130% 110% at 50% 0%,#1c1c20,#0e0e10);color:#f5efe0}
-.p-deco .mini .rng,.p-deco .mini .dt,.p-deco .mini .pips i{color:#d4af37;border-color:#d4af37}
-.p-garden .mini{background:radial-gradient(130% 110% at 50% 0%,#faf8f2,#dbe4d2);color:#3f4a3c}
-.p-garden .mini .rng,.p-garden .mini .dt,.p-garden .mini .pips i{color:#5f7161;border-color:#5f7161}
-.p-modern .mini{background:#f7f5f0;color:#1a1a1a}
-.p-modern .mini .rng,.p-modern .mini .dt,.p-modern .mini .pips i{color:#c4552d;border-color:#c4552d}
-.p-grad .mini{background:radial-gradient(130% 110% at 50% 0%,#f8f5ee,#dfe2ea);color:#1e2a4a}
-.p-grad .mini .rng,.p-grad .mini .dt,.p-grad .mini .pips i{color:#e98a15;border-color:#e98a15}
-.card-body{padding:16px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.shot{display:block;margin:14px 14px 0;border-radius:14px;overflow:hidden;aspect-ratio:3/4;background:var(--paper-3);border:1px solid var(--line-soft)}
+.shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.card-body{padding:14px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
 .card-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
-.card h3{margin:0;font-size:16.5px;font-weight:800;font-family:var(--body)}
-.price{color:var(--copper);font-weight:800;font-size:15.5px;white-space:nowrap}
+.card h3{margin:0;font-size:16px;font-weight:800;font-family:var(--body)}
+.price{color:var(--copper);font-weight:800;font-size:15px;white-space:nowrap}
 .price small{font-weight:300;font-size:11px;color:var(--ink-2)}
 .occ{font-size:12.5px;color:var(--ink-2);line-height:1.8;margin:0}
 .card-actions{margin-top:auto;display:flex;gap:8px}
 .card-actions .btn{flex:1;min-height:42px;padding:0 10px;font-size:12.5px}
 
-/* receiving moment */
-.moment{background:var(--paper-3);border-block:1px solid var(--line-soft)}
-.moment-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(26px,5vw,64px);align-items:center}
-@media (max-width:840px){.moment-grid{grid-template-columns:1fr}}
-.chat{max-width:350px;width:100%;background:var(--chat-bg);border-radius:16px;border:1px solid var(--line-soft);box-shadow:0 20px 48px rgba(35,26,16,.12);padding:16px 14px 18px;display:flex;flex-direction:column;gap:10px}
-.chat .msg{background:var(--chat-in);color:var(--chat-in-ink);border-radius:10px;border-start-start-radius:2px;padding:10px 12px;font-size:13px;font-weight:400;max-width:86%;opacity:0;transform:translateY(8px);animation:msgIn .5s ease-out forwards}
-.chat .msg:nth-child(1){animation-delay:.4s}
-.chat .msg:nth-child(2){animation-delay:1.3s}
-.chat .msg .lp{display:block;margin-top:8px;border-radius:8px;overflow:hidden;border:1px solid rgba(35,26,16,.1)}
-.chat .msg .lp b{display:block;background:#0d1730;color:#e3cf9b;font-family:"Aref Ruqaa",serif;font-weight:400;font-size:15px;padding:14px 12px;text-align:center}
-.chat .msg .lp i{display:block;font-style:normal;background:var(--chat-meta);color:var(--chat-meta-ink);font-size:10.5px;padding:6px 12px;direction:ltr;text-align:left}
-.chat .msg.reply{background:var(--chat-out);align-self:end;border-start-start-radius:10px;border-start-end-radius:2px}
-html:not(.en) .chat .msg.reply{align-self:start}
-@keyframes msgIn{to{opacity:1;transform:none}}
-.moment-copy h2{margin:0 0 16px;font-family:var(--disp);font-weight:600;font-size:clamp(24px,4.4vw,34px);line-height:1.5}
-.moment-copy p{color:var(--ink-2);line-height:2.05;margin:0 0 14px;font-size:14.5px}
-.moment-copy ul{margin:0;padding:0;list-style:none}
-.moment-copy li{padding:6px 0;font-size:14px;display:flex;gap:11px;align-items:flex-start;line-height:1.9}
-.moment-copy li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--copper);margin-top:11px;flex:none}
+/* from Khalid */
+.note{background:var(--paper-3);border-block:1px solid var(--line-soft)}
+.note-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,56px);align-items:start}
+@media (max-width:720px){.note-grid{grid-template-columns:1fr}}
+.note .who{font-family:var(--disp);font-weight:600;font-size:clamp(24px,4vw,34px);line-height:1.4;margin:0;white-space:nowrap}
+.note p{margin:0 0 14px;font-size:15px;line-height:2.1;max-width:58ch}
+.note .links{font-size:14px;color:var(--ink-2)}
+.note .links a{color:var(--copper);text-decoration:none;font-weight:600}
+.note .links a:hover{text-decoration:underline}
 
-/* why comparison */
-.cmp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px;background:var(--paper-2)}
-.cmp{width:100%;min-width:680px;border-collapse:collapse;font-size:13.5px}
-.cmp th,.cmp td{padding:13px 16px;text-align:start;border-bottom:1px solid var(--line-soft);line-height:1.8}
-.cmp thead th{font-size:12.5px;font-weight:800;color:var(--ink-2);border-bottom:1px solid var(--line)}
-.cmp tbody tr:last-child td{border-bottom:none}
-.cmp td:first-child{color:var(--ink-2);font-weight:600;white-space:nowrap}
-.cmp .hl{background:rgba(156,74,26,.07);font-weight:600}
-.cmp thead .hl{color:var(--copper)}
+/* how */
+.how p{font-size:15px;line-height:2.1;margin:0;max-width:60ch}
 
-/* how it works */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--paper-2)}
-.step{padding:26px 22px;position:relative;border-inline-start:1px solid var(--line-soft)}
-.step:first-child{border-inline-start:none}
-@media (max-width:920px){.step{border-inline-start:none;border-top:1px solid var(--line-soft)}.step:first-child{border-top:none}}
-.step .n{font-family:var(--disp);font-weight:700;font-size:30px;color:var(--copper);margin-bottom:10px}
-.step h4{margin:0 0 6px;font-size:15px;font-weight:800}
-.step p{margin:0;font-size:13px;color:var(--ink-2);line-height:1.95}
-.step .tt{display:inline-block;margin-top:12px;font-size:11px;color:var(--copper);border:1px solid var(--line-c);border-radius:99px;padding:3px 11px;font-weight:600}
-
-/* pricing */
-.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:20px;align-items:stretch}
-.tier{border:1px solid var(--line);border-radius:8px;padding:28px 26px;background:var(--paper-2);display:flex;flex-direction:column}
-.tier.feat{border:1.5px solid var(--copper);box-shadow:0 16px 40px rgba(156,74,26,.1)}
-.tier .t-name{font-size:12.5px;font-weight:800;letter-spacing:.14em;color:var(--copper);margin:0 0 6px;text-transform:uppercase}
-.tier .t-price{font-family:var(--body);font-weight:800;font-size:36px;color:var(--ink);margin:0}
-.tier .t-price small{font-size:13px;color:var(--ink-2);font-weight:300}
-.tier .t-for{font-size:12.5px;color:var(--ink-2);margin:6px 0 18px;line-height:1.8}
-.tier ul{margin:0 0 22px;padding:0;list-style:none;flex:1}
-.tier li{padding:6px 0;font-size:13.5px;display:flex;gap:10px;align-items:flex-start;line-height:1.85}
-.tier li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--copper);margin-top:10px;flex:none}
-.tier .btn{width:100%}
-.fineprint{color:var(--ink-2);font-size:12.5px;margin-top:22px;line-height:2.1;max-width:78ch}
-
-/* band */
-.band{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 36px;border-block:1px solid var(--line-soft);background:var(--paper-3);padding:20px 22px;font-size:13px;color:var(--ink-2)}
-.band b{color:var(--ink);font-weight:600}
+/* prices */
+.prices{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.prices li{display:grid;grid-template-columns:1fr auto;gap:4px 18px;padding:18px 0;border-bottom:1px solid var(--line)}
+.prices a{color:inherit;text-decoration:none;font-weight:800;font-size:16px}
+.prices a:hover{color:var(--copper)}
+.prices .amt{color:var(--copper);font-weight:800;white-space:nowrap}
+.prices p{grid-column:1/-1;margin:0;color:var(--ink-2);font-size:13.5px;line-height:1.9}
+.fineprint{color:var(--ink-2);font-size:12.5px;margin-top:18px;line-height:2.1;max-width:70ch}
 
 /* faq */
 details{border-bottom:1px solid var(--line-soft)}
@@ -258,20 +147,16 @@ summary::after{content:"+";color:var(--copper);font-size:20px;font-weight:300}
 details[open] summary::after{content:"−"}
 details p{margin:0;padding:0 4px 18px;font-size:14px;color:var(--ink-2);line-height:2}
 
-footer{padding:38px 0 46px;text-align:center;color:var(--ink-2);font-size:13px}
-footer .brand{justify-content:center;margin-bottom:10px;display:flex}
+/* footer */
+footer{padding:34px 0 44px;color:var(--ink-2);font-size:13px;border-top:1px solid var(--line-soft)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px}
+.foot nav{display:flex;gap:18px;align-items:center}
+.foot a{color:var(--ink-2);text-decoration:none}
+.foot a:hover{color:var(--copper)}
 .floating-wa{position:fixed;bottom:18px;inset-inline-end:18px;z-index:60;width:54px;height:54px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 12px 28px rgba(31,168,85,.35)}
 .floating-wa svg{width:28px;height:28px;fill:#fff}
 
-/* reveals */
-.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease-out,transform .6s cubic-bezier(.16,1,.3,1)}
-.rv.in{opacity:1;transform:none}
-
-@media (prefers-reduced-motion: reduce){
-  *{transition:none!important;animation:none!important}
-  .rv{opacity:1;transform:none}
-  .chat .msg{opacity:1;transform:none}
-}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 <script>
 /* set theme before first paint so there is no flash */
@@ -293,9 +178,7 @@ footer .brand{justify-content:center;margin-bottom:10px;display:flex}
   </a>
   <nav class="nav-links">
     <a href="#templates"><span class="t-ar">الكولكشن</span><span class="t-en">Collection</span></a>
-    <a href="#why"><span class="t-ar">ليه إحنا</span><span class="t-en">Why us</span></a>
-    <a href="#how"><span class="t-ar">إزاي بتطلب</span><span class="t-en">How it works</span></a>
-    <a href="#pricing"><span class="t-ar">الباقات</span><span class="t-en">Packages</span></a>
+    <a href="#pricing"><span class="t-ar">الأسعار</span><span class="t-en">Prices</span></a>
     <a href="#faq"><span class="t-ar">أسئلة</span><span class="t-en">FAQ</span></a>
   </nav>
   <div class="hdr-actions">
@@ -309,60 +192,30 @@ footer .brand{justify-content:center;margin-bottom:10px;display:flex}
 
 <section class="hero"><div class="wrap hero-grid">
   <div>
-    <p class="eyebrow"><span class="t-ar">استوديو دعوات رقمية مصري</span><span class="t-en">Egyptian digital invitation studio</span></p>
     <h1>
-      <span class="t-ar">لكل مناسبة عندنا <em>دعوة تليق بيها<svg viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M2 7 Q 30 2, 55 5.5 T 98 4"/></svg></em></span>
-      <span class="t-en">Every occasion deserves <em>an invitation this good<svg viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M2 7 Q 30 2, 55 5.5 T 98 4"/></svg></em></span>
+      <span class="t-ar">دعوة فرحكم على لينك باسمكم.</span>
+      <span class="t-en">Your invitation, on a link with your names.</span>
     </h1>
     <p class="sub">
-      <span class="t-ar">فرح، خطوبة، كتب كتاب، ليلة حنة، سبوع، تخرج — صفحة دعوة خاصة باسمكم على لينك بيتشارك على واتساب: عدّاد تنازلي حيّ، تأكيد حضور بضغطة، خريطة، وعربي وإنجليزي. كل دعوة بتتصمم مخصوص.</span>
-      <span class="t-en">Weddings, engagements, katb kitab, henna nights, sebou3, graduations — a private invitation page on your own link, shared on WhatsApp: live countdown, one-tap RSVP, map, Arabic and English. Every invitation is hand-finished.</span>
+      <span class="t-ar">صفحة دعوة بتتشارك على واتساب: عدّاد، تأكيد حضور بضغطة، خريطة، عربي وإنجليزي. بعمل كل دعوة بنفسي وبسلّمها خلال ٤٨ ساعة، من ١٬٠٠٠ جنيه.</span>
+      <span class="t-en">An invitation page you share on WhatsApp: countdown, one-tap RSVP, map, Arabic and English. I build each one myself and deliver in 48 hours, from EGP 1,000.</span>
     </p>
     <div class="cta-row">
-      <a class="btn solid" href="order.html">
-        <span class="t-ar">اطلب دعوتك</span><span class="t-en">Start your order</span>
+      <a class="btn solid" target="_blank" rel="noopener" href="https://wa.me/201005509418?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%D8%8C%20%D9%85%D8%AD%D8%AA%D8%A7%D8%AC%D9%8A%D9%86%20%D9%86%D8%B7%D9%84%D8%A8%20%D8%AF%D8%B9%D9%88%D8%A9">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.94.56 3.75 1.5 5.29L2 22l4.96-1.6a9.9 9.9 0 0 0 5.08 1.4h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+        <span class="t-ar">اطلب على واتساب</span><span class="t-en">Order on WhatsApp</span>
       </a>
-      <a class="btn" target="_blank" rel="noopener" href="https://wa.me/201005509418?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%21%20%D9%85%D9%85%D9%83%D9%86%20%D8%AA%D8%A8%D8%B9%D8%AA%D9%88%D9%84%D9%8A%20%D8%AF%D8%B9%D9%88%D8%A9%20%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9%20%D8%B9%D9%84%D9%89%20%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D8%A8%D8%9F%20%F0%9F%A4%8D">
-        <span class="t-ar">ابعتولي دعوة تجربة</span><span class="t-en">Send me a sample</span>
-      </a>
-    </div>
-    <div class="trust">
-      <span><span class="t-ar">تسليم خلال <b>٤٨ ساعة</b></span><span class="t-en">Delivered in <b>48 hours</b></span></span>
-      <span><span class="t-ar">جولة تعديل <b>مجانية</b></span><span class="t-en"><b>Free</b> revision round</span></span>
-      <span><span class="t-ar">لينك <b>باسمكم</b></span><span class="t-en">Your <b>own link</b></span></span>
+      <a class="btn" href="#templates"><span class="t-ar">شوف التصاميم</span><span class="t-en">See the designs</span></a>
     </div>
   </div>
   <div class="stage">
-    <div class="wa-bubble" aria-hidden="true">
-      <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.94.56 3.75 1.5 5.29L2 22l4.96-1.6a9.9 9.9 0 0 0 5.08 1.4h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
-      <span class="t-ar">وصلتك دعوة 🤍</span><span class="t-en">You're invited 🤍</span>
-    </div>
-    <div class="phone" aria-hidden="true"><div class="screen">
-      <div class="notch"></div>
-      <div class="orn-s">✦ ✦ ✦</div>
-      <div class="inv-ar">عمر وسلمى</div>
-      <div class="inv-en">OMAR &amp; SALMA</div>
-      <div class="inv-dt">22 · 08 · 2026</div>
-      <div class="cd">
-        <div><b id="cdD">—</b><small><span class="t-ar">يوم</span><span class="t-en">DAYS</span></small></div>
-        <div><b id="cdH">—</b><small><span class="t-ar">ساعة</span><span class="t-en">HRS</span></small></div>
-        <div><b id="cdM">—</b><small><span class="t-ar">دقيقة</span><span class="t-en">MIN</span></small></div>
-        <div><b id="cdS">—</b><small><span class="t-ar">ثانية</span><span class="t-en">SEC</span></small></div>
-      </div>
-      <div class="rsvp">
-        <span class="yes"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg><span class="t-ar">أكيد جايين 🤍</span><span class="t-en">We'll be there 🤍</span></span>
-        <span class="no"><span class="t-ar">للأسف مش هنقدر</span><span class="t-en">Can't make it</span></span>
-      </div>
-    </div></div>
+    <div class="phone"><img src="assets/cards/navy.jpg" width="585" height="1266" fetchpriority="high" alt="دعوة رويال نايفي على الموبايل: أحمد وفريدة"></div>
   </div>
 </div></section>
 
 <section id="templates"><div class="wrap">
-  <div class="sec-head">
-    <h2 class="sec-title"><span class="t-ar">الكولكشن</span><span class="t-en">The collection</span></h2>
-    <span class="sec-count"><b>١٢</b> <span class="t-ar">تصميم لكل المناسبات</span><span class="t-en">designs across every occasion</span></span>
-  </div>
-  <p class="sec-sub"><span class="t-ar">كل تصميم بشخصيته وألوانه وخطوطه. افتح الديمو من موبايلك وشوف اللي ضيوفك هيشوفوه بالظبط.</span><span class="t-en">Each design has its own character, palette and type. Open any demo on your phone and see exactly what your guests will see.</span></p>
+  <h2 class="sec-title"><span class="t-ar">الكولكشن</span><span class="t-en">The collection</span></h2>
+  <p class="sec-sub"><span class="t-ar">١٢ تصميم. كل واحد صفحة كاملة، افتحه من موبايلك.</span><span class="t-en">Twelve designs. Each one is a full page. Open it on your phone.</span></p>
   <div class="filters" id="filters">
     <button class="on" data-f="all"><span class="t-ar">الكل</span><span class="t-en">All</span></button>
     <button data-f="wedding"><span class="t-ar">فرح وخطوبة</span><span class="t-en">Wedding &amp; engagement</span></button>
@@ -373,280 +226,221 @@ footer .brand{justify-content:center;margin-bottom:10px;display:flex}
   </div>
   <div class="grid" id="tplGrid">
 
-    <div class="card p-gold" data-occ="wedding">
-      <div class="shot"><span class="code">D3-001</span><div class="mat"><div class="mini"><div class="bar"></div><div class="rng"></div><div class="nm">Omar &amp; Salma</div><div class="anm">عمر وسلمى</div><div class="dt">22 · 08 · 2026</div><div class="pips"><i></i><i></i></div></div></div></div>
+    <article class="card" data-occ="wedding">
+      <a class="shot" href="demos/gold.html?n_ar=يوسف ومريم&amp;n_en=Youssef%20%26%20Mariam" target="_blank" rel="noopener"><img src="assets/cards/gold.jpg" width="585" height="1266" loading="lazy" decoding="async" alt="كلاسيك جولد"></a>
       <div class="card-body">
-        <div class="card-top"><h3><span class="t-ar">كلاسيك جولد</span><span class="t-en">Classic Gold</span></h3><div class="price">1,000 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
-        <p class="occ"><span class="t-ar">خطوبة وفرح · فخامة هادية بعاجي ودهبي</span><span class="t-en">Engagement &amp; wedding · quiet ivory-and-gold luxury</span></p>
+        <div class="card-top"><h3><span class="t-ar">كلاسيك جولد</span><span class="t-en">Classic Gold</span></h3><span class="price">1,000 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></span></div>
+        <p class="occ"><span class="t-ar">خطوبة وفرح · عاجي ودهبي هادي</span><span class="t-en">Engagement and wedding · quiet ivory and gold</span></p>
         <div class="card-actions">
-          <a class="btn" href="demos/gold.html" target="_blank" rel="noopener"><span class="t-ar">ديمو</span><span class="t-en">Demo</span></a>
-          <a class="btn solid" href="order.html?t=gold"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+          <a class="btn" href="demos/gold.html?n_ar=يوسف ومريم&amp;n_en=Youssef%20%26%20Mariam" target="_blank" rel="noopener"><span class="t-ar">الديمو</span><span class="t-en">Demo</span></a>
+          <a class="btn solid" href="order.html?t=gold"><span class="t-ar">اطلب</span><span class="t-en">Order</span></a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="card p-rose" data-occ="wedding">
-      <div class="shot"><span class="code">D3-002</span><div class="mat"><div class="mini"><div class="bar"></div><div class="rng"></div><div class="nm">Omar &amp; Salma</div><div class="anm">عمر وسلمى</div><div class="dt">22 · 08 · 2026</div><div class="pips"><i></i><i></i></div></div></div></div>
+    <article class="card" data-occ="wedding">
+      <a class="shot" href="demos/rose.html?n_ar=كريم ونور&amp;n_en=Karim%20%26%20Nour" target="_blank" rel="noopener"><img src="assets/cards/rose.jpg" width="585" height="1266" loading="lazy" decoding="async" alt="روز آند وايت"></a>
       <div class="card-body">
-        <div class="card-top"><h3><span class="t-ar">روز آند وايت</span><span class="t-en">Rose &amp; White</span></h3><div class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
-        <p class="occ"><span class="t-ar">فرح · رومانسي ناعم بلمسة ورد</span><span class="t-en">Wedding · soft romance with a rose touch</span></p>
+        <div class="card-top"><h3><span class="t-ar">روز آند وايت</span><span class="t-en">Rose &amp; White</span></h3><span class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></span></div>
+        <p class="occ"><span class="t-ar">فرح · ناعم بلمسة ورد</span><span class="t-en">Wedding · soft, with a rose touch</span></p>
         <div class="card-actions">
-          <a class="btn" href="demos/rose.html" target="_blank" rel="noopener"><span class="t-ar">ديمو</span><span class="t-en">Demo</span></a>
-          <a class="btn solid" href="order.html?t=rose"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+          <a class="btn" href="demos/rose.html?n_ar=كريم ونور&amp;n_en=Karim%20%26%20Nour" target="_blank" rel="noopener"><span class="t-ar">الديمو</span><span class="t-en">Demo</span></a>
+          <a class="btn solid" href="order.html?t=rose"><span class="t-ar">اطلب</span><span class="t-en">Order</span></a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="card p-rustic" data-occ="wedding">
-      <div class="shot"><span class="code">D3-003</span><div class="mat"><div class="mini"><div class="bar"></div><div class="rng"></div><div class="nm">Omar &amp; Salma</div><div class="anm">عمر وسلمى</div><div class="dt">22 · 08 · 2026</div><div class="pips"><i></i><i></i></div></div></div></div>
+    <article class="card" data-occ="wedding">
+      <a class="shot" href="demos/rustic.html?n_ar=محمود وهنا&amp;n_en=Mahmoud%20%26%20Hana" target="_blank" rel="noopener"><img src="assets/cards/rustic.jpg" width="585" height="1266" loading="lazy" decoding="async" alt="رستيك"></a>
       <div class="card-body">
-        <div class="card-top"><h3><span class="t-ar">رستيك</span><span class="t-en">Rustic Red</span></h3><div class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
-        <p class="occ"><span class="t-ar">فرح · دفا خشبي وألوان خريفية</span><span class="t-en">Wedding · warm rustic autumn palette</span></p>
+        <div class="card-top"><h3><span class="t-ar">رستيك</span><span class="t-en">Rustic Red</span></h3><span class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></span></div>
+        <p class="occ"><span class="t-ar">فرح · خشب وألوان خريفية</span><span class="t-en">Wedding · wood and autumn colours</span></p>
         <div class="card-actions">
-          <a class="btn" href="demos/rustic.html" target="_blank" rel="noopener"><span class="t-ar">ديمو</span><span class="t-en">Demo</span></a>
-          <a class="btn solid" href="order.html?t=rustic"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+          <a class="btn" href="demos/rustic.html?n_ar=محمود وهنا&amp;n_en=Mahmoud%20%26%20Hana" target="_blank" rel="noopener"><span class="t-ar">الديمو</span><span class="t-en">Demo</span></a>
+          <a class="btn solid" href="order.html?t=rustic"><span class="t-ar">اطلب</span><span class="t-en">Order</span></a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="card p-navy" data-occ="wedding">
-      <div class="shot"><span class="code">D3-004</span><span class="badge"><span class="t-ar">الأفخم ✨</span><span class="t-en">Flagship ✨</span></span><div class="mat"><div class="mini"><div class="bar"></div><div class="rng"></div><div class="nm">Omar &amp; Salma</div><div class="anm">عمر وسلمى</div><div class="dt">22 · 08 · 2026</div><div class="pips"><i></i><i></i></div></div></div></div>
+    <article class="card" data-occ="wedding">
+      <a class="shot" href="demos/navy.html?n_ar=أحمد وفريدة&amp;n_en=Ahmed%20%26%20Farida" target="_blank" rel="noopener"><img src="assets/cards/navy.jpg" width="585" height="1266" loading="lazy" decoding="async" alt="رويال نايفي"></a>
       <div class="card-body">
-        <div class="card-top"><h3><span class="t-ar">رويال نايفي</span><span class="t-en">Royal Navy</span></h3><div class="price">2,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
-        <p class="occ"><span class="t-ar">فرح · وضع ليلي ونهاري وشيت ضيوف</span><span class="t-en">Wedding · dark and light mode, guest-list sheet</span></p>
+        <div class="card-top"><h3><span class="t-ar">رويال نايفي</span><span class="t-en">Royal Navy</span></h3><span class="price">2,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></span></div>
+        <p class="occ"><span class="t-ar">فرح · وضع ليلي ونهاري وشيت ضيوف</span><span class="t-en">Wedding · dark and light mode, guest sheet</span></p>
         <div class="card-actions">
-          <a class="btn" href="demos/navy.html" target="_blank" rel="noopener"><span class="t-ar">ديمو</span><span class="t-en">Demo</span></a>
-          <a class="btn solid" href="order.html?t=navy"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+          <a class="btn" href="demos/navy.html?n_ar=أحمد وفريدة&amp;n_en=Ahmed%20%26%20Farida" target="_blank" rel="noopener"><span class="t-ar">الديمو</span><span class="t-en">Demo</span></a>
+          <a class="btn solid" href="order.html?t=navy"><span class="t-ar">اطلب</span><span class="t-en">Order</span></a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="card p-emerald" data-occ="katb wedding">
-      <div class="shot"><span class="code">D3-005</span><div class="mat"><div class="mini"><div class="bar"></div><div class="rng"></div><div class="nm">Omar &amp; Salma</div><div class="anm">عمر وسلمى</div><div class="dt">22 · 08 · 2026</div><div class="pips"><i></i><i></i></div></div></div></div>
+    <article class="card" data-occ="katb wedding">
+      <a class="shot" href="demos/emerald.html?n_ar=مصطفى وجنى&amp;n_en=Mostafa%20%26%20Jana" target="_blank" rel="noopener"><img src="assets/cards/emerald.jpg" width="585" height="1266" loading="lazy" decoding="async" alt="إميرالد أندلسي"></a>
       <div class="card-body">
-        <div class="card-top"><h3><span class="t-ar">إميرالد أندلسي</span><span class="t-en">Emerald Andalusi</span></h3><div class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
-        <p class="occ"><span class="t-ar">كتب كتاب وفرح · زخارف أندلسية على أخضر ملكي</span><span class="t-en">Katb kitab &amp; wedding · Andalusian geometry on royal green</span></p>
+        <div class="card-top"><h3><span class="t-ar">إميرالد أندلسي</span><span class="t-en">Emerald Andalusi</span></h3><span class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></span></div>
+        <p class="occ"><span class="t-ar">كتب كتاب وفرح · زخارف أندلسية على أخضر</span><span class="t-en">Katb kitab and wedding · Andalusian geometry on green</span></p>
         <div class="card-actions">
-          <a class="btn" href="demos/emerald.html" target="_blank" rel="noopener"><span class="t-ar">ديمو</span><span class="t-en">Demo</span></a>
-          <a class="btn solid" href="order.html?t=emerald"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+          <a class="btn" href="demos/emerald.html?n_ar=مصطفى وجنى&amp;n_en=Mostafa%20%26%20Jana" target="_blank" rel="noopener"><span class="t-ar">الديمو</span><span class="t-en">Demo</span></a>
+          <a class="btn solid" href="order.html?t=emerald"><span class="t-ar">اطلب</span><span class="t-en">Order</span></a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="card p-sahara" data-occ="wedding">
-      <div class="shot"><span class="code">D3-006</span><div class="mat"><div class="mini"><div class="bar"></div><div class="rng"></div><div class="nm">Omar &amp; Salma</div><div class="anm">عمر وسلمى</div><div class="dt">22 · 08 · 2026</div><div class="pips"><i></i><i></i></div></div></div></div>
+    <article class="card" data-occ="wedding">
+      <a class="shot" href="demos/sahara.html?n_ar=زياد ولينا&amp;n_en=Ziad%20%26%20Lina" target="_blank" rel="noopener"><img src="assets/cards/sahara.jpg" width="585" height="1266" loading="lazy" decoding="async" alt="صحارى بوهو"></a>
       <div class="card-body">
-        <div class="card-top"><h3><span class="t-ar">صحارى بوهو</span><span class="t-en">Sahara Boho</span></h3><div class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
-        <p class="occ"><span class="t-ar">فرح الساحل · غروب وترّاكوتا وبحر</span><span class="t-en">Sahel wedding · sunset, terracotta and sea</span></p>
+        <div class="card-top"><h3><span class="t-ar">صحارى بوهو</span><span class="t-en">Sahara Boho</span></h3><span class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></span></div>
+        <p class="occ"><span class="t-ar">فرح الساحل · غروب وتراكوتا وبحر</span><span class="t-en">Sahel wedding · sunset, terracotta and sea</span></p>
         <div class="card-actions">
-          <a class="btn" href="demos/sahara.html" target="_blank" rel="noopener"><span class="t-ar">ديمو</span><span class="t-en">Demo</span></a>
-          <a class="btn solid" href="order.html?t=sahara"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+          <a class="btn" href="demos/sahara.html?n_ar=زياد ولينا&amp;n_en=Ziad%20%26%20Lina" target="_blank" rel="noopener"><span class="t-ar">الديمو</span><span class="t-en">Demo</span></a>
+          <a class="btn solid" href="order.html?t=sahara"><span class="t-ar">اطلب</span><span class="t-en">Order</span></a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="card p-henna" data-occ="henna">
-      <div class="shot"><span class="code">D3-008</span><span class="badge"><span class="t-ar">جديد 💃</span><span class="t-en">New 💃</span></span><div class="mat"><div class="mini"><div class="bar"></div><div class="rng"></div><div class="nm">Salma</div><div class="anm">ليلة حنة سلمى</div><div class="dt">20 · 08 · 2026</div><div class="pips"><i></i><i></i></div></div></div></div>
+    <article class="card" data-occ="henna">
+      <a class="shot" href="demos/henna.html?n_ar=ملك&amp;n_en=Malak" target="_blank" rel="noopener"><img src="assets/cards/henna.jpg" width="585" height="1266" loading="lazy" decoding="async" alt="ليلة حنة"></a>
       <div class="card-body">
-        <div class="card-top"><h3><span class="t-ar">ليلة حنة</span><span class="t-en">Henna Night</span></h3><div class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
-        <p class="occ"><span class="t-ar">حنة · بهجة شعبية جلام بحُمرة الحنة والزعفران</span><span class="t-en">Henna · folkloric glam in henna red and saffron</span></p>
+        <div class="card-top"><h3><span class="t-ar">ليلة حنة</span><span class="t-en">Henna Night</span></h3><span class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></span></div>
+        <p class="occ"><span class="t-ar">حنة · حُمرة الحنة والزعفران</span><span class="t-en">Henna · henna red and saffron</span></p>
         <div class="card-actions">
-          <a class="btn" href="demos/henna.html" target="_blank" rel="noopener"><span class="t-ar">ديمو</span><span class="t-en">Demo</span></a>
-          <a class="btn solid" href="order.html?t=henna"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+          <a class="btn" href="demos/henna.html?n_ar=ملك&amp;n_en=Malak" target="_blank" rel="noopener"><span class="t-ar">الديمو</span><span class="t-en">Demo</span></a>
+          <a class="btn solid" href="order.html?t=henna"><span class="t-ar">اطلب</span><span class="t-en">Order</span></a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="card p-deco" data-occ="wedding">
-      <div class="shot"><span class="code">D3-009</span><span class="badge"><span class="t-ar">جديد ✨</span><span class="t-en">New ✨</span></span><div class="mat"><div class="mini"><div class="bar"></div><div class="rng"></div><div class="nm">Omar &amp; Salma</div><div class="anm">عمر وسلمى</div><div class="dt">22 · 08 · 2026</div><div class="pips"><i></i><i></i></div></div></div></div>
+    <article class="card" data-occ="wedding">
+      <a class="shot" href="demos/deco.html?n_ar=عمر ونادين&amp;n_en=Omar%20%26%20Nadine" target="_blank" rel="noopener"><img src="assets/cards/deco.jpg" width="585" height="1266" loading="lazy" decoding="async" alt="آرت ديكو"></a>
       <div class="card-body">
-        <div class="card-top"><h3><span class="t-ar">جاتسبي</span><span class="t-en">Art Deco</span></h3><div class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
-        <p class="occ"><span class="t-ar">فرح · فخامة العشرينات بأسود ودهبي هندسي</span><span class="t-en">Wedding · 1920s glamour in black and geometric gold</span></p>
+        <div class="card-top"><h3><span class="t-ar">آرت ديكو</span><span class="t-en">Art Deco</span></h3><span class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></span></div>
+        <p class="occ"><span class="t-ar">فرح · أسود ودهبي هندسي من العشرينات</span><span class="t-en">Wedding · 1920s black and geometric gold</span></p>
         <div class="card-actions">
-          <a class="btn" href="demos/deco.html" target="_blank" rel="noopener"><span class="t-ar">ديمو</span><span class="t-en">Demo</span></a>
-          <a class="btn solid" href="order.html?t=deco"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+          <a class="btn" href="demos/deco.html?n_ar=عمر ونادين&amp;n_en=Omar%20%26%20Nadine" target="_blank" rel="noopener"><span class="t-ar">الديمو</span><span class="t-en">Demo</span></a>
+          <a class="btn solid" href="order.html?t=deco"><span class="t-ar">اطلب</span><span class="t-en">Order</span></a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="card p-garden" data-occ="wedding">
-      <div class="shot"><span class="code">D3-010</span><span class="badge"><span class="t-ar">جديد 🌿</span><span class="t-en">New 🌿</span></span><div class="mat"><div class="mini"><div class="bar"></div><div class="rng"></div><div class="nm">Omar &amp; Salma</div><div class="anm">عمر وسلمى</div><div class="dt">22 · 08 · 2026</div><div class="pips"><i></i><i></i></div></div></div></div>
+    <article class="card" data-occ="wedding">
+      <a class="shot" href="demos/garden.html?n_ar=سيف ورنا&amp;n_en=Seif%20%26%20Rana" target="_blank" rel="noopener"><img src="assets/cards/garden.jpg" width="585" height="1266" loading="lazy" decoding="async" alt="جاردن"></a>
       <div class="card-body">
-        <div class="card-top"><h3><span class="t-ar">جاردن</span><span class="t-en">Botanical Garden</span></h3><div class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
-        <p class="occ"><span class="t-ar">فرح النهار · خضرة مائية وقوس نباتي</span><span class="t-en">Daytime wedding · watercolor greenery and a botanical arch</span></p>
+        <div class="card-top"><h3><span class="t-ar">جاردن</span><span class="t-en">Botanical Garden</span></h3><span class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></span></div>
+        <p class="occ"><span class="t-ar">فرح النهار · خضرة مائية وقوس نباتي</span><span class="t-en">Daytime wedding · watercolour greenery and an arch</span></p>
         <div class="card-actions">
-          <a class="btn" href="demos/garden.html" target="_blank" rel="noopener"><span class="t-ar">ديمو</span><span class="t-en">Demo</span></a>
-          <a class="btn solid" href="order.html?t=garden"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+          <a class="btn" href="demos/garden.html?n_ar=سيف ورنا&amp;n_en=Seif%20%26%20Rana" target="_blank" rel="noopener"><span class="t-ar">الديمو</span><span class="t-en">Demo</span></a>
+          <a class="btn solid" href="order.html?t=garden"><span class="t-ar">اطلب</span><span class="t-en">Order</span></a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="card p-modern" data-occ="wedding katb">
-      <div class="shot"><span class="code">D3-011</span><span class="badge"><span class="t-ar">جديد ✳</span><span class="t-en">New ✳</span></span><div class="mat"><div class="mini"><div class="bar"></div><div class="rng"></div><div class="nm">Omar &amp; Salma</div><div class="anm">عمر وسلمى</div><div class="dt">22 · 08 · 2026</div><div class="pips"><i></i><i></i></div></div></div></div>
+    <article class="card" data-occ="wedding">
+      <a class="shot" href="demos/modern.html?n_ar=علي ودينا&amp;n_en=Ali%20%26%20Dina" target="_blank" rel="noopener"><img src="assets/cards/modern.jpg" width="585" height="1266" loading="lazy" decoding="async" alt="مودرن"></a>
       <div class="card-body">
-        <div class="card-top"><h3><span class="t-ar">مودرن</span><span class="t-en">Modern Editorial</span></h3><div class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
-        <p class="occ"><span class="t-ar">فرح وخطوبة · بوستر تايبوجرافي جريء</span><span class="t-en">Wedding &amp; engagement · bold typographic poster</span></p>
+        <div class="card-top"><h3><span class="t-ar">مودرن</span><span class="t-en">Modern Editorial</span></h3><span class="price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></span></div>
+        <p class="occ"><span class="t-ar">فرح وخطوبة · بوستر تايبوجرافي</span><span class="t-en">Wedding and engagement · a typographic poster</span></p>
         <div class="card-actions">
-          <a class="btn" href="demos/modern.html" target="_blank" rel="noopener"><span class="t-ar">ديمو</span><span class="t-en">Demo</span></a>
-          <a class="btn solid" href="order.html?t=modern"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+          <a class="btn" href="demos/modern.html?n_ar=علي ودينا&amp;n_en=Ali%20%26%20Dina" target="_blank" rel="noopener"><span class="t-ar">الديمو</span><span class="t-en">Demo</span></a>
+          <a class="btn solid" href="order.html?t=modern"><span class="t-ar">اطلب</span><span class="t-en">Order</span></a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="card p-lotus" data-occ="baby">
-      <div class="shot"><span class="code">D3-007</span><div class="mat"><div class="mini"><div class="bar"></div><div class="rng"></div><div class="nm">Adam</div><div class="anm">آدم</div><div class="dt">04 · 09 · 2026</div><div class="pips"><i></i><i></i></div></div></div></div>
+    <article class="card" data-occ="baby">
+      <a class="shot" href="demos/lotus.html?n_ar=ياسين&amp;n_en=Yassin" target="_blank" rel="noopener"><img src="assets/cards/lotus.jpg" width="585" height="1266" loading="lazy" decoding="async" alt="سبوع اللوتس"></a>
       <div class="card-body">
-        <div class="card-top"><h3><span class="t-ar">سبوع اللوتس</span><span class="t-en">Lotus Sebou3</span></h3><div class="price">1,000 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
-        <p class="occ"><span class="t-ar">سبوع وعقيقة · باستيل هادي وقمر ولوتس</span><span class="t-en">Sebou3 &amp; aqiqa · gentle pastels, moon and lotus</span></p>
+        <div class="card-top"><h3><span class="t-ar">سبوع اللوتس</span><span class="t-en">Lotus Sebou3</span></h3><span class="price">1,000 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></span></div>
+        <p class="occ"><span class="t-ar">سبوع وعقيقة · باستيل وقمر ولوتس</span><span class="t-en">Sebou3 and aqiqa · pastels, a moon and a lotus</span></p>
         <div class="card-actions">
-          <a class="btn" href="demos/lotus.html" target="_blank" rel="noopener"><span class="t-ar">ديمو</span><span class="t-en">Demo</span></a>
-          <a class="btn solid" href="order.html?t=lotus"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+          <a class="btn" href="demos/lotus.html?n_ar=ياسين&amp;n_en=Yassin" target="_blank" rel="noopener"><span class="t-ar">الديمو</span><span class="t-en">Demo</span></a>
+          <a class="btn solid" href="order.html?t=lotus"><span class="t-ar">اطلب</span><span class="t-en">Order</span></a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="card p-grad" data-occ="grad">
-      <div class="shot"><span class="code">D3-012</span><span class="badge"><span class="t-ar">جديد 🎓</span><span class="t-en">New 🎓</span></span><div class="mat"><div class="mini"><div class="bar"></div><div class="rng"></div><div class="nm">Nada</div><div class="anm">تخرج ندى</div><div class="dt">02 · 10 · 2026</div><div class="pips"><i></i><i></i></div></div></div></div>
+    <article class="card" data-occ="grad">
+      <a class="shot" href="demos/grad.html?n_ar=سارة&amp;n_en=Sara" target="_blank" rel="noopener"><img src="assets/cards/grad.jpg" width="585" height="1266" loading="lazy" decoding="async" alt="تخرج"></a>
       <div class="card-body">
-        <div class="card-top"><h3><span class="t-ar">تخرج</span><span class="t-en">Graduation</span></h3><div class="price">1,000 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></div></div>
-        <p class="occ"><span class="t-ar">حفلة تخرج · كحلي أكاديمي وسنة بارزة</span><span class="t-en">Graduation party · academic navy with a bold class year</span></p>
+        <div class="card-top"><h3><span class="t-ar">تخرج</span><span class="t-en">Graduation</span></h3><span class="price">1,000 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></span></div>
+        <p class="occ"><span class="t-ar">حفلة تخرج · كحلي وسنة التخرج بخط كبير</span><span class="t-en">Graduation party · navy, with the class year set big</span></p>
         <div class="card-actions">
-          <a class="btn" href="demos/grad.html" target="_blank" rel="noopener"><span class="t-ar">ديمو</span><span class="t-en">Demo</span></a>
-          <a class="btn solid" href="order.html?t=grad"><span class="t-ar">اطلبه</span><span class="t-en">Order</span></a>
+          <a class="btn" href="demos/grad.html?n_ar=سارة&amp;n_en=Sara" target="_blank" rel="noopener"><span class="t-ar">الديمو</span><span class="t-en">Demo</span></a>
+          <a class="btn solid" href="order.html?t=grad"><span class="t-ar">اطلب</span><span class="t-en">Order</span></a>
         </div>
       </div>
-    </div>
+    </article>
 
   </div>
 </div></section>
 
-<section class="moment"><div class="wrap moment-grid rv">
-  <div class="chat" aria-hidden="true" dir="rtl">
-    <div class="msg">
-      <span class="t-ar">اتفضلوا دعوتنا 🤍</span><span class="t-en">Here's our invitation 🤍</span>
-      <span class="lp"><b>عمر وسلمى · Omar &amp; Salma</b><i>d3wa.io/omar-salma</i></span>
-    </div>
-    <div class="msg reply"><span class="t-ar">يا لهوي ده تحفة!! أكيد جايين ✨</span><span class="t-en">This is gorgeous!! We're coming ✨</span></div>
-  </div>
-  <div class="moment-copy">
-    <h2><span class="t-ar">اللحظة اللي الضيف يفتح فيها اللينك</span><span class="t-en">The moment a guest opens the link</span></h2>
-    <p><span class="t-ar">الدعوة بتوصل على واتساب بصورة معاينة فخمة باسمكم. الضيف يفتح، يلاقي العدّاد شغال، يضغط زرار واحد يأكد حضوره، وياخد الخريطة ويحفظ المعاد في التقويم. من غير ما يحمّل أي تطبيق.</span><span class="t-en">The invitation lands on WhatsApp with a premium preview card in your names. Guests open it, watch the live countdown, confirm with one tap, get the map and save the date. No app required.</span></p>
-    <ul>
-      <li><span class="t-ar">الدعوة بتتفتح بلمسة، زي ما تكون بتفض ظرف حقيقي</span><span class="t-en">Opens with a tap, like unsealing a real envelope</span></li>
-      <li><span class="t-ar">برنامج اليوم والدرس كود وألبوم صور وموسيقى هادية</span><span class="t-en">Day schedule, dress code, photo gallery and gentle music</span></li>
-      <li><span class="t-ar">تأكيد الحضور وعدد الضيوف بيوصلك رسالة واتساب جاهزة</span><span class="t-en">RSVPs with guest counts arrive as ready WhatsApp messages</span></li>
-      <li><span class="t-ar">شغالة على أي موبايل ومن غير تطبيقات</span><span class="t-en">Works on any phone, no apps</span></li>
-    </ul>
-  </div>
-</div></section>
-
-<section id="why"><div class="wrap">
-  <div class="sec-head"><h2 class="sec-title"><span class="t-ar">ليه دعوة D3wa؟</span><span class="t-en">Why D3wa?</span></h2></div>
-  <p class="sec-sub"><span class="t-ar">قارن بنفسك. الديموهات قدامك حية، والأسعار مكتوبة، ومفيش مفاجآت.</span><span class="t-en">Compare for yourself: the demos are live, the prices are written down, no surprises.</span></p>
-  <div class="cmp-scroll rv"><table class="cmp">
-    <thead><tr>
-      <th></th>
-      <th class="hl"><span class="t-ar">دعوة D3wa</span><span class="t-en">D3wa</span></th><th><span class="t-ar">صورة أو فيديو دعوة</span><span class="t-en">Image or video invite</span></th><th><span class="t-ar">منصات بالدولار واليورو</span><span class="t-en">USD/EUR platforms</span></th>
-    </tr></thead>
-    <tbody>
-      <tr><td><span class="t-ar">اللي بيوصل للضيف</span><span class="t-en">What guests get</span></td>
-        <td class="hl"><span class="t-ar">صفحة حية بلينك باسمكم</span><span class="t-en">A live page on your own link</span></td><td><span class="t-ar">صورة بتضيع في الشات</span><span class="t-en">An image lost in the chat</span></td><td><span class="t-ar">صفحة تفاعلية</span><span class="t-en">Interactive page</span></td></tr>
-      <tr><td><span class="t-ar">تأكيد الحضور</span><span class="t-en">RSVP</span></td>
-        <td class="hl"><span class="t-ar">ضغطة واتساب توصلكم مباشرة</span><span class="t-en">One WhatsApp tap, straight to you</span></td><td><span class="t-ar">مفيش</span><span class="t-en">None</span></td><td><span class="t-ar">فورم وداشبورد</span><span class="t-en">Forms and dashboards</span></td></tr>
-      <tr><td><span class="t-ar">السعر</span><span class="t-en">Price</span></td>
-        <td class="hl"><span class="t-ar">من ١٬٠٠٠ جنيه مصري</span><span class="t-en">From EGP 1,000</span></td><td><span class="t-ar">رخيص بس بيتنسي</span><span class="t-en">Cheap but forgettable</span></td><td><span class="t-ar">٥٠–١٣٥ يورو/دولار</span><span class="t-en">€50–135+</span></td></tr>
-      <tr><td><span class="t-ar">التسليم</span><span class="t-en">Delivery</span></td>
-        <td class="hl"><span class="t-ar">٤٨ ساعة</span><span class="t-en">48 hours</span></td><td><span class="t-ar">على مزاج المصمم</span><span class="t-en">Whenever</span></td><td><span class="t-ar">٤–٧ أيام</span><span class="t-en">4–7 days</span></td></tr>
-      <tr><td><span class="t-ar">الدفع</span><span class="t-en">Payment</span></td>
-        <td class="hl"><span class="t-ar">إنستاباي أو فودافون كاش</span><span class="t-en">InstaPay or Vodafone Cash</span></td><td><span class="t-ar">فودافون كاش</span><span class="t-en">Wallet</span></td><td><span class="t-ar">كارت بنكي دولي</span><span class="t-en">International card only</span></td></tr>
-      <tr><td><span class="t-ar">مناسباتنا</span><span class="t-en">Our occasions</span></td>
-        <td class="hl"><span class="t-ar">كتب كتاب وحنة وسبوع وتخرج كمان</span><span class="t-en">Katb kitab, henna, sebou3, graduation too</span></td><td><span class="t-ar">على حسب</span><span class="t-en">Varies</span></td><td><span class="t-ar">فرح وخطوبة بس غالبًا</span><span class="t-en">Mostly weddings</span></td></tr>
-    </tbody>
-  </table></div>
-</div></section>
-
-<section id="how"><div class="wrap">
-  <div class="sec-head"><h2 class="sec-title"><span class="t-ar">إزاي بتطلب؟</span><span class="t-en">How it works</span></h2></div>
-  <p class="sec-sub"><span class="t-ar">أربع خطوات، وكل خطوة ليها وقت واضح.</span><span class="t-en">Four steps, each with a clear timeframe.</span></p>
-  <div class="steps rv">
-    <div class="step"><div class="n">١</div><h4><span class="t-ar">اختار التصميم</span><span class="t-en">Pick a design</span></h4><p><span class="t-ar">جرب الديموهات من موبايلك واختار اللي شبه مناسبتك.</span><span class="t-en">Try the demos on your phone and pick your favorite.</span></p><span class="tt"><span class="t-ar">دقيقتين</span><span class="t-en">2 minutes</span></span></div>
-    <div class="step"><div class="n">٢</div><h4><span class="t-ar">املا التفاصيل</span><span class="t-en">Fill in your details</span></h4><p><span class="t-ar">الأسماء والمعاد والمكان من فورم بسيط، وبيوصلنا كل حاجة مرتبة على واتساب.</span><span class="t-en">Names, date and venue in a short form; it reaches us neatly organized on WhatsApp.</span></p><span class="tt"><span class="t-ar">٥ دقايق</span><span class="t-en">5 minutes</span></span></div>
-    <div class="step"><div class="n">٣</div><h4><span class="t-ar">راجع واعتمد</span><span class="t-en">Review and approve</span></h4><p><span class="t-ar">تدفع ٥٠٪ مقدم، وخلال ٤٨ ساعة يوصلك لينك معاينة وجولة تعديل مجانية.</span><span class="t-en">Pay a 50% deposit; within 48 hours you get a preview link and a free revision round.</span></p><span class="tt"><span class="t-ar">٤٨ ساعة</span><span class="t-en">48 hours</span></span></div>
-    <div class="step"><div class="n">٤</div><h4><span class="t-ar">انشر وشارك</span><span class="t-en">Publish and share</span></h4><p><span class="t-ar">بعد سداد الباقي، دعوتك بتتنشر على لينك باسمكم مع رسائل جاهزة للإرسال.</span><span class="t-en">After the balance, your invitation goes live on your own link with ready-to-send messages.</span></p><span class="tt"><span class="t-ar">فورًا</span><span class="t-en">Instant</span></span></div>
+<section id="about" class="note"><div class="wrap note-grid">
+  <h2 class="who"><span class="t-ar">من خالد</span><span class="t-en">From Khalid</span></h2>
+  <div>
+    <p>
+      <span class="t-ar">أنا خالد. أول دعوة عملتها كانت دعوة خطوبتي. بعتها على واتساب بدل الكروت، والضيوف فضلوا يسألوا مين عملها. من هنا جت D3wa.</span>
+      <span class="t-en">I'm Khalid. The first invitation I built was for my own engagement. I sent it on WhatsApp instead of printed cards, and guests kept asking who made it. That is where D3wa came from.</span>
+    </p>
+    <p>
+      <span class="t-ar">بشتغل في الأمن السيبراني بالنهار، وبعمل الدعوات دي بالليل من القاهرة. كل طلب بعمله بإيدي وبرد على واتساب بنفسي.</span>
+      <span class="t-en">I work in cybersecurity by day and build these invitations at night, from Cairo. Every order is mine, and I answer the WhatsApp messages myself.</span>
+    </p>
+    <p class="links">
+      <a target="_blank" rel="noopener" href="https://wa.me/201005509418"><span class="t-ar">واتساب</span><span class="t-en">WhatsApp</span></a>
+      ·
+      <!-- TODO: replace handle once the account exists -->
+      <a target="_blank" rel="noopener" href="https://instagram.com/d3wa"><span class="t-ar">إنستجرام</span><span class="t-en">Instagram</span></a>
+    </p>
   </div>
 </div></section>
 
-<section id="pricing"><div class="wrap">
-  <div class="sec-head"><h2 class="sec-title"><span class="t-ar">الباقات</span><span class="t-en">Packages</span></h2></div>
-  <div class="tiers rv" style="margin-top:26px">
-    <div class="tier">
-      <p class="t-name"><span class="t-ar">كلاسيك</span><span class="t-en">Classic</span></p>
-      <p class="t-price">1,000 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></p>
-      <p class="t-for"><span class="t-ar">لقوالب كلاسيك جولد وسبوع اللوتس والتخرج</span><span class="t-en">For Classic Gold, Lotus Sebou3 and Graduation</span></p>
-      <ul>
-        <li><span class="t-ar">لينك خاص باسمكم</span><span class="t-en">Your own private link</span></li>
-        <li><span class="t-ar">تخصيص الأسماء والمعاد والمكان والألوان</span><span class="t-en">Names, date, venue and colors personalized</span></li>
-        <li><span class="t-ar">صورة معاينة واتساب</span><span class="t-en">WhatsApp preview card</span></li>
-        <li><span class="t-ar">جولة تعديل مجانية</span><span class="t-en">One free revision round</span></li>
-      </ul>
-      <a class="btn" href="order.html?p=classic"><span class="t-ar">ابدأ بكلاسيك</span><span class="t-en">Start with Classic</span></a>
-    </div>
-    <div class="tier feat">
-      <p class="t-name"><span class="t-ar">سيجنتشر</span><span class="t-en">Signature</span></p>
-      <p class="t-price">1,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></p>
-      <p class="t-for"><span class="t-ar">أي تصميم من الكولكشن</span><span class="t-en">Any design in the collection</span></p>
-      <ul>
-        <li><span class="t-ar">كل مميزات كلاسيك</span><span class="t-en">Everything in Classic</span></li>
-        <li><span class="t-ar">اقتباس أو آية خاصة بيكم</span><span class="t-en">Your own quote or verse</span></li>
-        <li><span class="t-ar">قسم صورة</span><span class="t-en">Photo section</span></li>
-        <li><span class="t-ar">رسائل مشاركة جاهزة بالعربي والإنجليزي</span><span class="t-en">Ready share messages in Arabic and English</span></li>
-        <li><span class="t-ar">جولتين تعديل</span><span class="t-en">Two revision rounds</span></li>
-      </ul>
-      <a class="btn solid" href="order.html?p=signature"><span class="t-ar">ابدأ بسيجنتشر</span><span class="t-en">Start with Signature</span></a>
-    </div>
-    <div class="tier">
-      <p class="t-name"><span class="t-ar">رويال</span><span class="t-en">Royale</span></p>
-      <p class="t-price">2,500 <small><span class="t-ar">جنيه</span><span class="t-en">EGP</span></small></p>
-      <p class="t-for"><span class="t-ar">أقصى تخصيص، لمناسبة متكاملة</span><span class="t-en">Full customization for the big night</span></p>
-      <ul>
-        <li><span class="t-ar">كل مميزات سيجنتشر</span><span class="t-en">Everything in Signature</span></li>
-        <li><span class="t-ar">وضع ليلي ونهاري</span><span class="t-en">Dark and light mode</span></li>
-        <li><span class="t-ar">ألوان مخصوصة على القاعة والفستان</span><span class="t-en">Palette matched to your venue and outfits</span></li>
-        <li><span class="t-ar">شيت متابعة الضيوف بلينكات واتساب فردية</span><span class="t-en">Guest tracker sheet with per-guest WhatsApp links</span></li>
-        <li><span class="t-ar">تسليم أولوية خلال ٢٤ ساعة</span><span class="t-en">24-hour priority delivery</span></li>
-        <li><span class="t-ar">٣ جولات تعديل</span><span class="t-en">Three revision rounds</span></li>
-      </ul>
-      <a class="btn" href="order.html?p=royale"><span class="t-ar">ابدأ برويال</span><span class="t-en">Start with Royale</span></a>
-    </div>
-  </div>
-  <p class="fineprint">
-    <span class="t-ar">الدفع إنستاباي أو فودافون كاش: ٥٠٪ مقدم و٥٠٪ عند الاستلام · جولة تعديل إضافية ١٥٠ جنيه · استعجال ٢٤ ساعة +٣٠٠ جنيه (مجاني في رويال) · الدعوة شغالة سنة كاملة</span>
-    <span class="t-en">Pay via Instapay or Vodafone Cash: 50% deposit, 50% on delivery · extra revision 150 EGP · 24h rush +300 EGP (free with Royale) · live for a full year</span>
+<section id="how" class="how"><div class="wrap narrow">
+  <h2 class="sec-title"><span class="t-ar">إزاي بتطلب</span><span class="t-en">How ordering works</span></h2>
+  <p>
+    <span class="t-ar">تختار تصميم وتبعتلي الأسماء والمعاد والمكان، على واتساب أو من فورم الطلب. تدفع النص إنستاباي أو فودافون كاش. خلال ٤٨ ساعة يوصلك لينك معاينة وجولة تعديل مجانية. تدفع الباقي وأنشرها على لينكك. الدعوة شغالة سنة كاملة.</span>
+    <span class="t-en">Pick a design and send me the names, date and venue, on WhatsApp or through the order form. Pay half by InstaPay or Vodafone Cash. Within 48 hours you get a preview link and one free revision round. Pay the rest and I publish it on your link. It stays live for a year.</span>
   </p>
 </div></section>
 
-<div class="band">
-  <span><span class="t-ar"><b>تصميم يدوي</b> لكل طلب</span><span class="t-en"><b>Hand-finished</b> every order</span></span>
-  <span><span class="t-ar">تسليم <b>٤٨ ساعة</b></span><span class="t-en"><b>48h</b> delivery</span></span>
-  <span><span class="t-ar">تعديلات النصوص <b>مجانية</b> قبل المناسبة بأسبوع</span><span class="t-en"><b>Free</b> text edits up to a week before</span></span>
-  <span><span class="t-ar">صُنعت بحب <b>في مصر</b></span><span class="t-en">Made with love <b>in Egypt</b></span></span>
-</div>
-
-<section id="faq"><div class="wrap" style="max-width:780px">
-  <div class="sec-head"><h2 class="sec-title"><span class="t-ar">أسئلة شائعة</span><span class="t-en">FAQ</span></h2></div>
-  <div style="margin-top:26px">
-  <details><summary><span class="t-ar">الدعوة فيها إيه غير العدّاد وتأكيد الحضور؟</span><span class="t-en">What's in the invitation besides the countdown and RSVP?</span></summary><p><span class="t-ar">افتتاحية بتتفض بلمسة، برنامج اليوم ساعة بساعة، الدرس كود، ألبوم صور، رسالة هدايا، خريطة القاعة، وإضافة للتقويم — وكله بالعربي والإنجليزي. جربها بنفسك في أي ديمو.</span><span class="t-en">A tap-to-open reveal, an hour-by-hour schedule, dress code, photo gallery, a gifts note, the venue map and add-to-calendar, all bilingual. Try any demo and see.</span></p></details>
-  <details><summary><span class="t-ar">الدعوة بتفضل شغالة لحد امتى؟</span><span class="t-en">How long does the invitation stay live?</span></summary><p><span class="t-ar">لمدة سنة كاملة من تاريخ النشر. تقدر تحتفظ بيها كذكرى بعد المناسبة كمان.</span><span class="t-en">A full year from publish date. Keep it as a memory after the celebration too.</span></p></details>
-  <details><summary><span class="t-ar">أقدر أغيّر التفاصيل بعد النشر؟</span><span class="t-en">Can I change details after publishing?</span></summary><p><span class="t-ar">تعديلات النصوص البسيطة (معاد، قاعة) مجانية قبل المناسبة بأسبوع. تغيير التصميم بيتحسب كجولة تعديل إضافية.</span><span class="t-en">Simple text changes (time, venue) are free up to a week before the event. Design changes count as an extra revision round.</span></p></details>
-  <details><summary><span class="t-ar">بتشتغل على كل الموبايلات؟</span><span class="t-en">Does it work on all phones?</span></summary><p><span class="t-ar">أيوه، أي موبايل أو كمبيوتر ومن غير أي تطبيقات. اللينك بيفتح في المتصفح مباشرة.</span><span class="t-en">Yes, any phone or computer with no apps. The link opens right in the browser.</span></p></details>
-  <details><summary><span class="t-ar">إزاي بستلم تأكيدات الحضور؟</span><span class="t-en">How do I receive RSVPs?</span></summary><p><span class="t-ar">كل ضيف يضغط زرار التأكيد بتوصلك رسالة واتساب جاهزة باسمه. وفي باقة رويال بتاخد شيت متابعة فيه لينك مخصوص لكل ضيف.</span><span class="t-en">Each guest's tap sends you a ready WhatsApp message with their name. On Royale you also get a tracker sheet with a personal link per guest.</span></p></details>
-  <details><summary><span class="t-ar">إيه المناسبات اللي بتعملوها؟</span><span class="t-en">Which occasions do you cover?</span></summary><p><span class="t-ar">فرح وخطوبة وكتب كتاب وليلة حنة وسبوع وعقيقة وتخرج. ولو مناسبتك مش منهم، كلمنا وهنشوف نعملها إزاي.</span><span class="t-en">Weddings, engagements, katb kitab, henna nights, sebou3, aqiqa and graduations. Something else? Message us and we'll figure it out.</span></p></details>
-  </div>
+<section id="pricing"><div class="wrap narrow">
+  <h2 class="sec-title"><span class="t-ar">الأسعار</span><span class="t-en">Prices</span></h2>
+  <ul class="prices">
+    <li>
+      <a href="order.html?p=classic"><span class="t-ar">كلاسيك</span><span class="t-en">Classic</span></a>
+      <span class="amt"><span class="t-ar">١٬٠٠٠ جنيه</span><span class="t-en">EGP 1,000</span></span>
+      <p><span class="t-ar">كلاسيك جولد، سبوع اللوتس، التخرج. لينك باسمكم، الأسماء والمعاد والمكان، صورة معاينة واتساب، جولة تعديل.</span><span class="t-en">Classic Gold, Lotus Sebou3, Graduation. Your own link, names, date and venue, a WhatsApp preview card, one revision round.</span></p>
+    </li>
+    <li>
+      <a href="order.html?p=signature"><span class="t-ar">سيجنتشر</span><span class="t-en">Signature</span></a>
+      <span class="amt"><span class="t-ar">١٬٥٠٠ جنيه</span><span class="t-en">EGP 1,500</span></span>
+      <p><span class="t-ar">أي تصميم تاني. مع اقتباس أو آية، قسم صور، رسائل مشاركة جاهزة بالعربي والإنجليزي، وجولتين تعديل.</span><span class="t-en">Any other design. Adds a quote or verse, a photo section, ready share messages in Arabic and English, and two revision rounds.</span></p>
+    </li>
+    <li>
+      <a href="order.html?p=royale"><span class="t-ar">رويال</span><span class="t-en">Royale</span></a>
+      <span class="amt"><span class="t-ar">٢٬٥٠٠ جنيه</span><span class="t-en">EGP 2,500</span></span>
+      <p><span class="t-ar">رويال نايفي. وضع ليلي ونهاري، ألوان على القاعة والفستان، شيت ضيوف بلينك لكل ضيف، تسليم ٢٤ ساعة، ٣ جولات تعديل.</span><span class="t-en">Royal Navy. Dark and light mode, colours matched to the venue and outfits, a guest sheet with a link per guest, 24-hour delivery, three revision rounds.</span></p>
+    </li>
+  </ul>
+  <p class="fineprint">
+    <span class="t-ar">الدفع إنستاباي أو فودافون كاش، النص مقدم والنص عند الاستلام. جولة تعديل إضافية ١٥٠ جنيه. استعجال ٢٤ ساعة ٣٠٠ جنيه، مجاني في رويال. تعديل النصوص مجاني قبل المناسبة بأسبوع.</span>
+    <span class="t-en">Pay by InstaPay or Vodafone Cash, half up front and half on delivery. Extra revision round EGP 150. 24-hour rush EGP 300, free on Royale. Text edits are free up to a week before the event.</span>
+  </p>
 </div></section>
 
-<footer><div class="wrap">
-  <a class="brand" href="#" style="text-decoration:none;color:inherit"><b style="font-family:var(--disp)">D3wa</b><span style="font-family:var(--disp);color:var(--copper)">دعوة</span></a>
-  <p><span class="t-ar">استوديو دعوات رقمية · صُنعت بحب في مصر 🤍</span><span class="t-en">Digital invitation studio · made with love in Egypt 🤍</span></p>
+<section id="faq"><div class="wrap narrow">
+  <h2 class="sec-title"><span class="t-ar">أسئلة</span><span class="t-en">Questions</span></h2>
+  <details><summary><span class="t-ar">الدعوة فيها إيه غير العدّاد وتأكيد الحضور؟</span><span class="t-en">What is in the invitation besides the countdown and RSVP?</span></summary><p><span class="t-ar">افتتاحية بتتفتح بلمسة، برنامج اليوم، الدرس كود، ألبوم صور، رسالة هدايا، خريطة القاعة، وإضافة للتقويم. كله بالعربي والإنجليزي. افتح أي ديمو وشوف.</span><span class="t-en">A tap-to-open cover, the day's schedule, dress code, a photo album, a gifts note, the venue map and add-to-calendar. All in Arabic and English. Open any demo and see.</span></p></details>
+  <details><summary><span class="t-ar">الدعوة بتفضل شغالة لحد امتى؟</span><span class="t-en">How long does it stay live?</span></summary><p><span class="t-ar">سنة كاملة من يوم النشر. تقدر تحتفظ بيها كذكرى بعد المناسبة.</span><span class="t-en">A full year from publish day. Keep it as a memory after the celebration.</span></p></details>
+  <details><summary><span class="t-ar">أقدر أغيّر التفاصيل بعد النشر؟</span><span class="t-en">Can I change details after publishing?</span></summary><p><span class="t-ar">تعديل النصوص البسيطة زي المعاد أو القاعة مجاني قبل المناسبة بأسبوع. تغيير التصميم بيتحسب جولة تعديل إضافية.</span><span class="t-en">Small text changes like the time or the venue are free up to a week before the event. A design change counts as an extra revision round.</span></p></details>
+  <details><summary><span class="t-ar">إزاي بستلم تأكيدات الحضور؟</span><span class="t-en">How do I receive RSVPs?</span></summary><p><span class="t-ar">كل ضيف يضغط زرار التأكيد، بتوصلك رسالة واتساب جاهزة باسمه وعدد الحضور. في رويال بتاخد كمان شيت متابعة فيه لينك مخصوص لكل ضيف.</span><span class="t-en">Each guest taps the confirm button and you get a ready WhatsApp message with their name and guest count. On Royale you also get a tracker sheet with a personal link per guest.</span></p></details>
+</div></section>
+
+<footer><div class="wrap foot">
+  <a class="brand" href="#"><b>D3wa</b><span>دعوة</span></a>
+  <nav>
+    <span><span class="t-ar">القاهرة</span><span class="t-en">Cairo</span></span>
+    <a target="_blank" rel="noopener" href="https://wa.me/201005509418"><span class="t-ar">واتساب</span><span class="t-en">WhatsApp</span></a>
+    <a target="_blank" rel="noopener" href="https://instagram.com/d3wa"><span class="t-ar">إنستجرام</span><span class="t-en">Instagram</span></a>
+  </nav>
 </div></footer>
 
 <a class="floating-wa" target="_blank" rel="noopener" aria-label="WhatsApp" href="https://wa.me/201005509418">
@@ -665,7 +459,6 @@ footer .brand{justify-content:center;margin-bottom:10px;display:flex}
   }
   document.getElementById("langBtn").addEventListener("click", function () { isEn = !isEn; apply(); });
 
-  /* theme toggle */
   var themeMeta = document.querySelector('meta[name="theme-color"]');
   function paintMeta () {
     if (themeMeta) themeMeta.setAttribute("content",
@@ -680,21 +473,6 @@ footer .brand{justify-content:center;margin-bottom:10px;display:flex}
   paintMeta();
   apply();
 
-  /* hero phone countdown */
-  var target = new Date("2026-08-22T20:00:00+02:00").getTime();
-  var elD = document.getElementById("cdD"), elH = document.getElementById("cdH"),
-      elM = document.getElementById("cdM"), elS = document.getElementById("cdS");
-  function pad (n) { return (n < 10 ? "0" : "") + n; }
-  function tick () {
-    var diff = Math.max(0, target - Date.now());
-    elD.textContent = pad(Math.floor(diff / 864e5));
-    elH.textContent = pad(Math.floor(diff % 864e5 / 36e5));
-    elM.textContent = pad(Math.floor(diff % 36e5 / 6e4));
-    elS.textContent = pad(Math.floor(diff % 6e4 / 1e3));
-  }
-  tick(); setInterval(tick, 1000);
-
-  /* filters */
   var filterBtns = document.querySelectorAll("#filters button");
   var cards = document.querySelectorAll("#tplGrid .card");
   filterBtns.forEach(function (btn) {
@@ -708,16 +486,6 @@ footer .brand{justify-content:center;margin-bottom:10px;display:flex}
       });
     });
   });
-
-  /* reveals */
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, { threshold: 0.15 });
-    document.querySelectorAll(".rv").forEach(function (el) { io.observe(el); });
-  } else {
-    document.querySelectorAll(".rv").forEach(function (el) { el.classList.add("in"); });
-  }
 })();
 </script>
 
