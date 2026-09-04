@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Screenshots every demo into assets/cards/<slug>.jpg, or (with --page) one page to a PNG.
-// Drives Google Chrome headless over the DevTools protocol. No dependencies. Node 18+.
+// Drives Google Chrome headless over the DevTools protocol. No dependencies. Node 22+.
 //
 //   node scripts/shots.mjs                      # all 12 cards
 //   node scripts/shots.mjs gold henna           # a subset
@@ -54,10 +54,12 @@ async function withChrome(fn) {
     let id = 0; const pending = new Map();
     ws.onmessage = (e) => { const m = JSON.parse(e.data); if (m.id && pending.has(m.id)) { pending.get(m.id)(m); pending.delete(m.id); } };
     // Every CDP call times out, so a hung capture throws and `finally` still kills Chrome.
-    const send = (method, params = {}) => Promise.race([
-      new Promise((r) => { const i = ++id; pending.set(i, r); ws.send(JSON.stringify({ id: i, method, params })); }),
-      sleep(45000).then(() => { throw new Error(`${method} did not answer within 45s`); }),
-    ]);
+    const send = (method, params = {}) => new Promise((resolve, reject) => {
+      const i = ++id;
+      const timer = setTimeout(() => { pending.delete(i); reject(new Error(`${method} did not answer within 45s`)); }, 45000);
+      pending.set(i, (m) => { clearTimeout(timer); resolve(m); });
+      ws.send(JSON.stringify({ id: i, method, params }));
+    });
     const evaluate = async (expression) => (await send("Runtime.evaluate", { expression, returnByValue: true, awaitPromise: true })).result.result.value;
     try { return await fn({ send, evaluate }); } finally { ws.close(); }
   } finally {
@@ -94,8 +96,12 @@ async function load({ send, evaluate }, url, { w, h, scale, mobile, scheme }) {
     await sleep(1500);
   }
   if (!(await laidOut())) throw new Error(`page never laid out at ${w}px: ${url}`);
-  await evaluate("document.fonts.ready.then(() => true)");
-  await evaluate("Promise.all([...document.images].filter(i => !i.complete).map(i => new Promise(r => { i.onload = i.onerror = r; }))).then(() => true)");
+  // Bounded waits: fonts, then any eager image still loading. Lazy images below the fold never start, so skip them.
+  await Promise.race([evaluate("document.fonts.ready.then(() => true)"), sleep(5000)]);
+  await Promise.race([
+    evaluate("Promise.all([...document.images].filter(i => !i.complete && i.loading !== 'lazy').map(i => new Promise(r => { i.onload = i.onerror = r; }))).then(() => true)"),
+    sleep(5000),
+  ]);
 }
 
 async function shootCard(card) {
