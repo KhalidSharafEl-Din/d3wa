@@ -5,7 +5,7 @@
 //   node scripts/shots.mjs                      # all 12 cards
 //   node scripts/shots.mjs gold henna           # a subset
 //   node scripts/shots.mjs --page index.html --out /tmp/idx.png --w 375 --h 4000 --scheme dark
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, rmSync } from "node:fs";
 import { spawn } from "node:child_process";
 import { resolve } from "node:path";
 
@@ -32,7 +32,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function withChrome(fn) {
   const port = 9300 + Math.floor(Math.random() * 600);
-  const profile = `/tmp/d3wa-shots-${port}`;
+  const profile = `/tmp/d3wa-shots-${port}-${Date.now()}`;
   const chrome = spawn(CHROME, [
     "--headless=new", "--disable-gpu", "--no-first-run", "--hide-scrollbars",
     // A built-in component extension aborts some file:// navigations (modern.html, reproducibly)
@@ -63,28 +63,37 @@ async function withChrome(fn) {
   } finally {
     killChrome();
     process.off("exit", killChrome);
+    rmSync(profile, { recursive: true, force: true });
   }
 }
 
 // Navigate, force the viewport, and reload until Chrome honours the viewport meta
-// (it sometimes lays out at 980px on the first pass).
+// (it sometimes lays out at 980px on the first pass). An aborted reload leaves a blank
+// document behind, so every pass verifies the page is real and re-navigates if not.
 async function load({ send, evaluate }, url, { w, h, scale, mobile, scheme }) {
+  const navigate = async () => {
+    let nav;
+    for (let k = 0; k < 4; k++) {
+      nav = await send("Page.navigate", { url });
+      if (!nav.result?.errorText) return;
+      await sleep(600);
+    }
+    throw new Error(`navigation failed: ${nav.result.errorText} ${url}`);
+  };
+  const laidOut = () => evaluate(`innerWidth === ${w} && document.querySelectorAll("*").length > 20`);
   await send("Page.enable");
   await send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-color-scheme", value: scheme }] });
-  let nav;
-  for (let k = 0; k < 4; k++) {
-    nav = await send("Page.navigate", { url });
-    if (!nav.result?.errorText) break;
-    await sleep(600);
-  }
-  if (nav.result?.errorText) throw new Error(`navigation failed: ${nav.result.errorText} ${url}`);
+  await navigate();
   await sleep(1200);
   await send("Emulation.setDeviceMetricsOverride", { width: w, height: h, deviceScaleFactor: scale, mobile, screenWidth: w, screenHeight: h });
   for (let k = 0; k < 5; k++) {
     await send("Page.reload");
     await sleep(3000);
-    if ((await evaluate("innerWidth")) === w) break;
+    if (await laidOut()) break;
+    await navigate();
+    await sleep(1500);
   }
+  if (!(await laidOut())) throw new Error(`page never laid out at ${w}px: ${url}`);
   await evaluate("document.fonts.ready.then(() => true)");
   await evaluate("Promise.all([...document.images].filter(i => !i.complete).map(i => new Promise(r => { i.onload = i.onerror = r; }))).then(() => true)");
 }
@@ -127,7 +136,12 @@ if (flags.has("--page")) {
   const wanted = slugs.length ? CARDS.filter((c) => slugs.includes(c.slug)) : CARDS;
   let failed = 0;
   for (const card of wanted) {
-    try { await shootCard(card); } catch (e) { failed++; console.error(`FAILED ${card.slug}: ${e.message}`); }
+    try {
+      await shootCard(card);
+    } catch (e) {
+      console.error(`retry ${card.slug}: ${e.message}`);
+      try { await shootCard(card); } catch (e2) { failed++; console.error(`FAILED ${card.slug}: ${e2.message}`); }
+    }
   }
   if (failed) process.exit(1);
 }
