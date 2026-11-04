@@ -36,7 +36,7 @@ node scripts/shots.mjs henna    # one design
 node scripts/shots.mjs --og     # WhatsApp/social share cards into assets/og/
 ```
 
-It drives Chrome or Edge headless (set `CHROME=/path` to choose). Templates mark their gallery views with `data-shot="details"` and `data-shot="rsvp"`. Rerun after editing a template, then rerun the build.
+It drives Chrome or Edge headless (set `CHROME=/path` to choose). Templates mark their gallery views with `data-shot="details"` and `data-shot="rsvp"`. Rerun after editing a template, then rerun the build. The images show a demo date about three months out from the day they were taken, so recapture them every couple of months.
 
 ## Orders and payment
 
