@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>تصميم سبوع اللوتس | Lotus Sebou3 | دعوة D3wa</title>
-<meta name="description" content="ديمو دعوة سبوع اللوتس: شنطة سبوع من التل بشريطة ستان وبطاقة مطبوعة. A D3wa invitation demo: Lotus Sebou3, a tulle sebou3 bag with a satin ribbon and a printed tag.">
+<meta name="description" content="ديمو دعوة سبوع اللوتس: شنطة سبوع من التل بشريطة ستان وبطاقة مطبوعة. A D3wa invitation demo: Lotus Sebou3, a tulle Sebou bag with a satin ribbon and a printed tag.">
 <meta name="theme-color" content="#efe6d9">
 <meta name="color-scheme" content="light">
 
@@ -16,13 +16,14 @@
 <meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/demos/lotus.html">
 <link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/demos/lotus.html">
 <meta property="og:title" content="تصميم سبوع اللوتس | Lotus Sebou3 | دعوة D3wa">
-<meta property="og:description" content="ديمو دعوة سبوع اللوتس: شنطة سبوع من التل بشريطة ستان وبطاقة مطبوعة. A D3wa invitation demo: Lotus Sebou3, a tulle sebou3 bag with a satin ribbon and a printed tag.">
+<meta property="og:description" content="ديمو دعوة سبوع اللوتس: شنطة سبوع من التل بشريطة ستان وبطاقة مطبوعة. A D3wa invitation demo: Lotus Sebou3, a tulle Sebou bag with a satin ribbon and a printed tag.">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23efe6d9'/%3E%3Cpath d='M10 4h12l5 5v19H5V9z' fill='%23f3d9de'/%3E%3Ccircle cx='16' cy='9' r='2' fill='%23efe6d9' stroke='%23b8955a'/%3E%3Cpath d='M9 18c2 6 12 6 14 0-3 3-11 3-14 0z' fill='%23b8955a'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gulzar&family=Markazi+Text:wght@400;500;600&family=Gilda+Display&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Playpen+Sans+Arabic:wght@300;400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gulzar&family=Markazi+Text:wght@400;500;600&family=Gilda+Display&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Playpen+Sans+Arabic:wght@300;400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gulzar&family=Markazi+Text:wght@400;500;600&family=Gilda+Display&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Playpen+Sans+Arabic:wght@300;400&display=swap"></noscript>
 
 <script>
 /* Rolling demo date: without a real order date (?d=) the demo always counts
@@ -130,99 +131,103 @@ html.en .lang-slip{font:500 17px/1 var(--ar);font-style:normal}
 .intro.open .bow .loop{scale:.1 .6;opacity:0}
 .bow .ribbon-rest{transition:translate .5s cubic-bezier(.5,0,.75,0) .4s,opacity .3s ease .65s}
 .intro.open .bow .ribbon-rest{translate:0 70px;opacity:0}
-/* the tag drops off the loosened ribbon and lies on the cloth */
-.itag-wrap{position:absolute;left:50%;top:46.5%;width:54%;translate:-50% 0;rotate:-4deg;
-  filter:drop-shadow(0 8px 9px rgba(90,60,60,.22));
-  transition:translate .7s cubic-bezier(.5,0,.3,1) .35s,rotate .7s cubic-bezier(.5,0,.3,1) .35s}
-.intro.open .itag-wrap{translate:-104% 38%;rotate:-13deg}
-.itag{position:relative;clip-path:polygon(22px 0,calc(100% - 22px) 0,100% 22px,100% 100%,0 100%,0 22px);
-  background:var(--blush) var(--grain);padding:30px 10px 12px;text-align:center;color:var(--ink)}
+/* the loosened ribbon lets the tag go: it drops, then comes up to the guest */
+.itag-wrap{position:absolute;left:50%;top:45%;width:60%;translate:-50% 0;rotate:-4deg;
+  filter:drop-shadow(0 8px 9px rgba(90,60,60,.22))}
+.intro.open .itag-wrap{animation:tagFree 1.6s cubic-bezier(.45,0,.25,1) .3s both}
+@keyframes tagFree{
+  0%{translate:-50% 0;rotate:-4deg;scale:1}
+  30%{translate:-50% 12%;rotate:-10deg;scale:1}
+  100%{translate:-50% -14%;rotate:-2deg;scale:1.42}}
+.itag{position:relative;clip-path:polygon(14% 0,86% 0,100% 10%,100% 100%,0 100%,0 10%);
+  background:var(--blush) var(--grain);padding:28px 10px 14px;text-align:center;color:var(--rose)}
 .itag::before{content:"";position:absolute;top:8px;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;
   background:radial-gradient(circle,#6f5a4c 0 2.6px,#e9dcc0 3px 4.4px,#c3a878 4.8px)}
-.itag .motif{width:58px;height:auto;margin:0 auto 2px}
-.itag .sm{font:400 12.5px/1.4 var(--ar);color:var(--ink-2);margin-bottom:-4px}
-html.en .itag .sm{font:italic 400 11.5px/1.4 var(--en)}
-.itag .nm{font:400 34px/1.55 var(--ar-name);color:var(--rose);white-space:nowrap}
-html.en .itag .nm{font:400 28px/1.3 var(--en-name)}
-.itag .to{font:300 11px/1.5 var(--hand);color:var(--ink);margin-top:2px}
+.itag .stamp{display:block;width:38px;height:auto;margin:0 auto}
+.itag .sm{font:500 15px/1.4 var(--ar);color:var(--rose);margin-bottom:-4px}
+html.en .itag .sm{font:italic 400 14px/1.4 var(--en)}
+.itag .nm{font:400 36px/1.55 var(--ar-name);color:var(--rose);white-space:nowrap}
+html.en .itag .nm{font:400 30px/1.3 var(--en-name)}
+.itag .to{font:300 14px/1.5 var(--hand);color:#46394a;margin-top:2px;white-space:nowrap}
+html.en .itag .to{font-size:12.5px}
 .intro-hint{margin-top:30px;font:400 17px/1.5 var(--ar);color:var(--ink-2);text-align:center;transition:opacity .2s}
 html.en .intro-hint{font:italic 400 15px/1.5 var(--en)}
 .intro.open .intro-hint{opacity:0}
 
-/* ── the suite, laid out on the cloth ── */
-.suite{max-width:470px;margin:0 auto;padding:calc(92px + env(safe-area-inset-top)) 14px 24px;display:flex;flex-direction:column;align-items:center}
+/* ── what came out of the bag, laid out on the cloth ── */
+.suite{max-width:470px;margin:0 auto;padding:calc(96px + env(safe-area-inset-top)) 12px 24px;display:flex;flex-direction:column;align-items:center}
 .pair{display:flex;flex-direction:column;align-items:center;width:100%}
 
-/* the tag: thick blush board, die-cut corners, an eyelet with the ribbon through it */
-.tag-wrap{position:relative;z-index:2;width:min(318px,84vw);rotate:-2.5deg;
-  filter:drop-shadow(0 1px 1px rgba(90,60,60,.2)) drop-shadow(0 16px 16px rgba(90,60,60,.2))}
-.ribbon{position:absolute;left:50%;top:-60px;width:290px;height:auto;translate:-50% 0;z-index:1;overflow:visible;pointer-events:none}
-.tag{position:relative;clip-path:polygon(44px 0,calc(100% - 44px) 0,100% 44px,100% 100%,0 100%,0 44px);
-  background:var(--blush) var(--grain);padding:46px 22px 26px;text-align:center}
-.tag .motif{display:block;width:128px;height:auto;margin:0 auto 10px}
-.hv{font-size:17px;line-height:1.5;color:var(--ink-2)}
-.hosts-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;margin:2px 0 4px;font-size:20px;font-weight:600;line-height:1.5}
+/* the tag: thick blush board printed in one rose ink, die-cut corners, the ribbon
+   still through its eyelet. It is the largest thing in the bag and the first you see. */
+.tag-wrap{position:relative;z-index:2;width:min(356px,93vw);rotate:-2deg;
+  filter:drop-shadow(0 1px 1px rgba(90,60,60,.2)) drop-shadow(0 18px 18px rgba(90,60,60,.22))}
+.ribbon{position:absolute;left:50%;top:0;width:88%;height:auto;margin-top:7.4%;translate:-50% -52.5%;z-index:1;overflow:visible;pointer-events:none}
+.tag{position:relative;aspect-ratio:5/7;display:flex;flex-direction:column;justify-content:center;
+  clip-path:polygon(14% 0,86% 0,100% 10%,100% 100%,0 100%,0 10%);
+  background:var(--blush) var(--grain);padding:15% 24px 24px;text-align:center;color:var(--rose)}
+.tag .stamp{display:block;width:70px;height:auto;margin:0 auto 6px}
+.tag .verse{font-size:15.5px;line-height:1.75;max-width:26ch;margin:0 auto 10px;text-wrap:balance}
+.verse small{font-size:.9em;white-space:nowrap}
+html.en .tag .verse{font:italic 400 14.5px/1.5 var(--en);max-width:30ch}
+.hv{font-size:17px;line-height:1.5}
+.hosts-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;margin:2px 0 4px;font-size:21px;font-weight:600;line-height:1.5}
 .hosts-cols.one,.hosts-cols.stack{grid-template-columns:1fr;gap:2px}
-html.en .hosts-cols.t-en{display:block;text-wrap:balance;font:500 17.5px/1.45 var(--en)}
+html.en .hosts-cols.t-en{display:block;text-wrap:balance;font:500 18px/1.45 var(--en)}
 .hosts-cols.t-en .host{display:inline}
 .host{min-width:0;white-space:nowrap}
-.host .ttl{display:block;font-size:.82em;font-weight:400;color:var(--ink-2)}
+.host .ttl{display:block;font-size:.8em;font-weight:500}
 .hosts-cols.stack .host .ttl{display:inline}
-html.en .host .ttl{display:inline;font-size:1em;font-weight:inherit;color:inherit}
-.lead{font-size:18px;line-height:1.6;color:var(--ink);text-wrap:balance}
-html.en .lead{font:italic 400 16px/1.5 var(--en);max-width:23ch;margin:0 auto}
-/* the baby's name, printed in rose: a pressed lip below, a shade above */
-.name{margin:2px 0 0;font:400 60px/1.6 var(--ar-name);color:var(--rose);
+html.en .host .ttl{display:inline;font-size:1em;font-weight:inherit}
+.lead{font-size:18px;line-height:1.6;text-wrap:balance}
+html.en .lead{font:italic 400 16.5px/1.5 var(--en);max-width:24ch;margin:0 auto}
+/* the baby's name: the same rose ink, pressed into the board */
+.name{margin:0;font:400 64px/1.6 var(--ar-name);color:var(--rose);
   text-shadow:0 1px 0 rgba(255,246,247,.8),0 -1px 0 rgba(110,40,55,.16)}
-html.en .name{font:400 50px/1.2 var(--en-name);margin:8px 0 6px}
+html.en .name{font:400 54px/1.2 var(--en-name);margin:8px 0 6px}
 .name .n{display:block;white-space:nowrap}
 .name .amp{font-size:.72em;margin-inline-end:0}
 html.en .name .amp{font:italic 400 .62em/1 var(--en);margin-inline-end:.2em}
-.to{display:flex;align-items:baseline;justify-content:center;gap:8px;margin-top:6px;font-size:16px;color:var(--ink-2)}
-html.en .to{font:italic 400 14.5px/1.5 var(--en)}
-.to .hand{min-width:0;padding:0 6px 1px;border-bottom:1px solid rgba(90,74,82,.35);
+.to{display:flex;align-items:baseline;justify-content:center;gap:8px;margin-top:6px;font-size:16px}
+html.en .to{font:italic 400 15px/1.5 var(--en)}
+.to .hand{min-width:0;padding:0 6px 1px;border-bottom:1px solid rgba(158,70,91,.4);
   font:300 18px/1.5 var(--hand);color:#46394a}
-html.en .to .hand{font-size:15px;font-style:normal}
+html.en .to .hand{font-size:15.5px;font-style:normal}
 .to .hand.ar{font-size:18px}
 
-/* the invitation card: cotton, 5 by 7, the tag tucked over its head */
-.invite{position:relative;z-index:1;width:min(354px,92vw);aspect-ratio:5/7;margin-top:-26px;
-  display:flex;flex-direction:column;justify-content:center;padding:38px 24px 28px;text-align:center;
+/* the insert: a small cotton card with the when, where and the evening's rituals */
+.insert{position:relative;z-index:1;width:min(322px,85vw);margin-top:-14px;padding:30px 22px 34px;
   background:var(--ivory) var(--grain);border-radius:1px;
-  box-shadow:0 1px 1px rgba(90,60,55,.22),0 26px 44px -24px rgba(90,55,55,.55)}
-.verse{font-size:15px;line-height:1.75;color:var(--ink-2);max-width:27ch;margin:0 auto 8px;text-wrap:balance}
-.verse small{font-size:.86em;opacity:.85;white-space:nowrap}
-html.en .verse{font:italic 400 14px/1.55 var(--en);max-width:30ch}
-.formal{font-size:19px;line-height:1.85;max-width:29ch;margin:0 auto;text-wrap:pretty}
-html.en .formal{font-size:16.5px;line-height:1.6}
+  box-shadow:0 1px 1px rgba(90,60,55,.18),0 12px 20px -14px rgba(90,55,55,.45)}
+.formal{font-size:18px;line-height:1.85;margin:0;text-align:center;text-wrap:pretty}
+html.en .formal{font-size:16px;line-height:1.6}
 .formal b{font-weight:600;white-space:nowrap}
 .iso{unicode-bidi:isolate}
 html.en .formal b{font-weight:500}
-.rule{width:46px;height:2px;margin:12px auto 10px;border:0;background:var(--sage-d)}
-.invite h2{font:600 19px/1.5 var(--ar);color:var(--rose);margin:0 0 4px}
-html.en .invite h2{font:italic 400 18px/1.4 var(--en)}
-.prog{list-style:none;padding:0;margin:0 auto;display:grid;grid-template-columns:auto auto;justify-content:center;gap:0 16px;text-align:start}
+.insert h2{margin:18px 0 4px;font:600 18px/1.5 var(--ar);color:var(--rose);text-align:start}
+html.en .insert h2{font:italic 400 17px/1.4 var(--en)}
+.prog{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:auto 1fr;gap:0 14px;text-align:start}
 .prog li{display:contents}
-.prog .when{font-size:17px;line-height:1.75;color:var(--rose);white-space:nowrap;font-variant-numeric:tabular-nums}
-.prog .what{font-size:18px;line-height:1.75}
-html.en .prog .when{font:italic 400 15px/1.85 var(--en)}
-html.en .prog .what{font-size:16px;line-height:1.85}
+.prog .when{font-size:16px;line-height:1.85;color:var(--rose);white-space:nowrap;font-variant-numeric:tabular-nums}
+.prog .what{font-size:17.5px;line-height:1.85}
+html.en .prog .when{font:italic 400 14.5px/1.85 var(--en)}
+html.en .prog .what{font-size:15.5px;line-height:1.85}
+.go{margin-top:12px;font-size:16px;text-align:start}
+html.en .go{font-size:14.5px}
+.go a{margin-inline-end:16px;text-decoration:underline;text-decoration-color:var(--sage);text-decoration-thickness:1.5px;text-underline-offset:5px}
+/* the countdown, added by hand in the corner of the insert */
+.left{position:absolute;inset-inline-end:18px;bottom:10px;margin:0;font:300 15px/1.4 var(--hand);color:var(--rose-d)}
+html.en .left{font-size:13.5px}
 .notes{margin-top:18px;padding-top:12px;border-top:1px solid rgba(98,128,91,.28);font-size:15.5px;line-height:1.7;color:var(--ink-2)}
 html.en .notes{font-size:14px;line-height:1.5}
 .notes b{font-weight:600;color:var(--ink)}
 html.en .notes b{font-weight:500}
 .notes p+p{margin-top:2px}
-.go{margin-top:8px;font-size:16px}
-html.en .go{font-size:14.5px}
-.go a{margin:0 8px;text-decoration:underline;text-decoration-color:var(--sage);text-decoration-thickness:1.5px;text-underline-offset:5px}
-/* the countdown, added by hand in the corner of the card */
-.left{position:absolute;inset-inline-start:18px;bottom:10px;margin:0;font:300 15px/1.4 var(--hand);color:var(--rose-d)}
-html.en .left{font-size:13.5px}
 
 /* the reply card: thinner sage stock, smaller, square on the cloth */
-.reply{width:min(318px,86vw);margin-top:34px;padding:28px 24px 24px;text-align:center;
+.reply{width:min(318px,86vw);margin-top:30px;padding:28px 24px 24px;text-align:center;
   background:var(--sage-tint) repeating-linear-gradient(0deg,rgba(70,95,65,.03) 0 1px,transparent 1px 6px);border-radius:1px;
-  box-shadow:0 1px 1px rgba(60,80,60,.16),0 8px 14px -12px rgba(60,80,60,.4)}
+  box-shadow:0 1px 1px rgba(60,80,60,.14),0 6px 10px -8px rgba(60,80,60,.4)}
 .reply h2{font:600 21px/1.4 var(--ar);color:var(--ink);margin:0}
 html.en .reply h2{font:400 21px/1.3 var(--en-name)}
 .by{margin:2px 0 16px;font-size:16px;color:var(--ink-2)}
@@ -263,40 +268,47 @@ html.en .decline{font-size:14.5px}
 html.en .share a{font-size:14.5px}
 
 @media (max-width:359px){
-  .name{font-size:52px}
-  .formal{font-size:18px}
-  .prog .what{font-size:17px}
+  .name{font-size:54px}
+  .tag{padding-inline:18px}
+  .formal{font-size:17px}
 }
 
-/* desktop: the tag and the reply card on one side, the invitation card beside them */
+/* desktop: the tag large on the cloth, the insert and the reply card beside it */
 @media (min-width:1000px){
-  .suite{max-width:1320px;padding:96px 40px 30px;display:grid;column-gap:72px;align-items:start;
-    grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
-    grid-template-areas:"tag card" "reply card" "prints prints" "share share"}
+  .suite{max-width:1320px;padding:110px 40px 30px;display:grid;column-gap:76px;align-items:start;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+    grid-template-areas:"tag insert" "tag reply" "prints prints" "share share"}
   .pair{display:contents}
-  .tag-wrap{grid-area:tag;justify-self:center;width:min(380px,100%);margin-top:74px}
-  .tag{padding:56px 30px 32px}
-  .tag .motif{width:150px}
-  .name{font-size:70px}
-  html.en .name{font-size:58px}
-  .invite{grid-area:card;justify-self:center;width:100%;max-width:680px;margin:0;padding:80px 80px 70px}
-  .verse{font-size:22px;margin-bottom:24px;max-width:30ch}
-  html.en .verse{font-size:21px}
-  .formal{font-size:30px;line-height:1.9}
-  html.en .formal{font-size:27px;line-height:1.55}
-  .rule{width:64px;margin:30px auto 24px}
-  .invite h2{font-size:27px}
-  html.en .invite h2{font-size:27px}
-  .prog{column-gap:28px}
-  .prog .when{font-size:24px}
-  .prog .what{font-size:27px}
-  html.en .prog .when{font-size:21px}
-  html.en .prog .what{font-size:25px}
-  .go{margin-top:22px;font-size:20px}
-  html.en .go{font-size:17px}
-  .left{inset-inline-start:30px;bottom:22px;font-size:18px}
-  html.en .left{font-size:16px}
-  .reply{grid-area:reply;justify-self:center;width:360px;margin-top:56px}
+  .tag-wrap{grid-area:tag;justify-self:center;width:100%;max-width:680px;rotate:-1.5deg}
+  .tag{padding:15% 64px 56px}
+  .tag .stamp{width:140px;margin-bottom:16px}
+  .tag .verse{font-size:23px;margin-bottom:22px}
+  html.en .tag .verse{font-size:21px}
+  .hv{font-size:24px}
+  .hosts-cols{font-size:33px;gap:0 28px}
+  html.en .hosts-cols.t-en{font-size:28px}
+  .lead{font-size:27px}
+  html.en .lead{font-size:24px}
+  .name{font-size:140px;line-height:1.55}
+  html.en .name{font-size:112px;margin:18px 0 14px}
+  .to{font-size:23px;margin-top:14px}
+  html.en .to{font-size:21px}
+  .to .hand,.to .hand.ar{font-size:27px}
+  html.en .to .hand{font-size:23px}
+  .insert{grid-area:insert;justify-self:center;width:100%;max-width:440px;margin:40px 0 0;padding:40px 36px 44px}
+  .formal{font-size:21px}
+  html.en .formal{font-size:18px}
+  .insert h2{font-size:21px;margin-top:24px}
+  html.en .insert h2{font-size:19px}
+  .prog .when{font-size:18.5px}
+  .prog .what{font-size:20px}
+  html.en .prog .when{font-size:16.5px}
+  html.en .prog .what{font-size:18px}
+  .go{margin-top:16px;font-size:18px}
+  html.en .go{font-size:16px}
+  .left{inset-inline-end:26px;bottom:14px;font-size:17px}
+  html.en .left{font-size:15px}
+  .reply{grid-area:reply;justify-self:center;width:360px;margin-top:40px}
   .prints{grid-area:prints;justify-self:center;width:min(760px,100%);margin-top:64px;grid-template-columns:1fr 1fr 1fr;gap:22px}
   .prints.n2{width:min(560px,100%);grid-template-columns:1fr 1fr}
   .prints.n1{width:340px}
@@ -306,14 +318,14 @@ html.en .share a{font-size:14.5px}
   .bag{width:380px}
 }
 @media (prefers-reduced-motion:reduce){
-  .intro,.intro *{transition:none!important}
+  .intro,.intro *{transition:none!important;animation:none!important}
 }
 </style>
 </head>
 <body>
 
 <!-- the closed bag: tulle gathered at the neck, a satin bow, the tag on a thread -->
-<div class="intro" id="intro" hidden role="button" tabindex="0" aria-label="فكّوا الشريطة وافتحوا الدعوة / Untie the ribbon and open the invitation">
+<div class="intro" id="intro" role="button" tabindex="0" aria-label="فكّوا الشريطة وافتحوا الدعوة / Untie the ribbon and open the invitation">
   <div class="intro-in">
     <div class="bag" aria-hidden="true">
       <svg viewBox="0 0 320 400" focusable="false">
@@ -331,7 +343,7 @@ html.en .share a{font-size:14.5px}
           <path d="M74 112Q92 96 110 104Q130 90 148 100Q160 92 172 100Q190 90 210 104Q228 96 246 112C246 150 260 190 262 236C270 306 262 366 228 382C198 394 122 394 92 382C58 366 50 306 58 236C60 190 74 150 74 112Z" fill="#e9bfc9" fill-opacity=".62"/>
         </g>
       </svg>
-      <div class="bag-card"><p>رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ</p><i></i><b></b><b></b><b></b><b style="margin-inline:22%"></b></div>
+      <div class="bag-card"><p>وذلك بمشيئة الله يوم الأربعاء في تمام الساعة السادسة مساءً</p><i></i><b></b><b></b><b></b><b style="margin-inline:22%"></b></div>
       <svg viewBox="0 0 320 400" focusable="false">
         <!-- sugared almonds in the bottom of the bag -->
         <g stroke="#b99aa2" stroke-opacity=".5" stroke-width=".8">
@@ -380,8 +392,8 @@ html.en .share a{font-size:14.5px}
       </svg>
       <div class="itag-wrap">
         <div class="itag">
-          <svg class="motif" viewBox="0 0 120 80" aria-hidden="true" focusable="false"><use href="#motif"/></svg>
-          <p class="sm"><span class="t-ar">سبوع</span><span class="t-en">The sebou3 of</span></p>
+          <svg class="stamp" viewBox="0 0 80 100" aria-hidden="true" focusable="false"><use href="#st-ibreeq"/></svg>
+          <p class="sm"><span class="t-ar">سبوع</span><span class="t-en">The Sebou of</span></p>
           <p class="nm"><span class="t-ar" id="inNameAr">ياسين</span><span class="t-en" id="inNameEn">Yassin</span></p>
           <p class="to"><span class="t-ar" id="inToAr">إلى أحبابنا الغاليين</span><span class="t-en" id="inToEn">For our dearest family and friends</span></p>
         </div>
@@ -391,21 +403,79 @@ html.en .share a{font-size:14.5px}
   </div>
 </div>
 
-<!-- the printed motif, drawn once: a crescent cradling a lotus -->
+<script>
+/* the bag takes the first tap as soon as it is on screen, before anything else loads */
+(function () {
+  var intro = document.getElementById("intro"), p = null;
+  try { p = new URLSearchParams(window.__D3WA__ || location.search); } catch (e) {}
+  if (p && p.get("intro") === "0") { intro.hidden = true; return; }
+  /* the family's own names on the tag from the first frame, never the sample ones */
+  var g = function (k) { var v = p && p.get(k); return v && v.trim() ? v.trim() : ""; };
+  var nA = g("n_ar") || g("n_en"), nE = g("n_en") || g("n_ar"), to = g("g"), b = g("b").toLowerCase();
+  if (nA) { document.getElementById("inNameAr").textContent = nA; document.getElementById("inNameEn").textContent = nE; }
+  if (to) { document.getElementById("inToAr").textContent = "إلى " + to; document.getElementById("inToEn").textContent = "For " + to; }
+  if (nA || b) intro.querySelector(".stamp use").setAttribute("href", /^(boy|m|son|ولد)$/.test(b) ? "#st-ibreeq" : /^(girl|f|daughter|بنت)$/.test(b) ? "#st-qolla" : "#st-sieve");
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var opened = false;
+  document.body.classList.add("intro-lock");
+  function open () {
+    if (opened) return; opened = true;
+    document.body.classList.remove("intro-lock");
+    if (reduced) { intro.hidden = true; return; }
+    intro.classList.add("open");
+    setTimeout(function () { intro.hidden = true; }, 2550);
+  }
+  intro.addEventListener("click", open);
+  intro.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); open(); } });
+  try { intro.focus({ preventScroll: true }); } catch (e) {}
+})();
+</script>
+
+<!-- one-ink stamps of the ritual object, printed on the tag: the ibreeq for a boy,
+     the qolla for a girl, the sieve when the family has not said -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="motif" viewBox="0 0 120 80">
-    <g stroke-linejoin="round">
-      <path d="M60 58C46 58 30 50 24 38C38 38 52 46 60 58Z" fill="#f0c4cd" stroke="#b25a6e" stroke-width="1.3"/>
-      <path d="M60 58C74 58 90 50 96 38C82 38 68 46 60 58Z" fill="#f0c4cd" stroke="#b25a6e" stroke-width="1.3"/>
-      <path d="M60 57C50 51 40 39 38 24C48 28 56 39 60 57Z" fill="#f7dde2" stroke="#b25a6e" stroke-width="1.3"/>
-      <path d="M60 57C70 51 80 39 82 24C72 28 64 39 60 57Z" fill="#f7dde2" stroke="#b25a6e" stroke-width="1.3"/>
-      <path d="M60 12C53 25 53 42 60 57C67 42 67 25 60 12Z" fill="#f0c4cd" stroke="#b25a6e" stroke-width="1.3"/>
-      <path d="M60 22V50" stroke="#b25a6e" stroke-width=".8" fill="none"/>
-      <path d="M14 36C20 64 44 76 60 76C76 76 100 64 106 36C96 56 80 64 60 64C40 64 24 56 14 36Z" fill="#dcc08c" stroke="#a07c42" stroke-width="1.3"/>
-      <path d="M30 56C36 60 44 63 50 64" fill="none" stroke="#fbf1dc" stroke-width="1.2" stroke-linecap="round"/>
+  <defs>
+    <filter id="inked" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="1.3" numOctaves="1" seed="4"/><feDisplacementMap in="SourceGraphic" scale="1"/></filter>
+    <clipPath id="meshIn"><ellipse cx="40" cy="47" rx="28" ry="9.6"/></clipPath>
+  </defs>
+  <symbol id="st-ibreeq" viewBox="0 0 80 100">
+    <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" filter="url(#inked)">
+      <circle cx="42" cy="8.5" r="2.6" fill="currentColor" stroke="none"/>
+      <path d="M33 19C34 14 37.5 11.5 42 11.5S50 14 51 19Z"/>
+      <path d="M31 19H53"/>
+      <path d="M34.5 19C34.5 26 36 30 37 34M49.5 19C49.5 26 48 30 47 34"/>
+      <path d="M35.5 26.5Q42 29 48.5 26.5"/>
+      <path d="M37 34C24 38 18 52 20 64C22 76 31 84 42 84S62 76 64 64C66 52 60 38 47 34"/>
+      <path d="M21 51.5Q42 59 63 51.5"/>
+      <path d="M33.5 84C33.5 87.5 32 89.5 30 91.5H54C52 89.5 50.5 87.5 50.5 84"/>
+      <path d="M21.5 59C13.5 56 9.5 45 7.5 36C6.5 31 5 27.5 2.5 24.5M23.5 66C15 63 10.5 54 9 46C8 40 7 33 6 28"/>
+      <path d="M2.5 24.5L6 28"/>
+      <path d="M50 22C62 20 70 30 68 44C66.5 53 62.5 58 59.5 62M51 27.5C59.5 27 63.5 34 62.5 43.5C62 50 59.5 54.5 57.5 57.5"/>
+    </g>
+    <g fill="currentColor" filter="url(#inked)"><circle cx="28" cy="60.5" r="1.2"/><circle cx="35" cy="62" r="1.2"/><circle cx="42" cy="62.6" r="1.2"/><circle cx="49" cy="62" r="1.2"/><circle cx="56" cy="60.5" r="1.2"/></g>
+  </symbol>
+  <symbol id="st-qolla" viewBox="0 0 80 100">
+    <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" filter="url(#inked)">
+      <ellipse cx="40" cy="10" rx="7.5" ry="2.6"/>
+      <path d="M32.5 10C32.5 18 31 23 28 27M47.5 10C47.5 18 49 23 52 27"/>
+      <path d="M32.6 15.5Q40 18 47.4 15.5M31.8 21Q40 23.6 48.2 21"/>
+      <path d="M28 27C15 33 11 52 16 66C21 80 31 86 40 86S59 80 64 66C69 52 65 33 52 27"/>
+      <path d="M14.5 49Q40 59 65.5 49"/>
+      <path d="M18.5 56.5L24 61.5L29 58.5L34.5 63L40 60.5L45.5 63L51 58.5L56 61.5L61.5 56.5"/>
+      <path d="M33 85.5C33 88.5 31.5 90.5 30 92.5H50C48.5 90.5 47 88.5 47 85.5"/>
+    </g>
+  </symbol>
+  <symbol id="st-sieve" viewBox="0 0 80 100">
+    <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" filter="url(#inked)">
+      <ellipse cx="40" cy="47" rx="34" ry="13"/>
+      <ellipse cx="40" cy="47" rx="28" ry="9.6"/>
+      <path d="M6 47V55C6 62 21 68 40 68S74 62 74 55V47"/>
+      <path d="M40 60V68"/>
+      <g clip-path="url(#meshIn)" stroke-width=".9"><path d="M8 40L40 66M16 34L50 62M26 32L60 58M36 30L70 56M46 30L76 50M4 48L30 68M72 40L40 66M64 34L30 62M54 32L20 58M44 30L10 56M34 30L4 50M76 48L50 68"/></g>
     </g>
   </symbol>
 </svg>
+
 
 <button class="slip lang-slip" id="langBtn" type="button"><span class="t-ar">English</span><span class="t-en">العربية</span></button>
 <button class="slip music-slip" id="musicBtn" type="button" aria-pressed="false" aria-label="موسيقى هادية / Soft music">
@@ -436,13 +506,14 @@ html.en .share a{font-size:14.5px}
         <path d="M110.5 86C110 80 109.5 75 109 70L116 68C117 74 118.5 80 119.5 86Z" fill="#9cb993"/>
       </svg>
       <article class="tag" aria-labelledby="babyName">
-        <svg class="motif" viewBox="0 0 120 80" aria-hidden="true" focusable="false"><use href="#motif"/></svg>
+        <svg class="stamp" viewBox="0 0 80 100" aria-hidden="true" focusable="false"><use href="#st-ibreeq"/></svg>
+        <p class="verse" id="quote"><span class="t-ar">«رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ» <small>الفرقان، ٧٤</small></span><span class="t-en">“Our Lord, grant us from our spouses and our children the comfort of our eyes.” <small>25:74</small></span></p>
         <div class="hosts" id="hosts" hidden>
           <p class="hv t-ar">يتشرف</p>
           <p class="hosts-cols t-ar" id="hostsAr"></p>
           <p class="hosts-cols t-en" id="hostsEn"></p>
         </div>
-        <p class="lead"><span class="t-ar" id="leadAr">بدعوتكم لحضور سبوع مولودهما</span><span class="t-en" id="leadEn">request the pleasure of your company at the sebou3 of their son</span></p>
+        <p class="lead"><span class="t-ar" id="leadAr">بدعوتكم لحضور سبوع مولودهما</span><span class="t-en" id="leadEn">request the pleasure of your company at the Sebou of their son</span></p>
         <h1 class="name" id="babyName">
           <span class="t-ar"><span class="n" id="nAr1">ياسين</span><span class="n" hidden><span class="amp">و</span><span id="nAr2"></span></span></span>
           <span class="t-en"><span class="n" id="nEn1">Yassin</span><span class="n" hidden><span class="amp">and</span><span id="nEn2"></span></span></span>
@@ -451,15 +522,13 @@ html.en .share a{font-size:14.5px}
       </article>
     </div>
 
-    <!-- the card that came out of the bag -->
-    <article class="invite" aria-label="الموعد والمكان / When and where">
-      <p class="verse" id="quote"><span class="t-ar">«رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ» <small>الفرقان، ٧٤</small></span><span class="t-en">“Our Lord, grant us from our spouses and our children the comfort of our eyes.” <small>25:74</small></span></p>
+    <!-- the small insert that came out of the bag: when, where and the rituals -->
+    <article class="insert" aria-label="الموعد والمكان / When and where">
       <p class="formal">
         <span class="t-ar">وذلك بمشيئة الله يوم <b id="dateAr">الأربعاء ١١ نوفمبر ٢٠٢٦</b>، في تمام <span id="timeAr">الساعة السادسة مساءً</span>، <span id="venueAr">بمنزل العائلة، المعادي، القاهرة</span>.</span>
         <span class="t-en">on <b id="dateEn">Wednesday, 11 November 2026</b>, at <span id="timeEn">six o'clock in the evening</span>, <span id="venueEnPre">at </span><span id="venueEn" class="iso">the family home, Maadi, Cairo</span>.</span>
       </p>
       <div id="agendaSec">
-        <hr class="rule">
         <h2><span class="t-ar">فقرات السبوع</span><span class="t-en">The order of the evening</span></h2>
         <ul class="prog" id="agList"></ul>
       </div>
@@ -545,10 +614,12 @@ html.en .share a{font-size:14.5px}
     txt(b, parts[1] || "");
     $(b).parentNode.hidden = parts.length < 2;
   }
+  var stamp = sex === "m" ? "#st-ibreeq" : sex === "f" ? "#st-qolla" : "#st-sieve";
+  document.querySelectorAll(".stamp use").forEach(function (u) { u.setAttribute("href", stamp); });
   paintName("nAr1", "nAr2", arParts);
   paintName("nEn1", "nEn2", enParts);
   txt("inNameAr", nAr); txt("inNameEn", nEn);
-  if (given) document.title = "سبوع " + nAr + " | " + nEn + "'s sebou3";
+  if (given) document.title = "سبوع " + nAr + " | " + nEn + "'s Sebou";
 
   /* the parents, as the card prints them: two titled hosts sit in two columns, the father
      first (on the right in Arabic); in English one line joined by "and". A name never breaks. */
@@ -583,7 +654,7 @@ html.en .share a{font-size:14.5px}
         el.classList.toggle("stack", over);
       }
       var fs = parseFloat(getComputedStyle(el).fontSize), w = el.clientWidth;
-      var wide = function () { return Array.prototype.some.call(hosts, function (h) { return h.getBoundingClientRect().width > w + 1 || h.scrollWidth > w + 1; }); };
+      var wide = function () { return Array.prototype.some.call(hosts, function (h) { return h.scrollWidth > w + 1 || (el.classList.contains("t-en") && h.offsetWidth > w + 1); }); };
       while (wide() && fs > 12) { fs -= 1; el.style.fontSize = fs + "px"; }
     });
   }
@@ -598,10 +669,10 @@ html.en .share a{font-size:14.5px}
     var kinAr = two && sex === "m" ? " مولودهما" : two && sex === "f" ? " مولودتهما" : "";
     var kinEn = two && sex === "m" ? " their son" : two && sex === "f" ? " their daughter" : "";
     txt("leadAr", "بدعوتكم لحضور سبوع" + kinAr);
-    txt("leadEn", "request the pleasure of your company at the sebou3 of" + kinEn);
+    txt("leadEn", "request the pleasure of your company at the Sebou of" + kinEn);
   } else {
     txt("leadAr", "يسعدنا دعوتكم لحضور سبوع");
-    txt("leadEn", "We would love you to join us for the sebou3 of");
+    txt("leadEn", "We would love you to join us for the Sebou of");
   }
 
   /* the time in words, the way a printed card says it */
@@ -653,13 +724,13 @@ html.en .share a{font-size:14.5px}
     : "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(qp("v_en") || qp("v_ar") || "Maadi, Cairo, Egypt");
   var start = new Date(dOk + "T" + tNorm + ":00"), end = new Date(start.getTime() + 3 * 36e5);
   var cal = function (dt) { var p = function (n) { return ("0" + n).slice(-2); }; return dt.getFullYear() + p(dt.getMonth() + 1) + p(dt.getDate()) + "T" + p(dt.getHours()) + p(dt.getMinutes()) + "00"; };
-  $("calBtn").href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("Sebou3 of " + nEn + " / سبوع " + nAr)
+  $("calBtn").href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("Sebou of " + nEn + " / سبوع " + nAr)
     + "&dates=" + cal(start) + "/" + cal(end) + "&ctz=Africa/Cairo&location=" + encodeURIComponent(vEn)
-    + "&details=" + encodeURIComponent(pQuote || (parentsEn ? parentsEn + " invite you to the sebou3 of " + nEn + "." : "The sebou3 of " + nEn + "."));
+    + "&details=" + encodeURIComponent(pQuote || (parentsEn ? parentsEn + " invite you to the Sebou of " + nEn + "." : "The Sebou of " + nEn + "."));
 
   /* the rituals in their order, counted from the time on the card so the two always agree,
      or the family's own programme: agenda=time~عربي~english|… */
-  var PROG = [[0, "الاستقبال", "Welcome"], [45, "دق الهون والغربال", "The mortar and the sieve"], [75, "الشموع والزفة", "Candles and the zaffa"], [120, "توزيع الشنط", "The sebou3 bags"]];
+  var PROG = [[0, "الاستقبال", "Welcome"], [45, "دق الهون والغربال", "The mortar and the sieve"], [75, "الشموع والزفة", "Candles and the zaffa"], [120, "توزيع الشنط", "Handing out the Sebou bags"]];
   function addRow (time, wAr, wEn) {
     var tEn = time, tAr = ar9(time), m = time.match(/^(\d{1,2}):(\d{2})$/);
     if (m && +m[1] < 24 && +m[2] < 60) {
@@ -771,35 +842,19 @@ html.en .share a{font-size:14.5px}
     var cnt = n ? (isAr ? " عدد الأفراد: " + ar9(n) : " Number attending: " + n) : "";
     var yes = isAr
       ? hiAr + "يسعدنا نأكد حضورنا سبوع " + nAr + " يوم " + dateAr + " الساعة " + timeArShort + " في " + vAr + "." + cnt
-      : hiEn + "We'd love to confirm we'll be at " + nEn + "'s sebou3 on " + dateEn + " at " + timeEnShort + ", " + vEn + "." + cnt;
+      : hiEn + "We'd love to confirm we'll be at " + nEn + "'s Sebou on " + dateEn + " at " + timeEnShort + ", " + vEn + "." + cnt;
     var no = isAr
       ? hiAr + "للأسف مش هنقدر نحضر سبوع " + nAr + ". ألف مبروك، وربنا يبارك لكم ويفرّح قلوبكم دايماً."
-      : hiEn + "Sadly we can't make it to " + nEn + "'s sebou3. Congratulations, and blessings to your little one.";
+      : hiEn + "Sadly we can't make it to " + nEn + "'s Sebou. Congratulations, and blessings to your little one.";
     var share = isAr
       ? "أنتم مدعوون لسبوع " + nAr + " يوم " + dateAr + " الساعة " + timeArShort + " في " + vAr + "." + (url ? " افتحوا الدعوة من هنا: " + url : "")
-      : "You're invited to " + nEn + "'s sebou3 on " + dateEn + " at " + timeEnShort + ", " + vEn + "." + (url ? " Open the invitation: " + url : "");
+      : "You're invited to " + nEn + "'s Sebou on " + dateEn + " at " + timeEnShort + ", " + vEn + "." + (url ? " Open the invitation: " + url : "");
     $("rsvpBtn").href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(yes);
     $("noBtn").href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(no);
     $("waBtn").href = "https://wa.me/?text=" + encodeURIComponent(share);
   }
 
-  /* ── the bag: tap, the ribbon comes undone and the card rises out ── */
-  var intro = $("intro");
-  if (qp("intro") !== "0") {
-    intro.hidden = false;
-    document.body.classList.add("intro-lock");
-    var opened = false;
-    var open = function () {
-      if (opened) return; opened = true;
-      document.body.classList.remove("intro-lock");
-      if (reduced) { intro.hidden = true; return; }
-      intro.classList.add("open");
-      setTimeout(function () { intro.hidden = true; }, 2550);
-    };
-    intro.addEventListener("click", open);
-    intro.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); open(); } });
-    try { intro.focus({ preventScroll: true }); } catch (e) {}
-  }
+  /* (the bag's tap is wired in the script right after it) */
 
   /* ── music: off until tapped; a soft lullaby pad, or ?music=<url> ── */
   var musicBtn = $("musicBtn"), pMusic = qp("music");

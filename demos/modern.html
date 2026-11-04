@@ -67,7 +67,7 @@
   --top:calc(64px + env(safe-area-inset-top));
   --qw:calc(100vw - 2 * var(--m));            /* one quarter of the sheet */
   --u:calc(var(--qw) / 100);                  /* the poster's own unit: type scales with the paper */
-  --ph:calc(var(--qw) * 4 / 3);               /* 45 x 60 cm sheet: every quarter is 3:4 */
+  --ph:calc(var(--qw) * 5 / 4);               /* 40 x 50 cm sheet: every quarter is 4:5 */
   --mx:1.5px; --my:-1px;                      /* the orange drum prints a hair off the black */
   --ease:cubic-bezier(.55,.06,.2,1);
   --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' seed='7' stitchTiles='stitch' result='f'/%3E%3CfeColorMatrix in='f' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -30 0 0 0 23.3' result='s'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.018' numOctaves='2' seed='3' stitchTiles='stitch' result='l'/%3E%3CfeColorMatrix in='l' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -.3 0 0 0 1.14' result='m'/%3E%3CfeComposite in='s' in2='m' operator='in'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23g)'/%3E%3C/svg%3E");
@@ -117,17 +117,16 @@ html:not(.ar) .music-toggle{font-family:var(--en-d)}
 .sheet{
   position:relative;width:var(--qw);margin:var(--top) auto 0;
   display:grid;grid-template-columns:var(--qw);
-  counter-reset:sec;
   perspective:2000px;perspective-origin:50% calc(var(--ph) / 2);
   /* one sheet lying on the table: its shadow follows the paper, folded or open */
   filter:drop-shadow(0 1px 1px rgba(50,38,26,.18)) drop-shadow(0 16px 20px rgba(60,45,30,.13));
   transition:transform 1.15s var(--ease);
 }
-.panel{position:relative;display:grid;aspect-ratio:3/4;min-width:0}
+.panel{position:relative;display:grid;aspect-ratio:4/5;min-width:0}
 .pp{
   position:relative;isolation:isolate;grid-area:1 / 1;min-width:0;
   display:flex;flex-direction:column;
-  padding:calc(var(--u) * 7.5) calc(var(--u) * 7);
+  padding:calc(var(--u) * 6.5) calc(var(--u) * 7);
   background:var(--paper) var(--fibre);
   font-size:clamp(16px, calc(var(--u) * 4.5), 20px);
 }
@@ -136,12 +135,14 @@ html:not(.ar) .pp{font-size:clamp(15.5px, calc(var(--u) * 4.1), 18.5px);line-hei
 /* folds: each facet catches the light a little differently, so the creases show
    (JS marks every panel with its row parity and its side of the sheet) */
 .pp::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
-  background:var(--ct,linear-gradient(transparent,transparent)),var(--cs,linear-gradient(transparent,transparent)),var(--lh,linear-gradient(transparent,transparent)),var(--lv,linear-gradient(transparent,transparent))}
+  background:var(--ct,linear-gradient(transparent,transparent)),var(--cb,linear-gradient(transparent,transparent)),var(--cs,linear-gradient(transparent,transparent)),var(--lh,linear-gradient(transparent,transparent)),var(--lv,linear-gradient(transparent,transparent))}
 .panel[data-f="a"] > .pp{--lv:linear-gradient(to bottom,rgba(255,255,255,.26),rgba(255,255,255,0) 38%,rgba(70,52,34,0) 62%,rgba(70,52,34,.06))}
 .panel[data-f="b"] > .pp{--lv:linear-gradient(to top,rgba(255,255,255,.26),rgba(255,255,255,0) 38%,rgba(70,52,34,0) 62%,rgba(70,52,34,.06))}
 .panel[data-s="l"] > .pp{--lh:linear-gradient(to right,rgba(255,255,255,.16),rgba(255,255,255,0) 40%,rgba(70,52,34,0) 70%,rgba(70,52,34,.05))}
 .panel[data-s="r"] > .pp{--lh:linear-gradient(to left,rgba(255,255,255,.1),rgba(255,255,255,0) 40%,rgba(70,52,34,0) 70%,rgba(70,52,34,.06))}
-.panel[data-t="1"] > .pp{--ct:linear-gradient(to bottom,rgba(70,52,34,.2) 0,rgba(70,52,34,.2) 1px,rgba(255,255,255,.8) 1px,rgba(255,255,255,.8) 2px,rgba(255,255,255,0) 2px,rgba(255,255,255,0) 100%)}
+/* the horizontal fold: a sharp line, a highlight on its lip, a soft valley either side */
+.panel[data-t="1"] > .pp{--ct:linear-gradient(to bottom,rgba(70,52,34,.34) 0,rgba(70,52,34,.34) 1px,rgba(255,255,255,.9) 1px,rgba(255,255,255,.9) 2.5px,rgba(70,52,34,.09) 3px,rgba(70,52,34,0) 22px,rgba(70,52,34,0) 100%)}
+.panel[data-b="1"] > .pp{--cb:linear-gradient(to top,rgba(70,52,34,.1) 0,rgba(70,52,34,0) 18px,rgba(70,52,34,0) 100%)}
 .panel[data-s="r"] > .pp{--cs:linear-gradient(to right,rgba(70,52,34,.2) 0,rgba(70,52,34,.2) 1px,rgba(255,255,255,.8) 1px,rgba(255,255,255,.8) 2px,rgba(255,255,255,0) 2px,rgba(255,255,255,0) 100%)}
 
 /* riso ink: large solids never print perfectly; the paper shows through in specks */
@@ -151,22 +152,16 @@ html:not(.ar) .pp{font-size:clamp(15.5px, calc(var(--u) * 4.1), 18.5px);line-hei
 /* a mask clips to its box: give the ink room for dots and descenders that hang outside the line */
 .names > span{display:flex;flex-direction:column;align-items:flex-start}   /* flex: the lines' margins add up instead of collapsing */
 .names .ln{padding-block:.5em;margin-block:-.5em}
-.sh .no,.d-big .d-num,.d-side .d-my,.c-foot .c-date{padding-block:.3em;margin-block:-.3em}
+.d-big .d-num,.d-side .d-my,.c-foot .c-date{padding-block:.3em;margin-block:-.3em}
 .verso .v-occ{padding-block:.3em;margin-top:-.3em;margin-bottom:calc(var(--u) * -1 - .3em)}
 .prog .closing{padding-block:.3em}
 /* the second ink: overprints the black and sits a hair off register */
 .ink2{color:var(--red);mix-blend-mode:multiply;translate:var(--mx) var(--my)}
 
-/* section openers: a heavy black rule, the number in the second ink, a plain heading */
-.numbered{counter-increment:sec}
-.sh{margin:0 0 calc(var(--u) * 4);display:flex;align-items:baseline;gap:calc(var(--u) * 3);
-  border-top:calc(var(--u) * .9) solid var(--ink);padding-top:calc(var(--u) * 2.2);
-  font:800 calc(var(--u) * 6)/1.3 var(--ar-d)}
-html:not(.ar) .sh{font:750 calc(var(--u) * 5.6)/1.2 var(--en-d);letter-spacing:-.01em}
-.sh .no{flex:none;font:800 calc(var(--u) * 12.5)/.8 var(--ar-d)}
-.sh .no::before{content:counter(sec,arabic-indic)}
-html:not(.ar) .sh .no{font-family:var(--en-d);font-stretch:72%;font-variant-numeric:tabular-nums}
-html:not(.ar) .sh .no::before{content:counter(sec)}
+/* each panel heads with one heavy printer's rule and its heading set as poster type */
+.sh{margin:0 0 calc(var(--u) * 2.5);border-top:calc(var(--u) * .9) solid var(--ink);padding-top:calc(var(--u) * 2.4);
+  font:850 calc(var(--u) * 8.4)/1.2 var(--ar-d);text-wrap:balance}
+html:not(.ar) .sh{font:800 calc(var(--u) * 8.6)/1 var(--en-d);font-stretch:80%;letter-spacing:-.02em}
 
 /* ── panel 1: the face of the poster ── */
 .cover .pp{justify-content:space-between}
@@ -209,28 +204,26 @@ html:not(.ar) .verse{font-style:italic}
 /* ── panel 2: the date, as big as the sheet allows ── */
 .d-big{display:flex;align-items:flex-end;margin-top:auto;padding-top:calc(var(--u) * 2)}
 .d-big{--k:1}  /* JS lowers --k if a long month would push past the panel edge */
-.d-num{margin:0;flex:none;font:800 calc(var(--u) * 58 * var(--k))/.74 var(--ar-d);font-variant-numeric:tabular-nums}
-html:not(.ar) .d-num{font:800 calc(var(--u) * 64 * var(--k))/.74 var(--en-d);font-stretch:70%;letter-spacing:-.03em}
-.d-num.dd{font-size:calc(var(--u) * 44 * var(--k))}
-html:not(.ar) .d-num.dd{font-size:calc(var(--u) * 50 * var(--k))}
-/* the black month overprints the foot of the orange numeral */
-.d-side{position:relative;z-index:1;margin-inline-start:calc(var(--u) * -5);padding-bottom:calc(var(--u) * 1)}
+.d-num{margin:0;flex:none;font:800 calc(var(--u) * 50 * var(--k))/.74 var(--ar-d);font-variant-numeric:tabular-nums}
+html:not(.ar) .d-num{font:800 calc(var(--u) * 56 * var(--k))/.74 var(--en-d);font-stretch:70%;letter-spacing:-.03em}
+.d-num.dd{font-size:calc(var(--u) * 40 * var(--k))}
+html:not(.ar) .d-num.dd{font-size:calc(var(--u) * 46 * var(--k))}
+/* the weekday, month and year stand beside the numeral, clear of it */
+.d-side{position:relative;margin-inline-start:calc(var(--u) * 4);padding-bottom:calc(var(--u) * .6)}
 .d-wd{display:block;font:600 calc(var(--u) * 6 * var(--k))/1.25 var(--ar-d)}
 .d-my{display:block;font:850 calc(var(--u) * 10.5 * var(--k))/1.08 var(--ar-d);white-space:nowrap}
 .d-my b{display:block;font-weight:inherit}
-/* the orange was knocked out under the black type, and the drums did not quite meet: a sliver of paper shows */
-.d-side{text-shadow:calc(var(--mx) * -1.5) calc(var(--my) * -1.5) 0 var(--paper)}
 html:not(.ar) .d-wd{font:400 italic calc(var(--u) * 6.4 * var(--k))/1.2 var(--en)}
 html:not(.ar) .d-my{font:800 calc(var(--u) * 10.5 * var(--k))/1 var(--en-d);font-stretch:78%;letter-spacing:-.015em}
-.d-left{margin:calc(var(--u) * 3) 0 0;font:700 calc(var(--u) * 5.2)/1.3 var(--ar-d);color:var(--red-d)}
+.d-left{margin:calc(var(--u) * 2) 0 0;font:700 calc(var(--u) * 5.2)/1.3 var(--ar-d);color:var(--red-d)}
 html:not(.ar) .d-left{font:700 calc(var(--u) * 4.8)/1.3 var(--en-d)}
 .d-left .num{font-variant-numeric:tabular-nums}
-.d-sent{margin:auto 0 0;padding-top:calc(var(--u) * 3.5);border-top:1px solid rgba(23,22,21,.3);line-height:1.75;text-wrap:pretty}
+.d-sent{margin:auto 0 0;padding-top:calc(var(--u) * 2);line-height:1.65;text-wrap:pretty}
 html:not(.ar) .d-sent{line-height:1.55}
 .d-sent b{font-weight:700;white-space:nowrap}
 html:not(.ar) .d-sent b{font-weight:600}
 .d-sent .is-ar,.v-to .is-ar{font-family:var(--ar)}
-.d-links{display:flex;flex-wrap:wrap;gap:0 calc(var(--u) * 6);margin-top:calc(var(--u) * 2)}
+.d-links{display:flex;flex-wrap:wrap;gap:0 calc(var(--u) * 6);margin-top:calc(var(--u) * .5)}
 .tl{display:inline-flex;align-items:center;min-height:44px;font-size:.94em;font-weight:600;
   text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:6px;text-decoration-color:var(--red)}
 .tl:hover{color:var(--red-d)}
@@ -274,9 +267,9 @@ html:not(.ar) .tm small{font-stretch:100%;letter-spacing:0;font-weight:600}
 .tm.word{font-size:calc(var(--u) * 5.4)}
 .tt li:first-child .tm{color:var(--red);mix-blend-mode:multiply;translate:var(--mx) var(--my)}
 .what{font-weight:600;line-height:1.45}
-.notes{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u) * 5);margin-top:auto;padding-top:calc(var(--u) * 5)}
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u) * 5);padding-top:calc(var(--u) * 4.5)}
 .notes.one{grid-template-columns:1fr}
-.note{font-size:.9em;line-height:1.6;border-top:2px solid var(--ink);padding-top:calc(var(--u) * 2)}
+.note{font-size:.9em;line-height:1.6}
 .note b{display:block;font-weight:800;margin-bottom:2px}
 .prog.notes-only .notes{margin-top:0;grid-template-columns:1fr;gap:calc(var(--u) * 6)}
 .prog.notes-only .note{font-size:1.15em}
@@ -305,7 +298,7 @@ html:not(.ar) .tick{font:800 clamp(22px, calc(var(--u) * 7.4), 40px)/1.1 var(--e
 .tick.done .box::before,.tick.done .box::after{content:"";position:absolute;left:-14%;right:-14%;top:calc(50% - .06em);height:.12em;background:var(--ink);rotate:42deg}
 .tick.done .box::after{rotate:-48deg}
 .tick-hint{margin:calc(var(--u) * 1.5) 0 0;padding-inline-start:calc(1.05em * 1.6);font-size:.86em;color:var(--ink-2)}
-.r-more{display:flex;flex-wrap:wrap;gap:0 calc(var(--u) * 6);border-top:1px solid rgba(23,22,21,.3);padding-top:calc(var(--u) * 1.5)}
+.r-more{display:flex;flex-wrap:wrap;gap:0 calc(var(--u) * 6)}
 .r-more .tl{text-decoration-color:rgba(23,22,21,.35);font-weight:500}
 
 .d3wa-credit{position:relative}
@@ -337,7 +330,7 @@ html:not(.ar) .intro-hint{font:italic 400 17px/1.5 var(--en)}
 @media (min-width:1000px){
   .sheet{grid-template-columns:var(--qw) var(--qw);width:calc(var(--qw) * 2);align-items:stretch;perspective:2600px;perspective-origin:75% calc(var(--ph) / 2)}
   html:not(.ar) .sheet{perspective-origin:25% calc(var(--ph) / 2)}
-  .photos{grid-column:1 / -1;aspect-ratio:3 / 2}
+  .photos{grid-column:1 / -1;aspect-ratio:8 / 5}
   /* the vertical fold runs on through the photographs */
   .panel[data-s="w"] > .pp{--cs:linear-gradient(to right,rgba(0,0,0,0) calc(50% - 1px),rgba(70,52,34,.2) calc(50% - 1px),rgba(70,52,34,.2) 50%,rgba(255,255,255,.8) 50%,rgba(255,255,255,.8) calc(50% + 1px),rgba(0,0,0,0) calc(50% + 1px))}
   .photos .prints{position:relative}
@@ -403,9 +396,9 @@ html:not(.ar) .intro-hint{font:italic 400 17px/1.5 var(--en)}
   </section>
 
   <!-- panel 2: the date. Folded over panel 1 until the guest opens it; its back is the address panel -->
-  <section class="panel date numbered" id="datePanel" data-shot="details" aria-labelledby="dateTitle">
+  <section class="panel date" id="datePanel" data-shot="details" aria-labelledby="dateTitle">
     <div class="pp face">
-      <h2 class="sh" id="dateTitle"><span class="no ink2 grain" aria-hidden="true"></span><span><span class="t-ar">الموعد والمكان</span><span class="t-en">When and where</span></span></h2>
+      <h2 class="sh" id="dateTitle"><span class="t-ar">الموعد والمكان</span><span class="t-en">When and where</span></h2>
       <div class="d-big">
         <p class="d-num ink2 grain" id="dNum"><span class="t-ar" id="dNumAr">٤</span><span class="t-en" id="dNumEn">4</span></p>
         <p class="d-side">
@@ -433,9 +426,9 @@ html:not(.ar) .intro-hint{font:italic 400 17px/1.5 var(--en)}
   </section>
 
   <!-- panel 3: the programme -->
-  <section class="panel prog numbered later" id="progPanel" aria-labelledby="progTitle">
+  <section class="panel prog later" id="progPanel" aria-labelledby="progTitle">
     <div class="pp">
-      <h2 class="sh" id="progTitle"><span class="no ink2 grain" aria-hidden="true"></span><span><span class="t-ar" id="progAr">برنامج الحفل</span><span class="t-en" id="progEn">The evening</span></span></h2>
+      <h2 class="sh" id="progTitle"><span class="t-ar" id="progAr">برنامج الحفل</span><span class="t-en" id="progEn">The evening</span></h2>
       <ol class="tt" id="agList"></ol>
       <div class="notes" id="notes">
         <p class="note" id="dressSec"><b><span class="t-ar">الملابس</span><span class="t-en">Dress</span></b><span class="nt"><span class="t-ar">ملابس سهرة رسمية، ونرجو ترك الأبيض للعروس.</span><span class="t-en">Formal evening wear. Please leave white to the bride.</span></span></p>
@@ -446,9 +439,9 @@ html:not(.ar) .intro-hint{font:italic 400 17px/1.5 var(--en)}
   </section>
 
   <!-- panel 4: the reply -->
-  <section class="panel reply numbered later" id="rsvpPanel" data-shot="rsvp" aria-labelledby="replyTitle">
+  <section class="panel reply later" id="rsvpPanel" data-shot="rsvp" aria-labelledby="replyTitle">
     <div class="pp">
-      <h2 class="sh" id="replyTitle"><span class="no ink2 grain" aria-hidden="true"></span><span><span class="t-ar">نرجو التكرم بالرد</span><span class="t-en">Kindly reply</span></span></h2>
+      <h2 class="sh" id="replyTitle"><span class="t-ar">نرجو التكرم بالرد</span><span class="t-en">Kindly reply</span></h2>
       <p class="r-by" id="replyBy"></p>
       <div class="r-form">
         <div class="line"><label for="guestName"><span class="t-ar">الاسم</span><span class="t-en">Name</span></label><input id="guestName" autocomplete="name" maxlength="60"></div>
@@ -617,7 +610,15 @@ html:not(.ar) .intro-hint{font:italic 400 17px/1.5 var(--en)}
   /* who it is addressed to */
   var guest = qp("g");
   if (guest) {
-    txt("toLbl", "حضرة"); txt("toAr", guest); txt("toEn", guest);
+    txt("toLbl", "حضرة");
+    /* a title never ends a line: it travels with the first word of the name */
+    var bindName = function (el, v) {
+      var m = v.match(/^(\S+\/?\s*\S+)(\s.*)?$/);
+      el.textContent = "";
+      var k = document.createElement("span"); k.style.whiteSpace = "nowrap"; k.textContent = m ? m[1] : v; el.appendChild(k);
+      if (m && m[2]) el.appendChild(document.createTextNode(m[2]));
+    };
+    bindName($("toAr"), guest); bindName($("toEn"), guest);
     if (hasAr(guest)) $("toEn").className = "is-ar";
     $("guestName").value = guest;
     $("waBtn").hidden = true;   /* an invitation addressed to one guest is not for forwarding */
@@ -688,7 +689,7 @@ html:not(.ar) .intro-hint{font:italic 400 17px/1.5 var(--en)}
     if (nNotes) { prog.classList.add("notes-only"); txt("progAr", "ملاحظات"); txt("progEn", "Notes"); }
     else {
       /* nothing left to list: the quarter carries the closing line instead of standing empty */
-      prog.classList.remove("numbered"); $("progTitle").hidden = true; $("closing").hidden = false;
+      $("progTitle").hidden = true; $("closing").hidden = false;
       prog.setAttribute("aria-label", "بحضوركم تكتمل فرحتنا / Your presence completes our joy"); prog.removeAttribute("aria-labelledby");
     }
   }
@@ -728,7 +729,7 @@ html:not(.ar) .intro-hint{font:italic 400 17px/1.5 var(--en)}
     var w = 0;
     vis.querySelectorAll(".ln").forEach(function (l) { if (!l.hidden) w = Math.max(w, l.getBoundingClientRect().width); });
     if (!w) return;
-    var cap = cover.offsetWidth * (hAr ? .25 : .3);
+    var cap = cover.offsetWidth * (hAr ? .21 : .275);
     var fs = Math.min(100 * box.clientWidth / w * .97, cap);
     /* a long name gets smaller rather than break: a person's name stays on one line */
     if (fs < 18) { fs = 18; box.classList.add("wrap"); }
@@ -744,6 +745,7 @@ html:not(.ar) .intro-hint{font:italic 400 17px/1.5 var(--en)}
       var r = tops.indexOf(p.offsetTop);
       p.setAttribute("data-f", r % 2 ? "b" : "a");
       p.setAttribute("data-t", r ? "1" : "0");
+      p.setAttribute("data-b", r < tops.length - 1 ? "1" : "0");
       var mid = p.offsetLeft + p.offsetWidth / 2;
       p.setAttribute("data-s", p.offsetWidth > W * .75 ? "w" : mid < W / 2 ? "l" : "r");
     });

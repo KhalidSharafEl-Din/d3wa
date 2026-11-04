@@ -22,7 +22,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Katibeh&family=Aref+Ruqaa:wght@400;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Aref+Ruqaa:wght@400;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Aref+Ruqaa:wght@400;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap"></noscript>
 
 <script>
 /* Rolling demo date: without a real order date (?d=) the demo always counts
@@ -58,7 +59,7 @@
   --orange:#e98a15;      /* foil on navy, the stub */
   --orange-ink:#b9650a;  /* orange printed on cream (3.6:1 at display sizes) */
   --pen:#26409c;         /* blue ballpoint */
-  --ar:"Noto Naskh Arabic",serif; --ar-disp:"Katibeh","Noto Naskh Arabic",serif; --hand:"Aref Ruqaa","Noto Naskh Arabic",serif;
+  --ar:"Noto Naskh Arabic",serif; --hand:"Aref Ruqaa","Noto Naskh Arabic",serif;
   --en:"Crimson Pro",Georgia,serif; --en-disp:"DM Serif Display",Georgia,serif;
   --leather:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='l'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.3' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .8 0 0 0 0 .85 0 0 0 0 1 0 0 0 .16 -.03'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23l)'/%3E%3C/svg%3E");
 }
@@ -155,10 +156,10 @@ html:not(.ar) .host .ttl{display:inline;font-size:1em;color:inherit}
 .lead{margin-top:2.6cqw;font-size:5cqw;line-height:1.6;color:var(--ink-2);text-wrap:balance}
 .hosts:not([hidden]) + .lead{margin-top:.4cqw}
 html:not(.ar) .lead{margin-top:3.4cqw;font-style:italic;font-size:4.8cqw;line-height:1.35}
-/* the graduate's name, lettered the way a certificate's name is filled in */
-.name{margin-top:.5cqw;font:400 19cqw/1.3 var(--ar-disp);color:var(--navy);word-break:keep-all;overflow-wrap:normal}
+/* the graduate's name, written in by hand the way a certificate's name is filled in */
+.name{margin-top:.5cqw;font:400 22cqw/1.3 var(--hand);color:#1c2a5c;word-break:keep-all;overflow-wrap:normal}
 html:not(.ar) .name{margin-top:2cqw;font:400 16.5cqw/1.05 var(--en-disp)}
-html:not(.ar) .name .arn{font-family:var(--ar-disp);line-height:1.3}
+html:not(.ar) .name .arn{font-family:var(--hand);line-height:1.3}
 .name .long{font-size:.74em}
 .name .xlong{font-size:.56em}
 .formal{margin-top:1.6cqw;max-width:34ch;font-size:4.7cqw;line-height:1.85;color:var(--ink);text-wrap:pretty}
@@ -188,8 +189,11 @@ html:not(.ar) .sheet{align-self:flex-end}
 html:not(.ar) .sheet h2{font:600 19px/1.3 var(--en)}
 .tt{width:100%;margin-top:16px;border-collapse:collapse;font-size:16px;line-height:1.5}
 html:not(.ar) .tt{font-size:16.5px}
-.tt th,.tt td{border:1px solid rgba(31,42,68,.55);padding:6px 10px;text-align:start;vertical-align:top}
-.tt th{background:var(--mist);font-weight:700;font-size:15px}
+.tt{border-top:1.5px solid rgba(31,42,68,.7);border-bottom:1.5px solid rgba(31,42,68,.7)}
+.tt th,.tt td{border:0;border-bottom:1px solid rgba(31,42,68,.3);padding-block:6px;padding-inline:0 12px;text-align:start;vertical-align:top}
+.tt tr > :first-child{padding-inline-end:22px}
+.tt th{border-bottom:1px solid rgba(31,42,68,.7);font-weight:700;font-size:15px}
+.tt tbody tr:last-child td{border-bottom:0}
 html:not(.ar) .tt th{font-weight:600}
 .tt td:first-child{width:1%;white-space:nowrap;font-variant-numeric:tabular-nums}
 .notes{margin-top:16px;font-size:15.5px;line-height:1.75;color:var(--ink)}
@@ -280,14 +284,13 @@ html.ar .f-front::after{right:0;box-shadow:inset 1px 0 0 rgba(0,0,0,.35),-1px 0 
 html:not(.ar) .f-front::after{left:0;box-shadow:inset -1px 0 0 rgba(0,0,0,.35),1px 0 0 rgba(255,255,255,.06);background:linear-gradient(270deg,rgba(0,0,0,.18),rgba(0,0,0,0))}
 /* foil: a flat orange, pressed into the grain */
 .foil{text-shadow:0 1px 0 rgba(255,255,255,.13),0 -1px 0 rgba(0,0,0,.5)}
-.f-cap{position:absolute;left:50%;top:13%;width:36cqw;translate:-50% 0;filter:drop-shadow(0 1px 0 rgba(255,255,255,.12)) drop-shadow(0 -1px 0 rgba(0,0,0,.45))}
-.f-cls{position:absolute;left:0;right:0;top:35%;font:600 5.6cqw/1 var(--ar)}
-html:not(.ar) .f-cls{font:italic 400 6cqw/1 var(--en)}
-.f-yr{position:absolute;left:0;right:0;top:40.5%;font:700 27cqw/1.1 var(--ar)}
-html:not(.ar) .f-yr{top:41%;font:400 29cqw/1 var(--en-disp)}
-.f-name{position:absolute;left:8%;right:8%;bottom:7.5%;font:400 9cqw/1.3 var(--ar-disp);overflow-wrap:normal}
+.f-cls{position:absolute;left:0;right:0;top:19%;font:600 6.4cqw/1 var(--ar)}
+html:not(.ar) .f-cls{font:italic 400 7cqw/1 var(--en)}
+.f-yr{position:absolute;left:0;right:0;top:25%;font:700 33cqw/1.1 var(--ar)}
+html:not(.ar) .f-yr{top:26.5%;font:400 35cqw/1 var(--en-disp)}
+.f-name{position:absolute;left:8%;right:8%;bottom:7%;font:400 10cqw/1.35 var(--hand);overflow-wrap:normal}
 html:not(.ar) .f-name{font:400 8cqw/1.15 var(--en-disp)}
-html:not(.ar) .f-name .arn{font-family:var(--ar-disp)}
+html:not(.ar) .f-name .arn{font-family:var(--hand)}
 /* a paper band round the closed folder, addressed to the guest */
 .band{position:absolute;left:-1px;right:-1px;top:66%;padding:2.6cqw 6cqw 3cqw;background:#f5f1e7;color:var(--navy);
   box-shadow:0 2px 3px rgba(0,0,0,.4),0 -1px 0 rgba(0,0,0,.2);text-shadow:none}
@@ -319,7 +322,7 @@ html:not(.ar) .intro-hint{font-style:italic}
   .sheet{padding:42px 24px 20px}
   .sheet h2,.slip h2{font-size:20px}
   .tt{margin-top:14px;font-size:16.5px}
-  .tt th,.tt td{padding:5px 10px}
+  .tt th,.tt td{padding-top:5px;padding-bottom:5px}
   .notes{margin-top:12px;font-size:16px;line-height:1.7}
   .slip-body{padding:18px 24px 12px}
   .slip .by{margin-bottom:10px}
@@ -336,7 +339,7 @@ html:not(.ar) .intro-hint{font-style:italic}
   .lining{padding:30px 30px;gap:18px}
   .sheet{padding:38px 18px 18px}
   .tt{font-size:16px}
-  .tt th,.tt td{padding:5px 8px}
+  .tt th,.tt td{padding-top:5px;padding-bottom:5px}
   .notes{font-size:15.5px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -353,17 +356,6 @@ html:not(.ar) .intro-hint{font-style:italic}
     <div class="f-back" id="fBack"></div>
     <div class="f-cover">
       <div class="f-front leather">
-        <svg class="f-cap" viewBox="0 0 220 150" fill="none" stroke="#e98a15" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-          <path d="M62 74v26q48 26 96 0V74" stroke-width="3.2"/>
-          <path d="M62 92q48 24 96 0" stroke-width="1.6"/>
-          <path d="M12 50v6l98 36 98-36v-6" stroke-width="2.4"/>
-          <path d="M110 14 208 50 110 86 12 50z" stroke-width="3.2"/>
-          <path d="M110 26 177 50 110 74 43 50z" stroke-width="1" opacity=".55"/>
-          <circle cx="110" cy="50" r="5" fill="#e98a15" stroke="none"/>
-          <path d="M110 50q44-6 76 8v40" stroke-width="2.4"/>
-          <circle cx="186" cy="101" r="4.2" fill="#e98a15" stroke="none"/>
-          <path d="M181 106l-4 28M184.5 106l-1 30M188 106l1 30M191 106l4 28M178 113h16" stroke-width="1.7"/>
-        </svg>
         <p class="f-cls foil"><span class="t-ar">دفعة</span><span class="t-en">Class of</span></p>
         <p class="f-yr foil"><span class="t-ar js-yr-ar">٢٠٢٧</span><span class="t-en js-yr-en">2027</span></p>
         <p class="f-name foil"><span class="t-ar js-n-ar">سارة</span><span class="t-en js-n-en">Sara</span></p>
@@ -374,6 +366,19 @@ html:not(.ar) .intro-hint{font-style:italic}
   </div>
   <p class="intro-hint" id="introHint"><span class="t-ar">اضغطوا على الملف عشان يتفتح</span><span class="t-en">Tap the folder to open it</span></p>
 </div>
+<script>
+/* the folder takes a tap from the moment it is on screen; the main script below plays it */
+(function () {
+  try { if (new URLSearchParams(window.__D3WA__ || location.search).get("intro") === "0") return; } catch (e) {}
+  var i = document.getElementById("intro");
+  i.hidden = false; document.body.classList.add("intro-lock");
+  window.__introTap = function (e) {
+    if (e.type === "keydown") { if (e.key !== "Enter" && e.key !== " ") return; e.preventDefault(); }
+    window.__introTapped = true;
+  };
+  i.addEventListener("click", window.__introTap); i.addEventListener("keydown", window.__introTap);
+})();
+</script>
 
 <button class="tabbtn music-toggle leather" id="musicBtn" type="button" aria-pressed="false" aria-label="الموسيقى / Music">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17.5V6l10-2v11.5"/><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="15.5" r="2.5"/></svg>
@@ -396,7 +401,7 @@ html:not(.ar) .intro-hint{font-style:italic}
         <div class="notes">
           <p><span class="t-ar">ملاحظات:</span><span class="t-en">Notes:</span></p>
           <ol>
-            <li id="dressSec"><span class="t-ar">الملابس: </span><span class="t-en">Dress: </span><span class="note"><span class="t-ar">ملابس أنيقة غير رسمية، ويسعدنا لمسة من الكحلي أو البرتقالي.</span><span class="t-en">smart casual; a touch of navy or orange is welcome.</span></span></li>
+            <li id="dressSec"><span class="t-ar">الملابس: </span><span class="t-en">Dress: </span><span class="note"><span class="t-ar">ملابس أنيقة غير رسمية.</span><span class="t-en">smart casual.</span></span></li>
             <li id="giftSec"><span class="t-ar">الهدايا: </span><span class="t-en">Gifts: </span><span class="note"><span class="t-ar">حضوركم ودعواتكم أجمل هدية.</span><span class="t-en">your company and your prayers are the best gift.</span></span></li>
             <li><span class="t-ar">المكان: <span id="whereAr">نادي الصيد المصري، الدقي، الجيزة</span>.</span><span class="t-en">Place: <span id="whereEn">Egyptian Shooting Club, Dokki, Giza</span>.</span>
               <span class="links"><br><a id="mapBtn" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Egyptian%20Shooting%20Club%2C%20Dokki%2C%20Giza"><span class="t-ar">الخريطة</span><span class="t-en">Map</span></a><a id="calBtn" target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/render?action=TEMPLATE"><span class="t-ar">أضيفوا الموعد للتقويم</span><span class="t-en">Add to calendar</span></a></span></li>
@@ -788,7 +793,7 @@ html:not(.ar) .intro-hint{font-style:italic}
   }
 
   /* ── the folder: closed on arrival, it opens onto the certificate ── */
-  var intro = $("intro"), folder = $("folder"), opened = false, showIntro = qp("intro") !== "0";
+  var intro = $("intro"), folder = $("folder"), opened = false, showIntro = qp("intro") !== "0", open = null;
   var wide = window.matchMedia("(min-width:1000px)");
   function cloneInto (dst, src) {
     dst.textContent = "";
@@ -828,13 +833,14 @@ html:not(.ar) .intro-hint{font-style:italic}
       intro.classList.add("gone");
       setTimeout(function () { intro.hidden = true; }, reduced ? 0 : 420);
     };
-    var open = function () {
+    open = function () {
       if (opened) return; opened = true;
       intro.classList.add("open");
       if (reduced) { finish(); return; }
       folder.style.transform = "none";
       setTimeout(finish, 1560);
     };
+    if (window.__introTap) { intro.removeEventListener("click", window.__introTap); intro.removeEventListener("keydown", window.__introTap); }
     intro.addEventListener("click", open);
     intro.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
     try { intro.focus({ preventScroll: true }); } catch (e) {}
@@ -844,7 +850,8 @@ html:not(.ar) .intro-hint{font-style:italic}
     clearTimeout(rt);
     rt = setTimeout(function () { fitHosts(); drawFrame(); placeFolder(true); }, 120);
   });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitHosts(); drawFrame(); placeFolder(true); });
+  var refit = function () { fitHosts(); drawFrame(); placeFolder(true); };
+  if (document.fonts) { if (document.fonts.ready) document.fonts.ready.then(refit); if (document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", refit); }
 
   /* ── music: off until tapped; a soft, bright pad, or ?music=<url> ── */
   var musicBtn = $("musicBtn"), pMusic = qp("music");
@@ -872,6 +879,7 @@ html:not(.ar) .intro-hint{font-style:italic}
   });
 
   applyLang();
+  if (open && window.__introTapped) open();   /* a tap that came before this script was ready */
 })();
 </script>
 <script src="../assets/demo-bar.js" defer></script>

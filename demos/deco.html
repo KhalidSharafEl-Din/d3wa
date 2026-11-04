@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>تصميم آرت ديكو | Art Deco | دعوة D3wa</title>
 <meta name="description" content="ديمو دعوة آرت ديكو: برنامج سهرة أسود مطبوع بالدهبي. A D3wa invitation demo: Art Deco, a black evening programme printed in gold.">
-<meta name="theme-color" content="#17161a">
+<meta name="theme-color" content="#1a120d">
 <meta name="color-scheme" content="dark">
 
 <meta property="og:type" content="website">
@@ -41,14 +41,16 @@
 
 <style>
 /* Art Deco: the evening programme of a 1920s Cairo hotel ballroom. A tall black
-   gatefold card printed in flat gold, a cream cloakroom ticket for the reply,
-   the couple's photos on black studio mounts. The page is the table they lie on. */
+   gatefold card printed in flat gold with a second jade ink, the house crest on the
+   cover, a cream cloakroom ticket for the reply, the couple's photos on black studio
+   mounts. The page is the walnut table they lie on, under one warm lamp. */
 :root{
-  --table:#17161a;
+  --table:#1a120d;
   --on-table:#e6dcc3; --on-table-2:#b3a88c;
   --card:#0e0e10; --card-in:#111114;
   --foil:#d4af37; --gilt:#8f7426; --edge:#3b3221;
-  --cream:#f1e6c8; --ink:#17140f; --ink-2:#4f4537; --pen:#22304f; --numred:#8f2a1c;
+  --cream:#f1e6c8; --ink:#17140f; --ink-2:#4f4537; --pen:#22304f;
+  --jade:#5ea38e; --jade-ink:#2a6a58; /* the second ink, used sparingly */
   /* the programme's border: one stepped rule printed with weight */
   --frame:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M1 13H7V7H13V1H47V7H53V13H59V47H53V53H47V59H13V53H7V47H1Z' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3C/svg%3E");
 }
@@ -58,9 +60,11 @@ html:not(.ar){--book:"Bodoni Moda","Markazi Text",serif;--disp:"Federo","Bodoni 
 html{-webkit-text-size-adjust:100%}
 body{margin:0;min-height:100vh;overflow-x:hidden;color:var(--on-table);background-color:var(--table);
   font:400 17px/1.7 var(--book);font-optical-sizing:auto;-webkit-font-smoothing:antialiased;
-  background-image:radial-gradient(85% 60% at 50% 0%,rgba(255,204,140,.085),transparent 72%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .9 0 0 0 0 .75 0 0 0 .045 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-attachment:fixed,scroll}
+  /* a walnut table: long grain, plank joints, one lamp above, the edges in shadow */
+  background-image:radial-gradient(80% 900px at 50% 0%,rgba(255,190,120,.15),rgba(255,190,120,.045) 50%,transparent 80%),
+    repeating-linear-gradient(180deg,transparent 0 359px,rgba(0,0,0,.5) 359px 360px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='360'%3E%3Cfilter id='a' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0022 .05' numOctaves='4' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .29 0 0 0 0 .19 0 0 0 0 .115 1 0 0 0 -.42'/%3E%3C/filter%3E%3Cfilter id='b' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.003 .07' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .04 0 0 0 0 .025 0 0 0 0 .015 1 0 0 0 -.4'/%3E%3C/filter%3E%3Cfilter id='c' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .7' numOctaves='2' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .2 0 0 0 0 .12 .5 0 0 0 -.18'/%3E%3C/filter%3E%3Crect width='900' height='360' fill='%231c130d'/%3E%3Crect width='900' height='360' filter='url(%23a)' opacity='.75'/%3E%3Crect width='900' height='360' filter='url(%23b)' opacity='.8'/%3E%3Crect width='900' height='360' filter='url(%23c)' opacity='.6'/%3E%3C/svg%3E");
+  background-color:#1c130d}
 html.ar body{font-size:20px;line-height:1.85}
 body.intro-lock{overflow:hidden}
 img{display:block;max-width:100%}
@@ -83,7 +87,9 @@ html:not(.ar) .music-toggle{font:400 14px/1 "Bodoni Moda",serif}
 
 /* ── the closed programme: a gatefold held shut by a gold band ── */
 .intro{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:20px;overflow:hidden;cursor:pointer;
-  background-color:var(--table);background-image:radial-gradient(85% 60% at 50% 0%,rgba(255,204,140,.085),transparent 72%);
+  background-color:var(--table);background-image:radial-gradient(80% 900px at 50% 0%,rgba(255,190,120,.15),rgba(255,190,120,.045) 50%,transparent 80%),
+    repeating-linear-gradient(180deg,transparent 0 359px,rgba(0,0,0,.5) 359px 360px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='360'%3E%3Cfilter id='a' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0022 .05' numOctaves='4' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .29 0 0 0 0 .19 0 0 0 0 .115 1 0 0 0 -.42'/%3E%3C/filter%3E%3Cfilter id='b' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.003 .07' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .04 0 0 0 0 .025 0 0 0 0 .015 1 0 0 0 -.4'/%3E%3C/filter%3E%3Cfilter id='c' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .7' numOctaves='2' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .2 0 0 0 0 .12 .5 0 0 0 -.18'/%3E%3C/filter%3E%3Crect width='900' height='360' fill='%231c130d'/%3E%3Crect width='900' height='360' filter='url(%23a)' opacity='.75'/%3E%3Crect width='900' height='360' filter='url(%23b)' opacity='.8'/%3E%3Crect width='900' height='360' filter='url(%23c)' opacity='.6'/%3E%3C/svg%3E");
   transition:opacity .35s ease 1.5s;-webkit-tap-highlight-color:transparent}
 .intro.open{opacity:0;pointer-events:none}
 .stage{display:flex;flex-direction:column;align-items:center}
@@ -92,7 +98,7 @@ html:not(.ar) .music-toggle{font:400 14px/1 "Bodoni Moda",serif}
 /* what the doors open onto: the top of the programme inside */
 .cover-in{position:absolute;inset:0;background:var(--card);color:var(--foil);display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:10px;padding:40px 26px;text-align:center}
-.cover-in::before,.panel::before{content:"";position:absolute;inset:12px;pointer-events:none;
+.cover-in::before,.centre::before{content:"";position:absolute;inset:12px;pointer-events:none;
   border:24px solid transparent;border-image:var(--frame) 24 stretch}
 .cover-in .ci-k{margin:0;font-size:15px;line-height:1.5}
 html:not(.ar) .cover-in .ci-k{font-style:italic;font-size:14px}
@@ -112,17 +118,23 @@ html:not(.ar) .cover-in .ci-n{font-weight:400;font-size:30px;line-height:1.2}
 .intro.open .door.l{transform:rotateY(-112deg)}
 .intro.open .door.r{transform:rotateY(112deg)}
 /* the band: flat gold paper, printed in black */
-.band{position:absolute;left:0;right:0;top:14%;z-index:5;margin:0;padding:13px 16px 14px;text-align:center;
+.band{position:absolute;left:0;right:0;top:55%;z-index:5;margin:0;padding:13px 16px 14px;text-align:center;
   background:var(--foil);color:var(--card);box-shadow:0 1px 0 rgba(0,0,0,.45),0 5px 9px -3px rgba(0,0,0,.6);
   transition:transform .55s cubic-bezier(.55,0,.8,.3),opacity .25s linear .3s}
 .band::before{content:"";position:absolute;left:0;right:0;top:5px;bottom:5px;pointer-events:none;
   border-top:1.5px solid rgba(14,14,16,.8);border-bottom:1.5px solid rgba(14,14,16,.8)}
-.intro.open .band{transform:translateY(360%);opacity:0}
+.intro.open .band{transform:translateY(160%);opacity:0}
 .band span{display:block}
-.band .b-k{font-size:15px;line-height:1.45}
-html:not(.ar) .band .b-k{font-size:13.5px;font-style:italic}
-.band .b-n{margin:1px 0 2px;font:600 24px/1.35 var(--disp);word-spacing:.12em}
-html:not(.ar) .band .b-n{font-weight:400;font-size:22px;line-height:1.25}
+/* the house name, lettered inside a cartouche, the tie bar at its end */
+.band .b-h{margin:2px 0 6px}
+.band .cart{position:relative;display:inline-block;padding:3px 22px 2px;border:1.5px solid var(--card);border-radius:999px;
+  font:600 21px/1.3 var(--disp);word-spacing:.1em}
+html:not(.ar) .band .cart{font-weight:400;font-size:19px;line-height:1.35;padding:4px 22px 3px}
+.band .cart::after{content:"";position:absolute;inset-inline-end:-8px;top:18%;bottom:18%;width:2px;background:var(--card)}
+.band .b-k{font-size:14.5px;line-height:1.45}
+html:not(.ar) .band .b-k{font-size:13px;font-style:italic}
+.band .b-n{margin:0 0 2px;font:600 20px/1.35 var(--disp);word-spacing:.12em}
+html:not(.ar) .band .b-n{font-weight:400;font-size:18.5px;line-height:1.3}
 .band .b-g{font-size:16px;line-height:1.4}
 html:not(.ar) .band .b-g{font-size:14px;font-style:italic}
 .intro-hint{margin:24px 0 0;text-align:center;font-size:16px;color:var(--on-table-2);transition:opacity .2s}
@@ -133,15 +145,22 @@ html:not(.ar) .intro-hint{font-size:15px;font-style:italic}
 .spread{max-width:480px;margin:0 auto;padding:calc(72px + env(safe-area-inset-top)) 14px 26px}
 /* the open programme: centre panel, then the two inside flaps */
 .gatefold{display:flex;flex-direction:column;box-shadow:0 0 0 1px var(--edge),0 36px 60px -30px rgba(0,0,0,.95)}
+/* one stock, three faces: the centre framed, the programme with a column rule, the notes plain;
+   each panel lies at its own angle to the lamp, so each takes the light a little differently */
 .panel{position:relative;background-color:var(--card);color:var(--foil);text-align:center;padding:52px 38px 48px;
-  background-image:linear-gradient(180deg,rgba(255,255,255,.018),rgba(0,0,0,0) 40%)}
+  background-image:linear-gradient(180deg,rgba(255,255,255,.02),rgba(0,0,0,0) 40%)}
+.prog{background-color:#131316;padding:46px 30px 42px}
+.notes{background-color:#0c0c0e}
 /* flat foil, stamped: a shade above, the faintest lip below */
 .panel,.panel *{text-shadow:0 -1px 0 rgba(0,0,0,.9),0 1px 0 rgba(255,232,170,.06)}
 .centre{aspect-ratio:4/7;display:flex;flex-direction:column;justify-content:center;align-items:center}
 .centre > *{max-width:100%}
-/* folds between the panels */
-.prog::after,.notes::after{content:"";position:absolute;left:0;right:0;top:0;height:16px;pointer-events:none;
-  background:linear-gradient(180deg,rgba(0,0,0,.6),transparent);border-top:1px solid rgba(255,236,190,.05)}
+/* the folds between the panels: a hard crease line, a lit lip, a valley of shade */
+.prog,.notes{border-top:1px solid #000}
+.prog::after,.notes::after{content:"";position:absolute;left:0;right:0;top:0;height:30px;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.85),rgba(0,0,0,.35) 30%,transparent);border-top:1px solid rgba(255,236,190,.13)}
+.centre::after,.prog::before{content:"";position:absolute;left:0;right:0;bottom:0;height:18px;pointer-events:none;
+  background:linear-gradient(0deg,rgba(0,0,0,.45),transparent)}
 
 /* the couple's Latin initials, a small stamped plaque */
 .mono{position:relative;display:inline-flex;align-items:center;gap:13px;margin:0 0 20px;padding:15px 22px 12px;
@@ -192,20 +211,26 @@ html:not(.ar) .verse small{font-size:12.5px}
 /* the order of the evening */
 .prog h2{margin:0 0 20px;font:600 25px/1.35 var(--disp)}
 html:not(.ar) .prog h2{font-weight:400;font-size:23px}
-.order{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:17px}
-.order li{display:block}
-.order .no{display:block;font:500 16px/1.4 "Markazi Text",serif}
-html:not(.ar) .order .no{font:400 14px/1.4 "Federo",sans-serif}
-.order .what{display:block;font-weight:600;font-size:21px;line-height:1.4;text-wrap:balance}
-html:not(.ar) .order .what{font-weight:500;font-size:17.5px;line-height:1.35}
-.order .when{display:block;font-size:17px;line-height:1.5;white-space:nowrap}
-html:not(.ar) .order .when{font-style:italic;font-size:15px}
+/* numbers and hours in one column, the evening in the other, a single gold column rule between */
+.order{list-style:none;margin:0 auto;padding:0;display:grid;grid-template-columns:auto minmax(0,1fr);max-width:310px;text-align:start}
+.order li{display:contents}
+.order .k,.order .v{padding:10px 0 12px}
+.order .k{grid-column:1;padding-inline-end:14px;border-inline-end:1.5px solid var(--foil);text-align:end}
+.order .v{grid-column:2;padding-inline-start:15px;min-width:0}
+.order li:first-child .k,.order li:first-child .v{padding-top:3px}
+.order li:last-child .k,.order li:last-child .v{padding-bottom:3px}
+.order .no{display:block;font:500 15px/1.4 "Markazi Text",serif}
+html:not(.ar) .order .no{font:400 13px/1.5 "Federo",sans-serif}
+.order .what{display:block;font-weight:600;font-size:20px;line-height:1.4}
+html:not(.ar) .order .what{font-weight:500;font-size:17px;line-height:1.35}
+.order .when{display:block;font-size:16.5px;line-height:1.45;white-space:nowrap}
+html:not(.ar) .order .when{font-style:italic;font-size:14.5px}
 /* set in both languages, as Cairo hotel programmes were: the other tongue small beneath */
 .alt{display:block}
 html.ar .alt{font:italic 400 14px/1.4 "Bodoni Moda",serif}
 html:not(.ar) .alt{font:500 17.5px/1.45 "Markazi Text",serif}
 .prog h2 .alt{margin-top:2px}
-.order .alt{margin:1px 0 2px}
+.order .alt{margin:2px 0 0}
 
 /* notes for the evening */
 .notes{display:flex;flex-direction:column;gap:16px;padding-top:48px}
@@ -253,10 +278,10 @@ html:not(.ar) .where a{font-size:14.5px}
 html:not(.ar) .stub-h{font-weight:400;font-size:13px}
 .stub-no{font-size:15px;line-height:1.2}
 html:not(.ar) .stub-no{font-size:13px;font-style:italic}
-.num{font:700 34px/1.05 "Markazi Text",serif;color:var(--numred)}
+.num{font:700 34px/1.05 "Markazi Text",serif;color:var(--jade-ink)}
 html:not(.ar) .num{font:600 29px/1.05 "Bodoni Moda",serif;font-variant-numeric:lining-nums}
 .tmain{position:relative;flex:1;min-width:0;padding:24px 20px 18px;text-align:center}
-.tmain .num-s{position:absolute;top:9px;inset-inline-end:11px;font:700 15px/1 "Markazi Text",serif;color:var(--numred)}
+.tmain .num-s{position:absolute;top:9px;inset-inline-end:11px;font:700 15px/1 "Markazi Text",serif;color:var(--jade-ink)}
 html:not(.ar) .tmain .num-s{font:600 12.5px/1 "Bodoni Moda",serif}
 .tmain h2{margin:0;font:600 21px/1.4 var(--disp)}
 html:not(.ar) .tmain h2{font-weight:400;font-size:18.5px}
@@ -286,36 +311,38 @@ html:not(.ar) .share a{font-size:14.5px;font-style:italic}
 /* ── desktop: the programme lies open on the table, the ticket beside it ── */
 @media (min-width:1000px){
   .spread{max-width:1180px;padding:92px 40px 30px}
-  .gatefold{display:grid;grid-template-columns:1fr 2fr 1fr;grid-template-areas:"prog centre notes";max-width:1040px;margin:0 auto}
-  .gatefold.no-prog{grid-template-columns:2fr 1fr;grid-template-areas:"centre notes";max-width:780px}
+  .gatefold{display:grid;grid-template-columns:1.2fr 2fr 1.2fr;grid-template-areas:"prog centre notes";max-width:1120px;margin:0 auto}
+  .gatefold.no-prog{grid-template-columns:2fr 1.2fr;grid-template-areas:"centre notes";max-width:830px}
   .centre{grid-area:centre;padding:70px 60px}
   .prog{grid-area:prog}
   .notes{grid-area:notes}
-  .prog,.notes{display:flex;flex-direction:column;justify-content:center;padding:64px 30px}
-  .notes{justify-content:space-between;padding:120px 30px}
-  .notes.slim{justify-content:center}
+  .prog,.notes{display:flex;flex-direction:column;justify-content:center;padding:64px 26px;border-top:0}
+  .notes{gap:26px}
+  .centre::after,.prog::before{display:none}
   .notes .left{font-size:22px}
   html:not(.ar) .notes .left{font-size:20px}
   .note,.where{font-size:19px}
   html:not(.ar) .note,html:not(.ar) .where{font-size:16px}
   .prog h2{font-size:29px;margin-bottom:28px}
   html:not(.ar) .prog h2{font-size:25px}
-  .order{gap:24px}
-  .order .what{font-size:23px}
-  html:not(.ar) .order .what{font-size:19px}
-  .order .when{font-size:18.5px}
-  html:not(.ar) .order .when{font-size:16px}
+  .order .k,.order .v{padding:12px 0 15px}
+  .order .k{padding-inline-end:13px}
+  .order .v{padding-inline-start:14px}
+  .order .what{font-size:21px}
+  html:not(.ar) .order .what{font-size:17.5px}
+  .order .when{font-size:17px}
+  html:not(.ar) .order .when{font-size:15px}
   .lead{font-size:22px}
   html:not(.ar) .lead{font-size:19px}
   .hosts-v,.hosts-cols{font-size:21px}
   html:not(.ar) .hosts-cols.t-en{font-size:18px}
   .verse{font-size:20px}
   html:not(.ar) .verse{font-size:17px}
-  .prog::after,.notes::after{top:0;bottom:0;left:auto;right:auto;width:18px;height:auto;border-top:0}
-  .prog::after{inset-inline-end:0;background:linear-gradient(to left,rgba(0,0,0,.55),transparent)}
-  html:not(.ar) .prog::after{background:linear-gradient(to right,rgba(0,0,0,.55),transparent)}
-  .notes::after{inset-inline-start:0;background:linear-gradient(to right,rgba(0,0,0,.55),transparent);border-inline-start:1px solid rgba(255,236,190,.05)}
-  html:not(.ar) .notes::after{background:linear-gradient(to left,rgba(0,0,0,.55),transparent)}
+  .prog::after,.notes::after{top:0;bottom:0;left:auto;right:auto;width:26px;height:auto;border-top:0}
+  .prog::after{inset-inline-end:0;background:linear-gradient(to left,rgba(0,0,0,.7),transparent);border-inline-end:1px solid #000}
+  html:not(.ar) .prog::after{background:linear-gradient(to right,rgba(0,0,0,.7),transparent)}
+  .notes::after{inset-inline-start:0;background:linear-gradient(to right,rgba(0,0,0,.7),transparent);border-inline-start:1px solid rgba(255,236,190,.12)}
+  html:not(.ar) .notes::after{background:linear-gradient(to left,rgba(0,0,0,.7),transparent)}
   .names{font-size:82px;margin:14px 0 22px}
   html:not(.ar) .names{font-size:70px}
   .mono{font-size:40px;margin-bottom:30px;padding:18px 26px 15px}
@@ -351,20 +378,36 @@ html:not(.ar) .share a{font-size:14.5px;font-style:italic}
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <clipPath id="fanClip"><rect x="16" y="16" width="288" height="528"/></clipPath>
-    <!-- the cover, printed once across both doors: a stepped rule, and a sun rising off a stepped plinth -->
+    <!-- the cover, printed once across both doors: a stepped rule, and the house crest,
+         a lotus rising off the river between two palms, inside a stepped tablet. Gold, with jade fronds. -->
     <symbol id="coverArt" viewBox="0 0 320 560">
       <path d="M14 30H22V22H30V14H290V22H298V30H306V530H298V538H290V546H30V538H22V530H14Z" fill="none" stroke="#d4af37" stroke-width="2"/>
-      <g clip-path="url(#fanClip)" fill="none" stroke="#d4af37">
-        <path stroke-width="1.6" d="M154.1 448.3L127.6 215.8M165.9 448.3L192.4 215.8M132.1 456.1L6.3 258.8M187.9 456.1L313.7 258.8M115.7 472.8L-83.9 350.6M204.3 472.8L403.9 350.6M108.2 495.0L-124.7 472.6M211.8 495.0L444.7 472.6"/>
-        <path stroke-width="1" d="M142.6 451.0L88.6 298.3M177.4 451.0L231.4 298.3M122.9 463.6L7.4 350.0M197.1 463.6L312.6 350.0M110.7 483.5L-42.9 432.1M209.3 483.5L362.9 432.1"/>
+      <g transform="translate(160 176) scale(1.36) translate(-160 -180)" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M100 262V128H108V118H118V108H132V98H188V108H202V118H212V128H220V262Z" fill="none" stroke="#d4af37" stroke-width="1.5"/>
+        <path d="M110 247H210M124 254H196" fill="none" stroke="#d4af37" stroke-width="1.3"/>
+        <path d="M112 240l6 -3 6 3 6 -3 6 3M184 240l6 -3 6 3 6 -3 6 3" fill="none" stroke="#5ea38e" stroke-width="1.1"/>
+        <g fill="none" stroke="#d4af37" stroke-width="2">
+          <path d="M132 244C130 214 126 182 126 150"/>
+          <path d="M188 244C190 214 194 182 194 150"/>
+        </g>
+        <path d="M127 226h7M126 210h7M125 194h7M125 178h6M125 164h5M186 226h7M187 210h7M188 194h7M189 178h6M190 164h5" fill="none" stroke="#d4af37" stroke-width=".9"/>
+        <g fill="none" stroke="#5ea38e" stroke-width="1.7">
+          <path d="M126 150C116 142 108 144 104 152"/><path d="M126 150C118 136 110 132 104 133"/>
+          <path d="M126 150C124 134 128 124 138 120"/><path d="M126 150C136 140 146 140 150 148"/>
+          <path d="M126 150C136 148 142 156 142 166"/>
+          <path d="M194 150C204 142 212 144 216 152"/><path d="M194 150C202 136 210 132 216 133"/>
+          <path d="M194 150C196 134 192 124 182 120"/><path d="M194 150C184 140 174 140 170 148"/>
+          <path d="M194 150C184 148 178 156 178 166"/>
+        </g>
+        <path d="M160 216V246" fill="none" stroke="#d4af37" stroke-width="1.8"/>
+        <path d="M160 217C150 219 143 215 140 209C147 207 154 210 160 217Z" fill="#5ea38e"/>
+        <path d="M160 217C170 219 177 215 180 209C173 207 166 210 160 217Z" fill="#5ea38e"/>
+        <path d="M160 214C149 210 141 197 140 180C149 187 156 199 160 214Z" fill="#d4af37"/>
+        <path d="M160 214C171 210 179 197 180 180C171 187 164 199 160 214Z" fill="#d4af37"/>
+        <path d="M160 213C153 199 153 182 160 166C167 182 167 199 160 213Z" fill="#d4af37"/>
       </g>
-      <g fill="none" stroke="#d4af37" stroke-width="1.5">
-        <path d="M124 500A36 36 0 0 1 196 500"/>
-        <path d="M116 500A44 44 0 0 1 204 500"/>
-      </g>
-      <path d="M132 500A28 28 0 0 1 188 500Z" fill="#d4af37"/>
-      <path d="M36 501H284M62 510H258M88 519H232M114 528H206" fill="none" stroke="#d4af37" stroke-width="2"/>
+      <path d="M128 492H192" stroke="#d4af37" stroke-width="2.5"/>
+      <path d="M128 497.5H192" stroke="#d4af37" stroke-width="1"/>
     </symbol>
   </defs>
 </svg>
@@ -380,6 +423,7 @@ html:not(.ar) .share a{font-size:14.5px;font-style:italic}
       <div class="door l"><div class="face out"><svg class="art" viewBox="0 0 320 560"><use href="#coverArt"/></svg></div><div class="face back"></div></div>
       <div class="door r"><div class="face out"><svg class="art" viewBox="0 0 320 560"><use href="#coverArt"/></svg></div><div class="face back"></div></div>
       <p class="band">
+        <span class="b-h"><span class="cart"><span class="t-ar" id="hotelAr">فيلا روز</span><span class="t-en" id="hotelEn">Villa Rose</span></span></span>
         <span class="b-k"><span class="t-ar">برنامج حفل زفاف</span><span class="t-en">Programme for the wedding of</span></span>
         <span class="b-n"><span class="t-ar" id="bandAr">عمر ونادين</span><span class="t-en" id="bandEn">Omar &amp; Nadine</span></span>
         <span class="b-g"><span class="t-ar" id="bandGAr">إلى أحبابنا الغاليين</span><span class="t-en" id="bandGEn">For our dearest family and friends</span></span>
@@ -581,6 +625,8 @@ html:not(.ar) .share a{font-size:14.5px;font-style:italic}
   txt("timeAr", timeWordsAr); txt("timeEn", timeWordsEn);
   txt("venueAr", /^(ب|في |المكان)/.test(vAr) ? vAr : "ب" + vAr);
   txt("venueEn", vEn); txt("whereAr", vAr); txt("whereEn", vEn);
+  /* the house name on the cover's band: the venue, up to its first comma */
+  txt("hotelAr", vAr.split(/[،,]/)[0].trim() || vAr); txt("hotelEn", vEn.split(/[،,]/)[0].trim() || vEn);
 
   /* reply by: two weeks before, when there is still time */
   var by = new Date(dObj.getTime() - 14 * 864e5);
@@ -630,8 +676,8 @@ html:not(.ar) .share a{font-size:14.5px;font-style:italic}
       if (h === 0 && m[2] === "00") { tEn = "midnight"; tAr = "منتصف الليل"; }
     }
     var li = document.createElement("li");
-    li.innerHTML = '<span class="no"><span class="t-ar"></span><span class="t-en"></span></span><span class="what"><span class="t-ar"></span><span class="t-en"></span></span>'
-      + '<span class="alt"><span class="t-ar" lang="en" dir="ltr"></span><span class="t-en" lang="ar" dir="rtl"></span></span><span class="when"><span class="t-ar"></span><span class="t-en"></span></span>';
+    li.innerHTML = '<span class="k"><span class="no"><span class="t-ar"></span><span class="t-en"></span></span><span class="when"><span class="t-ar"></span><span class="t-en"></span></span></span>'
+      + '<span class="v"><span class="what"><span class="t-ar"></span><span class="t-en"></span></span><span class="alt"><span class="t-ar" lang="en" dir="ltr"></span><span class="t-en" lang="ar" dir="rtl"></span></span></span>';
     li.querySelector(".alt .t-ar").textContent = wEn; li.querySelector(".alt .t-en").textContent = wAr;
     li.querySelector(".no .t-ar").textContent = ORD_AR[rowN] || ar9(rowN + 1);
     li.querySelector(".no .t-en").textContent = ORD_EN[rowN] || String(rowN + 1);

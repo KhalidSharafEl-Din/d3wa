@@ -107,7 +107,7 @@ html:not(.ar) .lang-toggle .tp{font:600 17px/1 var(--ar)}
 .invite p,.invite .host{text-shadow:0 1px 0 rgba(255,244,247,.75),0 -.5px 0 rgba(100,30,55,.14)}
 .specimen{display:block;height:clamp(108px,33vw,140px);width:auto;max-width:100%;margin:0 auto 4px;overflow:visible}
 .basmala{margin:0 0 6px;font:400 15px/1.6 var(--ar);color:var(--ink-2)}
-.hosts{margin:0 0 2px;width:100%}
+.hosts{margin:0 0 10px;width:100%}
 .hosts p{margin:0}
 .hosts-v{font-size:16px;color:var(--ink-2)}
 .hosts-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;margin:2px 0 4px;font-size:16px;line-height:1.5}
@@ -133,6 +133,7 @@ html:not(.ar) .names .t-en.arabic .amp{font:400 .72em/1 var(--ar-hand);margin:0;
 .formal{margin:0;max-width:19em;font-size:17.5px;line-height:1.85;text-wrap:pretty}
 html:not(.ar) .formal{font-size:16px;line-height:1.6;max-width:21em}
 .formal b{font-weight:700;white-space:nowrap}
+.formal .nw{white-space:nowrap}
 html:not(.ar) .formal b{font-weight:400;font-style:italic}
 .rule{width:40px;height:0;margin:12px auto;border:0;border-top:1.5px solid var(--rose);opacity:.85}
 .verse{margin:0;font-size:16.5px;line-height:1.7;color:var(--ink-2);max-width:26ch}
@@ -192,7 +193,6 @@ html:not(.ar) .pencil .num{font:italic 400 1em/1 var(--en)}
 .reply{position:relative;z-index:3;width:84%;margin:26px auto 0;padding:30px 24px 24px;text-align:center;
   background-color:var(--reply);background-image:var(--grain);border-radius:1px;
   box-shadow:0 1px 0 rgba(200,160,172,.6),0 12px 16px -12px rgba(78,34,47,.32)}
-.reply::before{content:"";position:absolute;inset:9px;border:1.5px solid rgba(163,42,82,.55);pointer-events:none}
 .reply .part-title{text-align:center;margin-bottom:2px}
 .by{margin:0 0 16px;font-size:15px;color:var(--ink-2)}
 html:not(.ar) .by{font-style:italic;font-size:14.5px}
@@ -207,13 +207,14 @@ html:not(.ar) .line input::placeholder{font:italic 400 14px/1.3 var(--en)}
 .line.count{justify-content:center}
 .line.count input{flex:0 0 60px;text-align:center;font:600 19px/1.3 var(--ar);font-style:normal}
 .line input:focus{border-bottom-style:solid;border-bottom-color:var(--rose)}
-/* the reply goes out on a block printed solid in rose ink */
-.press{display:inline-flex;align-items:center;justify-content:center;min-height:50px;margin-top:12px;padding:0 26px;
-  background-color:var(--rose);background-image:var(--grain);color:#fbeef1;text-decoration:none;font:700 18px/1.2 var(--ar);
-  border-radius:1px;box-shadow:inset 0 1px 2px rgba(60,10,25,.35),0 1px 0 rgba(255,255,255,.6)}
-html:not(.ar) .press{font:400 17px/1.2 var(--en)}
-.press:hover{background-color:#8f2246}
-.press:active{box-shadow:inset 0 2px 4px rgba(60,10,25,.5)}
+/* the acceptance, printed in rose ink and pressed into the card over one rule */
+.press{display:inline-flex;align-items:flex-end;justify-content:center;min-height:50px;margin-top:10px;padding:8px 18px 7px;
+  color:var(--rose);text-decoration:none;font:400 27px/1.2 var(--ar-hand);
+  border-bottom:1.5px solid var(--rose);
+  text-shadow:0 1px 0 rgba(255,246,248,.9),0 -1px 0 rgba(110,20,50,.28)}
+html:not(.ar) .press{font:italic 400 21px/1.2 var(--en)}
+.press:hover{border-bottom-width:2.5px;padding-bottom:6px}
+.press:active{text-shadow:0 1px 0 rgba(255,246,248,.9),0 -1.5px 0 rgba(110,20,50,.4)}
 .decline{display:inline-block;margin-top:14px;font-size:15px;color:var(--ink-2);text-underline-offset:4px}
 html:not(.ar) .decline{font-size:14px}
 
@@ -292,72 +293,106 @@ html:not(.ar) .intro-hint{font-style:italic}
   <defs>
     <filter id="dry" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
       <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="11" result="warp"/>
-      <feDisplacementMap in="SourceGraphic" in2="warp" scale="4" xChannelSelector="R" yChannelSelector="G" result="d"/>
-      <feTurbulence type="fractalNoise" baseFrequency=".22 .05" numOctaves="3" seed="4" result="grain"/>
-      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.75 1.2" result="ga"/>
-      <feComposite in="d" in2="ga" operator="in"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="3.5" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".09 .16" numOctaves="3" seed="4" result="g"/>
+      <feColorMatrix in="g" type="matrix" values="0 0 0 0 .42  0 0 0 0 .24  0 0 0 0 .22  0 0 0 -.55 .32" result="speck"/>
+      <feComposite in="speck" in2="d" operator="in" result="sp"/>
+      <feDropShadow in="d" dx="0" dy=".5" stdDeviation=".45" flood-color="#4a2228" flood-opacity=".28" result="ds"/>
+      <feMerge><feMergeNode in="ds"/><feMergeNode in="sp"/></feMerge>
+    </filter>
+    <filter id="dryStem" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".06" numOctaves="1" seed="3" result="w"/>
+      <feDisplacementMap in="SourceGraphic" in2="w" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feDropShadow in="d" dx="0" dy=".5" stdDeviation=".4" flood-color="#4a2228" flood-opacity=".25"/>
     </filter>
     <filter id="tapeSh" x="-10%" y="-40%" width="120%" height="180%"><feDropShadow dx="0" dy=".6" stdDeviation=".7" flood-color="#5a2a38" flood-opacity=".16"/></filter>
-    <linearGradient id="pl" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0" stop-color="#b0526a" stop-opacity=".8"/>
-      <stop offset=".45" stop-color="#d48a9b" stop-opacity=".56"/>
-      <stop offset=".86" stop-color="#dc9fa9" stop-opacity=".52"/>
-      <stop offset="1" stop-color="#ad7269" stop-opacity=".7"/>
-    </linearGradient>
-    <linearGradient id="pd" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0" stop-color="#913a52" stop-opacity=".84"/>
-      <stop offset=".6" stop-color="#b8647a" stop-opacity=".68"/>
-      <stop offset="1" stop-color="#985655" stop-opacity=".8"/>
+    <!-- a pressed petal: opaque and matte, the colour gone paler toward the heart -->
+    <radialGradient id="gP1" gradientUnits="userSpaceOnUse" cx="4" cy="-44" r="78">
+      <stop offset="0" stop-color="#e6c0c3"/><stop offset=".45" stop-color="#d59aa5"/><stop offset=".8" stop-color="#c07a87"/><stop offset="1" stop-color="#a5626a"/>
+    </radialGradient>
+    <radialGradient id="gP2" gradientUnits="userSpaceOnUse" cx="2" cy="-40" r="74">
+      <stop offset="0" stop-color="#e2b8bc"/><stop offset=".45" stop-color="#cd8f9b"/><stop offset=".82" stop-color="#b8707e"/><stop offset="1" stop-color="#9c5a62"/>
+    </radialGradient>
+    <radialGradient id="gP3" gradientUnits="userSpaceOnUse" cx="5" cy="-36" r="34">
+      <stop offset="0" stop-color="#e9c8c8"/><stop offset=".6" stop-color="#d3a0a8"/><stop offset="1" stop-color="#b47a82"/>
+    </radialGradient>
+    <linearGradient id="gStem" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="222">
+      <stop offset="0" stop-color="#6c6440"/><stop offset=".55" stop-color="#77703f"/><stop offset="1" stop-color="#7f6545"/>
     </linearGradient>
     <linearGradient id="lf" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#7a835a" stop-opacity=".9"/>
-      <stop offset=".65" stop-color="#97a078" stop-opacity=".82"/>
-      <stop offset="1" stop-color="#a38f6e" stop-opacity=".88"/>
+      <stop offset="0" stop-color="#6f7650"/><stop offset=".6" stop-color="#8a8f68"/><stop offset="1" stop-color="#977f5c"/>
     </linearGradient>
+    <path id="pA" d="M-2 -6 C-20 -22 -40 -48 -42 -74 C-43 -90 -34 -102 -22 -103 C-17 -108 -9 -108 -5 -102 C-2 -76 -2 -40 -2 -6Z"/>
+    <path id="pB" d="M2 -6 C18 -20 36 -42 42 -66 C46 -82 40 -95 28 -97 C22 -101 14 -100 10 -94 C6 -70 4 -38 2 -6Z"/>
+    <path id="pC" d="M0 -10 C-10 -36 -14 -72 -8 -100 C-6 -110 2 -116 8 -112 C14 -114 20 -108 20 -100 C20 -72 12 -38 0 -10Z"/>
+    <path id="pD" d="M-1 -2 C-14 -6 -32 -18 -42 -36 C-47 -44 -54 -48 -55 -56 C-49 -55 -45 -58 -41 -63 C-35 -70 -27 -73 -19 -71 C-12 -52 -6 -26 -1 -2Z"/>
+    <path id="pE" d="M1 -1 C18 -3 40 -12 54 -28 C60 -35 68 -38 72 -46 C65 -48 60 -53 56 -60 C50 -70 40 -76 28 -76 C22 -76 16 -72 14 -66 C10 -44 5 -20 1 -1Z"/>
+    <path id="pF" d="M0 0 C-12 -4 -26 -16 -30 -36 C-32 -50 -26 -61 -16 -63 C-9 -64 -4 -58 -2 -50 C-1 -32 -1 -16 0 0Z"/>
+    <path id="pG" d="M0 0 C13 -3 28 -14 33 -32 C36 -46 30 -58 20 -61 C12 -63 6 -56 4 -48 C2 -30 1 -14 0 0Z"/>
+    <path id="pH" d="M1 -4 C-7 -14 -10 -32 -6 -50 C-4 -59 2 -64 7 -61 C13 -58 17 -50 17 -41 C16 -26 9 -12 1 -4Z"/>
+    <path id="pI" d="M3 -10 C0 -22 1 -36 5 -46 C8 -51 12 -48 13 -42 C14 -30 9 -18 3 -10Z"/>
+    <path id="pJ" d="M-27 -8 C-22 -2 -11 4 1 5 C13 4 25 -1 31 -10 C28 -22 20 -31 9 -32 C5 -28 0 -28 -4 -32 C-15 -31 -24 -22 -27 -8Z"/>
+    <clipPath id="cpA"><use href="#pA"/></clipPath>
+    <clipPath id="cpB"><use href="#pB"/></clipPath>
+    <clipPath id="cpC"><use href="#pC"/></clipPath>
+    <clipPath id="cpD"><use href="#pD"/></clipPath>
+    <clipPath id="cpE"><use href="#pE"/></clipPath>
+    <clipPath id="cpF"><use href="#pF"/></clipPath>
+    <clipPath id="cpG"><use href="#pG"/></clipPath>
+    <clipPath id="cpH"><use href="#pH"/></clipPath>
+    <clipPath id="cpI"><use href="#pI"/></clipPath>
+    <clipPath id="cpJ"><use href="#pJ"/></clipPath>
+    <path id="veins" fill="none" stroke="#8a4a55" stroke-width=".4" stroke-opacity=".5" d="M0 0 Q-61.9 -10.3 -124.7 -8.7 M0 0 Q-62.7 -4.1 -123.4 -20.0 M0 0 Q-59.0 -21.4 -121.1 -31.1 M0 0 Q-60.9 -15.4 -117.7 -42.0 M0 0 Q-54.2 -31.7 -113.4 -52.5 M0 0 Q-57.1 -26.1 -108.2 -62.6 M0 0 Q-47.6 -41.0 -102.1 -72.2 M0 0 Q-51.4 -36.0 -95.1 -81.2 M0 0 Q-39.4 -48.9 -87.3 -89.5 M0 0 Q-44.1 -44.7 -78.8 -97.0 M0 0 Q-29.9 -55.2 -69.7 -103.8 M0 0 Q-35.2 -52.0 -60.0 -109.7 M0 0 Q-19.4 -59.7 -49.8 -114.7 M0 0 Q-25.3 -57.5 -39.1 -118.7 M0 0 Q-8.2 -62.2 -28.2 -121.8 M0 0 Q-14.4 -61.1 -17.0 -123.8 M0 0 Q3.2 -62.7 -5.7 -124.9 M0 0 Q-3.2 -62.7 5.7 -124.9 M0 0 Q14.4 -61.1 17.0 -123.8 M0 0 Q8.2 -62.2 28.2 -121.8 M0 0 Q25.3 -57.5 39.1 -118.7 M0 0 Q19.4 -59.7 49.8 -114.7 M0 0 Q35.2 -52.0 60.0 -109.7 M0 0 Q29.9 -55.2 69.7 -103.8 M0 0 Q44.1 -44.7 78.8 -97.0 M0 0 Q39.4 -48.9 87.3 -89.5 M0 0 Q51.4 -36.0 95.1 -81.2 M0 0 Q47.6 -41.0 102.1 -72.2 M0 0 Q57.1 -26.1 108.2 -62.6 M0 0 Q54.2 -31.7 113.4 -52.5 M0 0 Q60.9 -15.4 117.7 -42.0 M0 0 Q59.0 -21.4 121.1 -31.1 M0 0 Q62.7 -4.1 123.4 -20.0 M0 0 Q61.9 -10.3 124.7 -8.7"/>
     <g id="specimen">
-      <g fill="none" stroke-linecap="round">
-        <path d="M1 12 C1 44 -2 76 -6 102 C-8 112 -6 118 -1 126 C9 144 18 174 22 220" stroke="#6f6945" stroke-width="3.4"/>
-        <path d="M.4 14 C.4 44 -2.6 76 -6.4 102 C-8.2 112 -6.4 118 -1.6 126 C8.4 144 17.4 174 21.4 220" stroke="#a49c76" stroke-width=".9" stroke-opacity=".7"/>
+      <!-- the stem, flattened in the press: a dark edge, a browned body, a paler midrib -->
+      <g fill="none" stroke-linecap="round" filter="url(#dryStem)">
+        <path d="M1 12 C1 44 -2 76 -6 102 C-8 112 -6 118 -1 126 C9 144 18 174 22 220" stroke="#4f4630" stroke-width="5"/>
+        <path d="M1 12 C1 44 -2 76 -6 102 C-8 112 -6 118 -1 126 C9 144 18 174 22 220" stroke="url(#gStem)" stroke-width="3.6"/>
+        <path d="M.6 14 C.6 44 -2.4 76 -6.2 102 C-8 112 -6.2 118 -1.4 126 C8.6 144 17.6 174 21.6 218" stroke="#a09670" stroke-width=".7" stroke-opacity=".75"/>
+        <path d="M-4 110 C-12 111 -18 108 -23 102" stroke="#5a5034" stroke-width="2.3"/>
+        <path d="M-4 110 C-12 111 -18 108 -23 102" stroke="#7a6f45" stroke-width="1.4"/>
       </g>
-      <g fill="#6a6142">
+      <g fill="#5e5034">
         <path d="M-3 60 l-6 -5 l6.4 1.2z"/><path d="M-6 94 l6 -4 l-1 4.6z"/><path d="M8 154 l7 -3 l-4 5z"/><path d="M17 190 l-6.5 -2.6 l5.6 4.6z"/>
       </g>
-      <path d="M-4 110 C-12 111 -18 108 -23 102" fill="none" stroke="#736c48" stroke-width="1.7" stroke-linecap="round"/>
+      <!-- the one leaf -->
       <g transform="translate(-23 102) rotate(232)" filter="url(#dry)">
-        <path fill="url(#lf)" stroke="#5f6640" stroke-width=".5" stroke-opacity=".55" d="M0 0 C1 -3 2 -5 4.0 -5.0 L7.8 -8.8 L9.5 -8.1 L13.3 -11.3 L15.0 -10.1 L18.9 -12.8 L20.5 -11.4 L24.4 -13.6 L26.0 -11.9 L29.9 -13.7 L31.6 -11.8 L35.4 -13.2 L37.1 -11.2 L40.9 -12.1 L42.6 -10.1 L46.5 -10.6 L48.1 -8.5 L52.0 -8.5 L53.6 -6.4 L57.5 -5.9 L59.2 -3.8 L63.0 -1.9 L66.0 0.6 L63.0 1.7 L59.2 3.3 L57.5 5.3 L53.6 5.6 L52.0 7.5 L48.1 7.4 L46.5 9.3 L42.6 8.7 L40.9 10.6 L37.1 9.7 L35.4 11.6 L31.6 10.2 L29.9 12.0 L26.0 10.3 L24.4 11.9 L20.5 9.8 L18.9 11.2 L15.0 8.8 L13.3 9.9 L9.5 7.1 L7.8 7.7 L4.0 4.3 C2 4 1 3 0 0Z"/>
-        <path d="M1 0 C24 -.8 46 -.4 64 .4" fill="none" stroke="#5f6640" stroke-width=".8" stroke-opacity=".65"/>
-        <path fill="none" stroke="#5f6640" stroke-width=".42" stroke-opacity=".42" d="M9.2 -0.2 Q15.2 -3.4 20.2 -10.2 M9.2 0.2 Q15.2 3.0 20.2 8.8 M18.3 -0.2 Q24.3 -4.7 29.3 -11.0 M18.3 0.2 Q24.3 4.1 29.3 9.6 M27.5 -0.2 Q33.5 -5.1 38.5 -10.4 M27.5 0.2 Q33.5 4.4 38.5 9.0 M36.7 -0.2 Q42.7 -4.8 47.7 -8.5 M36.7 0.2 Q42.7 4.2 47.7 7.4 M45.8 -0.2 Q51.8 -4.0 56.8 -5.4 M45.8 0.2 Q51.8 3.4 56.8 4.7"/>
+        <path fill="url(#lf)" stroke="#5a4d36" stroke-width=".8" stroke-opacity=".75" d="M0 0 C1 -3 2 -5 4.0 -5.0 L7.8 -8.8 L9.5 -8.1 L13.3 -11.3 L15.0 -10.1 L18.9 -12.8 L20.5 -11.4 L24.4 -13.6 L26.0 -11.9 L29.9 -13.7 L31.6 -11.8 L35.4 -13.2 L37.1 -11.2 L40.9 -12.1 L42.6 -10.1 L46.5 -10.6 L48.1 -8.5 L52.0 -8.5 L53.6 -6.4 L57.5 -5.9 L59.2 -3.8 L63.0 -1.9 L66.0 0.6 L63.0 1.7 L59.2 3.3 L57.5 5.3 L53.6 5.6 L52.0 7.5 L48.1 7.4 L46.5 9.3 L42.6 8.7 L40.9 10.6 L37.1 9.7 L35.4 11.6 L31.6 10.2 L29.9 12.0 L26.0 10.3 L24.4 11.9 L20.5 9.8 L18.9 11.2 L15.0 8.8 L13.3 9.9 L9.5 7.1 L7.8 7.7 L4.0 4.3 C2 4 1 3 0 0Z"/>
+        <path d="M1 0 C24 -.8 46 -.4 64 .4" fill="none" stroke="#535a38" stroke-width=".9" stroke-opacity=".8"/>
+        <path fill="none" stroke="#535a38" stroke-width=".45" stroke-opacity=".55" d="M9.2 -0.2 Q15.2 -3.4 20.2 -10.2 M9.2 0.2 Q15.2 3.0 20.2 8.8 M18.3 -0.2 Q24.3 -4.7 29.3 -11.0 M18.3 0.2 Q24.3 4.1 29.3 9.6 M27.5 -0.2 Q33.5 -5.1 38.5 -10.4 M27.5 0.2 Q33.5 4.4 38.5 9.0 M36.7 -0.2 Q42.7 -4.8 47.7 -8.5 M36.7 0.2 Q42.7 4.2 47.7 7.4 M45.8 -0.2 Q51.8 -4.0 56.8 -5.4 M45.8 0.2 Q51.8 3.4 56.8 4.7"/>
       </g>
-      <g fill="#7b7a4f" fill-opacity=".85" stroke="#5c5a39" stroke-width=".4" stroke-opacity=".6">
+      <g fill="#6d6a44" stroke="#4f4a31" stroke-width=".5" stroke-opacity=".8" filter="url(#dryStem)">
         <path d="M-4 5 C-16 6 -29 12 -39 25 C-37 25 -35 25 -34 24 C-27 18 -16 12 -4 9Z"/>
         <path d="M4 5 C17 8 27 17 33 31 C31 30 30 30 29 29 C23 20 15 13 4 9Z"/>
         <path d="M-1 10 C-4 20 -6 30 -10 40 C-9 39 -8 39 -7 39 C-2 31 1 21 1.5 11Z"/>
       </g>
+      <!-- the head, pressed paper-thin: opaque petals laid one over another, edges browned -->
       <g transform="rotate(-9)" filter="url(#dry)">
-        <g style="mix-blend-mode:multiply">
-          <path fill="url(#pl)" d="M-2 -6 C-20 -22 -40 -48 -42 -74 C-43 -90 -34 -102 -22 -103 C-17 -108 -9 -108 -5 -102 C-2 -76 -2 -40 -2 -6Z"/>
-          <path fill="url(#pl)" d="M2 -6 C18 -20 36 -42 42 -66 C46 -82 40 -95 28 -97 C22 -101 14 -100 10 -94 C6 -70 4 -38 2 -6Z"/>
-          <path fill="url(#pl)" d="M0 -10 C-10 -36 -14 -72 -8 -100 C-6 -110 2 -116 8 -112 C14 -114 20 -108 20 -100 C20 -72 12 -38 0 -10Z"/>
-          <path fill="url(#pl)" d="M-1 -2 C-14 -6 -32 -18 -42 -36 C-47 -44 -54 -48 -55 -56 C-49 -55 -45 -58 -41 -63 C-35 -70 -27 -73 -19 -71 C-12 -52 -6 -26 -1 -2Z"/>
-          <path fill="url(#pl)" d="M1 -1 C18 -3 40 -12 54 -28 C60 -35 68 -38 72 -46 C65 -48 60 -53 56 -60 C50 -70 40 -76 28 -76 C22 -76 16 -72 14 -66 C10 -44 5 -20 1 -1Z"/>
-          <path fill="url(#pl)" d="M0 0 C-12 -4 -26 -16 -30 -36 C-32 -50 -26 -61 -16 -63 C-9 -64 -4 -58 -2 -50 C-1 -32 -1 -16 0 0Z"/>
-          <path fill="url(#pl)" d="M0 0 C13 -3 28 -14 33 -32 C36 -46 30 -58 20 -61 C12 -63 6 -56 4 -48 C2 -30 1 -14 0 0Z"/>
-          <path fill="url(#pd)" d="M1 -4 C-7 -14 -10 -32 -6 -50 C-4 -59 2 -64 7 -61 C13 -58 17 -50 17 -41 C16 -26 9 -12 1 -4Z"/>
-          <path fill="url(#pd)" d="M3 -10 C0 -22 1 -36 5 -46 C8 -51 12 -48 13 -42 C14 -30 9 -18 3 -10Z"/>
-          <path fill="url(#pl)" d="M-27 -8 C-22 -2 -11 4 1 5 C13 4 25 -1 31 -10 C28 -22 20 -31 9 -32 C5 -28 0 -28 -4 -32 C-15 -31 -24 -22 -27 -8Z"/>
-          <path fill="#9a4a5c" fill-opacity=".35" d="M72 -46 C65 -48 60 -53 56 -60 C50 -70 40 -76 28 -76 C38 -72 48 -66 54 -58 C58 -52 64 -48 72 -46Z"/>
-          <path fill="#9a4a5c" fill-opacity=".32" d="M-55 -56 C-49 -55 -45 -58 -41 -63 C-35 -70 -27 -73 -19 -71 C-27 -69 -35 -66 -40 -60 C-44 -56 -49 -55 -55 -56Z"/>
-        </g>
-        <g fill="none" stroke="#86394f" stroke-linecap="round">
-          <path d="M-27 -8 C-24 -22 -15 -31 -4 -32 C0 -28 5 -28 9 -32 C20 -31 28 -22 31 -10" stroke-width=".9" stroke-opacity=".45"/>
-          <path d="M-22 -103 C-17 -108 -9 -108 -5 -102 M8 -112 C14 -114 20 -108 20 -100 M28 -97 C22 -101 14 -100 10 -94" stroke-width=".6" stroke-opacity=".4"/>
-          <path d="M-2 -46 C2 -52 9 -52 12 -46" stroke-width=".8" stroke-opacity=".5"/>
-          <g stroke-width=".38" stroke-opacity=".26">
-            <path d="M-2 -6 C-14 -30 -26 -58 -30 -90 M2 -6 C14 -28 26 -56 32 -86 M-1 -6 C-18 -20 -32 -38 -44 -54 M1 -4 C22 -14 42 -28 58 -46 M0 -12 C-4 -40 -2 -70 4 -104 M-6 -2 C-14 -10 -20 -16 -24 -22 M6 -2 C14 -10 20 -16 24 -24"/>
-          </g>
-        </g>
+          <g clip-path="url(#cpA)"><use href="#pA" fill="url(#gP1)"/><use href="#veins"/><use href="#pA" fill="none" stroke="#7c3f3e" stroke-width="5" stroke-opacity=".32"/></g>
+          <use href="#pA" fill="none" stroke="#6e3a37" stroke-width=".9" stroke-opacity=".7"/>
+          <g clip-path="url(#cpB)"><use href="#pB" fill="url(#gP2)"/><use href="#veins"/><use href="#pB" fill="none" stroke="#7c3f3e" stroke-width="5" stroke-opacity=".32"/></g>
+          <use href="#pB" fill="none" stroke="#6e3a37" stroke-width=".9" stroke-opacity=".7"/>
+          <g clip-path="url(#cpC)"><use href="#pC" fill="url(#gP1)"/><use href="#veins"/><use href="#pC" fill="none" stroke="#7c3f3e" stroke-width="5" stroke-opacity=".32"/></g>
+          <use href="#pC" fill="none" stroke="#6e3a37" stroke-width=".9" stroke-opacity=".7"/>
+          <g clip-path="url(#cpD)"><use href="#pD" fill="url(#gP2)"/><use href="#veins"/><use href="#pD" fill="none" stroke="#7c3f3e" stroke-width="5" stroke-opacity=".32"/></g>
+          <use href="#pD" fill="none" stroke="#6e3a37" stroke-width=".9" stroke-opacity=".7"/>
+          <g clip-path="url(#cpE)"><use href="#pE" fill="url(#gP1)"/><use href="#veins"/><use href="#pE" fill="none" stroke="#7c3f3e" stroke-width="5" stroke-opacity=".32"/></g>
+          <use href="#pE" fill="none" stroke="#6e3a37" stroke-width=".9" stroke-opacity=".7"/>
+          <g clip-path="url(#cpF)"><use href="#pF" fill="url(#gP2)"/><use href="#veins"/><use href="#pF" fill="none" stroke="#7c3f3e" stroke-width="5" stroke-opacity=".32"/></g>
+          <use href="#pF" fill="none" stroke="#6e3a37" stroke-width=".9" stroke-opacity=".7"/>
+          <g clip-path="url(#cpG)"><use href="#pG" fill="url(#gP1)"/><use href="#veins"/><use href="#pG" fill="none" stroke="#7c3f3e" stroke-width="5" stroke-opacity=".32"/></g>
+          <use href="#pG" fill="none" stroke="#6e3a37" stroke-width=".9" stroke-opacity=".7"/>
+          <g clip-path="url(#cpH)"><use href="#pH" fill="url(#gP3)"/><use href="#veins"/><use href="#pH" fill="none" stroke="#7c3f3e" stroke-width="5" stroke-opacity=".32"/></g>
+          <use href="#pH" fill="none" stroke="#6e3a37" stroke-width=".9" stroke-opacity=".7"/>
+          <g clip-path="url(#cpI)"><use href="#pI" fill="url(#gP3)"/><use href="#veins"/><use href="#pI" fill="none" stroke="#7c3f3e" stroke-width="5" stroke-opacity=".32"/></g>
+          <use href="#pI" fill="none" stroke="#6e3a37" stroke-width=".9" stroke-opacity=".7"/>
+          <g clip-path="url(#cpJ)"><use href="#pJ" fill="url(#gP2)"/><use href="#veins"/><use href="#pJ" fill="none" stroke="#7c3f3e" stroke-width="5" stroke-opacity=".32"/></g>
+          <use href="#pJ" fill="none" stroke="#6e3a37" stroke-width=".9" stroke-opacity=".7"/>
+          <path fill="#9a5a60" d="M72 -46 C65 -48 60 -53 56 -60 C50 -70 40 -76 28 -76 C38 -72 48 -66 54 -58 C58 -52 64 -48 72 -46Z"/>
+          <path fill="#9a5a60" d="M-55 -56 C-49 -55 -45 -58 -41 -63 C-35 -70 -27 -73 -19 -71 C-27 -69 -35 -66 -40 -60 C-44 -56 -49 -55 -55 -56Z"/>
+          <path d="M-2 -46 C2 -52 9 -52 12 -46" fill="none" stroke="#7c3f3e" stroke-width=".8" stroke-opacity=".6"/>
       </g>
-      <path d="M-6 1 C-7 7 -4 12 0 13 C4 12 7 7 6 1Z" fill="#857a4c" stroke="#5c5536" stroke-width=".5" stroke-opacity=".7"/>
+      <path d="M-6 1 C-7 7 -4 12 0 13 C4 12 7 7 6 1Z" fill="#76683f" stroke="#4f4630" stroke-width=".6"/>
     </g>
     <g id="tape">
       <path d="M0 1.4 L2.6 0 L5 1.8 L7.6 .3 L32 0 L56 .6 L58.4 -.2 L61 1.4 L60 5.5 L61.6 10 L60.4 14.5 L61.4 19 L58.6 20.4 L56 19.6 L32 20 L7 20.4 L4.4 19 L1.8 20.6 L-.4 19 L.8 14.5 L-.6 10 L.6 5.5Z" fill="#faf6f5" fill-opacity=".52" stroke="#a8939a" stroke-opacity=".45" stroke-width=".55" filter="url(#tapeSh)"/>
@@ -397,8 +432,8 @@ html:not(.ar) .intro-hint{font-style:italic}
         <span class="t-en" id="namesEn"><span class="n" id="nEn1">Karim</span> <span class="n"><span class="amp">and </span><span id="nEn2">Nour</span></span></span>
       </h1>
       <p class="formal">
-        <span class="t-ar">وذلك بمشيئة الله يوم <b id="dateAr">الخميس ٤ فبراير ٢٠٢٧</b>، في تمام <span id="timeAr">الساعة الثامنة مساءً</span>، <span id="venueAr" dir="auto">بفيلا روز، المعادي، القاهرة</span>.</span>
-        <span class="t-en">on <b id="dateEn">Thursday, 4 February 2027</b>, at <span id="timeEn">eight o'clock in the evening</span>, at <span id="venueEn" dir="auto">Villa Rose, Maadi, Cairo</span>.</span>
+        <span class="t-ar">وذلك بمشيئة الله <span class="nw">يوم <b id="dateAr">الخميس ٤ فبراير ٢٠٢٧</b>،</span> <span class="nw">في تمام <span id="timeAr">الساعة الثامنة مساءً</span>،</span> <span id="venueAr" dir="auto">بفيلا روز، المعادي، القاهرة</span>.</span>
+        <span class="t-en"><span class="nw">on <b id="dateEn">Thursday, 4 February 2027</b>,</span> <span class="nw">at <span id="timeEn">eight o'clock in the evening</span>,</span> at <span id="venueEn" dir="auto">Villa Rose, Maadi, Cairo</span>.</span>
       </p>
       <hr class="rule">
       <p class="verse" id="quote"><span class="t-ar">«وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً»<small>سورة الروم، ٢١</small></span><span class="t-en">“And He placed between you affection and mercy.”<small>Surat Ar-Rum, 30:21</small></span></p>
