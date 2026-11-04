@@ -364,7 +364,7 @@ ${sections(t).map((s) => `        <li>${bi(s)}</li>`).join("\n")}
 </div>
 <section style="padding-bottom:var(--band)">
   <div class="sec-head"><h2 class="d3">${bi({ ar: "تصاميم قريبة", en: "Similar designs" })}</h2><a class="link" href="${pre}templates/">${bi({ ar: "كل التصاميم", en: "All designs" })}</a></div>
-  <div class="grid">
+  <div class="grid related">
 ${related.map((x) => tile(x, pre)).join("\n")}
   </div>
 </section>

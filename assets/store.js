@@ -138,6 +138,13 @@
     window.addEventListener("resize", function () { var f = $("iframe", scr); if (f) fit(f); });
   }
 
+  /* the floating WhatsApp button stays out of the way until the hero has scrolled past */
+  var fab = $(".fab-wa"), heroEl = $(".hero");
+  if (fab && heroEl && "IntersectionObserver" in window) {
+    fab.classList.add("away");
+    new IntersectionObserver(function (es) { fab.classList.toggle("away", es[0].isIntersecting); }, { threshold: .15 }).observe(heroEl);
+  }
+
   /* ── hero: the invitation arriving in the family group ── */
   var stage = $(".hero-stage");
   if (stage) {
