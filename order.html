@@ -387,12 +387,15 @@ document.addEventListener("DOMContentLoaded", function () {
     html += '<dt class="due">' + (en() ? "Due now" : "المطلوب دلوقتي") + '</dt><dd class="due">' + (en() ? "EGP 0" : "ولا جنيه") + "</dd>";
     el("sumRows").innerHTML = html;
     el("barTotal").textContent = money(total());
-    /* the link is shown only when it can read as the couple's names */
+    /* the link is shown only when it can read as the couple's names, and the domain
+       only once the backend that serves those links is live */
     var base = slugify(el("n_en").value.trim());
-    el("slug").innerHTML = base
+    el("slug").innerHTML = base && C.api
       ? (en() ? "Your link: " : "لينككم: ") + '<bdi dir="ltr">' + esc(C.host) + "/<u>" + esc(base) + "</u></bdi>"
-      : (en() ? "Add your names in English to see your link, or we will agree it with you on WhatsApp."
-              : "اكتبوا الأسامي بالإنجليزي عشان تشوفوا لينككم، أو نتفق عليه معاكم على واتساب.");
+      : base
+        ? (en() ? "Your link will carry your names, " : "لينككم هيكون بأساميكم، ") + '<bdi dir="ltr"><u>' + esc(base) + "</u></bdi>" + (en() ? ". We send it to you with the invitation." : ". بنبعتهولكم مع الدعوة.")
+        : (en() ? "Add your names in English to see your link, or we will agree it with you on WhatsApp."
+                : "اكتبوا الأسامي بالإنجليزي عشان تشوفوا لينككم، أو نتفق عليه معاكم على واتساب.");
     el("payText").innerHTML = payRule();
     paintRush();
     var classic = state.pkg === "classic";
@@ -487,7 +490,7 @@ document.addEventListener("DOMContentLoaded", function () {
       [en() ? "Occasion" : "المناسبة", occLabel()],
       [en() ? "Names" : "الأسامي", el("n_ar").value + (el("n_en").value ? " / " + el("n_en").value : "")],
       [en() ? "Date" : "التاريخ", niceDate(!en()) + (niceTime(!en()) ? (en() ? ", " : "، ") + niceTime(!en()) : "")],
-      [en() ? "Venue" : "المكان", el("v_ar").value || el("v_en").value || (en() ? "To confirm later" : "هنأكده بعدين")],
+      [en() ? "Venue" : "المكان", (en() ? el("v_en").value || el("v_ar").value : el("v_ar").value || el("v_en").value) || (en() ? "To confirm later" : "هنأكده بعدين")],
       [en() ? "RSVPs go to" : "التأكيدات على", el("wa").value, 1],
       [en() ? "Total" : "الإجمالي", money(total())]
     ];
@@ -512,7 +515,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (el("notes").value.trim()) L2.push("ملاحظات Notes: " + el("notes").value.trim());
     L2.push("تأكيدات الحضور RSVP: " + el("wa").value.trim());
     if (el("contact").value.trim()) L2.push("للتواصل Contact: " + el("contact").value.trim());
-    if (slugify(el("n_en").value.trim())) L2.push("اللينك المقترح Link: " + C.host + "/" + slugify(el("n_en").value.trim()));
+    if (slugify(el("n_en").value.trim())) L2.push("اللينك المقترح Link: " + (C.api ? C.host + "/" : "") + slugify(el("n_en").value.trim()));
     return L2.join("\n");
   }
   function waHref(text) { return "https://wa.me/" + C.wa + "?text=" + encodeURIComponent(text); }
