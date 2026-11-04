@@ -80,6 +80,12 @@
       });
     });
     apply(params.get("occ") || "all");
+    /* carry a package chosen on the pricing table through to the product page */
+    if (pkgRank[pkg] != null) {
+      $$(".tile a[href*='templates/']", grid).forEach(function (a) {
+        a.href = a.getAttribute("href").replace(/\.html(\?.*)?$/, ".html?pkg=" + pkg);
+      });
+    }
   }
 
   /* ── product page: package picker, gallery, live demo ── */
@@ -95,6 +101,8 @@
       });
     };
     pick.addEventListener("change", setBuy);
+    var want = $("input[name=pkg][value='" + new URLSearchParams(location.search).get("pkg") + "']", pick);
+    if (want && !want.disabled) want.checked = true;
     setBuy();
   }
   var thumbs = $("#thumbs"), still = $("#still"), scr = $("#scr"), play = $("#play");
