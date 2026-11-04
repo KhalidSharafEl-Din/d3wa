@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>عمر وسلمى — دعوة خطوبة | Omar &amp; Salma</title>
-<meta name="description" content="دعوة خطوبة عمر وسلمى — السبت ٢٢ أغسطس ٢٠٢٦، ٨:٠٠ مساءً، فيلا روز، المعادي. The engagement of Omar &amp; Salma — Saturday, 22 August 2026, 8:00 PM, Villa Rose, Maadi, Cairo.">
+<title>عمر وسلمى، دعوة خطوبة | Omar &amp; Salma</title>
+<meta name="description" content="دعوة خطوبة عمر وسلمى، السبت ٢٢ أغسطس ٢٠٢٦، ٨:٠٠ مساءً، فيلا روز، المعادي. The engagement of Omar &amp; Salma, Saturday 22 August 2026, 8:00 PM, Villa Rose, Maadi, Cairo.">
 <meta name="theme-color" content="#F7F5F0">
 <meta name="color-scheme" content="light">
 
@@ -14,420 +14,370 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/demos/modern.html">
 <link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/demos/modern.html">
-<meta property="og:title" content="عمر وسلمى — دعوة خطوبة · Omar &amp; Salma">
-<meta property="og:description" content="السبت ٢٢ أغسطس ٢٠٢٦ · ٨:٠٠ مساءً · فيلا روز، المعادي — Saturday, 22 August 2026, 8:00 PM">
+<meta property="og:title" content="عمر وسلمى، دعوة خطوبة | Omar &amp; Salma">
+<meta property="og:description" content="السبت ٢٢ أغسطس ٢٠٢٦، ٨:٠٠ مساءً، فيلا روز، المعادي. Saturday 22 August 2026, 8:00 PM">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F7F5F0'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='20' fill='%23C4552D'%3E%E2%9C%B3%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;800&family=Archivo:wght@400;500;700;800&display=swap">
+<!-- fonts load without blocking the page: on a slow connection the invitation still opens at once -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Archivo:wdth,wght@62..125,300..800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Archivo:wdth,wght@62..125,300..800&display=swap"></noscript>
 
 <style>
-/* ─────────── TOKENS — Modern Editorial (D3-011) ─────────── */
+/* ─────────── TOKENS: Modern Editorial (D3-011) ───────────
+   One poster, one frame. Names set to fill the measure; numbered
+   section openers on a heavy rule; light/heavy weight contrast.  */
 :root{
   --paper:#F7F5F0;
-  --ink:#1A1A1A;
-  --ink-40:rgba(26,26,26,.4);
-  --ink-15:rgba(26,26,26,.15);
-  --accent:#C4552D;
-  --amber:#E98A15;
-  --ar:"Almarai",-apple-system,"Segoe UI",Tahoma,sans-serif;
+  --paper-2:#ECE8DF;
+  --ink:#141414;
+  --ink-2:#5A564F;          /* secondary text, 6.6:1 on paper */
+  --rule:rgba(20,20,20,.16);
+  --accent:#C4552D;         /* large type only */
+  --accent-ink:#A8441F;     /* small accent text, 5.4:1 on paper */
+  --accent-hi:#E06A3B;      /* accent on the ink band */
+  --on-ink:#F7F5F0;
+  --on-ink-2:#ABA79E;       /* secondary on ink, 7.6:1 */
+  --on-ink-rule:rgba(247,245,240,.2);
+  --ar:"Almarai",Tahoma,"Segoe UI",sans-serif;
   --lat:"Archivo","Helvetica Neue",Arial,sans-serif;
-  --frame:clamp(10px,2.4vw,20px);
+  --frame:clamp(10px,2.2vw,18px);
+  --gut:calc(var(--frame) + clamp(18px,5vw,56px));
+  --sec:clamp(56px,10vw,120px);
+  --ease:cubic-bezier(.76,0,.24,1);
 }
 
+/* Arabic is set ~1.15x the Latin size: type uses rem, the root flips per language */
+html{font-size:17px;overflow-x:clip;-webkit-text-size-adjust:100%}
+html.en{font-size:15px}
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{
-  margin:0;
-  overflow-x:hidden;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:var(--ar);
-  font-weight:400;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
+  margin:0;overflow-x:hidden;
+  background:var(--paper);color:var(--ink);
+  font-family:var(--ar);font-weight:400;line-height:1.8;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
-html.en body{font-family:var(--lat)}
+html.en body{font-family:var(--lat);line-height:1.6}
 a{color:inherit}
+p{margin:0}
 ::selection{background:var(--accent);color:var(--paper)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+[hidden]{display:none !important}
 
-/* ─────────── LANGUAGE SWITCHING — AR default, html.en → English ─────────── */
+/* ─────────── LANGUAGE SWITCHING: AR default, html.en → English ─────────── */
 html.en .t-ar{display:none}
 html:not(.en) .t-en{display:none}
 .t-en{font-family:var(--lat)}
 .t-ar{font-family:var(--ar)}
+.cond{font-family:var(--lat);font-stretch:72%;font-weight:800}
 
-/* ─────────── THE FRAME — one thin rule, nothing else ─────────── */
+/* ─────────── THE FRAME: one rule that inverts over the ink band ─────────── */
 .frame{
-  position:fixed;
-  inset:var(--frame);
-  border:1px solid var(--ink);
-  pointer-events:none;
-  z-index:40;
+  position:fixed;inset:var(--frame);z-index:40;pointer-events:none;
+  border:1px solid #EBE9E4;mix-blend-mode:difference;
 }
 
-/* ─────────── LANG TOGGLE — a word, not a widget ─────────── */
-.lang-toggle{
-  position:fixed;
-  top:calc(var(--frame) + 12px + env(safe-area-inset-top));
-  inset-inline-end:calc(var(--frame) + 16px);
-  z-index:50;
-  appearance:none;border:0;background:none;padding:6px 2px;
-  cursor:pointer;
-  color:var(--ink);
-  font-size:11px;font-weight:700;
-  letter-spacing:.22em;text-transform:uppercase;
-  border-bottom:1px solid var(--ink);
+/* ─────────── FIXED CONTROLS ─────────── */
+.lang-toggle,.music-toggle{
+  position:fixed;z-index:50;
+  appearance:none;cursor:pointer;
+  background:var(--paper);color:var(--ink);
+  border:1px solid var(--ink);border-radius:0;
   -webkit-tap-highlight-color:transparent;
+  transition:background-color .2s ease,color .2s ease;
 }
-.lang-toggle .t-en{font-family:var(--ar);font-size:13px;letter-spacing:0}
-.lang-toggle .t-ar{font-family:var(--lat);letter-spacing:.22em}
-.lang-toggle:hover{color:var(--accent);border-color:var(--accent)}
-.lang-toggle:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+.lang-toggle{
+  top:calc(var(--frame) + 12px + env(safe-area-inset-top));
+  inset-inline-end:calc(var(--frame) + 64px);
+  height:44px;
+  min-width:52px;padding:0 12px;
+  font-size:13px;font-weight:800;line-height:1;
+}
+.lang-toggle .t-ar{font-family:var(--lat);letter-spacing:.06em}
+.lang-toggle .t-en{font-family:var(--ar);font-size:15px}
+/* both controls sit in the top corner, clear of the poster foot and the store bar */
+.music-toggle{
+  top:calc(var(--frame) + 12px + env(safe-area-inset-top));
+  inset-inline-end:calc(var(--frame) + 12px);
+  width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+}
+.music-toggle svg{width:18px;height:18px}
+.lang-toggle:hover,.music-toggle:hover{background:var(--ink);color:var(--paper)}
+.music-toggle[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 
-/* ─────────── LAYOUT SKELETON ─────────── */
-main{
-  padding:calc(var(--frame) + 8px) calc(var(--frame) + clamp(14px,4.5vw,64px));
-}
-section{padding-block:clamp(56px,12vh,140px)}
+/* ─────────── SKELETON ─────────── */
+main{counter-reset:sec}
+.wrap{padding-inline:var(--gut);max-width:calc(1180px + 2 * var(--gut));margin-inline:auto}
+.sec{padding-top:var(--sec)}
+.numbered{counter-increment:sec}
+.sec .sec-grid{border-top:2px solid var(--ink);padding-top:18px}
 
-/* tiny widetracked caps label — the editorial voice */
-.lbl{
-  margin:0 0 clamp(28px,6vh,56px);
-  font-size:10px;font-weight:700;
-  letter-spacing:.34em;text-transform:uppercase;
-  color:var(--ink);
+/* section opener: big number + real headline */
+.sec-h{
+  margin:0 0 28px;
+  display:flex;align-items:baseline;gap:14px;
+  font-size:1.55rem;font-weight:800;line-height:1.3;
 }
-.lbl .t-ar{font-size:12px;font-weight:800;letter-spacing:.14em}
-.lbl .no{
-  font-family:var(--lat);
-  color:var(--accent);
-  letter-spacing:.1em;
-  margin-inline-end:.9em;
+html.en .sec-h{letter-spacing:-.01em}
+.no{
+  flex:none;
+  font-family:var(--lat);font-stretch:72%;font-weight:800;
+  font-size:54px;line-height:.8;color:var(--accent);
+  font-variant-numeric:tabular-nums;
 }
+.no::before{content:counter(sec,decimal-leading-zero)}
+html:not(.en) .no{font-family:var(--ar);font-size:46px;line-height:.9}
+html:not(.en) .no::before{content:counter(sec,arabic-indic)}
 
-/* ─────────── HERO — the poster ─────────── */
+.lede{font-size:1rem;color:var(--ink-2);max-width:30em}
+
+/* ─────────── HERO: the poster ─────────── */
 .hero{
-  min-height:100vh;min-height:100svh;
-  display:flex;flex-direction:column;justify-content:space-between;
-  padding-top:calc(clamp(28px,6vh,64px) + env(safe-area-inset-top));
-  padding-bottom:clamp(28px,6vh,56px);
+  padding-top:calc(var(--frame) + 40px + env(safe-area-inset-top));
+  padding-bottom:clamp(40px,7vw,72px);
 }
-.hero-top{max-width:70%}
-.kicker{
-  margin:0;
-  font-size:10px;font-weight:700;
-  letter-spacing:.34em;text-transform:uppercase;
-}
-.kicker .t-ar{font-size:12px;font-weight:800;letter-spacing:.14em}
+.arc{display:block;width:min(460px,86%);margin:clamp(40px,7vw,64px) auto 0;overflow:visible}
+.arc text{fill:var(--ink)}
+.arc .t-ar{font-family:var(--ar);font-size:30px;font-weight:700}
+.arc .t-en{font-family:var(--lat);font-size:25px;font-weight:500}
 
-/* one arched line of type — the only curve on the page */
-.arc{
-  display:block;
-  width:min(480px,82vw);
-  margin:clamp(28px,7vh,72px) auto 0;
-  overflow:visible;
-}
-.arc text{
-  fill:var(--ink);
-  font-size:14px;
-  font-weight:400;
-}
-.arc .t-en{font-family:var(--lat);font-size:11.5px;font-weight:500;letter-spacing:.32em;text-transform:uppercase}
-.arc .t-ar{font-family:var(--ar);font-size:16px}
-
-/* the names — full-bleed poster type */
+/* names: JS fits the longest line to the measure; CSS size is the no-JS fallback */
 .names{
-  margin:clamp(18px,4vh,40px) 0 0;
+  margin:6px 0 0;
+  font-size:clamp(64px,24vw,220px);
   font-weight:800;
-  line-height:1;
 }
-.names .ln{
-  display:block;
-  font-size:clamp(56px,17vw,196px);
-  letter-spacing:0;
-}
+.names .ln{display:block;width:max-content;max-width:none;white-space:nowrap}
+.names .ln + .ln{margin-inline-start:auto}   /* line 2 steps to the far edge */
+.names .t-ar .ln{line-height:1.12}
 .names .t-en .ln{
-  font-family:var(--lat);font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:-.02em;
-  line-height:.92;
+  font-family:var(--lat);font-stretch:72%;font-weight:800;
+  text-transform:uppercase;letter-spacing:-.012em;line-height:.88;
 }
-.names .t-ar .ln{line-height:1.16}
-.names .ln + .ln{margin-inline-start:clamp(24px,12vw,180px)} /* the off-center step */
+.names .t-en .ln + .ln{margin-top:.04em}
+.names.fit-wrap .ln{width:auto;white-space:normal}
 .mark{
   display:inline-block;
-  color:var(--accent);
-  font-size:.32em;
-  font-weight:400;
-  vertical-align:super;
-  margin-inline-start:.25em;
-  font-family:var(--lat);
+  font-family:var(--lat);font-weight:400;font-size:.3em;
+  color:var(--accent);vertical-align:super;margin-inline-start:.18em;
 }
 
-/* tiny meta line against the giant names — the 6× scale gap IS the design */
-.hero-meta{
-  margin:clamp(28px,6vh,56px) 0 0;
-  display:flex;flex-wrap:wrap;align-items:baseline;
-  gap:8px 18px;
-  font-size:12px;
-  color:var(--ink);
+.hero-foot{
+  margin-top:clamp(28px,6vw,48px);
+  border-top:2px solid var(--ink);padding-top:14px;
+  display:grid;grid-template-columns:auto 1fr;gap:6px 18px;align-items:start;
 }
-.hero-meta .t-en{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase}
-.hero-meta .sep{color:var(--accent)}
+.hf-date{font-size:2.5rem;line-height:1;color:var(--accent);white-space:nowrap}
+html:not(.en) .hf-date{font-family:var(--ar);font-weight:800;font-size:2.05rem;line-height:1.15}
+.hf-meta{text-align:end;font-size:.94rem;line-height:1.5}
+.hf-meta b{display:block;font-weight:800}
+.hf-meta span.sub{display:block;color:var(--ink-2)}
 
-/* ─────────── COUNTDOWN — type only, no boxes ─────────── */
-.cd-row{
-  display:flex;align-items:baseline;flex-wrap:wrap;
-  gap:0 clamp(14px,4vw,44px);
+/* hero entrance, played once when the fold opens */
+.names .ln{transition:opacity .7s ease .35s,transform 1s cubic-bezier(.2,.7,.2,1) .35s}
+.names .ln + .ln{transition-delay:.5s}
+html.pre .names .ln{opacity:0;transform:translateY(.22em)}
+
+/* ─────────── COUNTDOWN: the ink band ─────────── */
+.band{
+  background:var(--ink);color:var(--on-ink);
+  margin-top:0;padding-block:clamp(44px,8vw,96px);
 }
-.cd-cell{display:flex;flex-direction:column;gap:10px}
+.band .sec-grid{border-top:0;padding-top:0}
+.band .no{color:var(--accent-hi)}
+.cd-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.cd-cell{padding-inline:10px;border-inline-start:1px solid var(--on-ink-rule)}
+.cd-cell:first-child{padding-inline-start:0;border-inline-start:0}
 .cd-num{
-  font-family:var(--lat);
-  font-weight:700;
+  display:block;
+  font-family:var(--lat);font-stretch:72%;font-weight:800;
+  font-size:clamp(46px,14vw,128px);line-height:1;
   font-variant-numeric:tabular-nums;
-  font-size:clamp(44px,12vw,120px);
-  line-height:1;
-  letter-spacing:-.02em;
 }
-html:not(.en) .cd-num{font-family:var(--ar);font-weight:800;letter-spacing:0}
-.cd-lbl{
-  font-size:10px;font-weight:700;
-  letter-spacing:.3em;text-transform:uppercase;
-  color:var(--ink-40);
-}
-.cd-lbl .t-ar{font-size:11px;letter-spacing:.1em;font-weight:400;color:var(--ink-40)}
-.cd-done{
-  display:none;
-  margin:0;
-  font-weight:800;
-  font-size:clamp(36px,9vw,88px);
-  line-height:1.1;
-  color:var(--accent);
-}
-html.en .cd-done{font-family:var(--lat);text-transform:uppercase;letter-spacing:-.01em}
+html:not(.en) .cd-num{font-family:var(--ar);font-size:clamp(42px,12.5vw,116px);line-height:1.15}
+.cd-lbl{display:block;margin-top:8px;font-size:.88rem;font-weight:700;color:var(--on-ink-2)}
+.cd-done{display:none;font-size:2.2rem;font-weight:800;line-height:1.3;color:var(--accent-hi)}
 .countdown-wrap.is-done .cd-row{display:none}
 .countdown-wrap.is-done .cd-done{display:block}
 
-/* ─────────── DETAILS — a quiet ledger ─────────── */
-.details{margin:0;max-width:560px}
-.details .row{
-  display:grid;
-  grid-template-columns:minmax(84px,120px) 1fr;
-  gap:16px;
-  align-items:baseline;
-  padding:clamp(16px,3vh,24px) 0;
-  border-top:1px solid var(--ink-15);
+/* ─────────── PULL QUOTE: light against heavy ─────────── */
+.pull{margin:0;padding-top:var(--sec)}
+.pull p{
+  max-width:17em;
+  font-size:1.75rem;font-weight:300;line-height:1.65;
 }
-.details .row:last-child{border-bottom:1px solid var(--ink-15)}
-.details dt{
-  font-size:10px;font-weight:700;
-  letter-spacing:.3em;text-transform:uppercase;
-  color:var(--ink-40);
-}
-.details dt .t-ar{font-size:11px;letter-spacing:.1em;font-weight:400}
-.details dd{
-  margin:0;
-  font-size:15px;font-weight:400;line-height:1.5;
-}
-.details dd .t-en{font-weight:500}
-.details dd small{
-  display:block;
-  font-size:11.5px;
-  color:var(--ink-40);
-  margin-top:2px;
-}
+html.en .pull p{font-size:2.05rem;line-height:1.25;letter-spacing:-.015em;max-width:15em}
+.pull .qm{color:var(--accent);font-weight:800}
 
-/* text links — underline is the whole button */
-.tlinks{
-  display:flex;flex-wrap:wrap;
-  gap:14px 32px;
-  margin-top:clamp(24px,5vh,40px);
+/* ─────────── LEDGERS: agenda + details ─────────── */
+.ledger{list-style:none;margin:0;padding:0;max-width:620px}
+.ledger li{
+  display:grid;grid-template-columns:5.2em 1fr;gap:16px;align-items:baseline;
+  padding:14px 0;border-bottom:1px solid var(--rule);
 }
-.tlink{
-  font-size:11px;font-weight:700;
-  letter-spacing:.22em;text-transform:uppercase;
-  text-decoration:none;
-  border-bottom:1px solid var(--ink);
-  padding-bottom:4px;
-  transition:color .25s ease,border-color .25s ease;
-}
-.tlink .t-ar{font-size:13px;letter-spacing:.06em;font-weight:800}
-.tlink:hover{color:var(--accent);border-color:var(--amber)}
-.tlink:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
-.tlink .aro{font-family:var(--lat);color:var(--accent);margin-inline-start:.5em;letter-spacing:0}
+.ledger li:first-child{padding-top:0}
+.ag-time{font-family:var(--lat);font-stretch:72%;font-weight:800;font-size:1.3rem;color:var(--accent-ink);font-variant-numeric:tabular-nums}
+html:not(.en) .ag-time{font-family:var(--ar);font-size:1.12rem}
+.ag-what{font-size:1.06rem;font-weight:700}
 
-/* ─────────── RSVP — two words, poster-sized ─────────── */
-.rsvp-note{
-  margin:0 0 clamp(24px,5vh,44px);
-  font-size:13px;
-  line-height:1.7;
-  max-width:34em;
-}
-.rsvp-note .t-en{font-size:12.5px;font-weight:500}
-.rsvp-links{display:flex;flex-direction:column;gap:clamp(10px,2.5vh,20px);align-items:flex-start}
-.rsvp{
-  display:inline-block;
-  text-decoration:none;
-  font-weight:800;
-  font-size:clamp(30px,8vw,72px);
-  line-height:1.15;
-  color:var(--ink);
-  border-bottom:2px solid var(--ink);
-  padding-bottom:.06em;
-  transition:color .25s ease,border-color .25s ease;
-}
-html.en .rsvp{font-family:var(--lat);text-transform:uppercase;letter-spacing:-.01em}
-.rsvp:hover{color:var(--accent);border-color:var(--accent)}
-.rsvp:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
-.rsvp.no{
-  font-weight:400;
-  font-size:clamp(18px,4.4vw,32px);
-  color:var(--ink-40);
-  border-bottom-width:1px;border-color:var(--ink-15);
-}
-html.en .rsvp.no{font-weight:500}
-.rsvp .aro{font-family:var(--lat);color:var(--accent);font-weight:400;margin-inline-start:.3em}
+.facts{margin:0;max-width:620px}
+.fact{padding:16px 0;border-bottom:1px solid var(--rule)}
+.fact:first-child{padding-top:0}
+.fact dt{font-size:.88rem;font-weight:700;color:var(--ink-2)}
+.fact dd{margin:4px 0 0;font-size:1.45rem;font-weight:800;line-height:1.35}
+html.en .fact dd{letter-spacing:-.01em}
+.fact dd small{display:block;margin-top:2px;font-size:.94rem;font-weight:400;color:var(--ink-2);letter-spacing:0}
 
-/* ─────────── FOOTER ─────────── */
-footer{
-  padding:0 0 clamp(20px,4vh,40px);
-  display:flex;justify-content:space-between;align-items:baseline;
-  gap:16px;
-  font-family:var(--lat);
-  font-size:9.5px;font-weight:500;
-  letter-spacing:.28em;text-transform:uppercase;
-  color:var(--ink-40);
-}
-footer .ast{color:var(--accent);letter-spacing:0}
-
-/* ─────────── INTRO — TYPOGRAPHIC SPLIT ─────────── */
-[hidden]{display:none !important}
-.intro{
-  position:fixed;inset:0;z-index:100;
-  cursor:pointer;overflow:hidden;
+/* ─────────── BUTTONS: square, like the frame ─────────── */
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px;max-width:620px}
+.btn{
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  min-height:52px;padding:8px 16px;
+  border:1.5px solid var(--ink);border-radius:0;
+  background:transparent;color:var(--ink);
+  font-size:.94rem;font-weight:800;line-height:1.3;text-decoration:none;
+  transition:background-color .2s ease,color .2s ease,border-color .2s ease;
   -webkit-tap-highlight-color:transparent;
 }
-.intro-a,.intro-b{
-  position:absolute;left:0;width:100%;height:50.1%;
-  background:var(--paper);
-  transition:transform .85s cubic-bezier(.76,0,.24,1) .12s;
-}
-.intro-a{top:0;border-bottom:1px solid var(--ink)}
-.intro-b{bottom:0}
-.intro-core{
-  position:absolute;inset:0;z-index:2;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:clamp(18px,4vh,32px);
-  padding:calc(var(--frame) + 24px);text-align:center;
-  transition:opacity .3s ease;
-}
-.intro-kicker{margin:0;font-size:10px;font-weight:700;letter-spacing:.34em;text-transform:uppercase}
-.intro-kicker .t-ar{font-size:12px;font-weight:800;letter-spacing:.14em}
-.intro-names{margin:0;font-weight:800;line-height:1.1;font-size:clamp(40px,11vw,110px)}
-.intro-names .t-en{font-family:var(--lat);text-transform:uppercase;letter-spacing:-.02em;line-height:.95}
-.intro-names .t-ar{font-family:var(--ar)}
-.intro-hint{
-  margin:0;padding-bottom:5px;
-  font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--accent);border-bottom:1px solid var(--accent);
-}
-.intro-hint .t-ar{font-size:13px;letter-spacing:.06em;font-weight:800}
-.intro:focus-visible{outline:none}
-.intro:focus-visible .intro-hint{outline:1px solid var(--accent);outline-offset:5px}
-.intro.open{pointer-events:none}
-.intro.open .intro-core{opacity:0}
-.intro.open .intro-a{transform:translateY(-101%)}
-.intro.open .intro-b{transform:translateY(101%)}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--accent-ink);border-color:var(--accent-ink)}
 
-/* ─────────── AGENDA — SCHEDULE LEDGER ─────────── */
-.agenda{margin:0;max-width:560px;list-style:none;padding:0}
-.agenda .ag-item{
-  display:grid;
-  grid-template-columns:minmax(84px,120px) 1fr;
-  gap:16px;align-items:baseline;
-  padding:clamp(14px,2.6vh,20px) 0;
-  border-top:1px solid var(--ink-15);
-}
-.agenda .ag-item:last-child{border-bottom:1px solid var(--ink-15)}
-.ag-time{font-family:var(--lat);font-weight:700;font-variant-numeric:tabular-nums;font-size:15px;letter-spacing:.02em}
-html:not(.en) .ag-time{font-family:var(--ar);font-weight:800}
-.ag-what{font-size:15px}
-.ag-what .t-en{font-weight:500}
+/* ─────────── NOTES: dress / gift ─────────── */
+.note{font-size:1.3rem;font-weight:700;line-height:1.6;max-width:22em}
+html.en .note{line-height:1.4;letter-spacing:-.01em}
 
-/* ─────────── NOTE LINE (dress / gift) ─────────── */
-.note-line{margin:0;font-size:15px;line-height:1.7;max-width:34em}
-.note-line .t-en{font-weight:500}
-
-/* ─────────── GALLERY — STRICT RECTANGLES ─────────── */
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,2.4vw,24px);max-width:720px}
-.gframe{
-  margin:0;position:relative;overflow:hidden;
-  border:1px solid var(--ink-15);
-  aspect-ratio:3/4;
-  display:flex;align-items:center;justify-content:center;
-}
-.gnum{position:absolute;top:8px;inset-inline-start:10px;font-family:var(--lat);font-size:9.5px;font-weight:500;letter-spacing:.28em;color:var(--ink-40)}
-.gph{font-family:var(--lat);color:var(--accent);font-size:18px;line-height:1;opacity:.85}
+/* ─────────── GALLERY ─────────── */
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:820px}
+.gframe{margin:0;position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--paper-2)}
+.gframe:first-child{grid-column:1 / -1;aspect-ratio:4/3}
 .gframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--lat);font-size:22px;color:var(--accent)}
 .gframe.has-img .gph{display:none}
+.gallery.has-any .gframe:not(.has-img){display:none}
 
-/* ─────────── GUEST COUNT CHIPS ─────────── */
-.guests{margin:0 0 clamp(20px,4vh,36px)}
-.guests-lbl{
-  display:block;margin-bottom:12px;
-  font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--ink-40);
-}
-.guests-lbl .t-ar{font-size:11px;letter-spacing:.1em;font-weight:400}
-.guest-chips{display:flex;gap:10px;flex-wrap:wrap}
+/* ─────────── RSVP ─────────── */
+.guests{margin:28px 0 0}
+.guests-lbl{display:block;margin-bottom:10px;font-size:.88rem;font-weight:700;color:var(--ink-2)}
+.guest-chips{display:flex;gap:8px;flex-wrap:wrap}
 .chip{
-  min-width:48px;min-height:44px;padding:0 14px;
-  border:1px solid var(--ink);border-radius:0;
-  background:none;color:var(--ink);
-  font-family:var(--lat);font-size:13px;font-weight:700;letter-spacing:.08em;
-  cursor:pointer;
-  transition:background-color .25s ease,color .25s ease;
+  min-width:56px;min-height:52px;padding:0 14px;
+  border:1.5px solid var(--ink);border-radius:0;
+  background:none;color:var(--ink);cursor:pointer;
+  font-family:var(--lat);font-stretch:72%;font-weight:800;font-size:20px;
+  transition:background-color .2s ease,color .2s ease;
   -webkit-tap-highlight-color:transparent;
 }
-html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-spacing:0}
+html:not(.en) .chip{font-family:var(--ar);font-size:19px}
+.chip:hover{background:var(--paper-2)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.chip:hover{color:var(--accent);border-color:var(--accent)}
-.chip[aria-pressed="true"]:hover{color:var(--paper);border-color:var(--ink)}
-.chip:focus-visible{outline:1px solid var(--accent);outline-offset:3px}
-
-/* ─────────── MUSIC TOGGLE ─────────── */
-.music-toggle{
-  position:fixed;
-  bottom:calc(var(--frame) + 12px);
-  inset-inline-start:calc(var(--frame) + 12px);
-  z-index:50;
-  width:44px;height:44px;
-  border:1px solid var(--ink);border-radius:0;
-  background:var(--paper);color:var(--ink);cursor:pointer;
+.rsvp-yes{
   display:flex;align-items:center;justify-content:center;
-  transition:background-color .25s ease,color .25s ease;
-  -webkit-tap-highlight-color:transparent;
+  margin-top:20px;max-width:620px;min-height:64px;padding:10px 20px;
+  background:var(--ink);color:var(--paper);text-decoration:none;
+  font-size:1.3rem;font-weight:800;
+  transition:background-color .2s ease;
 }
-.music-toggle svg{width:18px;height:18px}
-.music-toggle[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.music-toggle:focus-visible{outline:1px solid var(--accent);outline-offset:3px}
+html.en .rsvp-yes{font-stretch:88%;letter-spacing:-.005em}
+.rsvp-yes:hover{background:var(--accent-ink)}
+.rsvp-more{display:flex;flex-wrap:wrap;gap:6px 28px;margin-top:14px}
+.tlink{
+  display:inline-flex;align-items:center;min-height:44px;
+  font-size:1rem;font-weight:700;color:var(--ink);
+  text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:6px;
+  text-decoration-color:var(--rule);
+  transition:text-decoration-color .2s ease,color .2s ease;
+}
+.tlink:hover{color:var(--accent-ink);text-decoration-color:currentColor}
 
-/* ─────────── MOTION — restrained ─────────── */
-.rv{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease}
-.rv.in{opacity:1;transform:none}
+/* ─────────── CLOSING ─────────── */
+.closing{padding-top:calc(var(--sec) * 1.1);padding-bottom:12px}
+.closing .sign-rule{border-top:2px solid var(--ink);padding-top:22px}
+.closing-big{font-size:clamp(56px,22vw,200px);font-weight:800;margin:0}
+.closing-big .ln{display:block;width:max-content;white-space:nowrap}
+.closing-big .t-ar .ln{line-height:1.2}
+.closing-big .t-en .ln{font-family:var(--lat);font-stretch:72%;text-transform:uppercase;letter-spacing:-.012em;line-height:.9}
+.closing-big.fit-wrap .ln{width:auto;white-space:normal}
+.sign{margin-top:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 20px;font-size:1rem;font-weight:700}
+.sign .sub{color:var(--ink-2);font-weight:400}
+
+/* ─────────── INTRO: the folded poster ───────────
+   Two halves carry the same face; tapping tears the monogram along the fold. */
+.intro{position:fixed;inset:0;z-index:100;cursor:pointer;overflow:hidden;-webkit-tap-highlight-color:transparent}
+.ih{position:absolute;left:0;right:0;height:50%;overflow:hidden;background:var(--paper);transition:transform .95s var(--ease) .08s}
+.ih.top{top:0}
+.ih.bot{bottom:0;height:calc(50% + 1px)}
+.ih-face{
+  position:absolute;left:0;right:0;height:100vh;height:100dvh;
+  display:grid;grid-template-rows:1fr auto 1fr;justify-items:center;
+  padding:calc(var(--frame) + 28px) var(--gut);text-align:center;
+}
+.ih.top .ih-face{top:0}
+.ih.bot .ih-face{bottom:0}
+.ih-frame{position:absolute;left:var(--frame);right:var(--frame);border:1px solid var(--ink);pointer-events:none}
+.ih.top .ih-frame{top:var(--frame);bottom:-2px;border-bottom:0}
+.ih.bot .ih-frame{bottom:var(--frame);top:-2px;border-top:0}
+.mono{
+  display:flex;align-items:center;justify-content:center;gap:.04em;
+  font-size:clamp(120px,40vw,300px);line-height:1;
+}
+.mono b{font-weight:800}
+.mono .t-en b{font-family:var(--lat);font-stretch:72%;text-transform:uppercase}
+.mono .t-ar b{font-family:var(--ar);line-height:1.1;font-size:.78em}
+.mono .t-ar,.mono .t-en{display:flex;align-items:center;gap:.06em}
+html.en .mono .t-ar,html:not(.en) .mono .t-en{display:none}
+.mono i{font-style:normal;font-family:var(--lat);font-weight:300;color:var(--accent);font-size:.62em;transform:translateY(-.02em)}
+.mono.single i,.mono.single .m2{display:none}
+.ih-low{align-self:start;display:flex;flex-direction:column;align-items:center;margin-top:16px}
+.ih-names{font-size:1.4rem;font-weight:800;line-height:1.4}
+.ih-date{margin-top:4px;font-size:1rem;color:var(--ink-2)}
+.ih-hint{
+  margin-top:clamp(28px,6vh,48px);
+  display:inline-flex;align-items:center;min-height:48px;padding:0 22px;
+  background:var(--ink);color:var(--paper);
+  font-size:1rem;font-weight:800;
+}
+/* fold marks at the crease, gone once it opens */
+.intro::before,.intro::after{
+  content:"";position:absolute;z-index:2;top:50%;width:18px;height:1px;background:var(--ink);
+  transition:opacity .2s ease;
+}
+.intro::before{left:var(--frame)}
+.intro::after{right:var(--frame)}
+.intro.open::before,.intro.open::after{opacity:0}
+.intro:focus-visible{outline:none}
+.intro:focus-visible .ih-hint{outline:2px solid var(--accent);outline-offset:4px}
+.intro.open{pointer-events:none}
+.intro.open .ih.top{transform:translateY(-101%)}
+.intro.open .ih.bot{transform:translateY(101%)}
+
+/* ─────────── WIDER SCREENS: a 4/8 editorial grid ─────────── */
+@media (min-width:900px){
+  html{font-size:19px}
+  html.en{font-size:16.5px}
+  .note{font-size:1.5rem}
+  .sec .sec-grid,.band .sec-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:0 48px;align-items:start}
+  .sec-h{flex-direction:column;gap:14px;font-size:1.9rem;margin:0;position:sticky;top:48px}
+  .no{font-size:84px}
+  html:not(.en) .no{font-size:72px}
+  .acts{grid-template-columns:auto auto;justify-content:start}
+  .acts .btn{padding-inline:32px}
+  .rsvp-yes{max-width:420px}
+  .gallery{grid-template-columns:repeat(3,1fr);gap:14px}
+  .gframe:first-child{grid-column:auto;aspect-ratio:3/4}
+  .pull p{font-size:2.4rem}
+  html.en .pull p{font-size:2.9rem}
+  .hf-date{font-size:3.4rem}
+  html:not(.en) .hf-date{font-size:2.8rem}
+  .hf-meta{font-size:1.06rem}
+}
+
+/* ─────────── MOTION ─────────── */
 @media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-  .rv{opacity:1;transform:none;transition:none}
   *,*::before,*::after{animation:none !important;transition:none !important}
-  .music-toggle{display:none}
-}
-
-@media (max-width:420px){
-  .hero-top{max-width:100%;padding-inline-end:64px}
-  .details .row{grid-template-columns:1fr;gap:6px}
+  html.pre .names .ln{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -436,24 +386,32 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
 
 <div class="frame" aria-hidden="true"></div>
 
-<!-- ═══════ INTRO — TAP TO OPEN (unhidden only via script; intro=0 skips) ═══════ -->
+<!-- ═══════ INTRO: TAP TO OPEN (unhidden only via script; intro=0 skips) ═══════ -->
 <div class="intro" id="intro" hidden role="button" tabindex="0"
-     aria-label="افتحوا الدعوة — دوسوا للفتح / Open the invitation — tap to open">
-  <div class="intro-a" aria-hidden="true"></div>
-  <div class="intro-b" aria-hidden="true"></div>
-  <div class="intro-core">
-    <p class="intro-kicker">
-      <span class="t-ar">دعوة خطوبة</span>
-      <span class="t-en">An engagement</span>
-    </p>
-    <p class="intro-names">
-      <span class="t-ar" id="introNamesAr">عمر وسلمى</span>
-      <span class="t-en" id="introNamesEn">Omar &amp; Salma</span>
-    </p>
-    <p class="intro-hint" aria-hidden="true">
-      <span class="t-ar">دوسوا للفتح</span>
-      <span class="t-en">Tap to open</span>
-    </p>
+     aria-label="افتحوا الدعوة، دوسوا للفتح / Open the invitation, tap to open">
+  <div class="ih top" aria-hidden="true">
+    <div class="ih-frame"></div>
+    <div class="ih-face">
+      <span aria-hidden="true"></span>
+      <p class="mono"><span class="t-ar"><b class="m1">ع</b><i>/</i><b class="m2">س</b></span><span class="t-en"><b class="m1">O</b><i>/</i><b class="m2">S</b></span></p>
+      <div class="ih-low">
+        <p class="ih-names"><span class="t-ar js-names-ar">عمر وسلمى</span><span class="t-en js-names-en">Omar &amp; Salma</span></p>
+        <p class="ih-date"><span class="t-ar">دعوة خطوبة، <bdi dir="ltr" class="js-num-ar">٢٢/٨/٢٠٢٦</bdi></span><span class="t-en">Engagement, <bdi dir="ltr" class="js-num-en">22.08.2026</bdi></span></p>
+        <p class="ih-hint"><span class="t-ar">دوسوا لفتح الدعوة</span><span class="t-en">Tap to open</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="ih bot" aria-hidden="true">
+    <div class="ih-frame"></div>
+    <div class="ih-face">
+      <span aria-hidden="true"></span>
+      <p class="mono"><span class="t-ar"><b class="m1">ع</b><i>/</i><b class="m2">س</b></span><span class="t-en"><b class="m1">O</b><i>/</i><b class="m2">S</b></span></p>
+      <div class="ih-low">
+        <p class="ih-names"><span class="t-ar js-names-ar">عمر وسلمى</span><span class="t-en js-names-en">Omar &amp; Salma</span></p>
+        <p class="ih-date"><span class="t-ar">دعوة خطوبة، <bdi dir="ltr" class="js-num-ar">٢٢/٨/٢٠٢٦</bdi></span><span class="t-en">Engagement, <bdi dir="ltr" class="js-num-en">22.08.2026</bdi></span></p>
+        <p class="ih-hint"><span class="t-ar">دوسوا لفتح الدعوة</span><span class="t-en">Tap to open</span></p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -464,234 +422,168 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
 
 <main>
 
-  <!-- ═══════ 01 — THE POSTER ═══════ -->
-  <section class="hero" aria-labelledby="namesH">
-    <div class="hero-top rv in">
-      <p class="kicker">
-        <span class="t-ar">دعوة خطوبة — القاهرة</span>
-        <span class="t-en">Engagement — Cairo</span>
+  <!-- ═══════ THE POSTER ═══════ -->
+  <header class="hero wrap">
+    <svg class="arc" viewBox="0 0 480 92" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path id="arcPath" d="M 24 84 Q 240 4 456 84" fill="none" stroke="none"/>
+      <text class="t-ar"><textPath href="#arcPath" startOffset="50%" text-anchor="middle">إنتم معزومين على خطوبة</textPath></text>
+      <text class="t-en"><textPath href="#arcPath" startOffset="50%" text-anchor="middle">You&rsquo;re invited to the engagement of</textPath></text>
+    </svg>
+
+    <h1 class="names" id="namesH" data-fit data-max="240" data-maxvh="0.25" data-min="44">
+      <span class="t-ar">
+        <span class="ln" id="arL1">عمر<span class="mark" aria-hidden="true">✱</span></span>
+        <span class="ln" id="arL2">وسلمى</span>
+      </span>
+      <span class="t-en">
+        <span class="ln" id="enL1">Omar<span class="mark" aria-hidden="true">✱</span></span>
+        <span class="ln" id="enL2">&amp; Salma</span>
+      </span>
+    </h1>
+
+    <div class="hero-foot">
+      <p class="hf-date"><bdi dir="ltr" class="t-ar js-num-ar">٢٢/٨/٢٠٢٦</bdi><bdi dir="ltr" class="t-en cond js-num-en">22.08.2026</bdi></p>
+      <p class="hf-meta">
+        <span class="t-ar"><b id="heroWhenAr">السبت، ٨:٠٠ مساءً</b><span class="sub" id="heroWhereAr">فيلا روز، المعادي</span></span>
+        <span class="t-en"><b id="heroWhenEn">Saturday, 8:00 PM</b><span class="sub" id="heroWhereEn">Villa Rose, Maadi</span></span>
       </p>
     </div>
+  </header>
 
-    <div>
-      <svg class="arc rv in" viewBox="0 0 480 92" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path id="arcPath" d="M 24 84 Q 240 4 456 84" fill="none" stroke="none"/>
-        <text class="t-ar"><textPath href="#arcPath" startOffset="50%" text-anchor="middle">مع عائلتيهما</textPath></text>
-        <text class="t-en"><textPath href="#arcPath" startOffset="50%" text-anchor="middle">together with their families</textPath></text>
-      </svg>
-
-      <h1 class="names rv in" id="namesH">
-        <span class="t-ar">
-          <span class="ln" id="arL1">عمر<span class="mark" aria-hidden="true">✱</span></span>
-          <span class="ln" id="arL2">وسلمى</span>
-        </span>
-        <span class="t-en">
-          <span class="ln" id="enL1">Omar<span class="mark" aria-hidden="true">✱</span></span>
-          <span class="ln" id="enL2">&amp; Salma</span>
-        </span>
-      </h1>
+  <!-- ═══════ COUNTDOWN ═══════ -->
+  <section class="band numbered" aria-labelledby="cdTitle">
+    <div class="wrap">
+      <div class="sec-grid">
+        <h2 class="sec-h" id="cdTitle"><span class="no" aria-hidden="true"></span><span><span class="t-ar">فاضل على اليوم</span><span class="t-en">Until the day</span></span></h2>
+        <div class="countdown-wrap" id="cdWrap">
+          <div class="cd-row" role="timer" aria-live="off">
+            <div class="cd-cell"><span class="cd-num" id="cdD">٠٠</span><span class="cd-lbl"><span class="t-ar">يوم</span><span class="t-en">Days</span></span></div>
+            <div class="cd-cell"><span class="cd-num" id="cdH">٠٠</span><span class="cd-lbl"><span class="t-ar">ساعة</span><span class="t-en">Hours</span></span></div>
+            <div class="cd-cell"><span class="cd-num" id="cdM">٠٠</span><span class="cd-lbl"><span class="t-ar">دقيقة</span><span class="t-en">Minutes</span></span></div>
+            <div class="cd-cell"><span class="cd-num" id="cdS">٠٠</span><span class="cd-lbl"><span class="t-ar">ثانية</span><span class="t-en">Seconds</span></span></div>
+          </div>
+          <p class="cd-done"><span class="t-ar">النهارده اليوم الكبير.</span><span class="t-en">Today&rsquo;s the day.</span></p>
+        </div>
+      </div>
     </div>
-
-    <p class="hero-meta rv in">
-      <span class="t-ar" id="metaAr">السبت ٢٢ أغسطس ٢٠٢٦ <span class="sep">·</span> ٨:٠٠ مساءً <span class="sep">·</span> فيلا روز، المعادي</span>
-      <span class="t-en" id="metaEn">Saturday 22 August 2026 <span class="sep">·</span> 8:00 PM <span class="sep">·</span> Villa Rose, Maadi</span>
-    </p>
   </section>
 
-  <!-- ═══════ 02 — COUNTDOWN, TYPE ONLY ═══════ -->
-  <section aria-labelledby="cdLbl">
-    <h2 class="lbl rv" id="cdLbl">
-      <span class="no" aria-hidden="true">01</span>
-      <span class="t-ar">حتى الموعد</span>
-      <span class="t-en">Until the day</span>
-    </h2>
+  <!-- ═══════ PULL QUOTE (q) ═══════ -->
+  <blockquote class="pull wrap">
+    <p><span class="t-ar"><span class="qm">«</span><span id="quoteAr">اتقابلنا صدفة، واخترنا بعض عن قصد.</span><span class="qm">»</span></span><span class="t-en"><span class="qm">&ldquo;</span><span id="quoteEn">We met by chance and chose each other on purpose.</span><span class="qm">&rdquo;</span></span></p>
+  </blockquote>
 
-    <div class="countdown-wrap rv" id="cdWrap">
-      <div class="cd-row" role="timer" aria-live="off">
-        <div class="cd-cell"><span class="cd-num" id="cdD">—</span><span class="cd-lbl"><span class="t-ar">يوم</span><span class="t-en">Days</span></span></div>
-        <div class="cd-cell"><span class="cd-num" id="cdH">—</span><span class="cd-lbl"><span class="t-ar">ساعة</span><span class="t-en">Hours</span></span></div>
-        <div class="cd-cell"><span class="cd-num" id="cdM">—</span><span class="cd-lbl"><span class="t-ar">دقيقة</span><span class="t-en">Min</span></span></div>
-        <div class="cd-cell"><span class="cd-num" id="cdS">—</span><span class="cd-lbl"><span class="t-ar">ثانية</span><span class="t-en">Sec</span></span></div>
+  <!-- ═══════ AGENDA ═══════ -->
+  <section class="sec numbered" id="agenda" aria-labelledby="agTitle">
+    <div class="wrap"><div class="sec-grid">
+      <h2 class="sec-h" id="agTitle"><span class="no" aria-hidden="true"></span><span><span class="t-ar">برنامج الليلة</span><span class="t-en">The evening</span></span></h2>
+      <ol class="ledger" id="agList">
+        <li><span class="ag-time"><span class="t-ar">٨:٠٠</span><span class="t-en">8:00</span></span><span class="ag-what"><span class="t-ar">الاستقبال</span><span class="t-en">Reception</span></span></li>
+        <li><span class="ag-time"><span class="t-ar">٩:٠٠</span><span class="t-en">9:00</span></span><span class="ag-what"><span class="t-ar">لبس الدبل</span><span class="t-en">The rings</span></span></li>
+        <li><span class="ag-time"><span class="t-ar">١٠:٠٠</span><span class="t-en">10:00</span></span><span class="ag-what"><span class="t-ar">العشا</span><span class="t-en">Dinner</span></span></li>
+        <li><span class="ag-time"><span class="t-ar">١١:٠٠</span><span class="t-en">11:00</span></span><span class="ag-what"><span class="t-ar">التصوير والسهرة</span><span class="t-en">Photos and dancing</span></span></li>
+      </ol>
+    </div></div>
+  </section>
+
+  <!-- ═══════ WHEN AND WHERE ═══════ -->
+  <section class="sec numbered" aria-labelledby="dtTitle" data-shot="details">
+    <div class="wrap"><div class="sec-grid">
+      <h2 class="sec-h" id="dtTitle"><span class="no" aria-hidden="true"></span><span><span class="t-ar">الميعاد والمكان</span><span class="t-en">When and where</span></span></h2>
+      <div>
+        <dl class="facts">
+          <div class="fact">
+            <dt><span class="t-ar">التاريخ</span><span class="t-en">Date</span></dt>
+            <dd><span class="t-ar" id="dateAr">٢٢ أغسطس ٢٠٢٦<small>يوم السبت</small></span><span class="t-en" id="dateEn">22 August 2026<small>Saturday</small></span></dd>
+          </div>
+          <div class="fact">
+            <dt><span class="t-ar">الساعة</span><span class="t-en">Time</span></dt>
+            <dd><span class="t-ar" id="timeAr">٨:٠٠ مساءً</span><span class="t-en" id="timeEn">8:00 PM</span></dd>
+          </div>
+          <div class="fact">
+            <dt><span class="t-ar">المكان</span><span class="t-en">Venue</span></dt>
+            <dd><span class="t-ar" id="venueAr">فيلا روز<small>المعادي، القاهرة</small></span><span class="t-en" id="venueEn">Villa Rose<small>Maadi, Cairo</small></span></dd>
+          </div>
+        </dl>
+        <div class="acts">
+          <a class="btn solid" id="mapBtn" href="https://maps.app.goo.gl/K2izAmdtfuKVcS138" target="_blank" rel="noopener noreferrer"><span class="t-ar">افتح الخريطة</span><span class="t-en">Open the map</span></a>
+          <a class="btn" id="calBtn" target="_blank" rel="noopener noreferrer"
+             href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Omar%20%26%20Salma%27s%20engagement&amp;dates=20260822T200000/20260822T230000&amp;ctz=Africa/Cairo&amp;location=Villa%20Rose%2C%20Maadi%2C%20Cairo"><span class="t-ar">أضف للتقويم</span><span class="t-en">Add to calendar</span></a>
+        </div>
       </div>
-      <p class="cd-done">
-        <span class="t-ar">اليوم هو الموعد.</span>
-        <span class="t-en">It&rsquo;s today.</span>
+    </div></div>
+  </section>
+
+  <!-- ═══════ DRESS CODE ═══════ -->
+  <section class="sec numbered" id="dress" aria-labelledby="drTitle">
+    <div class="wrap"><div class="sec-grid">
+      <h2 class="sec-h" id="drTitle"><span class="no" aria-hidden="true"></span><span><span class="t-ar">اللبس</span><span class="t-en">Dress code</span></span></h2>
+      <p class="note"><span class="t-ar" id="dressAr">لبس رسمي، وسيبوا الأبيض للعروسة.</span><span class="t-en" id="dressEn">Formal. Please leave the white to the bride.</span></p>
+    </div></div>
+  </section>
+
+  <!-- ═══════ GALLERY (hidden unless photos / ph*) ═══════ -->
+  <section class="sec numbered" id="gallery" aria-labelledby="glTitle" style="display:none">
+    <div class="wrap"><div class="sec-grid">
+      <h2 class="sec-h" id="glTitle"><span class="no" aria-hidden="true"></span><span><span class="t-ar">لقطات</span><span class="t-en">Moments</span></span></h2>
+      <div class="gallery" id="galGrid">
+        <figure class="gframe"><span class="gph" aria-hidden="true">&#10035;</span><img id="ph1" alt="" width="800" height="600" loading="lazy" decoding="async" hidden></figure>
+        <figure class="gframe"><span class="gph" aria-hidden="true">&#10035;</span><img id="ph2" alt="" width="600" height="800" loading="lazy" decoding="async" hidden></figure>
+        <figure class="gframe"><span class="gph" aria-hidden="true">&#10035;</span><img id="ph3" alt="" width="600" height="800" loading="lazy" decoding="async" hidden></figure>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ═══════ GIFTS ═══════ -->
+  <section class="sec numbered" id="gift" aria-labelledby="gfTitle">
+    <div class="wrap"><div class="sec-grid">
+      <h2 class="sec-h" id="gfTitle"><span class="no" aria-hidden="true"></span><span><span class="t-ar">الهدايا</span><span class="t-en">Gifts</span></span></h2>
+      <p class="note"><span class="t-ar" id="giftAr">وجودكم معانا هو أحلى هدية.</span><span class="t-en" id="giftEn">Having you there is the only gift we want.</span></p>
+    </div></div>
+  </section>
+
+  <!-- ═══════ RSVP ═══════ -->
+  <section class="sec numbered" aria-labelledby="rsTitle" data-shot="rsvp">
+    <div class="wrap"><div class="sec-grid">
+      <h2 class="sec-h" id="rsTitle"><span class="no" aria-hidden="true"></span><span><span class="t-ar">تأكيد الحضور</span><span class="t-en">RSVP</span></span></h2>
+      <div>
+        <p class="lede"><span class="t-ar">قولولنا هتيجوا ولا لأ، والرد بيوصلنا على واتساب على طول.</span><span class="t-en">Let us know if you can make it. Your reply comes straight to us on WhatsApp.</span></p>
+        <div class="guests" role="group" aria-labelledby="guestsLbl">
+          <span class="guests-lbl" id="guestsLbl"><span class="t-ar">عدد الأفراد</span><span class="t-en">How many of you</span></span>
+          <div class="guest-chips">
+            <button type="button" class="chip" data-n="1" aria-pressed="true"><span class="t-ar">١</span><span class="t-en">1</span></button>
+            <button type="button" class="chip" data-n="2" aria-pressed="false"><span class="t-ar">٢</span><span class="t-en">2</span></button>
+            <button type="button" class="chip" data-n="3" aria-pressed="false"><span class="t-ar">٣</span><span class="t-en">3</span></button>
+            <button type="button" class="chip" data-n="4+" aria-pressed="false"><span class="t-ar">+٤</span><span class="t-en">4+</span></button>
+          </div>
+        </div>
+        <a class="rsvp-yes" id="rsvpYes" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="t-ar">أكّد الحضور على واتساب</span><span class="t-en">Confirm on WhatsApp</span></a>
+        <div class="rsvp-more">
+          <a class="tlink" id="rsvpNo" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="t-ar">مش هقدر آجي</span><span class="t-en">I can&rsquo;t make it</span></a>
+          <a class="tlink" id="shareBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/"><span class="t-ar">ابعت الدعوة لحد</span><span class="t-en">Share the invitation</span></a>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ═══════ CLOSING ═══════ -->
+  <footer class="closing wrap">
+    <div class="sign-rule">
+      <p class="closing-big" data-fit data-max="200" data-maxvh="0.22" data-min="40">
+        <span class="t-ar"><span class="ln">مستنيينكم</span></span>
+        <span class="t-en"><span class="ln">See you there</span></span>
+      </p>
+      <p class="sign">
+        <span><span class="t-ar js-names-ar">عمر وسلمى</span><span class="t-en js-names-en">Omar &amp; Salma</span></span>
+        <span class="sub"><bdi dir="ltr" class="t-ar js-num-ar">٢٢/٨/٢٠٢٦</bdi><bdi dir="ltr" class="t-en js-num-en">22.08.2026</bdi></span>
       </p>
     </div>
-  </section>
-
-  <!-- ═══════ 02 — AGENDA ═══════ -->
-  <section id="agenda" aria-labelledby="agLbl">
-    <h2 class="lbl rv" id="agLbl">
-      <span class="no" aria-hidden="true">02</span>
-      <span class="t-ar">برنامج المساء</span>
-      <span class="t-en">The programme</span>
-    </h2>
-
-    <ol class="agenda rv" id="agList">
-      <li class="ag-item">
-        <span class="ag-time"><span class="t-ar">٨:٠٠</span><span class="t-en">8:00</span></span>
-        <span class="ag-what"><span class="t-ar">الاستقبال</span><span class="t-en">Reception</span></span>
-      </li>
-      <li class="ag-item">
-        <span class="ag-time"><span class="t-ar">٩:٠٠</span><span class="t-en">9:00</span></span>
-        <span class="ag-what"><span class="t-ar">تبادل الدبل</span><span class="t-en">The rings</span></span>
-      </li>
-      <li class="ag-item">
-        <span class="ag-time"><span class="t-ar">١٠:٠٠</span><span class="t-en">10:00</span></span>
-        <span class="ag-what"><span class="t-ar">العشاء</span><span class="t-en">Dinner</span></span>
-      </li>
-      <li class="ag-item">
-        <span class="ag-time"><span class="t-ar">١١:٠٠</span><span class="t-en">11:00</span></span>
-        <span class="ag-what"><span class="t-ar">التصوير والسهرة</span><span class="t-en">Photos &amp; music</span></span>
-      </li>
-    </ol>
-  </section>
-
-  <!-- ═══════ 03 — DETAILS ═══════ -->
-  <section aria-labelledby="dtLbl">
-    <h2 class="lbl rv" id="dtLbl">
-      <span class="no" aria-hidden="true">03</span>
-      <span class="t-ar">التفاصيل</span>
-      <span class="t-en">The details</span>
-    </h2>
-
-    <dl class="details rv">
-      <div class="row">
-        <dt><span class="t-ar">التاريخ</span><span class="t-en">Date</span></dt>
-        <dd>
-          <span class="t-ar">٢٢ أغسطس ٢٠٢٦<small>يوم السبت</small></span>
-          <span class="t-en">22 August 2026<small>Saturday</small></span>
-        </dd>
-      </div>
-      <div class="row">
-        <dt><span class="t-ar">الوقت</span><span class="t-en">Time</span></dt>
-        <dd>
-          <span class="t-ar">٨:٠٠ مساءً</span>
-          <span class="t-en">8:00 PM</span>
-        </dd>
-      </div>
-      <div class="row">
-        <dt><span class="t-ar">المكان</span><span class="t-en">Venue</span></dt>
-        <dd>
-          <span class="t-ar">فيلا روز<small>المعادي، القاهرة</small></span>
-          <span class="t-en">Villa Rose<small>Maadi, Cairo</small></span>
-        </dd>
-      </div>
-    </dl>
-
-    <div class="tlinks rv">
-      <a class="tlink" id="mapBtn" href="https://maps.app.goo.gl/K2izAmdtfuKVcS138" target="_blank" rel="noopener noreferrer">
-        <span class="t-ar">الموقع على الخريطة</span>
-        <span class="t-en">View map</span>
-        <span class="aro" aria-hidden="true">&#8599;</span>
-      </a>
-      <a class="tlink" id="calBtn" target="_blank" rel="noopener noreferrer"
-         href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Engagement%20%E2%80%94%20Omar%20%26%20Salma&amp;dates=20260822T200000/20260822T230000&amp;ctz=Africa/Cairo&amp;location=Villa%20Rose%2C%20Maadi%2C%20Cairo&amp;details=The%20engagement%20of%20Omar%20%26%20Salma.">
-        <span class="t-ar">أضف إلى التقويم</span>
-        <span class="t-en">Add to calendar</span>
-        <span class="aro" aria-hidden="true">&#8599;</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ═══════ 04 — DRESS CODE ═══════ -->
-  <section id="dress" aria-labelledby="drLbl">
-    <h2 class="lbl rv" id="drLbl">
-      <span class="no" aria-hidden="true">04</span>
-      <span class="t-ar">ملابس الحضور</span>
-      <span class="t-en">Dress code</span>
-    </h2>
-    <p class="note-line rv">
-      <span class="t-ar" id="dressAr">أناقة رسمية.</span>
-      <span class="t-en" id="dressEn">Formal. Nothing more to say.</span>
-    </p>
-  </section>
-
-  <!-- ═══════ 05 — GALLERY ═══════ -->
-  <section id="gallery" aria-labelledby="glLbl" style="display:none">
-    <h2 class="lbl rv" id="glLbl">
-      <span class="no" aria-hidden="true">05</span>
-      <span class="t-ar">لحظات</span>
-      <span class="t-en">Moments</span>
-    </h2>
-    <div class="gallery rv">
-      <figure class="gframe">
-        <span class="gnum" aria-hidden="true">01</span>
-        <span class="gph" aria-hidden="true">&#10035;</span>
-        <img id="ph1" alt="" loading="lazy" hidden>
-      </figure>
-      <figure class="gframe">
-        <span class="gnum" aria-hidden="true">02</span>
-        <span class="gph" aria-hidden="true">&#10035;</span>
-        <img id="ph2" alt="" loading="lazy" hidden>
-      </figure>
-      <figure class="gframe">
-        <span class="gnum" aria-hidden="true">03</span>
-        <span class="gph" aria-hidden="true">&#10035;</span>
-        <img id="ph3" alt="" loading="lazy" hidden>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ═══════ 06 — GIFT NOTE ═══════ -->
-  <section id="gift" aria-labelledby="gfLbl">
-    <h2 class="lbl rv" id="gfLbl">
-      <span class="no" aria-hidden="true">06</span>
-      <span class="t-ar">الهدايا</span>
-      <span class="t-en">Gifts</span>
-    </h2>
-    <p class="note-line rv">
-      <span class="t-ar" id="giftAr">حضوركم ودعواتكم أغلى هدية</span>
-      <span class="t-en" id="giftEn">Your presence is the greatest gift</span>
-    </p>
-  </section>
-
-  <!-- ═══════ 07 — RSVP ═══════ -->
-  <section aria-labelledby="rsLbl">
-    <h2 class="lbl rv" id="rsLbl">
-      <span class="no" aria-hidden="true">07</span>
-      <span class="t-ar">تأكيد الحضور</span>
-      <span class="t-en">RSVP</span>
-    </h2>
-
-    <p class="rsvp-note rv">
-      <span class="t-ar">كلمة واحدة تكفي — تصلنا على واتساب مباشرةً.</span>
-      <span class="t-en">One word is enough &mdash; it reaches us directly on WhatsApp.</span>
-    </p>
-
-    <div class="guests rv" role="group" aria-label="عدد الحضور / Number of guests">
-      <span class="guests-lbl"><span class="t-ar">عدد الحضور</span><span class="t-en">Guests</span></span>
-      <div class="guest-chips">
-        <button type="button" class="chip" data-n="1" aria-pressed="true"><span class="t-ar">١</span><span class="t-en">1</span></button>
-        <button type="button" class="chip" data-n="2" aria-pressed="false"><span class="t-ar">٢</span><span class="t-en">2</span></button>
-        <button type="button" class="chip" data-n="3" aria-pressed="false"><span class="t-ar">٣</span><span class="t-en">3</span></button>
-        <button type="button" class="chip" data-n="4+" aria-pressed="false"><span class="t-ar">٤+</span><span class="t-en">4+</span></button>
-      </div>
-    </div>
-
-    <div class="rsvp-links rv">
-      <a class="rsvp" id="rsvpYes" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418">
-        <span class="t-ar">سنحضر</span>
-        <span class="t-en">Attending</span>
-        <span class="aro" aria-hidden="true">&#8599;</span>
-      </a>
-      <a class="rsvp no" id="rsvpNo" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418">
-        <span class="t-ar">نعتذر عن الحضور</span>
-        <span class="t-en">Sending regrets</span>
-      </a>
-    </div>
-  </section>
-
-  <footer>
-    <span>D3-011 <span class="ast">&#10035;</span> Modern Editorial</span>
-    <span>D3wa</span>
   </footer>
 
 </main>
 
 <button class="music-toggle" id="musicBtn" type="button" aria-pressed="false"
-        aria-label="موسيقى هادئة / Ambient music on–off">
+        aria-label="موسيقى هادئة / Ambient music on or off">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
     <path d="M9 18V5l10-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>
   </svg>
@@ -715,10 +607,12 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
 (function () {
   "use strict";
   var docEl = document.documentElement;
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ── URL-parameter personalization (D3wa param contract) ──
      n_ar / n_en · d (ISO date) · t (24h time) · v_ar / v_en · map · q · wa
-     Any missing param keeps the hardcoded placeholder content. */
+     agenda · dress · gift · photos · ph1-3 · music · intro
+     Any missing param keeps the placeholder content. */
   var qs = null;
   try { qs = new URLSearchParams(window.__D3WA__ || location.search); } catch (e) {}
   function qp (k) { var v = qs && qs.get(k); return (v && v.trim()) ? v.trim() : null; }
@@ -728,112 +622,123 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
   var tMatch = pTime ? pTime.match(/^(\d{1,2}):(\d{2})$/) : null;
   var pTimeNorm = tMatch ? ("0" + tMatch[1]).slice(-2) + ":" + tMatch[2] : null;
 
-  /* Message building blocks — defaults mirror the hardcoded placeholder */
+  /* Message building blocks: defaults mirror the placeholder */
   var namesEn = "Omar & Salma", namesAr = "عمر وسلمى",
       dateFullEn = "Saturday, 22 August 2026", dateFullAr = "السبت ٢٢ أغسطس ٢٠٢٦",
+      wdEn = "Saturday", wdAr = "السبت", numDate = "22.08.2026", numDateAr = "22/8/2026",
       timeEn = "8:00 PM", timeAr = "٨:٠٠ مساءً",
       venueMsgEn = "Villa Rose, Maadi", venueMsgAr = "فيلا روز، المعادي",
-      waNum = "201005509418";
+      waNum = "201005509418", guestN = "1", isEn = false;
 
   function arDigits (s) {
     return String(s).replace(/[0-9]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩"[+d]; });
   }
+  function each (sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
+  function setVal (el, main, small) {
+    if (!el) return;
+    el.textContent = "";
+    el.appendChild(document.createTextNode(main));
+    if (small) { var s = document.createElement("small"); s.textContent = small; el.appendChild(s); }
+  }
+  function venueParts (v) {
+    var i = v.search(/[,،]/);
+    return i < 0 ? [v, ""] : [v.slice(0, i).trim(), v.slice(i + 1).trim()];
+  }
+  function splitEn (s) {
+    var m = s.match(/^(.+?)\s*(?:&|\band\b)\s*(.+)$/i);
+    return m ? [m[1].trim(), m[2].trim()] : null;
+  }
+  function splitAr (s) {
+    var m = s.match(/^(.+?)\s+و\s*(.+)$/);
+    return m ? [m[1].trim(), m[2].trim()] : null;
+  }
 
   function applyParams () {
-    var $ = function (s) { return document.querySelector(s); };
     /* stacked poster lines: line 1 = first name + ✱ mark, line 2 = connector + second name */
-    var buildLines = function (l1, l2, first, joiner, second, whole) {
+    var buildLines = function (l1, l2, parts, joiner, whole) {
       if (!l1) return;
       l1.textContent = "";
-      if (first == null) {
-        l1.textContent = whole;
-        if (l2) l2.textContent = "";
-      } else {
-        l1.appendChild(document.createTextNode(first));
-        if (l2) l2.textContent = joiner + second;
-      }
+      if (!parts) { l1.textContent = whole; if (l2) l2.textContent = ""; }
+      else { l1.appendChild(document.createTextNode(parts[0])); if (l2) l2.textContent = joiner + parts[1]; }
       var mk = document.createElement("span");
-      mk.className = "mark";
-      mk.setAttribute("aria-hidden", "true");
-      mk.textContent = "✱";
+      mk.className = "mark"; mk.setAttribute("aria-hidden", "true"); mk.textContent = "✱";
       l1.appendChild(mk);
-    };
-    var setVal = function (el, main, small) {
-      if (!el) return;
-      el.textContent = "";
-      el.appendChild(document.createTextNode(main));
-      if (small) { var s = document.createElement("small"); s.textContent = small; el.appendChild(s); }
-    };
-    var venueParts = function (v) {
-      var i = v.search(/[,،]/);
-      return i < 0 ? [v, ""] : [v.slice(0, i).trim(), v.slice(i + 1).trim()];
+      if (l2) l2.hidden = !parts;
     };
 
-    /* names — poster lines + title */
-    if (pNamesEn) {
-      namesEn = pNamesEn;
-      var iAmp = pNamesEn.indexOf("&");
-      var e1 = iAmp < 0 ? null : pNamesEn.slice(0, iAmp).trim();
-      var e2 = iAmp < 0 ? null : pNamesEn.slice(iAmp + 1).trim();
-      buildLines(document.getElementById("enL1"), document.getElementById("enL2"), e1, "& ", e2, pNamesEn);
-    }
-    if (pNamesAr) {
-      namesAr = pNamesAr;
-      var mAr = pNamesAr.match(/^(.+?)\s+و\s*(.+)$/);
-      var a1 = mAr ? mAr[1] : null, a2 = mAr ? mAr[2] : null;
-      buildLines(document.getElementById("arL1"), document.getElementById("arL2"), a1, "و", a2, pNamesAr);
-    }
-    if (pNamesEn || pNamesAr) document.title = namesAr + " — دعوة خطوبة | " + namesEn;
+    if (pNamesEn) { namesEn = pNamesEn; buildLines(document.getElementById("enL1"), document.getElementById("enL2"), splitEn(pNamesEn), "& ", pNamesEn); }
+    if (pNamesAr) { namesAr = pNamesAr; buildLines(document.getElementById("arL1"), document.getElementById("arL2"), splitAr(pNamesAr), "و", pNamesAr); }
+    if (pNamesEn || pNamesAr) document.title = namesAr + "، دعوة خطوبة | " + namesEn;
+    each(".js-names-ar", function (el) { el.textContent = namesAr; });
+    each(".js-names-en", function (el) { el.textContent = namesEn; });
 
-    /* date — ledger row + message strings (Intl, both languages, incl. weekday) */
+    /* monogram: initials from the names (Arabic initials for Arabic, Latin for English) */
+    var pe = splitEn(namesEn), pa = splitAr(namesAr);
+    var iniEn = pe ? [pe[0].charAt(0), pe[1].replace(/^&\s*/, "").charAt(0)] : [namesEn.charAt(0)];
+    var iniAr = pa ? [pa[0].charAt(0), pa[1].charAt(0)] : [namesAr.charAt(0)];
+    each(".mono", function (m) {
+      var ea = m.querySelector(".t-en"), aa = m.querySelector(".t-ar");
+      ea.querySelector(".m1").textContent = iniEn[0].toUpperCase();
+      ea.querySelector(".m2").textContent = (iniEn[1] || "").toUpperCase();
+      aa.querySelector(".m1").textContent = iniAr[0];
+      aa.querySelector(".m2").textContent = iniAr[1] || "";
+      m.classList.toggle("single", !(pe && pa));
+    });
+
+    /* date: Intl in both languages, incl. weekday and the numeric poster date */
     if (pDateOk) {
       var dObj = new Date(pDateOk + "T12:00:00");
       if (!isNaN(dObj)) {
         var enMain = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(dObj);
-        var enWd   = new Intl.DateTimeFormat("en-GB", { weekday: "long" }).format(dObj);
         var arMain = new Intl.DateTimeFormat("ar-EG", { day: "numeric", month: "long", year: "numeric" }).format(dObj);
-        var arWd   = new Intl.DateTimeFormat("ar-EG", { weekday: "long" }).format(dObj);
-        setVal($(".details .row:nth-child(1) dd .t-en"), enMain, enWd);
-        setVal($(".details .row:nth-child(1) dd .t-ar"), arMain, "يوم " + arWd);
-        dateFullEn = enWd + ", " + enMain;
-        dateFullAr = arWd + " " + arMain;
+        wdEn = new Intl.DateTimeFormat("en-GB", { weekday: "long" }).format(dObj);
+        wdAr = new Intl.DateTimeFormat("ar-EG", { weekday: "long" }).format(dObj);
+        setVal(document.getElementById("dateEn"), enMain, wdEn);
+        setVal(document.getElementById("dateAr"), arMain, "يوم " + wdAr);
+        dateFullEn = wdEn + ", " + enMain;
+        dateFullAr = wdAr + " " + arMain;
+        var dp = pDateOk.split("-");
+        numDate = dp[2] + "." + dp[1] + "." + dp[0];
+        numDateAr = (+dp[2]) + "/" + (+dp[1]) + "/" + dp[0];
       }
     }
+    each(".js-num-en", function (el) { el.textContent = numDate; });
+    each(".js-num-ar", function (el) { el.textContent = arDigits(numDateAr); });
 
-    /* time — ledger row + message strings */
+    /* time */
     if (tMatch) {
-      var hh = +tMatch[1], mm = tMatch[2];
-      var h12 = hh % 12 || 12;
+      var hh = +tMatch[1], mm = tMatch[2], h12 = hh % 12 || 12;
       timeEn = h12 + ":" + mm + " " + (hh < 12 ? "AM" : "PM");
       timeAr = arDigits(h12 + ":" + mm) + " " + (hh < 12 ? "صباحاً" : "مساءً");
-      setVal($(".details .row:nth-child(2) dd .t-en"), timeEn, "");
-      setVal($(".details .row:nth-child(2) dd .t-ar"), timeAr, "");
+      setVal(document.getElementById("timeEn"), timeEn, "");
+      setVal(document.getElementById("timeAr"), timeAr, "");
     }
+    var hwE = document.getElementById("heroWhenEn"), hwA = document.getElementById("heroWhenAr");
+    if (hwE) hwE.textContent = wdEn + ", " + timeEn;
+    if (hwA) hwA.textContent = wdAr + "، " + timeAr;
 
-    /* venue — ledger row + message strings */
+    /* venue */
     if (pVenEn) {
       venueMsgEn = pVenEn;
       var vpe = venueParts(pVenEn);
-      setVal($(".details .row:nth-child(3) dd .t-en"), vpe[0], vpe[1]);
+      setVal(document.getElementById("venueEn"), vpe[0], vpe[1]);
     }
     if (pVenAr) {
       venueMsgAr = pVenAr;
       var vpa = venueParts(pVenAr);
-      setVal($(".details .row:nth-child(3) dd .t-ar"), vpa[0], vpa[1]);
+      setVal(document.getElementById("venueAr"), vpa[0], vpa[1]);
     }
+    var hvE = document.getElementById("heroWhereEn"), hvA = document.getElementById("heroWhereAr");
+    /* the poster foot keeps the venue short; the full address lives in the details */
+    var shortVenue = function (v) { return v.length > 26 ? venueParts(v)[0] : v; };
+    if (hvE) hvE.textContent = shortVenue(venueMsgEn);
+    if (hvA) hvA.textContent = shortVenue(venueMsgAr);
 
-    /* hero meta line — rebuilt from the (possibly updated) strings */
-    var mAr2 = document.getElementById("metaAr"), mEn2 = document.getElementById("metaEn");
-    if ((pDateOk || tMatch || pVenAr || pVenEn) && mAr2 && mEn2) {
-      var joinMeta = function (el, parts) {
-        el.textContent = "";
-        for (var i = 0; i < parts.length; i++) {
-          if (i) { var sp = document.createElement("span"); sp.className = "sep"; sp.textContent = "·"; el.appendChild(document.createTextNode(" ")); el.appendChild(sp); el.appendChild(document.createTextNode(" ")); }
-          el.appendChild(document.createTextNode(parts[i]));
-        }
-      };
-      joinMeta(mAr2, [dateFullAr, timeAr, venueMsgAr]);
-      joinMeta(mEn2, [dateFullEn.replace(",", ""), timeEn, venueMsgEn]);
+    /* quote */
+    if (pQuote) {
+      var qa = document.getElementById("quoteAr"), qe = document.getElementById("quoteEn");
+      if (qa) qa.textContent = pQuote;
+      if (qe) qe.textContent = pQuote;
     }
 
     /* maps link */
@@ -842,23 +747,21 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
       if (mapBtn) mapBtn.href = pMap;
     }
 
-    /* Google Calendar link */
-    if (pNamesEn || pDateOk || tMatch || pVenEn || pQuote) {
-      var calBtn = document.getElementById("calBtn");
-      if (calBtn) {
-        var startDt = new Date((pDateOk || "2026-08-22") + "T" + (pTimeNorm || "20:00") + ":00");
-        var endDt = new Date(startDt.getTime() + 3 * 36e5);
-        var cal = function (dt) {
-          var p = function (n) { return ("0" + n).slice(-2); };
-          return dt.getFullYear() + p(dt.getMonth() + 1) + p(dt.getDate()) + "T" + p(dt.getHours()) + p(dt.getMinutes()) + "00";
-        };
-        calBtn.href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
-          + "&text=" + encodeURIComponent("Engagement — " + namesEn)
-          + "&dates=" + cal(startDt) + "/" + cal(endDt)
-          + "&ctz=Africa/Cairo"
-          + "&location=" + encodeURIComponent(pVenEn || "Villa Rose, Maadi, Cairo")
-          + "&details=" + encodeURIComponent(pQuote || ("The engagement of " + namesEn + "."));
-      }
+    /* Google Calendar link, built from the params */
+    var calBtn = document.getElementById("calBtn");
+    if (calBtn) {
+      var startDt = new Date((pDateOk || "2026-08-22") + "T" + (pTimeNorm || "20:00") + ":00");
+      var endDt = new Date(startDt.getTime() + 3 * 36e5);
+      var cal = function (dt) {
+        var p = function (n) { return ("0" + n).slice(-2); };
+        return dt.getFullYear() + p(dt.getMonth() + 1) + p(dt.getDate()) + "T" + p(dt.getHours()) + p(dt.getMinutes()) + "00";
+      };
+      calBtn.href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
+        + "&text=" + encodeURIComponent(namesEn + "'s engagement")
+        + "&dates=" + cal(startDt) + "/" + cal(endDt)
+        + "&ctz=Africa/Cairo"
+        + "&location=" + encodeURIComponent(pVenEn || "Villa Rose, Maadi, Cairo")
+        + "&details=" + encodeURIComponent(pQuote || ("The engagement of " + namesEn + "."));
     }
 
     /* WhatsApp RSVP number */
@@ -885,7 +788,7 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
       if (list && rows.length) {
         list.textContent = "";
         rows.forEach(function (p) {
-          var li = document.createElement("li"); li.className = "ag-item";
+          var li = document.createElement("li");
           var tm = document.createElement("span"); tm.className = "ag-time";
           tm.appendChild(mkSpan("t-ar", arDigits(p[0].trim())));
           tm.appendChild(mkSpan("t-en", p[0].trim()));
@@ -903,6 +806,7 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
     else if (pGift) setPair("giftAr", "giftEn", pGift);
     if ((pPhotos && pPhotos !== "0") || qp("ph1")) document.getElementById("gallery").style.display = "";
     if (pPhotos === "0") hideSec("gallery");
+    var anyImg = false;
     for (var gi = 1; gi <= 3; gi++) {
       var pu = qp("ph" + gi);
       if (pu && /^https:\/\//.test(pu)) {
@@ -910,32 +814,60 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
         if (img) {
           img.src = pu;
           img.hidden = false;
+          anyImg = true;
           if (img.parentNode && img.parentNode.classList) img.parentNode.classList.add("has-img");
         }
       }
     }
+    if (anyImg) document.getElementById("galGrid").classList.add("has-any");
   }
   try { applyV2Params(); } catch (e) {}
 
-  /* ── Language toggle — Arabic is the default; html.en switches to English ── */
+  /* ── Fit-to-measure: the poster names and the sign-off fill the column ── */
+  function fitAll () {
+    each("[data-fit]", function (box) {
+      var vis = box.querySelector(isEn ? ".t-en" : ".t-ar");
+      if (!vis) return;
+      box.classList.remove("fit-wrap");
+      box.style.fontSize = "100px";
+      var avail = box.clientWidth;
+      if (!avail) return;
+      var w = 0;
+      Array.prototype.forEach.call(vis.querySelectorAll(".ln"), function (l) {
+        if (!l.hidden) w = Math.max(w, l.getBoundingClientRect().width);
+      });
+      if (!w) return;
+      var fs = Math.min(100 * avail / w * 0.985, +box.getAttribute("data-max") || 220,
+                        window.innerHeight * (+box.getAttribute("data-maxvh") || 0.25));
+      var min = +box.getAttribute("data-min") || 40;
+      if (fs < min) { fs = min; box.classList.add("fit-wrap"); }
+      box.style.fontSize = fs.toFixed(1) + "px";
+    });
+  }
+  var fitRaf = 0;
+  window.addEventListener("resize", function () { cancelAnimationFrame(fitRaf); fitRaf = requestAnimationFrame(fitAll); });
+  if (document.fonts) {
+    if (document.fonts.ready) document.fonts.ready.then(fitAll);
+    if (document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", fitAll);
+  }
+
+  /* ── Language toggle: Arabic is the default; html.en switches to English ── */
   var langBtn = document.getElementById("langBtn");
-  var isEn = false;
   function applyLang () {
     docEl.classList.toggle("en", isEn);
     docEl.lang = isEn ? "en" : "ar";
     docEl.dir  = isEn ? "ltr" : "rtl";
     updateLinks();
     renderCountdown(true);
+    fitAll();
   }
   if (langBtn) langBtn.addEventListener("click", function () { isEn = !isEn; applyLang(); });
 
-  /* ── Countdown — to 2026-08-22 20:00 Cairo, or ?d= / ?t= params ── */
-  var target = pDateOk
-    ? new Date(pDateOk + "T" + (pTimeNorm || "20:00") + ":00+02:00").getTime()
-    : new Date("2026-08-22T20:00:00+02:00").getTime();
+  /* ── Countdown: to the ?d= / ?t= date (Cairo) ── */
+  var target = new Date((pDateOk || "2026-08-22") + "T" + (pTimeNorm || "20:00") + ":00+02:00").getTime();
   var wrap = document.getElementById("cdWrap");
-  var elD = document.getElementById("cdD"), elH = document.getElementById("cdH"),
-      elM = document.getElementById("cdM"), elS = document.getElementById("cdS");
+  var cells = { d: document.getElementById("cdD"), h: document.getElementById("cdH"),
+                m: document.getElementById("cdM"), s: document.getElementById("cdS") };
   var last = {};
   function fmt (n) {
     var s = String(n).length < 2 ? "0" + n : String(n);
@@ -953,61 +885,45 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
       s: Math.floor(diff % 6e4 / 1e3)
     };
     for (var k in v) {
-      if (force || v[k] !== last[k]) {
-        ({ d: elD, h: elH, m: elM, s: elS })[k].textContent = fmt(v[k]);
-        last[k] = v[k];
-      }
+      if (force === true || v[k] !== last[k]) { cells[k].textContent = fmt(v[k]); last[k] = v[k]; }
     }
   }
   setInterval(renderCountdown, 1000);
 
-  /* ── WhatsApp RSVP links — language-aware, rebuilt on toggle ── */
-  var rsvpYes = document.getElementById("rsvpYes");
-  var rsvpNo  = document.getElementById("rsvpNo");
+  /* ── WhatsApp links: RSVP (with guest count), regrets, share. Language-aware ── */
+  var rsvpYes = document.getElementById("rsvpYes"), rsvpNo = document.getElementById("rsvpNo"),
+      shareBtn = document.getElementById("shareBtn");
   function updateLinks () {
+    var url = location.href.split("#")[0];
     var yes = isEn
-      ? "Hello! Confirming my attendance at the engagement of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueMsgEn
-      : "مرحباً! أؤكد حضوري حفل خطوبة " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueMsgAr;
-    yes += isEn ? " — Guests: " + guestN : " — عدد الحضور: " + arDigits(guestN);
+      ? "Hi! Confirming I'll attend " + namesEn + "'s engagement on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Guests: " + guestN
+      : "أهلاً! تأكيد حضور خطوبة " + namesAr + "، " + dateFullAr + " الساعة " + timeAr + " في " + venueMsgAr + ". عدد الأفراد: " + arDigits(guestN);
     var no = isEn
-      ? "Hello! Unfortunately I won't be able to attend the engagement of " + namesEn + " — sending my warmest wishes to you both."
-      : "مرحباً! أعتذر عن حضور حفل خطوبة " + namesAr + " — مع خالص تمنياتي لهما بحياة سعيدة.";
+      ? "Hi! Sadly I can't make it to " + namesEn + "'s engagement. Congratulations and warmest wishes to you both."
+      : "أهلاً! للأسف مش هقدر أحضر خطوبة " + namesAr + ". ألف مبروك، وربنا يتمم على خير.";
+    var share = isEn
+      ? "You're invited to " + namesEn + "'s engagement, " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Invitation: " + url
+      : "إنتم معزومين على خطوبة " + namesAr + "، " + dateFullAr + " الساعة " + timeAr + " في " + venueMsgAr + ". الدعوة هنا: " + url;
     if (rsvpYes) rsvpYes.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(yes);
     if (rsvpNo)  rsvpNo.href  = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(no);
+    if (shareBtn) shareBtn.href = "https://wa.me/?text=" + encodeURIComponent(share);
   }
 
-  /* ── Reveal-on-scroll — a single quiet fade, disabled for reduced motion ── */
-  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var rvs = document.querySelectorAll(".rv:not(.in)");
-  if (!reduced && "IntersectionObserver" in window && rvs.length) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
-      });
-    }, { threshold: 0.18 });
-    rvs.forEach(function (el) { io.observe(el); });
-  } else {
-    rvs.forEach(function (el) { el.classList.add("in"); });
-  }
-
-  /* ── Guest-count chips — count rides along in the accept message ── */
-  var guestN = "1";
+  /* ── Guest-count chips: count rides along in the accept message ── */
   var chips = document.querySelectorAll(".guest-chips .chip");
-  chips.forEach(function (ch) {
+  Array.prototype.forEach.call(chips, function (ch) {
     ch.addEventListener("click", function () {
       guestN = ch.getAttribute("data-n") || "1";
-      chips.forEach(function (c) { c.setAttribute("aria-pressed", c === ch ? "true" : "false"); });
+      Array.prototype.forEach.call(chips, function (c) { c.setAttribute("aria-pressed", c === ch ? "true" : "false"); });
       updateLinks();
     });
   });
 
-  /* ── Intro overlay — typographic split on tap (intro=0 skips) ── */
+  /* ── Intro: the folded poster tears open on tap (intro=0 skips) ── */
   var intro = document.getElementById("intro");
   if (intro && qp("intro") !== "0") {
-    var inAr = document.getElementById("introNamesAr"), inEn = document.getElementById("introNamesEn");
-    if (inAr) inAr.textContent = namesAr;
-    if (inEn) inEn.textContent = namesEn;
     intro.hidden = false;
+    docEl.classList.add("pre");
     document.body.style.overflow = "hidden";
     try { intro.focus({ preventScroll: true }); } catch (eF) { try { intro.focus(); } catch (eF2) {} }
     var introDone = false;
@@ -1015,8 +931,9 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
       if (introDone) return;
       introDone = true;
       intro.classList.add("open");
+      docEl.classList.remove("pre");
       document.body.style.overflow = "";
-      setTimeout(function () { intro.hidden = true; }, reduced ? 60 : 1100);
+      setTimeout(function () { intro.hidden = true; }, reduced ? 60 : 1150);
     };
     intro.addEventListener("click", openIntro);
     intro.addEventListener("keydown", function (ev) {
@@ -1024,7 +941,7 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
     });
   }
 
-  /* ── Ambient music — OFF by default; WebAudio pad, or ?music= audio URL ── */
+  /* ── Ambient music: OFF by default; WebAudio pad, or ?music= audio URL ── */
   var musicBtn = document.getElementById("musicBtn");
   if (musicBtn) {
     var pMusic = qp("music");
@@ -1076,5 +993,6 @@ html:not(.en) .chip{font-family:var(--ar);font-weight:800;font-size:15px;letter-
 </script>
 
 <p class="d3wa-credit" style="margin:0;padding:28px 16px 96px;text-align:center;font-size:12px;line-height:1.8;opacity:.6"><a href="../index.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><span class="t-ar">دعوة من D3wa · اطلب دعوتك</span><span class="t-en">Invitation by D3wa. Order yours.</span></a></p>
+<script src="../assets/demo-bar.js" defer></script>
 </body>
 </html>
