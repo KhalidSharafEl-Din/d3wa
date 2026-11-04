@@ -33,6 +33,7 @@ const fromPrice = (t) => PKG[t.minPkg].price;
 const PHOTO_OCC = ["wedding", "engagement", "katb"];
 const demoURL = (t, pre) => {
   let q = `n_ar=${encodeURIComponent(t.demo.n_ar)}&amp;n_en=${encodeURIComponent(t.demo.n_en)}`;
+  Object.entries(t.demo).forEach(([k, v]) => { if (k !== "n_ar" && k !== "n_en") q += `&amp;${k}=${encodeURIComponent(v)}`; });
   (t.photos || (t.occ.some((o) => PHOTO_OCC.includes(o)) ? C.demoPhotos : [])).forEach((u, i) => { q += `&amp;ph${i + 1}=${encodeURIComponent(u)}`; });
   if (t.minPkg === "royale") q += "&amp;credit=0";   /* Royale invitations carry no D3wa line */
   return `${pre}demos/${t.k}.html?${q}`;

@@ -137,6 +137,8 @@ function paramString(o) {
   put("d", o.event_date);   put("t", o.event_time);
   put("v_ar", o.v_ar || o.v_en); put("v_en", o.v_en || o.v_ar);
   put("map", o.map_url);    put("q", o.quote);
+  put("o", o.occasion);     /* designs that serve more than one occasion word the card for it */
+  put("h_ar", o.hosts);     /* the families hosting, printed above the names on cards that have the line */
   put("wa", o.rsvp_wa);
   if (o.package === "royale") p.set("credit", "0");   /* Royale drops the "Invitation by D3wa" line */
   return p.toString();
@@ -221,13 +223,13 @@ async function createOrder(request, env) {
 
   await env.DB.prepare(`
     INSERT INTO orders (id, slug, edit_token, template, package, occasion,
-      n_ar, n_en, event_date, event_time, v_ar, v_en, map_url, quote,
+      n_ar, n_en, event_date, event_time, v_ar, v_en, map_url, quote, hosts,
       rsvp_wa, contact_wa, rush, amount, pay_method, notes, status, created_at)
-    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'pending',?)
+    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'pending',?)
   `).bind(
     id, slug, editToken, body.template, body.package, clip(body.occasion, 40),
     clip(body.n_ar, 120), clip(body.n_en, 120), body.event_date, clip(body.event_time, 5),
-    clip(body.v_ar, 200), clip(body.v_en, 200), clip(body.map_url, 500), clip(body.quote, 600),
+    clip(body.v_ar, 200), clip(body.v_en, 200), clip(body.map_url, 500), clip(body.quote, 600), clip(body.hosts, 160),
     String(body.rsvp_wa).replace(/\D/g, ""), clip(String(body.contact_wa || "").replace(/\D/g, ""), 15),
     rush, amount, clip(body.pay_method, 20), clip(body.notes, 1000), nowISO()
   ).run();

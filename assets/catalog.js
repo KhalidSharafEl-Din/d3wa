@@ -89,13 +89,13 @@ window.D3WA = {
     {
       k: "gold", code: "D3-001", minPkg: "classic", occ: ["engagement", "wedding"],
       ar: "كلاسيك جولد", en: "Classic Gold",
-      mood: { ar: "عاجي ودهبي هادي", en: "Quiet ivory and champagne gold" },
+      mood: { ar: "كارت مطبوع بالدهبي", en: "A printed card in ivory and gold" },
       blurb: {
-        ar: "بتفتح من ظرف مختوم على صورة قاعة دافية، وخاتم دهبي فوق الأسامي. للخطوبة والفرح لما تحبوا الأناقة من غير مبالغة.",
-        en: "Opens from a sealed envelope onto a warm ballroom photo, with a gold ring above your names. For engagements and weddings that want elegance without fuss."
+        ar: "ظرف مختوم بحروفكم بيتفتح على كارت قطن بالدهبي، مكتوب زي كروت الأفراح المطبوعة، ومعاه كارت للبرنامج وكارت للرد. للخطوبة والفرح.",
+        en: "An envelope sealed with your initials opens onto a cotton card printed in gold and worded like a classic Cairo invitation, with a programme card and a reply card. For engagements and weddings."
       },
-      look: ["#fbf7ee", "#eadcc0", "#b08d4a", "#2b2117"], fonts: "Italiana, Amiri",
-      demo: { n_ar: "يوسف ومريم", n_en: "Youssef & Mariam" }
+      look: ["#241c17", "#f8f2e4", "#a47c3b", "#2b2117"], fonts: "Amiri, Libre Caslon", photos: [],
+      demo: { n_ar: "يوسف ومريم", n_en: "Youssef & Mariam", h_ar: "السيد/ سامي عزيز والسيد/ محمود رشاد", h_en: "Mr Samy Aziz and Mr Mahmoud Rashad" }
     },
     {
       k: "rose", code: "D3-002", minPkg: "classic", occ: ["wedding", "engagement"],

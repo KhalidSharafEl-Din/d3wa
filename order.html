@@ -128,6 +128,11 @@
         <h2 id="s3h" tabindex="-1"><span class="t-ar">لمساتكم</span><span class="t-en">Personal touches</span></h2>
         <p class="hint"><span class="t-ar">كل الخانات هنا اختيارية.</span><span class="t-en">Everything on this step is optional.</span></p>
         <div class="fields">
+          <div class="field full">
+            <label for="hosts"><span class="t-ar">أسامي الداعين</span><span class="t-en">The hosts</span></label>
+            <input id="hosts" autocomplete="off" maxlength="160" placeholder="السيد/ سامي عزيز والسيد/ محمود رشاد">
+            <small class="help"><span class="t-ar">زي الكروت المطبوعة: "يتشرف ... بدعوتكم". غالباً والد العريس ووالد العروسة.</span><span class="t-en">As on printed cards: "Mr ... request the pleasure of your company". Usually both fathers.</span></small>
+          </div>
           <div class="field full" id="qWrap">
             <label for="q"><span class="t-ar">اقتباس أو آية</span><span class="t-en">A quote or verse</span></label>
             <input id="q" maxlength="300" placeholder="ومن آياته أن خلق لكم من أنفسكم أزواجًا">
@@ -268,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function money(n) { return en() ? "EGP " + n.toLocaleString("en-US") : n.toLocaleString("ar-EG") + " جنيه"; }
   function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
   function bi(ar, enT) { return '<span class="t-ar">' + ar + '</span><span class="t-en">' + enT + "</span>"; }
-  var FIELDS = ["occ", "n_ar", "n_en", "d", "t", "v_ar", "v_en", "map", "q", "notes", "wa", "contact"];
+  var FIELDS = ["occ", "n_ar", "n_en", "d", "t", "v_ar", "v_en", "map", "hosts", "q", "notes", "wa", "contact"];
   var api = false;
 
   /* ── state: URL params win over the saved draft ── */
@@ -412,6 +417,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var vAr = v("v_ar") || v("v_en") || "المكان هيتحدد قريب", vEn = v("v_en") || v("v_ar") || "Venue to be announced";
     var put = { n_ar: v("n_ar") || v("n_en"), n_en: v("n_en") || v("n_ar"), d: v("d"), t: v("t"), v_ar: vAr, v_en: vEn, map: v("map") };
     Object.keys(put).forEach(function (k) { if (put[k]) u.searchParams.set(k, put[k]); });
+    if (v("occ")) u.searchParams.set("o", v("occ"));
+    if (v("hosts")) u.searchParams.set("h_ar", v("hosts"));
     if (state.pkg === "royale") u.searchParams.set("credit", "0");
     if (state.pkg !== "classic" && el("q").value.trim()) u.searchParams.set("q", el("q").value.trim());
     var w = el("wa").value.replace(/\D/g, "");
@@ -495,6 +502,7 @@ document.addEventListener("DOMContentLoaded", function () {
       [en() ? "Total" : "الإجمالي", money(total())]
     ];
     if (state.rush) rows.splice(2, 0, [en() ? "Delivery" : "التسليم", en() ? "Rush, within 24 hours" : "مستعجل خلال ٢٤ ساعة"]);
+    if (el("hosts").value.trim()) rows.push([en() ? "Hosts" : "الداعين", el("hosts").value.trim()]);
     if (state.pkg !== "classic" && el("q").value.trim()) rows.push([en() ? "Quote" : "الاقتباس", el("q").value.trim()]);
     if (el("notes").value.trim()) rows.push([en() ? "Notes" : "ملاحظات", el("notes").value.trim()]);
     el("review").innerHTML = rows.map(function (r) { return "<dt>" + esc(r[0]) + "</dt><dd" + (r[2] ? ' dir="ltr" style="text-align:start"' : "") + ">" + esc(r[1]) + "</dd>"; }).join("");
@@ -511,6 +519,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
     if (el("v_ar").value.trim() || el("v_en").value.trim()) L2.push("المكان Venue: " + [el("v_ar").value.trim(), el("v_en").value.trim()].filter(Boolean).join(" / "));
     if (el("map").value.trim()) L2.push("الخريطة Map: " + el("map").value.trim());
+    if (el("hosts").value.trim()) L2.push("الداعين Hosts: " + el("hosts").value.trim());
     if (state.pkg !== "classic" && el("q").value.trim()) L2.push("الاقتباس Quote: " + el("q").value.trim());
     if (el("notes").value.trim()) L2.push("ملاحظات Notes: " + el("notes").value.trim());
     L2.push("تأكيدات الحضور RSVP: " + el("wa").value.trim());
@@ -557,7 +566,7 @@ document.addEventListener("DOMContentLoaded", function () {
       n_ar: el("n_ar").value.trim() || el("n_en").value.trim(), n_en: el("n_en").value.trim(),
       event_date: el("d").value, event_time: el("t").value,
       v_ar: el("v_ar").value.trim(), v_en: el("v_en").value.trim(),
-      map_url: el("map").value.trim(), quote: state.pkg !== "classic" ? el("q").value.trim() : "",
+      map_url: el("map").value.trim(), hosts: el("hosts").value.trim(), quote: state.pkg !== "classic" ? el("q").value.trim() : "",
       notes: el("notes").value.trim(),
       rsvp_wa: digits(el("wa").value).replace(/^0/, "20"),
       contact_wa: digits(el("contact").value).replace(/^0/, "20"),

@@ -22,7 +22,7 @@ function makeDB() {
     }
     if (s.startsWith("INSERT INTO orders")) {
       const k = ["id","slug","edit_token","template","package","occasion","n_ar","n_en",
-        "event_date","event_time","v_ar","v_en","map_url","quote","rsvp_wa","contact_wa",
+        "event_date","event_time","v_ar","v_en","map_url","quote","hosts","rsvp_wa","contact_wa",
         "rush","amount","pay_method","notes","created_at"];
       const row = { status: "pending" };
       k.forEach((key, i) => (row[key] = args[i]));
@@ -130,6 +130,8 @@ ok("date + venue reach the page",
   injected.get("d") === "2026-11-19" && injected.get("v_ar") === "قاعة النيل، الزمالك");
 ok("rsvp number reaches the page", injected.get("wa") === "201012345678", injected.get("wa"));
 ok("one-language venue fills both", injected.get("v_en") === "قاعة النيل، الزمالك", injected.get("v_en"));
+ok("no hosts line unless given", !injected.has("h_ar"));
+ok("occasion reaches the page", injected.get("o") === VALID.occasion, injected.get("o"));
 const ogTitle = (pendingHTML.match(/<meta property="og:title" content="([^"]*)">/) || [])[1] || "";
 const ogDesc = (pendingHTML.match(/<meta property="og:description" content="([^"]*)">/) || [])[1] || "";
 ok("share title carries the couple's names", ogTitle.includes("ندى وأحمد") && ogTitle.includes("Nada &amp; Ahmed"), ogTitle);
@@ -139,6 +141,10 @@ ok("og:url is the invitation link", pendingHTML.includes(`<meta property="og:url
 ok("signature keeps the credit line", !injected.has("credit"));
 const royalePage = await (await call("/" + royale.slug)).text();
 ok("royale drops the credit line", /credit=0/.test(royalePage));
+const hosted = await (await post("/api/orders", { ...VALID, hosts: "السيد/ سامي عزيز والسيد/ محمود رشاد" })).json();
+const hostedPage = await (await call("/" + hosted.slug)).text();
+const hostedQ = new URLSearchParams(JSON.parse(hostedPage.match(/window\.__D3WA__=("(?:[^"\\]|\\.)*");/)[1]));
+ok("hosts reach the page", hostedQ.get("h_ar") === "السيد/ سامي عزيز والسيد/ محمود رشاد", hostedQ.get("h_ar"));
 ok("unpublished is watermarked", pendingHTML.includes("d3wa-wm"));
 ok("unpublished is noindex", (pending.headers.get("x-robots-tag") || "").includes("noindex"));
 ok("unpublished not cached", (pending.headers.get("cache-control") || "").includes("no-store"));
@@ -150,7 +156,7 @@ const badAuth = await call("/api/admin/orders", { headers: { authorization: "Bea
 ok("wrong token → 401", badAuth.status === 401, badAuth.status);
 const listed = await call("/api/admin/orders", { headers: { authorization: "Bearer s3cret" } });
 ok("valid token → 200", listed.status === 200, listed.status);
-ok("lists orders", (await listed.json()).orders.length === 4);
+ok("lists orders", (await listed.json()).orders.length === 5);
 
 const marked = await post("/api/admin/orders/" + order.id + "/mark", { status: "published" },
   { authorization: "Bearer s3cret" });
