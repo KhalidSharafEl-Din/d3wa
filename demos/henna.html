@@ -345,7 +345,10 @@ html:not(.ar) .stamp{font-size:16px}
 
   var nEn = qp("n_en") || qp("n_ar") || "Malak", nAr = qp("n_ar") || qp("n_en") || "ملك";
   var pDate = qp("d"), pTime = qp("t");
-  var dOk = pDate && /^\d{4}-\d{2}-\d{2}$/.test(pDate) ? pDate : "2026-08-20";
+  /* a real calendar day: 2026-13-45 and 2026-02-30 fall back to the sample date */
+  function realDay (s) { var m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/), x = m && new Date(+m[1], m[2] - 1, +m[3]);
+    return !!x && x.getFullYear() === +m[1] && x.getMonth() === m[2] - 1 && x.getDate() === +m[3]; }
+  var dOk = pDate && realDay(pDate) ? pDate : "2026-08-20";
   var tm = (pTime || "20:00").match(/^(\d{1,2}):(\d{2})$/);
   if (!tm || +tm[1] > 23 || +tm[2] > 59) tm = ["", "20", "00"];
   var hh = +tm[1], mm = tm[2], tNorm = ("0" + hh).slice(-2) + ":" + mm;

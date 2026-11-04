@@ -418,7 +418,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var put = { n_ar: v("n_ar") || v("n_en"), n_en: v("n_en") || v("n_ar"), d: v("d"), t: v("t"), v_ar: vAr, v_en: vEn, map: v("map") };
     Object.keys(put).forEach(function (k) { if (put[k]) u.searchParams.set(k, put[k]); });
     if (v("occ")) u.searchParams.set("o", v("occ"));
-    if (v("hosts")) u.searchParams.set("h_ar", v("hosts"));
+    if (v("hosts")) u.searchParams.set(/[\u0600-\u06FF]/.test(v("hosts")) ? "h_ar" : "h_en", v("hosts"));
     if (state.pkg === "royale") u.searchParams.set("credit", "0");
     if (state.pkg !== "classic" && el("q").value.trim()) u.searchParams.set("q", el("q").value.trim());
     var w = el("wa").value.replace(/\D/g, "");

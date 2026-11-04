@@ -82,13 +82,22 @@ async function reserveSlug(db, nEn, nAr) {
 
 /* ── validation ─────────────────────────────────────────── */
 
+/* a real calendar day, so 2026-13-45 or 2026-02-30 is refused instead of breaking the page */
+function realDay(s) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || "");
+  if (!m) return false;
+  const d = new Date(Date.UTC(+m[1], m[2] - 1, +m[3]));
+  return d.getUTCFullYear() === +m[1] && d.getUTCMonth() === m[2] - 1 && d.getUTCDate() === +m[3];
+}
+
 function validate(b) {
   const errors = [];
   if (!TEMPLATES.includes(b.template)) errors.push("template");
   if (!PACKAGES[b.package]) errors.push("package");
   else if (PKG_RANK[b.package] < PKG_RANK[MIN_PACKAGE[b.template] || "classic"]) errors.push("package");
   if (!b.n_ar || !String(b.n_ar).trim()) errors.push("n_ar");
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(b.event_date || "")) errors.push("event_date");
+  if (!realDay(b.event_date)) errors.push("event_date");
+  if (b.event_time && !/^([01]\d|2[0-3]):[0-5]\d$/.test(b.event_time)) errors.push("event_time");
   const wa = String(b.rsvp_wa || "").replace(/\D/g, "");
   if (wa.length < 10 || wa.length > 15) errors.push("rsvp_wa");
   return errors;
@@ -138,7 +147,8 @@ function paramString(o) {
   put("v_ar", o.v_ar || o.v_en); put("v_en", o.v_en || o.v_ar);
   put("map", o.map_url);    put("q", o.quote);
   put("o", o.occasion);     /* designs that serve more than one occasion word the card for it */
-  put("h_ar", o.hosts);     /* the families hosting, printed above the names on cards that have the line */
+  /* the families hosting, printed above the names on cards that have the line; typed in English, they go to the English side */
+  put(/[\u0600-\u06FF]/.test(o.hosts || "") ? "h_ar" : "h_en", o.hosts);
   put("wa", o.rsvp_wa);
   if (o.package === "royale") p.set("credit", "0");   /* Royale drops the "Invitation by D3wa" line */
   return p.toString();
