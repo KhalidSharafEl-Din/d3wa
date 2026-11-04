@@ -143,6 +143,10 @@
   if (fab && heroEl && "IntersectionObserver" in window) {
     fab.classList.add("away");
     new IntersectionObserver(function (es) { fab.classList.toggle("away", es[0].isIntersecting); }, { threshold: .15 }).observe(heroEl);
+  } else if (fab) {
+    fab.classList.add("away");
+    var showFab = function () { if (scrollY > 240) { fab.classList.remove("away"); removeEventListener("scroll", showFab); } };
+    addEventListener("scroll", showFab, { passive: true });
   }
 
   /* ── hero: the invitation arriving in the family group ── */

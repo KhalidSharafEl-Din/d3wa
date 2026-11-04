@@ -558,9 +558,9 @@ html.en .mono .t-ar,html:not(.en) .mono .t-en{display:none}
             <button type="button" class="chip" data-n="4+" aria-pressed="false"><span class="t-ar">+٤</span><span class="t-en">4+</span></button>
           </div>
         </div>
-        <a class="rsvp-yes" id="rsvpYes" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="t-ar">أكّد الحضور على واتساب</span><span class="t-en">Confirm on WhatsApp</span></a>
+        <a class="rsvp-yes" id="rsvpYes" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="t-ar">أكّدوا الحضور على واتساب</span><span class="t-en">Confirm on WhatsApp</span></a>
         <div class="rsvp-more">
-          <a class="tlink" id="rsvpNo" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="t-ar">مش هقدر آجي</span><span class="t-en">I can&rsquo;t make it</span></a>
+          <a class="tlink" id="rsvpNo" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="t-ar">مش هنقدر نيجي</span><span class="t-en">I can&rsquo;t make it</span></a>
           <a class="tlink" id="shareBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/"><span class="t-ar">ابعتوا الدعوة لحبايبكم</span><span class="t-en">Share the invitation</span></a>
         </div>
       </div>
@@ -897,11 +897,11 @@ html.en .mono .t-ar,html:not(.en) .mono .t-en{display:none}
   function updateLinks () {
     var url = location.href.split("#")[0];
     var yes = isEn
-      ? "Hi! Confirming I'll attend " + namesEn + "'s engagement on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Guests: " + guestN
+      ? "Hi! Confirming we'll attend " + namesEn + "'s engagement on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Guests: " + guestN
       : "أهلاً! تأكيد حضور خطوبة " + namesAr + "، " + dateFullAr + " الساعة " + timeAr + " في " + venueMsgAr + ". عدد الأفراد: " + arDigits(guestN);
     var no = isEn
-      ? "Hi! Sadly I can't make it to " + namesEn + "'s engagement. Congratulations and warmest wishes to you both."
-      : "أهلاً! للأسف مش هقدر أحضر خطوبة " + namesAr + ". ألف مبروك، وربنا يتمم على خير.";
+      ? "Hi! Sadly we can't make it to " + namesEn + "'s engagement. Congratulations and warmest wishes to you both."
+      : "أهلاً! للأسف مش هنقدر نحضر خطوبة " + namesAr + ". ألف مبروك، وربنا يتمم على خير.";
     var share = isEn
       ? "You're invited to " + namesEn + "'s engagement, " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Invitation: " + url
       : "إنتم معزومين على خطوبة " + namesAr + "، " + dateFullAr + " الساعة " + timeAr + " في " + venueMsgAr + ". الدعوة هنا: " + url;

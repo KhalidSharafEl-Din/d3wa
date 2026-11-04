@@ -859,7 +859,7 @@ html.no-scroll,html.no-scroll body{overflow:hidden}
       </a>
       <a class="btn" id="declineBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
-        <span class="t-ar">أعتذر عن الحضور</span>
+        <span class="t-ar">بنعتذر عن الحضور</span>
         <span class="t-en">Send regrets</span>
       </a>
     </div>
@@ -1209,11 +1209,11 @@ html.no-scroll,html.no-scroll body{overflow:hidden}
   }
   function updateLinks () {
     var accept = isEn
-      ? "Hello! I'm happy to confirm I'll attend the katb kitab of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Guests: " + GUEST_EN[guestCount]
-      : "السلام عليكم، يسعدني تأكيد حضوري عقد قران " + namesAr + " يوم " + dateFullAr + "، الساعة " + timeAr + "، " + venueMsgAr + ". عدد الحضور: " + GUEST_AR[guestCount];
+      ? "Hello! We're happy to confirm we'll attend the katb kitab of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Guests: " + GUEST_EN[guestCount]
+      : "السلام عليكم، يسعدنا تأكيد حضورنا عقد قران " + namesAr + " يوم " + dateFullAr + "، الساعة " + timeAr + "، " + venueMsgAr + ". عدد الحضور: " + GUEST_AR[guestCount];
     var decline = isEn
-      ? "Hello, I'm sorry I can't make it to the katb kitab of " + namesEn + ". Wishing them a lifetime of affection and mercy."
-      : "السلام عليكم، للأسف مش هقدر أحضر عقد قران " + namesAr + ". ربنا يتمم لهم على خير ويجعل بينهم مودة ورحمة.";
+      ? "Hello, we're sorry we can't make it to the katb kitab of " + namesEn + ". Wishing them a lifetime of affection and mercy."
+      : "السلام عليكم، للأسف مش هنقدر نحضر عقد قران " + namesAr + ". ربنا يتمم لهم على خير ويجعل بينهم مودة ورحمة.";
     var url = pageUrl();
     var share = shareText() + (url ? (isEn ? " Details: " : " التفاصيل: ") + url : "");
     if (acceptBtn) acceptBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(accept);
