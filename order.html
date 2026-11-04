@@ -95,11 +95,12 @@
           <div class="field">
             <label for="d"><span class="t-ar">التاريخ</span><span class="t-en">Date</span></label>
             <input id="d" type="date" required>
-            <span class="err"><span class="t-ar">اختاروا تاريخ المناسبة.</span><span class="t-en">Choose the event date.</span></span>
+            <span class="err"><span class="t-ar">اختاروا تاريخ المناسبة، من النهارده أو بعده.</span><span class="t-en">Choose the event date, today or later.</span></span>
           </div>
           <div class="field">
-            <label for="t"><span class="t-ar">الساعة</span><span class="t-en">Time</span> <span class="opt-tag"><span class="t-ar">(اختياري)</span><span class="t-en">(optional)</span></span></label>
-            <input id="t" type="time">
+            <label for="t"><span class="t-ar">الساعة</span><span class="t-en">Time</span></label>
+            <input id="t" type="time" required>
+            <span class="err"><span class="t-ar">اختاروا ساعة المناسبة.</span><span class="t-en">Choose the event time.</span></span>
           </div>
           <div class="field">
             <label for="v_ar"><span class="t-ar">المكان بالعربي</span><span class="t-en">Venue in Arabic</span></label>
@@ -203,6 +204,7 @@
       <button type="button" class="btn btn-line pv-close" id="pvClose"><span class="t-ar">رجوع للطلب</span><span class="t-en">Back to the order</span></button>
       <div class="phone"><div class="scr" id="pvScr"><iframe id="pvFrame" title="معاينة الدعوة" loading="lazy"></iframe></div></div>
       <div class="pv-cap"><span><span class="t-ar">المعاينة بأساميكم</span><span class="t-en">Your live preview</span></span><a class="link" id="pvOpen" href="#" target="_blank" rel="noopener"><span class="t-ar">افتحوها كاملة</span><span class="t-en">Open full size</span></a></div>
+      <p class="pv-note"><span class="t-ar">الأسامي والمعاد والمكان بتوعكم. برنامج اليوم والدريس كود بنظبطهم معاكم على واتساب.</span><span class="t-en">The names, date and venue are yours. We set the schedule and dress code with you on WhatsApp.</span></p>
     </div>
   </aside>
 </div>
@@ -333,6 +335,7 @@ document.addEventListener("DOMContentLoaded", function () {
   el("rush").checked = state.rush;
   var today = new Date(); today.setHours(12);
   el("d").min = today.toISOString().slice(0, 10);
+  if (!el("t").value) el("t").value = "20:00";
   var occTouched = !!state.f.occ;
   if (!occTouched) el("occ").value = TPL[state.tpl].occ[0];
 
@@ -396,7 +399,12 @@ document.addEventListener("DOMContentLoaded", function () {
   var pvTimer;
   function previewURL() {
     var u = new URL("demos/" + state.tpl + ".html", location.href);
-    ["n_ar", "n_en", "d", "t", "v_ar", "v_en", "map"].forEach(function (k) { var v = el(k).value.trim(); if (v) u.searchParams.set(k, v); });
+    var v = function (k) { return el(k).value.trim(); };
+    /* the preview must only ever show this couple's details, never the design's sample text */
+    var vAr = v("v_ar") || v("v_en") || "المكان هيتحدد قريب", vEn = v("v_en") || v("v_ar") || "Venue to be announced";
+    var put = { n_ar: v("n_ar"), n_en: v("n_en") || v("n_ar"), d: v("d"), t: v("t"), v_ar: vAr, v_en: vEn, map: v("map") };
+    Object.keys(put).forEach(function (k) { if (put[k]) u.searchParams.set(k, put[k]); });
+    if (state.pkg === "royale") u.searchParams.set("credit", "0");
     if (state.pkg !== "classic" && el("q").value.trim()) u.searchParams.set("q", el("q").value.trim());
     var w = el("wa").value.replace(/\D/g, "");
     if (w) u.searchParams.set("wa", w.replace(/^0/, "20"));
@@ -426,7 +434,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function validStep(n) {
     var ok = true;
     if (n === 2) {
-      ok = mark("n_ar", !el("n_ar").value.trim()) & mark("d", !/^\d{4}-\d{2}-\d{2}$/.test(el("d").value)) &
+      ok = mark("n_ar", !el("n_ar").value.trim()) &
+        mark("d", !/^\d{4}-\d{2}-\d{2}$/.test(el("d").value) || el("d").value < el("d").min) &
+        mark("t", !/^\d{2}:\d{2}$/.test(el("t").value)) &
         mark("map", !!el("map").value.trim() && !/^https:\/\//.test(el("map").value.trim()));
     }
     if (n === 4) {
@@ -453,6 +463,11 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll("[data-back]").forEach(function (b) { b.addEventListener("click", function () { go(state.step - 1); }); });
 
   /* ── review + order text ── */
+  function niceDate(arabic) {
+    var d = el("d").value; if (!d) return "";
+    var f = { weekday: "long", day: "numeric", month: "long", year: "numeric" };
+    try { return new Intl.DateTimeFormat(arabic ? "ar-EG" : "en-GB", f).format(new Date(d + "T12:00:00")); } catch (e) { return d; }
+  }
   function occLabel() { var o = el("occ").selectedOptions[0]; return o ? o.getAttribute(en() ? "data-en" : "data-ar") : ""; }
   function renderReview() {
     var t = TPL[state.tpl];
@@ -461,7 +476,7 @@ document.addEventListener("DOMContentLoaded", function () {
       [en() ? "Package" : "الباقة", L(PKG[state.pkg])],
       [en() ? "Occasion" : "المناسبة", occLabel()],
       [en() ? "Names" : "الأسامي", el("n_ar").value + (el("n_en").value ? " / " + el("n_en").value : "")],
-      [en() ? "Date" : "التاريخ", el("d").value + (el("t").value ? " · " + el("t").value : ""), 1],
+      [en() ? "Date" : "التاريخ", niceDate(!en()) + (el("t").value ? (en() ? ", " : "، ") + el("t").value : "")],
       [en() ? "Venue" : "المكان", el("v_ar").value || el("v_en").value || (en() ? "To confirm later" : "هنأكده بعدين")],
       [en() ? "RSVPs go to" : "التأكيدات على", el("wa").value, 1],
       [en() ? "Total" : "الإجمالي", money(total())]
@@ -479,7 +494,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "الباقة Package: " + p.ar + " / " + p.en + " · " + total() + " EGP" + (state.rush ? " (rush)" : ""),
       "المناسبة Occasion: " + (o ? o.getAttribute("data-ar") : ""),
       "الأسامي Names: " + el("n_ar").value.trim() + (el("n_en").value.trim() ? " / " + el("n_en").value.trim() : ""),
-      "التاريخ Date: " + el("d").value + (el("t").value ? " " + el("t").value : "")
+      "التاريخ Date: " + niceDate(true) + " / " + niceDate(false) + " (" + el("d").value + (el("t").value ? " " + el("t").value : "") + ")"
     ];
     if (el("v_ar").value.trim() || el("v_en").value.trim()) L2.push("المكان Venue: " + [el("v_ar").value.trim(), el("v_en").value.trim()].filter(Boolean).join(" / "));
     if (el("map").value.trim()) L2.push("الخريطة Map: " + el("map").value.trim());

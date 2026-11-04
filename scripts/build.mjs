@@ -29,7 +29,13 @@ const arNum = (n) => Number(n).toLocaleString("ar-EG");
 const enNum = (n) => Number(n).toLocaleString("en-US");
 const egp = (n) => `<span class="t-ar">${arNum(n)} جنيه</span><span class="t-en">EGP ${enNum(n)}</span>`;
 const fromPrice = (t) => PKG[t.minPkg].price;
-const demoURL = (t, pre) => `${pre}demos/${t.k}.html?n_ar=${encodeURIComponent(t.demo.n_ar)}&amp;n_en=${encodeURIComponent(t.demo.n_en)}`;
+/* Demo links carry the demo names and, for wedding-type designs, sample gallery photos. */
+const PHOTO_OCC = ["wedding", "engagement", "katb"];
+const demoURL = (t, pre) => {
+  let q = `n_ar=${encodeURIComponent(t.demo.n_ar)}&amp;n_en=${encodeURIComponent(t.demo.n_en)}`;
+  if (t.occ.some((o) => PHOTO_OCC.includes(o))) C.demoPhotos.forEach((u, i) => { q += `&amp;ph${i + 1}=${encodeURIComponent(u)}`; });
+  return `${pre}demos/${t.k}.html?${q}`;
+};
 const waLink = (text) => `https://wa.me/${C.wa}?text=${encodeURIComponent(text)}`;
 
 /* ── icons: one stroke family, 24 grid ── */
@@ -197,7 +203,6 @@ function addonsLine() {
 /* ── collection page ── */
 function collectionPage() {
   const pre = "../";
-  const counts = Object.fromEntries(C.occasions.map((o) => [o.k, C.templates.filter((t) => t.occ.includes(o.k)).length]));
   const title = "التصاميم | D3wa دعوة: ١٢ تصميم دعوة رقمية";
   const desc = `١٢ تصميم دعوة رقمية للفرح والخطوبة وكتب الكتاب والحنة والسبوع والتخرج، تبدأ من ${arNum(PKG.classic.price)} جنيه. Twelve digital invitation designs from EGP ${enNum(PKG.classic.price)}.`;
   const ld = {
@@ -218,8 +223,8 @@ ${header(pre, "templates")}
 </section>
 <section class="wrap" style="padding-bottom:var(--band)">
   <div class="chips" id="chips" role="group" aria-label="${esc("المناسبة")}">
-    <button class="chip" type="button" data-f="all" aria-pressed="true">${bi({ ar: `الكل ${arNum(C.templates.length)}`, en: `All ${C.templates.length}` })}</button>
-${C.occasions.map((o) => `    <button class="chip" type="button" data-f="${o.k}" aria-pressed="false">${bi({ ar: `${o.ar} ${arNum(counts[o.k])}`, en: `${o.en} ${counts[o.k]}` })}</button>`).join("\n")}
+    <button class="chip" type="button" data-f="all" aria-pressed="true">${bi({ ar: "الكل", en: "All" })}</button>
+${C.occasions.map((o) => `    <button class="chip" type="button" data-f="${o.k}" aria-pressed="false">${bi(o)}</button>`).join("\n")}
   </div>
   <p class="count" id="count" aria-live="polite"></p>
   <div class="grid" id="grid">
@@ -281,7 +286,7 @@ function productPage(t) {
   const opts = C.packages.map((p, i) => {
     const off = i < minRank;
     const note = off
-      ? { ar: `التصميم ده متاح في باقة ${PKG[t.minPkg].ar} بس.`, en: `This design comes in the ${PKG[t.minPkg].en} package only.` }
+      ? (t.whyMin || { ar: `التصميم ده متاح في باقة ${PKG[t.minPkg].ar} بس.`, en: `This design comes in the ${PKG[t.minPkg].en} package only.` })
       : { ar: `${p.pitch.ar} ${p.revisions === 1 ? "جولة تعديل واحدة" : p.revisions === 2 ? "جولتين تعديل" : `${arNum(p.revisions)} جولات تعديل`}، تسليم خلال ${arNum(p.delivery)} ساعة.`,
           en: `${p.pitch.en} ${p.revisions} revision round${p.revisions > 1 ? "s" : ""}, delivered within ${p.delivery} hours.` };
     return `    <label class="opt">
@@ -347,7 +352,6 @@ ${opts}
       <dt>${bi({ ar: "المناسبة", en: "Occasion" })}</dt><dd>${occList.map((o) => bi(o)).join("<span>، </span>")}</dd>
       <dt>${bi({ ar: "اللغات", en: "Languages" })}</dt><dd>${bi({ ar: "عربي وإنجليزي، بيتبدّلوا بلمسة", en: "Arabic and English, switched with a tap" })}</dd>
       <dt>${bi({ ar: "الألوان", en: "Palette" })}</dt><dd><span class="swatches">${t.look.map((c) => `<i style="background:${c}"></i>`).join("")}</span></dd>
-      <dt>${bi({ ar: "الخطوط", en: "Type" })}</dt><dd lang="en" dir="ltr" style="text-align:start">${esc(t.fonts)}</dd>
       <dt>${bi({ ar: "في الصفحة", en: "On the page" })}</dt><dd><ul class="included">
 ${sections(t).map((s) => `        <li>${bi(s)}</li>`).join("\n")}
       </ul></dd>
@@ -405,7 +409,7 @@ function regions(rel, map) {
 
 function occasionRow() {
   return `<ul>
-${C.occasions.map((o) => `  <li><a href="templates/?occ=${o.k}">${bi(o)}<sup>${((n) => bi({ ar: arNum(n), en: String(n) }))(C.templates.filter((t) => t.occ.includes(o.k)).length)}</sup></a></li>`).join("\n")}
+${C.occasions.map((o) => `  <li><a href="templates/?occ=${o.k}">${bi(o)}</a></li>`).join("\n")}
 </ul>`;
 }
 function heroNote() {

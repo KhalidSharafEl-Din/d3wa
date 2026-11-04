@@ -3,6 +3,14 @@
    product-page phone, or a published invitation (served at /<slug>) it does nothing. */
 (function () {
   "use strict";
+  /* Royale invitations go without the "Invitation by D3wa" line (the Worker sets credit=0). */
+  try {
+    if (new URLSearchParams(window.__D3WA__ || location.search).get("credit") === "0") {
+      var st = document.createElement("style");
+      st.textContent = ".d3wa-credit{display:none!important}";
+      document.head.appendChild(st);
+    }
+  } catch (e) {}
   var m = location.pathname.match(/\/demos\/([a-z]+)\.html$/);
   /* file: is the screenshot pipeline (scripts/shots.mjs); the store bar stays out of product images */
   if (!m || window.top !== window.self || location.protocol === "file:") return;

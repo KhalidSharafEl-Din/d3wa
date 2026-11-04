@@ -1002,7 +1002,7 @@ body.intro-lock{overflow:hidden}
 
   /* ── Language toggle ── */
   var langBtn = document.getElementById("langBtn");
-  var isAr = false;
+  var isAr = true; /* Arabic first, like every D3wa design; English is one tap away */
   function applyLang () {
     docEl.classList.toggle("ar", isAr);
     docEl.lang = isAr ? "ar" : "en";
@@ -1011,8 +1011,6 @@ body.intro-lock{overflow:hidden}
     renderCountdown(true);
   }
   if (langBtn) langBtn.addEventListener("click", function () { isAr = !isAr; applyLang(); });
-  /* Arabic by default for Arabic-language devices */
-  try { if ((navigator.language || "").toLowerCase().indexOf("ar") === 0) { isAr = true; } } catch (e) {}
 
   /* ── Countdown to Saturday 22 Aug 2026, 8:00 PM Cairo (or ?d= / ?t= params) ── */
   var target = pDateOk

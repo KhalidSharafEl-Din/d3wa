@@ -1159,8 +1159,7 @@ html.no-scroll,html.no-scroll body{overflow:hidden}
 
   /* ── Language: Arabic by default on Arabic devices ── */
   var langBtn = $("#langBtn");
-  var isAr = false;
-  try { if ((navigator.language || "").toLowerCase().indexOf("ar") === 0) isAr = true; } catch (e) {}
+  var isAr = true; /* Arabic first, like every D3wa design; English is one tap away */
   function applyLang () {
     docEl.classList.toggle("ar", isAr);
     docEl.lang = isAr ? "ar" : "en";

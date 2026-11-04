@@ -129,6 +129,10 @@ ok("names reach the page", injected.get("n_ar") === "ندى وأحمد", injecte
 ok("date + venue reach the page",
   injected.get("d") === "2026-11-19" && injected.get("v_ar") === "قاعة النيل، الزمالك");
 ok("rsvp number reaches the page", injected.get("wa") === "201012345678", injected.get("wa"));
+ok("one-language venue fills both", injected.get("v_en") === "قاعة النيل، الزمالك", injected.get("v_en"));
+ok("signature keeps the credit line", !injected.has("credit"));
+const royalePage = await (await call("/" + royale.slug)).text();
+ok("royale drops the credit line", /credit=0/.test(royalePage));
 ok("unpublished is watermarked", pendingHTML.includes("d3wa-wm"));
 ok("unpublished is noindex", (pending.headers.get("x-robots-tag") || "").includes("noindex"));
 ok("unpublished not cached", (pending.headers.get("cache-control") || "").includes("no-store"));
