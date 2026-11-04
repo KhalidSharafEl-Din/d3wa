@@ -234,7 +234,7 @@ html:not(.en) .mono>.t-ar{gap:11px}
   letter-spacing:.2em;text-indent:.2em;text-transform:uppercase;
   color:var(--ivory);
 }
-.cover-date .t-ar{font-family:var(--kufi);font-size:1.25em;font-weight:500}
+.cover-date .t-ar{font-family:var(--kufi);font-size:1.25em;font-weight:500;word-spacing:.3em}
 .cover-date::before,.cover-date::after{
   content:"";flex:none;width:6px;height:6px;transform:rotate(45deg);
   background:linear-gradient(180deg,#F5E1A4,#B8860B);
@@ -548,6 +548,9 @@ html:not(.en) .chip{font-family:var(--kufi);font-weight:500;font-size:15px}
 
 @media (max-width:359px){
   .names .t-en{letter-spacing:.05em;text-indent:.05em}
+}
+/* the yes/no pair needs ~420px side by side in Arabic; stack it on phones */
+@media (max-width:430px){
   .rsvp-row,.pair{display:flex;flex-direction:column}
 }
 @media (prefers-reduced-motion: reduce){
@@ -1309,7 +1312,7 @@ html:not(.en) .chip{font-family:var(--kufi);font-weight:500;font-size:15px}
 })();
 </script>
 
-<p class="d3wa-credit" style="margin:0;padding:28px 16px 96px;text-align:center;font-size:12px;line-height:1.8;opacity:.6"><a href="../index.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><span class="t-ar">دعوة من D3wa · اطلب دعوتك</span><span class="t-en">Invitation by D3wa. Order yours.</span></a></p>
+<p class="d3wa-credit" style="margin:0;padding:28px 16px 96px;text-align:center;font-size:12px;line-height:1.8;opacity:.6"><a href="../index.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><span class="t-ar">دعوة من D3wa · اطلبوا دعوتكم</span><span class="t-en">Invitation by D3wa. Order yours.</span></a></p>
 <script src="../assets/demo-bar.js" defer></script>
 </body>
 </html>
