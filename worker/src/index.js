@@ -7,6 +7,7 @@
  * invitation.
  *
  *   POST /api/orders                 create an order, reserve its slug
+ *   GET  /api/health                 lets the checkout know the backend is live
  *   GET  /api/orders/:id             order status (public, by id + token)
  *   GET  /api/admin/orders           list orders            [admin]
  *   POST /api/admin/orders/:id/mark  set status             [admin]
@@ -18,12 +19,16 @@
 
 const TEMPLATES = ["gold", "rose", "rustic", "navy", "emerald", "sahara",
   "lotus", "henna", "deco", "garden", "modern", "grad"];
-const PACKAGES = { classic: 1000, signature: 1500, royale: 2500 };
-const RUSH_FEE = 300;
+const PACKAGES = { classic: 699, signature: 1199, royale: 1999 };
+const RUSH_FEE = 250;
+/* cheapest package each design is sold in; mirrors minPkg in assets/catalog.js */
+const MIN_PACKAGE = { navy: "royale" };
+const PKG_RANK = { classic: 0, signature: 1, royale: 2 };
 
 /* paths the Worker must never treat as a slug */
 const RESERVED = new Set(["", "index.html", "order.html", "studio.html", "admin.html",
-  "404.html", "robots.txt", "favicon.ico", "sitemap.xml", "assets", "demos", "api", "worker"]);
+  "404.html", "robots.txt", "favicon.ico", "sitemap.xml", "assets", "demos", "api", "worker",
+  "templates", "policies.html"]);
 
 const json = (data, status = 200, extra = {}) =>
   new Response(JSON.stringify(data), {
@@ -81,6 +86,7 @@ function validate(b) {
   const errors = [];
   if (!TEMPLATES.includes(b.template)) errors.push("template");
   if (!PACKAGES[b.package]) errors.push("package");
+  else if (PKG_RANK[b.package] < PKG_RANK[MIN_PACKAGE[b.template] || "classic"]) errors.push("package");
   if (!b.n_ar || !String(b.n_ar).trim()) errors.push("n_ar");
   if (!/^\d{4}-\d{2}-\d{2}$/.test(b.event_date || "")) errors.push("event_date");
   const wa = String(b.rsvp_wa || "").replace(/\D/g, "");
@@ -121,7 +127,7 @@ const WATERMARK = `
   .d3wa-wm b{color:#e0a266}
   @media print{.d3wa-wm{display:none}}
 </style>
-<div class="d3wa-wm" dir="rtl">معاينة — لسه مش منشورة · <b>Preview</b>, not published yet</div>`;
+<div class="d3wa-wm" dir="rtl">معاينة، لسه مش منشورة | <b>Preview</b>, not published yet</div>`;
 
 function paramString(o) {
   const p = new URLSearchParams();
@@ -162,7 +168,8 @@ async function renderInvitation(order, env, request) {
       "cache-control": order.status === "published"
         ? "public, max-age=300"
         : "no-store",
-      "x-robots-tag": order.status === "published" ? "all" : "noindex, nofollow"
+      /* invitations carry a family's names, date and venue: reachable by link, never listed in search */
+      "x-robots-tag": "noindex, nofollow"
     }
   });
 }
@@ -185,14 +192,14 @@ async function createOrder(request, env) {
   await env.DB.prepare(`
     INSERT INTO orders (id, slug, edit_token, template, package, occasion,
       n_ar, n_en, event_date, event_time, v_ar, v_en, map_url, quote,
-      rsvp_wa, contact_wa, rush, amount, pay_method, status, created_at)
-    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'pending',?)
+      rsvp_wa, contact_wa, rush, amount, pay_method, notes, status, created_at)
+    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'pending',?)
   `).bind(
     id, slug, editToken, body.template, body.package, clip(body.occasion, 40),
     clip(body.n_ar, 120), clip(body.n_en, 120), body.event_date, clip(body.event_time, 5),
     clip(body.v_ar, 200), clip(body.v_en, 200), clip(body.map_url, 500), clip(body.quote, 600),
     String(body.rsvp_wa).replace(/\D/g, ""), clip(String(body.contact_wa || "").replace(/\D/g, ""), 15),
-    rush, amount, clip(body.pay_method, 20), nowISO()
+    rush, amount, clip(body.pay_method, 20), clip(body.notes, 1000), nowISO()
   ).run();
 
   return json({ id, slug, editToken, amount, status: "pending" }, 201);
@@ -281,6 +288,7 @@ export default {
     const method = request.method;
 
     try {
+      if (path === "api/health" && method === "GET") return json({ ok: true });
       if (path === "api/orders" && method === "POST") return await createOrder(request, env);
 
       const one = path.match(/^api\/orders\/([A-Za-z0-9]{2,12})$/);

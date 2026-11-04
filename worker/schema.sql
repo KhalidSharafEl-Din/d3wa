@@ -24,8 +24,9 @@ CREATE TABLE IF NOT EXISTS orders (
 
   rush         INTEGER NOT NULL DEFAULT 0,
   amount       INTEGER NOT NULL,          -- EGP
-  pay_method   TEXT,                      -- instapay | vcash | card
+  pay_method   TEXT,                      -- later (not chosen yet) | instapay | vcash | card
   pay_ref      TEXT,                      -- gateway txn id once card is live
+  notes        TEXT,                      -- free text from checkout: schedule, dress code, photos
 
   -- draft: still editing · pending: awaiting payment · paid: confirmed, publishing
   -- published: live · cancelled

@@ -51,8 +51,10 @@ new_path = re.sub(r"^https://[^/]+", "", new) or "/"
 if not old_path.endswith("/"): old_path += "/"
 if not new_path.endswith("/"): new_path += "/"
 
-targets = ["index.html", "order.html", "studio.html", "admin.html", "404.html"]
+targets = ["index.html", "order.html", "policies.html", "studio.html", "admin.html", "404.html",
+           "sitemap.xml", "robots.txt", "assets/catalog.js"]
 targets += sorted(str(p) for p in pathlib.Path("demos").glob("*.html"))
+targets += sorted(str(p) for p in pathlib.Path("templates").glob("*.html"))
 
 total_files = total_edits = 0
 for name in targets:
@@ -70,7 +72,7 @@ for name in targets:
     # real custom domain can serve those slugs, so a github.io target leaves the
     # intended domain in place rather than advertising a host that can't host them.
     if "github.io" not in new:
-        out = re.sub(r'(var PUBLIC_HOST = ")[^"]*(")',
+        out = re.sub(r'(  host: ")[^"]*(")',
                      lambda m: m.group(1) + re.sub(r"^https://", "", new).rstrip("/") + m.group(2),
                      out)
 
