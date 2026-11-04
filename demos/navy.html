@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl" class="ar">
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>تصميم رويال نايفي | Royal Navy | دعوة D3wa</title>
-<meta name="description" content="ديمو دعوة رويال نايفي: كحلي ليلي ودهب. A D3wa invitation demo: Royal Navy, midnight navy and gold foil.">
-<meta name="theme-color" content="#0c1631">
+<meta name="description" content="ديمو دعوة رويال نايفي: كارت دوبلكس بحواف مدهبة في علبة كتان كحلي. A D3wa invitation demo: Royal Navy, a gilt-edged duplex card in a navy linen box.">
+<meta name="theme-color" content="#080d1b">
 <meta name="color-scheme" content="dark light">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="تصميم رويال نايفي | Royal Navy | دعوة D3wa">
-<meta property="og:description" content="ديمو دعوة رويال نايفي: كحلي ليلي ودهب. A D3wa invitation demo: Royal Navy, midnight navy and gold foil.">
+<meta property="og:description" content="ديمو دعوة رويال نايفي: كارت دوبلكس بحواف مدهبة في علبة كتان كحلي. A D3wa invitation demo: Royal Navy, a gilt-edged duplex card in a navy linen box.">
 <meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/demos/navy.html">
 <link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/demos/navy.html">
 <meta property="og:image" content="https://khalidsharafel-din.github.io/d3wa/assets/og/navy.png">
@@ -19,905 +19,11 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c1631'/%3E%3Ccircle cx='16' cy='17' r='10' fill='none' stroke='%23d8b56b' stroke-width='2'/%3E%3Cpath d='M10 9 9 4l4 3 3-4 3 4 4-3-1 5z' fill='%23d8b56b'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23080d1b'/%3E%3Crect x='6' y='4' width='20' height='24' fill='%2322335c'/%3E%3Crect x='9' y='7' width='14' height='18' fill='none' stroke='%23cfa658' stroke-width='1.2'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Amiri:wght@400;700&display=swap">
-
-<style>
-/* ═══════════════  D3-004 · ROYAL NAVY  ═══════════════
-   Night (default): midnight navy, ivory ink, gold foil.
-   Day (html[data-theme="day"]): ivory paper, navy ink, with navy bands. */
-:root,
-html[data-theme="day"] .inverse{
-  --ground:#0c1631;
-  --ground-2:#111f43;
-  --ink:#f4eddc;
-  --ink-soft:#c5bda9;
-  --gold:#d8b56b;
-  --line:rgba(216,181,107,.55);
-  --line-soft:rgba(216,181,107,.24);
-  --foil-a:#f7e6b0;
-  --foil-b:#d4ad5c;
-  --foil-c:#a47c35;
-  --btn-bg:#d8b56b;
-  --btn-ink:#0c1631;
-  --btn-hover:#e7c886;
-  --glow:rgba(70,104,180,.30);
-  --door-a:#15264f;
-  --door-b:#0a142d;
-  --door-mid:#101d3e;
-}
-html[data-theme="day"]{
-  --ground:#f6f1e6;
-  --ground-2:#efe7d6;
-  --ink:#15223f;
-  --ink-soft:#4d5874;
-  --gold:#7f6127;
-  --line:rgba(127,97,39,.5);
-  --line-soft:rgba(127,97,39,.22);
-  --foil-a:#d6b86f;
-  --foil-b:#a8823a;
-  --foil-c:#76581f;
-  --btn-bg:#15223f;
-  --btn-ink:#f6f1e6;
-  --btn-hover:#24345c;
-  --glow:rgba(255,255,255,.75);
-  --door-a:#f9f5ec;
-  --door-b:#ece3d0;
-  --door-mid:#f3ecde;
-}
-:root{
-  --lat:"Bodoni Moda","Bodoni 72",Didot,"Times New Roman",serif;
-  --ar:"Amiri","Traditional Arabic",serif;
-  --ar-display:"Amiri","Traditional Arabic",serif;
-  --sec-pad:clamp(60px,16vw,96px);
-}
-
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{
-  margin:0;
-  overflow-x:hidden;
-  background:var(--ground);
-  color:var(--ink);
-  font-family:var(--lat);
-  font-optical-sizing:auto;
-  font-size:17px;
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-  transition:background-color .45s ease,color .45s ease;
-}
-html.ar body{line-height:1.8}
-[hidden]{display:none !important}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-::selection{background:var(--gold);color:var(--ground)}
-p,h1,h2,ol,ul,dl,dd,blockquote{margin:0}
-
-/* ───────────────  LANGUAGE  ─────────────── */
-html.ar .t-en{display:none !important}
-html:not(.ar) .t-ar{display:none !important}
-.t-ar{
-  font-family:var(--ar);
-  font-size:1.15em;
-  font-style:normal;
-  letter-spacing:0 !important;
-  text-transform:none;
-  font-variant-caps:normal;
-}
-
-/* ───────────────  FLOATING CONTROLS  ─────────────── */
-.ctl{
-  position:fixed;z-index:60;
-  min-width:44px;height:44px;padding:0 14px;
-  display:inline-flex;align-items:center;justify-content:center;
-  border:1px solid var(--line);border-radius:999px;
-  background:var(--ground);
-  background:color-mix(in srgb,var(--ground) 84%,transparent);
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
-  color:var(--gold);cursor:pointer;
-  font-family:var(--lat);font-size:14px;letter-spacing:.06em;
-  transition:background-color .3s ease,color .3s ease,border-color .3s ease;
-  -webkit-tap-highlight-color:transparent;
-}
-.ctl:hover{background:color-mix(in srgb,var(--gold) 16%,var(--ground))}
-.ctl svg{width:18px;height:18px}
-.ctl .lg-ar{font-family:var(--ar);font-size:18px;font-weight:700;line-height:1}
-.ctl .lg-en{font-family:var(--lat);font-size:14px;font-weight:500;letter-spacing:.06em}
-.lang-toggle{top:calc(14px + env(safe-area-inset-top));inset-inline-end:14px}
-.theme-toggle{top:calc(14px + env(safe-area-inset-top));inset-inline-start:14px;padding:0}
-.music-toggle{bottom:calc(14px + env(safe-area-inset-bottom));inset-inline-end:14px;padding:0}
-.music-toggle[aria-pressed="true"]{background:var(--gold);color:var(--ground);border-color:var(--gold)}
-html[data-theme="day"] .theme-toggle .i-sun{display:none}
-html:not([data-theme="day"]) .theme-toggle .i-moon{display:none}
-
-/* ───────────────  THE CREST  ───────────────
-   Guilloché rosette inside a laurel wreath under a coronet;
-   the couple's initials sit in the clear centre. */
-.crest{
-  --cw:clamp(150px,44vw,188px);
-  position:relative;
-  width:var(--cw);
-  margin:0 auto;
-}
-.crest svg{display:block;width:100%;height:auto;overflow:visible}
-.crest-xl{--cw:clamp(196px,58vw,244px)}
-.crest-sm{--cw:92px}
-.mono{
-  position:absolute;
-  left:50%;top:57.2%;
-  width:calc(var(--cw) * .3);
-  height:calc(var(--cw) * .27);
-  transform:translate(-50%,-50%);
-  color:var(--gold);
-  pointer-events:none;
-}
-.mono>span{position:absolute;inset:0}
-.mono b{
-  position:absolute;
-  font-weight:400;
-  line-height:1;
-}
-.mono .t-en b{font-family:var(--lat);font-style:italic;font-size:calc(var(--cw) * .175)}
-.mono .t-ar b{font-family:var(--ar-display);font-weight:700;font-size:calc(var(--cw) * .17);line-height:1}
-.mono .m1{top:-6%;inset-inline-start:0}
-.mono .m2{bottom:-6%;inset-inline-end:0}
-.mono .t-ar .m1{top:-22%}
-.mono .t-ar .m2{bottom:6%}
-.mono .mx{
-  position:absolute;left:50%;top:50%;
-  width:calc(var(--cw) * .026);height:calc(var(--cw) * .026);
-  background:var(--gold);transform:translate(-50%,-50%) rotate(45deg);
-}
-.mono .solo .m2,.mono .solo .mx{display:none}
-.mono .solo .m1{inset:0;display:grid;place-items:center}
-
-/* ───────────────  SHARED TYPE  ─────────────── */
-.kicker{
-  font-variant-caps:all-small-caps;
-  font-size:15px;font-weight:500;
-  letter-spacing:.2em;
-  color:var(--gold);
-}
-.kicker .t-ar{font-size:19px;font-weight:700}
-.sec-title{
-  font-family:var(--lat);
-  font-style:italic;font-weight:400;
-  font-size:clamp(24px,7vw,30px);
-  line-height:1.2;
-  color:var(--ink);
-}
-.sec-title .t-ar{font-weight:700;font-size:1.12em;line-height:1.6}
-.sec-title::after{
-  content:"";display:block;
-  width:34px;height:1px;margin:14px auto 0;
-  background:var(--gold);
-}
-.rule{
-  display:flex;align-items:center;justify-content:center;gap:12px;
-  color:var(--gold);
-}
-.rule::before,.rule::after{content:"";height:1px;width:clamp(54px,18vw,86px);background:var(--line)}
-.rule i{width:6px;height:6px;background:currentColor;transform:rotate(45deg)}
-
-/* ───────────────  SECTIONS  ─────────────── */
-.sec{
-  position:relative;
-  padding:var(--sec-pad) 22px;
-  text-align:center;
-}
-.sec>*{max-width:440px;margin-inline:auto}
-.inverse{
-  background:var(--ground-2);
-  color:var(--ink);
-  border-block:1px solid var(--line-soft);
-}
-.sec + .sec:not(.inverse):not(.after-inverse)::before{
-  content:"";position:absolute;top:0;left:50%;
-  width:min(70%,320px);height:1px;transform:translateX(-50%);
-  background:linear-gradient(90deg,transparent,var(--line),transparent);
-}
-
-/* ───────────────  COVER  ─────────────── */
-.cover{
-  position:relative;
-  min-height:100vh;min-height:100svh;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:calc(78px + env(safe-area-inset-top)) 22px calc(52px + env(safe-area-inset-bottom));
-  text-align:center;
-  overflow:hidden;
-  isolation:isolate;
-}
-.cover::before{
-  content:"";position:absolute;inset:0;z-index:-2;
-  background:radial-gradient(90% 55% at 50% 30%,var(--glow) 0%,transparent 70%);
-}
-.cover-rosette{
-  position:absolute;z-index:-1;
-  left:50%;top:clamp(150px,36vw,190px);
-  width:min(170vw,720px);height:auto;
-  transform:translate(-50%,-50%);
-  opacity:.16;
-  pointer-events:none;
-}
-html[data-theme="day"] .cover-rosette{opacity:.2}
-.cover .crest{margin-bottom:clamp(22px,6vw,30px)}
-.cover .kicker{margin-bottom:clamp(14px,4vw,20px)}
-.names{font-weight:400;color:var(--ink)}
-.names .nm{display:block}
-.names .t-en{
-  display:block;
-  font-family:var(--lat);
-  font-size:clamp(46px,13.6vw,64px);
-  line-height:1.02;
-  letter-spacing:.005em;
-}
-.names .t-ar{
-  display:block;
-  font-family:var(--ar-display);
-  font-weight:700;
-  font-size:clamp(50px,14.6vw,70px);
-  line-height:1.45;
-}
-.names .amp{
-  display:block;
-  font-style:italic;
-  font-size:.5em;
-  line-height:1.3;
-  color:var(--gold);
-}
-.names .t-ar .amp{font-family:var(--ar);font-style:normal;font-size:.46em;line-height:1.2}
-.request{
-  margin-top:clamp(16px,4.5vw,22px);
-  max-width:300px;
-  font-style:italic;
-  font-size:clamp(17px,4.8vw,19px);
-  line-height:1.5;
-  color:var(--ink-soft);
-  text-wrap:balance;
-}
-.request .t-ar{font-size:1.18em;line-height:1.7}
-.datebar{
-  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
-  gap:16px;
-  width:min(100%,330px);
-  margin:clamp(24px,6.5vw,32px) auto 0;
-}
-.db-side{
-  padding:9px 0 8px;
-  border-block:1px solid var(--line);
-  font-variant-caps:all-small-caps;
-  font-size:15px;letter-spacing:.16em;
-  line-height:1.25;
-  color:var(--ink);
-}
-.db-side .t-ar{font-size:18px;font-weight:700;line-height:1.5}
-.db-day{
-  font-size:clamp(50px,14vw,60px);
-  line-height:1;
-  font-variant-numeric:lining-nums;
-  color:var(--gold);
-}
-.db-day .t-ar{font-family:var(--ar);font-weight:400;font-size:1.05em;line-height:1.1}
-.cover-meta{
-  margin-top:clamp(16px,4.5vw,22px);
-  font-size:17px;line-height:1.6;color:var(--ink);
-}
-.cover-meta span{display:block}
-.cover-meta .cm-venue{color:var(--ink-soft);font-style:italic}
-.cover-meta .t-ar{font-size:19px}
-.scroll-cue{
-  position:absolute;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));
-  width:1px;height:34px;transform:translateX(-50%);
-  background:linear-gradient(180deg,transparent,var(--gold));
-}
-.scroll-cue::after{
-  content:"";position:absolute;left:50%;bottom:-3px;
-  width:6px;height:6px;transform:translateX(-50%) rotate(45deg);
-  background:var(--gold);
-}
-
-/* entrance after the doors open (JS adds .is-open; without JS nothing is hidden) */
-.js .cover .rv{opacity:0}
-.is-open .cover .rv{animation:rise 1s cubic-bezier(.22,.7,.25,1) both}
-.is-open .cover .r2{animation-delay:.18s}
-.is-open .cover .r3{animation-delay:.34s}
-.is-open .cover .r4{animation-delay:.5s}
-.is-open .cover .r5{animation-delay:.66s}
-@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-
-/* ───────────────  COUNTDOWN  ─────────────── */
-.cd-sec .kicker{margin-bottom:22px}
-.countdown{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  max-width:360px;margin:0 auto;
-}
-.cd-cell{padding:2px 4px;border-inline-start:1px solid var(--line-soft)}
-.cd-cell:first-child{border-inline-start:0}
-.cd-num{
-  display:block;
-  font-size:clamp(36px,10.4vw,46px);
-  line-height:1.05;
-  font-variant-numeric:lining-nums tabular-nums;
-  color:var(--ink);
-}
-html.ar .cd-num{font-family:var(--ar);font-weight:500;font-size:clamp(40px,11.4vw,50px);line-height:1.15}
-.cd-lbl{display:block;margin-top:6px;font-style:italic;font-size:15px;color:var(--ink-soft)}
-.cd-lbl .t-ar{font-size:18px}
-.cd-done{display:none;font-style:italic;font-size:clamp(20px,5.6vw,24px);line-height:1.5;color:var(--ink)}
-.countdown-wrap.is-done .countdown{display:none}
-.countdown-wrap.is-done .cd-done{display:block}
-
-/* ───────────────  VERSE  ─────────────── */
-.verse .rule{margin-bottom:26px}
-.quote{
-  font-style:italic;
-  font-size:clamp(23px,6.6vw,29px);
-  line-height:1.45;
-  color:var(--ink);
-  text-wrap:balance;
-}
-.quote .t-ar{font-size:1.12em;line-height:1.8}
-
-/* ───────────────  PROGRAMME  ─────────────── */
-.sec-title + *{margin-top:26px}
-.prog{list-style:none;padding:0;text-align:start}
-.prog li{
-  display:flex;align-items:baseline;gap:12px;
-  padding:11px 0;
-}
-.pg-ev{font-size:19px;line-height:1.35;color:var(--ink)}
-.pg-ev .t-ar{font-size:21px;line-height:1.6}
-.pg-lead{flex:1 1 auto;min-width:24px;border-bottom:1px dotted var(--line);transform:translateY(-5px)}
-.pg-tm{
-  flex:none;
-  font-variant-caps:all-small-caps;
-  font-variant-numeric:lining-nums tabular-nums;
-  font-size:17px;letter-spacing:.06em;
-  color:var(--gold);
-}
-.pg-tm .t-ar{font-size:19px;font-weight:700}
-
-/* ───────────────  DETAILS CARTOUCHE  ─────────────── */
-.cartouche{
-  position:relative;
-  padding:30px 22px;
-  border:1px solid var(--line);
-  outline:1px solid var(--line-soft);
-  outline-offset:5px;
-  margin:32px auto 0;
-  max-width:428px;
-}
-.cartouche .cn{position:absolute;width:7px;height:7px;background:var(--gold);transform:rotate(45deg)}
-.cartouche .cn:nth-child(1){top:-4px;left:-4px}
-.cartouche .cn:nth-child(2){top:-4px;right:-4px}
-.cartouche .cn:nth-child(3){bottom:-4px;left:-4px}
-.cartouche .cn:nth-child(4){bottom:-4px;right:-4px}
-.details{display:grid;gap:0}
-.details .row{padding:14px 0}
-.details .row + .row{border-top:1px solid var(--line-soft)}
-.details dt{
-  font-variant-caps:all-small-caps;
-  font-size:15px;letter-spacing:.2em;
-  color:var(--gold);
-  margin-bottom:4px;
-}
-.details dt .t-ar{font-size:18px;font-weight:700}
-.details dd{font-size:clamp(20px,5.8vw,23px);line-height:1.35;color:var(--ink)}
-.details dd .t-ar{font-size:1.1em;line-height:1.6;font-weight:400}
-.details dd small{display:block;margin-top:3px;font-size:.74em;font-style:italic;color:var(--ink-soft)}
-.details dd .t-ar small{font-style:normal;font-size:.8em}
-.btn-pair{display:grid;gap:10px;margin-top:22px}
-
-/* ───────────────  BUTTONS & CHIPS  ─────────────── */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  min-height:52px;padding:0 16px;
-  border:1px solid var(--gold);border-radius:0;
-  background:transparent;color:var(--gold);
-  font-family:var(--lat);
-  font-variant-caps:all-small-caps;
-  font-size:16px;font-weight:500;letter-spacing:.12em;
-  line-height:1.15;
-  text-decoration:none;cursor:pointer;
-  transition:background-color .3s ease,color .3s ease,border-color .3s ease;
-  -webkit-tap-highlight-color:transparent;
-}
-.btn svg{width:16px;height:16px;flex:none}
-.btn .t-ar{font-size:18px;font-weight:700}
-.btn:hover{background:color-mix(in srgb,var(--gold) 14%,transparent)}
-.btn.solid{background:var(--btn-bg);border-color:var(--btn-bg);color:var(--btn-ink)}
-.btn.solid:hover{background:var(--btn-hover);border-color:var(--btn-hover)}
-.btn.wide{display:flex;width:100%}
-
-/* ───────────────  NOTES (dress · gift)  ─────────────── */
-.sec.note{padding-block:clamp(48px,12vw,72px)}
-.note-line{
-  font-style:italic;
-  font-size:clamp(19px,5.4vw,22px);
-  line-height:1.5;
-  color:var(--ink);
-  text-wrap:balance;
-}
-.note-line .t-ar{font-size:1.12em;line-height:1.75}
-
-/* ───────────────  GALLERY  ─────────────── */
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.g-frame{
-  position:relative;aspect-ratio:3/4;overflow:hidden;
-  border:1px solid var(--line);
-  background:color-mix(in srgb,var(--gold) 6%,transparent);
-  display:grid;place-items:center;color:var(--line);
-}
-.g-frame::after{content:"";position:absolute;inset:4px;border:1px solid var(--line-soft);pointer-events:none;z-index:2}
-.g-frame svg{width:20px;height:20px}
-.g-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.g-frame.has-img svg{display:none}
-
-/* ───────────────  RSVP  ─────────────── */
-.rsvp-title{
-  font-family:var(--lat);font-weight:400;
-  font-size:clamp(40px,12vw,54px);
-  line-height:1.05;letter-spacing:.04em;
-  color:var(--ink);
-}
-.rsvp-title .t-ar{font-family:var(--ar-display);font-weight:700;font-size:.84em;line-height:1.6}
-.rsvp-sub{margin-top:14px;font-style:italic;font-size:18px;line-height:1.5;color:var(--ink-soft);text-wrap:balance}
-.rsvp-sub .t-ar{font-size:20px;line-height:1.75}
-.guest-lbl{margin-top:28px;font-variant-caps:all-small-caps;font-size:15px;letter-spacing:.2em;color:var(--gold)}
-.guest-lbl .t-ar{font-size:18px;font-weight:700}
-.chips{display:flex;justify-content:center;gap:10px;margin-top:12px}
-.chip{
-  width:54px;height:54px;
-  border:1px solid var(--line);border-radius:0;
-  background:transparent;color:var(--ink);
-  font-family:var(--lat);font-size:20px;font-variant-numeric:lining-nums;
-  cursor:pointer;
-  transition:background-color .25s ease,color .25s ease,border-color .25s ease;
-  -webkit-tap-highlight-color:transparent;
-}
-.chip .t-ar{font-size:22px;font-weight:700}
-.chip:hover{border-color:var(--gold)}
-.chip[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--ground)}
-.rsvp-actions{display:grid;gap:10px;margin-top:26px}
-
-/* ───────────────  CLOSING  ─────────────── */
-.closing{padding:var(--sec-pad) 22px calc(var(--sec-pad) * .6);text-align:center}
-.closing .crest{margin-bottom:22px}
-.closing-line{
-  font-style:italic;font-size:clamp(22px,6.2vw,26px);line-height:1.4;color:var(--ink);
-  max-width:340px;margin:0 auto;text-wrap:balance;
-}
-.closing-line .t-ar{font-family:var(--ar-display);font-style:normal;font-weight:700;font-size:1.3em;line-height:1.6}
-.closing-names{margin-top:12px;font-variant-caps:all-small-caps;font-size:15px;letter-spacing:.2em;color:var(--gold)}
-.closing-names .t-ar{font-size:18px;font-weight:700}
-
-/* ───────────────  OPENING MOMENT · PALACE DOORS  ─────────────── */
-html.no-scroll,html.no-scroll body{overflow:hidden}
-.intro{
-  position:fixed;inset:0;z-index:200;
-  display:flex;align-items:center;justify-content:center;
-  perspective:1600px;
-  cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
-}
-.intro:focus-visible{outline:2px solid var(--gold);outline-offset:-10px}
-.intro.open{pointer-events:none}
-.door{
-  position:absolute;top:0;bottom:0;width:50.2%;
-  background:linear-gradient(180deg,var(--door-a),var(--door-b));
-  transition:transform 1.35s cubic-bezier(.6,0,.25,1),opacity .5s ease 1s;
-  backface-visibility:hidden;
-}
-.door::before,.door::after{
-  content:"";position:absolute;
-  inset-inline:16%;
-  border:1px solid var(--line);
-  outline:1px solid var(--line-soft);
-  outline-offset:-7px;
-}
-.door::before{top:7%;height:40%}
-.door::after{bottom:7%;height:40%}
-.door.dl{left:0;transform-origin:0 50%;box-shadow:inset -1px 0 0 var(--gold)}
-.door.dr{right:0;transform-origin:100% 50%;box-shadow:inset 1px 0 0 var(--gold)}
-.intro.open .door.dl{transform:rotateY(-96deg);opacity:0}
-.intro.open .door.dr{transform:rotateY(96deg);opacity:0}
-.intro-inner{
-  position:relative;z-index:2;
-  display:flex;flex-direction:column;align-items:center;
-  gap:clamp(16px,4.6vw,22px);
-  padding:28px 24px;text-align:center;
-  transition:opacity .45s ease,transform .6s ease;
-}
-.intro.open .intro-inner{opacity:0;transform:scale(.94)}
-/* the crest sits across the door seam like a seal: its centre stays clear of the seam line */
-.intro .crest::before{
-  content:"";position:absolute;left:50%;top:57.1%;
-  width:40%;aspect-ratio:1;border-radius:50%;
-  transform:translate(-50%,-50%);
-  background:var(--door-mid);
-}
-.intro .crest svg{position:relative}
-.intro-names{font-size:clamp(26px,7.6vw,32px);line-height:1.25;color:var(--ink)}
-.intro-names .t-ar{font-family:var(--ar-display);font-weight:700;font-size:1.12em;line-height:1.6}
-.intro-hint{
-  font-variant-caps:all-small-caps;font-size:15px;letter-spacing:.24em;color:var(--gold);
-  animation:hint 2.6s ease-in-out infinite;
-}
-.intro-hint .t-ar{font-size:19px;font-weight:700}
-@keyframes hint{0%,100%{opacity:.6}50%{opacity:1}}
-
-@media (min-width:760px){
-  .sec{padding-inline:40px}
-  .cover-rosette{top:200px}
-}
-@media (min-width:420px){
-  .btn-pair{grid-template-columns:1fr 1fr}
-}
-@media (max-width:359px){
-  .chip{width:48px;height:48px}
-}
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none !important;transition:none !important}
-  .js .cover .rv{opacity:1}
-}
-</style>
-<script>
-/* Day version before first paint: a guest's own toggle (this tab) wins, else ?theme=day */
-(function () {
-  try {
-    var s = sessionStorage.getItem("d3waNavyTheme");
-    var p = new URLSearchParams(window.__D3WA__ || location.search).get("theme");
-    if (s ? s === "day" : p === "day") document.documentElement.setAttribute("data-theme", "day");
-  } catch (e) {}
-})();
-</script>
-</head>
-
-<body>
-
-<!-- shared foil gradient, rosette and crest (referenced by <use>) -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <defs>
-    <linearGradient id="foil" gradientUnits="userSpaceOnUse" x1="20" y1="20" x2="220" y2="240">
-      <stop offset="0" style="stop-color:var(--foil-a)"/>
-      <stop offset=".38" style="stop-color:var(--foil-b)"/>
-      <stop offset=".55" style="stop-color:var(--foil-a)"/>
-      <stop offset="1" style="stop-color:var(--foil-c)"/>
-    </linearGradient>
-    <symbol id="rosette" viewBox="0 0 400 400">
-      <g fill="none" stroke="url(#foil)" stroke-width=".7">
-        <ellipse id="rq" cx="200" cy="200" rx="190" ry="120"/>
-        <use href="#rq" transform="rotate(6 200 200)"/><use href="#rq" transform="rotate(12 200 200)"/><use href="#rq" transform="rotate(18 200 200)"/><use href="#rq" transform="rotate(24 200 200)"/><use href="#rq" transform="rotate(30 200 200)"/><use href="#rq" transform="rotate(36 200 200)"/><use href="#rq" transform="rotate(42 200 200)"/><use href="#rq" transform="rotate(48 200 200)"/><use href="#rq" transform="rotate(54 200 200)"/><use href="#rq" transform="rotate(60 200 200)"/><use href="#rq" transform="rotate(66 200 200)"/><use href="#rq" transform="rotate(72 200 200)"/><use href="#rq" transform="rotate(78 200 200)"/><use href="#rq" transform="rotate(84 200 200)"/><use href="#rq" transform="rotate(90 200 200)"/><use href="#rq" transform="rotate(96 200 200)"/><use href="#rq" transform="rotate(102 200 200)"/><use href="#rq" transform="rotate(108 200 200)"/><use href="#rq" transform="rotate(114 200 200)"/><use href="#rq" transform="rotate(120 200 200)"/><use href="#rq" transform="rotate(126 200 200)"/><use href="#rq" transform="rotate(132 200 200)"/><use href="#rq" transform="rotate(138 200 200)"/><use href="#rq" transform="rotate(144 200 200)"/><use href="#rq" transform="rotate(150 200 200)"/><use href="#rq" transform="rotate(156 200 200)"/><use href="#rq" transform="rotate(162 200 200)"/><use href="#rq" transform="rotate(168 200 200)"/><use href="#rq" transform="rotate(174 200 200)"/>
-        <circle cx="200" cy="200" r="194" stroke-width="1"/>
-        <circle cx="200" cy="200" r="116" stroke-width="1"/>
-      </g>
-    </symbol>
-    <symbol id="crest" viewBox="0 0 240 245">
-      <!-- guilloché ring -->
-      <g fill="none" stroke="url(#foil)" stroke-width=".6">
-        <ellipse id="gq" cx="120" cy="140" rx="68" ry="53"/><use href="#gq" transform="rotate(7.5 120 140)"/><use href="#gq" transform="rotate(15 120 140)"/><use href="#gq" transform="rotate(22.5 120 140)"/><use href="#gq" transform="rotate(30 120 140)"/><use href="#gq" transform="rotate(37.5 120 140)"/><use href="#gq" transform="rotate(45 120 140)"/><use href="#gq" transform="rotate(52.5 120 140)"/><use href="#gq" transform="rotate(60 120 140)"/><use href="#gq" transform="rotate(67.5 120 140)"/><use href="#gq" transform="rotate(75 120 140)"/><use href="#gq" transform="rotate(82.5 120 140)"/><use href="#gq" transform="rotate(90 120 140)"/><use href="#gq" transform="rotate(97.5 120 140)"/><use href="#gq" transform="rotate(105 120 140)"/><use href="#gq" transform="rotate(112.5 120 140)"/><use href="#gq" transform="rotate(120 120 140)"/><use href="#gq" transform="rotate(127.5 120 140)"/><use href="#gq" transform="rotate(135 120 140)"/><use href="#gq" transform="rotate(142.5 120 140)"/><use href="#gq" transform="rotate(150 120 140)"/><use href="#gq" transform="rotate(157.5 120 140)"/><use href="#gq" transform="rotate(165 120 140)"/><use href="#gq" transform="rotate(172.5 120 140)"/>
-      </g>
-      <g fill="none" stroke="url(#foil)">
-        <circle cx="120" cy="140" r="72" stroke-width="1.6"/>
-        <circle cx="120" cy="140" r="76.5" stroke-width=".7"/>
-        <circle cx="120" cy="140" r="49" stroke-width="1.3"/>
-        <circle cx="120" cy="140" r="45.5" stroke-width=".6"/>
-        <!-- laurel stems -->
-        <path d="M107.5 229.1 A90 90 0 0 1 53.6 79.2M132.5 229.1 A90 90 0 0 0 186.4 79.2" stroke-width="1.1"/>
-      </g>
-      <!-- laurel leaves -->
-      <g fill="url(#foil)">
-        <ellipse cx="92.3" cy="230" rx="7" ry="2.5" transform="rotate(156 92.3 230)"/>
-        <ellipse cx="94.2" cy="222.2" rx="7" ry="2.5" transform="rotate(-128 94.2 222.2)"/>
-        <ellipse cx="73.7" cy="221.8" rx="6.8" ry="2.4" transform="rotate(168.5 73.7 221.8)"/>
-        <ellipse cx="77.1" cy="214.9" rx="6.8" ry="2.4" transform="rotate(-115.5 77.1 214.9)"/>
-        <ellipse cx="57.3" cy="209.8" rx="6.5" ry="2.3" transform="rotate(-179 57.3 209.8)"/>
-        <ellipse cx="62" cy="204.1" rx="6.5" ry="2.3" transform="rotate(-103 62 204.1)"/>
-        <ellipse cx="43.9" cy="194.7" rx="6.3" ry="2.2" transform="rotate(-166.5 43.9 194.7)"/>
-        <ellipse cx="49.5" cy="190.2" rx="6.3" ry="2.2" transform="rotate(-90.5 49.5 190.2)"/>
-        <ellipse cx="34.1" cy="177" rx="6" ry="2.1" transform="rotate(-154 34.1 177)"/>
-        <ellipse cx="40.3" cy="174" rx="6" ry="2.1" transform="rotate(-78 40.3 174)"/>
-        <ellipse cx="28.3" cy="157.7" rx="5.8" ry="2.1" transform="rotate(-141.5 28.3 157.7)"/>
-        <ellipse cx="34.7" cy="156.1" rx="5.8" ry="2.1" transform="rotate(-65.5 34.7 156.1)"/>
-        <ellipse cx="26.8" cy="137.6" rx="5.5" ry="2" transform="rotate(-129 26.8 137.6)"/>
-        <ellipse cx="33.1" cy="137.5" rx="5.5" ry="2" transform="rotate(-53 33.1 137.5)"/>
-        <ellipse cx="29.6" cy="117.7" rx="5.3" ry="1.9" transform="rotate(-116.5 29.6 117.7)"/>
-        <ellipse cx="35.5" cy="118.9" rx="5.3" ry="1.9" transform="rotate(-40.5 35.5 118.9)"/>
-        <ellipse cx="36.6" cy="98.9" rx="5" ry="1.8" transform="rotate(-104 36.6 98.9)"/>
-        <ellipse cx="41.9" cy="101.2" rx="5" ry="1.8" transform="rotate(-28 41.9 101.2)"/>
-        <ellipse cx="47.5" cy="82" rx="4.8" ry="1.7" transform="rotate(-91.5 47.5 82)"/>
-        <ellipse cx="51.9" cy="85.3" rx="4.8" ry="1.7" transform="rotate(-15.5 51.9 85.3)"/>
-        <ellipse cx="147.7" cy="230" rx="7" ry="2.5" transform="rotate(24 147.7 230)"/>
-        <ellipse cx="145.8" cy="222.2" rx="7" ry="2.5" transform="rotate(308 145.8 222.2)"/>
-        <ellipse cx="166.3" cy="221.8" rx="6.8" ry="2.4" transform="rotate(11.5 166.3 221.8)"/>
-        <ellipse cx="162.9" cy="214.9" rx="6.8" ry="2.4" transform="rotate(295.5 162.9 214.9)"/>
-        <ellipse cx="182.7" cy="209.8" rx="6.5" ry="2.3" transform="rotate(359 182.7 209.8)"/>
-        <ellipse cx="178" cy="204.1" rx="6.5" ry="2.3" transform="rotate(283 178 204.1)"/>
-        <ellipse cx="196.1" cy="194.7" rx="6.3" ry="2.2" transform="rotate(346.5 196.1 194.7)"/>
-        <ellipse cx="190.5" cy="190.2" rx="6.3" ry="2.2" transform="rotate(270.5 190.5 190.2)"/>
-        <ellipse cx="205.9" cy="177" rx="6" ry="2.1" transform="rotate(334 205.9 177)"/>
-        <ellipse cx="199.7" cy="174" rx="6" ry="2.1" transform="rotate(258 199.7 174)"/>
-        <ellipse cx="211.7" cy="157.7" rx="5.8" ry="2.1" transform="rotate(321.5 211.7 157.7)"/>
-        <ellipse cx="205.3" cy="156.1" rx="5.8" ry="2.1" transform="rotate(245.5 205.3 156.1)"/>
-        <ellipse cx="213.2" cy="137.6" rx="5.5" ry="2" transform="rotate(309 213.2 137.6)"/>
-        <ellipse cx="206.9" cy="137.5" rx="5.5" ry="2" transform="rotate(233 206.9 137.5)"/>
-        <ellipse cx="210.4" cy="117.7" rx="5.3" ry="1.9" transform="rotate(296.5 210.4 117.7)"/>
-        <ellipse cx="204.5" cy="118.9" rx="5.3" ry="1.9" transform="rotate(220.5 204.5 118.9)"/>
-        <ellipse cx="203.4" cy="98.9" rx="5" ry="1.8" transform="rotate(284 203.4 98.9)"/>
-        <ellipse cx="198.1" cy="101.2" rx="5" ry="1.8" transform="rotate(208 198.1 101.2)"/>
-        <ellipse cx="192.5" cy="82" rx="4.8" ry="1.7" transform="rotate(271.5 192.5 82)"/>
-        <ellipse cx="188.1" cy="85.3" rx="4.8" ry="1.7" transform="rotate(195.5 188.1 85.3)"/>
-        <!-- ribbon knot -->
-        <path d="M120 231 l-9 7 2-9zM120 231 l9 7-2-9z"/>
-        <circle cx="120" cy="231" r="3.2"/>
-      </g>
-      <!-- coronet -->
-      <g fill="url(#foil)">
-        <path d="M93 55 L89 33 L104 45 L120 26 L136 45 L151 33 L147 55 Z"/>
-        <rect x="92" y="56.5" width="56" height="4.5" rx="1"/>
-        <circle cx="89" cy="30.5" r="3"/>
-        <circle cx="120" cy="22.5" r="3.4"/>
-        <circle cx="151" cy="30.5" r="3"/>
-      </g>
-      <path d="M104 51 h32" stroke="var(--ground)" stroke-width="1.2" opacity=".55"/>
-    </symbol>
-  </defs>
-</svg>
-
-<button class="ctl theme-toggle" id="themeBtn" type="button" aria-pressed="false"
-        aria-label="النسخة النهاري / Day version">
-  <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
-  <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.8 6.8 0 0 0 9.7 9.7z"/></svg>
-</button>
-
-<button class="ctl lang-toggle" id="langBtn" type="button" aria-label="التبديل إلى العربية / Switch language">
-  <span class="t-en"><span class="lg-ar" lang="ar">العربية</span></span>
-  <span class="t-ar"><span class="lg-en" lang="en">English</span></span>
-</button>
-
-<button class="ctl music-toggle" id="musicBtn" type="button" aria-pressed="false"
-        aria-label="تشغيل الموسيقى الهادئة / Play soft music">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg>
-</button>
-
-<!-- ═════════  OPENING MOMENT · PALACE DOORS (shown by JS only; ?intro=0 skips)  ═════════ -->
-<div class="intro" id="intro" hidden role="button" tabindex="0"
-     aria-label="دوسوا لفتح الدعوة / Tap to open the invitation">
-  <span class="door dl" aria-hidden="true"></span>
-  <span class="door dr" aria-hidden="true"></span>
-  <div class="intro-inner">
-    <div class="crest crest-xl" aria-hidden="true">
-      <svg viewBox="0 0 240 245" focusable="false"><use href="#crest"/></svg>
-      <span class="mono"><span class="t-en" dir="ltr"><b class="m1">O</b><i class="mx"></i><b class="m2">S</b></span><span class="t-ar" dir="rtl"><b class="m1">ع</b><i class="mx"></i><b class="m2">س</b></span></span>
-    </div>
-    <p class="intro-names" id="introNames">
-      <span class="t-en">Omar &amp; Salma</span>
-      <span class="t-ar">عمر وسلمى</span>
-    </p>
-    <p class="intro-hint">
-      <span class="t-en">Tap to open</span>
-      <span class="t-ar">دوسوا لفتح الدعوة</span>
-    </p>
-  </div>
-</div>
-
-<main>
-
-<!-- ═════════  COVER  ═════════ -->
-<header class="cover" id="cover">
-  <svg class="cover-rosette" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><use href="#rosette"/></svg>
-
-  <div class="crest rv" aria-hidden="true">
-    <svg viewBox="0 0 240 245" focusable="false"><use href="#crest"/></svg>
-    <span class="mono"><span class="t-en" dir="ltr"><b class="m1">O</b><i class="mx"></i><b class="m2">S</b></span><span class="t-ar" dir="rtl"><b class="m1">ع</b><i class="mx"></i><b class="m2">س</b></span></span>
-  </div>
-
-  <p class="kicker rv r2">
-    <span class="t-en">Together with their families</span>
-    <span class="t-ar">بمباركة العائلتين</span>
-  </p>
-
-  <h1 class="names rv r2" id="names">
-    <span class="t-en"><span class="nm">Omar</span><span class="amp" aria-hidden="true">&amp;</span><span class="sr-only">and</span><span class="nm">Salma</span></span>
-    <span class="t-ar"><span class="nm">عمر</span><span class="amp" aria-hidden="true">و</span><span class="nm">سلمى</span></span>
-  </h1>
-
-  <p class="request rv r3">
-    <span class="t-en">request the pleasure of your company at their wedding</span>
-    <span class="t-ar">يتشرفان بدعوتكم لحضور حفل زفافهما</span>
-  </p>
-
-  <div class="datebar rv r4" aria-hidden="true">
-    <span class="db-side"><span class="t-en" id="dbWdEn">Saturday</span><span class="t-ar" id="dbWdAr">السبت</span></span>
-    <span class="db-day"><span class="t-en" id="dbDayEn">22</span><span class="t-ar" id="dbDayAr">٢٢</span></span>
-    <span class="db-side"><span class="t-en" id="dbMyEn">August<br>2026</span><span class="t-ar" id="dbMyAr">أغسطس ٢٠٢٦</span></span>
-  </div>
-
-  <p class="cover-meta rv r5">
-    <span class="cm-time"><span class="t-en" id="cmTimeEn">at 8:00 PM</span><span class="t-ar" id="cmTimeAr">الساعة ٨:٠٠ مساءً</span></span>
-    <span class="cm-venue"><span class="t-en" id="cmVenEn">Villa Rose, Maadi, Cairo</span><span class="t-ar" id="cmVenAr">فيلا روز، المعادي، القاهرة</span></span>
-  </p>
-
-  <span class="scroll-cue" aria-hidden="true"></span>
-</header>
-
-<!-- ═════════  COUNTDOWN  ═════════ -->
-<section class="sec cd-sec inverse" aria-label="Countdown / العد التنازلي">
-  <p class="kicker">
-    <span class="t-en">Until the wedding</span>
-    <span class="t-ar">باقي على ليلة العمر</span>
-  </p>
-  <div class="countdown-wrap" id="cdWrap">
-    <div class="countdown" role="timer" aria-live="off">
-      <div class="cd-cell"><span class="cd-num" id="cdD">–</span><span class="cd-lbl"><span class="t-en">days</span><span class="t-ar">يوم</span></span></div>
-      <div class="cd-cell"><span class="cd-num" id="cdH">–</span><span class="cd-lbl"><span class="t-en">hours</span><span class="t-ar">ساعة</span></span></div>
-      <div class="cd-cell"><span class="cd-num" id="cdM">–</span><span class="cd-lbl"><span class="t-en">minutes</span><span class="t-ar">دقيقة</span></span></div>
-      <div class="cd-cell"><span class="cd-num" id="cdS">–</span><span class="cd-lbl"><span class="t-en">seconds</span><span class="t-ar">ثانية</span></span></div>
-    </div>
-    <p class="cd-done">
-      <span class="t-en">Today is the day. We will see you this evening.</span>
-      <span class="t-ar">النهارده ليلة العمر، ومستنيينكم</span>
-    </p>
-  </div>
-</section>
-
-<!-- ═════════  VERSE  ═════════ -->
-<section class="sec verse after-inverse">
-  <div class="rule" aria-hidden="true"><i></i></div>
-  <blockquote class="quote" id="quote">
-    <p>
-      <span class="t-en" id="quoteEn">“Two hearts, one beautiful beginning.”</span>
-      <span class="t-ar" id="quoteAr">«قلبان، وبداية واحدة جميلة»</span>
-    </p>
-  </blockquote>
-</section>
-
-<!-- ═════════  ORDER OF THE EVENING  ═════════ -->
-<section class="sec" id="agendaSec" aria-labelledby="agTitle">
-  <h2 class="sec-title" id="agTitle">
-    <span class="t-en">The order of the evening</span>
-    <span class="t-ar">برنامج الليلة</span>
-  </h2>
-  <ol class="prog" id="agendaList">
-    <li><span class="pg-ev"><span class="t-en">Reception</span><span class="t-ar">الاستقبال</span></span><span class="pg-lead" aria-hidden="true"></span><span class="pg-tm"><span class="t-en">8:00 PM</span><span class="t-ar">٨:٠٠ م</span></span></li>
-    <li><span class="pg-ev"><span class="t-en">The zaffa</span><span class="t-ar">الزفة</span></span><span class="pg-lead" aria-hidden="true"></span><span class="pg-tm"><span class="t-en">8:45 PM</span><span class="t-ar">٨:٤٥ م</span></span></li>
-    <li><span class="pg-ev"><span class="t-en">Dinner</span><span class="t-ar">العشاء</span></span><span class="pg-lead" aria-hidden="true"></span><span class="pg-tm"><span class="t-en">10:00 PM</span><span class="t-ar">١٠:٠٠ م</span></span></li>
-    <li><span class="pg-ev"><span class="t-en">Cake and the first dance</span><span class="t-ar">التورتة وأول رقصة</span></span><span class="pg-lead" aria-hidden="true"></span><span class="pg-tm"><span class="t-en">11:00 PM</span><span class="t-ar">١١:٠٠ م</span></span></li>
-  </ol>
-</section>
-
-<!-- ═════════  DATE · TIME · VENUE  ═════════ -->
-<section class="sec" id="detailsSec" data-shot="details" aria-labelledby="detTitle">
-  <h2 class="sec-title" id="detTitle">
-    <span class="t-en">When and where</span>
-    <span class="t-ar">الميعاد والمكان</span>
-  </h2>
-  <div class="cartouche">
-    <span class="cn" aria-hidden="true"></span><span class="cn" aria-hidden="true"></span><span class="cn" aria-hidden="true"></span><span class="cn" aria-hidden="true"></span>
-    <dl class="details">
-      <div class="row">
-        <dt><span class="t-en">Date</span><span class="t-ar">التاريخ</span></dt>
-        <dd id="dDate"><span class="t-en">22 August 2026<small>Saturday</small></span><span class="t-ar">٢٢ أغسطس ٢٠٢٦<small>يوم السبت</small></span></dd>
-      </div>
-      <div class="row">
-        <dt><span class="t-en">Time</span><span class="t-ar">الساعة</span></dt>
-        <dd id="dTime"><span class="t-en">8:00 PM</span><span class="t-ar">٨:٠٠ مساءً</span></dd>
-      </div>
-      <div class="row">
-        <dt><span class="t-en">Venue</span><span class="t-ar">المكان</span></dt>
-        <dd id="dVenue"><span class="t-en">Villa Rose<small>Maadi, Cairo</small></span><span class="t-ar">فيلا روز<small>المعادي، القاهرة</small></span></dd>
-      </div>
-    </dl>
-  </div>
-  <div class="btn-pair">
-    <a class="btn" id="mapBtn" href="https://maps.app.goo.gl/K2izAmdtfuKVcS138" target="_blank" rel="noopener noreferrer">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-7.2-7-12a7 7 0 1 1 14 0c0 4.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-      <span class="t-en">Open map</span>
-      <span class="t-ar">الخريطة</span>
-    </a>
-    <a class="btn" id="calBtn" target="_blank" rel="noopener noreferrer"
-       href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Omar%20%26%20Salma%27s%20wedding&amp;dates=20260822T200000/20260823T000000&amp;ctz=Africa/Cairo&amp;location=Villa%20Rose%2C%20Maadi%2C%20Cairo&amp;details=Two%20hearts%2C%20one%20beautiful%20beginning.">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
-      <span class="t-en">Add to calendar</span>
-      <span class="t-ar">أضيفوها للتقويم</span>
-    </a>
-  </div>
-</section>
-
-<!-- ═════════  DRESS CODE  ═════════ -->
-<section class="sec note" id="dressSec" aria-labelledby="dressTitle">
-  <h2 class="sec-title" id="dressTitle">
-    <span class="t-en">Dress code</span>
-    <span class="t-ar">الدريس كود</span>
-  </h2>
-  <p class="note-line" id="dressLine">
-    <span class="t-en">Black tie. Evening gowns and dark suits.</span>
-    <span class="t-ar">سواريه: فساتين سهرة وبدل غامقة</span>
-  </p>
-</section>
-
-<!-- ═════════  GALLERY (hidden unless photos / ph1..ph3)  ═════════ -->
-<section class="sec" id="gallerySec" style="display:none" aria-labelledby="galTitle">
-  <h2 class="sec-title" id="galTitle">
-    <span class="t-en">Our moments</span>
-    <span class="t-ar">لحظاتنا</span>
-  </h2>
-  <div class="gallery">
-    <span class="g-frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M12 3l9 9-9 9-9-9z"/></svg></span>
-    <span class="g-frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M12 3l9 9-9 9-9-9z"/></svg></span>
-    <span class="g-frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M12 3l9 9-9 9-9-9z"/></svg></span>
-  </div>
-</section>
-
-<!-- ═════════  GIFT NOTE  ═════════ -->
-<section class="sec note" id="giftSec" aria-labelledby="giftTitle">
-  <h2 class="sec-title" id="giftTitle">
-    <span class="t-en">A note on gifts</span>
-    <span class="t-ar">كلمة عن الهدايا</span>
-  </h2>
-  <p class="note-line" id="giftLine">
-    <span class="t-en">Your presence is the greatest gift</span>
-    <span class="t-ar">وجودكم معانا هو أغلى هدية</span>
-  </p>
-</section>
-
-<!-- ═════════  RSVP  ═════════ -->
-<section class="sec rsvp inverse" id="rsvpSec" data-shot="rsvp" aria-labelledby="rsvpTitle">
-  <h2 class="rsvp-title" id="rsvpTitle">
-    <span class="t-en">R.S.V.P.</span>
-    <span class="t-ar">تأكيد الحضور</span>
-  </h2>
-  <p class="rsvp-sub">
-    <span class="t-en">Kindly let us know on WhatsApp how many of you will attend.</span>
-    <span class="t-ar">نتشرف بتأكيد حضوركم على واتساب، وقولولنا عددكم.</span>
-  </p>
-  <p class="guest-lbl" id="guestLbl">
-    <span class="t-en">Number of guests</span>
-    <span class="t-ar">عدد الحضور</span>
-  </p>
-  <div class="chips" role="group" aria-labelledby="guestLbl">
-    <button class="chip" type="button" data-count="1" aria-pressed="true"><span class="t-en">1</span><span class="t-ar">١</span></button>
-    <button class="chip" type="button" data-count="2" aria-pressed="false"><span class="t-en">2</span><span class="t-ar">٢</span></button>
-    <button class="chip" type="button" data-count="3" aria-pressed="false"><span class="t-en">3</span><span class="t-ar">٣</span></button>
-    <button class="chip" type="button" data-count="4" aria-pressed="false"><span class="t-en">4+</span><span class="t-ar">٤+</span></button>
-  </div>
-  <div class="rsvp-actions">
-    <a class="btn solid wide" id="rsvpBtn" target="_blank" rel="noopener noreferrer"
-       href="https://wa.me/201005509418?text=Hello!%20I%27d%20like%20to%20confirm%20my%20attendance%20at%20the%20wedding%20of%20Omar%20%26%20Salma.">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-      <span class="t-en">Confirm on WhatsApp</span>
-      <span class="t-ar">أكدوا حضوركم على واتساب</span>
-    </a>
-    <a class="btn wide" id="waBtn" target="_blank" rel="noopener noreferrer"
-       href="https://wa.me/?text=You%27re%20invited%20to%20the%20wedding%20of%20Omar%20%26%20Salma.%20https%3A%2F%2Fkhalidsharafel-din.github.io%2Fd3wa%2Fdemos%2Fnavy.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M16 6l-4-4-4 4M12 2v13"/></svg>
-      <span class="t-en">Share the invitation</span>
-      <span class="t-ar">ابعتوا الدعوة لحبايبكم</span>
-    </a>
-  </div>
-</section>
-
-<!-- ═════════  CLOSING  ═════════ -->
-<footer class="closing">
-  <div class="crest crest-sm" aria-hidden="true">
-    <svg viewBox="0 0 240 245" focusable="false"><use href="#crest"/></svg>
-    <span class="mono"><span class="t-en" dir="ltr"><b class="m1">O</b><i class="mx"></i><b class="m2">S</b></span><span class="t-ar" dir="rtl"><b class="m1">ع</b><i class="mx"></i><b class="m2">س</b></span></span>
-  </div>
-  <p class="closing-line">
-    <span class="t-en">We look forward to celebrating with you</span>
-    <span class="t-ar">في انتظار تشريفكم</span>
-  </p>
-  <p class="closing-names" id="closingNames">
-    <span class="t-en">Omar &amp; Salma</span>
-    <span class="t-ar">عمر وسلمى</span>
-  </p>
-</footer>
-
-</main>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Gulzar&family=Markazi+Text:wght@400..600&display=swap">
 
 <script>
 /* Rolling demo date: without a real order date (?d=) the demo always counts
@@ -934,316 +40,725 @@ html.no-scroll,html.no-scroll body{overflow:hidden}
 })();
 </script>
 <script>
+/* Day version before first paint: a guest's own toggle (this tab) wins, else ?theme=day */
+(function () {
+  try {
+    var s = sessionStorage.getItem("d3waNavyTheme");
+    var p = new URLSearchParams(window.__D3WA__ || location.search).get("theme");
+    if (s ? s === "day" : p === "day") document.documentElement.setAttribute("data-theme", "day");
+  } catch (e) {}
+})();
+</script>
+
+<style>
+/* Royal Navy: the Royale suite. A heavy duplex card with gilded edges, packed in a
+   navy linen box with the couple's cypher foil-stamped on the lid; a programme card
+   and a reply card underneath. Night: the suite printed on the navy face of the
+   duplex, on a dark table under a lamp. Day: printed on the ivory face, on a linen
+   tablecloth in daylight. The box is the same navy linen in both. */
+:root{
+  --navy:#0d1730; --navy-2:#22335c; --gold:#cfa658; --ivory:#f4efe4;
+  --ar:"Markazi Text","Amiri",serif;
+  --ar-cal:"Gulzar","Markazi Text",serif;
+  --ar-hand:"Aref Ruqaa",serif;
+  --en:"Bodoni Moda","Bodoni 72",Didot,Georgia,serif;
+  --grain-d:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .2 0 0 0 0 .3 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23p)'/%3E%3C/svg%3E");
+  --grain-l:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23p)'/%3E%3C/svg%3E");
+  /* book linen: fine slubbed threads both ways */
+  --weave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='h'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.03 1.7' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 .26 0 0 0 -.1'/%3E%3C/filter%3E%3Cfilter id='v'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.7 .03' numOctaves='2' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0 0 0 -.13'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23h)'/%3E%3Crect width='220' height='220' filter='url(%23v)'/%3E%3C/svg%3E");
+  --linen:#22335c; --liner:#0f1936;
+
+  /* night (default) */
+  --table:#080d1b;
+  --table-img:radial-gradient(85% 60% at 50% 16%,rgba(255,205,150,.10),transparent 66%),radial-gradient(140% 90% at 50% 100%,rgba(0,0,0,.45),transparent 60%),var(--grain-l);
+  --on-table:#e7e1d3; --on-table-2:#a3a7b3;
+  --face:#15234a; --face-grain:var(--grain-l);
+  --ink:#efe8d9; --ink-2:rgba(239,232,217,.74);
+  --foil:#cfa658;
+  --press:0 1px 0 rgba(255,255,255,.08),0 -1px 0 rgba(0,0,0,.6);
+  --gild:#cfa658; --gild-d:#8a6a2c;
+  --deep-shadow:0 2px 3px rgba(0,0,0,.4),0 36px 64px -30px rgba(0,0,0,.9);
+  --thin-shadow:0 1px 1px rgba(0,0,0,.35),0 10px 18px -12px rgba(0,0,0,.7);
+  /* programme card: ivory laid stock at night */
+  --p-bg:#f3eee3; --p-grain:var(--grain-d); --p-ink:#0d1730; --p-ink-2:#4b5470; --p-foil:#94712c; --p-when:#22335c;
+  --p-press:0 1px 0 rgba(255,253,246,.9),0 -1px 0 rgba(70,50,10,.22); --p-rule:rgba(13,23,48,.16);
+  --p-laid:repeating-linear-gradient(0deg,rgba(13,23,48,.02) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,transparent 0 27px,rgba(13,23,48,.022) 27px 28px);
+  /* reply card: smooth white */
+  --r-bg:#f9f7f1; --r-ink:#0d1730; --r-ink-2:#535c76; --band:#1c2b56;
+}
+html[data-theme="day"]{
+  --table:#e9e3d6;
+  --table-img:radial-gradient(90% 65% at 28% 8%,rgba(255,255,255,.65),transparent 62%),radial-gradient(120% 80% at 80% 100%,rgba(90,80,60,.12),transparent 60%),repeating-linear-gradient(0deg,rgba(110,95,70,.035) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(110,95,70,.03) 0 1px,transparent 1px 3px),var(--grain-d);
+  --on-table:#17213f; --on-table-2:#535b70;
+  --face:#f4efe4; --face-grain:var(--grain-d);
+  --ink:#0d1730; --ink-2:#4a5472;
+  --foil:#9f7a31;
+  --press:0 1px 0 rgba(255,253,246,.95),0 -1px 0 rgba(70,50,10,.3);
+  --deep-shadow:0 2px 3px rgba(20,24,40,.28),0 36px 64px -30px rgba(20,24,40,.55);
+  --thin-shadow:0 1px 1px rgba(20,24,40,.2),0 10px 18px -12px rgba(20,24,40,.4);
+  /* programme card: the navy stock by day */
+  --p-bg:#1b2b56; --p-grain:var(--grain-l); --p-ink:#f1ebdd; --p-ink-2:rgba(241,235,221,.74); --p-foil:#cfa658; --p-when:#cfa658;
+  --p-press:0 1px 0 rgba(255,255,255,.08),0 -1px 0 rgba(0,0,0,.6); --p-rule:rgba(241,235,221,.2);
+  --p-laid:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,transparent 0 27px,rgba(255,255,255,.02) 27px 28px);
+  --r-bg:#fbf9f4; --band:#0f1a38;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
+body{margin:0;min-height:100vh;overflow-x:hidden;color:var(--on-table);font:400 17px/1.7 var(--en);font-optical-sizing:auto;
+  background-color:var(--table);background-image:var(--table-img);background-attachment:fixed;-webkit-font-smoothing:antialiased}
+html.ar body{font-family:var(--ar);font-size:20px;line-height:1.85}
+body.intro-lock{overflow:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--gold);color:var(--navy)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.t-en{display:none}
+html:not(.ar) .t-ar{display:none}
+html:not(.ar) .t-en{display:revert}
+[hidden]{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ── corner controls: printed words on the table, no chrome ── */
+.ctl{position:relative;z-index:60;min-height:44px;min-width:44px;padding:0 12px;border:0;background:none;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;color:var(--on-table-2);font:italic 400 15px/1 var(--en);-webkit-tap-highlight-color:transparent}
+html.ar .ctl{font:400 17px/1 var(--ar)}
+.ctl:hover{color:var(--on-table)}
+.ctl .u{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px;text-decoration-color:color-mix(in srgb,currentColor 45%,transparent)}
+html.ar .lang-toggle{font:italic 400 15px/1 var(--en)}
+html:not(.ar) .lang-toggle{font:400 17px/1 var(--ar)}
+.theme-toggle{position:absolute;top:calc(8px + env(safe-area-inset-top));inset-inline-start:4px}
+.ctl-end{position:absolute;z-index:60;top:calc(8px + env(safe-area-inset-top));inset-inline-end:4px;display:flex}
+.music-toggle{padding:0 8px}
+.music-toggle svg{width:17px;height:17px}
+.music-toggle[aria-pressed="true"]{color:var(--gold)}
+/* a corner of the other stock, as a printer's sample */
+.swatch{width:10px;height:14px;flex:none;background:var(--ivory);box-shadow:0 0 0 1px var(--gold)}
+html[data-theme="day"] .swatch{background:var(--navy)}
+html[data-theme="day"] .to-day,html:not([data-theme="day"]) .to-night{display:none}
+
+/* ── the suite on the table ── */
+.suite{max-width:480px;margin:0 auto;padding:calc(62px + env(safe-area-inset-top)) 12px 24px;display:flex;flex-direction:column}
+
+/* the box, open: navy book linen over board, the card resting in the well on a ribbon pull */
+.tray{position:relative;padding:9px;border-radius:2px;background-color:var(--linen);background-image:var(--weave);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 -1px 0 rgba(0,0,0,.4),var(--deep-shadow)}
+.well{position:relative;padding:5px 5px 17px;background:var(--liner);
+  box-shadow:inset 0 5px 9px -2px rgba(0,0,0,.7),inset 0 0 0 1px rgba(0,0,0,.45),inset 0 -1px 0 rgba(255,255,255,.05)}
+.ribbon{position:absolute;left:50%;bottom:3px;z-index:0;width:22px;height:34px;translate:-50% 0;
+  background:linear-gradient(90deg,#c9bea6,#efe7d6 40%,#ddd2bb 70%,#c6baa1);clip-path:polygon(0 0,100% 0,100% 100%,50% 84%,0 100%)}
+
+/* the invitation: heavy duplex, gilded on all four edges */
+.invite{position:relative;z-index:1;aspect-ratio:5/7;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding:30px 22px;text-align:center;color:var(--ink);background-color:var(--face);background-image:var(--face-grain);
+  border:1.5px solid var(--gild);box-shadow:0 1.5px 0 var(--gild-d),0 3px 6px rgba(0,0,0,.45)}
+.invite>*{margin:0;max-width:100%}
+.foil{color:var(--foil);text-shadow:var(--press)}
+.cypher{direction:ltr;display:flex;align-items:center;justify-content:center;gap:.34em;margin:0 0 12px;font:400 25px/1 var(--en)}
+.cypher b{display:inline-block;font-weight:400}
+.cypher i{display:inline-block;width:1px;height:1.3em;background:currentColor}
+.basmala{margin:0 0 10px!important;font:500 17px/1.6 var(--ar)}
+.hosts{margin:2px 0 4px!important}
+.hosts p{margin:0}
+.hosts-v{font-size:17px;color:var(--ink-2)}
+/* groom's family on the right, bride's on the left; a name never breaks */
+.hosts-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;margin:2px 0 4px!important;font-size:18px;line-height:1.45}
+.hosts-cols.one,.hosts-cols.stack{grid-template-columns:1fr;gap:2px}
+html.ar .hosts-cols.t-en,html:not(.ar) .hosts-cols.t-ar{display:none}
+html:not(.ar) .hosts-cols.t-en{display:block;text-wrap:balance;font-size:15.5px;line-height:1.5}
+.host{min-width:0;white-space:nowrap}
+.host .ttl{display:block;font-size:.84em;color:var(--ink-2)}
+.hosts-cols.t-en .host,.hosts-cols.t-en .host .ttl{display:inline;font-size:1em;color:inherit}
+.lead{font-size:18px;line-height:1.7;color:var(--ink-2)}
+html:not(.ar) .lead{font-style:italic;font-size:15.5px;line-height:1.55;max-width:26ch}
+/* the names: Farsi calligraphy, foil-stamped */
+.names{margin:0 0 8px!important;font:400 clamp(46px,13.4vw,58px)/1.85 var(--ar-cal);text-wrap:balance}
+.names .n{display:inline-block;white-space:nowrap}
+.names .amp{font-size:.82em}
+.names.lat,html:not(.ar) .names{font:400 clamp(40px,11.2vw,50px)/1.12 var(--en);margin:10px 0 16px!important}
+.names.lat .amp,html:not(.ar) .names .amp{font-style:italic;font-size:.6em;margin-inline-end:.16em}
+html:not(.ar) .names.arn{font:400 clamp(46px,13.4vw,58px)/1.85 var(--ar-cal);margin:0 0 8px!important}
+html:not(.ar) .names.arn .amp{font-style:normal;font-size:.82em;margin:0}
+.formal{max-width:31ch!important;font-size:18px;line-height:1.9;text-wrap:pretty}
+.formal .date{white-space:nowrap;font-weight:600}
+html:not(.ar) .formal{font-size:15.5px;line-height:1.65;max-width:30ch!important}
+html:not(.ar) .formal .date{font-weight:400;font-style:italic}
+.rule{width:42px;height:2px;margin:16px auto!important;border:0;background:var(--foil);box-shadow:var(--press)}
+.verse{font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:balance}
+html:not(.ar) .verse{font-style:italic;font-size:14px;line-height:1.5}
+.verse small{display:block;font-size:12.5px;font-style:normal;opacity:.85}
+/* with the hosts' line the card keeps its proportion: the cypher stays on the lid */
+.has-hosts{padding-block:24px}
+.has-hosts .cypher{display:none}
+.has-hosts .basmala{margin-bottom:6px!important}
+.has-hosts .names{font-size:clamp(40px,11.6vw,50px);line-height:1.7}
+html:not(.ar) .has-hosts .names{font-size:clamp(34px,9.6vw,44px);margin:6px 0 10px!important}
+.has-hosts .formal{font-size:17px;line-height:1.8}
+html:not(.ar) .has-hosts .formal{font-size:15px;line-height:1.6}
+.has-hosts .rule{margin:10px auto!important}
+.has-hosts .verse{font-size:15px;line-height:1.6}
+html:not(.ar) .has-hosts .verse{font-size:13.5px}
+.hosts-cols.stack .host .ttl{display:inline;font-size:1em}
+
+/* the programme card: thinner stock, narrower, sitting to one side */
+.thin{position:relative;box-shadow:var(--thin-shadow)}
+.prog-card{width:86%;margin:24px 0 0;margin-inline:0 auto;padding:26px 24px 22px;color:var(--p-ink);
+  background-color:var(--p-bg);background-image:var(--p-laid),var(--p-grain)}
+.prog-card .foil{color:var(--p-foil);text-shadow:var(--p-press)}
+.card-h{margin:0;font:600 22px/1.45 var(--ar)}
+html:not(.ar) .card-h{font:400 23px/1.3 var(--en)}
+.left{margin:2px 0 0;font-size:17px;line-height:1.6;color:var(--p-ink-2)}
+html:not(.ar) .left{font-style:italic;font-size:15px}
+.left .d{white-space:nowrap}
+.prog{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:auto 1fr;gap:4px 18px}
+.prog li{display:contents}
+.prog .when{font:500 17px/1.75 var(--ar);font-variant-numeric:tabular-nums;color:var(--p-when);white-space:nowrap}
+html:not(.ar) .prog .when{font:italic 400 15px/1.75 var(--en)}
+.prog .what{font-size:19px;line-height:1.75}
+html:not(.ar) .prog .what{font-size:16px}
+.notes{margin:16px 0 0;padding-top:12px;border-top:1px solid var(--p-rule);font-size:17px;line-height:1.75;color:var(--p-ink-2)}
+html:not(.ar) .notes{font-size:14.5px;line-height:1.6}
+.notes p{margin:0 0 4px}
+.notes b{font-weight:600;color:var(--p-ink)}
+html:not(.ar) .notes b{font-weight:400;font-style:italic}
+.where{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--p-rule);font-size:18px;line-height:1.7}
+html:not(.ar) .where{font-size:15.5px}
+.where a{display:inline-block;margin:6px 0 0;margin-inline-end:18px;font-size:16px;color:var(--p-ink);text-decoration:underline;
+  text-decoration-color:var(--p-foil);text-decoration-thickness:1px;text-underline-offset:5px}
+html:not(.ar) .where a{font-size:14.5px;font-style:italic}
+.no-list .card-h{display:none}
+.no-list .left{margin:0}
+
+/* the couple's photographs, printed with a white border */
+.prints{display:none;margin:24px 0 0;gap:12px;grid-template-columns:1.35fr 1fr}
+.prints.on{display:grid}
+.print{display:none;padding:6px;background:#faf8f3;box-shadow:var(--thin-shadow)}
+.print.has-img{display:block}
+.print img{width:100%;height:100%;aspect-ratio:4/5;object-fit:cover}
+.prints.n1{grid-template-columns:1fr;width:72%;margin-inline:auto}
+.prints.n3 .print:first-child{grid-row:span 2}
+.prints.n3 .print:not(:first-child) img{aspect-ratio:5/4}
+
+/* the reply card: smaller, smooth white, the reply goes out from its printed foot */
+.reply{margin:24px 0 0;padding:24px 22px 0;overflow:hidden;color:var(--r-ink);background-color:var(--r-bg);background-image:var(--grain-d)}
+.reply .card-h{color:var(--r-ink)}
+.by{margin:0 0 14px;font-size:16px;color:var(--r-ink-2)}
+html:not(.ar) .by{font-style:italic;font-size:14.5px}
+.line{display:flex;align-items:baseline;gap:10px;margin:0 0 12px}
+.line label{white-space:nowrap;font-size:17px;color:var(--r-ink-2)}
+html:not(.ar) .line label{font-size:14.5px;font-style:italic}
+.line input{flex:1;min-width:0;border:0;border-bottom:1px solid rgba(13,23,48,.4);border-radius:0;background:transparent;padding:2px 2px 3px;
+  font:400 21px/1.3 var(--ar-hand);color:#1d2a66;outline:none}
+html:not(.ar) .line input:not(.ar-hand){font:italic 400 18px/1.3 var(--en)}
+.line input::placeholder{font:400 15px/1.3 var(--ar);font-style:normal;color:rgba(83,92,118,.6)}
+html:not(.ar) .line input::placeholder{font:italic 400 14px/1.3 var(--en)}
+.line input:focus{border-bottom-color:var(--navy);border-bottom-width:1.5px}
+.line.count input{flex:0 0 72px;text-align:center}
+.decline{display:inline-block;margin:6px 0 0;font-size:16px;color:var(--r-ink-2);text-underline-offset:5px;text-decoration-thickness:1px}
+html:not(.ar) .decline{font-size:14.5px;font-style:italic}
+/* the foot of the card is printed solid navy; the acceptance is foil-stamped on it */
+.send{display:flex;align-items:center;justify-content:center;min-height:56px;margin:18px -22px 0;padding:10px 16px;
+  background-color:var(--band);background-image:var(--grain-l);color:var(--gold);text-decoration:none;
+  font:600 19px/1.3 var(--ar);text-shadow:0 1px 0 rgba(255,255,255,.08),0 -1px 0 rgba(0,0,0,.6)}
+html:not(.ar) .send{font:italic 400 17px/1.3 var(--en)}
+.send:hover{background-color:#22335c}
+.send:focus-visible{outline-offset:-5px;outline-color:var(--gold)}
+
+.share{margin:30px 0 0;text-align:center;font-size:16px}
+html:not(.ar) .share{font-size:14.5px;font-style:italic}
+.share a{color:var(--on-table-2);text-underline-offset:5px;text-decoration-thickness:1px}
+.share a:hover{color:var(--on-table)}
+
+/* ── the closed box (tap to open) ── */
+.intro{position:fixed;inset:0;z-index:40;cursor:pointer;overflow:hidden;-webkit-tap-highlight-color:transparent}
+.intro::before{content:"";position:absolute;inset:0;background-color:var(--table);background-image:var(--table-img);transition:opacity .6s ease 1.95s}
+.intro.open{pointer-events:none}
+.intro.open::before{opacity:0}
+.intro:focus-visible{outline:0}
+.ibox{position:absolute;left:0;top:0;transform-origin:0 0;transition:transform .85s cubic-bezier(.3,.7,.2,1)}
+.ibox>.tray{margin:0;width:100%}
+.lid{position:absolute;inset:-4px;z-index:3;border-radius:3px;background-color:var(--linen);background-image:var(--weave);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -4px 0 #182649,inset 0 0 0 1px rgba(0,0,0,.25),0 2px 3px rgba(0,0,0,.45),0 34px 60px -28px rgba(0,0,0,.9)}
+/* blind-debossed panel, the cypher foil-stamped inside it */
+.lid-panel{position:absolute;left:50%;top:41%;width:40%;aspect-ratio:1;translate:-50% -50%;display:grid;place-items:center;border-radius:2px;
+  box-shadow:inset 2px 3px 4px rgba(0,0,0,.6),inset -1px -1.5px 1px rgba(255,255,255,.12),0 0 0 1px rgba(0,0,0,.08)}
+.lid-panel.wide{width:74%;aspect-ratio:2.4/1}
+.lid-mono{direction:ltr;display:flex;align-items:center;gap:.3em;margin:0;font:400 calc(var(--tw,360px) * .135)/1 var(--en);color:var(--gold);
+  text-shadow:0 1px 0 rgba(255,255,255,.1),0 -1px 0 rgba(0,0,0,.65)}
+.lid-mono b{display:inline-block;font-weight:400}
+.lid-mono i{display:inline-block;width:1.5px;height:1.3em;background:currentColor}
+.lid-mono.ar{font:400 calc(var(--tw,360px) * .085)/1.9 var(--ar-cal);direction:rtl}
+/* a paper band round the box, the guest's name written on it by the calligrapher */
+.band{position:absolute;left:-6px;right:-6px;top:69%;height:15%;z-index:4;display:grid;place-items:center;
+  background-color:#f2ecdf;background-image:var(--grain-d);box-shadow:0 2px 3px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(0,0,0,.08);
+  transition:transform .6s cubic-bezier(.55,0,.75,.2),opacity .25s ease .35s}
+.band p{margin:0;text-align:center;color:#17213f;font:400 calc(var(--tw,360px) * .066)/1.55 var(--ar-cal)}
+.band small{display:block;font:400 calc(var(--tw,360px) * .036)/1.3 var(--ar);color:#4b5470}
+html:not(.ar) .band p{font:italic 400 calc(var(--tw,360px) * .05)/1.3 var(--en)}
+html:not(.ar) .band small{font:italic 400 calc(var(--tw,360px) * .034)/1.4 var(--en)}
+.band .ar-cal{font:400 calc(var(--tw,360px) * .066)/1.55 var(--ar-cal);font-style:normal}
+.band .lat{font:italic 400 calc(var(--tw,360px) * .05)/1.4 var(--en)}
+.intro.open .band{transform:translateY(260%);opacity:0}
+.intro.open .lid{animation:lidOff 1.15s cubic-bezier(.45,0,.3,1) .4s forwards}
+@keyframes lidOff{
+  0%{transform:none}
+  32%{transform:translateY(-1.5%) scale(1.035)}
+  100%{transform:translate(10%,-135%) scale(1.07) rotate(4deg)}
+}
+.intro-hint{position:absolute;left:0;right:0;top:auto;bottom:calc(40px + env(safe-area-inset-bottom));margin:0;padding:0 20px;text-align:center;
+  font-size:16px;color:var(--on-table-2);transition:opacity .2s}
+html:not(.ar) .intro-hint{font-style:italic;font-size:15px}
+.intro.open .intro-hint{opacity:0}
+
+/* ── desktop: the open box on the table, the other cards beside it ── */
+@media (min-width:1000px){
+  .suite{max-width:none;width:min(1320px,100% - 96px);padding:84px 0 40px;display:grid;
+    grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:0 64px;align-items:start}
+  .tray{grid-column:1;grid-row:1 / span 3;padding:16px}
+  .well{padding:8px 8px 26px}
+  .ribbon{width:30px;height:48px;bottom:4px}
+  .invite{padding:56px 60px;border-width:2px;box-shadow:0 2px 0 var(--gild-d),0 4px 8px rgba(0,0,0,.45)}
+  .cypher{font-size:34px;margin-bottom:22px}
+  .basmala{font-size:21px;margin-bottom:16px!important}
+  .hosts-v{font-size:21px}
+  .hosts-cols{font-size:22px;gap:0 32px}
+  html:not(.ar) .hosts-cols.t-en{font-size:19px}
+  .lead{font-size:22px}
+  html:not(.ar) .lead{font-size:19px}
+  .has-hosts{padding-block:56px}
+  .has-hosts .cypher{display:flex}
+  .names,.has-hosts .names{font-size:clamp(80px,6.8vw,100px);line-height:1.8;margin-bottom:14px!important}
+  .names.lat,html:not(.ar) .names,html:not(.ar) .has-hosts .names{font-size:clamp(66px,5.6vw,84px);margin:16px 0 26px!important}
+  .formal,.has-hosts .formal{font-size:clamp(21px,1.75vw,25px);line-height:1.9}
+  html:not(.ar) .formal,html:not(.ar) .has-hosts .formal{font-size:clamp(18px,1.5vw,21px);line-height:1.65}
+  .rule,.has-hosts .rule{width:56px;margin:26px auto!important}
+  .verse,.has-hosts .verse{font-size:19px}
+  html:not(.ar) .verse,html:not(.ar) .has-hosts .verse{font-size:16.5px}
+  .verse small{font-size:14px}
+  .prog-card{grid-column:2;grid-row:1;width:88%;margin:36px 0 0;padding:34px 34px 28px}
+  .reply{grid-column:2;grid-row:2;width:100%;margin:32px 0 0;padding:30px 30px 0}
+  .send{margin:22px -30px 0}
+  .prints{grid-column:1 / -1;grid-row:4;width:100%;max-width:980px;margin:64px auto 0;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+  .prints.n2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:700px}
+  .prints.n1{grid-template-columns:1fr;max-width:380px}
+  .prints.n3 .print:first-child{grid-row:auto}
+  .prints.n3 .print:not(:first-child) img{aspect-ratio:4/5}
+  .share{grid-column:2;grid-row:3;margin:30px 0 0;text-align:start}
+}
+@media (max-width:380px){
+  .invite{padding:26px 18px}
+  .formal{font-size:17.5px;line-height:1.85}
+}
+@media (prefers-reduced-motion:reduce){
+  .intro,.intro::before,.ibox,.band,.intro-hint{transition:none!important}
+  .intro.open .lid{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="intro" id="intro" hidden role="button" tabindex="0" aria-label="افتحوا الدعوة / Open the invitation">
+  <div class="ibox" id="ibox" aria-hidden="true">
+    <div class="lid">
+      <div class="lid-panel" id="lidPanel"><p class="lid-mono" id="lidMono"><b>A</b><i></i><b>F</b></p></div>
+    </div>
+    <div class="band"><p><span class="t-ar"><small id="toLbl">إلى</small><span id="toAr">أحبابنا الغاليين</span></span><span class="t-en"><small>For</small><span id="toEn">our dearest family and friends</span></span></p></div>
+  </div>
+  <p class="intro-hint" id="introHint"><span class="t-ar">دوسوا على العلبة عشان تفتحوها</span><span class="t-en">Tap the box to lift the lid</span></p>
+</div>
+
+<button class="ctl theme-toggle" id="themeBtn" type="button">
+  <span class="swatch" aria-hidden="true"></span>
+  <span class="u to-day"><span class="t-ar">نسخة النهار</span><span class="t-en">Day version</span></span>
+  <span class="u to-night"><span class="t-ar">نسخة الليل</span><span class="t-en">Night version</span></span>
+</button>
+<div class="ctl-end">
+  <button class="ctl music-toggle" id="musicBtn" type="button" aria-pressed="false" aria-label="الموسيقى / Music">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17.5V6l10-2v11.5"/><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="15.5" r="2.5"/></svg>
+  </button>
+  <button class="ctl lang-toggle" id="langBtn" type="button"><span class="u"><span class="t-ar">English</span><span class="t-en">العربية</span></span></button>
+</div>
+
+<main class="suite">
+
+  <div class="tray" id="tray">
+    <div class="well">
+      <article class="invite" id="invite" data-shot="details" aria-labelledby="names">
+        <p class="cypher foil" id="cypher" aria-hidden="true"><b>A</b><i></i><b>F</b></p>
+        <p class="basmala foil t-ar">بسم الله الرحمن الرحيم</p>
+        <div class="hosts" id="hosts" hidden>
+          <p class="hosts-v t-ar">يتشرف</p>
+          <p class="hosts-cols t-ar" id="hostsAr"></p>
+          <p class="hosts-cols t-en" id="hostsEn"></p>
+        </div>
+        <p class="lead"><span class="t-ar" id="leadAr">يسعدنا دعوتكم لحضور حفل زفاف</span><span class="t-en" id="leadEn">We request the pleasure of your company at the wedding of</span></p>
+        <h1 class="names foil" id="names">
+          <span class="t-ar" id="namesAr"><span class="n" id="nAr1">أحمد</span> <span class="n"><span class="amp">و</span><span id="nAr2">فريدة</span></span></span>
+          <span class="t-en" id="namesEn"><span class="n" id="nEn1">Ahmed</span> <span class="n"><span class="amp">and</span><span id="nEn2">Farida</span></span></span>
+        </h1>
+        <p class="formal">
+          <span class="t-ar">وذلك بمشيئة الله يوم <span class="date" id="dateAr">الخميس ٤ فبراير ٢٠٢٧</span>، في تمام <span id="timeAr">الساعة الثامنة مساءً</span>، <span id="venueAr">بفيلا روز، المعادي، القاهرة</span>.</span>
+          <span class="t-en">on <span class="date" id="dateEn">Thursday, 4 February 2027</span>, at <span id="timeEn">eight o'clock in the evening</span>, <span id="venueEn">Villa Rose, Maadi, Cairo</span>.</span>
+        </p>
+        <hr class="rule">
+        <p class="verse" id="quote"><span class="t-ar">«وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً»<small>سورة الروم، ٢١</small></span><span class="t-en">“And He placed between you affection and mercy.”<small>Surat Ar-Rum, 30:21</small></span></p>
+      </article>
+      <span class="ribbon" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <article class="thin prog-card" id="agendaSec" aria-labelledby="progTitle">
+    <h2 class="card-h foil" id="progTitle"><span class="t-ar">برنامج الحفل</span><span class="t-en">Order of the evening</span></h2>
+    <p class="left" id="left"></p>
+    <ul class="prog" id="agList"></ul>
+    <div class="notes" id="notesCard">
+      <p id="dressSec"><b><span class="t-ar">الملابس:</span><span class="t-en">Dress:</span></b> <span class="note"><span class="t-ar">سواريه، فساتين سهرة وبدل داكنة</span><span class="t-en">evening wear, gowns and dark suits</span></span></p>
+      <p id="giftSec"><b><span class="t-ar">الهدايا:</span><span class="t-en">Gifts:</span></b> <span class="note"><span class="t-ar">حضوركم ودعواتكم أغلى هدية</span><span class="t-en">your company and your prayers are the best gift</span></span></p>
+    </div>
+    <p class="where"><span class="t-ar" id="whereAr">فيلا روز، المعادي، القاهرة</span><span class="t-en" id="whereEn">Villa Rose, Maadi, Cairo</span><br>
+      <a id="mapBtn" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Villa%20Rose%2C%20Maadi%2C%20Cairo"><span class="t-ar">الخريطة</span><span class="t-en">Map</span></a>
+      <a id="calBtn" target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/render?action=TEMPLATE"><span class="t-ar">أضيفوها للتقويم</span><span class="t-en">Add to calendar</span></a></p>
+  </article>
+
+  <section class="prints" id="gallerySec" aria-label="صور / Photos">
+    <figure class="print" style="margin:0"></figure><figure class="print" style="margin:0"></figure><figure class="print" style="margin:0"></figure>
+  </section>
+
+  <article class="thin reply" id="rsvpBlock" data-shot="rsvp" aria-labelledby="replyTitle">
+    <h2 class="card-h" id="replyTitle"><span class="t-ar">نرجو التكرم بالرد</span><span class="t-en">Kindly reply</span></h2>
+    <p class="by" id="replyBy"></p>
+    <div class="line"><label for="guestName"><span class="t-ar">الاسم:</span><span class="t-en">Name:</span></label><input id="guestName" autocomplete="name" maxlength="60"></div>
+    <div class="line count"><label for="guestCount"><span class="t-ar">عدد الأفراد:</span><span class="t-en">Number attending:</span></label><input id="guestCount" inputmode="numeric" maxlength="2" autocomplete="off"></div>
+    <a class="decline" id="noBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="t-ar">نعتذر عن الحضور</span><span class="t-en">Declines with regret</span></a>
+    <a class="send" id="rsvpBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="t-ar">سنحضر بإذن الله</span><span class="t-en">Accepts with pleasure</span></a>
+  </article>
+
+  <p class="share"><a id="waBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/"><span class="t-ar">ابعتوا الدعوة لحبايبكم على واتساب</span><span class="t-en">Send the invitation to family on WhatsApp</span></a></p>
+</main>
+
+<p class="d3wa-credit" style="margin:0;padding:12px 16px 96px;text-align:center;font-size:12px;line-height:1.8;opacity:.92;color:var(--on-table-2)"><a href="../index.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><span class="t-ar">دعوة من D3wa · اطلبوا دعوتكم</span><span class="t-en">Invitation by D3wa. Order yours.</span></a></p>
+
+<script>
 (function () {
   "use strict";
   var docEl = document.documentElement;
-  docEl.classList.add("js");
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function (id) { return document.getElementById(id); };
 
   /* ── D3wa param contract ──
-     n_ar n_en · d (YYYY-MM-DD) · t (HH:MM, 24h) · v_ar v_en · map · q · wa
-     agenda = time~عربي~english|…  · dress / gift = "عربي~english" (or one text for both) | 0
-     photos · ph1..ph3 · music · intro=0 · theme=day (optional: opens on the day version) */
-  var Q = null;
-  try { Q = new URLSearchParams(window.__D3WA__ || location.search); } catch (e) {}
-  function qp (k) { var v = Q && Q.get(k); return v && v.trim() ? v.trim() : null; }
-  var pNAr = qp("n_ar"), pNEn = qp("n_en"), pD = qp("d"), pT = qp("t"),
-      pVAr = qp("v_ar"), pVEn = qp("v_en"), pMap = qp("map"), pQuote = qp("q"), pWa = qp("wa"),
-      pAgenda = qp("agenda"), pDress = qp("dress"), pGift = qp("gift"), pPhotos = qp("photos"),
-      pPh = [qp("ph1"), qp("ph2"), qp("ph3")], pIntro = qp("intro"), pMusic = qp("music");
-
+     n_ar / n_en · d (YYYY-MM-DD) · t (HH:MM, 24h) · v_ar / v_en · map · q · wa
+     h_ar / h_en (the hosts, optional) · g (the guest's name, optional; per-guest links)
+     agenda = time~عربي~english|… or 0 · dress / gift = "عربي~english", one text, or 0
+     ph1..ph3 = photo URLs · photos=0 · music = audio URL · intro=0
+     theme=day (opens on the day version) · credit=0 (handled by demo-bar.js)
+     Read from window.__D3WA__ (published invitations) or the URL. */
+  var qs = null;
+  try { qs = new URLSearchParams(window.__D3WA__ || location.search); } catch (e) {}
+  function qp (k) { var v = qs && qs.get(k); return (v && v.trim()) ? v.trim() : null; }
   function ar9 (s) { return String(s).replace(/[0-9]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩"[+d]; }); }
-  function two (n) { return (n < 10 ? "0" : "") + n; }
-  function $ (s) { return document.querySelector(s); }
-  function $$ (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); }
-  function el (tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
-  function fill (node, main, small) {
-    if (!node) return;
-    node.textContent = "";
-    node.appendChild(document.createTextNode(main));
-    if (small) node.appendChild(el("small", "", small));
-  }
-  function venueParts (v) {
-    var i = v.search(/[,،]/);
-    return i < 0 ? [v, ""] : [v.slice(0, i).trim(), v.slice(i + 1).trim()];
-  }
+  function txt (id, v) { $(id).textContent = v; }
+  var hasAr = function (x) { return /[؀-ۿ]/.test(x || ""); };
 
-  /* ── date & time ── */
-  var evDate = null;
-  if (pD && /^\d{4}-\d{2}-\d{2}$/.test(pD)) {
-    var dp = pD.split("-");
-    evDate = new Date(+dp[0], +dp[1] - 1, +dp[2], 12, 0, 0);
-    if (isNaN(evDate.getTime())) evDate = null;
-  }
-  var evH = 20, evM = 0;
-  if (pT && /^\d{1,2}:\d{2}$/.test(pT)) {
-    var tp = pT.split(":");
-    if (+tp[0] < 24 && +tp[1] < 60) { evH = +tp[0]; evM = +tp[1]; }
-  }
-  var h12 = evH % 12 || 12, isPM = evH >= 12;
-  var timeEn = h12 + ":" + two(evM) + " " + (isPM ? "PM" : "AM");
-  var timeAr = ar9(h12 + ":" + two(evM)) + " " + (isPM ? "مساءً" : "صباحاً");
+  var nEnRaw = qp("n_en") || qp("n_ar") || "Ahmed & Farida", nArRaw = qp("n_ar") || qp("n_en") || "أحمد وفريدة";
+  var pDate = qp("d"), pTime = qp("t");
+  var dOk = pDate && /^\d{4}-\d{2}-\d{2}$/.test(pDate) && !isNaN(new Date(pDate + "T12:00:00")) ? pDate : "2026-08-22";
+  var tm = (pTime || "20:00").match(/^(\d{1,2}):(\d{2})$/);
+  if (!tm || +tm[1] > 23 || +tm[2] > 59) tm = ["", "20", "00"];
+  var hh = +tm[1], mm = tm[2], tNorm = ("0" + hh).slice(-2) + ":" + mm;
+  var vEn = qp("v_en") || qp("v_ar") || "Villa Rose, Maadi, Cairo";
+  var vAr = qp("v_ar") || qp("v_en") || "فيلا روز، المعادي، القاهرة";
+  var waNum = (qp("wa") || "201005509418").replace(/[^\d]/g, "") || "201005509418";
+  var hAr = qp("h_ar") || qp("h_en"), hEn = qp("h_en") || qp("h_ar");
+  var guest = qp("g");
+  var occAr = "حفل زفاف", occEnOf = "the wedding of";
 
-  var D = evDate || new Date(2026, 7, 22, 12);
-  var F = function (loc, o) { try { return new Intl.DateTimeFormat(loc, o).format(D); } catch (e) { return ""; } };
-  var wdEn = F("en-GB", { weekday: "long" }) || "Saturday",
-      dayEn = F("en-GB", { day: "numeric" }) || "22",
-      monEn = F("en-GB", { month: "long" }) || "August",
-      yrEn = F("en-GB", { year: "numeric" }) || "2026",
-      wdAr = F("ar-EG", { weekday: "long" }) || "السبت",
-      dayAr = F("ar-EG", { day: "numeric" }) || "٢٢",
-      monAr = F("ar-EG", { month: "long" }) || "أغسطس",
-      yrAr = F("ar-EG", { year: "numeric" }) || "٢٠٢٦";
-  var dateEn = dayEn + " " + monEn + " " + yrEn, dateAr = dayAr + " " + monAr + " " + yrAr;
-  var dateFullEn = wdEn + ", " + dateEn, dateFullAr = wdAr + " " + dateAr;
-
-  /* ── names & initials ── */
-  var namesEn = pNEn || "Omar & Salma", namesAr = pNAr || "عمر وسلمى";
-  function splitEn (s) {
-    var i = s.indexOf("&");
-    if (i < 0) { var m = s.match(/^(.+?)\s+and\s+(.+)$/i); return m ? [m[1].trim(), m[2].trim()] : null; }
-    var a = s.slice(0, i).trim(), b = s.slice(i + 1).trim();
-    return a && b ? [a, b] : null;
+  /* ── the couple's names ── */
+  var splitAr = function (s) { var m = s.match(/^(.+?)\s+و\s*(.+)$/); return m ? [m[1], m[2]] : [s]; };
+  var splitEn = function (s) { var p = s.split(/\s*&\s*|\s+and\s+/i); return p.length > 1 && p[0] && p[1] ? [p[0], p[1]] : [s]; };
+  var arParts = splitAr(nArRaw), enParts = splitEn(nEnRaw);
+  function paintNames (a, b, parts) {
+    txt(a, parts[0]);
+    var two = parts.length > 1;
+    txt(b, two ? parts[1] : "");
+    $(b).parentNode.style.display = two ? "" : "none";
   }
-  function splitAr (s) { var m = s.match(/^(.+?)\s+و\s*(.+)$/); return m ? [m[1].trim(), m[2].trim()] : null; }
-  var partsEn = splitEn(namesEn), partsAr = splitAr(namesAr);
-  var venueEn = pVEn || "Villa Rose, Maadi, Cairo", venueAr = pVAr || "فيلا روز، المعادي، القاهرة";
-  var venueMsgEn = pVEn || "Villa Rose, Maadi", venueMsgAr = pVAr || "فيلا روز، المعادي";
-  var quoteEn = pQuote || "Two hearts, one beautiful beginning.";
-  var waNum = ((pWa || "").replace(/\D/g, "")) || "201005509418";
+  paintNames("nAr1", "nAr2", arParts);
+  paintNames("nEn1", "nEn2", enParts);
+  /* a name given in one script only is set in that script's lettering */
+  if (!hasAr(nArRaw)) { $("namesAr").querySelector(".amp").textContent = "and"; }
+  if (hasAr(nEnRaw)) { $("namesEn").querySelector(".amp").textContent = "و"; }
+  var namesLat = !hasAr(nArRaw), namesArInEn = hasAr(nEnRaw);
 
-  function buildNames (node, parts, whole, amp, sr) {
-    if (!node) return;
-    node.textContent = "";
-    if (!parts) { node.appendChild(el("span", "nm", whole)); return; }
-    node.appendChild(el("span", "nm", parts[0]));
-    var a = el("span", "amp", amp); a.setAttribute("aria-hidden", "true"); node.appendChild(a);
-    if (sr) node.appendChild(el("span", "sr-only", sr));
-    node.appendChild(el("span", "nm", parts[1]));
-  }
-  function firstChar (s) { var c = Array.from ? Array.from(s.trim())[0] : s.trim().charAt(0); return (c || "").toUpperCase(); }
-  function setMonos () {
-    var en = partsEn ? [firstChar(partsEn[0]), firstChar(partsEn[1])] : [firstChar(namesEn)];
-    var ar = partsAr ? [firstChar(partsAr[0]), firstChar(partsAr[1])] : [firstChar(namesAr)];
-    $$(".mono").forEach(function (m) {
-      var e = m.querySelector(".t-en"), a = m.querySelector(".t-ar");
-      e.querySelector(".m1").textContent = en[0]; e.querySelector(".m2").textContent = en[1] || "";
-      a.querySelector(".m1").textContent = ar[0]; a.querySelector(".m2").textContent = ar[1] || "";
-      e.classList.toggle("solo", !en[1]);
-      a.classList.toggle("solo", !ar[1]);
+  /* the cypher: Latin initials only. Without Latin names the lid carries the names in full. */
+  var latInit = function (w) { var m = (w || "").match(/[A-Za-z]/); return m ? m[0].toUpperCase() : ""; };
+  var inis = enParts.map(latInit);
+  var cypherOk = inis.every(Boolean);
+  function cypherInto (el) {
+    el.textContent = "";
+    inis.forEach(function (c, i) {
+      if (i) el.appendChild(document.createElement("i"));
+      var b = document.createElement("b"); b.textContent = c; el.appendChild(b);
     });
   }
-
-  function applyParams () {
-    /* names: cover, intro, closing, monogram, title */
-    if (pNEn) buildNames($("#names .t-en"), partsEn, namesEn, "&", "and");
-    if (pNAr) buildNames($("#names .t-ar"), partsAr, namesAr, "و", null);
-    $$("#introNames .t-en, #closingNames .t-en").forEach(function (n) { n.textContent = namesEn; });
-    $$("#introNames .t-ar, #closingNames .t-ar").forEach(function (n) { n.textContent = namesAr; });
-    setMonos();
-    if (pNEn || pNAr) document.title = namesEn + ", wedding invitation | " + namesAr;
-
-    /* cover date bar + time/venue line */
-    $("#dbWdEn").textContent = wdEn; $("#dbWdAr").textContent = wdAr;
-    $("#dbDayEn").textContent = dayEn; $("#dbDayAr").textContent = dayAr;
-    var my = $("#dbMyEn"); my.textContent = ""; my.appendChild(document.createTextNode(monEn)); my.appendChild(document.createElement("br")); my.appendChild(document.createTextNode(yrEn));
-    $("#dbMyAr").textContent = monAr + " " + yrAr;
-    $("#cmTimeEn").textContent = "at " + timeEn;
-    $("#cmTimeAr").textContent = "الساعة " + timeAr;
-    $("#cmVenEn").textContent = venueEn;
-    $("#cmVenAr").textContent = venueAr;
-
-    /* details cartouche */
-    fill($("#dDate .t-en"), dateEn, wdEn);
-    fill($("#dDate .t-ar"), dateAr, "يوم " + wdAr);
-    fill($("#dTime .t-en"), timeEn, "");
-    fill($("#dTime .t-ar"), timeAr, "");
-    var ve = venueParts(venueEn), va = venueParts(venueAr);
-    fill($("#dVenue .t-en"), ve[0], ve[1]);
-    fill($("#dVenue .t-ar"), va[0], va[1]);
-
-    /* quote */
-    if (pQuote) {
-      $("#quoteEn").textContent = "“" + pQuote + "”";
-      $("#quoteAr").textContent = "«" + pQuote + "»";
-    }
-
-    /* map */
-    var mapBtn = $("#mapBtn");
-    if (pMap && mapBtn && /^https?:\/\//.test(pMap)) mapBtn.href = pMap;
-
-    /* Google Calendar (Cairo time, 4 hours) */
-    var calBtn = $("#calBtn");
-    if (calBtn) {
-      var cs = new Date(D.getFullYear(), D.getMonth(), D.getDate(), evH, evM);
-      var ce = new Date(cs.getTime() + 4 * 36e5);
-      var gc = function (x) { return "" + x.getFullYear() + two(x.getMonth() + 1) + two(x.getDate()) + "T" + two(x.getHours()) + two(x.getMinutes()) + "00"; };
-      calBtn.href = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
-        "&text=" + encodeURIComponent(namesEn + "'s wedding") +
-        "&dates=" + gc(cs) + "/" + gc(ce) +
-        "&ctz=Africa/Cairo" +
-        "&location=" + encodeURIComponent(venueEn) +
-        "&details=" + encodeURIComponent(quoteEn);
-    }
-
-    /* agenda: time~عربي~english|… */
-    if (pAgenda) {
-      var list = $("#agendaList");
-      var rows = pAgenda.split("|").map(function (e) { return e.split("~"); })
-        .filter(function (p) { return p.length >= 3 && p[0].trim() && p[1].trim() && p[2].trim(); });
-      if (list && rows.length) {
-        list.textContent = "";
-        rows.forEach(function (p) {
-          var raw = p[0].trim(), tEn = raw, tAr = ar9(raw);
-          var m = raw.match(/^(\d{1,2}):(\d{2})$/);
-          if (m && +m[1] < 24 && +m[2] < 60) {
-            var h = +m[1], hh = h % 12 || 12;
-            tEn = hh + ":" + m[2] + " " + (h < 12 ? "AM" : "PM");
-            tAr = ar9(hh + ":" + m[2]) + (h < 12 ? " ص" : " م");
-          }
-          var li = el("li");
-          var ev = el("span", "pg-ev"); ev.appendChild(el("span", "t-en", p[2].trim())); ev.appendChild(el("span", "t-ar", p[1].trim()));
-          var lead = el("span", "pg-lead"); lead.setAttribute("aria-hidden", "true");
-          var tm = el("span", "pg-tm"); tm.appendChild(el("span", "t-en", tEn)); tm.appendChild(el("span", "t-ar", tAr));
-          li.appendChild(ev); li.appendChild(lead); li.appendChild(tm);
-          list.appendChild(li);
-        });
-      }
-    }
-
-    /* dress / gift: "عربي~english", a single text for both, or 0 to hide */
-    var setPair = function (secId, lineId, val) {
-      var sec = document.getElementById(secId), line = document.getElementById(lineId);
-      if (!sec || !val) return;
-      if (val === "0") { sec.hidden = true; return; }
-      var parts = val.indexOf("~") >= 0 ? val.split("~") : [val, val];
-      line.querySelector(".t-ar").textContent = parts[0].trim() || parts[1].trim();
-      line.querySelector(".t-en").textContent = (parts[1] || parts[0]).trim();
-    };
-    setPair("dressSec", "dressLine", pDress);
-    setPair("giftSec", "giftLine", pGift);
-
-    /* gallery: shown when photos (not 0) or any ph1..ph3 */
-    var gal = $("#gallerySec");
-    if (gal) {
-      var frames = gal.querySelectorAll(".g-frame"), any = false;
-      if (pPhotos !== "0") {
-        pPh.forEach(function (u, i) {
-          if (!u || !/^https?:\/\//.test(u) || !frames[i]) return;
-          var img = el("img");
-          img.src = u; img.alt = ""; img.width = 300; img.height = 400;
-          img.loading = "lazy"; img.decoding = "async";
-          frames[i].appendChild(img); frames[i].classList.add("has-img");
-          any = true;
-        });
-      }
-      if (pPhotos === "0") gal.hidden = true;
-      else if (any || pPhotos) gal.style.display = "";
-    }
+  if (cypherOk) { cypherInto($("cypher")); cypherInto($("lidMono")); }
+  else {
+    $("cypher").hidden = true;
+    $("lidMono").textContent = nArRaw; $("lidMono").className = "lid-mono ar"; $("lidPanel").classList.add("wide");
   }
-  try { applyParams(); } catch (e) {}
 
-  /* ── Night / day version: night by default, the guest's toggle wins for this tab ── */
-  var themeBtn = $("#themeBtn");
+  /* ── the hosts: Arabic in two columns, the groom's side on the right, title above name;
+        English on one line joined by "and". A name never breaks. ── */
+  var JOIN_AR = /\s+و\s*(?=(?:ال(?:سيد|سيدة|أستاذ|أستاذة|مهندس|مهندسة|دكتور|دكتورة|لواء|مستشار|حاج|حاجة|عميد|عقيد|شيخ)|أسرة|عائلة|آل\s|[دمأ]\s*[./]))/;
+  function hostsInto (el, raw) {
+    var ar = hasAr(raw);
+    var parts = (ar ? raw.replace(/^يتشرف\s+/, "").split(JOIN_AR) : raw.replace(/^together with\s+/i, "").split(/\s+(?:and|&)\s+/i))
+      .map(function (h) { return h.trim(); }).filter(Boolean).slice(0, 2);
+    el.textContent = "";
+    parts.forEach(function (h, i) {
+      if (i && el.id === "hostsEn") el.appendChild(document.createTextNode(ar ? " و" : " and "));
+      var m = h.match(/^(\S+\/)\s*(.+)$/) || (ar ? null : h.match(/^((?:Mr|Mrs|Ms|Dr|Eng|Gen)\.?)\s+(.+)$/i));
+      var sp = document.createElement("span"); sp.className = "host";
+      if (m) { var t = document.createElement("span"); t.className = "ttl"; t.textContent = m[1]; sp.appendChild(t); sp.appendChild(document.createTextNode(" ")); }
+      var n = document.createElement("span"); n.className = "nm"; n.textContent = m ? m[2] : h; sp.appendChild(n);
+      el.appendChild(sp);
+    });
+    el.classList.toggle("one", parts.length < 2);
+    el.classList.remove("stack");
+    return parts.length;
+  }
+  /* after the fonts arrive: if an Arabic host does not fit its column, set them one under the other */
+  function fitHosts () {
+    document.querySelectorAll(".hosts-cols.t-ar").forEach(function (el) {
+      if (el.offsetParent === null) return;
+      el.classList.remove("stack");
+      var over = Array.prototype.some.call(el.children, function (h) { return h.scrollWidth > h.clientWidth + 1; });
+      el.classList.toggle("stack", over);
+    });
+  }
+  if (hAr) {
+    $("hosts").hidden = false;
+    $("invite").classList.add("has-hosts");
+    var twoHosts = hostsInto($("hostsAr"), hAr) > 1;
+    hostsInto($("hostsEn"), hEn);
+    txt("leadAr", "بدعوتكم لحضور " + occAr);
+    txt("leadEn", "request the pleasure of your company at the wedding of" + (twoHosts ? " their children" : ""));
+  }
+
+  /* ── date and time, in words as the card prints them ── */
+  var AR_H = ["الثانية عشرة", "الواحدة", "الثانية", "الثالثة", "الرابعة", "الخامسة", "السادسة", "السابعة", "الثامنة", "التاسعة", "العاشرة", "الحادية عشرة"];
+  var EN_H = ["twelve", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven"];
+  var h12 = hh % 12;
+  var partAr = hh < 12 ? "صباحاً" : hh < 15 ? "ظهراً" : hh < 18 ? "عصراً" : "مساءً";
+  var partEn = hh < 12 ? "in the morning" : hh < 18 ? "in the afternoon" : "in the evening";
+  var timeWordsAr = hh === 0 && mm === "00" ? "منتصف الليل" : "الساعة " + AR_H[h12] + (mm === "00" ? "" : mm === "30" ? " والنصف" : mm === "15" ? " والربع" : ":" + ar9(mm)) + " " + partAr;
+  var timeWordsEn = hh === 0 && mm === "00" ? "midnight" : mm === "00" ? EN_H[h12] + " o'clock " + partEn : mm === "30" ? "half past " + EN_H[h12] + " " + partEn : (h12 || 12) + ":" + mm + " " + partEn;
+  var timeEnShort = hh === 0 && mm === "00" ? "midnight" : (h12 || 12) + ":" + mm + " " + (hh < 12 ? "AM" : "PM");
+  var timeArShort = hh === 0 && mm === "00" ? "منتصف الليل" : ar9((h12 || 12) + ":" + mm) + " " + (hh < 12 ? "صباحاً" : "مساءً");
+
+  var dObj = new Date(dOk + "T12:00:00");
+  var fmtAr = function (o, x) { return new Intl.DateTimeFormat("ar-EG", x).format(o).replace("،", ""); };
+  var fmtEn = function (o, x) { return new Intl.DateTimeFormat("en-GB", x).format(o).replace(/^(\w+) /, "$1, "); };
+  var full = { weekday: "long", day: "numeric", month: "long", year: "numeric" };
+  var short = { weekday: "long", day: "numeric", month: "long" };
+  var dateAr = fmtAr(dObj, full), dateEn = fmtEn(dObj, full);
+  var dateArShort = fmtAr(dObj, short), dateEnShort = new Intl.DateTimeFormat("en-GB", short).format(dObj);
+  txt("dateAr", dateAr); txt("dateEn", dateEn);
+  txt("timeAr", timeWordsAr); txt("timeEn", timeWordsEn);
+  txt("venueAr", /^(ب|في |المكان)/.test(vAr) ? vAr : "ب" + vAr);
+  txt("venueEn", vEn); txt("whereAr", vAr); txt("whereEn", vEn);
+  if (qp("n_en") || qp("n_ar")) document.title = nArRaw + " | " + nEnRaw;
+
+  /* reply by: two weeks before, when there is still time */
+  var by = new Date(dObj.getTime() - 14 * 864e5);
+  var replyByAr = by.getTime() > Date.now() + 2 * 864e5 ? "قبل " + new Intl.DateTimeFormat("ar-EG", { day: "numeric", month: "long" }).format(by) + "، على واتساب" : "";
+  var replyByEn = replyByAr ? "by " + new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long" }).format(by) + ", on WhatsApp" : "";
+
+  var pQuote = qp("q");
+  if (pQuote) {
+    $("quote").querySelector(".t-ar").textContent = "«" + pQuote + "»";
+    $("quote").querySelector(".t-en").textContent = "“" + pQuote + "”";
+  }
+
+  /* the band on the box: the guest's name, or the family greeting */
+  if (guest) {
+    txt("toLbl", "حضرة"); txt("toAr", guest); txt("toEn", guest); $("guestName").value = guest;
+    if (hasAr(guest)) $("toEn").className = "ar-cal"; else $("toAr").className = "lat";
+    $("waBtn").parentNode.hidden = true;   /* an invitation addressed to one guest is not for forwarding */
+  }
+
+  /* map: the couple's link, or a search for their venue; calendar in Cairo time */
+  var pMap = qp("map");
+  $("mapBtn").href = pMap && /^https?:\/\//.test(pMap) ? pMap : "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(vEn);
+  var start = new Date(dOk + "T" + tNorm + ":00"), end = new Date(start.getTime() + 4 * 36e5);
+  var cal = function (dt) { var p = function (n) { return ("0" + n).slice(-2); }; return dt.getFullYear() + p(dt.getMonth() + 1) + p(dt.getDate()) + "T" + p(dt.getHours()) + p(dt.getMinutes()) + "00"; };
+  $("calBtn").href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("The wedding of " + nEnRaw)
+    + "&dates=" + cal(start) + "/" + cal(end) + "&ctz=Africa/Cairo&location=" + encodeURIComponent(vEn)
+    + "&details=" + encodeURIComponent(pQuote || "And He placed between you affection and mercy.");
+
+  /* ── programme: agenda=time~عربي~english|… or the wedding's own evening, counted
+        from the time on the card so the two always agree ── */
+  var PROG = [[0, "الاستقبال", "Reception"], [45, "الزفة ودخول العروسين", "The zaffa and the couple's entrance"], [150, "العشاء", "Dinner"], [210, "تقطيع التورتة والسهرة", "The cake, then dancing"]];
+  function addRow (time, wAr, wEn) {
+    var tEn = time, tAr = ar9(time), m = time.match(/^(\d{1,2}):(\d{2})$/);
+    if (m && +m[1] < 24 && +m[2] < 60) {
+      var h = +m[1], x = h % 12 || 12;
+      tEn = x + ":" + m[2] + (h < 12 ? " am" : " pm"); tAr = ar9(x + ":" + m[2]) + (h < 12 ? " ص" : " م");
+      if (h === 0 && m[2] === "00") { tEn = "midnight"; tAr = "منتصف الليل"; }
+    }
+    var li = document.createElement("li");
+    li.innerHTML = '<span class="when"><span class="t-ar"></span><span class="t-en"></span></span><span class="what"><span class="t-ar"></span><span class="t-en"></span></span>';
+    li.querySelector(".what .t-ar").textContent = wAr; li.querySelector(".what .t-en").textContent = wEn;
+    li.querySelector(".when .t-ar").textContent = tAr; li.querySelector(".when .t-en").textContent = tEn;
+    $("agList").appendChild(li);
+  }
+  var pAg = qp("agenda"), agRows = pAg && pAg !== "0" ? pAg.split("|").map(function (e) { return e.split("~"); }).filter(function (p) { return p.length >= 3 && p[0].trim() && p[1].trim() && p[2].trim(); }) : [];
+  if (pAg === "0") { $("agList").hidden = true; $("agendaSec").classList.add("no-list"); }
+  else if (agRows.length) agRows.forEach(function (p) { addRow(p[0].trim(), p[1].trim(), p[2].trim()); });
+  else PROG.forEach(function (r) {
+    var t = (hh * 60 + +mm + r[0]) % 1440;
+    addRow(Math.floor(t / 60) + ":" + ("0" + t % 60).slice(-2), r[1], r[2]);
+  });
+
+  /* dress code and gift note, at the foot of the programme */
+  function note (key, id) {
+    var v = qp(key), sec = $(id);
+    if (!v) return;
+    if (v === "0") { sec.hidden = true; return; }
+    var p = v.indexOf("~") >= 0 ? v.split("~") : [v, v];
+    var a = (p[0] || "").trim() || (p[1] || "").trim(), e = (p[1] || "").trim() || a;
+    sec.querySelector(".note .t-ar").textContent = a;
+    sec.querySelector(".note .t-en").textContent = e;
+  }
+  note("dress", "dressSec"); note("gift", "giftSec");
+  if ($("dressSec").hidden && $("giftSec").hidden) $("notesCard").hidden = true;
+
+  /* the couple's photographs: shown only when given; 1, 2 or 3 laid out differently */
+  var frames = document.querySelectorAll("#gallerySec .print"), nPh = 0;
+  if (qp("photos") !== "0") ["ph1", "ph2", "ph3"].forEach(function (k) {
+    var u = qp(k);
+    if (!u || !(/^https?:\/\//.test(u) || !/:/.test(u))) return;
+    var img = document.createElement("img"); img.alt = ""; img.loading = "lazy"; img.decoding = "async"; img.width = 400; img.height = 500; img.src = u;
+    frames[nPh].appendChild(img); frames[nPh].classList.add("has-img"); nPh++;
+  });
+  if (nPh) $("gallerySec").classList.add("on", "n" + nPh);
+  else $("gallerySec").hidden = true;
+
+  /* ── how many days are left, typeset on the programme card (Cairo days) ── */
+  function cairoToday () {
+    var t = "";
+    try { t = new Intl.DateTimeFormat("en-CA", { timeZone: "Africa/Cairo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()); } catch (e) {}
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(t)) { var n = new Date(); t = n.getFullYear() + "-" + ("0" + (n.getMonth() + 1)).slice(-2) + "-" + ("0" + n.getDate()).slice(-2); }
+    return t;
+  }
+  var utc = function (iso) { return Date.UTC(+iso.slice(0, 4), +iso.slice(5, 7) - 1, +iso.slice(8, 10)); };
+  function renderLeft () {
+    var days = Math.round((utc(dOk) - utc(cairoToday())) / 864e5), el = $("left");
+    var r = days % 100, unit = days >= 3 && days <= 10 ? " أيام" : days > 100 && r >= 3 && r <= 10 ? " أيام" : (days > 10 && (days < 100 || r > 10)) ? " يوماً" : " يوم";
+    var rest = days < 0 ? "" : isAr
+      ? (days === 0 ? "اليوم" : days === 1 ? "غداً" : days === 2 ? "بعد يومين" : "بعد " + ar9(days) + unit)
+      : (days === 0 ? "today" : days === 1 ? "tomorrow" : "in " + days + " days");
+    el.textContent = "";
+    var d = document.createElement("span"); d.className = "d"; d.textContent = isAr ? dateArShort : dateEnShort; el.appendChild(d);
+    if (rest) el.appendChild(document.createTextNode((isAr ? "، " : ", ") + rest));
+  }
+  setInterval(renderLeft, 6e4);
+
+  /* ── WhatsApp: the reply with name and count, the apology, and sharing ── */
+  var latin = function (v) { return String(v).replace(/[٠-٩]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩".indexOf(d); }).replace(/\D/g, ""); };
+  $("guestName").addEventListener("input", function () { $("guestName").classList.toggle("ar-hand", hasAr($("guestName").value)); updateLinks(); });
+  $("guestName").classList.toggle("ar-hand", hasAr($("guestName").value));
+  $("guestCount").addEventListener("input", updateLinks);
+  function updateLinks () {
+    var url = location.protocol === "file:" ? "" : location.href.split("#")[0];
+    var who = $("guestName").value.trim();
+    var hiAr = who ? "مرحباً، معاكم " + who + ". " : "مرحباً! ", hiEn = who ? "Hello, this is " + who + ". " : "Hello! ";
+    var n = latin($("guestCount").value);
+    var count = n ? (isAr ? " عدد الأفراد: " + ar9(n) : " Number attending: " + n) : "";
+    var yes = isAr
+      ? hiAr + "يسعدنا نأكد حضورنا " + occAr + " " + nArRaw + " يوم " + dateAr + " " + timeArShort + " في " + vAr + "." + count
+      : hiEn + "We'd love to confirm our attendance at " + occEnOf + " " + nEnRaw + " on " + dateEn + " at " + timeEnShort + ", " + vEn + "." + count;
+    var no = isAr
+      ? hiAr + "للأسف مش هنقدر نحضر " + occAr + " " + nArRaw + ". ألف مبروك، وربنا يتمم بخير."
+      : hiEn + "Sadly we can't make it to " + occEnOf + " " + nEnRaw + ". Congratulations to you both.";
+    var share = isAr
+      ? "أنتم مدعوون ل" + occAr + " " + nArRaw + " يوم " + dateAr + " " + timeArShort + " في " + vAr + "." + (url ? " افتحوا الدعوة من هنا: " + url : "")
+      : "You're invited to " + occEnOf + " " + nEnRaw + " on " + dateEn + " at " + timeEnShort + ", " + vEn + "." + (url ? " Open the invitation: " + url : "");
+    $("rsvpBtn").href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(yes);
+    $("noBtn").href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(no);
+    $("waBtn").href = "https://wa.me/?text=" + encodeURIComponent(share);
+  }
+
+  /* ── night / day: night by default, the guest's own toggle wins for this tab ── */
+  var themeBtn = $("themeBtn");
   function setTheme (day) {
     if (day) docEl.setAttribute("data-theme", "day"); else docEl.removeAttribute("data-theme");
     var m = document.querySelector('meta[name="theme-color"]');
-    if (m) m.content = day ? "#f6f1e6" : "#0c1631";
-    if (themeBtn) themeBtn.setAttribute("aria-pressed", day ? "true" : "false");
+    if (m) m.content = day ? "#e9e3d6" : "#080d1b";
   }
   setTheme(docEl.getAttribute("data-theme") === "day");
-  if (themeBtn) themeBtn.addEventListener("click", function () {
+  themeBtn.addEventListener("click", function () {
     var day = docEl.getAttribute("data-theme") !== "day";
     setTheme(day);
     try { sessionStorage.setItem("d3waNavyTheme", day ? "day" : "night"); } catch (e) {}
   });
 
-  /* ── Language: Arabic by default on Arabic devices ── */
-  var langBtn = $("#langBtn");
+  /* ── language ── */
   var isAr = true; /* Arabic first, like every D3wa design; English is one tap away */
   function applyLang () {
     docEl.classList.toggle("ar", isAr);
     docEl.lang = isAr ? "ar" : "en";
     docEl.dir = isAr ? "rtl" : "ltr";
-    updateLinks();
-    renderCountdown(true);
+    $("names").classList.toggle("lat", isAr && namesLat);
+    $("names").classList.toggle("arn", !isAr && namesArInEn);
+    $("guestName").placeholder = isAr ? "الاسم هنا" : "Your name";
+    txt("replyBy", isAr ? (replyByAr || "يسعدنا ردكم على واتساب") : (replyByEn || "We look forward to hearing from you on WhatsApp"));
+    renderLeft(); updateLinks(); fitHosts(); layoutIntro();
   }
-  if (langBtn) langBtn.addEventListener("click", function () { isAr = !isAr; applyLang(); });
+  window.addEventListener("resize", function () { fitHosts(); layoutIntro(); });
+  $("langBtn").addEventListener("click", function () { isAr = !isAr; applyLang(); });
 
-  /* ── Countdown (Cairo time) ── */
-  var target = evDate
-    ? new Date(pD + "T" + two(evH) + ":" + two(evM) + ":00+02:00").getTime()
-    : new Date("2026-08-22T20:00:00+03:00").getTime();
-  var wrap = $("#cdWrap");
-  var cells = { d: $("#cdD"), h: $("#cdH"), m: $("#cdM"), s: $("#cdS") };
-  var last = {};
-  function fmt (n) { var s = two(n); return isAr ? ar9(s) : s; }
-  function renderCountdown (force) {
-    if (!wrap) return;
-    var diff = target - Date.now();
-    if (diff <= 0) { wrap.classList.add("is-done"); return; }
-    wrap.classList.remove("is-done");
-    var v = { d: Math.floor(diff / 864e5), h: Math.floor(diff % 864e5 / 36e5), m: Math.floor(diff % 36e5 / 6e4), s: Math.floor(diff % 6e4 / 1e3) };
-    for (var k in v) {
-      if (force || v[k] !== last[k]) { cells[k].textContent = fmt(v[k]); last[k] = v[k]; }
-    }
+  /* ── the box: the band slides off, the lid lifts, and the card in the box is the
+        real top of the page (the closed box is a copy of the tray, set down at its place) ── */
+  var intro = $("intro"), ibox = $("ibox"), tray = $("tray"), pending = qp("intro") !== "0", opened = false, flip = "";
+  function layoutIntro () {
+    if (!pending || opened) return;
+    window.scrollTo(0, 0);
+    var r = tray.getBoundingClientRect();
+    var old = ibox.querySelector(".tray"); if (old) ibox.removeChild(old);
+    var c = tray.cloneNode(true);
+    c.removeAttribute("id");
+    Array.prototype.forEach.call(c.querySelectorAll("[id],[data-shot],[aria-labelledby]"), function (n) { n.removeAttribute("id"); n.removeAttribute("data-shot"); n.removeAttribute("aria-labelledby"); });
+    ibox.insertBefore(c, ibox.firstChild);
+    ibox.style.width = r.width + "px"; ibox.style.height = r.height + "px";
+    ibox.style.setProperty("--tw", r.width + "px");
+    var vw = docEl.clientWidth, vh = window.innerHeight;
+    var s = Math.min(vw * .8 / r.width, (vh - 150) / r.height, .9);
+    var x = (vw - r.width * s) / 2, y = Math.max(28, (vh - 96 - r.height * s) / 2);
+    ibox.style.transition = "none";
+    ibox.style.transform = "translate(" + x + "px," + y + "px) scale(" + s + ")";
+    var hint = $("introHint"); hint.style.bottom = "auto"; hint.style.top = (y + r.height * s + 28) + "px";
+    flip = "translate(" + r.left + "px," + r.top + "px) scale(1)";
   }
-  setInterval(renderCountdown, 1000);
-
-  /* ── WhatsApp: RSVP to the couple (with guest count) + share ── */
-  var GUEST_AR = { 1: "١", 2: "٢", 3: "٣", 4: "٤ أو أكتر" };
-  var GUEST_EN = { 1: "1", 2: "2", 3: "3", 4: "4 or more" };
-  var guestCount = 1;
-  var rsvpBtn = $("#rsvpBtn"), waBtn = $("#waBtn");
-  function updateLinks () {
-    var url = "https://khalidsharafel-din.github.io/d3wa/demos/navy.html";
-    if (location.protocol !== "file:") url = location.href.split("#")[0];
-    var rsvp = isAr
-      ? "مساء الخير! يسعدنا نأكد حضورنا حفل زفاف " + namesAr + " يوم " + dateFullAr + " الساعة " + timeAr + " في " + venueMsgAr + ". عدد الحضور: " + GUEST_AR[guestCount]
-      : "Hello! We'd like to confirm our attendance at the wedding of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Number of guests: " + GUEST_EN[guestCount];
-    var share = isAr
-      ? "دعوة لحضور حفل زفاف " + namesAr + " يوم " + dateFullAr + " الساعة " + timeAr + " في " + venueMsgAr + ". افتحوا الدعوة من هنا: " + url
-      : "You're invited to the wedding of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Open the invitation: " + url;
-    if (rsvpBtn) rsvpBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(rsvp);
-    if (waBtn) waBtn.href = "https://wa.me/?text=" + encodeURIComponent(share);
-  }
-  $$(".chip").forEach(function (c, _, all) {
-    c.addEventListener("click", function () {
-      guestCount = +c.getAttribute("data-count") || 1;
-      all.forEach(function (x) { x.setAttribute("aria-pressed", x === c ? "true" : "false"); });
-      updateLinks();
-    });
-  });
-
-  /* ── Opening moment: palace doors (JS only; ?intro=0 skips) ── */
-  var intro = $("#intro");
-  function markOpen () { docEl.classList.add("is-open"); }
-  if (intro && pIntro !== "0") {
+  if (pending) {
     intro.hidden = false;
-    docEl.classList.add("no-scroll");
-    try { window.scrollTo(0, 0); } catch (e) {}
-    var done = false;
-    var openIntro = function () {
-      if (done) return;
-      done = true;
-      docEl.classList.remove("no-scroll");
-      markOpen();
-      if (reduced) { intro.hidden = true; return; }
+    document.body.classList.add("intro-lock");
+    var finish = function () { intro.hidden = true; document.body.classList.remove("intro-lock"); pending = false; };
+    var open = function () {
+      if (opened) return; opened = true;
       intro.classList.add("open");
-      window.setTimeout(function () { intro.hidden = true; }, 1600);
+      if (reduced) { setTimeout(finish, 50); return; }
+      setTimeout(function () { ibox.style.transition = ""; ibox.style.transform = flip; }, 1450);
+      setTimeout(finish, 2650);
     };
-    intro.addEventListener("click", openIntro);
-    intro.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); openIntro(); }
-    });
+    intro.addEventListener("click", open);
+    intro.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
     try { intro.focus({ preventScroll: true }); } catch (e) {}
-  } else {
-    markOpen();
   }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitHosts(); layoutIntro(); });
 
-  /* ── Soft music: WebAudio pad (or ?music= file), off until the guest taps ── */
-  var musicBtn = $("#musicBtn");
-  var musicUrl = (pMusic && /^https?:\/\//.test(pMusic)) ? pMusic : null;
+  /* ── soft music: off until tapped; a WebAudio pad, or ?music=<url> ── */
+  var musicBtn = $("musicBtn"), pMusic = qp("music");
+  var musicUrl = pMusic && /^https?:\/\//.test(pMusic) ? pMusic : null;
   var audioEl = null, actx = null, padNodes = null, musicOn = false;
   function padStart () {
     try {
@@ -1280,7 +795,7 @@ html.no-scroll,html.no-scroll body{overflow:hidden}
       window.setTimeout(function () { n.oscs.forEach(function (o) { try { o.stop(); } catch (e) {} }); }, 1600);
     } catch (e) {}
   }
-  if (musicBtn) musicBtn.addEventListener("click", function () {
+  musicBtn.addEventListener("click", function () {
     musicOn = !musicOn;
     musicBtn.setAttribute("aria-pressed", musicOn ? "true" : "false");
     if (musicUrl) {
@@ -1294,7 +809,6 @@ html.no-scroll,html.no-scroll body{overflow:hidden}
   applyLang();
 })();
 </script>
-
 <script src="../assets/demo-bar.js" defer></script>
 </body>
 </html>

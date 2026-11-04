@@ -74,13 +74,9 @@ window.D3WA = {
      publishing. A card gateway (Kashier hosted link) plugs in here later. */
   payment: { mode: "after-preview", depositShare: 0.5, payOnceUpTo: "classic" },
 
-  /* Sample gallery photos for the store's demo links, so buyers see the Signature
-     gallery. Used by wedding-type designs; others set their own `photos`. No faces. */
-  demoPhotos: [
-    "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=900&q=75",
-    "https://images.unsplash.com/photo-1525258946800-98cfd641d0de?auto=format&fit=crop&w=900&q=75",
-    "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=75"
-  ],
+  /* Demo links carry no gallery photos: a gallery holds the couple's own photos or nothing,
+     and stock photos made every design read as a template. */
+  demoPhotos: [],
 
   /* minPkg: the cheapest package this design is sold in. whyMin: shown when a
      cheaper package is unavailable for the design.
@@ -94,27 +90,27 @@ window.D3WA = {
         ar: "ظرف مختوم بحروفكم بيتفتح على كارت قطن بالدهبي، مكتوب زي كروت الأفراح المطبوعة، ومعاه كارت للبرنامج وكارت للرد. للخطوبة والفرح.",
         en: "An envelope sealed with your initials opens onto a cotton card printed in gold and worded like a classic Cairo invitation, with a programme card and a reply card. For engagements and weddings."
       },
-      look: ["#241c17", "#f8f2e4", "#a47c3b", "#2b2117"], fonts: "Amiri, Libre Caslon", photos: [],
+      look: ["#241c17", "#f8f2e4", "#a47c3b", "#2b2117"], fonts: "Amiri, Libre Caslon",
       demo: { n_ar: "يوسف ومريم", n_en: "Youssef & Mariam", h_ar: "السيد/ سامي عزيز والسيد/ محمود رشاد", h_en: "Mr Samy Aziz and Mr Mahmoud Rashad" }
     },
     {
       k: "rose", code: "D3-002", minPkg: "classic", occ: ["wedding", "engagement"],
       ar: "روز آند وايت", en: "Rose & White",
-      mood: { ar: "وردي ناعم وورد مضغوط", en: "Blush paper and pressed roses" },
+      mood: { ar: "ورق قطن وردي ووردة مجففة", en: "Blush cotton and a pressed rose" },
       blurb: {
-        ar: "ورق وردي فاتح وورد مرسوم بإيد، والأسامي مكتوبة بخط رقعة ناعم. رومانسية وهادية، للفرح والخطوبة.",
-        en: "Blush paper, hand-drawn roses and your names in a soft Ruqaa script. Romantic and calm, for weddings and engagements."
+        ar: "كارت مطبوع بالضغط على ورق قطن وردي سميك، عليه وردة مجففة بشريط شفاف، ويوصل في غلاف شفاف. أساميكم بخط رقعة ناعم، للفرح والخطوبة.",
+        en: "A letterpress card on thick blush cotton with a pressed rose taped to it, sliding out of a vellum band. Your names in a soft Ruqaa script, for weddings and engagements."
       },
-      look: ["#fff7f8", "#f3d6de", "#b3305c", "#3a1f2a"], fonts: "Aref Ruqaa, Fraunces",
+      look: ["#fff7f8", "#f3d6de", "#b3305c", "#3a1f2a"], fonts: "Aref Ruqaa, Pinyon Script",
       demo: { n_ar: "كريم ونور", n_en: "Karim & Nour" }
     },
     {
       k: "rustic", code: "D3-003", minPkg: "classic", occ: ["wedding"],
       ar: "رستيك", en: "Rustic Red",
-      mood: { ar: "ورق كرافت وألوان خريفية", en: "Kraft paper and autumn colour" },
+      mood: { ar: "كارت كرافت مربوط بخيط جوت", en: "Kraft card tied with jute twine" },
       blurb: {
-        ar: "ورق كرافت وأوراق شجر خريفية وختم شمع أحمر. دافية وقريبة، لفرح في جنينة أو مزرعة.",
-        en: "Kraft paper, autumn leaves and a red wax stamp. Warm and close, for a garden or farm wedding."
+        ar: "كارت كرافت مطبوع بلون واحد، مربوط بخيط جوت وختم شمع أحمر، وتيكت باسم كل ضيف. لفرح في جنينة أو مزرعة.",
+        en: "A kraft card printed in one ink, tied with jute twine and a red wax seal, with a tag carrying each guest's name. For a garden or farm wedding."
       },
       look: ["#f6ecdc", "#d9c3a0", "#9e3f34", "#2e2119"], fonts: "Lalezar, Corben",
       demo: { n_ar: "محمود وهنا", n_en: "Mahmoud & Hana" }
@@ -122,119 +118,104 @@ window.D3WA = {
     {
       k: "navy", code: "D3-004", minPkg: "royale", occ: ["wedding"],
       ar: "رويال نايفي", en: "Royal Navy",
-      mood: { ar: "كحلي ليلي ودهب", en: "Midnight navy and gold foil" },
+      mood: { ar: "علبة كتان كحلي وكارت بحواف مدهبة", en: "Navy linen box, gilt-edged card" },
       blurb: {
-        ar: "كحلي غامق ودهب ومونوجرام بحروفكم. فيها نسخة ليلي ونسخة نهاري، وهي تصميم باقة رويال.",
-        en: "Deep navy, gold foil and a monogram of your initials. It comes with a night and a day version, and it is the Royale package design."
+        ar: "كارت دوبلكس تقيل بحواف مدهبة في علبة كتان كحلي، وعلى غطاها الحروف الأولى من أساميكم بالدهبي. نسخة الليل مطبوعة على الوش الكحلي، ونسخة النهار على الوش العاجي.",
+        en: "A heavy duplex card with gilded edges in a navy linen box, your initials stamped in gold on the lid. The night version is printed on the navy face, the day version on the ivory face."
       },
       whyMin: {
         ar: "التصميم ده معمول بنسختين، ليلي ونهاري، وبيتظبط على ألوان القاعة، فبيتعمل في رويال بس.",
         en: "This design is built in two versions, night and day, and tuned to your venue's colours, so it comes with Royale only."
       },
-      look: ["#0d1730", "#22335c", "#cfa658", "#f4efe4"], fonts: "Bodoni Moda, Amiri",
+      look: ["#0d1730", "#22335c", "#cfa658", "#f4efe4"], fonts: "Bodoni Moda, Gulzar",
       demo: { n_ar: "أحمد وفريدة", n_en: "Ahmed & Farida" }
     },
     {
       k: "emerald", code: "D3-005", minPkg: "classic", occ: ["katb", "wedding"],
       ar: "إميرالد أندلسي", en: "Emerald Andalusi",
-      mood: { ar: "زخارف أندلسية على أخضر", en: "Andalusian geometry on deep green" },
+      mood: { ar: "باب أندلسي ولوحة خط", en: "An Andalusian doorway and a calligraphy panel" },
       blurb: {
-        ar: "قوس أندلسي وزخارف هندسية دهبي على أخضر زمردي، وآية في أول الصفحة. لكتب الكتاب والفرح.",
-        en: "An Andalusian arch and gold geometry on emerald green, opening with a verse. For katb kitab and weddings."
+        ar: "باب خشب منقوش تحت قوس أندلسي وزليج أخضر، يتفتح على دعوتكم مكتوبة كلوحة خط في برواز مدهب. لكتب الكتاب والفرح.",
+        en: "A carved wooden door under an Andalusian arch and green zellige opens onto your invitation, set as a calligraphy panel in a gilt frame. For katb kitab and weddings."
       },
-      look: ["#0e3b2e", "#1a5a44", "#c9a24b", "#f3ead4"], fonts: "Aref Ruqaa, Marcellus",
+      look: ["#0e3b2e", "#1a5a44", "#c9a24b", "#f3ead4"], fonts: "Reem Kufi, Marcellus",
       demo: { n_ar: "مصطفى وجنى", n_en: "Mostafa & Jana" }
     },
     {
       k: "sahara", code: "D3-006", minPkg: "classic", occ: ["wedding"],
       ar: "صحارى بوهو", en: "Sahara Boho",
-      mood: { ar: "غروب وتراكوتا وبحر", en: "Sunset, terracotta and sea" },
+      mood: { ar: "كارت بوستال وتذكرة من الساحل", en: "A Sahel postcard and a ticket" },
       blurb: {
-        ar: "غروب على البحر وألوان تراكوتا وموجة تحت الأسامي. معمولة لفرح الساحل أو أي فرح على البحر.",
-        en: "A sunset over the sea, terracotta tones and a wave under your names. Made for a Sahel wedding or any wedding by the water."
+        ar: "كارت بوستال مرسوم عليه غروب على البحر وأساميكم، بيتقلب على الدعوة بالطابع والختم، ومعاه تذكرة للبرنامج وكعب للرد.",
+        en: "A painted postcard of a sunset over the sea with your names, which turns over to the invitation with its stamp and postmark. A ticket holds the programme and the reply stub."
       },
-      look: ["#fbf6ec", "#f3d9b8", "#c46a4a", "#3b2a20"], fonts: "El Messiri, Italiana",
+      look: ["#fbf6ec", "#f3d9b8", "#c46a4a", "#3b2a20"], fonts: "Rakkas, Newsreader",
       demo: { n_ar: "زياد ولينا", n_en: "Ziad & Lina" }
     },
     {
       k: "henna", code: "D3-008", minPkg: "classic", occ: ["henna"],
-      photos: [
-        "https://images.unsplash.com/photo-1525258946800-98cfd641d0de?auto=format&fit=crop&w=900&q=75",
-        "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=75",
-        "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=75"
-      ],
       ar: "ليلة حنة", en: "Henna Night",
-      mood: { ar: "حُمرة الحنة والزعفران", en: "Henna red and saffron" },
+      mood: { ar: "صينية حنة على قماش زعفراني", en: "A henna tray on saffron cotton" },
       blurb: {
-        ar: "زينة وفوانيس وكف حنة مرسوم، وكلام بالعامية زي ما البنات بتقوله. لليلة الحنة.",
-        en: "Bunting, lanterns and a painted henna hand, with wording the way the girls actually say it. For the henna night."
+        ar: "صينية الحنة بشمعها وأقماعها، وكارت مرسوم بإيد البنات عليه كف محنّي وزينة قماش، والبرنامج على ورقة كشكول. لليلة الحنة.",
+        en: "The henna tray with its candles and cones, a card the girls drew by hand with a hennaed palm and fabric bunting, and the plan on a notebook page. For the henna night."
       },
-      look: ["#fbf3e4", "#f4d9a8", "#a6341b", "#c2185b"], fonts: "Rakkas, Lemonada",
+      look: ["#fbf3e4", "#f4d9a8", "#a6341b", "#c2185b"], fonts: "Playpen Sans Arabic, Rakkas",
       demo: { n_ar: "ملك", n_en: "Malak" }
     },
     {
       k: "deco", code: "D3-009", minPkg: "classic", occ: ["wedding"],
       ar: "آرت ديكو", en: "Art Deco",
-      mood: { ar: "أسود ودهبي هندسي من العشرينات", en: "1920s black and geometric gold" },
+      mood: { ar: "برنامج سهرة أسود مطبوع بالدهبي", en: "A black evening programme printed in gold" },
       blurb: {
-        ar: "أسود ودهبي وخطوط هندسية من زمن جاتسبي، ومونوجرام في النص. لفرح بالليل وسهرة طويلة.",
-        en: "Black, gold and Gatsby-era geometry with a monogram at the centre. For an evening wedding that runs late."
+        ar: "برنامج سهرة أسود مطبوع بالدهبي زي قاعات فنادق القاهرة في العشرينات، بيتفتح من النص، والرد على تذكرة أمانات بنمرة. لفرح بالليل وسهرة طويلة.",
+        en: "The evening programme of a 1920s Cairo hotel ballroom: a black card printed in gold that opens down the middle, with a numbered cloakroom ticket for the reply. For an evening wedding that runs late."
       },
-      look: ["#0e0e10", "#1c1c20", "#d4af37", "#f1e6c8"], fonts: "Limelight, Poiret One",
+      look: ["#0e0e10", "#1c1c20", "#d4af37", "#f1e6c8"], fonts: "Federo, Reem Kufi",
       demo: { n_ar: "عمر ونادين", n_en: "Omar & Nadine" }
     },
     {
       k: "garden", code: "D3-010", minPkg: "classic", occ: ["wedding", "engagement"],
       ar: "جاردن", en: "Botanical Garden",
-      mood: { ar: "خضرة مائية وقوس نباتي", en: "Watercolour greenery and a floral arch" },
+      mood: { ar: "كارت مرسوم بالألوان المائية", en: "A hand-painted watercolour card" },
       blurb: {
-        ar: "أوراق شجر بالألوان المائية وقوس ورد حوالين الأسامي. لفرح بالنهار في جنينة.",
-        en: "Watercolour leaves and a floral arch around your names. For a daytime wedding in a garden."
+        ar: "كارت ألوان مائية بحافة مقطوعة باليد، عليه قوس خضرة وورد مرسوم حوالين الأسامي، وجاي في ظرف شفاف. لفرح أو خطوبة بالنهار في جنينة.",
+        en: "A watercolour card with a deckled edge and an arch of greenery and roses painted around your names, sent in a glassine envelope. For a daytime wedding or engagement in a garden."
       },
-      look: ["#faf8f2", "#dbe4d2", "#5f7161", "#2a3328"], fonts: "EB Garamond, Amiri",
+      look: ["#faf8f2", "#dbe4d2", "#5f7161", "#2a3328"], fonts: "Gulzar, IM Fell English",
       demo: { n_ar: "سيف ورنا", n_en: "Seif & Rana" }
     },
     {
       k: "modern", code: "D3-011", minPkg: "classic", occ: ["wedding", "engagement"],
       ar: "مودرن", en: "Modern Editorial",
-      mood: { ar: "بوستر تايبوجرافي", en: "A typographic poster" },
+      mood: { ar: "بوستر مطبوع بلونين ومطوي على أربعة", en: "A two-colour printed poster, folded in quarters" },
       blurb: {
-        ar: "أساميكم بخط بوستر كبير مالي الصفحة، وأقسام مرقّمة زي المجلات، وفتحة بتتقسم من عند الطيّة. من غير زخرفة، للي بيحبوا البساطة.",
-        en: "Your names set poster-size across the page, numbered sections like a magazine, and an opening that splits along the fold. No ornament, for couples who like it clean."
+        ar: "بوستر مطبوع بلونين بيوصل مطوي وبيتفتح بلمسة، عليه أساميكم بخط كبير، والتاريخ والبرنامج والرد كل واحد في ربع من الورقة. للفرح والخطوبة.",
+        en: "A two-colour risograph poster that arrives folded and opens with one tap, your names set large and the date, programme and reply each on its own quarter. For weddings and engagements."
       },
-      look: ["#f7f5f0", "#e7e2d8", "#c4552d", "#141414"], fonts: "Almarai, Archivo",
+      look: ["#f7f5f0", "#e7e2d8", "#c4552d", "#141414"], fonts: "Alexandria, Archivo",
       demo: { n_ar: "علي ودينا", n_en: "Ali & Dina" }
     },
     {
       k: "lotus", code: "D3-007", minPkg: "classic", occ: ["baby"],
-      photos: [
-        "https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&w=900&q=75",
-        "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=75",
-        "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=75"
-      ],
       ar: "سبوع اللوتس", en: "Lotus Sebou3",
-      mood: { ar: "باستيل وقمر ولوتس", en: "Pastels, a moon and a lotus" },
+      mood: { ar: "شنطة سبوع بشريطة وبطاقة", en: "A sebou3 bag, ribbon and tag" },
       blurb: {
-        ar: "ألوان باستيل وهلال ولوتس، وفقرات السبوع المصري: الغربال والشموع والحلويات. للسبوع والعقيقة.",
-        en: "Pastels, a crescent and a lotus, with the Egyptian sebou3 rituals: the sieve, the candles and the sweets. For sebou3 and aqiqa."
+        ar: "شنطة سبوع من التل الوردي مربوطة بشريطة ستان، عليها بطاقة مطبوعة باسم المولود. بتفكّوا الشريطة فيطلع كارت الدعوة بفقرات السبوع بالترتيب. للسبوع والعقيقة.",
+        en: "A blush tulle sebou3 bag tied with satin ribbon, with a printed tag carrying the baby's name. Untie the ribbon and the card comes out with the evening's rituals in order. For sebou3 and aqiqa."
       },
-      look: ["#fdf8f0", "#f3d9de", "#a8c3a0", "#5a4a52"], fonts: "El Messiri, Quicksand",
+      look: ["#fdf8f0", "#f3d9de", "#a8c3a0", "#5a4a52"], fonts: "Gulzar, Gilda Display",
       demo: { n_ar: "ياسين", n_en: "Yassin" }
     },
     {
       k: "grad", code: "D3-012", minPkg: "classic", occ: ["grad"],
-      photos: [
-        "https://images.unsplash.com/photo-1627556704302-624286467c65?auto=format&fit=crop&w=900&q=75",
-        "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=75",
-        "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=75"
-      ],
       ar: "تخرج", en: "Graduation",
-      mood: { ar: "كحلي وبرتقالي وسنة التخرج", en: "Navy, orange and the class year" },
+      mood: { ar: "ملف شهادة كحلي وسنة التخرج بالبرتقالي", en: "A navy diploma folder, the class year in orange" },
       blurb: {
-        ar: "سنة التخرج بخط كبير بالبرتقالي على كحلي، وقبعة تخرج نازلة عليها، وفتحة زي ملف الشهادة. لحفلة التخرج مع العيلة والصحاب.",
-        en: "The class year set big in orange on navy, a mortarboard landing on it, and an opening like a diploma folder. For a graduation party with family and friends."
+        ar: "ملف شهادة كحلي عليه سنة التخرج، بيتفتح على دعوة مطبوعة زي الشهادة باسم الخريج، ومعاها جدول الحفل وقسيمة تأكيد الحضور. لحفلة التخرج مع العيلة والصحاب.",
+        en: "A navy diploma folder with the class year stamped in orange opens onto an invitation printed like a certificate, with the evening's timetable and a reply slip. For a graduation party with family and friends."
       },
-      look: ["#f8f5ee", "#dfe2ea", "#e98a15", "#1f2a44"], fonts: "Cairo, DM Serif Display",
+      look: ["#f8f5ee", "#dfe2ea", "#e98a15", "#1f2a44"], fonts: "Katibeh, DM Serif Display",
       demo: { n_ar: "سارة", n_en: "Sara" }
     }
   ]

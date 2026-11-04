@@ -465,7 +465,7 @@ html:not(.ar) .share a{font-size:14px}
   var dateAr = fmtAr(dObj, full), dateEn = fmtEn(dObj, full);
   txt("dateAr", dateAr); txt("dateEn", dateEn);
   txt("timeAr", timeWordsAr); txt("timeEn", timeWordsEn);
-  txt("venueAr", /^(ب|في |المكان)/.test(vAr) ? vAr : "ب" + vAr);
+  txt("venueAr", /^(ب|في |المكان)/.test(vAr) ? vAr : hasAr(vAr.charAt(0)) ? "ب" + vAr : "في " + vAr);
   txt("venueEn", vEn); txt("whereAr", vAr); txt("whereEn", vEn);
   if (qp("n_en") || qp("n_ar")) document.title = nArRaw + " | " + nEnRaw;
 
