@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /studio.html
+
+Sitemap: https://khalidsharafel-din.github.io/d3wa/sitemap.xml
