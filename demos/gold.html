@@ -381,8 +381,12 @@ html:not(.ar) .share a{font-size:14px}
 
   var nEnRaw = qp("n_en") || qp("n_ar") || "Youssef & Mariam", nArRaw = qp("n_ar") || qp("n_en") || "يوسف ومريم";
   var pDate = qp("d"), pTime = qp("t");
-  var dOk = pDate && /^\d{4}-\d{2}-\d{2}$/.test(pDate) ? pDate : "2026-08-22";
+  /* a real calendar day: 2026-13-45 and 2026-02-30 fall back to the sample date */
+  function realDay (s) { var m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/), x = m && new Date(+m[1], m[2] - 1, +m[3]);
+    return !!x && x.getFullYear() === +m[1] && x.getMonth() === m[2] - 1 && x.getDate() === +m[3]; }
+  var dOk = pDate && realDay(pDate) ? pDate : "2026-08-22";
   var tm = (pTime || "20:00").match(/^(\d{1,2}):(\d{2})$/) || ["", "20", "00"];
+  if (+tm[1] > 23 || +tm[2] > 59) tm = ["", "20", "00"];
   var hh = +tm[1], mm = tm[2], tNorm = ("0" + hh).slice(-2) + ":" + mm;
   var vEn = qp("v_en") || qp("v_ar") || "Villa Rose, Maadi, Cairo";
   var vAr = qp("v_ar") || qp("v_en") || "فيلا روز، المعادي، القاهرة";
@@ -552,7 +556,7 @@ html:not(.ar) .share a{font-size:14px}
   var frames = document.querySelectorAll("#gallerySec .ph"), nPh = 0;
   ["ph1", "ph2", "ph3"].forEach(function (k) {
     var u = qp(k);
-    if (!u || !(/^https?:\/\//.test(u) || !/:/.test(u))) return;
+    if (qp("photos") === "0" || !u || !(/^https?:\/\//.test(u) || !/:/.test(u))) return;
     var img = document.createElement("img"); img.alt = ""; img.loading = "lazy"; img.decoding = "async"; img.width = 300; img.height = 400; img.src = u;
     frames[nPh].appendChild(img); frames[nPh].classList.add("has-img"); nPh++;
   });

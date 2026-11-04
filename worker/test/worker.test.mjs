@@ -103,6 +103,9 @@ for (const [name, patch] of [
   ["bad package", { package: "nope" }],
   ["missing names", { n_ar: "" }],
   ["bad date", { event_date: "19-11-2026" }],
+  ["impossible date", { event_date: "2026-13-45" }],
+  ["day past the month's end", { event_date: "2026-02-30" }],
+  ["impossible time", { event_time: "25:70" }],
   ["short phone", { rsvp_wa: "123" }],
   ["design below its minimum package", { template: "navy", package: "signature" }]
 ]) {
@@ -145,6 +148,9 @@ const hosted = await (await post("/api/orders", { ...VALID, hosts: "السيد/ 
 const hostedPage = await (await call("/" + hosted.slug)).text();
 const hostedQ = new URLSearchParams(JSON.parse(hostedPage.match(/window\.__D3WA__=("(?:[^"\\]|\\.)*");/)[1]));
 ok("hosts reach the page", hostedQ.get("h_ar") === "السيد/ سامي عزيز والسيد/ محمود رشاد", hostedQ.get("h_ar"));
+const hostedEn = await (await post("/api/orders", { ...VALID, hosts: "Mr Samy Aziz and Mr Mahmoud Rashad" })).json();
+const hostedEnQ = new URLSearchParams(JSON.parse((await (await call("/" + hostedEn.slug)).text()).match(/window\.__D3WA__=("(?:[^"\\]|\\.)*");/)[1]));
+ok("hosts typed in English go to the English side", hostedEnQ.get("h_en") === "Mr Samy Aziz and Mr Mahmoud Rashad" && !hostedEnQ.has("h_ar"));
 ok("unpublished is watermarked", pendingHTML.includes("d3wa-wm"));
 ok("unpublished is noindex", (pending.headers.get("x-robots-tag") || "").includes("noindex"));
 ok("unpublished not cached", (pending.headers.get("cache-control") || "").includes("no-store"));
@@ -156,7 +162,7 @@ const badAuth = await call("/api/admin/orders", { headers: { authorization: "Bea
 ok("wrong token → 401", badAuth.status === 401, badAuth.status);
 const listed = await call("/api/admin/orders", { headers: { authorization: "Bearer s3cret" } });
 ok("valid token → 200", listed.status === 200, listed.status);
-ok("lists orders", (await listed.json()).orders.length === 5);
+ok("lists orders", (await listed.json()).orders.length === 6);
 
 const marked = await post("/api/admin/orders/" + order.id + "/mark", { status: "published" },
   { authorization: "Bearer s3cret" });
