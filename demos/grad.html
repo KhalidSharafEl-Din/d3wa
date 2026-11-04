@@ -574,14 +574,14 @@ body.intro-lock{overflow:hidden}
 
       <a class="btn prime" id="acceptBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.94.56 3.75 1.5 5.29L2 22l4.96-1.6a9.9 9.9 0 0 0 5.08 1.4h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.07c-.25.7-1.45 1.34-2 1.43-.5.08-1.13.11-1.83-.12-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.37-.15-.2-1.18-1.57-1.18-3 0-1.42.74-2.12 1-2.41.25-.28.55-.35.74-.35h.53c.17 0 .4-.03.62.48.25.58.84 2.02.91 2.17.07.15.12.32.02.51-.09.2-.16.32-.31.49-.15.17-.32.38-.45.51-.15.15-.3.31-.13.6.18.3.8 1.32 1.71 2.13 1.18 1.05 2.17 1.38 2.5 1.53.25.12.55.1.74-.11.25-.28.55-.74.86-1.2.22-.32.49-.36.82-.24.34.12 2.15 1.01 2.51 1.2.37.18.61.27.7.43.1.16.1.9-.15 1.6z"/></svg>
-        <span class="t-ar">أكّد الحضور على واتساب</span>
+        <span class="t-ar">أكّدوا الحضور على واتساب</span>
         <span class="t-en">Confirm on WhatsApp</span>
       </a>
 
       <div class="quiet">
         <a class="qlink" id="declineBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418">
-          <span class="t-ar">مش هقدر أحضر</span>
-          <span class="t-en">I can't make it</span>
+          <span class="t-ar">مش هنقدر نحضر</span>
+          <span class="t-en">We can't make it</span>
         </a>
         <a class="qlink" id="shareBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4M12 2v13"/></svg>
@@ -620,7 +620,10 @@ body.intro-lock{overflow:hidden}
   try {
     var p = new URLSearchParams(window.__D3WA__ || location.search);
     if (!p.get("d")) {
-      var t = new Date(Date.now() + 90 * 864e5); t.setDate(t.getDate() + (4 - t.getDay() + 7) % 7); /* demos land on a Thursday */
+      var t = new Date(Date.now() + 90 * 864e5);
+    /* a graduation party belongs in summer: move the demo into June to August */
+    if (t.getMonth() < 5) t = new Date(t.getFullYear(), 5, 18); else if (t.getMonth() > 7) t = new Date(t.getFullYear() + 1, 5, 18);
+    t.setDate(t.getDate() + (4 - t.getDay() + 7) % 7); /* on a Thursday */
       p.set("d", t.getFullYear() + "-" + ("0"+(t.getMonth()+1)).slice(-2) + "-" + ("0"+t.getDate()).slice(-2));
       window.__D3WA__ = p.toString();
     }
@@ -897,8 +900,8 @@ body.intro-lock{overflow:hidden}
       ? "مبروك يا " + nAr + "! أكيد جايين حفلة التخرج يوم " + dateFullAr + " الساعة " + timeArS + " في " + venAr + ". عدد الحضور: " + guestAr
       : "Congratulations, " + nEn + "! Confirming we'll be at the graduation party on " + dateFullEn + " at " + timeEnS + ", " + venEn + ". Guests: " + guestEn;
     var decline = isAr
-      ? "ألف مبروك يا " + nAr + "! للأسف مش هقدر أحضر الحفلة، بس قلبي معاكم وبتمنالك كل النجاح."
-      : "Huge congratulations, " + nEn + "! Sadly I can't make it to the party, but I'm wishing you every success.";
+      ? "ألف مبروك يا " + nAr + "! للأسف مش هنقدر نحضر الحفلة، بس قلوبنا معاكم وبنتمنالك كل النجاح."
+      : "Huge congratulations, " + nEn + "! Sadly we can't make it to the party, but we're wishing you every success.";
     var share = isAr
       ? "تتشرف العائلة بدعوتكم لحفلة تخرج " + nAr + " يوم " + dateFullAr + " الساعة " + timeArS + " في " + venAr + ". الدعوة هنا: " + url
       : "You're invited to " + nEn + "'s graduation party on " + dateFullEn + " at " + timeEnS + ", " + venEn + ". The invitation: " + url;

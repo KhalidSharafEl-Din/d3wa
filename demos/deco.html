@@ -889,12 +889,12 @@ html:not(.en) .chip{font-family:var(--kufi);font-weight:500;font-size:15px}
       <div class="rsvp-row">
         <a class="btn solid" id="rsvpYes" target="_blank" rel="noopener noreferrer" href="#">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-          <span class="t-ar">هحضر بإذن الله</span>
+          <span class="t-ar">هنحضر بإذن الله</span>
           <span class="t-en">Accept</span>
         </a>
         <a class="btn" id="rsvpNo" target="_blank" rel="noopener noreferrer" href="#">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
-          <span class="t-ar">مش هقدر أحضر</span>
+          <span class="t-ar">مش هنقدر نحضر</span>
           <span class="t-en">Decline</span>
         </a>
       </div>
@@ -1211,15 +1211,15 @@ html:not(.en) .chip{font-family:var(--kufi);font-weight:500;font-size:15px}
     var url = "https://khalidsharafel-din.github.io/d3wa/demos/deco.html";
     if (location.protocol !== "file:") url = location.href.split("#")[0];
     var accept = isEn
-      ? "Hello! I'm delighted to confirm my attendance at the wedding of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Number of guests: " + GUEST_EN[guestCount] + "."
-      : "مرحباً! يسعدني أأكد حضوري حفل زفاف " + namesAr + " يوم " + dateFullAr + " الساعة " + timeAr + " في " + venueMsgAr + ". عدد الحضور: " + GUEST_AR[guestCount] + ".";
+      ? "Hello! We're delighted to confirm our attendance at the wedding of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Number of guests: " + GUEST_EN[guestCount] + "."
+      : "مرحباً! يسعدنا نأكد حضورنا حفل زفاف " + namesAr + " يوم " + dateFullAr + " الساعة " + timeAr + " في " + venueMsgAr + ". عدد الحضور: " + GUEST_AR[guestCount] + ".";
     var share = isEn
       ? "You're invited to the wedding of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Open the invitation: " + url
       : "دعوة لحضور حفل زفاف " + namesAr + " يوم " + dateFullAr + " الساعة " + timeAr + " في " + venueMsgAr + ". افتحوا الدعوة من هنا: " + url;
     if (shareBtn) shareBtn.href = "https://wa.me/?text=" + encodeURIComponent(share);
     var decline = isEn
-      ? "Hello! Sadly I won't be able to make it to the wedding of " + namesEn + " on " + dateFullEn + ". Wishing you both a lifetime of happiness."
-      : "مرحباً! للأسف مش هقدر أحضر حفل زفاف " + namesAr + " يوم " + dateFullAr + "، ألف مبروك ومتمنيلكم حياة سعيدة.";
+      ? "Hello! Sadly we won't be able to make it to the wedding of " + namesEn + " on " + dateFullEn + ". Wishing you both a lifetime of happiness."
+      : "مرحباً! للأسف مش هنقدر نحضر حفل زفاف " + namesAr + " يوم " + dateFullAr + "، ألف مبروك وبنتمنالكم حياة سعيدة.";
     if (yesBtn) yesBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(accept);
     if (noBtn)  noBtn.href  = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(decline);
   }

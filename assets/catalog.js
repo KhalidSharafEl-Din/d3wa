@@ -75,7 +75,7 @@ window.D3WA = {
   payment: { mode: "after-preview", depositShare: 0.5, payOnceUpTo: "classic" },
 
   /* Sample gallery photos for the store's demo links, so buyers see the Signature
-     gallery. Wedding-type designs only; no faces. */
+     gallery. Used by wedding-type designs; others set their own `photos`. No faces. */
   demoPhotos: [
     "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=900&q=75",
     "https://images.unsplash.com/photo-1525258946800-98cfd641d0de?auto=format&fit=crop&w=900&q=75",
@@ -158,6 +158,11 @@ window.D3WA = {
     },
     {
       k: "henna", code: "D3-008", minPkg: "classic", occ: ["henna"],
+      photos: [
+        "https://images.unsplash.com/photo-1525258946800-98cfd641d0de?auto=format&fit=crop&w=900&q=75",
+        "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=75",
+        "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=75"
+      ],
       ar: "ليلة حنة", en: "Henna Night",
       mood: { ar: "حُمرة الحنة والزعفران", en: "Henna red and saffron" },
       blurb: {
@@ -202,6 +207,11 @@ window.D3WA = {
     },
     {
       k: "lotus", code: "D3-007", minPkg: "classic", occ: ["baby"],
+      photos: [
+        "https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&w=900&q=75",
+        "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=75",
+        "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=75"
+      ],
       ar: "سبوع اللوتس", en: "Lotus Sebou3",
       mood: { ar: "باستيل وقمر ولوتس", en: "Pastels, a moon and a lotus" },
       blurb: {
@@ -213,6 +223,11 @@ window.D3WA = {
     },
     {
       k: "grad", code: "D3-012", minPkg: "classic", occ: ["grad"],
+      photos: [
+        "https://images.unsplash.com/photo-1627556704302-624286467c65?auto=format&fit=crop&w=900&q=75",
+        "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=75",
+        "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=75"
+      ],
       ar: "تخرج", en: "Graduation",
       mood: { ar: "كحلي وبرتقالي وسنة التخرج", en: "Navy, orange and the class year" },
       blurb: {

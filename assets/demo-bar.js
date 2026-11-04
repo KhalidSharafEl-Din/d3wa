@@ -37,7 +37,7 @@
       "translate:0 110%;transition:translate .5s cubic-bezier(.16,1,.3,1)}" +
       "#d3wa-demo-bar.on{translate:0 0}" +
       "#d3wa-demo-bar .dd-t{flex:1;min-width:0}" +
-      "#d3wa-demo-bar .dd-t b{display:block;font-weight:600;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}" +
+      "#d3wa-demo-bar .dd-t b{display:block;font-weight:600;font-size:14.5px;line-height:1.3}" +
       "#d3wa-demo-bar .dd-t small{color:#d9b8be;font-size:12.5px}" +
       "#d3wa-demo-bar a{flex:none;display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border-radius:6px;" +
       "background:#f7f0ec;color:#5a1426;font-weight:600;text-decoration:none;font-size:14px}" +

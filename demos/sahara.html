@@ -976,7 +976,10 @@ html.en .intro-hint{font-family:var(--en-serif);font-weight:600;font-size:18px;l
   try {
     var p = new URLSearchParams(window.__D3WA__ || location.search);
     if (!p.get("d")) {
-      var t = new Date(Date.now() + 90 * 864e5); t.setDate(t.getDate() + (4 - t.getDay() + 7) % 7); /* demos land on a Thursday */
+      var t = new Date(Date.now() + 90 * 864e5);
+    /* a Sahel wedding belongs in summer: move the demo into June to September */
+    if (t.getMonth() < 5) t = new Date(t.getFullYear(), 5, 18); else if (t.getMonth() > 8) t = new Date(t.getFullYear() + 1, 5, 18);
+    t.setDate(t.getDate() + (4 - t.getDay() + 7) % 7); /* on a Thursday */
       p.set("d", t.getFullYear() + "-" + ("0"+(t.getMonth()+1)).slice(-2) + "-" + ("0"+t.getDate()).slice(-2));
       window.__D3WA__ = p.toString();
     }
@@ -1284,11 +1287,11 @@ html.en .intro-hint{font-family:var(--en-serif);font-weight:600;font-size:18px;l
   }
   function updateLinks () {
     var accept = isAr
-      ? "أهلاً! يسعدني تأكيد حضوري فرح " + namesAr + "، يوم " + dateFullAr + " الساعة " + timeAr + " في " + venueMsgAr + ". عدد الحضور: " + toArDigits(guestN)
-      : "Hello! Happy to confirm I'll be at the wedding of " + namesEn + ", " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Guests: " + guestN;
+      ? "أهلاً! يسعدنا تأكيد حضورنا فرح " + namesAr + "، يوم " + dateFullAr + " الساعة " + timeAr + " في " + venueMsgAr + ". عدد الحضور: " + toArDigits(guestN)
+      : "Hello! Happy to confirm we'll be at the wedding of " + namesEn + ", " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Guests: " + guestN;
     var decline = isAr
-      ? "أهلاً، للأسف مش هقدر أحضر فرح " + namesAr + ". ألف مبروك، وربنا يسعدكم"
-      : "Hello, sadly I can't make it to the wedding of " + namesEn + ". Congratulations, and wishing you both every happiness.";
+      ? "أهلاً، للأسف مش هنقدر نحضر فرح " + namesAr + ". ألف مبروك، وربنا يسعدكم"
+      : "Hello, sadly we can't make it to the wedding of " + namesEn + ". Congratulations, and wishing you both every happiness.";
     var url = pageUrl();
     var share = shareText() + (url ? (isAr ? " الدعوة هنا: " : " The invitation: ") + url : "");
     if (acceptBtn) acceptBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(accept);
