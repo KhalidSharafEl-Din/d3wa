@@ -1,5 +1,7 @@
 -- D3wa order store (Cloudflare D1)
 -- apply:  wrangler d1 execute d3wa --remote --file=worker/schema.sql
+-- upgrade: a database created before the hosts column needs it added once:
+--   wrangler d1 execute d3wa --remote --command "ALTER TABLE orders ADD COLUMN hosts TEXT"
 
 CREATE TABLE IF NOT EXISTS orders (
   id           TEXT PRIMARY KEY,          -- short public ref, e.g. "1EA0"

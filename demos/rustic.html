@@ -581,7 +581,7 @@ html:not(.ar) .share a{font-size:15px}
 
   /* map: the couple's link, or a search for their venue */
   var pMap = qp("map");
-  $("mapBtn").href = pMap && /^https?:\/\//i.test(pMap) ? pMap : "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(vEn);
+  $("mapBtn").href = pMap && /^https:\/\//i.test(pMap) ? pMap : "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(vEn);
   var start = new Date(dOk + "T" + tNorm + ":00"), end = new Date(start.getTime() + 5 * 36e5);
   var cal = function (dt) { var p = function (n) { return ("0" + n).slice(-2); }; return dt.getFullYear() + p(dt.getMonth() + 1) + p(dt.getDate()) + "T" + p(dt.getHours()) + p(dt.getMinutes()) + "00"; };
   $("calBtn").href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent(O.cal + " " + nEnRaw)

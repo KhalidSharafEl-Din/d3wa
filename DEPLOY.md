@@ -117,6 +117,8 @@ replacing `REPLACE_WITH_ID_FROM_wrangler_d1_create`.
 
 ```bash
 wrangler d1 execute d3wa --remote --file=worker/schema.sql
+# only if the database was created before the hosts column existed:
+# wrangler d1 execute d3wa --remote --command "ALTER TABLE orders ADD COLUMN hosts TEXT"
 ```
 
 ### B3. Deploy the Worker
