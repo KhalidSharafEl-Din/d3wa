@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>عمر وسلمى، دعوة خطوبة | Omar &amp; Salma</title>
-<meta name="description" content="دعوة خطوبة عمر وسلمى، السبت ٢٢ أغسطس ٢٠٢٦، ٨:٠٠ مساءً، فيلا روز، المعادي. The engagement of Omar &amp; Salma, Saturday 22 August 2026, 8:00 PM, Villa Rose, Maadi, Cairo.">
+<title>تصميم مودرن | Modern Editorial | دعوة D3wa</title>
+<meta name="description" content="ديمو دعوة مودرن: بوستر تايبوجرافي. A D3wa invitation demo: Modern Editorial, a typographic poster.">
 <meta name="theme-color" content="#F7F5F0">
 <meta name="color-scheme" content="light">
 
@@ -15,8 +15,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/demos/modern.html">
 <link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/demos/modern.html">
-<meta property="og:title" content="عمر وسلمى، دعوة خطوبة | Omar &amp; Salma">
-<meta property="og:description" content="السبت ٢٢ أغسطس ٢٠٢٦، ٨:٠٠ مساءً، فيلا روز، المعادي. Saturday 22 August 2026, 8:00 PM">
+<meta property="og:title" content="تصميم مودرن | Modern Editorial | دعوة D3wa">
+<meta property="og:description" content="ديمو دعوة مودرن: بوستر تايبوجرافي. A D3wa invitation demo: Modern Editorial, a typographic poster.">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F7F5F0'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='20' fill='%23C4552D'%3E%E2%9C%B3%3C/text%3E%3C/svg%3E">
 
@@ -507,9 +507,9 @@ html.en .mono .t-ar,html:not(.en) .mono .t-en{display:none}
           </div>
         </dl>
         <div class="acts">
-          <a class="btn solid" id="mapBtn" href="https://maps.app.goo.gl/K2izAmdtfuKVcS138" target="_blank" rel="noopener noreferrer"><span class="t-ar">افتح الخريطة</span><span class="t-en">Open the map</span></a>
+          <a class="btn solid" id="mapBtn" href="https://maps.app.goo.gl/K2izAmdtfuKVcS138" target="_blank" rel="noopener noreferrer"><span class="t-ar">افتحوا الخريطة</span><span class="t-en">Open the map</span></a>
           <a class="btn" id="calBtn" target="_blank" rel="noopener noreferrer"
-             href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Omar%20%26%20Salma%27s%20engagement&amp;dates=20260822T200000/20260822T230000&amp;ctz=Africa/Cairo&amp;location=Villa%20Rose%2C%20Maadi%2C%20Cairo"><span class="t-ar">أضف للتقويم</span><span class="t-en">Add to calendar</span></a>
+             href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Omar%20%26%20Salma%27s%20engagement&amp;dates=20260822T200000/20260822T230000&amp;ctz=Africa/Cairo&amp;location=Villa%20Rose%2C%20Maadi%2C%20Cairo"><span class="t-ar">أضيفوها للتقويم</span><span class="t-en">Add to calendar</span></a>
         </div>
       </div>
     </div></div>
@@ -561,7 +561,7 @@ html.en .mono .t-ar,html:not(.en) .mono .t-en{display:none}
         <a class="rsvp-yes" id="rsvpYes" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="t-ar">أكّد الحضور على واتساب</span><span class="t-en">Confirm on WhatsApp</span></a>
         <div class="rsvp-more">
           <a class="tlink" id="rsvpNo" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="t-ar">مش هقدر آجي</span><span class="t-en">I can&rsquo;t make it</span></a>
-          <a class="tlink" id="shareBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/"><span class="t-ar">ابعت الدعوة لحد</span><span class="t-en">Share the invitation</span></a>
+          <a class="tlink" id="shareBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/"><span class="t-ar">ابعتوا الدعوة لحبايبكم</span><span class="t-en">Share the invitation</span></a>
         </div>
       </div>
     </div></div>
@@ -597,7 +597,7 @@ html.en .mono .t-ar,html:not(.en) .mono .t-en{display:none}
   try {
     var p = new URLSearchParams(window.__D3WA__ || location.search);
     if (!p.get("d")) {
-      var t = new Date(Date.now() + 90 * 864e5);
+      var t = new Date(Date.now() + 90 * 864e5); t.setDate(t.getDate() + (4 - t.getDay() + 7) % 7); /* demos land on a Thursday */
       p.set("d", t.getFullYear() + "-" + ("0"+(t.getMonth()+1)).slice(-2) + "-" + ("0"+t.getDate()).slice(-2));
       window.__D3WA__ = p.toString();
     }

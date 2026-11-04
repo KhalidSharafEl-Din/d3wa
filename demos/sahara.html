@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>عمر وسلمى، فرح على البحر | Omar &amp; Salma</title>
-<meta name="description" content="دعوة فرح عمر وسلمى على البحر، السبت ٢٢ أغسطس ٢٠٢٦، ٨:٠٠ مساءً، سي شيل باي، الساحل الشمالي. You are invited to the wedding of Omar &amp; Salma, Saturday 22 August 2026, 8:00 PM, Seashell Bay, North Coast.">
+<title>تصميم صحارى بوهو | Sahara Boho | دعوة D3wa</title>
+<meta name="description" content="ديمو دعوة صحارى بوهو: غروب وتراكوتا وبحر. A D3wa invitation demo: Sahara Boho, sunset, terracotta and sea.">
 <meta name="theme-color" content="#fbf6ec">
 <meta name="color-scheme" content="light">
 
@@ -15,8 +15,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/demos/sahara.html">
 <link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/demos/sahara.html">
-<meta property="og:title" content="عمر وسلمى، فرح على البحر | Omar &amp; Salma">
-<meta property="og:description" content="السبت ٢٢ أغسطس ٢٠٢٦، ٨:٠٠ مساءً، سي شيل باي، الساحل الشمالي | Saturday 22 August 2026, Seashell Bay, North Coast">
+<meta property="og:title" content="تصميم صحارى بوهو | Sahara Boho | دعوة D3wa">
+<meta property="og:description" content="ديمو دعوة صحارى بوهو: غروب وتراكوتا وبحر. A D3wa invitation demo: Sahara Boho, sunset, terracotta and sea.">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fbf6ec'/%3E%3Cpath d='M6 22a10 10 0 0 1 20 0z' fill='%23c46a4a'/%3E%3Cpath d='M4 25h24' stroke='%237a7a52' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
 
@@ -976,7 +976,7 @@ html.en .intro-hint{font-family:var(--en-serif);font-weight:600;font-size:18px;l
   try {
     var p = new URLSearchParams(window.__D3WA__ || location.search);
     if (!p.get("d")) {
-      var t = new Date(Date.now() + 90 * 864e5);
+      var t = new Date(Date.now() + 90 * 864e5); t.setDate(t.getDate() + (4 - t.getDay() + 7) % 7); /* demos land on a Thursday */
       p.set("d", t.getFullYear() + "-" + ("0"+(t.getMonth()+1)).slice(-2) + "-" + ("0"+t.getDate()).slice(-2));
       window.__D3WA__ = p.toString();
     }

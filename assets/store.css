@@ -346,7 +346,7 @@ html.en .note p{line-height:1.5}
 .fab-wa{position:fixed;inset-inline-end:18px;bottom:18px;z-index:30;width:54px;height:54px;border-radius:50%;
   background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px -8px rgba(14,122,63,.6)}
 .fab-wa svg{width:28px;height:28px}
-.has-buybar .fab-wa{display:none}
+.has-buybar .fab-wa,.prose-page .fab-wa{display:none}
 .fab-wa{transition:opacity .3s,translate .3s var(--ease)}
 .fab-wa.away{opacity:0;translate:0 12px;pointer-events:none}
 
@@ -496,9 +496,8 @@ html:not(.en) .ltr-in{text-align:right}
 .sum-top b{display:block;font:600 21px/1.25 var(--disp)}
 .sum-top small{color:var(--kohl-2);font-size:13.5px}
 .sum dl{margin:12px 0 0;display:grid;grid-template-columns:1fr auto;gap:8px 0;font-size:15px}
-.sum dd{padding-inline-start:12px;font:600 17px/1.5 var(--disp)}
 .sum dt{color:var(--kohl-2)}
-.sum dd{margin:0;text-align:end}
+.sum dd{margin:0;text-align:end;padding-inline-start:12px;font:600 17px/1.5 var(--disp)}
 .sum .tot{border-top:1px solid var(--line);padding-top:12px;margin-top:4px;font-weight:600;color:var(--kohl)}
 .sum dd.tot{font:600 24px/1.1 var(--disp)}
 .sum .due{color:var(--wa);font-weight:500}

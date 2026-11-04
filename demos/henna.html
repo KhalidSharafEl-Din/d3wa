@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ليلة حنة ملك | Malak's Henna Night</title>
-<meta name="description" content="بناتنا وحبايبنا، ليلة حنة ملك. الخميس ٢٠ أغسطس ٢٠٢٦، ٨:٠٠ مساءً، بيت العيلة بالمعادي. Malak's Henna Night, Thursday 20 August 2026, 8:00 PM, the family home, Maadi.">
+<title>تصميم ليلة حنة | Henna Night | دعوة D3wa</title>
+<meta name="description" content="ديمو دعوة ليلة حنة: حُمرة الحنة والزعفران. A D3wa invitation demo: Henna Night, henna red and saffron.">
 <meta name="theme-color" content="#FBF3E4">
 <meta name="color-scheme" content="light">
 
@@ -15,8 +15,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/demos/henna.html">
 <link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/demos/henna.html">
-<meta property="og:title" content="ليلة حنة ملك | Malak's Henna Night">
-<meta property="og:description" content="الخميس ٢٠ أغسطس ٢٠٢٦، ٨:٠٠ مساءً، بيت العيلة بالمعادي. Thursday 20 August 2026, 8 PM, Maadi.">
+<meta property="og:title" content="تصميم ليلة حنة | Henna Night | دعوة D3wa">
+<meta property="og:description" content="ديمو دعوة ليلة حنة: حُمرة الحنة والزعفران. A D3wa invitation demo: Henna Night, henna red and saffron.">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23FBF3E4'/%3E%3Cpath d='M16 25c-4 0-6-2-6-5 0-2 1-4 2-6l1-6c0-1 2-1 2 0l.4 5h1.2l.4-6c0-1 2-1 2 0l.4 6h1.2l.4-5c0-1 2-1 2 0l1 6c1 2 2 4 2 6 0 3-3 5-6 5z' fill='none' stroke='%23A6341B' stroke-width='1.8'/%3E%3Ccircle cx='16' cy='19' r='2.2' fill='%23E8A33D'/%3E%3C/svg%3E">
 
@@ -917,7 +917,7 @@ html.en .intro-tap{font-family:var(--en-serif);font-weight:700}
   try {
     var p = new URLSearchParams(window.__D3WA__ || location.search);
     if (!p.get("d")) {
-      var t = new Date(Date.now() + 90 * 864e5);
+      var t = new Date(Date.now() + 90 * 864e5); t.setDate(t.getDate() + (4 - t.getDay() + 7) % 7); /* demos land on a Thursday */
       p.set("d", t.getFullYear() + "-" + ("0"+(t.getMonth()+1)).slice(-2) + "-" + ("0"+t.getDate()).slice(-2));
       window.__D3WA__ = p.toString();
     }
