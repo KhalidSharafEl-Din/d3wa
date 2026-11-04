@@ -89,8 +89,10 @@ html:not(.ar) .lang-toggle{font:400 17px/1 var(--ar)}
 .env{position:relative;width:min(310px,78vw);aspect-ratio:1.42/1}
 .env-front,.env-rear,.env-back,.env-card,.env-pocket,.env-flap{position:absolute;inset:0}
 /* the front: printed initials, the guest's name by hand. A tap turns it over. */
-.env-front{z-index:6;border-radius:3px;background:linear-gradient(170deg,#f2e9d6,#e7dbc2);
-  box-shadow:0 30px 50px -24px rgba(0,0,0,.75);transition:transform .26s ease-in}
+.env-front{z-index:6;border-radius:3px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .3 0 0 0 0 .2 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23p)'/%3E%3C/svg%3E"),
+    linear-gradient(170deg,#f2e9d6,#e7dbc2);
+  box-shadow:inset 0 0 0 1px rgba(122,100,64,.18),0 30px 50px -24px rgba(0,0,0,.75);transition:transform .26s ease-in}
 /* the couple's names printed in foil at the top, as the card company prints them */
 .env-from{position:absolute;top:10%;left:0;right:0;margin:0;text-align:center;font:700 17px/1.2 var(--ar-hand);color:var(--foil-d)}
 .env-from .t-en{font:italic 400 15px/1.2 var(--en)}
@@ -111,7 +113,7 @@ html:not(.ar) .lang-toggle{font:400 17px/1 var(--ar)}
 .env-to{position:absolute;inset:38% 10% auto;margin:0;text-align:center;font:400 21px/1.45 var(--ar-hand);color:#4a3b2b;rotate:-2deg}
 html:not(.ar) .env-to{font:italic 400 17px/1.4 var(--en);rotate:-1.5deg}
 html:not(.ar) .env-to .ar-hand{font:400 20px/1.45 var(--ar-hand);font-style:normal}
-.env-to small{display:block;font-size:.72em;opacity:.8}
+.env-to small{display:block;font-size:.86em;opacity:.85}
 .env-flap{z-index:4;height:60%;transform-origin:50% 0;transform-style:preserve-3d;
   transition:transform .7s cubic-bezier(.4,0,.2,1) .62s,z-index 0s linear .95s}
 .flap-out,.flap-in{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
@@ -242,7 +244,7 @@ html:not(.ar) .line input:not(.ar-hand){font:italic 400 17px/1.3 var(--en)}
 .line input:focus{border-bottom-style:solid;border-bottom-color:var(--foil)}
 /* the reply goes out under a rubber stamp */
 .stamp{display:inline-flex;align-items:center;justify-content:center;min-height:50px;margin-top:20px;padding:0 22px;
-  border:2.5px solid var(--wax);outline:1px solid var(--wax);outline-offset:3px;border-radius:4px;color:var(--wax);
+  border:2px solid var(--wax);border-radius:3px;color:var(--wax);
   text-decoration:none;font:700 18px/1.2 var(--ar);text-shadow:none}
 html:not(.ar) .stamp{font:700 15px/1.2 var(--en)}
 .stamp:hover{background:rgba(110,59,34,.07)}

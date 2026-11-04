@@ -61,8 +61,8 @@
   --fine:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23p)'/%3E%3C/svg%3E");
   /* ink that did not quite take: pinholes, and patches where the press was lighter */
   --m-speck:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -18 0 0 0 14'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23m)'/%3E%3C/svg%3E");
-  --m-patch:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='u'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.011' numOctaves='2' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -.8 0 0 0 1.4'/%3E%3C/filter%3E%3Crect width='420' height='420' filter='url(%23u)'/%3E%3C/svg%3E");
-  --m-rubber:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -9 0 0 0 6.3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23r)'/%3E%3C/svg%3E");
+  --m-patch:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='u'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.011' numOctaves='2' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -.5 0 0 0 1.25'/%3E%3C/filter%3E%3Crect width='420' height='420' filter='url(%23u)'/%3E%3C/svg%3E");
+  --m-mottle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='o'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.045' numOctaves='3' seed='14' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.4 0 0 0 1.7'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23o)'/%3E%3C/svg%3E");
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;overflow-x:clip}
@@ -116,8 +116,8 @@ html:not(.ar) .intro-hint{font-style:italic;font-size:15px}
   /* board thickness at the lower edge, then its shadow on the table */
   box-shadow:inset 0 0 0 1px rgba(255,238,205,.16),0 1px 0 #ad8a5c,0 2px 0 #8c6c45,0 3px 3px rgba(30,20,10,.35),0 30px 46px -22px rgba(25,16,8,.62)}
 .ink{position:relative;z-index:1;mix-blend-mode:multiply;
-  -webkit-mask-image:var(--m-speck),var(--m-patch);mask-image:var(--m-speck),var(--m-patch);
-  -webkit-mask-size:160px 160px,420px 420px;mask-size:160px 160px,420px 420px;
+  -webkit-mask-image:var(--m-mottle),var(--m-patch);mask-image:var(--m-mottle),var(--m-patch);
+  -webkit-mask-size:300px 300px,420px 420px;mask-size:300px 300px,420px 420px;
   -webkit-mask-composite:source-in;mask-composite:intersect}
 /* the impression: a faint lip of light under each letter */
 .basmala{margin:0 0 10px;font-size:18px;line-height:1.5}
@@ -138,12 +138,14 @@ html:not(.ar) .lead{font-style:italic;font-size:17px;line-height:1.5;max-width:2
 /* the names: wood type, set big */
 .names{margin:8px 0 14px;font:400 clamp(44px,14.6vw,58px)/1.22 var(--ar-disp);color:var(--ink);text-wrap:balance}
 html:not(.ar) .names{font:700 clamp(36px,11vw,46px)/1.12 var(--en-disp);margin:10px 0 16px}
+.names{color:rgba(46,33,25,.8);-webkit-text-stroke:.7px rgba(34,23,15,.92)}
 .names .n{white-space:nowrap}
 .names .amp{font-size:.74em}
 html:not(.ar) .names .amp{font:italic 400 .62em/1 var(--en)}
 .formal{margin:0 auto;max-width:30ch;text-wrap:balance;font-size:20px;line-height:1.8}
 html:not(.ar) .formal{font-size:16.5px;line-height:1.6;max-width:31ch}
 .formal b{font-weight:600;white-space:nowrap}
+.formal .nw{white-space:nowrap}
 html:not(.ar) .formal b{font-weight:400;font-style:italic}
 .verse{margin:16px auto 0;max-width:26ch;font-size:19px;line-height:1.6;text-wrap:balance}
 html:not(.ar) .verse{font-style:italic;font-size:15.5px;line-height:1.5}
@@ -200,20 +202,13 @@ body.untie .tw-v{animation:twV .8s .4s ease-in forwards}
 @keyframes twH{to{translate:70% 0;opacity:0}}
 @keyframes twV{to{translate:0 -55%;opacity:0}}
 
-/* programme: a brown seed packet, thinner paper, set to one side */
+/* programme: a smaller card on darker, thinner kraft, set to one side */
 .packet{position:relative;z-index:2;width:90%;margin:30px 0 0;margin-inline-start:auto;padding:0 0 20px;color:var(--ink);
-  background:var(--fine),repeating-linear-gradient(90deg,rgba(60,38,16,.035) 0 1px,transparent 1px 6px),linear-gradient(172deg,#c09668,var(--bag) 60%,#b08657);
+  background:var(--fine),linear-gradient(172deg,#c09668,var(--bag) 60%,#b08657);
   box-shadow:0 1px 1px rgba(30,20,10,.3),0 14px 22px -14px rgba(25,15,5,.5)}
-/* the folded bottom of the packet */
-.packet::after{content:"";position:absolute;left:0;right:0;bottom:0;height:9px;background:linear-gradient(to bottom,rgba(60,38,16,.16),rgba(60,38,16,.04));border-top:1px solid rgba(255,235,200,.18)}
-/* the flap, folded down over the front and glued */
-.pk-flap{position:relative;z-index:1;height:50px;filter:drop-shadow(0 3px 2px rgba(40,22,8,.42))}
-.pk-flap::before{content:"";position:absolute;inset:0;background:var(--fine),linear-gradient(180deg,#d0a978 0,#c59c6b 12%,#bf9566);
-  clip-path:polygon(0 0,100% 0,100% 50%,93% 100%,7% 100%,0 50%)}
-.pk-flap::after{content:"";position:absolute;left:9%;right:9%;bottom:7px;height:7px;background:rgba(92,62,30,.13);border-radius:1px}
-.pk-body{padding:18px 22px 0;mix-blend-mode:multiply;
-  -webkit-mask-image:var(--m-speck),var(--m-patch);mask-image:var(--m-speck),var(--m-patch);
-  -webkit-mask-size:160px 160px,420px 420px;mask-size:160px 160px,420px 420px;-webkit-mask-composite:source-in;mask-composite:intersect}
+.pk-body{padding:24px 22px 0;mix-blend-mode:multiply;
+  -webkit-mask-image:var(--m-mottle),var(--m-patch);mask-image:var(--m-mottle),var(--m-patch);
+  -webkit-mask-size:300px 300px,420px 420px;mask-size:300px 300px,420px 420px;-webkit-mask-composite:source-in;mask-composite:intersect}
 .pk-body h2{margin:0 0 10px;font:400 27px/1.3 var(--ar-disp);text-align:center}
 html:not(.ar) .pk-body h2{font:700 21px/1.3 var(--en-disp)}
 .prog{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:max-content 1fr;border-bottom:1px solid rgba(46,33,25,.4)}
@@ -254,11 +249,7 @@ html:not(.ar) .dir-line a{font-weight:500}
 .postcard{position:relative;z-index:2;margin:30px 0 0;padding:22px 20px 20px;container-type:inline-size;border-radius:3px;color:var(--ink);
   background:linear-gradient(rgba(219,198,160,.5),rgba(219,198,160,.5)),var(--fibre),linear-gradient(170deg,#ddc8a2,var(--post) 60%,#d3bd95);
   box-shadow:0 1px 1px rgba(30,20,10,.22),0 9px 16px -11px rgba(25,15,5,.45)}
-/* the printed box where a postage stamp would go */
-.pc-box{position:absolute;top:16px;inset-inline-end:16px;width:50px;height:60px;display:grid;place-items:center;margin:0;
-  border:1px solid rgba(46,33,25,.55);font-size:12px;line-height:1.2;color:var(--ink-2);text-align:center}
-html:not(.ar) .pc-box{font:italic 400 11px/1.2 var(--en)}
-.pc-msg h2{margin:0;padding-inline-end:60px;font:700 25px/1.35 var(--ar)}
+.pc-msg h2{margin:0;font:700 25px/1.35 var(--ar)}
 html:not(.ar) .pc-msg h2{font:italic 500 22px/1.3 var(--en)}
 .by{margin:0 0 14px;font-size:18px;color:var(--ink-2)}
 html:not(.ar) .by{font-size:15px}
@@ -280,7 +271,7 @@ html:not(.ar) .addr .who{font-weight:600}
 /* the confirm is a rubber stamp in red ink */
 .stamp{display:inline-grid;place-items:center;min-height:54px;padding:6px 18px 4px;border:2.5px solid currentColor;border-radius:6px;
   outline:1px solid currentColor;outline-offset:3px;color:var(--stamp);text-decoration:none;font:400 21px/1.2 var(--ar-disp);white-space:nowrap;rotate:-3deg;
-  -webkit-mask-image:var(--m-rubber),var(--m-patch);mask-image:var(--m-rubber),var(--m-patch);-webkit-mask-size:120px 120px,300px 300px;mask-size:120px 120px,300px 300px;
+  -webkit-mask-image:var(--m-mottle),var(--m-patch);mask-image:var(--m-mottle),var(--m-patch);-webkit-mask-size:160px 160px,300px 300px;mask-size:160px 160px,300px 300px;
   -webkit-mask-composite:source-in;mask-composite:intersect;transition:background-color .15s}
 html:not(.ar) .stamp{font:700 17px/1.2 var(--en-disp);padding:8px 18px 6px}
 .stamp:hover{background:rgba(161,55,43,.08)}
@@ -288,8 +279,7 @@ html:not(.ar) .stamp{font:700 17px/1.2 var(--en-disp);padding:8px 18px 6px}
 html:not(.ar) .decline{font-size:14.5px}
 @container (min-width:420px){
   .pc-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 22px;aspect-ratio:3/2.05;align-items:stretch}
-  .pc-msg h2{padding-inline-end:0}
-  .pc-addr{margin:0;padding:74px 0 0;padding-inline-start:22px;border-top:0;border-inline-start:2px solid rgba(46,33,25,.6);display:flex;flex-direction:column;justify-content:space-between}
+  .pc-addr{margin:0;padding:4px 0 0;padding-inline-start:22px;border-top:0;border-inline-start:2px solid rgba(46,33,25,.6);display:flex;flex-direction:column;justify-content:space-between}
   .pc-msg{display:flex;flex-direction:column;justify-content:center}
 }
 
@@ -380,7 +370,7 @@ html:not(.ar) .share a{font-size:15px}
         <circle cx="50.5" cy="50.8" r="34.6" fill="none" stroke="#dc7a68" stroke-width=".9" opacity=".5"/>
         <ellipse cx="31" cy="21" rx="11" ry="4.5" fill="#fff" opacity=".16" transform="rotate(-32 31 21)"/>
       </svg>
-      <span class="seal-mono" id="sealMono"><b>O</b><i>&amp;</i><b>S</b></span>
+      <span class="seal-mono" id="sealMono"><b>M</b><i>&amp;</i><b>H</b></span>
     </div>
 
     <div class="ink">
@@ -392,12 +382,12 @@ html:not(.ar) .share a{font-size:15px}
       </div>
       <p class="lead"><span class="t-ar" id="leadAr">يسعدنا أن تشاركونا فرحة زفاف</span><span class="t-en" id="leadEn">Please join us for the wedding of</span></p>
       <h1 class="names" id="names">
-        <span class="t-ar"><span class="n" id="nAr1">عمر</span> <span class="n"><span class="amp">و</span><span id="nAr2">سلمى</span></span></span>
-        <span class="t-en"><span class="n" id="nEn1">Omar</span> <span class="n"><span class="amp">and</span> <span id="nEn2">Salma</span></span></span>
+        <span class="t-ar"><span class="n" id="nAr1">محمود</span> <span class="n"><span class="amp">و</span><span id="nAr2">هنا</span></span></span>
+        <span class="t-en"><span class="n" id="nEn1">Mahmoud</span> <span class="n"><span class="amp">and</span> <span id="nEn2">Hana</span></span></span>
       </h1>
       <p class="formal">
-        <span class="t-ar">وذلك بمشيئة الله يوم <b id="dateAr">الخميس ٤ فبراير ٢٠٢٧</b>، في تمام <span id="timeAr">الساعة السادسة مساءً</span>، <span id="venueAr">بمزرعة الريف، المنصورية</span>.</span>
-        <span class="t-en">on <b id="dateEn">Thursday, 4 February 2027</b>, at <span id="timeEn">six o'clock in the evening</span>, <span id="venueEn">at Al Reef Farm, Mansoureya</span>.</span>
+        <span class="t-ar">وذلك بمشيئة الله <span class="nw">يوم <b id="dateAr">الخميس ٤ فبراير ٢٠٢٧</b></span>، في تمام <span class="nw" id="timeAr">الساعة السادسة مساءً</span>، <span id="venueAr">بمزرعة الريف، المنصورية</span>.</span>
+        <span class="t-en">on <b id="dateEn">Thursday, 4 February 2027</b>, at <span class="nw" id="timeEn">six o'clock in the evening</span>, <span id="venueEn">at Al Reef Farm, Mansoureya</span>.</span>
       </p>
       <p class="verse" id="quote"><span class="t-ar">«وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً»<small>سورة الروم، ٢١</small></span><span class="t-en">“And He placed between you affection and mercy.”<small>Surat Ar-Rum, 30:21</small></span></p>
     </div>
@@ -405,7 +395,6 @@ html:not(.ar) .share a{font-size:15px}
   </article>
 
   <article class="packet" id="agendaSec" aria-labelledby="progTitle">
-    <div class="pk-flap" aria-hidden="true"></div>
     <div class="pk-body">
       <h2 id="progTitle"><span class="t-ar">برنامج الحفل</span><span class="t-en">Order of the day</span></h2>
       <ul class="prog" id="agList"></ul>
@@ -427,7 +416,6 @@ html:not(.ar) .share a{font-size:15px}
   </section>
 
   <article class="postcard" id="rsvpBlock" data-shot="rsvp" aria-labelledby="replyTitle">
-    <p class="pc-box" aria-hidden="true"><span class="t-ar">الطابع</span><span class="t-en">Stamp</span></p>
     <div class="pc-in">
       <div class="pc-msg">
         <h2 id="replyTitle"><span class="t-ar">نرجو التكرم بالرد</span><span class="t-en">Kindly reply</span></h2>
@@ -437,7 +425,7 @@ html:not(.ar) .share a{font-size:15px}
       </div>
       <div class="pc-addr">
         <div class="addr">
-          <p><span class="t-ar">إلى</span><span class="t-en">To</span> <span class="who t-ar" id="toCoupleAr">عمر وسلمى</span><span class="who t-en" id="toCoupleEn">Omar &amp; Salma</span></p>
+          <p><span class="t-ar">إلى</span><span class="t-en">To</span> <span class="who t-ar" id="toCoupleAr">محمود وهنا</span><span class="who t-en" id="toCoupleEn">Mahmoud &amp; Hana</span></p>
           <p><span class="t-ar">على واتساب</span><span class="t-en">by WhatsApp</span></p>
         </div>
         <div class="send">
@@ -474,7 +462,7 @@ html:not(.ar) .share a{font-size:15px}
   function txt (id, v) { $(id).textContent = v; }
   var hasAr = function (x) { return /[؀-ۿ]/.test(x || ""); };
 
-  var nEnRaw = qp("n_en") || qp("n_ar") || "Omar & Salma", nArRaw = qp("n_ar") || qp("n_en") || "عمر وسلمى";
+  var nEnRaw = qp("n_en") || qp("n_ar") || "Mahmoud & Hana", nArRaw = qp("n_ar") || qp("n_en") || "محمود وهنا";
   var pDate = qp("d"), pTime = qp("t");
   var dOk = pDate && /^\d{4}-\d{2}-\d{2}$/.test(pDate) && !isNaN(new Date(pDate + "T12:00:00")) ? pDate : "2026-10-22";
   var tm = (pTime || "").match(/^(\d{1,2}):(\d{2})$/);
