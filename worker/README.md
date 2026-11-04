@@ -16,10 +16,13 @@ storefront and the twelve templates keep working exactly as they do today.
    (`nada-ahmed-1ea0`) and stores the order with `status = pending`.
 3. The customer immediately gets that link. It already shows their invitation,
    with a "معاينة / Preview" bar across the bottom, and is `noindex`.
-4. They transfer the deposit by InstaPay or Vodafone Cash.
+4. You confirm the details with them on WhatsApp. They pay by InstaPay or
+   Vodafone Cash: Classic once after the preview, Signature and Royale half to
+   start and half before publishing.
 5. You open `/admin.html`, confirm the money arrived, and tap **انشر الدعوة**.
-   The bar disappears, the page becomes indexable and cached, and the link is
-   live. Nothing else changes; the customer never has to come back.
+   The bar disappears, the page is cached, and the link is live. It stays
+   `noindex`, so a family's names, date and venue never show up in search.
+   Nothing else changes; the customer never has to come back.
 
 The customer only ever contacts you if something is wrong. That path is a
 "في مشكلة؟" link on the order page, not a required step.

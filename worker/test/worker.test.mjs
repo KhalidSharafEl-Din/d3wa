@@ -2,8 +2,9 @@
    against an in-memory stand-in for D1 + the static assets. */
 import worker from "../src/index.js";
 import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 
-const ROOT = new URL("../../", import.meta.url).pathname.replace(/\/$/, "");
+const ROOT = fileURLToPath(new URL("../../", import.meta.url)).replace(/[\\/]$/, "");
 let pass = 0, fail = 0;
 const ok = (name, cond, extra = "") => {
   if (cond) { pass++; console.log("  ✓", name); }
@@ -22,7 +23,7 @@ function makeDB() {
     if (s.startsWith("INSERT INTO orders")) {
       const k = ["id","slug","edit_token","template","package","occasion","n_ar","n_en",
         "event_date","event_time","v_ar","v_en","map_url","quote","rsvp_wa","contact_wa",
-        "rush","amount","pay_method","created_at"];
+        "rush","amount","pay_method","notes","created_at"];
       const row = { status: "pending" };
       k.forEach((key, i) => (row[key] = args[i]));
       rows.push(row);
@@ -84,12 +85,16 @@ const VALID = {
   v_ar: "قاعة النيل، الزمالك", rsvp_wa: "201012345678", rush: 1, pay_method: "instapay"
 };
 
+console.log("\nhealth");
+const health = await call("/api/health");
+ok("GET /api/health → 200 ok", health.status === 200 && (await health.json()).ok === true, health.status);
+
 console.log("\ncreate order");
 const created = await post("/api/orders", VALID);
 const order = await created.json();
 ok("201 created", created.status === 201, created.status);
 ok("slug is names-uid", /^nada-ahmed-[0-9a-f]{4}$/.test(order.slug), order.slug);
-ok("rush priced in (1500+300)", order.amount === 1800, order.amount);
+ok("rush priced in (1199+250)", order.amount === 1449, order.amount);
 ok("edit token returned", typeof order.editToken === "string" && order.editToken.length === 32);
 
 console.log("\nvalidation");
@@ -98,13 +103,17 @@ for (const [name, patch] of [
   ["bad package", { package: "nope" }],
   ["missing names", { n_ar: "" }],
   ["bad date", { event_date: "19-11-2026" }],
-  ["short phone", { rsvp_wa: "123" }]
+  ["short phone", { rsvp_wa: "123" }],
+  ["design below its minimum package", { template: "navy", package: "signature" }]
 ]) {
   const r = await post("/api/orders", { ...VALID, ...patch });
   ok(name + " → 400", r.status === 400, r.status);
 }
+const classicGold = await post("/api/orders", { ...VALID, template: "henna", package: "classic", notes: "Zaffa at 9" });
+ok("any design but navy at classic → 201", classicGold.status === 201, classicGold.status);
+ok("notes stored", env.DB._rows.at(-1).notes === "Zaffa at 9", env.DB._rows.at(-1).notes);
 const royale = await (await post("/api/orders", { ...VALID, package: "royale", rush: 1 })).json();
-ok("rush free on royale (2500)", royale.amount === 2500, royale.amount);
+ok("rush free on royale (1999)", royale.amount === 1999, royale.amount);
 
 console.log("\nslug uniqueness");
 const second = await (await post("/api/orders", VALID)).json();
@@ -131,7 +140,7 @@ const badAuth = await call("/api/admin/orders", { headers: { authorization: "Bea
 ok("wrong token → 401", badAuth.status === 401, badAuth.status);
 const listed = await call("/api/admin/orders", { headers: { authorization: "Bearer s3cret" } });
 ok("valid token → 200", listed.status === 200, listed.status);
-ok("lists orders", (await listed.json()).orders.length === 3);
+ok("lists orders", (await listed.json()).orders.length === 4);
 
 const marked = await post("/api/admin/orders/" + order.id + "/mark", { status: "published" },
   { authorization: "Bearer s3cret" });
@@ -140,7 +149,7 @@ ok("publish → 200", marked.status === 200, marked.status);
 const live = await call("/" + order.slug);
 const liveHTML = await live.text();
 ok("published drops watermark", !liveHTML.includes("d3wa-wm"));
-ok("published is indexable", (live.headers.get("x-robots-tag") || "") === "all");
+ok("published stays out of search", (live.headers.get("x-robots-tag") || "").includes("noindex"));
 ok("published is cached", (live.headers.get("cache-control") || "").includes("max-age"));
 
 const badStatus = await post("/api/admin/orders/" + order.id + "/mark", { status: "hacked" },
@@ -157,7 +166,7 @@ ok("token not echoed back", !("edit_token" in await withTok.json()));
 console.log("\nfallthrough + reserved paths");
 const idx = await call("/");
 ok("/ serves the storefront", (await idx.text()).includes("D3wa"), idx.status);
-for (const p of ["/order.html", "/admin.html", "/demos/henna.html"]) {
+for (const p of ["/order.html", "/admin.html", "/demos/henna.html", "/policies.html", "/templates/gold.html"]) {
   const r = await call(p);
   ok(p + " served as a file", r.status === 200 && !(await r.text()).includes("window.__D3WA__="));
 }
