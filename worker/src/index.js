@@ -132,11 +132,13 @@ const WATERMARK = `
 function paramString(o) {
   const p = new URLSearchParams();
   const put = (k, v) => { if (v) p.set(k, v); };
-  put("n_ar", o.n_ar);      put("n_en", o.n_en);
+  /* one language given: show it in both, never the template's sample names or venue */
+  put("n_ar", o.n_ar);      put("n_en", o.n_en || o.n_ar);
   put("d", o.event_date);   put("t", o.event_time);
-  put("v_ar", o.v_ar);      put("v_en", o.v_en);
+  put("v_ar", o.v_ar || o.v_en); put("v_en", o.v_en || o.v_ar);
   put("map", o.map_url);    put("q", o.quote);
   put("wa", o.rsvp_wa);
+  if (o.package === "royale") p.set("credit", "0");   /* Royale drops the "Invitation by D3wa" line */
   return p.toString();
 }
 

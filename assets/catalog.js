@@ -52,7 +52,8 @@ window.D3WA = {
       pitch: { ar: "الدعوة وكمان متابعة الضيوف.", en: "The invitation, plus the guest list handled." },
       items: [
         { ar: "ألوان متظبطة على القاعة والفستان", en: "Colours matched to your venue and outfits" },
-        { ar: "شيت ضيوف فيه لينك خاص لكل ضيف", en: "A guest sheet with a personal link for every guest" },
+        { ar: "شيت ضيوف فيه زرار واتساب لكل ضيف تبعتوله منه الدعوة وتتابعوا ردّه", en: "A guest-list sheet with a WhatsApp button per guest, to send the invitation and track each reply" },
+        { ar: "من غير سطر «دعوة من D3wa» في آخر الصفحة", en: "No \"Invitation by D3wa\" line at the end" },
         { ar: "تسليم خلال ٢٤ ساعة", en: "Delivery within 24 hours" },
         { ar: "٣ جولات تعديل", en: "Three revision rounds" }
       ]
@@ -70,7 +71,16 @@ window.D3WA = {
      publishing. A card gateway (Kashier hosted link) plugs in here later. */
   payment: { mode: "after-preview", depositShare: 0.5, payOnceUpTo: "classic" },
 
-  /* minPkg: the cheapest package this design is sold in.
+  /* Sample gallery photos for the store's demo links, so buyers see the Signature
+     gallery. Wedding-type designs only; no faces. */
+  demoPhotos: [
+    "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=900&q=75",
+    "https://images.unsplash.com/photo-1525258946800-98cfd641d0de?auto=format&fit=crop&w=900&q=75",
+    "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=75"
+  ],
+
+  /* minPkg: the cheapest package this design is sold in. whyMin: shown when a
+     cheaper package is unavailable for the design.
      look: palette swatches, ground to ink. fonts: display faces, for the product page. */
   templates: [
     {
@@ -113,6 +123,10 @@ window.D3WA = {
       blurb: {
         ar: "كحلي غامق ودهب ومونوجرام بحروفكم. فيها نسخة ليلي ونسخة نهاري، وهي تصميم باقة رويال.",
         en: "Deep navy, gold foil and a monogram of your initials. It comes with a night and a day version, and it is the Royale package design."
+      },
+      whyMin: {
+        ar: "التصميم ده معمول بنسختين، ليلي ونهاري، وبيتظبط على ألوان القاعة، فبيتعمل في رويال بس.",
+        en: "This design is built in two versions, night and day, and tuned to your venue's colours, so it comes with Royale only."
       },
       look: ["#0d1730", "#22335c", "#cfa658", "#f4efe4"], fonts: "Bodoni Moda, Amiri",
       demo: { n_ar: "أحمد وفريدة", n_en: "Ahmed & Farida" }

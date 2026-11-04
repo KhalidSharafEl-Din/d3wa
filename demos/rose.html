@@ -952,9 +952,8 @@ html.ar .intro-hint{font-weight:600}
     });
   });
 
-  /* ── language: Arabic on Arabic devices, toggle any time ── */
-  var isAr = false;
-  try { isAr = (navigator.language || "").toLowerCase().indexOf("ar") === 0; } catch (e) {}
+  /* ── language: Arabic first, toggle any time ── */
+  var isAr = true; /* Arabic first, like every D3wa design; English is one tap away */
   function applyLang () {
     docEl.classList.toggle("ar", isAr);
     docEl.lang = isAr ? "ar" : "en";
