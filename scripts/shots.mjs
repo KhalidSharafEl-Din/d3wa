@@ -113,7 +113,10 @@ async function load({ send, evaluate }, url, { w, h, scale, mobile, scheme }) {
 }
 
 async function shootCard(card) {
-  const q = new URLSearchParams({ n_ar: card.n_ar, n_en: card.n_en }).toString();
+  const p = { n_ar: card.n_ar, n_en: card.n_en };
+  // Lotus's live demo counts down a week (a sebou3); a still image needs a date that stays ahead for months
+  if (card.slug === "lotus") p.d = new Date(Date.now() + 120 * 864e5).toISOString().slice(0, 10);
+  const q = new URLSearchParams(p).toString();
   const url = `${fileURL(join(ROOT, "demos", card.slug + ".html"))}?${q}`;
   mkdirSync(join(ROOT, "assets", "shots"), { recursive: true });
   // The templates pick their language from navigator.language, so each language gets its own browser.

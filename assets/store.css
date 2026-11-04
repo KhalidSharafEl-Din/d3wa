@@ -441,7 +441,8 @@ html.en .prose p,html.en .prose li{line-height:1.7}
 html:not(.en) .rail li::before{content:counter(r,arabic-indic) ". "}
 .rail li.on{border-top-color:var(--pom);color:var(--kohl)}
 .rail li.now{font-weight:600}
-@media (max-width:560px){.rail li > span{display:none}.rail li.now > span{display:inline}}
+@media (max-width:560px){.rail li > span{display:none}.rail li.now > span{display:inline}
+  .rail li:not(.now)::before{content:counter(r)}html:not(.en) .rail li:not(.now)::before{content:counter(r,arabic-indic)}}
 .step[hidden]{display:none}
 .step h2{font-size:clamp(26px,2.6vw,32px);margin-bottom:6px}
 .step > .hint{margin:0 0 22px;color:var(--kohl-2);font-size:15px}
