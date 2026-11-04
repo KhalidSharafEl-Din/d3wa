@@ -381,10 +381,12 @@ ${urls.map((u) => `  <url><loc>${BASE}/${u}</loc></url>`).join("\n")}
 }
 
 /* ── write or check ── */
+/* read without line endings: a Windows checkout (core.autocrlf) turns LF into CRLF */
+const readLF = (p) => readFileSync(p, "utf8").replace(/\r\n/g, "\n");
 let stale = 0;
 function emit(rel, content) {
   const p = join(ROOT, rel);
-  const cur = existsSync(p) ? readFileSync(p, "utf8") : null;
+  const cur = existsSync(p) ? readLF(p) : null;
   if (cur === content) return;
   if (CHECK) { stale++; console.error("stale:", rel); return; }
   mkdirSync(join(p, ".."), { recursive: true });
@@ -392,7 +394,7 @@ function emit(rel, content) {
   console.log("wrote", rel);
 }
 function regions(rel, map) {
-  let src = readFileSync(join(ROOT, rel), "utf8");
+  let src = readLF(join(ROOT, rel));
   for (const [name, html] of Object.entries(map)) {
     const re = new RegExp(`(<!-- build:${name} -->)[\\s\\S]*?(<!-- /build:${name} -->)`);
     if (!re.test(src)) throw new Error(`${rel} has no build:${name} region`);
@@ -449,7 +451,7 @@ regions("index.html", {
 });
 for (const rel of ["policies.html", "order.html"]) {
   if (!existsSync(join(ROOT, rel))) continue;
-  const src = readFileSync(join(ROOT, rel), "utf8");
+  const src = readLF(join(ROOT, rel));
   const map = {};
   if (src.includes("<!-- build:header -->")) map.header = header("", "");
   if (src.includes("<!-- build:footer -->")) map.footer = footer("");
