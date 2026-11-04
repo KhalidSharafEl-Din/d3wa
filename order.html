@@ -390,7 +390,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /* the link is shown only when it can read as the couple's names */
     var base = slugify(el("n_en").value.trim());
     el("slug").innerHTML = base
-      ? (en() ? "Your link: " : "لينككم: ") + esc(C.host) + "/<u>" + esc(base) + "</u>"
+      ? (en() ? "Your link: " : "لينككم: ") + '<bdi dir="ltr">' + esc(C.host) + "/<u>" + esc(base) + "</u></bdi>"
       : (en() ? "Add your names in English to see your link, or we will agree it with you on WhatsApp."
               : "اكتبوا الأسامي بالإنجليزي عشان تشوفوا لينككم، أو نتفق عليه معاكم على واتساب.");
     el("payText").innerHTML = payRule();
