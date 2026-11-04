@@ -34,6 +34,7 @@ const PHOTO_OCC = ["wedding", "engagement", "katb"];
 const demoURL = (t, pre) => {
   let q = `n_ar=${encodeURIComponent(t.demo.n_ar)}&amp;n_en=${encodeURIComponent(t.demo.n_en)}`;
   if (t.occ.some((o) => PHOTO_OCC.includes(o))) C.demoPhotos.forEach((u, i) => { q += `&amp;ph${i + 1}=${encodeURIComponent(u)}`; });
+  if (t.minPkg === "royale") q += "&amp;credit=0";   /* Royale invitations carry no D3wa line */
   return `${pre}demos/${t.k}.html?${q}`;
 };
 const waLink = (text) => `https://wa.me/${C.wa}?text=${encodeURIComponent(text)}`;
@@ -243,6 +244,8 @@ ${footer(pre)}
 function sections(t) {
   const src = readFileSync(join(ROOT, "demos", `${t.k}.html`), "utf8");
   const has = (k) => new RegExp(`["']${k}["']`).test(src);
+  /* on designs sold below Signature, mark what Signature adds */
+  const tier = (l) => (RANK[t.minPkg] < RANK.signature ? { ar: `${l.ar} (سيجنتشر)`, en: `${l.en} (Signature)` } : l);
   const list = [
     [has("intro"), { ar: "افتتاحية بتتفتح بلمسة", en: "A tap-to-open intro" }],
     [true, { ar: "عدّاد لحد اليوم", en: "Countdown to the day" }],
@@ -251,9 +254,9 @@ function sections(t) {
     [has("wa"), { ar: "تأكيد الحضور على واتساب", en: "WhatsApp RSVP" }],
     [has("music"), { ar: "موسيقى بتشتغل بلمسة", en: "Music on tap" }],
     [true, { ar: "عربي وإنجليزي", en: "Arabic and English" }],
-    [has("ph1"), { ar: "ألبوم صور (سيجنتشر)", en: "Photo gallery (Signature)" }],
-    [has("dress"), { ar: "دريس كود (سيجنتشر)", en: "Dress code (Signature)" }],
-    [has("gift"), { ar: "رسالة هدايا (سيجنتشر)", en: "Gift note (Signature)" }]
+    [has("ph1"), tier({ ar: "ألبوم صور", en: "Photo gallery" })],
+    [has("dress"), tier({ ar: "دريس كود", en: "Dress code" })],
+    [has("gift"), tier({ ar: "رسالة هدايا", en: "Gift note" })]
   ];
   return list.filter(([ok]) => ok).map(([, l]) => l);
 }
@@ -285,8 +288,9 @@ function productPage(t) {
   };
   const opts = C.packages.map((p, i) => {
     const off = i < minRank;
+    const firstOff = off && i === 0;
     const note = off
-      ? (t.whyMin || { ar: `التصميم ده متاح في باقة ${PKG[t.minPkg].ar} بس.`, en: `This design comes in the ${PKG[t.minPkg].en} package only.` })
+      ? (firstOff ? (t.whyMin || { ar: `التصميم ده متاح في باقة ${PKG[t.minPkg].ar} بس.`, en: `This design comes in the ${PKG[t.minPkg].en} package only.` }) : { ar: "", en: "" })
       : { ar: `${p.pitch.ar} ${p.revisions === 1 ? "جولة تعديل واحدة" : p.revisions === 2 ? "جولتين تعديل" : `${arNum(p.revisions)} جولات تعديل`}، تسليم خلال ${arNum(p.delivery)} ساعة.`,
           en: `${p.pitch.en} ${p.revisions} revision round${p.revisions > 1 ? "s" : ""}, delivered within ${p.delivery} hours.` };
     return `    <label class="opt">
@@ -323,7 +327,7 @@ ${header(pre, "templates")}
       <button class="btn btn-pom play" id="play" type="button" data-src="${demoURL(t, pre).replace(/&amp;/g, "&")}">${icon("eye")}${bi({ ar: "جرّبوا الدعوة هنا", en: "Try it here" })}</button>
     </div>
     <div class="thumbs" id="thumbs">
-${thumbs.map((s, i) => `      <button type="button" aria-pressed="${i === 0}" data-src="${s.src}" data-en="${s.en}"><img src="${s.src}" data-en="${s.en}" width="66" height="117" loading="lazy" alt=""><span class="sr-only">${bi(s.l)}</span></button>`).join("\n")}
+${thumbs.map((s, i) => `      <button type="button" aria-pressed="${i === 0}" data-src="${s.src}" data-en="${s.en}"><img src="${s.src}" data-en="${s.en}" width="66" height="117" alt=""><span class="sr-only">${bi(s.l)}</span></button>`).join("\n")}
     </div>
   </div>
   <div class="pdp-info">

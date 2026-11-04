@@ -149,7 +149,12 @@ The Worker serves the static files itself and only intercepts order slugs and
 did Stage A, the Pages project is now redundant — you can delete it once the
 Worker route is confirmed working.
 
-### B6. Check it end to end
+### B6. Switch checkout to the backend
+
+In `assets/catalog.js`, set `api: true`, commit and push. Until then checkout
+keeps sending orders as one WhatsApp message, even with the Worker live.
+
+### B7. Check it end to end
 
 1. Open `https://d3wa.io/order.html`, build a test invitation, and submit.
 2. You should land on a link like `d3wa.io/test-name-4f2a`. Open it — your

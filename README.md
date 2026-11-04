@@ -40,7 +40,7 @@ It drives Chrome or Edge headless (set `CHROME=/path` to choose). Templates mark
 
 ## Orders and payment
 
-Checkout asks for no money. While the site runs on static hosting, "Place order" opens WhatsApp with the full order in one message. Once the Worker is deployed, checkout detects it through `GET /api/health`, reserves the customer's link and stores the order instead. Payment happens on WhatsApp after the details are confirmed: Classic once after the preview, Signature and Royale half to start and half before publishing, by InstaPay or Vodafone Cash. A card gateway plugs in at `payment` in the catalog and `POST /api/pay/webhook` in the Worker.
+Checkout asks for no money. While the site runs on static hosting, "Place order" opens WhatsApp with the full order in one message. Once the Worker is deployed and `api: true` is set in `assets/catalog.js`, checkout confirms it through `GET /api/health`, reserves the customer's link and stores the order instead. Payment happens on WhatsApp after the details are confirmed: Classic once after the preview, Signature and Royale half to start and half before publishing, by InstaPay or Vodafone Cash. A card gateway plugs in at `payment` in the catalog and `POST /api/pay/webhook` in the Worker.
 
 ## Tests
 
