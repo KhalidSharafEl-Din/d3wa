@@ -3,734 +3,595 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>اصنع دعوتك — دعوة D3wa | Build your invitation</title>
-<meta name="description" content="اصنع دعوتك خطوة بخطوة وشوف المعاينة الحقيقية وهي بتتبني قدامك. Build your D3wa invitation with a live preview.">
-<meta name="theme-color" content="#f5efe3">
+<title>اطلب دعوتك | D3wa دعوة</title>
+<meta name="description" content="اختاروا التصميم والباقة، اكتبوا تفاصيلكم وشوفوا دعوتكم بأساميكم قبل ما تدفعوا. Order your D3wa invitation and preview it with your names before paying.">
+<meta name="theme-color" content="#5a1426">
+<link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/order.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="اطلب دعوتك | D3wa دعوة">
+<meta property="og:description" content="شوفوا دعوتكم بأساميكم قبل ما تدفعوا.">
+<meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/order.html">
+<meta property="og:image" content="https://khalidsharafel-din.github.io/d3wa/assets/og/index.png">
 <meta name="robots" content="noindex">
-
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f5efe3'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%239c4a1a' stroke-width='2.6'/%3E%3C/svg%3E">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;600;800&family=Reem+Kufi:wght@400;500;600;700&display=swap">
-
-<style>
-:root{
-  --paper:#f5efe3; --paper-2:#fbf7ee; --paper-3:#ede4d2;
-  --ink:#231a10; --ink-2:#6d5f4b;
-  --copper:#9c4a1a; --copper-d:#7e3a12;
-  --wa:#1fa855; --ok:#22633a; --err:#b1382f;
-  --line:rgba(35,26,16,.14); --line-soft:rgba(35,26,16,.08); --line-c:rgba(156,74,26,.28);
-  --disp:"Reem Kufi",sans-serif; --body:"Alexandria",sans-serif;
-  --field:#fff; --shadow:rgba(35,26,16,.13); --on-copper:#fdf8f0;
-}
-html[data-theme="dark"]{
-  --paper:#141d33; --paper-2:#1b2542; --paper-3:#0e1628;
-  --ink:#f0e9dc; --ink-2:#a2adc3;
-  --copper:#d98a53; --copper-d:#e8a877;
-  --wa:#25d366; --ok:#5fd08a; --err:#ea8b83;
-  --line:rgba(240,233,220,.16); --line-soft:rgba(240,233,220,.09); --line-c:rgba(217,138,83,.34);
-  --field:#0e1628; --shadow:rgba(0,0,0,.45); --on-copper:#1a1204;
-}
-html{color-scheme:light}
-html[data-theme="dark"]{color-scheme:dark}
-
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:clip}
-html.en .t-ar{display:none}
-html:not(.en) .t-en{display:none}
-
-/* header */
-header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:1px solid var(--line-soft)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:62px;width:min(100%,1240px);margin:0 auto;padding:0 20px}
-.brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink)}
-.brand svg{width:31px;height:31px}
-.brand b{font-family:var(--disp);font-weight:700;font-size:19px}
-.brand span{font-family:var(--disp);color:var(--copper);font-size:18px;font-weight:600}
-.hdr-actions{display:flex;align-items:center;gap:8px}
-.icon-btn{width:37px;height:37px;display:grid;place-items:center;border:1px solid var(--line-c);border-radius:999px;background:transparent;color:var(--copper);cursor:pointer;padding:0}
-.icon-btn:hover{background:rgba(156,74,26,.08)}
-.icon-btn svg{width:17px;height:17px}
-.icon-btn .i-moon{display:none}
-html[data-theme="dark"] .icon-btn .i-moon{display:block}
-html[data-theme="dark"] .icon-btn .i-sun{display:none}
-.lang{min-height:37px;padding:0 15px;border:1px solid var(--line-c);border-radius:999px;background:transparent;color:var(--copper);cursor:pointer;font-family:var(--body);font-size:12.5px;font-weight:600}
-.lang:hover{background:rgba(156,74,26,.08)}
-
-/* layout: form + live preview */
-.shell{width:min(100%,1240px);margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1fr 400px;gap:clamp(24px,4vw,52px);align-items:start}
-@media (max-width:980px){.shell{grid-template-columns:1fr}}
-
-.formcol{padding:clamp(24px,4vw,40px) 0 120px;min-width:0}
-.kicker{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:600;letter-spacing:.13em;color:var(--copper);text-transform:uppercase;margin:0 0 14px}
-.kicker::before{content:"";width:28px;height:1.5px;background:var(--copper)}
-h1{font-family:var(--disp);font-weight:600;font-size:clamp(27px,4.6vw,40px);margin:0 0 8px;line-height:1.4}
-.lede{color:var(--ink-2);font-size:14.5px;line-height:2;margin:0 0 26px;max-width:58ch}
-
-/* progress rail */
-.rail{display:flex;gap:6px;margin-bottom:26px}
-.rail i{flex:1;height:3px;border-radius:99px;background:var(--line);transition:background .4s}
-.rail i.on{background:var(--copper)}
-
-/* steps */
-.stepEl{display:none}
-.stepEl.on{display:block;animation:fade .4s ease-out}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.stepEl h2{font-family:var(--disp);font-weight:600;font-size:20px;margin:0 0 6px}
-.stepEl .hint{color:var(--ink-2);font-size:13.5px;line-height:1.95;margin:0 0 22px}
-
-/* template picker */
-.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:11px}
-.tile{border:1px solid var(--line);border-radius:6px;background:var(--paper-2);padding:9px;cursor:pointer;text-align:center;transition:border-color .25s,transform .25s;position:relative}
-.tile:hover{transform:translateY(-2px)}
-.tile.sel{border:1.5px solid var(--copper);box-shadow:0 8px 22px var(--shadow)}
-.tile.sel::after{content:"✓";position:absolute;top:6px;inset-inline-end:8px;color:var(--copper);font-weight:800;font-size:12px}
-.tile .sw{height:58px;border-radius:4px;margin-bottom:8px;display:grid;place-items:center}
-.tile .sw i{width:15px;height:15px;border-radius:50%;border:2px solid;font-style:normal}
-.tile b{display:block;font-size:11.5px;font-weight:600;line-height:1.4}
-.tile small{display:block;color:var(--ink-2);font-size:9.5px;margin-top:2px;letter-spacing:.06em}
-
-/* packages */
-.pks{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px;margin-top:24px}
-.pk{border:1px solid var(--line);border-radius:6px;background:var(--paper-2);padding:16px;cursor:pointer;transition:border-color .25s;position:relative}
-.pk.sel{border:1.5px solid var(--copper)}
-.pk.sel::after{content:"✓";position:absolute;top:10px;inset-inline-end:12px;color:var(--copper);font-weight:800;font-size:12px}
-.pk b{display:block;font-size:13.5px;font-weight:800}
-.pk .p{color:var(--copper);font-weight:800;font-size:16px;margin-top:5px}
-.pk small{display:block;color:var(--ink-2);font-size:11.5px;line-height:1.7;margin-top:5px}
-
-/* fields */
-label{display:block;font-size:12.5px;font-weight:600;margin:17px 0 6px}
-label small{color:var(--ink-2);font-weight:300}
-input,select,textarea{width:100%;min-height:47px;padding:11px 13px;border:1px solid var(--line);border-radius:5px;background:var(--field);color:var(--ink);font-family:inherit;font-size:14.5px;font-weight:300;transition:border-color .25s}
-textarea{min-height:82px;resize:vertical;line-height:1.85}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--copper)}
-input.bad{border-color:var(--err)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-@media (max-width:560px){.row2{grid-template-columns:1fr}}
-.msg{display:none;color:var(--err);font-size:12.5px;margin-top:6px}
-.msg.show{display:block}
-.note{font-size:12px;color:var(--ink-2);line-height:1.9;margin-top:7px}
-
-/* toggles */
-.opt{display:flex;align-items:flex-start;gap:11px;border:1px solid var(--line);border-radius:6px;background:var(--paper-2);padding:14px 15px;margin-top:11px;cursor:pointer}
-.opt:hover{border-color:var(--line-c)}
-.opt input{width:17px;height:17px;min-height:0;margin-top:2px;accent-color:var(--copper);flex:none}
-.opt b{font-size:13.5px;font-weight:700}
-.opt small{display:block;color:var(--ink-2);font-size:12px;line-height:1.7;margin-top:3px}
-.opt .pd{margin-inline-start:auto;color:var(--copper);font-weight:800;font-size:12.5px;white-space:nowrap}
-
-/* link slug */
-.slug{border:1px solid var(--line-c);border-radius:6px;background:var(--paper-2);padding:15px 16px;margin-top:18px}
-.slug .lab{font-size:11.5px;font-weight:600;color:var(--copper);letter-spacing:.1em;text-transform:uppercase}
-.slug .val{direction:ltr;text-align:left;font-size:14px;font-weight:600;margin-top:7px;word-break:break-all;line-height:1.6}
-.slug .val u{text-decoration:none;color:var(--copper)}
-.slug .why{font-size:11.5px;color:var(--ink-2);line-height:1.8;margin-top:8px}
-
-/* review */
-.rev{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper-2)}
-.rev > div{display:flex;justify-content:space-between;gap:16px;padding:12px 15px;font-size:13.5px;border-bottom:1px solid var(--line-soft)}
-.rev > div:last-child{border-bottom:none}
-.rev dt{color:var(--ink-2);flex:none}
-.rev dd{margin:0;font-weight:600;text-align:end;overflow-wrap:anywhere}
-.total{display:flex;justify-content:space-between;padding:15px;background:var(--paper-3);font-weight:800;font-size:15.5px;border-radius:0 0 6px 6px}
-.total span:last-child{color:var(--copper)}
-
-/* pay */
-.pays{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin-top:8px}
-.pay{border:1px solid var(--line);border-radius:6px;background:var(--paper-2);padding:14px;cursor:pointer;text-align:center;position:relative}
-.pay.sel{border:1.5px solid var(--copper)}
-.pay.off{opacity:.5;cursor:not-allowed}
-.pay b{display:block;font-size:13px;font-weight:700}
-.pay small{display:block;color:var(--ink-2);font-size:11px;margin-top:4px}
-.paybox{border:1px dashed var(--line-c);border-radius:6px;background:var(--paper-2);padding:16px;margin-top:14px;font-size:13.5px;line-height:2}
-.paybox .num{direction:ltr;display:inline-block;font-weight:800;color:var(--copper);letter-spacing:.04em}
-
-/* buttons */
-.btns{display:flex;gap:11px;margin-top:26px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 26px;border:1.5px solid var(--copper);border-radius:2px;color:var(--copper);text-decoration:none;font-weight:600;font-size:14px;cursor:pointer;background:transparent;font-family:inherit;transition:background .25s}
-.btn:hover{background:rgba(156,74,26,.08)}
-.btn.solid{background:var(--copper);color:var(--on-copper)}
-.btn.solid:hover{background:var(--copper-d)}
-.btn.ghost{border-color:var(--line);color:var(--ink-2)}
-.btn.wa{background:var(--wa);border-color:var(--wa);color:#fff}
-.btn.grow{flex:1}
-.btn svg{width:16px;height:16px;fill:currentColor;flex:none}
-
-/* done state */
-.done{text-align:center;padding:10px 0}
-.done .ring{width:58px;height:58px;border-radius:50%;border:2.5px solid var(--copper);display:grid;place-items:center;margin:0 auto 18px;color:var(--copper);font-size:24px}
-.help{margin-top:28px;padding-top:18px;border-top:1px solid var(--line-soft);font-size:12.5px;color:var(--ink-2);line-height:1.95}
-.help a{color:var(--copper);font-weight:600;text-decoration:none}
-
-/* preview pane */
-.previewcol{position:sticky;top:78px;padding-top:clamp(24px,4vw,40px)}
-@media (max-width:980px){
-  .previewcol{position:fixed;inset:auto 0 0 0;top:auto;z-index:70;padding:0;transform:translateY(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);background:var(--paper);border-top:1px solid var(--line);max-height:88vh;overflow:auto;box-shadow:0 -18px 44px var(--shadow)}
-  .previewcol.open{transform:none}
-}
-.pv-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;padding:0 2px}
-.pv-title{font-size:12px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-2)}
-.pv-live{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ok);font-weight:600}
-.pv-live i{width:6px;height:6px;border-radius:50%;background:var(--ok);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.pv-frame{border-radius:34px;border:1px solid var(--line);background:#12100e;padding:9px;box-shadow:0 26px 60px var(--shadow)}
-.pv-frame iframe{width:100%;aspect-ratio:9/18.5;border:0;border-radius:26px;background:var(--paper-2);display:block}
-.pv-foot{display:flex;gap:8px;margin-top:11px}
-.pv-foot .btn{flex:1;min-height:40px;font-size:12px;padding:0 12px}
-.pv-close{display:none}
-@media (max-width:980px){
-  .previewcol .inner{padding:16px 20px 22px}
-  .pv-close{display:inline-flex}
-}
-.pv-fab{display:none}
-@media (max-width:980px){
-  .pv-fab{display:inline-flex;align-items:center;gap:8px;position:fixed;bottom:16px;inset-inline-start:50%;transform:translateX(50%);z-index:65;min-height:46px;padding:0 22px;border-radius:999px;background:var(--ink);color:var(--paper);border:0;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 12px 30px var(--shadow)}
-  html.en .pv-fab{transform:translateX(-50%)}
-}
-@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
-</style>
-<script>
-(function(){try{var t=localStorage.getItem("d3wa-theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}})();
-</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500;600;700&family=Readex+Pro:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="assets/store.css">
+<script>document.documentElement.classList.add("js");try{if(localStorage.getItem("d3wa-lang")==="en"){var h=document.documentElement;h.classList.add("en");h.lang="en";h.dir="ltr"}}catch(e){}</script>
+<script src="assets/catalog.js" defer></script>
+<script src="assets/store.js" defer></script>
 </head>
-<body>
-
-<header><div class="nav">
-  <a class="brand" href="index.html">
-    <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="var(--paper-2)" stroke="var(--copper)" stroke-width="1.2"/><circle cx="16" cy="16" r="8" fill="none" stroke="var(--copper)" stroke-width="2.2"/></svg>
-    <b>D3wa</b><span>دعوة</span>
-  </a>
-  <div class="hdr-actions">
-    <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle dark mode">
-      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M21.4 12h-2.2M4.8 12H2.6M18.6 5.4l-1.6 1.6M7 17l-1.6 1.6M18.6 18.6L17 17M7 7 5.4 5.4"/></svg>
-      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
-    </button>
-    <button class="lang" id="langBtn" type="button"><span class="t-ar">English</span><span class="t-en">العربية</span></button>
+<body class="co-page">
+<!-- build:header -->
+<a class="skip" href="#main"><span class="t-ar">انتقل للمحتوى</span><span class="t-en">Skip to content</span></a>
+<header class="hdr"><div class="wrap">
+  <a class="brand" href="index.html" aria-label="D3wa دعوة"><svg class="seal" viewBox="0 0 40 40" aria-hidden="true"><path fill="var(--gold)" d="M20 1.8l3.1 2.4 3.9-.6 1.9 3.4 3.7 1.4.1 3.9 2.9 2.7-1.2 3.7 1.2 3.7-2.9 2.7-.1 3.9-3.7 1.4-1.9 3.4-3.9-.6L20 38.2l-3.1-2.4-3.9.6-1.9-3.4-3.7-1.4-.1-3.9-2.9-2.7 1.2-3.7-1.2-3.7 2.9-2.7.1-3.9 3.7-1.4 1.9-3.4 3.9.6z"/><circle cx="20" cy="20" r="12.2" fill="none" stroke="var(--wine)" stroke-width="1.1" opacity=".55"/><text x="20" y="25.6" text-anchor="middle" font-family="Markazi Text,serif" font-weight="700" font-size="19" fill="var(--wine)">د</text></svg><b>دعوة</b><small>D3wa</small></a>
+  <nav class="nav" id="nav" aria-label="الأقسام">
+    <a href="templates/"><span class="t-ar">التصاميم</span><span class="t-en">Designs</span></a>
+    <a href="index.html#pricing"><span class="t-ar">الأسعار</span><span class="t-en">Prices</span></a>
+    <a href="index.html#how"><span class="t-ar">إزاي بنشتغل</span><span class="t-en">How it works</span></a>
+    <a href="index.html#faq"><span class="t-ar">أسئلة</span><span class="t-en">Questions</span></a>
+  </nav>
+  <div class="hdr-act">
+    <button class="lang" id="langBtn" type="button"><span class="t-ar" lang="en">English</span><span class="t-en" lang="ar">العربية</span></button>
+    <a class="btn btn-milk hdr-cta" href="order.html"><span class="t-ar">اطلب دعوتك</span><span class="t-en">Order yours</span></a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav"><span class="sr-only"><span class="t-ar">القائمة</span><span class="t-en">Menu</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
 </div></header>
+<!-- /build:header -->
+<main id="main" class="wrap">
+<div class="co">
+  <div>
+    <div class="co-head" id="coHead">
+      <h1><span class="t-ar">اطلب دعوتك</span><span class="t-en">Order your invitation</span></h1>
+      <p><span class="t-ar">كل حاجة بتكتبوها بتظهر في المعاينة على طول. مفيش دفع دلوقتي.</span><span class="t-en">Everything you type shows in the preview straight away. Nothing is charged now.</span></p>
+    </div>
+    <ol class="rail" id="rail" aria-label="خطوات الطلب">
+      <li><span><span class="t-ar">التصميم</span><span class="t-en">Design</span></span></li>
+      <li><span><span class="t-ar">المناسبة</span><span class="t-en">Event</span></span></li>
+      <li><span><span class="t-ar">اللمسات</span><span class="t-en">Touches</span></span></li>
+      <li><span><span class="t-ar">المراجعة</span><span class="t-en">Review</span></span></li>
+    </ol>
 
-<div class="shell">
-
-  <!-- ══ FORM ══ -->
-  <div class="formcol">
-    <p class="kicker"><span class="t-ar">طلب جديد</span><span class="t-en">New order</span></p>
-    <h1><span class="t-ar">اصنع دعوتك</span><span class="t-en">Build your invitation</span></h1>
-    <p class="lede"><span class="t-ar">كل حاجة بتكتبها بتظهر في المعاينة على طول. تخلص، تدفع، ويطلعلك لينك دعوتكم.</span><span class="t-en">Everything you type shows in the preview as you go. Finish, pay, and the link is yours.</span></p>
-
-    <div class="rail" id="rail"><i class="on"></i><i></i><i></i><i></i><i></i></div>
-
-    <!-- 1 · template -->
-    <section class="stepEl on" data-step="1">
-      <h2><span class="t-ar">١ · اختاروا التصميم</span><span class="t-en">1 · Choose your design</span></h2>
-      <p class="hint"><span class="t-ar">دوس على أي تصميم وشوفه في المعاينة.</span><span class="t-en">Tap a design to see it in the preview.</span></p>
-      <div class="tiles" id="tplTiles"></div>
-      <div class="pks" id="pkTiles"></div>
-      <div class="msg" id="m1"><span class="t-ar">اختاروا تصميم وباقة عشان نكمل</span><span class="t-en">Pick a design and a package to continue</span></div>
-      <div class="btns"><button class="btn solid grow" data-go="2"><span class="t-ar">التالي</span><span class="t-en">Next</span></button></div>
-    </section>
-
-    <!-- 2 · names -->
-    <section class="stepEl" data-step="2">
-      <h2><span class="t-ar">٢ · المناسبة والأسماء</span><span class="t-en">2 · Occasion and names</span></h2>
-      <p class="hint"><span class="t-ar">اكتبوا الأسماء زي ما تحبوها تظهر بالظبط.</span><span class="t-en">Type the names exactly as you want them to appear.</span></p>
-      <label><span class="t-ar">المناسبة</span><span class="t-en">Occasion</span></label>
-      <select id="fOcc">
-        <option value="wedding" data-ar="فرح" data-en="Wedding">فرح · Wedding</option>
-        <option value="engagement" data-ar="خطوبة" data-en="Engagement">خطوبة · Engagement</option>
-        <option value="katb" data-ar="كتب كتاب" data-en="Katb kitab">كتب كتاب · Katb kitab</option>
-        <option value="henna" data-ar="ليلة حنة" data-en="Henna night">ليلة حنة · Henna night</option>
-        <option value="sebou3" data-ar="سبوع أو عقيقة" data-en="Sebou3 / aqiqa">سبوع أو عقيقة · Sebou3</option>
-        <option value="grad" data-ar="حفلة تخرج" data-en="Graduation">حفلة تخرج · Graduation</option>
-        <option value="other" data-ar="مناسبة تانية" data-en="Other occasion">مناسبة تانية · Other</option>
-      </select>
-      <div class="row2">
-        <div>
-          <label><span class="t-ar">الأسماء بالعربي</span><span class="t-en">Names in Arabic</span></label>
-          <input type="text" id="n_ar" placeholder="عمر وسلمى" autocomplete="off">
-          <div class="msg" id="m2"><span class="t-ar">محتاجين الأسماء بالعربي على الأقل</span><span class="t-en">We need at least the Arabic names</span></div>
+    <form id="form" novalidate>
+      <!-- 1 · design and package -->
+      <section class="step" data-step="1" aria-labelledby="s1h">
+        <h2 id="s1h" tabindex="-1"><span class="t-ar">اختاروا التصميم والباقة</span><span class="t-en">Choose the design and package</span></h2>
+        <p class="hint"><span class="t-ar">دوسوا على أي تصميم وشوفوه في المعاينة.</span><span class="t-en">Tap any design to see it in the preview.</span></p>
+        <fieldset style="border:0;padding:0;margin:0">
+          <legend class="sr-only"><span class="t-ar">التصميم</span><span class="t-en">Design</span></legend>
+          <div class="designs" id="designs"></div>
+        </fieldset>
+        <fieldset class="pick" id="pkgs" style="margin-top:0">
+          <legend><span class="t-ar">الباقة</span><span class="t-en">Package</span></legend>
+        </fieldset>
+        <div style="margin-top:18px">
+          <label class="check"><input type="checkbox" id="rush">
+            <span><b><span class="t-ar">تسليم مستعجل خلال ٢٤ ساعة</span><span class="t-en">Rush delivery within 24 hours</span></b>
+            <small id="rushNote"></small></span></label>
         </div>
-        <div>
-          <label><span class="t-ar">بالإنجليزي <small>(بتتحط في اللينك)</small></span><span class="t-en">In English <small>(used in your link)</small></span></label>
-          <input type="text" id="n_en" placeholder="Omar &amp; Salma" dir="ltr" autocomplete="off">
+        <div class="nav-btns"><span></span><button type="button" class="btn btn-pom" data-next><span class="t-ar">التالي: المناسبة</span><span class="t-en">Next: the event</span></button></div>
+      </section>
+
+      <!-- 2 · the event -->
+      <section class="step" data-step="2" aria-labelledby="s2h" hidden>
+        <h2 id="s2h" tabindex="-1"><span class="t-ar">تفاصيل المناسبة</span><span class="t-en">Event details</span></h2>
+        <p class="hint"><span class="t-ar">اكتبوا الأسامي زي ما تحبوا تظهر بالظبط.</span><span class="t-en">Write the names exactly as you want them to appear.</span></p>
+        <div class="fields">
+          <div class="field full">
+            <label for="occ"><span class="t-ar">المناسبة</span><span class="t-en">Occasion</span></label>
+            <select id="occ"></select>
+          </div>
+          <div class="field">
+            <label for="n_ar"><span class="t-ar">الأسامي بالعربي</span><span class="t-en">Names in Arabic</span></label>
+            <input id="n_ar" autocomplete="off" maxlength="120" placeholder="يوسف ومريم" required>
+            <span class="err" id="n_arErr"><span class="t-ar">اكتبوا الأسامي بالعربي.</span><span class="t-en">Add the names in Arabic.</span></span>
+          </div>
+          <div class="field">
+            <label for="n_en"><span class="t-ar">الأسامي بالإنجليزي</span><span class="t-en">Names in English</span> <span class="opt-tag"><span class="t-ar">(اختياري)</span><span class="t-en">(optional)</span></span></label>
+            <input id="n_en" class="ltr-in" dir="ltr" autocomplete="off" maxlength="120" placeholder="Youssef &amp; Mariam">
+          </div>
+          <div class="field">
+            <label for="d"><span class="t-ar">التاريخ</span><span class="t-en">Date</span></label>
+            <input id="d" type="date" required>
+            <span class="err"><span class="t-ar">اختاروا تاريخ المناسبة.</span><span class="t-en">Choose the event date.</span></span>
+          </div>
+          <div class="field">
+            <label for="t"><span class="t-ar">الساعة</span><span class="t-en">Time</span> <span class="opt-tag"><span class="t-ar">(اختياري)</span><span class="t-en">(optional)</span></span></label>
+            <input id="t" type="time">
+          </div>
+          <div class="field">
+            <label for="v_ar"><span class="t-ar">المكان بالعربي</span><span class="t-en">Venue in Arabic</span></label>
+            <input id="v_ar" autocomplete="off" maxlength="200" placeholder="قاعة النيل، الزمالك">
+            <small class="help"><span class="t-ar">لو لسه مش متأكدين سيبوه فاضي ونكمله بعدين.</span><span class="t-en">Not sure yet? Leave it empty and we will fill it in later.</span></small>
+          </div>
+          <div class="field">
+            <label for="v_en"><span class="t-ar">المكان بالإنجليزي</span><span class="t-en">Venue in English</span> <span class="opt-tag"><span class="t-ar">(اختياري)</span><span class="t-en">(optional)</span></span></label>
+            <input id="v_en" class="ltr-in" dir="ltr" autocomplete="off" maxlength="200" placeholder="Nile Hall, Zamalek">
+          </div>
+          <div class="field full">
+            <label for="map"><span class="t-ar">لينك المكان على خرايط جوجل</span><span class="t-en">Google Maps link to the venue</span> <span class="opt-tag"><span class="t-ar">(اختياري)</span><span class="t-en">(optional)</span></span></label>
+            <input id="map" class="ltr-in" dir="ltr" type="url" inputmode="url" maxlength="500" placeholder="https://maps.app.goo.gl/...">
+            <span class="err"><span class="t-ar">اللينك لازم يبدأ بـ https://</span><span class="t-en">The link must start with https://</span></span>
+          </div>
         </div>
-      </div>
-      <label><span class="t-ar">اقتباس أو آية <small>(اختياري)</small></span><span class="t-en">A quote or verse <small>(optional)</small></span></label>
-      <textarea id="q" placeholder="«وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا…»"></textarea>
-      <div class="btns">
-        <button class="btn ghost" data-go="1"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
-        <button class="btn solid grow" data-go="3"><span class="t-ar">التالي</span><span class="t-en">Next</span></button>
-      </div>
-    </section>
-
-    <!-- 3 · when & where -->
-    <section class="stepEl" data-step="3">
-      <h2><span class="t-ar">٣ · المعاد والمكان</span><span class="t-en">3 · When and where</span></h2>
-      <p class="hint"><span class="t-ar">العدّاد في الدعوة بيعد لحد التاريخ ده.</span><span class="t-en">The countdown runs to this date.</span></p>
-      <div class="row2">
-        <div>
-          <label><span class="t-ar">تاريخ المناسبة</span><span class="t-en">Event date</span></label>
-          <input type="date" id="d">
-          <div class="msg" id="m3"><span class="t-ar">محتاجين تاريخ المناسبة</span><span class="t-en">We need the event date</span></div>
+        <div class="nav-btns">
+          <button type="button" class="btn btn-line" data-back><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
+          <button type="button" class="btn btn-pom" data-next><span class="t-ar">التالي: اللمسات</span><span class="t-en">Next: personal touches</span></button>
         </div>
-        <div>
-          <label><span class="t-ar">الساعة</span><span class="t-en">Time</span></label>
-          <input type="time" id="t" value="20:00">
+      </section>
+
+      <!-- 3 · touches -->
+      <section class="step" data-step="3" aria-labelledby="s3h" hidden>
+        <h2 id="s3h" tabindex="-1"><span class="t-ar">لمساتكم</span><span class="t-en">Personal touches</span></h2>
+        <p class="hint"><span class="t-ar">كل الخانات هنا اختيارية.</span><span class="t-en">Everything on this step is optional.</span></p>
+        <div class="fields">
+          <div class="field full" id="qWrap">
+            <label for="q"><span class="t-ar">اقتباس أو آية</span><span class="t-en">A quote or verse</span></label>
+            <input id="q" maxlength="300" placeholder="ومن آياته أن خلق لكم من أنفسكم أزواجًا">
+            <p class="upsell" id="qUpsell" hidden><span class="t-ar">الاقتباس جزء من باقة سيجنتشر.</span><span class="t-en">The quote comes with the Signature package.</span> <button type="button" class="link" id="toSig" style="background:none;border:0;padding:0;cursor:pointer"><span class="t-ar">غيّروا لسيجنتشر</span><span class="t-en">Switch to Signature</span></button></p>
+          </div>
+          <div class="field full">
+            <label for="notes"><span class="t-ar">أي تفاصيل تانية</span><span class="t-en">Anything else</span></label>
+            <textarea id="notes" maxlength="1000" placeholder=""></textarea>
+            <small class="help"><span class="t-ar">برنامج اليوم، الدريس كود، أو أي فكرة. الصور ابعتوها على واتساب بعد الطلب.</span><span class="t-en">The day's schedule, a dress code or any idea. Send photos on WhatsApp after ordering.</span></small>
+          </div>
         </div>
-      </div>
-      <div class="row2">
-        <div>
-          <label><span class="t-ar">المكان بالعربي</span><span class="t-en">Venue in Arabic</span></label>
-          <input type="text" id="v_ar" placeholder="قاعة النيل، الزمالك" autocomplete="off">
+        <div class="nav-btns">
+          <button type="button" class="btn btn-line" data-back><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
+          <button type="button" class="btn btn-pom" data-next><span class="t-ar">التالي: المراجعة</span><span class="t-en">Next: review</span></button>
         </div>
-        <div>
-          <label><span class="t-ar">بالإنجليزي <small>(اختياري)</small></span><span class="t-en">In English <small>(optional)</small></span></label>
-          <input type="text" id="v_en" placeholder="Nile Hall, Zamalek" dir="ltr" autocomplete="off">
+      </section>
+
+      <!-- 4 · contact and review -->
+      <section class="step" data-step="4" aria-labelledby="s4h" hidden>
+        <h2 id="s4h" tabindex="-1"><span class="t-ar">التواصل والمراجعة</span><span class="t-en">Contact and review</span></h2>
+        <p class="hint"><span class="t-ar">آخر خطوة. راجعوا الطلب وأكدوه.</span><span class="t-en">Last step. Check your order and place it.</span></p>
+        <div class="fields" style="margin-bottom:26px">
+          <div class="field">
+            <label for="wa"><span class="t-ar">رقم واتساب لتأكيدات الحضور</span><span class="t-en">WhatsApp number for RSVPs</span></label>
+            <input id="wa" class="ltr-in" dir="ltr" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="01xxxxxxxxx" required>
+            <span class="err"><span class="t-ar">اكتبوا رقم واتساب صحيح، زي 01001234567.</span><span class="t-en">Enter a valid WhatsApp number, like 01001234567.</span></span>
+            <small class="help"><span class="t-ar">رسايل الضيوف هتوصل على الرقم ده.</span><span class="t-en">Guests' replies arrive on this number.</span></small>
+          </div>
+          <div class="field">
+            <label for="contact"><span class="t-ar">رقم نكلمكم عليه</span><span class="t-en">Number for us to reach you</span> <span class="opt-tag"><span class="t-ar">(لو مختلف)</span><span class="t-en">(if different)</span></span></label>
+            <input id="contact" class="ltr-in" dir="ltr" type="tel" inputmode="tel" maxlength="20" placeholder="01xxxxxxxxx">
+            <span class="err"><span class="t-ar">الرقم ده مش صحيح.</span><span class="t-en">This number is not valid.</span></span>
+          </div>
         </div>
-      </div>
-      <label><span class="t-ar">لينك جوجل مابس <small>(اختياري)</small></span><span class="t-en">Google Maps link <small>(optional)</small></span></label>
-      <input type="url" id="map" placeholder="https://maps.app.goo.gl/…" dir="ltr" autocomplete="off">
-      <div class="btns">
-        <button class="btn ghost" data-go="2"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
-        <button class="btn solid grow" data-go="4"><span class="t-ar">التالي</span><span class="t-en">Next</span></button>
-      </div>
-    </section>
+        <dl class="review" id="review"></dl>
+        <div class="paynote">
+          <h3><span class="t-ar">مفيش دفع دلوقتي</span><span class="t-en">Nothing to pay now</span></h3>
+          <p id="payText"></p>
+        </div>
+        <label class="check" id="agreeWrap"><input type="checkbox" id="agree">
+          <span><span class="t-ar">موافقين على <a class="link" href="policies.html" target="_blank" rel="noopener">الشروط وسياسة الاسترجاع</a>.</span><span class="t-en">We agree to the <a class="link" href="policies.html" target="_blank" rel="noopener">terms and refund policy</a>.</span></span></label>
+        <p class="formerr" id="agreeErr"><span class="t-ar">علّموا على الموافقة عشان تكملوا.</span><span class="t-en">Tick the agreement to continue.</span></p>
+        <div class="nav-btns">
+          <button type="button" class="btn btn-line" data-back><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
+          <button type="submit" class="btn btn-pom" id="placeBtn"><span class="t-ar">أكّدوا الطلب</span><span class="t-en">Place order</span></button>
+          <a class="btn btn-wa" id="placeWa" href="#" target="_blank" rel="noopener" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2.5a9.43 9.43 0 00-8.1 14.27L2.6 21.5l4.86-1.28A9.44 9.44 0 1012.04 2.5zm0 17.24a7.8 7.8 0 01-3.98-1.09l-.29-.17-2.88.76.77-2.81-.19-.3a7.8 7.8 0 1114.37-4.17 7.8 7.8 0 01-7.8 7.78z"/></svg><span class="t-ar">أكّدوا الطلب على واتساب</span><span class="t-en">Place order on WhatsApp</span></a>
+        </div>
+        <p class="formerr" id="sendErr"><span class="t-ar">الطلب ماوصلش بسبب مشكلة في الاتصال. جربوا تاني، أو ابعتوه على واتساب من الزرار ده.</span><span class="t-en">The order did not go through because of a connection problem. Try again, or send it on WhatsApp with this button.</span></p>
+      </section>
+    </form>
 
-    <!-- 4 · contact -->
-    <section class="stepEl" data-step="4">
-      <h2><span class="t-ar">٤ · تأكيدات الحضور والتواصل</span><span class="t-en">4 · RSVPs and contact</span></h2>
-      <p class="hint"><span class="t-ar">لما ضيف يدوس «هحضر»، الرسالة بتروح على الرقم ده، مش علينا.</span><span class="t-en">When a guest taps "I'll be there", the message goes to this number, not to us.</span></p>
-      <label><span class="t-ar">رقم واتساب اللي هيستقبل تأكيدات الحضور</span><span class="t-en">WhatsApp number that receives RSVPs</span></label>
-      <input type="tel" id="wa" placeholder="01012345678" dir="ltr" inputmode="tel" autocomplete="tel">
-      <div class="msg" id="m4"><span class="t-ar">اكتبوا رقم واتساب صحيح (١١ رقم)</span><span class="t-en">Enter a valid WhatsApp number (11 digits)</span></div>
-      <p class="note"><span class="t-ar">ممكن يكون رقم العروسة أو العريس أو حد من العيلة بيتابع الردود.</span><span class="t-en">It can be either partner's number, or a family member tracking replies.</span></p>
-
-      <label><span class="t-ar">رقمكم للتواصل معانا <small>(لو مختلف)</small></span><span class="t-en">Your number for us <small>(if different)</small></span></label>
-      <input type="tel" id="contact" placeholder="01012345678" dir="ltr" inputmode="tel">
-      <p class="note"><span class="t-ar">مش هنكلمكم غير لو في مشكلة في الطلب أو حاجة ناقصة.</span><span class="t-en">We only reach out if something's wrong with the order or a detail is missing.</span></p>
-
-      <label class="opt"><input type="checkbox" id="rush"><span><b><span class="t-ar">استعجال ٢٤ ساعة</span><span class="t-en">24-hour rush</span></b><small><span class="t-ar">مجاني في باقة رويال</span><span class="t-en">Free on the Royale package</span></small></span><span class="pd" id="rushPd">+300</span></label>
-
-      <div class="slug">
-        <div class="lab"><span class="t-ar">لينك دعوتكم</span><span class="t-en">Your invitation link</span></div>
-        <div class="val" id="slugVal">d3wa.io/<u>—</u></div>
-        <p class="why"><span class="t-ar">بنضيف كود قصير في آخر اللينك عشان أي عروسين ليهم نفس الأسماء ما يتلغبطوش مع بعض، ويفضل اللينك بتاعكم انتوا بس.</span><span class="t-en">We add a short code at the end so two couples with the same names never collide; your link stays uniquely yours.</span></p>
+    <!-- confirmation -->
+    <section class="step done" id="done" hidden aria-labelledby="doneH">
+      <svg class="seal-big" viewBox="0 0 40 40" aria-hidden="true"><path fill="var(--wine)" d="M20 1.8l3.1 2.4 3.9-.6 1.9 3.4 3.7 1.4.1 3.9 2.9 2.7-1.2 3.7 1.2 3.7-2.9 2.7-.1 3.9-3.7 1.4-1.9 3.4-3.9-.6L20 38.2l-3.1-2.4-3.9.6-1.9-3.4-3.7-1.4-.1-3.9-2.9-2.7 1.2-3.7-1.2-3.7 2.9-2.7.1-3.9 3.7-1.4 1.9-3.4 3.9.6z"/><path d="M13.5 20.5l4.2 4 8.8-9" fill="none" stroke="var(--gold)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h1 id="doneH" tabindex="-1" class="d3" style="font-size:clamp(34px,4vw,48px)"></h1>
+      <p id="doneLead" class="lede" style="margin-top:12px"></p>
+      <div><span class="refbox" id="doneRef"></span></div>
+      <ol class="timeline" id="doneSteps"></ol>
+      <div class="hero-cta" style="margin-top:8px">
+        <a class="btn btn-pom" id="donePreview" href="#" target="_blank" rel="noopener"><span class="t-ar">افتحوا معاينة دعوتكم</span><span class="t-en">Open your preview</span></a>
+        <a class="btn btn-wa" id="doneWa" href="#" target="_blank" rel="noopener"><span class="t-ar">كلّمونا على واتساب</span><span class="t-en">WhatsApp us</span></a>
       </div>
-
-      <div class="btns">
-        <button class="btn ghost" data-go="3"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
-        <button class="btn solid grow" data-go="5"><span class="t-ar">مراجعة ودفع</span><span class="t-en">Review and pay</span></button>
-      </div>
-    </section>
-
-    <!-- 5 · review & pay -->
-    <section class="stepEl" data-step="5">
-      <h2><span class="t-ar">٥ · مراجعة ودفع</span><span class="t-en">5 · Review and pay</span></h2>
-      <p class="hint"><span class="t-ar">راجعوا التفاصيل. بعد تأكيد الدفع الدعوة بتتنشر على لينككم.</span><span class="t-en">Check the details. Once payment is confirmed, the invitation publishes to your link.</span></p>
-      <div class="rev" id="revBox"></div>
-      <div class="total"><span><span class="t-ar">الإجمالي</span><span class="t-en">Total</span></span><span id="totalVal">—</span></div>
-
-      <label style="margin-top:24px"><span class="t-ar">طريقة الدفع</span><span class="t-en">Payment method</span></label>
-      <div class="pays" id="pays">
-        <div class="pay sel" data-v="instapay"><b>InstaPay</b><small><span class="t-ar">تحويل فوري</span><span class="t-en">Instant transfer</span></small></div>
-        <div class="pay" data-v="vcash"><b><span class="t-ar">فودافون كاش</span><span class="t-en">Vodafone Cash</span></b><small><span class="t-ar">محفظة</span><span class="t-en">Wallet</span></small></div>
-        <div class="pay off" data-v="card"><b><span class="t-ar">كارت بنكي</span><span class="t-en">Card</span></b><small><span class="t-ar">قريبًا</span><span class="t-en">Coming soon</span></small></div>
-      </div>
-      <div class="paybox" id="payBox"></div>
-
-      <div class="btns">
-        <button class="btn ghost" data-go="4"><span class="t-ar">رجوع</span><span class="t-en">Back</span></button>
-        <button class="btn solid grow" id="paidBtn"><span class="t-ar">تم التحويل — أكّدوا طلبي</span><span class="t-en">I've paid — confirm my order</span></button>
-      </div>
-      <p class="help"><span class="t-ar">في مشكلة في الدفع أو حاجة مش مظبوطة؟</span><span class="t-en">Payment trouble or something off?</span> <a id="helpWa" target="_blank" rel="noopener" href="#"><span class="t-ar">كلمنا على واتساب</span><span class="t-en">Message us on WhatsApp</span></a></p>
-    </section>
-
-    <!-- 6 · done -->
-    <section class="stepEl" data-step="6">
-      <div class="done">
-        <div class="ring">✓</div>
-        <h2><span class="t-ar">وصلنا طلبكم</span><span class="t-en">We've got your order</span></h2>
-        <p class="hint" id="doneMsg"></p>
-      </div>
-      <div class="slug">
-        <div class="lab"><span class="t-ar">لينك دعوتكم</span><span class="t-en">Your invitation link</span></div>
-        <div class="val" id="doneSlug">—</div>
-        <p class="why" id="doneWhy"></p>
-      </div>
-      <div class="btns">
-        <a class="btn solid grow" id="openPv" target="_blank" rel="noopener"><span class="t-ar">افتح المعاينة</span><span class="t-en">Open the preview</span></a>
-        <button class="btn ghost" id="copyLink"><span class="t-ar">انسخ اللينك</span><span class="t-en">Copy link</span></button>
-      </div>
-      <p class="help"><span class="t-ar">محتاجين تعديل أو في مشكلة؟</span><span class="t-en">Need a change, or hit a snag?</span> <a id="helpWa2" target="_blank" rel="noopener" href="#"><span class="t-ar">كلمنا على واتساب</span><span class="t-en">Message us on WhatsApp</span></a></p>
+      <p style="margin-top:22px"><a class="link" href="order.html" id="newOrder"><span class="t-ar">ابدأوا طلب جديد</span><span class="t-en">Start a new order</span></a></p>
     </section>
   </div>
 
-  <!-- ══ LIVE PREVIEW ══ -->
-  <aside class="previewcol" id="pvCol"><div class="inner">
-    <div class="pv-head">
-      <span class="pv-title"><span class="t-ar">المعاينة المباشرة</span><span class="t-en">Live preview</span></span>
-      <span class="pv-live"><i></i><span class="t-ar">بيتحدث</span><span class="t-en">Updating live</span></span>
+  <aside class="co-aside" aria-label="ملخص الطلب">
+    <div class="sum" id="sum">
+      <div class="sum-top"><img id="sumImg" src="assets/cards/gold.jpg" width="52" height="92" alt=""><span><b id="sumName"></b><small id="sumCode"></small></span></div>
+      <dl id="sumRows"></dl>
+      <p class="slug" id="slug"></p>
     </div>
-    <div class="pv-frame"><iframe id="pvFrame" title="Live invitation preview" loading="lazy"></iframe></div>
-    <div class="pv-foot">
-      <a class="btn" id="pvOpen" target="_blank" rel="noopener"><span class="t-ar">افتح في تاب</span><span class="t-en">Open in tab</span></a>
-      <button class="btn ghost pv-close" id="pvClose"><span class="t-ar">إغلاق</span><span class="t-en">Close</span></button>
+    <div class="pv" id="pv">
+      <button type="button" class="btn btn-line pv-close" id="pvClose"><span class="t-ar">رجوع للطلب</span><span class="t-en">Back to the order</span></button>
+      <div class="phone"><div class="scr" id="pvScr"><iframe id="pvFrame" title="معاينة الدعوة" loading="lazy"></iframe></div></div>
+      <div class="pv-cap"><span><span class="t-ar">المعاينة بأساميكم</span><span class="t-en">Your live preview</span></span><a class="link" id="pvOpen" href="#" target="_blank" rel="noopener"><span class="t-ar">افتحوها كاملة</span><span class="t-en">Open full size</span></a></div>
     </div>
-  </div></aside>
+  </aside>
 </div>
-
-<button class="pv-fab" id="pvFab" type="button">
-  <span class="t-ar">شوف المعاينة</span><span class="t-en">See preview</span>
-</button>
-
+</main>
+<div class="co-bar" id="coBar">
+  <span class="bb-p"><span class="t-ar">الإجمالي</span><span class="t-en">Total</span> <b id="barTotal"></b></span>
+  <button type="button" class="btn btn-line" id="pvOpenBtn"><span class="t-ar">المعاينة</span><span class="t-en">Preview</span></button>
+</div>
+<!-- build:footer -->
+<footer class="ftr"><div class="wrap">
+  <div class="about">
+    <a class="brand" href="index.html"><svg class="seal" viewBox="0 0 40 40" aria-hidden="true"><path fill="var(--gold)" d="M20 1.8l3.1 2.4 3.9-.6 1.9 3.4 3.7 1.4.1 3.9 2.9 2.7-1.2 3.7 1.2 3.7-2.9 2.7-.1 3.9-3.7 1.4-1.9 3.4-3.9-.6L20 38.2l-3.1-2.4-3.9.6-1.9-3.4-3.7-1.4-.1-3.9-2.9-2.7 1.2-3.7-1.2-3.7 2.9-2.7.1-3.9 3.7-1.4 1.9-3.4 3.9.6z"/><circle cx="20" cy="20" r="12.2" fill="none" stroke="var(--wine)" stroke-width="1.1" opacity=".55"/><text x="20" y="25.6" text-anchor="middle" font-family="Markazi Text,serif" font-weight="700" font-size="19" fill="var(--wine)">د</text></svg><b>دعوة</b><small>D3wa</small></a>
+    <p><span class="t-ar">دعوات رقمية بالعربي والإنجليزي للفرح والخطوبة وكتب الكتاب والحنة والسبوع والتخرج. كل دعوة بتتعمل بإيد.</span><span class="t-en">Digital invitations in Arabic and English for weddings, engagements, katb kitab, henna nights, sebou3 and graduations. Every one is made by hand.</span></p>
+  </div>
+  <div>
+    <h2><span class="t-ar">التصاميم</span><span class="t-en">Designs</span></h2>
+    <ul>
+      <li><a href="templates/?occ=wedding"><span class="t-ar">فرح</span><span class="t-en">Wedding</span></a></li>
+      <li><a href="templates/?occ=engagement"><span class="t-ar">خطوبة</span><span class="t-en">Engagement</span></a></li>
+      <li><a href="templates/?occ=katb"><span class="t-ar">كتب كتاب</span><span class="t-en">Katb kitab</span></a></li>
+      <li><a href="templates/?occ=henna"><span class="t-ar">حنة</span><span class="t-en">Henna night</span></a></li>
+      <li><a href="templates/?occ=baby"><span class="t-ar">سبوع</span><span class="t-en">Sebou3 &amp; aqiqa</span></a></li>
+      <li><a href="templates/?occ=grad"><span class="t-ar">تخرج</span><span class="t-en">Graduation</span></a></li>
+    </ul>
+  </div>
+  <div>
+    <h2><span class="t-ar">الطلب</span><span class="t-en">Ordering</span></h2>
+    <ul>
+      <li><a href="order.html"><span class="t-ar">اطلب دعوتك</span><span class="t-en">Order an invitation</span></a></li>
+      <li><a href="index.html#pricing"><span class="t-ar">الباقات والأسعار</span><span class="t-en">Packages and prices</span></a></li>
+      <li><a href="index.html#faq"><span class="t-ar">أسئلة متكررة</span><span class="t-en">Questions</span></a></li>
+      <li><a href="https://wa.me/201005509418" target="_blank" rel="noopener"><span class="t-ar">كلّمنا على واتساب</span><span class="t-en">WhatsApp us</span></a></li>
+    </ul>
+  </div>
+  <div>
+    <h2><span class="t-ar">السياسات</span><span class="t-en">Policies</span></h2>
+    <ul>
+      <li><a href="policies.html#terms"><span class="t-ar">الشروط</span><span class="t-en">Terms</span></a></li>
+      <li><a href="policies.html#payment"><span class="t-ar">الدفع والاسترجاع</span><span class="t-en">Payment and refunds</span></a></li>
+      <li><a href="policies.html#delivery"><span class="t-ar">التسليم والتعديلات</span><span class="t-en">Delivery and revisions</span></a></li>
+      <li><a href="policies.html#privacy"><span class="t-ar">الخصوصية</span><span class="t-en">Privacy</span></a></li>
+    </ul>
+  </div>
+  <div class="legal">
+    <span><span class="t-ar">© ٢٠٢٦ دعوة D3wa. الأسعار بالجنيه المصري.</span><span class="t-en">© 2026 D3wa. Prices in Egyptian pounds.</span></span>
+    <a href="https://wa.me/201005509418" target="_blank" rel="noopener" class="num" dir="ltr">+20 100 550 9418</a>
+  </div>
+</div></footer>
+<a class="fab-wa" href="https://wa.me/201005509418" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2.5a9.43 9.43 0 00-8.1 14.27L2.6 21.5l4.86-1.28A9.44 9.44 0 1012.04 2.5zm0 17.24a7.8 7.8 0 01-3.98-1.09l-.29-.17-2.88.76.77-2.81-.19-.3a7.8 7.8 0 1114.37-4.17 7.8 7.8 0 01-7.8 7.78zm4.28-5.84c-.23-.12-1.38-.68-1.6-.76-.21-.08-.37-.12-.53.12-.15.23-.6.76-.74.92-.14.15-.27.17-.5.06a6.4 6.4 0 01-1.88-1.16 7.06 7.06 0 01-1.3-1.62c-.14-.23 0-.36.1-.47.1-.1.23-.27.35-.41.12-.14.15-.23.23-.39.08-.15.04-.29-.02-.41-.06-.12-.53-1.27-.72-1.74-.19-.46-.38-.39-.53-.4h-.45a.87.87 0 00-.62.29 2.62 2.62 0 00-.82 1.95 4.55 4.55 0 00.95 2.42 10.4 10.4 0 003.99 3.52c.56.24 1 .38 1.33.49a3.2 3.2 0 001.48.09c.45-.07 1.38-.56 1.57-1.11.2-.55.2-1.02.14-1.12-.06-.1-.21-.16-.44-.27z"/></svg></a>
+<!-- /build:footer -->
 <script>
-(function () {
+document.addEventListener("DOMContentLoaded", function () {
   "use strict";
-  var docEl = document.documentElement, isEn = false;
-  var SUPPORT = "201005509418";
-  var SITE = location.href.replace(/order\.html.*$/, "");
-  var PUBLIC_HOST = "d3wa.io";
+  var C = window.D3WA, doc = document.documentElement;
+  var PKG = {}, RANK = {};
+  C.packages.forEach(function (p, i) { PKG[p.k] = p; RANK[p.k] = i; });
+  var TPL = {}; C.templates.forEach(function (t) { TPL[t.k] = t; });
+  function el(id) { return document.getElementById(id); }
+  function en() { return doc.classList.contains("en"); }
+  function L(o) { return en() ? o.en : o.ar; }
+  function money(n) { return en() ? "EGP " + n.toLocaleString("en-US") : n.toLocaleString("ar-EG") + " جنيه"; }
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function bi(ar, enT) { return '<span class="t-ar">' + ar + '</span><span class="t-en">' + enT + "</span>"; }
+  var FIELDS = ["occ", "n_ar", "n_en", "d", "t", "v_ar", "v_en", "map", "q", "notes", "wa", "contact"];
+  var api = false;
 
-  var TPL = [
-    { k:"gold",    code:"D3-001", ar:"كلاسيك جولد",   en:"Classic Gold",      occ:"wedding",    bg:"radial-gradient(130% 110% at 50% 0%,#fffdf8,#efe4cd)", ac:"#a9843f" },
-    { k:"rose",    code:"D3-002", ar:"روز آند وايت",  en:"Rose & White",      occ:"wedding",    bg:"radial-gradient(130% 110% at 50% 0%,#fffafb,#f6dee7)", ac:"#b3305c" },
-    { k:"rustic",  code:"D3-003", ar:"رستيك",         en:"Rustic Red",        occ:"wedding",    bg:"radial-gradient(130% 110% at 50% 0%,#fffdf6,#eeddc2)", ac:"#9e3f34" },
-    { k:"navy",    code:"D3-004", ar:"رويال نايفي",   en:"Royal Navy",        occ:"wedding",    bg:"radial-gradient(130% 110% at 50% 0%,#2a3a63,#0d1730)", ac:"#cfa658" },
-    { k:"emerald", code:"D3-005", ar:"إميرالد أندلسي", en:"Emerald Andalusi",  occ:"katb",       bg:"radial-gradient(130% 110% at 50% 0%,#1a5a44,#0e3b2e)", ac:"#c9a24b" },
-    { k:"sahara",  code:"D3-006", ar:"صحارى بوهو",    en:"Sahara Boho",       occ:"wedding",    bg:"radial-gradient(130% 110% at 50% 0%,#fbf6ec,#f3d9b8)", ac:"#c46a4a" },
-    { k:"lotus",   code:"D3-007", ar:"سبوع اللوتس",   en:"Lotus Sebou3",      occ:"sebou3",     bg:"radial-gradient(130% 110% at 50% 0%,#fdf8f0,#f3d9de)", ac:"#a8c3a0" },
-    { k:"henna",   code:"D3-008", ar:"ليلة حنة",      en:"Henna Night",       occ:"henna",      bg:"radial-gradient(130% 110% at 50% 0%,#fbf3e4,#f4d9a8)", ac:"#a6341b" },
-    { k:"deco",    code:"D3-009", ar:"جاتسبي",        en:"Art Deco",          occ:"wedding",    bg:"radial-gradient(130% 110% at 50% 0%,#1c1c20,#0e0e10)", ac:"#d4af37" },
-    { k:"garden",  code:"D3-010", ar:"جاردن",         en:"Botanical Garden",  occ:"wedding",    bg:"radial-gradient(130% 110% at 50% 0%,#faf8f2,#dbe4d2)", ac:"#5f7161" },
-    { k:"modern",  code:"D3-011", ar:"مودرن",         en:"Modern Editorial",  occ:"wedding",    bg:"#f7f5f0", ac:"#c4552d" },
-    { k:"grad",    code:"D3-012", ar:"تخرج",          en:"Graduation",        occ:"grad",       bg:"radial-gradient(130% 110% at 50% 0%,#f8f5ee,#dfe2ea)", ac:"#e98a15" }
-  ];
-  var PKG = {
-    classic:   { ar:"كلاسيك",  en:"Classic",   price:1000, desc_ar:"التخصيص الأساسي",           desc_en:"Core personalization" },
-    signature: { ar:"سيجنتشر", en:"Signature", price:1500, desc_ar:"اقتباس وصورة وجولتين تعديل", desc_en:"Quote, photo, 2 revisions" },
-    royale:    { ar:"رويال",   en:"Royale",    price:2500, desc_ar:"وضع ليلي وشيت ضيوف وأولوية", desc_en:"Dark mode, guest sheet, priority" }
-  };
-  var FIELDS = ["n_ar","n_en","d","t","v_ar","v_en","map","q","wa","contact"];
-  var state = { tpl:null, pkg:null, step:1, pay:"instapay", uid:null };
-
-  function el (id) { return document.getElementById(id); }
-
-  /* ── restore ── */
+  /* ── state: URL params win over the saved draft ── */
+  var state = { tpl: "gold", pkg: "signature", rush: false, uid: null, step: 1, f: {} };
   try {
     var saved = JSON.parse(localStorage.getItem("d3wa-build") || "{}");
     if (saved.tpl) state.tpl = saved.tpl;
     if (saved.pkg) state.pkg = saved.pkg;
     if (saved.uid) state.uid = saved.uid;
-    state._fields = saved.fields || {};
-  } catch (e) { state._fields = {}; }
-
-  var q = new URLSearchParams(location.search);
-  if (q.get("t")) { for (var i = 0; i < TPL.length; i++) if (TPL[i].k === q.get("t")) state.tpl = q.get("t"); }
-  if (q.get("p") && PKG[q.get("p")]) state.pkg = q.get("p");
-
-  /* stable per-order short id */
+    state.f = saved.fields || {};
+    if (state.f.rush) state.rush = true;
+  } catch (e) {}
+  var qs = new URLSearchParams(location.search);
+  if (TPL[qs.get("t")]) state.tpl = qs.get("t");
+  if (PKG[qs.get("p")]) state.pkg = qs.get("p");
+  if (!TPL[state.tpl]) state.tpl = "gold";
+  if (!PKG[state.pkg]) state.pkg = "signature";
   if (!state.uid) {
-    var r = new Uint8Array(3);
-    (window.crypto || window.msCrypto).getRandomValues(r);
-    state.uid = Array.prototype.map.call(r, function (b) { return ("0" + b.toString(16)).slice(-2); }).join("").slice(0, 4);
+    var r = new Uint8Array(2); crypto.getRandomValues(r);
+    state.uid = Array.prototype.map.call(r, function (b) { return ("0" + b.toString(16)).slice(-2); }).join("");
   }
+  function minPkg() { return TPL[state.tpl].minPkg; }
+  function fixPkg() { if (RANK[state.pkg] < RANK[minPkg()]) state.pkg = minPkg(); }
+  fixPkg();
 
-  function save () {
+  function save() {
     var f = {};
     FIELDS.forEach(function (k) { f[k] = el(k).value; });
-    f.occ = el("fOcc").value; f.rush = el("rush").checked;
-    try { localStorage.setItem("d3wa-build", JSON.stringify({ tpl:state.tpl, pkg:state.pkg, uid:state.uid, fields:f })); } catch (e) {}
+    f.rush = state.rush;
+    try { localStorage.setItem("d3wa-build", JSON.stringify({ tpl: state.tpl, pkg: state.pkg, uid: state.uid, fields: f })); } catch (e) {}
   }
 
-  /* ── build pickers ── */
-  el("tplTiles").innerHTML = TPL.map(function (t) {
-    return '<div class="tile" data-v="' + t.k + '">' +
-      '<div class="sw" style="background:' + t.bg + '"><i style="border-color:' + t.ac + '"></i></div>' +
-      '<b><span class="t-ar">' + t.ar + '</span><span class="t-en">' + t.en + '</span></b>' +
-      '<small>' + t.code + '</small></div>';
+  /* ── build the pickers ── */
+  el("designs").innerHTML = C.templates.map(function (t) {
+    return '<label class="dz"><input type="radio" name="tpl" value="' + t.k + '"' + (t.k === state.tpl ? " checked" : "") + '>' +
+      '<img src="assets/cards/' + t.k + '.jpg" data-en="assets/cards/' + t.k + '-en.jpg" width="120" height="187" loading="lazy" alt="">' +
+      "<span>" + bi(esc(t.ar), esc(t.en)) + "</span></label>";
   }).join("");
-  el("pkTiles").innerHTML = Object.keys(PKG).map(function (k) {
-    var p = PKG[k];
-    return '<div class="pk" data-v="' + k + '">' +
-      '<b><span class="t-ar">' + p.ar + '</span><span class="t-en">' + p.en + '</span></b>' +
-      '<div class="p">' + p.price.toLocaleString("en") + ' <span style="font-size:11px;font-weight:300">' +
-      '<span class="t-ar">جنيه</span><span class="t-en">EGP</span></span></div>' +
-      '<small><span class="t-ar">' + p.desc_ar + '</span><span class="t-en">' + p.desc_en + '</span></small></div>';
+  el("occ").innerHTML = C.occasions.map(function (o) {
+    return '<option value="' + o.k + '" data-ar="' + esc(o.ar) + '" data-en="' + esc(o.en) + '">' + esc(o.ar) + "</option>";
   }).join("");
+  function paintOcc() { Array.prototype.forEach.call(el("occ").options, function (o) { o.textContent = o.getAttribute(en() ? "data-en" : "data-ar"); }); }
 
-  function bindPick (sel, key, after) {
-    var nodes = document.querySelectorAll(sel);
-    nodes.forEach(function (n) {
-      n.addEventListener("click", function () {
-        if (n.classList.contains("off")) return;
-        nodes.forEach(function (x) { x.classList.remove("sel"); });
-        n.classList.add("sel");
-        state[key] = n.getAttribute("data-v");
-        el("m1") && el("m1").classList.remove("show");
-        save(); if (after) after();
-      });
-      if (state[key] === n.getAttribute("data-v")) n.classList.add("sel");
+  function renderPkgs() {
+    var box = el("pkgs");
+    box.querySelectorAll(".opt").forEach(function (n) { n.remove(); });
+    C.packages.forEach(function (p) {
+      var off = RANK[p.k] < RANK[minPkg()];
+      var lab = document.createElement("label");
+      lab.className = "opt";
+      lab.innerHTML = '<input type="radio" name="pkg" value="' + p.k + '"' + (p.k === state.pkg ? " checked" : "") + (off ? " disabled" : "") + ">" +
+        "<b>" + bi(p.ar, p.en) + '</b><span class="p">' + bi(p.price.toLocaleString("ar-EG") + " جنيه", "EGP " + p.price.toLocaleString("en-US")) + "</span>" +
+        "<small>" + (off
+          ? bi("التصميم ده متاح في " + PKG[minPkg()].ar + " بس.", "This design comes in " + PKG[minPkg()].en + " only.")
+          : bi(p.pitch.ar + " " + p.items.slice(0, 3).map(function (i) { return i.ar; }).join("، ") + ".",
+               p.pitch.en + " " + p.items.slice(0, 3).map(function (i) { return i.en; }).join(", ") + ".")) + "</small>";
+      box.appendChild(lab);
     });
   }
-  bindPick("#tplTiles .tile", "tpl", function () { renderPreview(true); });
-  bindPick("#pkTiles .pk", "pkg", function () { rushPrice(); });
-  bindPick("#pays .pay", "pay", payBox);
+  renderPkgs();
 
-  function rushPrice () {
-    var free = state.pkg === "royale";
-    el("rushPd").innerHTML = free
-      ? '<span class="t-ar">مجاني</span><span class="t-en">Free</span>'
-      : "+300";
+  /* restore fields */
+  FIELDS.forEach(function (k) { if (state.f[k] != null && state.f[k] !== "") el(k).value = state.f[k]; });
+  el("rush").checked = state.rush;
+  var today = new Date(); today.setHours(12);
+  el("d").min = today.toISOString().slice(0, 10);
+  var occTouched = !!state.f.occ;
+  if (!occTouched) el("occ").value = TPL[state.tpl].occ[0];
+
+  /* ── pricing ── */
+  function rushFree() { return C.addons.rush.freeOn === state.pkg; }
+  function total() { return PKG[state.pkg].price + (state.rush && !rushFree() ? C.addons.rush.price : 0); }
+  function payRule() {
+    var t = total();
+    if (state.pkg === C.payment.payOnceUpTo) return bi(
+      "بنكلمكم على واتساب نأكد التفاصيل ونبعت المعاينة. لما تعجبكم بتدفعوا " + money(t).replace("EGP ", "") + " مرة واحدة بإنستاباي أو فودافون كاش، وبعدها بننشرها.",
+      "We message you on WhatsApp to confirm the details and send your preview. Once you like it, you pay " + money(t) + " once by InstaPay or Vodafone Cash, and we publish it.");
+    var half = Math.round(t * C.payment.depositShare);
+    return bi(
+      "بنكلمكم على واتساب نأكد التفاصيل. بتدفعوا " + half.toLocaleString("ar-EG") + " جنيه مقدم عشان نبدأ الشغل، والباقي " + (t - half).toLocaleString("ar-EG") + " جنيه قبل النشر، بإنستاباي أو فودافون كاش.",
+      "We message you on WhatsApp to confirm the details. You pay EGP " + half.toLocaleString("en-US") + " to start the work and the remaining EGP " + (t - half).toLocaleString("en-US") + " before publishing, by InstaPay or Vodafone Cash.");
+  }
+  function paintRush() {
+    el("rushNote").innerHTML = rushFree()
+      ? bi("مجاني في " + PKG[state.pkg].ar + ".", "Free with " + PKG[state.pkg].en + ".")
+      : bi("+" + C.addons.rush.price.toLocaleString("ar-EG") + " جنيه", "+EGP " + C.addons.rush.price);
   }
 
-  /* ── restore field values ── */
-  var sf = state._fields || {};
-  FIELDS.forEach(function (k) { if (sf[k]) el(k).value = sf[k]; });
-  if (sf.occ) el("fOcc").value = sf.occ;
-  if (sf.rush) el("rush").checked = true;
-  rushPrice();
-
-  /* ── slug ── */
+  /* ── slug, same rules as the Worker ── */
   var AR2LAT = { "ا":"a","أ":"a","إ":"i","آ":"a","ب":"b","ت":"t","ث":"th","ج":"g","ح":"h","خ":"kh","د":"d","ذ":"z","ر":"r","ز":"z","س":"s","ش":"sh","ص":"s","ض":"d","ط":"t","ظ":"z","ع":"a","غ":"gh","ف":"f","ق":"q","ك":"k","ل":"l","م":"m","ن":"n","ه":"h","و":"w","ي":"y","ى":"a","ة":"a","ء":"","ئ":"","ؤ":"" };
-  function slugify (s) {
-    if (!s) return "";
-    s = s.replace(/[ً-ْٰ]/g, "");
+  function slugify(s) {
     var out = "";
-    for (var i = 0; i < s.length; i++) {
-      var c = s[i];
+    (s || "").replace(/[ً-ْٰ]/g, "").split("").forEach(function (c) {
       if (AR2LAT[c] !== undefined) out += AR2LAT[c];
       else if (/[a-zA-Z0-9]/.test(c)) out += c.toLowerCase();
       else if (/[\s\-_&+]/.test(c)) out += "-";
-    }
+    });
     return out.replace(/-+/g, "-").replace(/^-|-$/g, "").slice(0, 38);
   }
-  function slug () {
-    var base = slugify(el("n_en").value.trim()) || slugify(el("n_ar").value.trim());
-    if (!base) base = "d3wa";
-    return base + "-" + state.uid;
-  }
-  function paintSlug () {
-    var s = slug();
-    el("slugVal").innerHTML = PUBLIC_HOST + "/<u>" + s + "</u>";
+  function slug() { return (slugify(el("n_en").value.trim()) || slugify(el("n_ar").value.trim()) || "d3wa") + "-" + state.uid; }
+
+  /* ── summary ── */
+  function paintSummary() {
+    var t = TPL[state.tpl], p = PKG[state.pkg];
+    var img = el("sumImg");
+    img.setAttribute("data-ar", "assets/cards/" + t.k + ".jpg");
+    img.setAttribute("data-en", "assets/cards/" + t.k + "-en.jpg");
+    img.src = en() ? "assets/cards/" + t.k + "-en.jpg" : "assets/cards/" + t.k + ".jpg";
+    el("sumName").textContent = L(t);
+    el("sumCode").textContent = t.code;
+    var rows = [[L(p), "", money(p.price)]];
+    if (state.rush) rows.push([en() ? "Rush delivery" : "تسليم مستعجل", "", rushFree() ? (en() ? "Free" : "مجاني") : money(C.addons.rush.price)]);
+    var html = rows.map(function (r) { return "<dt>" + esc(r[0]) + (r[1] ? " · " + esc(r[1]) : "") + "</dt><dd>" + r[2] + "</dd>"; }).join("");
+    html += '<dt class="tot">' + (en() ? "Total" : "الإجمالي") + '</dt><dd class="tot">' + money(total()) + "</dd>";
+    html += '<dt class="due">' + (en() ? "Due now" : "المطلوب دلوقتي") + '</dt><dd class="due">' + (en() ? "EGP 0" : "ولا جنيه") + "</dd>";
+    el("sumRows").innerHTML = html;
+    el("barTotal").textContent = money(total());
+    el("slug").innerHTML = (en() ? "Your link: " : "لينككم: ") + esc(C.host) + "/<u>" + esc(slug()) + "</u>";
+    el("payText").innerHTML = payRule();
+    paintRush();
+    var classic = state.pkg === "classic";
+    el("qUpsell").hidden = !classic;
+    el("q").disabled = classic;
   }
 
   /* ── live preview ── */
-  var pvTimer = null;
-  function previewURL () {
-    if (!state.tpl) return "";
-    var u = new URL("demos/" + state.tpl + ".html", SITE);
-    var map = { n_ar:"n_ar", n_en:"n_en", d:"d", t:"t", v_ar:"v_ar", v_en:"v_en", map:"map", q:"q" };
-    Object.keys(map).forEach(function (k) {
-      var v = el(k).value.trim();
-      if (v) u.searchParams.set(map[k], v);
-    });
+  var pvTimer;
+  function previewURL() {
+    var u = new URL("demos/" + state.tpl + ".html", location.href);
+    ["n_ar", "n_en", "d", "t", "v_ar", "v_en", "map"].forEach(function (k) { var v = el(k).value.trim(); if (v) u.searchParams.set(k, v); });
+    if (state.pkg !== "classic" && el("q").value.trim()) u.searchParams.set("q", el("q").value.trim());
     var w = el("wa").value.replace(/\D/g, "");
     if (w) u.searchParams.set("wa", w.replace(/^0/, "20"));
     return u.toString();
   }
-  function renderPreview (now) {
-    if (!state.tpl) return;
+  function fitFrame() {
+    var f = el("pvFrame"), s = el("pvScr");
+    if (!s.clientWidth) return;
+    f.style.transform = "scale(" + (s.clientWidth / 390) + ")";
+    f.style.height = Math.ceil(s.clientHeight * 390 / s.clientWidth) + "px";
+  }
+  function renderPreview(now) {
     clearTimeout(pvTimer);
     pvTimer = setTimeout(function () {
       var url = previewURL();
       el("pvFrame").src = url;
       el("pvOpen").href = url;
-    }, now ? 0 : 650);
+      fitFrame();
+    }, now ? 0 : 700);
+  }
+  window.addEventListener("resize", fitFrame);
+
+  /* ── validation ── */
+  function digits(v) { return (v || "").replace(/\D/g, ""); }
+  function okPhone(v) { var d = digits(v); return d.length >= 10 && d.length <= 13; }
+  function mark(id, bad) { el(id).setAttribute("aria-invalid", bad ? "true" : "false"); return !bad; }
+  function validStep(n) {
+    var ok = true;
+    if (n === 2) {
+      ok = mark("n_ar", !el("n_ar").value.trim()) & mark("d", !/^\d{4}-\d{2}-\d{2}$/.test(el("d").value)) &
+        mark("map", !!el("map").value.trim() && !/^https:\/\//.test(el("map").value.trim()));
+    }
+    if (n === 4) {
+      ok = mark("wa", !okPhone(el("wa").value)) & mark("contact", !!el("contact").value.trim() && !okPhone(el("contact").value));
+    }
+    if (!ok) { var first = document.querySelector('.step:not([hidden]) [aria-invalid="true"]'); if (first) first.focus(); }
+    return !!ok;
   }
 
   /* ── steps ── */
-  var steps = document.querySelectorAll(".stepEl");
-  var rails = document.querySelectorAll("#rail i");
-  function digits (v) { return (v || "").replace(/\D/g, ""); }
-  function go (n) {
-    if (n === 2 && (!state.tpl || !state.pkg)) { el("m1").classList.add("show"); return; }
-    if (n === 3 && !el("n_ar").value.trim()) { el("m2").classList.add("show"); el("n_ar").classList.add("bad"); return; }
-    if (n === 4 && !el("d").value) { el("m3").classList.add("show"); el("d").classList.add("bad"); return; }
-    if (n === 5) {
-      var w = digits(el("wa").value);
-      if (w.length < 10 || w.length > 13) { el("m4").classList.add("show"); el("wa").classList.add("bad"); return; }
-      renderReview();
-    }
+  var steps = document.querySelectorAll("#form .step");
+  function go(n, focus) {
     state.step = n;
-    steps.forEach(function (s) { s.classList.toggle("on", +s.getAttribute("data-step") === n); });
-    rails.forEach(function (r, i) { r.classList.toggle("on", i < Math.min(n, 5)); });
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    steps.forEach(function (s) { s.hidden = +s.getAttribute("data-step") !== n; });
+    document.querySelectorAll("#rail li").forEach(function (li, i) { li.classList.toggle("on", i < n); li.classList.toggle("now", i === n - 1); if (i === n - 1) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current"); });
+    if (n === 4) renderReview();
+    if (focus !== false) {
+      el("coHead").scrollIntoView({ behavior: "smooth", block: "start" });
+      var h = document.querySelector('.step[data-step="' + n + '"] h2'); if (h) h.focus({ preventScroll: true });
+    }
     save();
   }
-  document.querySelectorAll("[data-go]").forEach(function (b) {
-    b.addEventListener("click", function () { go(+b.getAttribute("data-go")); });
-  });
+  document.querySelectorAll("[data-next]").forEach(function (b) { b.addEventListener("click", function () { if (validStep(state.step)) go(state.step + 1); }); });
+  document.querySelectorAll("[data-back]").forEach(function (b) { b.addEventListener("click", function () { go(state.step - 1); }); });
 
-  /* ── field wiring ── */
+  /* ── review + order text ── */
+  function occLabel() { var o = el("occ").selectedOptions[0]; return o ? o.getAttribute(en() ? "data-en" : "data-ar") : ""; }
+  function renderReview() {
+    var t = TPL[state.tpl];
+    var rows = [
+      [en() ? "Design" : "التصميم", L(t) + " (" + t.code + ")"],
+      [en() ? "Package" : "الباقة", L(PKG[state.pkg])],
+      [en() ? "Occasion" : "المناسبة", occLabel()],
+      [en() ? "Names" : "الأسامي", el("n_ar").value + (el("n_en").value ? " / " + el("n_en").value : "")],
+      [en() ? "Date" : "التاريخ", el("d").value + (el("t").value ? " · " + el("t").value : ""), 1],
+      [en() ? "Venue" : "المكان", el("v_ar").value || el("v_en").value || (en() ? "To confirm later" : "هنأكده بعدين")],
+      [en() ? "RSVPs go to" : "التأكيدات على", el("wa").value, 1],
+      [en() ? "Total" : "الإجمالي", money(total())]
+    ];
+    if (state.rush) rows.splice(2, 0, [en() ? "Delivery" : "التسليم", en() ? "Rush, within 24 hours" : "مستعجل خلال ٢٤ ساعة"]);
+    if (state.pkg !== "classic" && el("q").value.trim()) rows.push([en() ? "Quote" : "الاقتباس", el("q").value.trim()]);
+    if (el("notes").value.trim()) rows.push([en() ? "Notes" : "ملاحظات", el("notes").value.trim()]);
+    el("review").innerHTML = rows.map(function (r) { return "<dt>" + esc(r[0]) + "</dt><dd" + (r[2] ? ' dir="ltr" style="text-align:start"' : "") + ">" + esc(r[1]) + "</dd>"; }).join("");
+  }
+  function orderText(ref) {
+    var t = TPL[state.tpl], p = PKG[state.pkg], o = el("occ").selectedOptions[0];
+    var L2 = [
+      "طلب دعوة جديد · D3wa order #" + ref,
+      "التصميم Design: " + t.ar + " / " + t.en + " (" + t.code + ")",
+      "الباقة Package: " + p.ar + " / " + p.en + " · " + total() + " EGP" + (state.rush ? " (rush)" : ""),
+      "المناسبة Occasion: " + (o ? o.getAttribute("data-ar") : ""),
+      "الأسامي Names: " + el("n_ar").value.trim() + (el("n_en").value.trim() ? " / " + el("n_en").value.trim() : ""),
+      "التاريخ Date: " + el("d").value + (el("t").value ? " " + el("t").value : "")
+    ];
+    if (el("v_ar").value.trim() || el("v_en").value.trim()) L2.push("المكان Venue: " + [el("v_ar").value.trim(), el("v_en").value.trim()].filter(Boolean).join(" / "));
+    if (el("map").value.trim()) L2.push("الخريطة Map: " + el("map").value.trim());
+    if (state.pkg !== "classic" && el("q").value.trim()) L2.push("الاقتباس Quote: " + el("q").value.trim());
+    if (el("notes").value.trim()) L2.push("ملاحظات Notes: " + el("notes").value.trim());
+    L2.push("تأكيدات الحضور RSVP: " + el("wa").value.trim());
+    if (el("contact").value.trim()) L2.push("للتواصل Contact: " + el("contact").value.trim());
+    L2.push("اللينك Link: " + C.host + "/" + slug());
+    return L2.join("\n");
+  }
+  function waHref(text) { return "https://wa.me/" + C.wa + "?text=" + encodeURIComponent(text); }
+  function paintWaPlace() { el("placeWa").href = waHref(orderText(state.uid.toUpperCase())); }
+
+  /* ── wiring ── */
+  el("designs").addEventListener("change", function (e) {
+    state.tpl = e.target.value; fixPkg(); renderPkgs();
+    if (!occTouched) el("occ").value = TPL[state.tpl].occ[0];
+    paintSummary(); renderPreview(true); save();
+  });
+  el("pkgs").addEventListener("change", function (e) { if (e.target.name === "pkg") { state.pkg = e.target.value; paintSummary(); renderPreview(); save(); } });
+  el("rush").addEventListener("change", function () { state.rush = el("rush").checked; paintSummary(); save(); });
+  el("toSig").addEventListener("click", function () { state.pkg = "signature"; renderPkgs(); paintSummary(); renderPreview(true); save(); el("q").focus(); });
   FIELDS.forEach(function (k) {
     el(k).addEventListener("input", function () {
-      el(k).classList.remove("bad");
-      var m = { n_ar:"m2", d:"m3", wa:"m4" }[k];
-      if (m) el(m).classList.remove("show");
-      if (k === "n_ar" || k === "n_en") paintSlug();
-      renderPreview();
+      if (el(k).getAttribute("aria-invalid") === "true") mark(k, false);
+      if (k === "n_ar" || k === "n_en") paintSummary();
+      if (["notes", "contact", "occ"].indexOf(k) < 0) renderPreview();
+      if (!api) paintWaPlace();
+      if (state.step === 4) renderReview();
       save();
     });
   });
-  el("fOcc").addEventListener("change", save);
-  el("rush").addEventListener("change", save);
+  el("occ").addEventListener("change", function () { occTouched = true; save(); });
+  el("agree").addEventListener("change", function () { el("agreeErr").classList.remove("show"); });
+  el("pvOpenBtn").addEventListener("click", function () { el("pv").classList.add("open"); fitFrame(); el("pvClose").focus(); });
+  el("pvClose").addEventListener("click", function () { el("pv").classList.remove("open"); el("pvOpenBtn").focus(); });
 
-  /* ── review + pay ── */
-  function occText () {
-    var o = el("fOcc").selectedOptions[0];
-    return isEn ? o.getAttribute("data-en") : o.getAttribute("data-ar");
+  /* ── placing the order ── */
+  function readyToPlace() {
+    if (!validStep(4)) return false;
+    if (!el("agree").checked) { el("agreeErr").classList.add("show"); el("agree").focus(); return false; }
+    return true;
   }
-  function total () {
-    var t = PKG[state.pkg] ? PKG[state.pkg].price : 0;
-    if (el("rush").checked && state.pkg !== "royale") t += 300;
-    return t;
-  }
-  function egp (n) { return n.toLocaleString(isEn ? "en-EG" : "ar-EG") + (isEn ? " EGP" : " جنيه"); }
-  function tplOf (k) { for (var i = 0; i < TPL.length; i++) if (TPL[i].k === k) return TPL[i]; return null; }
-  function esc (s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
-
-  function renderReview () {
-    var tp = tplOf(state.tpl), pk = PKG[state.pkg];
-    if (!tp || !pk) return;
-    var rows = [
-      [isEn ? "Design" : "التصميم", (isEn ? tp.en : tp.ar) + " · " + tp.code],
-      [isEn ? "Package" : "الباقة", (isEn ? pk.en : pk.ar)],
-      [isEn ? "Occasion" : "المناسبة", occText()],
-      [isEn ? "Names" : "الأسماء", el("n_ar").value + (el("n_en").value ? " / " + el("n_en").value : "")],
-      [isEn ? "Date" : "التاريخ", el("d").value + (el("t").value ? " · " + el("t").value : ""), 1],
-      [isEn ? "Venue" : "المكان", el("v_ar").value || (isEn ? "To be confirmed" : "هنأكده بعدين")],
-      [isEn ? "RSVPs to" : "الردود تروح لـ", el("wa").value, 1],
-      [isEn ? "Your link" : "لينككم", PUBLIC_HOST + "/" + slug(), 1]
-    ];
-    if (el("rush").checked) rows.splice(2, 0, [isEn ? "Rush" : "استعجال",
-      state.pkg === "royale" ? (isEn ? "24h (free)" : "٢٤ ساعة (مجاني)") : (isEn ? "24h (+300 EGP)" : "٢٤ ساعة (+٣٠٠ جنيه)")]);
-    el("revBox").innerHTML = rows.map(function (r) {
-      return "<div><dt>" + r[0] + "</dt><dd" + (r[2] ? ' dir="ltr"' : "") + ">" + esc(r[1]) + "</dd></div>";
-    }).join("");
-    el("totalVal").textContent = egp(total());
-    payBox();
-  }
-
-  function payBox () {
-    var t = total(), half = Math.round(t / 2);
-    var acct = state.pay === "vcash" ? "0100 550 9418" : "khalid@instapay";
-    var label_ar = state.pay === "vcash" ? "محفظة فودافون كاش" : "حساب إنستاباي";
-    var label_en = state.pay === "vcash" ? "Vodafone Cash wallet" : "InstaPay account";
-    el("payBox").innerHTML =
-      '<span class="t-ar">حوّلوا <b>' + egp(half) + '</b> (٥٠٪ مقدم) على ' + label_ar +
-        ': <span class="num">' + acct + '</span><br>وبعد التحويل دوسوا الزرار تحت، وابعتوا صورة التحويل لو طلبناها.</span>' +
-      '<span class="t-en">Transfer <b>' + egp(half) + '</b> (50% deposit) to the ' + label_en +
-        ': <span class="num">' + acct + '</span><br>Then tap the button below; send the receipt only if we ask.</span>';
-  }
-
-  /* ── confirm ── */
-  function orderMessage () {
-    var tp = tplOf(state.tpl), pk = PKG[state.pkg];
-    var L = [];
-    L.push("طلب دعوة · D3wa order #" + state.uid.toUpperCase());
-    L.push("اللينك Link: " + PUBLIC_HOST + "/" + slug());
-    L.push("التصميم Design: " + tp.ar + " / " + tp.en + " (" + tp.code + ")");
-    L.push("الباقة Package: " + pk.ar + " / " + pk.en);
-    L.push("المناسبة Occasion: " + el("fOcc").selectedOptions[0].getAttribute("data-ar"));
-    L.push("الأسماء Names: " + el("n_ar").value + (el("n_en").value ? " / " + el("n_en").value : ""));
-    L.push("التاريخ Date: " + el("d").value + (el("t").value ? " · " + el("t").value : ""));
-    if (el("v_ar").value) L.push("المكان Venue: " + el("v_ar").value);
-    if (el("map").value) L.push("الخريطة Map: " + el("map").value);
-    L.push("ردود الحضور RSVP to: " + el("wa").value);
-    if (el("contact").value) L.push("للتواصل Contact: " + el("contact").value);
-    if (el("q").value.trim()) L.push("اقتباس Quote: " + el("q").value.trim());
-    if (el("rush").checked) L.push("استعجال Rush: 24h");
-    L.push("الدفع Payment: " + state.pay + " · " + total() + " EGP");
-    return L.join("\n");
-  }
-
-  function showDone (link, ref, viaApi) {
-    el("doneSlug").textContent = link;
-    el("openPv").href = viaApi ? link : previewURL();
-    el("doneMsg").innerHTML = viaApi
-      ? '<span class="t-ar">اللينك ده بقى محجوز باسمكم، وفيه دعوتكم بكل تفاصيلها. بمجرد ما نأكد وصول التحويل بتتنشر عليه ويختفي شريط «معاينة» — من غير ما تعملوا أي حاجة تانية.</span>' +
-        '<span class="t-en">This link is now reserved for you and already holds your invitation. Once we confirm the transfer it publishes there and the "preview" bar disappears, with nothing more needed from you.</span>'
-      : '<span class="t-ar">دي معاينة دعوتكم الحقيقية بكل تفاصيلكم. بنأكد وصول التحويل وننشرها على اللينك ده — عادةً خلال ساعات قليلة.</span>' +
-        '<span class="t-en">This is your real invitation with your details. We confirm the transfer and publish it to this link, usually within a few hours.</span>';
-    el("doneWhy").innerHTML =
-      '<span class="t-ar">رقم طلبكم <b>#' + ref + '</b> — احتفظوا بيه لو حبيتوا تكلمونا.</span>' +
-      '<span class="t-en">Your order reference is <b>#' + ref + '</b>; keep it if you need to reach us.</span>';
-    steps.forEach(function (s) { s.classList.toggle("on", +s.getAttribute("data-step") === 6); });
-    rails.forEach(function (r) { r.classList.add("on"); });
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  el("paidBtn").addEventListener("click", function () {
-    var btn = this;
-    btn.disabled = true;
-
-    var payload = {
-      template: state.tpl, package: state.pkg, occasion: el("fOcc").value,
+  function payload() {
+    return {
+      template: state.tpl, package: state.pkg, occasion: el("occ").value,
       n_ar: el("n_ar").value.trim(), n_en: el("n_en").value.trim(),
       event_date: el("d").value, event_time: el("t").value,
       v_ar: el("v_ar").value.trim(), v_en: el("v_en").value.trim(),
-      map_url: el("map").value.trim(), quote: el("q").value.trim(),
-      rsvp_wa: el("wa").value.replace(/\D/g, "").replace(/^0/, "20"),
-      contact_wa: el("contact").value.replace(/\D/g, "").replace(/^0/, "20"),
-      rush: el("rush").checked ? 1 : 0, pay_method: state.pay
+      map_url: el("map").value.trim(), quote: state.pkg !== "classic" ? el("q").value.trim() : "",
+      notes: el("notes").value.trim(),
+      rsvp_wa: digits(el("wa").value).replace(/^0/, "20"),
+      contact_wa: digits(el("contact").value).replace(/^0/, "20"),
+      rush: state.rush ? 1 : 0, pay_method: "later"
     };
-
-    /* The backend reserves the permanent slug. Until it is deployed the page
-       still works: we fall back to handing the order over on WhatsApp. */
-    fetch("/api/orders", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(payload)
-    })
+  }
+  function showDone(ref, link, viaApi) {
+    try { localStorage.removeItem("d3wa-build"); } catch (e) {}
+    el("form").hidden = true; el("rail").hidden = true; el("coHead").hidden = true;
+    el("done").hidden = false;
+    el("doneH").innerHTML = viaApi ? bi("طلبكم وصلنا", "We have your order") : bi("خلّصوا الإرسال على واتساب", "Finish sending it on WhatsApp");
+    el("doneLead").innerHTML = viaApi
+      ? bi("لينككم محجوز، وفيه معاينة دعوتكم بكل تفاصيلها. هنكلمكم على واتساب خلال ساعات.", "Your link is reserved and already shows a preview of your invitation. We will message you on WhatsApp within a few hours.")
+      : bi("واتساب اتفتح برسالة فيها الطلب كله. ابعتوها، وهنرد عليكم خلال ساعات. لو ماتفتحش، استعملوا الزرار تحت.", "WhatsApp opened with your full order in a message. Send it and we will reply within a few hours. If it did not open, use the button below.");
+    el("doneRef").textContent = "#" + ref;
+    var payStep = state.pkg === C.payment.payOnceUpTo
+      ? bi("الدفع بعد المعاينة", "Pay after the preview")
+      : bi("المقدم وبداية الشغل", "Deposit, then we start");
+    var items = [
+      [bi("الطلب", "Order"), viaApi ? bi("وصل ومحجوز باسمكم.", "Received and reserved in your names.") : bi("ابعتوا رسالة واتساب.", "Send the WhatsApp message.")],
+      [bi("التأكيد على واتساب", "Confirmation on WhatsApp"), bi("بنراجع التفاصيل معاكم ونستلم الصور لو فيه.", "We go over the details with you and collect any photos.")],
+      [payStep, bi("إنستاباي أو فودافون كاش.", "InstaPay or Vodafone Cash.")],
+      [bi("التسليم", "Delivery"), bi("الدعوة على لينككم خلال " + (PKG[state.pkg].delivery === 24 || state.rush ? "٢٤" : "٤٨") + " ساعة، وجاهزة تتبعت.", "Your invitation on your link within " + (PKG[state.pkg].delivery === 24 || state.rush ? "24" : "48") + " hours, ready to send.")]
+    ];
+    el("doneSteps").innerHTML = items.map(function (it, i) { return "<li" + (i === (viaApi ? 1 : 0) ? ' class="now"' : "") + "><b>" + it[0] + "</b><span>" + it[1] + "</span></li>"; }).join("");
+    el("donePreview").href = link;
+    el("doneWa").href = viaApi
+      ? waHref((en() ? "Hello, about my D3wa order #" : "أهلاً، بخصوص طلب دعوة رقم #") + ref)
+      : waHref(orderText(ref));
+    if (!viaApi) el("doneWa").innerHTML = bi("ابعتوا الطلب على واتساب", "Send the order on WhatsApp");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    el("doneH").focus({ preventScroll: true });
+  }
+  el("form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!readyToPlace()) return;
+    var btn = el("placeBtn"); btn.disabled = true; el("sendErr").classList.remove("show");
+    fetch("/api/orders", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload()) })
       .then(function (r) { if (!r.ok) throw new Error("api " + r.status); return r.json(); })
-      .then(function (o) {
-        try { localStorage.removeItem("d3wa-build"); } catch (e) {}
-        showDone(location.origin + "/" + o.slug, o.id, true);
-      })
-      .catch(function () {
-        showDone(PUBLIC_HOST + "/" + slug(), state.uid.toUpperCase(), false);
-        window.open("https://wa.me/" + SUPPORT + "?text=" + encodeURIComponent(orderMessage()), "_blank", "noopener");
-      })
+      .then(function (o) { showDone(o.id, location.origin + "/" + o.slug, true); })
+      .catch(function () { el("sendErr").classList.add("show"); el("placeWa").hidden = false; paintWaPlace(); })
       .then(function () { btn.disabled = false; });
   });
-
-  el("copyLink").addEventListener("click", function () {
-    var txt = PUBLIC_HOST + "/" + slug();
-    if (navigator.clipboard) navigator.clipboard.writeText(txt);
+  el("placeWa").addEventListener("click", function (e) {
+    if (!readyToPlace()) { e.preventDefault(); return; }
+    paintWaPlace();
+    var ref = state.uid.toUpperCase(), link = previewURL();
+    setTimeout(function () { showDone(ref, link, false); }, 300);
   });
 
-  /* ── mobile preview sheet ── */
-  el("pvFab").addEventListener("click", function () { el("pvCol").classList.add("open"); });
-  el("pvClose").addEventListener("click", function () { el("pvCol").classList.remove("open"); });
+  /* ── which way the order travels: the Worker when it is deployed, WhatsApp otherwise ── */
+  function useWhatsApp() { api = false; el("placeBtn").hidden = true; el("placeWa").hidden = false; paintWaPlace(); }
+  useWhatsApp();
+  /* GitHub Pages has no backend, so only probe on a host that can run the Worker */
+  if (!/\.github\.io$/.test(location.hostname)) fetch("/api/health", { cache: "no-store" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) { if (j && j.ok) { api = true; el("placeBtn").hidden = false; el("placeWa").hidden = true; } })
+    .catch(function () {});
 
-  /* ── theme + language ── */
-  var themeMeta = document.querySelector('meta[name="theme-color"]');
-  function paintMeta () {
-    if (themeMeta) themeMeta.setAttribute("content",
-      docEl.getAttribute("data-theme") === "dark" ? "#0e1628" : "#f5efe3");
-  }
-  el("themeBtn").addEventListener("click", function () {
-    var next = docEl.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    docEl.setAttribute("data-theme", next);
-    try { localStorage.setItem("d3wa-theme", next); } catch (e) {}
-    paintMeta();
-  });
-  function applyLang () {
-    docEl.classList.toggle("en", isEn);
-    docEl.lang = isEn ? "en" : "ar";
-    docEl.dir = isEn ? "ltr" : "rtl";
-    var helpMsg = isEn ? "Hello! I need help with my D3wa order #" + state.uid.toUpperCase()
-                       : "أهلاً! محتاج مساعدة في طلب دعوة رقم #" + state.uid.toUpperCase();
-    var href = "https://wa.me/" + SUPPORT + "?text=" + encodeURIComponent(helpMsg);
-    el("helpWa").href = href; el("helpWa2").href = href;
-    if (state.step === 5) renderReview();
-  }
-  el("langBtn").addEventListener("click", function () { isEn = !isEn; applyLang(); });
-
-  applyLang(); paintMeta(); paintSlug();
-  if (state.tpl) renderPreview(true);
-  else { state.tpl = "gold"; document.querySelector('#tplTiles .tile[data-v="gold"]').classList.add("sel"); renderPreview(true); }
-})();
+  document.addEventListener("d3wa:lang", function () { paintOcc(); paintSummary(); if (state.step === 4) renderReview(); if (!api) paintWaPlace(); });
+  paintOcc(); paintSummary(); go(1, false); renderPreview(true);
+});
 </script>
-
 </body>
 </html>
