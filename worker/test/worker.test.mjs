@@ -130,6 +130,12 @@ ok("date + venue reach the page",
   injected.get("d") === "2026-11-19" && injected.get("v_ar") === "قاعة النيل، الزمالك");
 ok("rsvp number reaches the page", injected.get("wa") === "201012345678", injected.get("wa"));
 ok("one-language venue fills both", injected.get("v_en") === "قاعة النيل، الزمالك", injected.get("v_en"));
+const ogTitle = (pendingHTML.match(/<meta property="og:title" content="([^"]*)">/) || [])[1] || "";
+const ogDesc = (pendingHTML.match(/<meta property="og:description" content="([^"]*)">/) || [])[1] || "";
+ok("share title carries the couple's names", ogTitle.includes("ندى وأحمد") && ogTitle.includes("Nada &amp; Ahmed"), ogTitle);
+ok("share text carries their venue and year", ogDesc.includes("قاعة النيل") && ogDesc.includes("2026"), ogDesc);
+ok("no sample couple left in the share tags", !/Omar|عمر وسلمى/.test(ogTitle + ogDesc));
+ok("og:url is the invitation link", pendingHTML.includes(`<meta property="og:url" content="https://d3wa.io/${order.slug}">`));
 ok("signature keeps the credit line", !injected.has("credit"));
 const royalePage = await (await call("/" + royale.slug)).text();
 ok("royale drops the credit line", /credit=0/.test(royalePage));

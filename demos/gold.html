@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Omar &amp; Salma, engagement invitation | عمر وسلمى</title>
-<meta name="description" content="You are invited to the engagement of Omar &amp; Salma. Saturday, 22 August 2026, 8:00 PM at Villa Rose, Maadi, Cairo.">
+<title>تصميم كلاسيك جولد | Classic Gold | دعوة D3wa</title>
+<meta name="description" content="ديمو دعوة كلاسيك جولد: عاجي ودهبي هادي. A D3wa invitation demo: Classic Gold, quiet ivory and champagne gold.">
 <meta name="theme-color" content="#faf6ee">
 <meta name="color-scheme" content="light">
 
@@ -15,8 +15,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/demos/gold.html">
 <link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/demos/gold.html">
-<meta property="og:title" content="Omar &amp; Salma, engagement invitation | عمر وسلمى">
-<meta property="og:description" content="Saturday, 22 August 2026, 8:00 PM, Villa Rose, Maadi, Cairo. السبت ٢٢ أغسطس ٢٠٢٦">
+<meta property="og:title" content="تصميم كلاسيك جولد | Classic Gold | دعوة D3wa">
+<meta property="og:description" content="ديمو دعوة كلاسيك جولد: عاجي ودهبي هادي. A D3wa invitation demo: Classic Gold, quiet ivory and champagne gold.">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23faf6ee'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%23a9843f' stroke-width='3'/%3E%3C/svg%3E">
 
@@ -850,7 +850,7 @@ body.intro-lock{overflow:hidden}
   try {
     var p = new URLSearchParams(window.__D3WA__ || location.search);
     if (!p.get("d")) {
-      var t = new Date(Date.now() + 90 * 864e5);
+      var t = new Date(Date.now() + 90 * 864e5); t.setDate(t.getDate() + (4 - t.getDay() + 7) % 7); /* demos land on a Thursday */
       p.set("d", t.getFullYear() + "-" + ("0"+(t.getMonth()+1)).slice(-2) + "-" + ("0"+t.getDate()).slice(-2));
       window.__D3WA__ = p.toString();
     }

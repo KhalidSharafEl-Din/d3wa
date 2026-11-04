@@ -588,7 +588,11 @@ document.addEventListener("DOMContentLoaded", function () {
     el("doneWa").href = viaApi
       ? waHref((en() ? "Hello, about my D3wa order #" : "أهلاً، بخصوص طلب دعوة رقم #") + ref)
       : waHref(orderText(ref));
-    if (!viaApi) el("doneWa").innerHTML = bi("ابعتوا الطلب على واتساب", "Send the order on WhatsApp");
+    if (!viaApi) {
+      el("doneWa").innerHTML = bi("ابعتوا الطلب على واتساب", "Send the order on WhatsApp");
+      el("doneWa").parentNode.insertBefore(el("doneWa"), el("donePreview"));
+      el("donePreview").className = "btn btn-line";
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
     el("doneH").focus({ preventScroll: true });
   }

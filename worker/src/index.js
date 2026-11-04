@@ -147,14 +147,42 @@ function paramString(o) {
  * static assets and the order data is injected as `window.__D3WA__`, which the
  * templates read in place of `location.search`.
  */
+/* WhatsApp builds link previews from the raw HTML and runs no script, so the
+   couple's own names, date and venue go into the title and share tags here. */
+const OCC_LABEL = {
+  wedding: ["فرح", "Wedding"], engagement: ["خطوبة", "Engagement"], katb: ["كتب كتاب", "Katb kitab"],
+  henna: ["ليلة حنة", "Henna night"], baby: ["سبوع", "Sebou3"], grad: ["حفلة تخرج", "Graduation"]
+};
+const attr = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+function shareTags(order) {
+  const [occAr, occEn] = OCC_LABEL[order.occasion] || OCC_LABEL.wedding;
+  const nEn = order.n_en || order.n_ar;
+  const title = `${occAr} ${order.n_ar} | ${occEn}: ${nEn}`;
+  const at = new Date(`${order.event_date}T${order.event_time || "20:00"}:00`);
+  const fmt = (loc, o) => { try { return new Intl.DateTimeFormat(loc, o).format(at); } catch { return order.event_date; } };
+  const day = { weekday: "long", day: "numeric", month: "long", year: "numeric" }, hm = { hour: "numeric", minute: "2-digit" };
+  const ar = [fmt("ar-EG", day), fmt("ar-EG", hm), order.v_ar || order.v_en].filter(Boolean).join("، ");
+  const en = [fmt("en-GB", day), fmt("en-US", hm), order.v_en || order.v_ar].filter(Boolean).join(", ");
+  return { title, desc: `${ar}. ${en}.` };
+}
+function withShareTags(html, order, pageURL) {
+  const { title, desc } = shareTags(order);
+  return html
+    .replace(/<title>[^<]*<\/title>/, `<title>${attr(title)}</title>`)
+    .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${attr(desc)}">`)
+    .replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${attr(title)}">`)
+    .replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${attr(desc)}">`)
+    .replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${attr(pageURL)}">`);
+}
+
 async function renderInvitation(order, env, request) {
   const url = new URL(request.url);
   const assetURL = new URL(`/demos/${order.template}.html`, url.origin);
   const res = await env.ASSETS.fetch(new Request(assetURL, { headers: request.headers }));
   if (!res.ok) return new Response("Template missing", { status: 500 });
 
-  let html = await res.text();
-  const inject = `<script>window.__D3WA__=${JSON.stringify(paramString(order))};</script>`;
+  let html = withShareTags(await res.text(), order, `${url.origin}/${order.slug}`);
+  const inject =`<script>window.__D3WA__=${JSON.stringify(paramString(order))};</script>`;
 
   html = html.includes("</head>")
     ? html.replace("</head>", `${inject}\n</head>`)

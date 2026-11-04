@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>عمر وسلمى، حفل زفاف | Omar &amp; Salma</title>
-<meta name="description" content="دعوة لحضور حفل زفاف عمر وسلمى، السبت ٢٢ أغسطس ٢٠٢٦، ٦:٠٠ مساءً، قاعة الحديقة، الجيزة. You are invited to the wedding of Omar &amp; Salma.">
+<title>تصميم جاردن | Botanical Garden | دعوة D3wa</title>
+<meta name="description" content="ديمو دعوة جاردن: خضرة مائية وقوس نباتي. A D3wa invitation demo: Botanical Garden, watercolour greenery and a floral arch.">
 <meta name="theme-color" content="#FAF8F2">
 <meta name="color-scheme" content="light">
 
@@ -15,8 +15,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/demos/garden.html">
 <link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/demos/garden.html">
-<meta property="og:title" content="عمر وسلمى، حفل زفاف | Omar &amp; Salma">
-<meta property="og:description" content="السبت ٢٢ أغسطس ٢٠٢٦، ٦:٠٠ مساءً، قاعة الحديقة، الجيزة. Saturday, 22 August 2026, 6:00 PM">
+<meta property="og:title" content="تصميم جاردن | Botanical Garden | دعوة D3wa">
+<meta property="og:description" content="ديمو دعوة جاردن: خضرة مائية وقوس نباتي. A D3wa invitation demo: Botanical Garden, watercolour greenery and a floral arch.">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FAF8F2'/%3E%3Cpath d='M8 26 C10 16 14 9 24 5 C22 16 17 22 8 26 Z' fill='%239CAF88'/%3E%3C/svg%3E">
 
@@ -998,7 +998,7 @@ html.en .pb-line{font-weight:500}
   try {
     var p = new URLSearchParams(window.__D3WA__ || location.search);
     if (!p.get("d")) {
-      var t = new Date(Date.now() + 90 * 864e5);
+      var t = new Date(Date.now() + 90 * 864e5); t.setDate(t.getDate() + (4 - t.getDay() + 7) % 7); /* demos land on a Thursday */
       p.set("d", t.getFullYear() + "-" + ("0"+(t.getMonth()+1)).slice(-2) + "-" + ("0"+t.getDate()).slice(-2));
       window.__D3WA__ = p.toString();
     }

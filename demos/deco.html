@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>عمر وسلمى، دعوة زفاف | Omar &amp; Salma</title>
-<meta name="description" content="دعوة لحضور حفل زفاف عمر وسلمى، السبت ٢٢ أغسطس ٢٠٢٦، ٨:٠٠ مساءً، فيلا روز، المعادي، القاهرة. The wedding of Omar &amp; Salma, Saturday, 22 August 2026, 8:00 PM, Villa Rose, Maadi, Cairo.">
+<title>تصميم آرت ديكو | Art Deco | دعوة D3wa</title>
+<meta name="description" content="ديمو دعوة آرت ديكو: أسود ودهبي هندسي من العشرينات. A D3wa invitation demo: Art Deco, 1920s black and geometric gold.">
 <meta name="theme-color" content="#0E0E10">
 <meta name="color-scheme" content="dark">
 
@@ -15,8 +15,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/demos/deco.html">
 <link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/demos/deco.html">
-<meta property="og:title" content="عمر وسلمى، دعوة زفاف | Omar &amp; Salma">
-<meta property="og:description" content="السبت ٢٢ أغسطس ٢٠٢٦، ٨:٠٠ مساءً، فيلا روز، المعادي. Saturday, 22 August 2026, 8:00 PM">
+<meta property="og:title" content="تصميم آرت ديكو | Art Deco | دعوة D3wa">
+<meta property="og:description" content="ديمو دعوة آرت ديكو: أسود ودهبي هندسي من العشرينات. A D3wa invitation demo: Art Deco, 1920s black and geometric gold.">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E0E10'/%3E%3Cpath d='M16 4 27 16 16 28 5 16Z' fill='none' stroke='%23D4AF37' stroke-width='2.4'/%3E%3C/svg%3E">
 
@@ -822,7 +822,7 @@ html:not(.en) .chip{font-family:var(--kufi);font-weight:500;font-size:15px}
         <a class="btn" id="calBtn" target="_blank" rel="noopener noreferrer"
            href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Omar%20%26%20Salma%27s%20wedding&amp;dates=20260822T200000/20260823T000000&amp;ctz=Africa/Cairo&amp;location=Villa%20Rose%2C%20Maadi%2C%20Cairo&amp;details=A%20love%20for%20the%20ages%2C%20a%20night%20of%20gold.">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
-          <span class="t-ar">أضف للتقويم</span>
+          <span class="t-ar">أضيفوها للتقويم</span>
           <span class="t-en">Calendar</span>
         </a>
       </div>
@@ -900,7 +900,7 @@ html:not(.en) .chip{font-family:var(--kufi);font-weight:500;font-size:15px}
       </div>
         <a class="btn" id="shareBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/?text=You%27re%20invited%20to%20the%20wedding%20of%20Omar%20%26%20Salma.%20https%3A%2F%2Fkhalidsharafel-din.github.io%2Fd3wa%2Fdemos%2Fdeco.html">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M16 6l-4-4-4 4M12 2v13"/></svg>
-          <span class="t-ar">ابعت الدعوة لحد</span>
+          <span class="t-ar">ابعتوا الدعوة لحبايبكم</span>
           <span class="t-en">Share The Invitation</span>
         </a>
       </div>
@@ -932,7 +932,7 @@ html:not(.en) .chip{font-family:var(--kufi);font-weight:500;font-size:15px}
   try {
     var p = new URLSearchParams(window.__D3WA__ || location.search);
     if (!p.get("d")) {
-      var t = new Date(Date.now() + 90 * 864e5);
+      var t = new Date(Date.now() + 90 * 864e5); t.setDate(t.getDate() + (4 - t.getDay() + 7) % 7); /* demos land on a Thursday */
       p.set("d", t.getFullYear() + "-" + ("0"+(t.getMonth()+1)).slice(-2) + "-" + ("0"+t.getDate()).slice(-2));
       window.__D3WA__ = p.toString();
     }
