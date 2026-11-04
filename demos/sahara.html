@@ -183,6 +183,7 @@ html:not(.ar) .verse small{font-style:normal}
 /* the couple's own line at the foot, in pen */
 .ps{margin-top:12px!important;font:400 calc(21px * var(--k))/1.3 var(--hand);color:var(--pen);rotate:-2deg;transform-origin:100% 50%}
 html:not(.ar) .ps{font:italic 400 calc(17px * var(--k))/1.3 var(--en);transform-origin:0 50%}
+.ps .wa{margin-inline-end:-.16em}
 
 .intro{position:fixed;inset:0;z-index:30;cursor:pointer;-webkit-tap-highlight-color:transparent}
 html:not(.closed) .intro{pointer-events:none}
@@ -556,8 +557,8 @@ html:not(.ar) .share a{font-size:15px}
               <span class="t-en"><span class="n" id="nEn1">Ziad</span> <span class="n"><span class="amp">&amp;</span><span class="sr-only">and</span><span id="nEn2">Lina</span></span></span>
             </h1>
             <p class="formal">
-              <span class="t-ar">وذلك بمشيئة الله يوم <b id="dateAr">الخميس ٢٢ أغسطس ٢٠٢٦</b>، في تمام <span id="timeAr">الساعة الثامنة مساءً</span>، <span id="venueAr">بسي شيل باي، الساحل الشمالي</span>.</span>
-              <span class="t-en">on <b id="dateEn">Thursday, 22 August 2026</b>, at <span id="timeEn">eight o'clock in the evening</span>, at <span id="venueEn">Seashell Bay, North Coast</span>.</span>
+              <span class="t-ar">وذلك بمشيئة الله <span style="white-space:nowrap">يوم <b id="dateAr">الخميس ٢٢ أغسطس ٢٠٢٦</b>،</span> <span style="white-space:nowrap">في تمام <span id="timeAr">الساعة الثامنة مساءً</span>،</span> <span id="venueAr">بسي شيل باي، الساحل الشمالي</span>.</span>
+              <span class="t-en"><span style="white-space:nowrap">on <b id="dateEn">Thursday, 22 August 2026</b>,</span> <span style="white-space:nowrap">at <span id="timeEn">eight o'clock in the evening</span>,</span> at <span id="venueEn">Seashell Bay, North Coast</span>.</span>
             </p>
             <p class="verse" id="quote"><span class="t-ar">«وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً» <small>الروم ٢١</small></span><span class="t-en">“And He placed between you affection and mercy.” <small>Ar-Rum 21</small></span></p>
             <p class="ps" id="left" aria-live="off"></p>
@@ -908,7 +909,14 @@ html:not(.ar) .share a{font-size:15px}
     el.textContent = "";
     parts.forEach(function (t, i) {
       if (i === 1) { var b = document.createElement("span"); b.className = "num"; b.textContent = t; el.appendChild(b); }
-      else el.appendChild(document.createTextNode(t));
+      else {
+        /* Ruqaa sets a wide gap after «و»: hold it against the word it belongs to */
+        var j = t.indexOf("ومستنيينكم");
+        if (j < 0) { el.appendChild(document.createTextNode(t)); return; }
+        el.appendChild(document.createTextNode(t.slice(0, j)));
+        var w = document.createElement("span"); w.className = "wa"; w.textContent = "و"; el.appendChild(w);
+        el.appendChild(document.createTextNode(t.slice(j + 1)));
+      }
     });
   }
   setInterval(renderLeft, 6e4);

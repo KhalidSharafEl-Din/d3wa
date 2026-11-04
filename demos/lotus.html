@@ -182,7 +182,7 @@ html.en .host .ttl{display:inline;font-size:1em;font-weight:inherit}
 .lead{font-size:18px;line-height:1.6;text-wrap:balance}
 html.en .lead{font:italic 400 16.5px/1.5 var(--en);max-width:24ch;margin:0 auto}
 /* the baby's name: the same rose ink, pressed into the board */
-.name{margin:0;font:400 64px/1.6 var(--ar-name);color:var(--rose);
+.name{margin:.16em 0 0;font:400 64px/1.85 var(--ar-name);color:var(--rose);
   text-shadow:0 1px 0 rgba(255,246,247,.8),0 -1px 0 rgba(110,40,55,.16)}
 html.en .name{font:400 54px/1.2 var(--en-name);margin:8px 0 6px}
 .name .n{display:block;white-space:nowrap}
@@ -203,6 +203,7 @@ html.en .to .hand{font-size:15.5px;font-style:normal}
 html.en .formal{font-size:16px;line-height:1.6}
 .formal b{font-weight:600;white-space:nowrap}
 .iso{unicode-bidi:isolate}
+.nw{white-space:nowrap}
 html.en .formal b{font-weight:500}
 .insert h2{margin:18px 0 4px;font:600 18px/1.5 var(--ar);color:var(--rose);text-align:start}
 html.en .insert h2{font:italic 400 17px/1.4 var(--en)}
@@ -218,8 +219,8 @@ html.en .go{font-size:14.5px}
 /* the countdown, added by hand in the corner of the insert */
 .left{position:absolute;inset-inline-end:18px;bottom:10px;margin:0;font:300 15px/1.4 var(--hand);color:var(--rose-d)}
 html.en .left{font-size:13.5px}
-.notes{margin-top:18px;padding-top:12px;border-top:1px solid rgba(98,128,91,.28);font-size:15.5px;line-height:1.7;color:var(--ink-2)}
-html.en .notes{font-size:14px;line-height:1.5}
+.notes{margin-top:18px;padding-top:12px;border-top:1px solid rgba(98,128,91,.28);font-size:15.5px;line-height:1.7;color:var(--ink)}
+html.en .notes{font-size:15.5px;line-height:1.55}
 .notes b{font-weight:600;color:var(--ink)}
 html.en .notes b{font-weight:500}
 .notes p+p{margin-top:2px}
@@ -244,13 +245,17 @@ html.en .line input::placeholder{font:italic 400 14px/1.4 var(--en)}
 .line.count label{line-height:1.5}
 .line.count input{flex:0 0 64px;text-align:center;font:500 20px/1.4 var(--ar)}
 html.en .line.count input{font:400 17px/1.4 var(--en)}
-/* the reply goes out under a favour sticker */
-.sticker{position:relative;display:grid;place-items:center;width:232px;height:78px;margin:22px auto 0;text-decoration:none;color:var(--ivory);
-  -webkit-tap-highlight-color:transparent}
-.sticker svg{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 1px 1px rgba(80,30,40,.35))}
-.sticker span{position:relative;font:600 21px/1.2 var(--ar);text-shadow:0 1px 0 rgba(70,20,30,.35)}
-html.en .sticker span{font:500 18px/1.2 var(--en)}
-.sticker:hover svg path{fill:var(--rose-d)}
+/* the reply goes out under a rubber stamp: the same rose ink as the tag, an oval ring,
+   the ink uneven where the pad ran dry */
+.rstamp{position:relative;display:grid;place-items:center;width:206px;height:64px;margin:22px auto 0;text-decoration:none;color:var(--rose);
+  -webkit-tap-highlight-color:transparent;
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 2.05'/%3E%3C/filter%3E%3Crect width='120' height='60' filter='url(%23d)'/%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 2.05'/%3E%3C/filter%3E%3Crect width='120' height='60' filter='url(%23d)'/%3E%3C/svg%3E");
+  -webkit-mask-size:120px 60px;mask-size:120px 60px}
+.rstamp svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.rstamp span{position:relative;font:700 20px/1.2 var(--ar);letter-spacing:0}
+html.en .rstamp span{font:600 17px/1.2 var(--en)}
+.rstamp:hover{color:var(--rose-d)}
 .decline{display:inline-block;margin-top:12px;font-size:16px;color:var(--ink-2);text-underline-offset:4px}
 html.en .decline{font-size:14.5px}
 
@@ -289,7 +294,7 @@ html.en .share a{font-size:14.5px}
   html.en .hosts-cols.t-en{font-size:28px}
   .lead{font-size:27px}
   html.en .lead{font-size:24px}
-  .name{font-size:140px;line-height:1.55}
+  .name{font-size:140px;line-height:1.8}
   html.en .name{font-size:112px;margin:18px 0 14px}
   .to{font-size:23px;margin-top:14px}
   html.en .to{font-size:21px}
@@ -525,8 +530,8 @@ html.en .share a{font-size:14.5px}
     <!-- the small insert that came out of the bag: when, where and the rituals -->
     <article class="insert" aria-label="الموعد والمكان / When and where">
       <p class="formal">
-        <span class="t-ar">وذلك بمشيئة الله يوم <b id="dateAr">الأربعاء ١١ نوفمبر ٢٠٢٦</b>، في تمام <span id="timeAr">الساعة السادسة مساءً</span>، <span id="venueAr">بمنزل العائلة، المعادي، القاهرة</span>.</span>
-        <span class="t-en">on <b id="dateEn">Wednesday, 11 November 2026</b>, at <span id="timeEn">six o'clock in the evening</span>, <span id="venueEnPre">at </span><span id="venueEn" class="iso">the family home, Maadi, Cairo</span>.</span>
+        <span class="t-ar">وذلك بمشيئة الله <span class="nw">يوم <b id="dateAr">الأربعاء ١١ نوفمبر ٢٠٢٦</b>،</span> <span class="nw">في تمام <span id="timeAr">الساعة السادسة مساءً</span>،</span> <span id="venueAr">بمنزل العائلة، المعادي، القاهرة</span>.</span>
+        <span class="t-en"><span class="nw">on <b id="dateEn">Wednesday, 11 November 2026</b>,</span> at <span class="nw" id="timeEn">six o'clock in the evening</span>, <span id="venueEnPre">at </span><span id="venueEn" class="iso">the family home, Maadi, Cairo</span>.</span>
       </p>
       <div id="agendaSec">
         <h2><span class="t-ar">فقرات السبوع</span><span class="t-en">The order of the evening</span></h2>
@@ -545,8 +550,8 @@ html.en .share a{font-size:14.5px}
     <p class="by" id="replyBy"></p>
     <div class="line"><label for="guestName"><span class="t-ar">الاسم:</span><span class="t-en">Name:</span></label><input id="guestName" dir="auto" autocomplete="name" maxlength="60"></div>
     <div class="line count" id="guestSec"><label for="guestCount"><span class="t-ar">عدد الأفراد:</span><span class="t-en">Number attending:</span></label><input id="guestCount" inputmode="numeric" maxlength="2" autocomplete="off"></div>
-    <a class="sticker" id="rsvpBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418">
-      <svg viewBox="-4 -4 248 88" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="#9e465b" d="M233.0 40.0Q239.0 43.4 231.3 45.7Q235.4 50.2 226.2 51.3Q228.3 56.7 217.9 56.5Q217.9 62.7 206.6 61.2Q204.5 67.9 192.6 65.3Q188.5 72.4 176.5 68.6Q170.5 75.8 158.6 71.0Q150.9 78.2 139.6 72.5Q130.4 79.3 120.0 73.0Q109.6 79.3 100.4 72.5Q89.1 78.2 81.4 71.0Q69.5 75.8 63.5 68.6Q51.5 72.4 47.4 65.3Q35.5 67.9 33.4 61.2Q22.1 62.7 22.1 56.5Q11.7 56.7 13.8 51.3Q4.6 50.2 8.7 45.7Q1.0 43.4 7.0 40.0Q1.0 36.6 8.7 34.3Q4.6 29.8 13.8 28.7Q11.7 23.3 22.1 23.5Q22.1 17.3 33.4 18.8Q35.5 12.1 47.4 14.7Q51.5 7.6 63.5 11.4Q69.5 4.2 81.4 9.0Q89.1 1.8 100.4 7.5Q109.6 0.7 120.0 7.0Q130.4 0.7 139.6 7.5Q150.9 1.8 158.6 9.0Q170.5 4.2 176.5 11.4Q188.5 7.6 192.6 14.7Q204.5 12.1 206.6 18.8Q217.9 17.3 217.9 23.5Q228.3 23.3 226.2 28.7Q235.4 29.8 231.3 34.3Q239.0 36.6 233.0 40.0Z"/></svg>
+    <a class="rstamp" id="rsvpBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418">
+      <svg viewBox="0 0 206 64" aria-hidden="true" focusable="false"><ellipse cx="103" cy="32" rx="100" ry="29" fill="none" stroke="currentColor" stroke-width="2.8"/><ellipse cx="103" cy="32" rx="93.5" ry="23.5" fill="none" stroke="currentColor" stroke-width="1"/></svg>
       <span><span class="t-ar">سنحضر بإذن الله</span><span class="t-en">We will be there</span></span>
     </a>
     <a class="decline" id="noBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="t-ar">نعتذر عن الحضور</span><span class="t-en">We can't make it</span></a>
@@ -830,7 +835,7 @@ html.en .share a{font-size:14.5px}
   }
   setInterval(renderLeft, 6e4);
 
-  /* ── the reply: name and count written on the card, the sticker sends it on WhatsApp ── */
+  /* ── the reply: name and count written on the card, the stamp sends it on WhatsApp ── */
   var latin = function (v) { return String(v).replace(/[٠-٩]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩".indexOf(d); }).replace(/[۰-۹]/g, function (d) { return "۰۱۲۳۴۵۶۷۸۹".indexOf(d); }).replace(/\D/g, ""); };
   $("guestName").addEventListener("input", updateLinks);
   $("guestCount").addEventListener("input", updateLinks);

@@ -42,7 +42,7 @@
 <style>
 /* Henna Night: the night itself, laid out on a saffron cotton cloth. The henna tray
    (copper, candles, the bowl of paste, the cones), a card the girls drew by hand with
-   fabric bunting taped across it, their plan for the night on a page torn from a
+   a hennaed palm drawn on it, their plan for the night on a page torn from a
    notebook, and a kraft tag to send back. Everything is written in their own words. */
 :root{
   --cloth:#ecc98d; --cloth-lo:#ddb06f;
@@ -98,7 +98,7 @@ html:not(.ar) .lang{font-size:16px}
 .tag{position:absolute;left:53.8%;top:60%;translate:-50% 0;margin:0;min-width:38%;max-width:72%;padding:6px 16px 8px;text-align:center;
   background:#fbf3e4;color:var(--paste);font:500 clamp(17px,4.6vw,23px)/1.35 var(--hand);
   box-shadow:0 1px 1px rgba(60,10,25,.25),0 8px 14px -8px rgba(60,10,25,.6)}
-.tag small{display:block;font-size:.66em;font-weight:400;color:var(--ink-2)}
+.tag small{display:block;font-size:15px;font-weight:400;color:var(--ink-2)}
 .tag::before{content:"";position:absolute;top:-5px;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;
   background:radial-gradient(circle at 35% 35%,#fff3c4,#c9a227 60%,#7d5a1f)}
 .intro-hint{margin:44px 0 0;text-align:center;font-size:16px;color:var(--ink-2);transition:opacity .2s}
@@ -115,22 +115,17 @@ html:not(.ar) .lang{font-size:16px}
 .reply{order:5}
 .share{order:6}
 
-/* the card the girls drew: heavy cream paper, bunting taped across the top */
+/* the card the girls drew: heavy cream paper, the bride's name and a hennaed palm */
 .card-box{container-type:inline-size;position:relative;z-index:2}
 .card{position:relative;aspect-ratio:5/7;display:flex;flex-direction:column;justify-content:center;
-  padding:22cqw 7cqw 7cqw;background:var(--card) var(--grain);color:var(--paste);
+  padding:9cqw 7.5cqw 8cqw;background:var(--card) var(--grain);color:var(--paste);
   box-shadow:0 1px 1px rgba(70,35,10,.22),0 22px 40px -20px rgba(70,35,10,.62)}
-.bunting{position:absolute;top:2.4cqw;left:0;width:100%;height:auto;overflow:visible}
-.hosts{margin:0 0 3.5cqw;text-align:center;font-size:min(4.1cqw,21px);line-height:1.5;color:var(--ink-2)}
-.hosts p{margin:0}
-.hosts-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 3cqw}
-.hosts-cols.one,.hosts-cols.stack{grid-template-columns:1fr;gap:1cqw}
-html.ar .hosts-cols.t-en,html:not(.ar) .hosts-cols.t-ar{display:none}
-html:not(.ar) .hosts-cols.t-en{display:block;text-wrap:balance}
-.hosts-cols.t-en .host{display:inline}
-.host{min-width:0;white-space:nowrap}
-.host .ttl{display:block;font-size:.86em}
-html:not(.ar) .host .ttl{display:inline;font-size:1em}
+/* the bride's family, one quiet line under the girls' sign-off; a name never breaks */
+.hosts{margin:2.5cqw 0 0;font-size:max(15px,min(3.9cqw,21px));line-height:1.6;color:var(--ink-2);text-align:end;text-wrap:balance}
+.host{white-space:nowrap}
+/* with the family's line the card keeps its 5:7: the girls' closing line gives way */
+.with-hosts .also{display:none}
+.with-hosts .main{margin-bottom:2cqw}
 .main{display:grid;grid-template-columns:minmax(0,1fr) 37%;gap:0 4cqw;align-items:center;margin:0 0 3cqw}
 .words{min-width:0}
 .lead{margin:0 0 1cqw;font-size:min(5.6cqw,33px);line-height:1.5;text-wrap:balance}
@@ -146,15 +141,7 @@ html:not(.ar) .also{font-size:min(4.4cqw,26px);line-height:1.5}
 .sign{margin:3cqw 0 0;font-size:min(5cqw,29px);line-height:1.4;text-align:end;white-space:nowrap}
 html:not(.ar) .sign{font-size:min(4.6cqw,27px)}
 .hand{align-self:center}
-/* with the family's names on top, the rest of the card writes a little smaller to keep its shape */
-.has-hosts{padding-top:20cqw}
-.has-hosts .main{grid-template-columns:minmax(0,1fr) 31%}
-.has-hosts .bride{font-size:min(21cqw,140px)}
-.has-hosts .hosts{margin-bottom:2cqw;font-size:min(3.8cqw,20px)}
-.has-hosts .when{font-size:min(4.7cqw,28px)}
-.has-hosts .main{margin-bottom:2cqw}
-html:not(.ar) .has-hosts .bride{font-size:min(15cqw,100px)}
-.has-hosts .also{display:none}
+
 .hand-art{display:block;width:100%;height:auto}
 
 /* the plan for the night, written on a page torn out of a school notebook */
@@ -174,7 +161,7 @@ html:not(.ar) .plan h2{font-size:19px}
 .prog{list-style:none;margin:0;padding:0}
 .prog li{position:relative}
 .prog .at{position:absolute;inset-inline-start:-58px;width:52px;text-align:center;color:var(--red);white-space:nowrap;font-size:15px}
-html.ar .prog .at{font-family:var(--book);font-size:13.5px}
+html.ar .prog .at{font-family:var(--book);font-size:15px}
 .notes{margin:var(--rule) 0 0;padding:0}
 .notes p{margin:0;text-wrap:pretty}
 .notes b{font-weight:600;color:var(--red)}
@@ -268,11 +255,6 @@ html:not(.ar) .stamp{font-size:16px}
  <div class="col-a">
   <div class="card-box">
   <article class="card" data-shot="details" aria-labelledby="bride">
-    <svg class="bunting" viewBox="0 0 340 66" aria-hidden="true"><defs><pattern id="fbA" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(8)"><rect width="9" height="9" fill="#c2185b"/><circle cx="2.2" cy="2.2" r="1.15" fill="#fbe9d8"/><circle cx="6.7" cy="6.7" r="1.15" fill="#fbe9d8"/></pattern><pattern id="fbB" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(8)"><rect width="6" height="6" fill="#e3a03c"/><path d="M0 6L6 0" stroke="#d08c2c" stroke-width=".7"/></pattern><pattern id="fbC" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(8)"><rect width="12" height="12" fill="#a6341b"/><g fill="#f6dcc0"><circle cx="3" cy="3" r=".9"/><circle cx="4.6" cy="4.3" r=".7"/><circle cx="2.6" cy="4.8" r=".6"/><circle cx="9" cy="9" r=".9"/><circle cx="10.6" cy="10.3" r=".7"/><circle cx="8.6" cy="10.8" r=".6"/></g></pattern><pattern id="fbD" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(8)"><rect width="7" height="7" fill="#f6e9d1"/><path d="M3.5 0V7M0 3.5H7" stroke="#c2185b" stroke-opacity=".55" stroke-width="1.6"/></pattern><pattern id="fbE" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(8)"><rect width="8" height="8" fill="#f2cf93"/><circle cx="4" cy="4" r="1.3" fill="#a6341b"/></pattern><filter id="bsh" x="-10%" y="-10%" width="120%" height="130%"><feGaussianBlur stdDeviation="1.2"/></filter></defs><g transform="translate(1.2 2.2)" opacity=".18" filter="url(#bsh)"><path d="M14 14.5L53.4 18.1L50.7 20.1L50.1 23.5L47.3 25.5L46.8 28.9L44 31L43.4 34.4L40.7 36.4L40.1 39.8L37.3 41.9L36.8 45.3L34 47.3L33.5 50.7L30.7 52.7L30.1 56.1L30.2 52.7L27.8 50.2L27.9 46.7L25.5 44.2L25.6 40.8L23.2 38.3L23.3 34.9L20.9 32.4L21 28.9L18.6 26.4L18.7 23L16.3 20.5L16.4 17L14 14.5Z" data-x="fbA" fill="#3b2318"/><path d="M59.4 18.5L98.9 20.8L96.1 23.1L95.7 26.6L93 28.8L92.5 32.3L89.8 34.6L89.4 38.1L86.6 40.3L86.2 43.8L83.5 46.1L83 49.6L80.3 51.8L79.9 55.3L77.2 57.6L76.7 61.1L76.7 57.6L74.3 55L74.2 51.5L71.8 48.9L71.7 45.4L69.3 42.8L69.3 39.3L66.8 36.8L66.8 33.2L64.4 30.7L64.3 27.1L61.9 24.6L61.9 21.1L59.4 18.5Z" data-x="fbB" fill="#3b2318"/><path d="M104.9 21.1L144.3 22.1L141.7 24.3L141.3 27.8L138.7 30L138.3 33.4L135.7 35.6L135.4 39L132.7 41.3L132.4 44.7L129.8 46.9L129.4 50.3L126.8 52.5L126.5 56L123.8 58.2L123.5 61.6L123.3 58.1L120.8 55.8L120.7 52.4L118.2 50L118 46.6L115.5 44.2L115.4 40.8L112.8 38.4L112.7 35L110.2 32.6L110 29.2L107.5 26.9L107.4 23.4L104.9 21.1Z" data-x="fbC" fill="#3b2318"/><path d="M150.3 22.2L189.7 22L187.1 24.4L186.9 28L184.4 30.4L184.1 33.9L181.6 36.3L181.3 39.9L178.8 42.3L178.6 45.8L176 48.2L175.8 51.7L173.2 54.2L173 57.7L170.4 60.1L170.2 63.6L169.9 60.1L167.3 57.7L167.1 54.2L164.5 51.8L164.2 48.3L161.7 45.9L161.4 42.3L158.8 40L158.6 36.4L156 34L155.7 30.5L153.1 28.1L152.9 24.6L150.3 22.2Z" data-x="fbD" fill="#3b2318"/><path d="M195.7 21.9L235.1 20.5L232.7 22.9L232.5 26.3L230 28.7L229.9 32.1L227.4 34.5L227.3 37.9L224.8 40.3L224.7 43.7L222.2 46.1L222.1 49.6L219.6 51.9L219.5 55.4L217 57.7L216.9 61.2L216.5 57.8L213.8 55.6L213.5 52.1L210.8 50L210.5 46.5L207.8 44.3L207.4 40.9L204.8 38.7L204.4 35.3L201.8 33.1L201.4 29.7L198.7 27.5L198.4 24.1L195.7 21.9Z" data-x="fbE" fill="#3b2318"/><path d="M241.1 20.2L280.6 17.5L278.2 20.1L278.2 23.6L275.7 26.2L275.7 29.7L273.3 32.3L273.3 35.8L270.9 38.4L270.9 42L268.5 44.5L268.5 48.1L266.1 50.6L266.1 54.2L263.6 56.7L263.6 60.3L263.2 56.8L260.4 54.5L260 51L257.2 48.8L256.7 45.3L254 43.1L253.5 39.6L250.8 37.4L250.3 33.9L247.6 31.6L247.1 28.1L244.4 25.9L243.9 22.4L241.1 20.2Z" data-x="fbA" fill="#3b2318"/><path d="M286.6 17L326 13.1L323.7 15.7L323.7 19.1L321.4 21.6L321.5 25.1L319.1 27.6L319.2 31L316.9 33.6L317 37L314.6 39.5L314.7 43L312.4 45.5L312.5 48.9L310.1 51.5L310.2 54.9L309.6 51.5L306.8 49.5L306.3 46.1L303.5 44.1L302.9 40.7L300.1 38.7L299.5 35.3L296.7 33.3L296.1 29.9L293.3 27.9L292.7 24.5L289.9 22.4L289.4 19L286.6 17Z" data-x="fbC" fill="#3b2318"/></g><path d="M-4 12.5 L2 13.2 L8 13.9 L14 14.5 L20 15.1 L26 15.7 L32 16.3 L38 16.8 L44 17.3 L50 17.8 L56 18.3 L62 18.7 L68 19.1 L74 19.5 L80 19.8 L86 20.2 L92 20.5 L98 20.8 L104 21 L110 21.3 L116 21.5 L122 21.7 L128 21.8 L134 22 L140 22.1 L146 22.2 L152 22.2 L158 22.3 L164 22.3 L170 22.2 L176 22.2 L182 22.1 L188 22.1 L194 21.9 L200 21.8 L206 21.6 L212 21.5 L218 21.2 L224 21 L230 20.7 L236 20.5 L242 20.1 L248 19.8 L254 19.4 L260 19.1 L266 18.6 L272 18.2 L278 17.7 L284 17.3 L290 16.7 L296 16.2 L302 15.6 L308 15.1 L314 14.4 L320 13.8 L326 13.1 L332 12.5 L338 11.7 L344 11" transform="translate(0 2.4)" fill="none" stroke="#3b2318" stroke-opacity=".16" stroke-width="2.6"/><path d="M14 14.5L53.4 18.1L50.7 20.1L50.1 23.5L47.3 25.5L46.8 28.9L44 31L43.4 34.4L40.7 36.4L40.1 39.8L37.3 41.9L36.8 45.3L34 47.3L33.5 50.7L30.7 52.7L30.1 56.1L30.2 52.7L27.8 50.2L27.9 46.7L25.5 44.2L25.6 40.8L23.2 38.3L23.3 34.9L20.9 32.4L21 28.9L18.6 26.4L18.7 23L16.3 20.5L16.4 17L14 14.5Z" fill="url(#fbA)"/><path d="M13.5 12.9L53.9 16.5L53.1 22.2L13.7 18.7Z" fill="#9c1149"/><path d="M16.5 20.6L49.9 24.1" stroke="#fbf3e4" stroke-opacity=".75" stroke-width=".7" stroke-dasharray="2.2 1.6"/><path d="M59.4 18.5L98.9 20.8L96.1 23.1L95.7 26.6L93 28.8L92.5 32.3L89.8 34.6L89.4 38.1L86.6 40.3L86.2 43.8L83.5 46.1L83 49.6L80.3 51.8L79.9 55.3L77.2 57.6L76.7 61.1L76.7 57.6L74.3 55L74.2 51.5L71.8 48.9L71.7 45.4L69.3 42.8L69.3 39.3L66.8 36.8L66.8 33.2L64.4 30.7L64.3 27.1L61.9 24.6L61.9 21.1L59.4 18.5Z" fill="url(#fbB)"/><path d="M58.9 16.9L99.4 19.2L98.6 25L59.2 22.7Z" fill="#c4842a"/><path d="M62.1 24.6L95.5 26.9" stroke="#fbf3e4" stroke-opacity=".75" stroke-width=".7" stroke-dasharray="2.2 1.6"/><path d="M104.9 21.1L144.3 22.1L141.7 24.3L141.3 27.8L138.7 30L138.3 33.4L135.7 35.6L135.4 39L132.7 41.3L132.4 44.7L129.8 46.9L129.4 50.3L126.8 52.5L126.5 56L123.8 58.2L123.5 61.6L123.3 58.1L120.8 55.8L120.7 52.4L118.2 50L118 46.6L115.5 44.2L115.4 40.8L112.8 38.4L112.7 35L110.2 32.6L110 29.2L107.5 26.9L107.4 23.4L104.9 21.1Z" fill="url(#fbC)"/><path d="M104.4 19.5L144.8 20.5L144.2 26.3L104.8 25.3Z" fill="#842712"/><path d="M107.7 27.2L141.1 28.2" stroke="#fbf3e4" stroke-opacity=".75" stroke-width=".7" stroke-dasharray="2.2 1.6"/><path d="M150.3 22.2L189.7 22L187.1 24.4L186.9 28L184.4 30.4L184.1 33.9L181.6 36.3L181.3 39.9L178.8 42.3L178.6 45.8L176 48.2L175.8 51.7L173.2 54.2L173 57.7L170.4 60.1L170.2 63.6L169.9 60.1L167.3 57.7L167.1 54.2L164.5 51.8L164.2 48.3L161.7 45.9L161.4 42.3L158.8 40L158.6 36.4L156 34L155.7 30.5L153.1 28.1L152.9 24.6L150.3 22.2Z" fill="url(#fbD)"/><path d="M149.8 20.6L190.2 20.4L189.7 26.2L150.3 26.4Z" fill="#e4d2b2"/><path d="M153.3 28.3L186.7 28.1" stroke="#fbf3e4" stroke-opacity=".75" stroke-width=".7" stroke-dasharray="2.2 1.6"/><path d="M195.7 21.9L235.1 20.5L232.7 22.9L232.5 26.3L230 28.7L229.9 32.1L227.4 34.5L227.3 37.9L224.8 40.3L224.7 43.7L222.2 46.1L222.1 49.6L219.6 51.9L219.5 55.4L217 57.7L216.9 61.2L216.5 57.8L213.8 55.6L213.5 52.1L210.8 50L210.5 46.5L207.8 44.3L207.4 40.9L204.8 38.7L204.4 35.3L201.8 33.1L201.4 29.7L198.7 27.5L198.4 24.1L195.7 21.9Z" fill="url(#fbE)"/><path d="M195.2 20.3L235.6 18.9L235.3 24.7L195.9 26.1Z" fill="#ddb373"/><path d="M198.9 28L232.4 26.6" stroke="#fbf3e4" stroke-opacity=".75" stroke-width=".7" stroke-dasharray="2.2 1.6"/><path d="M241.1 20.2L280.6 17.5L278.2 20.1L278.2 23.6L275.7 26.2L275.7 29.7L273.3 32.3L273.3 35.8L270.9 38.4L270.9 42L268.5 44.5L268.5 48.1L266.1 50.6L266.1 54.2L263.6 56.7L263.6 60.3L263.2 56.8L260.4 54.5L260 51L257.2 48.8L256.7 45.3L254 43.1L253.5 39.6L250.8 37.4L250.3 33.9L247.6 31.6L247.1 28.1L244.4 25.9L243.9 22.4L241.1 20.2Z" fill="url(#fbA)"/><path d="M240.6 18.6L281.1 15.9L280.8 21.7L241.4 24.4Z" fill="#9c1149"/><path d="M244.6 26.3L278 23.6" stroke="#fbf3e4" stroke-opacity=".75" stroke-width=".7" stroke-dasharray="2.2 1.6"/><path d="M286.6 17L326 13.1L323.7 15.7L323.7 19.1L321.4 21.6L321.5 25.1L319.1 27.6L319.2 31L316.9 33.6L317 37L314.6 39.5L314.7 43L312.4 45.5L312.5 48.9L310.1 51.5L310.2 54.9L309.6 51.5L306.8 49.5L306.3 46.1L303.5 44.1L302.9 40.7L300.1 38.7L299.5 35.3L296.7 33.3L296.1 29.9L293.3 27.9L292.7 24.5L289.9 22.4L289.4 19L286.6 17Z" fill="url(#fbC)"/><path d="M286.1 15.4L326.5 11.5L326.4 17.3L287 21.2Z" fill="#842712"/><path d="M290.2 23.1L323.6 19.2" stroke="#fbf3e4" stroke-opacity=".75" stroke-width=".7" stroke-dasharray="2.2 1.6"/><path d="M-4 12.5 L2 13.2 L8 13.9 L14 14.5 L20 15.1 L26 15.7 L32 16.3 L38 16.8 L44 17.3 L50 17.8 L56 18.3 L62 18.7 L68 19.1 L74 19.5 L80 19.8 L86 20.2 L92 20.5 L98 20.8 L104 21 L110 21.3 L116 21.5 L122 21.7 L128 21.8 L134 22 L140 22.1 L146 22.2 L152 22.2 L158 22.3 L164 22.3 L170 22.2 L176 22.2 L182 22.1 L188 22.1 L194 21.9 L200 21.8 L206 21.6 L212 21.5 L218 21.2 L224 21 L230 20.7 L236 20.5 L242 20.1 L248 19.8 L254 19.4 L260 19.1 L266 18.6 L272 18.2 L278 17.7 L284 17.3 L290 16.7 L296 16.2 L302 15.6 L308 15.1 L314 14.4 L320 13.8 L326 13.1 L332 12.5 L338 11.7 L344 11" fill="none" stroke="#b08a5e" stroke-width="2.1" stroke-linecap="round"/><path d="M-4 12.5 L2 13.2 L8 13.9 L14 14.5 L20 15.1 L26 15.7 L32 16.3 L38 16.8 L44 17.3 L50 17.8 L56 18.3 L62 18.7 L68 19.1 L74 19.5 L80 19.8 L86 20.2 L92 20.5 L98 20.8 L104 21 L110 21.3 L116 21.5 L122 21.7 L128 21.8 L134 22 L140 22.1 L146 22.2 L152 22.2 L158 22.3 L164 22.3 L170 22.2 L176 22.2 L182 22.1 L188 22.1 L194 21.9 L200 21.8 L206 21.6 L212 21.5 L218 21.2 L224 21 L230 20.7 L236 20.5 L242 20.1 L248 19.8 L254 19.4 L260 19.1 L266 18.6 L272 18.2 L278 17.7 L284 17.3 L290 16.7 L296 16.2 L302 15.6 L308 15.1 L314 14.4 L320 13.8 L326 13.1 L332 12.5 L338 11.7 L344 11" fill="none" stroke="#7f5d3b" stroke-width="2.1" stroke-dasharray="1.4 2.2" stroke-opacity=".7"/><path d="M-2 6h22l1.2 2-1.2 2.2 1.2 2.2-1.2 2.2 1.2 2.2-1.2 2.2H-2z" fill="#f3ddb0" fill-opacity=".82"/><path d="M342 5h-22l-1.2 2 1.2 2.2-1.2 2.2 1.2 2.2-1.2 2.2 1.2 2.2H342z" fill="#f3ddb0" fill-opacity=".82"/></svg>
-    <div class="hosts" id="hosts" hidden>
-      <p class="hosts-cols t-ar" id="hostsAr"></p>
-      <p class="hosts-cols t-en" id="hostsEn"></p>
-    </div>
     <p class="lead"><span class="t-ar" id="leadAr">معزومين على ليلة حنة</span><span class="t-en" id="leadEn">You're invited to the henna night of</span></p>
     <div class="main">
       <div class="words">
@@ -286,6 +268,7 @@ html:not(.ar) .stamp{font-size:16px}
     </p>
     <p class="also" id="quote"><span class="t-ar">ومن غيركم الليلة ناقصة</span><span class="t-en">It won't be the same without you.</span></p>
     <p class="sign"><span class="t-ar"><span id="signAr">ملك</span> والبنات</span><span class="t-en"><span id="signEn">Malak</span> and the girls</span></p>
+    <p class="hosts" id="hosts" hidden><span class="t-ar">بحضور أهل العروسة: <span id="hostsAr"></span></span><span class="t-en">With the bride's family: <span id="hostsEn"></span></span></p>
   </article>
   </div>
 
@@ -377,7 +360,7 @@ html:not(.ar) .stamp{font-size:16px}
   if (hasAr(nEn)) $("signEn").lang = "ar";
   if (qp("n_en") || qp("n_ar")) document.title = "ليلة حنة " + nAr + " | " + nEn + "'s henna night";
 
-  /* the bride's family, when they send it: two columns in Arabic (title above name), one line in English */
+  /* the bride's family, when given: one line under the sign-off, each host kept whole */
   var JOIN_AR = /\s+و\s*(?=(?:ال(?:سيد|سيدة|أستاذ|أستاذة|مهندس|مهندسة|دكتور|دكتورة|لواء|مستشار|حاج|حاجة|عميد|عقيد|شيخ)|أسرة|عائلة|آل\s|[دمأ]\s*[./]))/;
   function hostsInto (el, raw) {
     var ar = hasAr(raw);
@@ -385,32 +368,20 @@ html:not(.ar) .stamp{font-size:16px}
       .map(function (h) { return h.trim(); }).filter(Boolean).slice(0, 2);
     el.textContent = "";
     parts.forEach(function (h, i) {
-      if (i && el.id === "hostsEn") el.appendChild(document.createTextNode(ar ? " و" : " and "));
+      if (i) el.appendChild(document.createTextNode(ar ? " و" : " and "));
       var m = h.match(/^(\S+\/)\s*(.+)$/) || (ar ? null : h.match(/^((?:Mr|Mrs|Ms|Dr|Eng|Gen)\.?)\s+(.+)$/i));
       var sp = document.createElement("span"); sp.className = "host";
       if (m) { var t = document.createElement("span"); t.className = "ttl"; t.textContent = m[1]; sp.appendChild(t); sp.appendChild(document.createTextNode(" ")); }
       var n = document.createElement("span"); n.className = "nm"; n.textContent = m ? m[2] : h; sp.appendChild(n);
       el.appendChild(sp);
     });
-    el.classList.toggle("one", parts.length < 2);
-    el.classList.remove("stack");
     return parts.length;
-  }
-  function fitHosts () {
-    document.querySelectorAll(".hosts-cols.t-ar").forEach(function (el) {
-      if (el.offsetParent === null) return;
-      el.classList.remove("stack");
-      var over = Array.prototype.some.call(el.children, function (h) { return h.scrollWidth > h.clientWidth + 1; });
-      el.classList.toggle("stack", over);
-    });
   }
   if (hAr) {
     $("hosts").hidden = false;
-    document.querySelector(".card").classList.add("has-hosts");
+    document.querySelector(".card").classList.add("with-hosts");
     hostsInto($("hostsAr"), hAr);
     hostsInto($("hostsEn"), hEn);
-    txt("leadAr", "بيعزموكم على ليلة حنة");
-    txt("leadEn", "invite you to the henna night of");
   }
 
   /* the time the way the girls say it: "الساعة تمانية بالليل" */
@@ -533,10 +504,10 @@ html:not(.ar) .stamp{font-size:16px}
     docEl.dir = isAr ? "rtl" : "ltr";
     $("guestName").placeholder = isAr ? "اكتبوا الاسم هنا" : "Write your name";
     numText($("replyBy"), isAr ? replyByAr : replyByEn);
-    renderLeft(); updateLinks(); fitHosts(); fitName();
+    renderLeft(); updateLinks(); fitName();
   }
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitHosts(); fitName(); });
-  window.addEventListener("resize", function () { fitHosts(); fitName(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitName);
+  window.addEventListener("resize", fitName);
   $("langBtn").addEventListener("click", function () { isAr = !isAr; applyLang(); });
 
   /* ── how many days are left, scribbled in the corner of the plan ── */

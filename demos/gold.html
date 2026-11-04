@@ -89,17 +89,17 @@ html:not(.ar) .lang-toggle{font:400 17px/1 var(--ar)}
 .env{position:relative;width:min(310px,78vw);aspect-ratio:1.42/1}
 .env-front,.env-rear,.env-back,.env-card,.env-pocket,.env-flap{position:absolute;inset:0}
 /* the front: printed initials, the guest's name by hand. A tap turns it over. */
-.env-front{z-index:6;border-radius:3px;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .3 0 0 0 0 .2 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23p)'/%3E%3C/svg%3E"),
+.env-front{z-index:6;border-radius:1px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .3 0 0 0 0 .2 0 0 0 .13 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23p)'/%3E%3C/svg%3E"),
     linear-gradient(170deg,#f2e9d6,#e7dbc2);
-  box-shadow:inset 0 0 0 1px rgba(122,100,64,.18),0 30px 50px -24px rgba(0,0,0,.75);transition:transform .26s ease-in}
+  box-shadow:inset 0 0 0 1px rgba(122,100,64,.28),inset 0 -14px 18px -16px rgba(80,60,30,.35),0 30px 50px -24px rgba(0,0,0,.75);transition:transform .26s ease-in}
 /* the couple's names printed in foil at the top, as the card company prints them */
 .env-from{position:absolute;top:10%;left:0;right:0;margin:0;text-align:center;font:700 17px/1.2 var(--ar-hand);color:var(--foil-d)}
 .env-from .t-en{font:italic 400 15px/1.2 var(--en)}
 .env-rear{perspective:1000px;transform:scaleX(0);transition:transform .26s ease-out .26s}
 .intro.open .env-front{transform:scaleX(0)}
 .intro.open .env-rear{transform:scaleX(1)}
-.env-back{background:#d9ccb2;border-radius:3px;box-shadow:0 30px 50px -24px rgba(0,0,0,.75)}
+.env-back{background:#d9ccb2;border-radius:1px;box-shadow:0 30px 50px -24px rgba(0,0,0,.75)}
 .env-card{z-index:1;inset:9% 7% 8%;background:var(--cotton);border-radius:2px;transition:translate 1s cubic-bezier(.2,.8,.2,1) 1.05s}
 .env-card::after{content:"";position:absolute;inset:9px;border:1px solid var(--foil)}
 .env-card::before{content:"";position:absolute;inset:13px;border:.5px solid var(--foil);opacity:.7}
@@ -321,8 +321,8 @@ html:not(.ar) .share a{font-size:14px}
       <span class="t-en"><span class="n" id="nEn1">Youssef</span><span class="n"><span class="amp">and</span><span id="nEn2">Mariam</span></span></span>
     </h1>
     <p class="formal">
-      <span class="t-ar">وذلك بمشيئة الله يوم <b id="dateAr">الخميس ٤ فبراير ٢٠٢٧</b>، في تمام <span id="timeAr">الساعة الثامنة مساءً</span>، <span id="venueAr">بفيلا روز، المعادي، القاهرة</span>.</span>
-      <span class="t-en">on <b id="dateEn">Thursday, 4 February 2027</b>, at <span id="timeEn">eight o'clock in the evening</span>, <span id="venueEn">Villa Rose, Maadi, Cairo</span>.</span>
+      <span class="t-ar">وذلك بمشيئة الله يوم&nbsp;<b id="dateAr">الخميس ٤ فبراير ٢٠٢٧</b>، في&nbsp;تمام&nbsp;<span id="timeAr">الساعة الثامنة مساءً</span>، <span id="venueAr">بفيلا روز، المعادي، القاهرة</span>.</span>
+      <span class="t-en">on&nbsp;<b id="dateEn">Thursday, 4 February 2027</b>, at&nbsp;<span id="timeEn">eight o'clock in the evening</span>, <span id="venueEn">Villa Rose, Maadi, Cairo</span>.</span>
     </p>
     <hr class="rule">
     <p class="verse" id="quote"><span class="t-ar">«وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً»<small>سورة الروم، ٢١</small></span><span class="t-en">“And He placed between you affection and mercy.”<small>Surat Ar-Rum, 30:21</small></span></p>
@@ -455,7 +455,8 @@ html:not(.ar) .share a{font-size:14px}
   var h12 = hh % 12;
   var partAr = hh < 12 ? "صباحاً" : hh < 15 ? "ظهراً" : hh < 18 ? "عصراً" : "مساءً";
   var partEn = hh < 12 ? "in the morning" : hh < 18 ? "in the afternoon" : "in the evening";
-  var timeWordsAr = hh === 0 && mm === "00" ? "منتصف الليل" : "الساعة " + AR_H[h12] + (mm === "00" ? "" : mm === "30" ? " والنصف" : mm === "15" ? " والربع" : ":" + ar9(mm)) + " " + partAr;
+  var NB = "\u00a0";
+  var timeWordsAr = hh === 0 && mm === "00" ? "منتصف الليل" : "الساعة" + NB + AR_H[h12].replace(" ", NB) + (mm === "00" ? "" : mm === "30" ? " والنصف" : mm === "15" ? " والربع" : ":" + ar9(mm)) + " " + partAr;
   var timeWordsEn = hh === 0 && mm === "00" ? "midnight" : mm === "00" ? EN_H[h12] + " o'clock " + partEn : mm === "30" ? "half past " + EN_H[h12] + " " + partEn : (h12 || 12) + ":" + mm + " " + partEn;
   var timeEnShort = (h12 || 12) + ":" + mm + " " + (hh < 12 ? "AM" : "PM");
   var timeArShort = ar9((h12 || 12) + ":" + mm) + " " + (hh < 12 ? "صباحاً" : "مساءً");

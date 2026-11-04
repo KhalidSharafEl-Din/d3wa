@@ -220,7 +220,8 @@ html:not(.ar) .d-left{font:700 calc(var(--u) * 4.8)/1.3 var(--en-d)}
 .d-left .num{font-variant-numeric:tabular-nums}
 .d-sent{margin:auto 0 0;padding-top:calc(var(--u) * 2);line-height:1.65;text-wrap:pretty}
 html:not(.ar) .d-sent{line-height:1.55}
-.d-sent b{font-weight:700;white-space:nowrap}
+.d-sent b,.d-sent .nw{white-space:nowrap}
+.d-sent b{font-weight:700}
 html:not(.ar) .d-sent b{font-weight:600}
 .d-sent .is-ar,.v-to .is-ar{font-family:var(--ar)}
 .d-links{display:flex;flex-wrap:wrap;gap:0 calc(var(--u) * 6);margin-top:calc(var(--u) * .5)}
@@ -280,7 +281,7 @@ html:not(.ar) .closing small{font:italic 400 calc(var(--u) * 5.4)/1.3 var(--en)}
 
 /* ── panel 4: the reply form, printed as lines ── */
 .r-by{margin:calc(var(--u) * -1.5) 0 0;color:var(--ink-2)}
-.r-form{margin-block:auto}
+.r-form{margin-top:auto}
 .line{display:flex;align-items:baseline;gap:calc(var(--u) * 3);margin:0 0 calc(var(--u) * 5)}
 .line label{white-space:nowrap;font-weight:700}
 .line input{flex:1;min-width:0;margin:0;border:0;border-bottom:1.5px solid var(--ink);border-radius:0;background:transparent;
@@ -298,7 +299,7 @@ html:not(.ar) .tick{font:800 clamp(22px, calc(var(--u) * 7.4), 40px)/1.1 var(--e
 .tick.done .box::before,.tick.done .box::after{content:"";position:absolute;left:-14%;right:-14%;top:calc(50% - .06em);height:.12em;background:var(--ink);rotate:42deg}
 .tick.done .box::after{rotate:-48deg}
 .tick-hint{margin:calc(var(--u) * 1.5) 0 0;padding-inline-start:calc(1.05em * 1.6);font-size:.86em;color:var(--ink-2)}
-.r-more{display:flex;flex-wrap:wrap;gap:0 calc(var(--u) * 6)}
+.r-more{display:flex;flex-wrap:wrap;gap:0 calc(var(--u) * 6);margin:14px 0 auto}
 .r-more .tl{text-decoration-color:rgba(23,22,21,.35);font-weight:500}
 
 .d3wa-credit{position:relative}
@@ -407,7 +408,7 @@ html:not(.ar) .intro-hint{font:italic 400 17px/1.5 var(--en)}
         </p>
       </div>
       <p class="d-left" id="left" aria-live="off"></p>
-      <p class="d-sent"><span class="t-ar" id="sentAr">يُقام حفل زفاف علي ودينا بمشيئة الله يوم <b>الخميس ٤ فبراير ٢٠٢٧</b>، في تمام الساعة الثامنة مساءً، بفيلا روز، المعادي، القاهرة.</span><span class="t-en" id="sentEn">The wedding of Ali and Dina will be held on <b>Thursday, 4 February 2027</b>, at eight o'clock in the evening, at Villa Rose, Maadi, Cairo.</span></p>
+      <p class="d-sent"><span class="t-ar" id="sentAr">يُقام حفل زفاف علي ودينا <span class="nw">بمشيئة الله</span> <b>يوم الخميس ٤ فبراير ٢٠٢٧</b>، <span class="nw">في تمام الساعة الثامنة مساءً</span>، بفيلا روز، المعادي، القاهرة.</span><span class="t-en" id="sentEn">The wedding of Ali and Dina will be held <b>on Thursday, 4 February 2027</b>, <span class="nw">at eight o'clock in the evening</span>, at Villa Rose, Maadi, Cairo.</span></p>
       <p class="d-links">
         <a class="tl" id="mapBtn" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Villa%20Rose%2C%20Maadi%2C%20Cairo"><span class="t-ar">الخريطة</span><span class="t-en">Map</span></a>
         <a class="tl" id="calBtn" target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/render?action=TEMPLATE"><span class="t-ar">أضيفوا الموعد للتقويم</span><span class="t-en">Add to calendar</span></a>
@@ -596,8 +597,9 @@ html:not(.ar) .intro-hint{font:italic 400 17px/1.5 var(--en)}
     });
   }
   /* the full date never splits across lines */
-  sentence("sentAr", ["يُقام " + O.ar + " ", [namesAr], " بمشيئة الله يوم ", [dateAr, "", "b"], "، " + timeWordsAr + "، ", [vArIn], "."]);
-  sentence("sentEn", [O.en.charAt(0).toUpperCase() + O.en.slice(1) + " ", [namesEn], " will be held on ", [dateEn, "", "b"], ", " + timeWordsEn + ", at ", [vEn, hasAr(vEn) ? "is-ar" : ""], "."]);
+  /* the date and the time each travel as one unit and never split across lines */
+  sentence("sentAr", ["يُقام " + O.ar + " ", [namesAr], " ", ["بمشيئة الله", "nw", "span"], " ", ["يوم " + dateAr, "", "b"], "، ", [timeWordsAr, "nw", "span"], "، ", [vArIn], "."]);
+  sentence("sentEn", [O.en.charAt(0).toUpperCase() + O.en.slice(1) + " ", [namesEn], " will be held ", ["on " + dateEn, "", "b"], ", ", [timeWordsEn, "nw", "span"], ", at ", [vEn, hasAr(vEn) ? "is-ar" : ""], "."]);
   txt("vOccAr", O.vAr); txt("vOccEn", O.vEn);
 
   /* q replaces the verse */

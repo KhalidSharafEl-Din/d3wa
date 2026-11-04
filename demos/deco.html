@@ -126,11 +126,11 @@ html:not(.ar) .cover-in .ci-n{font-weight:400;font-size:30px;line-height:1.2}
 .intro.open .band{transform:translateY(160%);opacity:0}
 .band span{display:block}
 /* the house name, lettered inside a cartouche, the tie bar at its end */
-.band .b-h{margin:2px 0 6px}
+.band .b-h{margin:2px 0 11px}
 .band .cart{position:relative;display:inline-block;padding:3px 22px 2px;border:1.5px solid var(--card);border-radius:999px;
   font:600 21px/1.3 var(--disp);word-spacing:.1em}
 html:not(.ar) .band .cart{font-weight:400;font-size:19px;line-height:1.35;padding:4px 22px 3px}
-.band .cart::after{content:"";position:absolute;inset-inline-end:-8px;top:18%;bottom:18%;width:2px;background:var(--card)}
+.band .cart::after{content:"";position:absolute;left:12%;right:12%;bottom:-6px;height:2px;background:var(--card)}
 .band .b-k{font-size:14.5px;line-height:1.45}
 html:not(.ar) .band .b-k{font-size:13px;font-style:italic}
 .band .b-n{margin:0 0 2px;font:600 20px/1.35 var(--disp);word-spacing:.12em}
@@ -200,6 +200,8 @@ html:not(.ar) .names .amp{font:italic 400 .6em/1 "Bodoni Moda",serif;margin-inli
 .formal{margin:0 auto;max-width:28ch;text-wrap:pretty;font-size:19.5px;line-height:1.85}
 html:not(.ar) .formal{font-size:16px;line-height:1.65;max-width:30ch}
 .formal b{font-weight:600;white-space:nowrap}
+/* "يوم الخميس ٤ فبراير ٢٠٢٧" and "في تمام الساعة …" each move to a new line as one piece */
+.formal .nw{display:inline-block;max-width:100%}
 html:not(.ar) .formal b{font-weight:400;font-style:italic}
 /* a printer's rule: thick over thin */
 .rule{width:58px;height:5px;margin:18px auto;border:0;border-top:2px solid var(--foil);border-bottom:1px solid var(--foil)}
@@ -297,11 +299,13 @@ html:not(.ar) .line input{font:italic 400 17px/1.3 "Bodoni Moda","Markazi Text",
 .line.count input{flex:0 0 58px;text-align:center}
 .line input:focus{border-bottom-style:solid;border-bottom-color:var(--ink)}
 /* the one action: printed solid, knocked out of the black like "admit one" */
-.admit{display:block;margin:16px 0 0;padding:11px 10px 12px;background:var(--ink);color:var(--cream);text-decoration:none;
-  font:600 19px/1.25 var(--disp);box-shadow:inset 0 0 0 3px var(--ink),inset 0 0 0 4px rgba(241,230,200,.75)}
-html:not(.ar) .admit{font-weight:400;font-size:16.5px}
-.admit:hover{background:#2a241b;box-shadow:inset 0 0 0 3px #2a241b,inset 0 0 0 4px rgba(241,230,200,.75)}
-.decline{display:inline-block;margin-top:11px;font-size:16px;color:var(--ink-2);text-underline-offset:4px}
+/* the one action: a line letterpressed in black ink inside a single rule */
+.admit{display:inline-block;margin:16px 0 0;padding:8px 22px 9px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);
+  text-decoration:none;font:600 19px/1.25 var(--disp)}
+.ticket .admit{text-shadow:0 1px 0 rgba(255,250,235,.75),0 -1px 0 rgba(23,20,15,.18)}
+html:not(.ar) .admit{font-weight:400;font-size:16.5px;padding:9px 22px}
+.admit:hover{background:rgba(23,20,15,.06)}
+.decline{display:table;margin:10px auto 0;font-size:16px;color:var(--ink-2);text-underline-offset:4px}
 html:not(.ar) .decline{font-size:14px;font-style:italic}
 
 .share{margin:30px 0 0;text-align:center}
@@ -453,8 +457,8 @@ html:not(.ar) .share a{font-size:14.5px;font-style:italic}
         <span class="t-en"><span class="n" id="nEn1">Omar</span><span class="n"><span class="amp">and</span><span id="nEn2">Nadine</span></span></span>
       </h1>
       <p class="formal">
-        <span class="t-ar">وذلك بمشيئة الله يوم <b id="dateAr">الخميس ٤ فبراير ٢٠٢٧</b>، في تمام <span id="timeAr">الساعة الثامنة مساءً</span>، <span id="venueAr">بفيلا روز، المعادي، القاهرة</span>.</span>
-        <span class="t-en">on <b id="dateEn">Thursday, 4 February 2027</b>, at <span id="timeEn">eight o'clock in the evening</span>, at <span id="venueEn">Villa Rose, Maadi, Cairo</span>.</span>
+        <span class="t-ar">وذلك بمشيئة الله <span class="nw">يوم <b id="dateAr">الخميس ٤ فبراير ٢٠٢٧</b>،</span> <span class="nw">في تمام <span id="timeAr">الساعة الثامنة مساءً</span>،</span> <span id="venueAr">بفيلا روز، المعادي، القاهرة</span>.</span>
+        <span class="t-en"><span class="nw">on <b id="dateEn">Thursday, 4 February 2027</b>,</span> <span class="nw">at <span id="timeEn">eight o'clock in the evening</span>,</span> at <span id="venueEn">Villa Rose, Maadi, Cairo</span>.</span>
       </p>
       <hr class="rule">
       <p class="verse" id="quote"><span class="t-ar">«وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً»<small>سورة الروم، ٢١</small></span><span class="t-en">“And He placed between you affection and mercy.”<small>Surat Ar-Rum, 30:21</small></span></p>
