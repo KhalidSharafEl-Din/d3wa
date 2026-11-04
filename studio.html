@@ -89,6 +89,8 @@ button.ghost:hover,.abtn.ghost:hover{background:rgba(156,74,26,.08)}
     <div><label>المكان بالعربي</label><input id="v_ar" placeholder="قاعة النيل، الزمالك"></div>
     <div><label>المكان بالإنجليزي</label><input id="v_en" placeholder="Nile Hall, Zamalek" dir="ltr"></div>
     <div><label>لينك جوجل مابس</label><input id="map" placeholder="https://maps.app.goo.gl/..." dir="ltr"></div>
+    <div><label>الداعين <small>(اختياري: يتشرف ... بدعوتكم)</small></label><input id="h_ar" placeholder="السيد/ سامي عزيز والسيد/ محمود رشاد"></div>
+    <div><label>الداعين بالإنجليزي <small>(اختياري)</small></label><input id="h_en" placeholder="Mr Samy Aziz and Mr Mahmoud Rashad" dir="ltr"></div>
     <div><label>اقتباس / آية <small>(اختياري)</small></label><input id="q"></div>
     <div id="parentsRow" style="display:none"><label>أسماء الأهل <small>(قالب السبوع)</small></label><input id="p_ar" placeholder="عمر وسلمى"></div>
   </div>
@@ -108,7 +110,7 @@ button.ghost:hover,.abtn.ghost:hover{background:rgba(156,74,26,.08)}
 <script>
 (function () {
   "use strict";
-  var F = ["n_ar","n_en","d","t","v_ar","v_en","map","q","wa","p_ar"];
+  var F = ["n_ar","n_en","d","t","v_ar","v_en","map","h_ar","h_en","q","wa","p_ar"];
   function el (id) { return document.getElementById(id); }
 
   var TPL_LOOKUP = {

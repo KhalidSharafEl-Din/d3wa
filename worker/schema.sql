@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS orders (
   v_en         TEXT,
   map_url      TEXT,
   quote        TEXT,
+  hosts        TEXT,                      -- optional: "السيد/ ... والسيد/ ..." above the names
 
   rsvp_wa      TEXT NOT NULL,             -- guests' confirmations go here
   contact_wa   TEXT,                      -- only used if something is wrong
