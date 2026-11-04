@@ -505,7 +505,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "طلب دعوة جديد · D3wa order #" + ref,
       "التصميم Design: " + t.ar + " / " + t.en + " (" + t.code + ")",
       "الباقة Package: " + p.ar + " / " + p.en + " · " + total() + " EGP" + (state.rush ? " (rush)" : ""),
-      "المناسبة Occasion: " + (o ? o.getAttribute("data-ar") : ""),
+      "المناسبة Occasion: " + (o ? o.getAttribute("data-ar") + " / " + o.getAttribute("data-en") : ""),
       "الأسامي Names: " + el("n_ar").value.trim() + (el("n_en").value.trim() ? " / " + el("n_en").value.trim() : ""),
       "التاريخ Date: " + niceDate(true) + "، " + niceTime(true) + " / " + niceDate(false) + ", " + niceTime(false) + " (" + el("d").value + " " + el("t").value + ")"
     ];

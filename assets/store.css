@@ -496,7 +496,7 @@ html:not(.en) .ltr-in{text-align:right}
 .sum-top b{display:block;font:600 21px/1.25 var(--disp)}
 .sum-top small{color:var(--kohl-2);font-size:13.5px}
 .sum dl{margin:12px 0 0;display:grid;grid-template-columns:1fr auto;gap:8px 0;font-size:15px}
-.sum dd{padding-inline-start:12px}
+.sum dd{padding-inline-start:12px;font:600 17px/1.5 var(--disp)}
 .sum dt{color:var(--kohl-2)}
 .sum dd{margin:0;text-align:end}
 .sum .tot{border-top:1px solid var(--line);padding-top:12px;margin-top:4px;font-weight:600;color:var(--kohl)}
@@ -504,7 +504,7 @@ html:not(.en) .ltr-in{text-align:right}
 .sum .due{color:var(--wa);font-weight:500}
 .sum .slug{margin:14px 0 0;font-size:13.5px;line-height:1.7;color:var(--kohl-2)}
 .sum .slug bdi{word-break:break-all}
-.sum .slug u{color:var(--kohl);text-decoration-color:var(--gold-d)}
+.sum .slug u{color:var(--kohl);text-decoration:none;background:var(--almond);padding:1px 7px;border-radius:4px}
 .pv{background:var(--almond);border-radius:var(--r);padding:22px 0 16px;position:relative}
 .pv .phone{width:min(260px,70vw)}
 .pv iframe{position:absolute;top:0;left:0;width:390px;border:0;transform-origin:0 0;background:var(--sugar)}

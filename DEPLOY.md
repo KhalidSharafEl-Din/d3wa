@@ -8,8 +8,10 @@ in two stages you can do weeks apart.
 | **A — Static on your domain** | `d3wa.io` instead of a github.io link. Storefront and all 12 demos. | ~20 min | domain only |
 | **B — Worker + D1** | Real order links (`d3wa.io/nada-ahmed-1ea0`), admin publish button | ~30 min | free tier |
 
-Stage A alone is a complete, sellable site — you keep taking orders over
-WhatsApp exactly as you do now. Stage B is what removes the WhatsApp step.
+Stage A puts the whole storefront on your domain, and orders keep arriving
+on WhatsApp. Finish Stage B before the first paid order: it is what gives each
+couple the `d3wa.io/<their-names>` link the store promises. Without it, an
+invitation can only be sent as a long demo link.
 
 Both stay inside Cloudflare's free plan. See "What this costs" at the end.
 
