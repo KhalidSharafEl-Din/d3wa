@@ -21,7 +21,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Poiret+One&family=Cinzel:wght@400;500;600&family=Reem+Kufi:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Poiret+One&family=Cinzel:wght@400;500;600&family=Reem+Kufi:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600&display=swap">
 
 <style>
 /* ═══════════════  D3-009 · GATSBY / ART DECO  ═══════════════ */
@@ -39,6 +39,7 @@
   --caps:"Cinzel",Georgia,serif;
   --light:"Poiret One","Cinzel",sans-serif;
   --kufi:"Reem Kufi","Segoe UI",Tahoma,sans-serif;
+  --kufi-text:"Noto Kufi Arabic","Reem Kufi","Segoe UI",Tahoma,sans-serif; /* body, labels, buttons: Reem Kufi blurs below ~16px */
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -48,7 +49,7 @@ body{
   margin:0;
   overflow-x:hidden;
   color:var(--ivory);
-  font-family:var(--kufi);
+  font-family:var(--kufi-text);
   background:var(--night);
   background-image:
     radial-gradient(90% 46% at 50% 0%, #1A1812 0%, rgba(14,14,16,0) 68%),
@@ -67,7 +68,7 @@ html.en .t-ar{display:none}
 html:not(.en) .t-en{display:none}
 .t-en{font-style:normal}
 .t-ar{
-  font-family:var(--kufi);
+  font-family:var(--kufi-text);
   letter-spacing:0 !important;
   text-indent:0 !important;
   text-transform:none;

@@ -506,7 +506,7 @@ html:not(.en) .ltr-in{text-align:right}
 .pv-note{margin:8px 18px 0;font-size:13px;line-height:1.6;color:var(--kohl-2)}
 .pv-close{display:none}
 .co-bar{display:none}
-.co-page .hdr-cta{display:none}
+.co-page .hdr-cta,.co-page .fab-wa{display:none}
 @media (max-width:980px){
   .co{grid-template-columns:1fr}
   .co-aside{position:static}
@@ -517,7 +517,6 @@ html:not(.en) .ltr-in{text-align:right}
     padding:10px var(--gut);gap:12px;align-items:center;box-shadow:0 -10px 30px -18px rgba(38,25,31,.4)}
   .co-bar .bb-p{font-size:13px;color:var(--kohl-2);line-height:1.3;flex:1}
   .co-bar .bb-p b{display:block;font:600 20px/1.2 var(--disp);color:var(--kohl)}
-  .co-page .fab-wa{bottom:86px}
   .co-page main{padding-bottom:70px}
 }
 /* done */

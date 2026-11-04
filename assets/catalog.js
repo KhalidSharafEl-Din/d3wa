@@ -7,6 +7,9 @@ window.D3WA = {
   base: "https://khalidsharafel-din.github.io/d3wa",
   host: "d3wa.io",
   wa: "201005509418",
+  /* true once the Cloudflare Worker is deployed (DEPLOY.md, stage B): checkout then
+     posts orders to /api/orders. While false, orders go out as one WhatsApp message. */
+  api: false,
 
   occasions: [
     { k: "wedding",    ar: "فرح",       en: "Wedding" },

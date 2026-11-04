@@ -387,7 +387,12 @@ document.addEventListener("DOMContentLoaded", function () {
     html += '<dt class="due">' + (en() ? "Due now" : "المطلوب دلوقتي") + '</dt><dd class="due">' + (en() ? "EGP 0" : "ولا جنيه") + "</dd>";
     el("sumRows").innerHTML = html;
     el("barTotal").textContent = money(total());
-    el("slug").innerHTML = (en() ? "Your link: " : "لينككم: ") + esc(C.host) + "/<u>" + esc(slug()) + "</u>";
+    /* the link is shown only when it can read as the couple's names */
+    var base = slugify(el("n_en").value.trim());
+    el("slug").innerHTML = base
+      ? (en() ? "Your link: " : "لينككم: ") + esc(C.host) + "/<u>" + esc(base) + "</u>"
+      : (en() ? "Add your names in English to see your link, or we will agree it with you on WhatsApp."
+              : "اكتبوا الأسامي بالإنجليزي عشان تشوفوا لينككم، أو نتفق عليه معاكم على واتساب.");
     el("payText").innerHTML = payRule();
     paintRush();
     var classic = state.pkg === "classic";
@@ -463,6 +468,11 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll("[data-back]").forEach(function (b) { b.addEventListener("click", function () { go(state.step - 1); }); });
 
   /* ── review + order text ── */
+  function niceTime(arabic) {
+    var m = /^(\d{2}):(\d{2})$/.exec(el("t").value); if (!m) return "";
+    var o = new Date(2000, 0, 1, +m[1], +m[2]);
+    try { return new Intl.DateTimeFormat(arabic ? "ar-EG" : "en-US", { hour: "numeric", minute: "2-digit" }).format(o); } catch (e) { return el("t").value; }
+  }
   function niceDate(arabic) {
     var d = el("d").value; if (!d) return "";
     var f = { weekday: "long", day: "numeric", month: "long", year: "numeric" };
@@ -476,7 +486,7 @@ document.addEventListener("DOMContentLoaded", function () {
       [en() ? "Package" : "الباقة", L(PKG[state.pkg])],
       [en() ? "Occasion" : "المناسبة", occLabel()],
       [en() ? "Names" : "الأسامي", el("n_ar").value + (el("n_en").value ? " / " + el("n_en").value : "")],
-      [en() ? "Date" : "التاريخ", niceDate(!en()) + (el("t").value ? (en() ? ", " : "، ") + el("t").value : "")],
+      [en() ? "Date" : "التاريخ", niceDate(!en()) + (niceTime(!en()) ? (en() ? ", " : "، ") + niceTime(!en()) : "")],
       [en() ? "Venue" : "المكان", el("v_ar").value || el("v_en").value || (en() ? "To confirm later" : "هنأكده بعدين")],
       [en() ? "RSVPs go to" : "التأكيدات على", el("wa").value, 1],
       [en() ? "Total" : "الإجمالي", money(total())]
@@ -494,7 +504,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "الباقة Package: " + p.ar + " / " + p.en + " · " + total() + " EGP" + (state.rush ? " (rush)" : ""),
       "المناسبة Occasion: " + (o ? o.getAttribute("data-ar") : ""),
       "الأسامي Names: " + el("n_ar").value.trim() + (el("n_en").value.trim() ? " / " + el("n_en").value.trim() : ""),
-      "التاريخ Date: " + niceDate(true) + " / " + niceDate(false) + " (" + el("d").value + (el("t").value ? " " + el("t").value : "") + ")"
+      "التاريخ Date: " + niceDate(true) + "، " + niceTime(true) + " / " + niceDate(false) + ", " + niceTime(false) + " (" + el("d").value + " " + el("t").value + ")"
     ];
     if (el("v_ar").value.trim() || el("v_en").value.trim()) L2.push("المكان Venue: " + [el("v_ar").value.trim(), el("v_en").value.trim()].filter(Boolean).join(" / "));
     if (el("map").value.trim()) L2.push("الخريطة Map: " + el("map").value.trim());
@@ -502,7 +512,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (el("notes").value.trim()) L2.push("ملاحظات Notes: " + el("notes").value.trim());
     L2.push("تأكيدات الحضور RSVP: " + el("wa").value.trim());
     if (el("contact").value.trim()) L2.push("للتواصل Contact: " + el("contact").value.trim());
-    L2.push("اللينك Link: " + C.host + "/" + slug());
+    if (slugify(el("n_en").value.trim())) L2.push("اللينك المقترح Link: " + C.host + "/" + slugify(el("n_en").value.trim()));
     return L2.join("\n");
   }
   function waHref(text) { return "https://wa.me/" + C.wa + "?text=" + encodeURIComponent(text); }
@@ -555,6 +565,7 @@ document.addEventListener("DOMContentLoaded", function () {
     try { localStorage.removeItem("d3wa-build"); } catch (e) {}
     el("form").hidden = true; el("rail").hidden = true; el("coHead").hidden = true;
     el("done").hidden = false;
+    el("coBar").hidden = true;
     el("doneH").innerHTML = viaApi ? bi("طلبكم وصلنا", "We have your order") : bi("خلّصوا الإرسال على واتساب", "Finish sending it on WhatsApp");
     el("doneLead").innerHTML = viaApi
       ? bi("لينككم محجوز، وفيه معاينة دعوتكم بكل تفاصيلها. هنكلمكم على واتساب خلال ساعات.", "Your link is reserved and already shows a preview of your invitation. We will message you on WhatsApp within a few hours.")
@@ -599,7 +610,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function useWhatsApp() { api = false; el("placeBtn").hidden = true; el("placeWa").hidden = false; paintWaPlace(); }
   useWhatsApp();
   /* GitHub Pages has no backend, so only probe on a host that can run the Worker */
-  if (!/\.github\.io$/.test(location.hostname)) fetch("/api/health", { cache: "no-store" })
+  if (C.api) fetch("/api/health", { cache: "no-store" })
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (j) { if (j && j.ok) { api = true; el("placeBtn").hidden = false; el("placeWa").hidden = true; } })
     .catch(function () {});
