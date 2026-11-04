@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="ar">
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>تصميم مودرن | Modern Editorial | دعوة D3wa</title>
-<meta name="description" content="ديمو دعوة مودرن: بوستر تايبوجرافي. A D3wa invitation demo: Modern Editorial, a typographic poster.">
-<meta name="theme-color" content="#F7F5F0">
+<meta name="description" content="ديمو دعوة مودرن: بوستر مطبوع بلونين ومطوي على أربعة. A D3wa invitation demo: Modern Editorial, a two-colour printed poster folded in quarters.">
+<meta name="theme-color" content="#e7e2d8">
 <meta name="color-scheme" content="light">
 
 <meta property="og:type" content="website">
@@ -16,579 +16,15 @@
 <meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/demos/modern.html">
 <link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/demos/modern.html">
 <meta property="og:title" content="تصميم مودرن | Modern Editorial | دعوة D3wa">
-<meta property="og:description" content="ديمو دعوة مودرن: بوستر تايبوجرافي. A D3wa invitation demo: Modern Editorial, a typographic poster.">
+<meta property="og:description" content="ديمو دعوة مودرن: بوستر مطبوع بلونين ومطوي على أربعة. A D3wa invitation demo: Modern Editorial, a two-colour printed poster folded in quarters.">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F7F5F0'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='20' fill='%23C4552D'%3E%E2%9C%B3%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23E7E2D8'/%3E%3Crect x='7' y='4' width='18' height='24' fill='%23F7F5F0'/%3E%3Crect x='10' y='8' width='12' height='3' fill='%23141414'/%3E%3Crect x='10.6' y='12.6' width='9' height='3' fill='%23C4552D'/%3E%3Cpath d='M7 16H25' stroke='%23000' stroke-opacity='.15'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- fonts load without blocking the page: on a slow connection the invitation still opens at once -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Archivo:wdth,wght@62..125,300..800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Archivo:wdth,wght@62..125,300..800&display=swap"></noscript>
-
-<style>
-/* ─────────── TOKENS: Modern Editorial (D3-011) ───────────
-   One poster, one frame. Names set to fill the measure; numbered
-   section openers on a heavy rule; light/heavy weight contrast.  */
-:root{
-  --paper:#F7F5F0;
-  --paper-2:#ECE8DF;
-  --ink:#141414;
-  --ink-2:#5A564F;          /* secondary text, 6.6:1 on paper */
-  --rule:rgba(20,20,20,.16);
-  --accent:#C4552D;         /* large type only */
-  --accent-ink:#A8441F;     /* small accent text, 5.4:1 on paper */
-  --accent-hi:#E06A3B;      /* accent on the ink band */
-  --on-ink:#F7F5F0;
-  --on-ink-2:#ABA79E;       /* secondary on ink, 7.6:1 */
-  --on-ink-rule:rgba(247,245,240,.2);
-  --ar:"Almarai",Tahoma,"Segoe UI",sans-serif;
-  --lat:"Archivo","Helvetica Neue",Arial,sans-serif;
-  --frame:clamp(10px,2.2vw,18px);
-  --gut:calc(var(--frame) + clamp(18px,5vw,56px));
-  --sec:clamp(56px,10vw,120px);
-  --ease:cubic-bezier(.76,0,.24,1);
-}
-
-/* Arabic is set ~1.15x the Latin size: type uses rem, the root flips per language */
-html{font-size:17px;overflow-x:clip;-webkit-text-size-adjust:100%}
-html.en{font-size:15px}
-*,*::before,*::after{box-sizing:border-box}
-body{
-  margin:0;overflow-x:hidden;
-  background:var(--paper);color:var(--ink);
-  font-family:var(--ar);font-weight:400;line-height:1.8;
-  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-}
-html.en body{font-family:var(--lat);line-height:1.6}
-a{color:inherit}
-p{margin:0}
-::selection{background:var(--accent);color:var(--paper)}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-[hidden]{display:none !important}
-
-/* ─────────── LANGUAGE SWITCHING: AR default, html.en → English ─────────── */
-html.en .t-ar{display:none}
-html:not(.en) .t-en{display:none}
-.t-en{font-family:var(--lat)}
-.t-ar{font-family:var(--ar)}
-.cond{font-family:var(--lat);font-stretch:72%;font-weight:800}
-
-/* ─────────── THE FRAME: one rule that inverts over the ink band ─────────── */
-.frame{
-  position:fixed;inset:var(--frame);z-index:40;pointer-events:none;
-  border:1px solid #EBE9E4;mix-blend-mode:difference;
-}
-
-/* ─────────── FIXED CONTROLS ─────────── */
-.lang-toggle,.music-toggle{
-  position:fixed;z-index:50;
-  appearance:none;cursor:pointer;
-  background:var(--paper);color:var(--ink);
-  border:1px solid var(--ink);border-radius:0;
-  -webkit-tap-highlight-color:transparent;
-  transition:background-color .2s ease,color .2s ease;
-}
-.lang-toggle{
-  top:calc(var(--frame) + 12px + env(safe-area-inset-top));
-  inset-inline-end:calc(var(--frame) + 64px);
-  height:44px;
-  min-width:52px;padding:0 12px;
-  font-size:13px;font-weight:800;line-height:1;
-}
-.lang-toggle .t-ar{font-family:var(--lat);letter-spacing:.06em}
-.lang-toggle .t-en{font-family:var(--ar);font-size:15px}
-/* both controls sit in the top corner, clear of the poster foot and the store bar */
-.music-toggle{
-  top:calc(var(--frame) + 12px + env(safe-area-inset-top));
-  inset-inline-end:calc(var(--frame) + 12px);
-  width:44px;height:44px;display:flex;align-items:center;justify-content:center;
-}
-.music-toggle svg{width:18px;height:18px}
-.lang-toggle:hover,.music-toggle:hover{background:var(--ink);color:var(--paper)}
-.music-toggle[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-
-/* ─────────── SKELETON ─────────── */
-main{counter-reset:sec}
-.wrap{padding-inline:var(--gut);max-width:calc(1180px + 2 * var(--gut));margin-inline:auto}
-.sec{padding-top:var(--sec)}
-.numbered{counter-increment:sec}
-.sec .sec-grid{border-top:2px solid var(--ink);padding-top:18px}
-
-/* section opener: big number + real headline */
-.sec-h{
-  margin:0 0 28px;
-  display:flex;align-items:baseline;gap:14px;
-  font-size:1.55rem;font-weight:800;line-height:1.3;
-}
-html.en .sec-h{letter-spacing:-.01em}
-.no{
-  flex:none;
-  font-family:var(--lat);font-stretch:72%;font-weight:800;
-  font-size:54px;line-height:.8;color:var(--accent);
-  font-variant-numeric:tabular-nums;
-}
-.no::before{content:counter(sec,decimal-leading-zero)}
-html:not(.en) .no{font-family:var(--ar);font-size:46px;line-height:.9}
-html:not(.en) .no::before{content:counter(sec,arabic-indic)}
-
-.lede{font-size:1rem;color:var(--ink-2);max-width:30em}
-
-/* ─────────── HERO: the poster ─────────── */
-.hero{
-  padding-top:calc(var(--frame) + 40px + env(safe-area-inset-top));
-  padding-bottom:clamp(40px,7vw,72px);
-}
-.arc{display:block;width:min(460px,86%);margin:clamp(40px,7vw,64px) auto 0;overflow:visible}
-.arc text{fill:var(--ink)}
-.arc .t-ar{font-family:var(--ar);font-size:30px;font-weight:700}
-.arc .t-en{font-family:var(--lat);font-size:25px;font-weight:500}
-
-/* names: JS fits the longest line to the measure; CSS size is the no-JS fallback */
-.names{
-  margin:6px 0 0;
-  font-size:clamp(64px,24vw,220px);
-  font-weight:800;
-}
-.names .ln{display:block;width:max-content;max-width:none;white-space:nowrap}
-.names .ln + .ln{margin-inline-start:auto}   /* line 2 steps to the far edge */
-.names .t-ar .ln{line-height:1.12}
-.names .t-en .ln{
-  font-family:var(--lat);font-stretch:72%;font-weight:800;
-  text-transform:uppercase;letter-spacing:-.012em;line-height:.88;
-}
-.names .t-en .ln + .ln{margin-top:.04em}
-.names.fit-wrap .ln{width:auto;white-space:normal}
-.mark{
-  display:inline-block;
-  font-family:var(--lat);font-weight:400;font-size:.3em;
-  color:var(--accent);vertical-align:super;margin-inline-start:.18em;
-}
-
-.hero-foot{
-  margin-top:clamp(28px,6vw,48px);
-  border-top:2px solid var(--ink);padding-top:14px;
-  display:grid;grid-template-columns:auto 1fr;gap:6px 18px;align-items:start;
-}
-.hf-date{font-size:2.5rem;line-height:1;color:var(--accent);white-space:nowrap}
-html:not(.en) .hf-date{font-family:var(--ar);font-weight:800;font-size:2.05rem;line-height:1.15}
-.hf-meta{text-align:end;font-size:.94rem;line-height:1.5}
-.hf-meta b{display:block;font-weight:800}
-.hf-meta span.sub{display:block;color:var(--ink-2)}
-
-/* hero entrance, played once when the fold opens */
-.names .ln{transition:opacity .7s ease .35s,transform 1s cubic-bezier(.2,.7,.2,1) .35s}
-.names .ln + .ln{transition-delay:.5s}
-html.pre .names .ln{opacity:0;transform:translateY(.22em)}
-
-/* ─────────── COUNTDOWN: the ink band ─────────── */
-.band{
-  background:var(--ink);color:var(--on-ink);
-  margin-top:0;padding-block:clamp(44px,8vw,96px);
-}
-.band .sec-grid{border-top:0;padding-top:0}
-.band .no{color:var(--accent-hi)}
-.cd-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
-.cd-cell{padding-inline:10px;border-inline-start:1px solid var(--on-ink-rule)}
-.cd-cell:first-child{padding-inline-start:0;border-inline-start:0}
-.cd-num{
-  display:block;
-  font-family:var(--lat);font-stretch:72%;font-weight:800;
-  font-size:clamp(46px,14vw,128px);line-height:1;
-  font-variant-numeric:tabular-nums;
-}
-html:not(.en) .cd-num{font-family:var(--ar);font-size:clamp(42px,12.5vw,116px);line-height:1.15}
-.cd-lbl{display:block;margin-top:8px;font-size:.88rem;font-weight:700;color:var(--on-ink-2)}
-.cd-done{display:none;font-size:2.2rem;font-weight:800;line-height:1.3;color:var(--accent-hi)}
-.countdown-wrap.is-done .cd-row{display:none}
-.countdown-wrap.is-done .cd-done{display:block}
-
-/* ─────────── PULL QUOTE: light against heavy ─────────── */
-.pull{margin:0;padding-top:var(--sec)}
-.pull p{
-  max-width:17em;
-  font-size:1.75rem;font-weight:300;line-height:1.65;
-}
-html.en .pull p{font-size:2.05rem;line-height:1.25;letter-spacing:-.015em;max-width:15em}
-.pull .qm{color:var(--accent);font-weight:800}
-
-/* ─────────── LEDGERS: agenda + details ─────────── */
-.ledger{list-style:none;margin:0;padding:0;max-width:620px}
-.ledger li{
-  display:grid;grid-template-columns:5.2em 1fr;gap:16px;align-items:baseline;
-  padding:14px 0;border-bottom:1px solid var(--rule);
-}
-.ledger li:first-child{padding-top:0}
-.ag-time{font-family:var(--lat);font-stretch:72%;font-weight:800;font-size:1.3rem;color:var(--accent-ink);font-variant-numeric:tabular-nums}
-html:not(.en) .ag-time{font-family:var(--ar);font-size:1.12rem}
-.ag-what{font-size:1.06rem;font-weight:700}
-
-.facts{margin:0;max-width:620px}
-.fact{padding:16px 0;border-bottom:1px solid var(--rule)}
-.fact:first-child{padding-top:0}
-.fact dt{font-size:.88rem;font-weight:700;color:var(--ink-2)}
-.fact dd{margin:4px 0 0;font-size:1.45rem;font-weight:800;line-height:1.35}
-html.en .fact dd{letter-spacing:-.01em}
-.fact dd small{display:block;margin-top:2px;font-size:.94rem;font-weight:400;color:var(--ink-2);letter-spacing:0}
-
-/* ─────────── BUTTONS: square, like the frame ─────────── */
-.acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px;max-width:620px}
-.btn{
-  display:flex;align-items:center;justify-content:center;text-align:center;
-  min-height:52px;padding:8px 16px;
-  border:1.5px solid var(--ink);border-radius:0;
-  background:transparent;color:var(--ink);
-  font-size:.94rem;font-weight:800;line-height:1.3;text-decoration:none;
-  transition:background-color .2s ease,color .2s ease,border-color .2s ease;
-  -webkit-tap-highlight-color:transparent;
-}
-.btn:hover{background:var(--ink);color:var(--paper)}
-.btn.solid{background:var(--ink);color:var(--paper)}
-.btn.solid:hover{background:var(--accent-ink);border-color:var(--accent-ink)}
-
-/* ─────────── NOTES: dress / gift ─────────── */
-.note{font-size:1.3rem;font-weight:700;line-height:1.6;max-width:22em}
-html.en .note{line-height:1.4;letter-spacing:-.01em}
-
-/* ─────────── GALLERY ─────────── */
-.gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:820px}
-.gframe{margin:0;position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--paper-2)}
-.gframe:first-child{grid-column:1 / -1;aspect-ratio:4/3}
-.gframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.gph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--lat);font-size:22px;color:var(--accent)}
-.gframe.has-img .gph{display:none}
-.gallery.has-any .gframe:not(.has-img){display:none}
-
-/* ─────────── RSVP ─────────── */
-.guests{margin:28px 0 0}
-.guests-lbl{display:block;margin-bottom:10px;font-size:.88rem;font-weight:700;color:var(--ink-2)}
-.guest-chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{
-  min-width:56px;min-height:52px;padding:0 14px;
-  border:1.5px solid var(--ink);border-radius:0;
-  background:none;color:var(--ink);cursor:pointer;
-  font-family:var(--lat);font-stretch:72%;font-weight:800;font-size:20px;
-  transition:background-color .2s ease,color .2s ease;
-  -webkit-tap-highlight-color:transparent;
-}
-html:not(.en) .chip{font-family:var(--ar);font-size:19px}
-.chip:hover{background:var(--paper-2)}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.rsvp-yes{
-  display:flex;align-items:center;justify-content:center;
-  margin-top:20px;max-width:620px;min-height:64px;padding:10px 20px;
-  background:var(--ink);color:var(--paper);text-decoration:none;
-  font-size:1.3rem;font-weight:800;
-  transition:background-color .2s ease;
-}
-html.en .rsvp-yes{font-stretch:88%;letter-spacing:-.005em}
-.rsvp-yes:hover{background:var(--accent-ink)}
-.rsvp-more{display:flex;flex-wrap:wrap;gap:6px 28px;margin-top:14px}
-.tlink{
-  display:inline-flex;align-items:center;min-height:44px;
-  font-size:1rem;font-weight:700;color:var(--ink);
-  text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:6px;
-  text-decoration-color:var(--rule);
-  transition:text-decoration-color .2s ease,color .2s ease;
-}
-.tlink:hover{color:var(--accent-ink);text-decoration-color:currentColor}
-
-/* ─────────── CLOSING ─────────── */
-.closing{padding-top:calc(var(--sec) * 1.1);padding-bottom:12px}
-.closing .sign-rule{border-top:2px solid var(--ink);padding-top:22px}
-.closing-big{font-size:clamp(56px,22vw,200px);font-weight:800;margin:0}
-.closing-big .ln{display:block;width:max-content;white-space:nowrap}
-.closing-big .t-ar .ln{line-height:1.2}
-.closing-big .t-en .ln{font-family:var(--lat);font-stretch:72%;text-transform:uppercase;letter-spacing:-.012em;line-height:.9}
-.closing-big.fit-wrap .ln{width:auto;white-space:normal}
-.sign{margin-top:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 20px;font-size:1rem;font-weight:700}
-.sign .sub{color:var(--ink-2);font-weight:400}
-
-/* ─────────── INTRO: the folded poster ───────────
-   Two halves carry the same face; tapping tears the monogram along the fold. */
-.intro{position:fixed;inset:0;z-index:100;cursor:pointer;overflow:hidden;-webkit-tap-highlight-color:transparent}
-.ih{position:absolute;left:0;right:0;height:50%;overflow:hidden;background:var(--paper);transition:transform .95s var(--ease) .08s}
-.ih.top{top:0}
-.ih.bot{bottom:0;height:calc(50% + 1px)}
-.ih-face{
-  position:absolute;left:0;right:0;height:100vh;height:100dvh;
-  display:grid;grid-template-rows:1fr auto 1fr;justify-items:center;
-  padding:calc(var(--frame) + 28px) var(--gut);text-align:center;
-}
-.ih.top .ih-face{top:0}
-.ih.bot .ih-face{bottom:0}
-.ih-frame{position:absolute;left:var(--frame);right:var(--frame);border:1px solid var(--ink);pointer-events:none}
-.ih.top .ih-frame{top:var(--frame);bottom:-2px;border-bottom:0}
-.ih.bot .ih-frame{bottom:var(--frame);top:-2px;border-top:0}
-.mono{
-  display:flex;align-items:center;justify-content:center;gap:.04em;
-  font-size:clamp(120px,40vw,300px);line-height:1;
-}
-.mono b{font-weight:800}
-.mono .t-en b{font-family:var(--lat);font-stretch:72%;text-transform:uppercase}
-.mono .t-ar b{font-family:var(--ar);line-height:1.1;font-size:.78em}
-.mono .t-ar,.mono .t-en{display:flex;align-items:center;gap:.06em}
-html.en .mono .t-ar,html:not(.en) .mono .t-en{display:none}
-.mono i{font-style:normal;font-family:var(--lat);font-weight:300;color:var(--accent);font-size:.62em;transform:translateY(-.02em)}
-.mono.single i,.mono.single .m2{display:none}
-.ih-low{align-self:start;display:flex;flex-direction:column;align-items:center;margin-top:16px}
-.ih-names{font-size:1.4rem;font-weight:800;line-height:1.4}
-.ih-date{margin-top:4px;font-size:1rem;color:var(--ink-2)}
-.ih-hint{
-  margin-top:clamp(28px,6vh,48px);
-  display:inline-flex;align-items:center;min-height:48px;padding:0 22px;
-  background:var(--ink);color:var(--paper);
-  font-size:1rem;font-weight:800;
-}
-/* fold marks at the crease, gone once it opens */
-.intro::before,.intro::after{
-  content:"";position:absolute;z-index:2;top:50%;width:18px;height:1px;background:var(--ink);
-  transition:opacity .2s ease;
-}
-.intro::before{left:var(--frame)}
-.intro::after{right:var(--frame)}
-.intro.open::before,.intro.open::after{opacity:0}
-.intro:focus-visible{outline:none}
-.intro:focus-visible .ih-hint{outline:2px solid var(--accent);outline-offset:4px}
-.intro.open{pointer-events:none}
-.intro.open .ih.top{transform:translateY(-101%)}
-.intro.open .ih.bot{transform:translateY(101%)}
-
-/* ─────────── WIDER SCREENS: a 4/8 editorial grid ─────────── */
-@media (min-width:900px){
-  html{font-size:19px}
-  html.en{font-size:16.5px}
-  .note{font-size:1.5rem}
-  .sec .sec-grid,.band .sec-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:0 48px;align-items:start}
-  .sec-h{flex-direction:column;gap:14px;font-size:1.9rem;margin:0;position:sticky;top:48px}
-  .no{font-size:84px}
-  html:not(.en) .no{font-size:72px}
-  .acts{grid-template-columns:auto auto;justify-content:start}
-  .acts .btn{padding-inline:32px}
-  .rsvp-yes{max-width:420px}
-  .gallery{grid-template-columns:repeat(3,1fr);gap:14px}
-  .gframe:first-child{grid-column:auto;aspect-ratio:3/4}
-  .pull p{font-size:2.4rem}
-  html.en .pull p{font-size:2.9rem}
-  .hf-date{font-size:3.4rem}
-  html:not(.en) .hf-date{font-size:2.8rem}
-  .hf-meta{font-size:1.06rem}
-}
-
-/* ─────────── MOTION ─────────── */
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation:none !important;transition:none !important}
-  html.pre .names .ln{opacity:1;transform:none}
-}
-</style>
-</head>
-
-<body>
-
-<div class="frame" aria-hidden="true"></div>
-
-<!-- ═══════ INTRO: TAP TO OPEN (unhidden only via script; intro=0 skips) ═══════ -->
-<div class="intro" id="intro" hidden role="button" tabindex="0"
-     aria-label="افتحوا الدعوة، دوسوا للفتح / Open the invitation, tap to open">
-  <div class="ih top" aria-hidden="true">
-    <div class="ih-frame"></div>
-    <div class="ih-face">
-      <span aria-hidden="true"></span>
-      <p class="mono"><span class="t-ar"><b class="m1">ع</b><i>/</i><b class="m2">س</b></span><span class="t-en"><b class="m1">O</b><i>/</i><b class="m2">S</b></span></p>
-      <div class="ih-low">
-        <p class="ih-names"><span class="t-ar js-names-ar">عمر وسلمى</span><span class="t-en js-names-en">Omar &amp; Salma</span></p>
-        <p class="ih-date"><span class="t-ar">دعوة خطوبة، <bdi dir="ltr" class="js-num-ar">٢٢/٨/٢٠٢٦</bdi></span><span class="t-en">Engagement, <bdi dir="ltr" class="js-num-en">22.08.2026</bdi></span></p>
-        <p class="ih-hint"><span class="t-ar">دوسوا لفتح الدعوة</span><span class="t-en">Tap to open</span></p>
-      </div>
-    </div>
-  </div>
-  <div class="ih bot" aria-hidden="true">
-    <div class="ih-frame"></div>
-    <div class="ih-face">
-      <span aria-hidden="true"></span>
-      <p class="mono"><span class="t-ar"><b class="m1">ع</b><i>/</i><b class="m2">س</b></span><span class="t-en"><b class="m1">O</b><i>/</i><b class="m2">S</b></span></p>
-      <div class="ih-low">
-        <p class="ih-names"><span class="t-ar js-names-ar">عمر وسلمى</span><span class="t-en js-names-en">Omar &amp; Salma</span></p>
-        <p class="ih-date"><span class="t-ar">دعوة خطوبة، <bdi dir="ltr" class="js-num-ar">٢٢/٨/٢٠٢٦</bdi></span><span class="t-en">Engagement, <bdi dir="ltr" class="js-num-en">22.08.2026</bdi></span></p>
-        <p class="ih-hint"><span class="t-ar">دوسوا لفتح الدعوة</span><span class="t-en">Tap to open</span></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<button class="lang-toggle" id="langBtn" type="button" aria-label="Switch language / تبديل اللغة">
-  <span class="t-ar">EN</span>
-  <span class="t-en">عربي</span>
-</button>
-
-<main>
-
-  <!-- ═══════ THE POSTER ═══════ -->
-  <header class="hero wrap">
-    <svg class="arc" viewBox="0 0 480 92" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path id="arcPath" d="M 24 84 Q 240 4 456 84" fill="none" stroke="none"/>
-      <text class="t-ar"><textPath href="#arcPath" startOffset="50%" text-anchor="middle">إنتم معزومين على خطوبة</textPath></text>
-      <text class="t-en"><textPath href="#arcPath" startOffset="50%" text-anchor="middle">You&rsquo;re invited to the engagement of</textPath></text>
-    </svg>
-
-    <h1 class="names" id="namesH" data-fit data-max="240" data-maxvh="0.25" data-min="44">
-      <span class="t-ar">
-        <span class="ln" id="arL1">عمر<span class="mark" aria-hidden="true">✱</span></span>
-        <span class="ln" id="arL2">وسلمى</span>
-      </span>
-      <span class="t-en">
-        <span class="ln" id="enL1">Omar<span class="mark" aria-hidden="true">✱</span></span>
-        <span class="ln" id="enL2">&amp; Salma</span>
-      </span>
-    </h1>
-
-    <div class="hero-foot">
-      <p class="hf-date"><bdi dir="ltr" class="t-ar js-num-ar">٢٢/٨/٢٠٢٦</bdi><bdi dir="ltr" class="t-en cond js-num-en">22.08.2026</bdi></p>
-      <p class="hf-meta">
-        <span class="t-ar"><b id="heroWhenAr">السبت، ٨:٠٠ مساءً</b><span class="sub" id="heroWhereAr">فيلا روز، المعادي</span></span>
-        <span class="t-en"><b id="heroWhenEn">Saturday, 8:00 PM</b><span class="sub" id="heroWhereEn">Villa Rose, Maadi</span></span>
-      </p>
-    </div>
-  </header>
-
-  <!-- ═══════ COUNTDOWN ═══════ -->
-  <section class="band numbered" aria-labelledby="cdTitle">
-    <div class="wrap">
-      <div class="sec-grid">
-        <h2 class="sec-h" id="cdTitle"><span class="no" aria-hidden="true"></span><span><span class="t-ar">فاضل على اليوم</span><span class="t-en">Until the day</span></span></h2>
-        <div class="countdown-wrap" id="cdWrap">
-          <div class="cd-row" role="timer" aria-live="off">
-            <div class="cd-cell"><span class="cd-num" id="cdD">٠٠</span><span class="cd-lbl"><span class="t-ar">يوم</span><span class="t-en">Days</span></span></div>
-            <div class="cd-cell"><span class="cd-num" id="cdH">٠٠</span><span class="cd-lbl"><span class="t-ar">ساعة</span><span class="t-en">Hours</span></span></div>
-            <div class="cd-cell"><span class="cd-num" id="cdM">٠٠</span><span class="cd-lbl"><span class="t-ar">دقيقة</span><span class="t-en">Minutes</span></span></div>
-            <div class="cd-cell"><span class="cd-num" id="cdS">٠٠</span><span class="cd-lbl"><span class="t-ar">ثانية</span><span class="t-en">Seconds</span></span></div>
-          </div>
-          <p class="cd-done"><span class="t-ar">النهارده اليوم الكبير.</span><span class="t-en">Today&rsquo;s the day.</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ PULL QUOTE (q) ═══════ -->
-  <blockquote class="pull wrap">
-    <p><span class="t-ar"><span class="qm">«</span><span id="quoteAr">اتقابلنا صدفة، واخترنا بعض عن قصد.</span><span class="qm">»</span></span><span class="t-en"><span class="qm">&ldquo;</span><span id="quoteEn">We met by chance and chose each other on purpose.</span><span class="qm">&rdquo;</span></span></p>
-  </blockquote>
-
-  <!-- ═══════ AGENDA ═══════ -->
-  <section class="sec numbered" id="agenda" aria-labelledby="agTitle">
-    <div class="wrap"><div class="sec-grid">
-      <h2 class="sec-h" id="agTitle"><span class="no" aria-hidden="true"></span><span><span class="t-ar">برنامج الليلة</span><span class="t-en">The evening</span></span></h2>
-      <ol class="ledger" id="agList">
-        <li><span class="ag-time"><span class="t-ar">٨:٠٠</span><span class="t-en">8:00</span></span><span class="ag-what"><span class="t-ar">الاستقبال</span><span class="t-en">Reception</span></span></li>
-        <li><span class="ag-time"><span class="t-ar">٩:٠٠</span><span class="t-en">9:00</span></span><span class="ag-what"><span class="t-ar">لبس الدبل</span><span class="t-en">The rings</span></span></li>
-        <li><span class="ag-time"><span class="t-ar">١٠:٠٠</span><span class="t-en">10:00</span></span><span class="ag-what"><span class="t-ar">العشا</span><span class="t-en">Dinner</span></span></li>
-        <li><span class="ag-time"><span class="t-ar">١١:٠٠</span><span class="t-en">11:00</span></span><span class="ag-what"><span class="t-ar">التصوير والسهرة</span><span class="t-en">Photos and dancing</span></span></li>
-      </ol>
-    </div></div>
-  </section>
-
-  <!-- ═══════ WHEN AND WHERE ═══════ -->
-  <section class="sec numbered" aria-labelledby="dtTitle" data-shot="details">
-    <div class="wrap"><div class="sec-grid">
-      <h2 class="sec-h" id="dtTitle"><span class="no" aria-hidden="true"></span><span><span class="t-ar">الميعاد والمكان</span><span class="t-en">When and where</span></span></h2>
-      <div>
-        <dl class="facts">
-          <div class="fact">
-            <dt><span class="t-ar">التاريخ</span><span class="t-en">Date</span></dt>
-            <dd><span class="t-ar" id="dateAr">٢٢ أغسطس ٢٠٢٦<small>يوم السبت</small></span><span class="t-en" id="dateEn">22 August 2026<small>Saturday</small></span></dd>
-          </div>
-          <div class="fact">
-            <dt><span class="t-ar">الساعة</span><span class="t-en">Time</span></dt>
-            <dd><span class="t-ar" id="timeAr">٨:٠٠ مساءً</span><span class="t-en" id="timeEn">8:00 PM</span></dd>
-          </div>
-          <div class="fact">
-            <dt><span class="t-ar">المكان</span><span class="t-en">Venue</span></dt>
-            <dd><span class="t-ar" id="venueAr">فيلا روز<small>المعادي، القاهرة</small></span><span class="t-en" id="venueEn">Villa Rose<small>Maadi, Cairo</small></span></dd>
-          </div>
-        </dl>
-        <div class="acts">
-          <a class="btn solid" id="mapBtn" href="https://maps.app.goo.gl/K2izAmdtfuKVcS138" target="_blank" rel="noopener noreferrer"><span class="t-ar">افتحوا الخريطة</span><span class="t-en">Open the map</span></a>
-          <a class="btn" id="calBtn" target="_blank" rel="noopener noreferrer"
-             href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Omar%20%26%20Salma%27s%20engagement&amp;dates=20260822T200000/20260822T230000&amp;ctz=Africa/Cairo&amp;location=Villa%20Rose%2C%20Maadi%2C%20Cairo"><span class="t-ar">أضيفوها للتقويم</span><span class="t-en">Add to calendar</span></a>
-        </div>
-      </div>
-    </div></div>
-  </section>
-
-  <!-- ═══════ DRESS CODE ═══════ -->
-  <section class="sec numbered" id="dress" aria-labelledby="drTitle">
-    <div class="wrap"><div class="sec-grid">
-      <h2 class="sec-h" id="drTitle"><span class="no" aria-hidden="true"></span><span><span class="t-ar">اللبس</span><span class="t-en">Dress code</span></span></h2>
-      <p class="note"><span class="t-ar" id="dressAr">لبس رسمي، وسيبوا الأبيض للعروسة.</span><span class="t-en" id="dressEn">Formal. Please leave the white to the bride.</span></p>
-    </div></div>
-  </section>
-
-  <!-- ═══════ GALLERY (hidden unless photos / ph*) ═══════ -->
-  <section class="sec numbered" id="gallery" aria-labelledby="glTitle" style="display:none">
-    <div class="wrap"><div class="sec-grid">
-      <h2 class="sec-h" id="glTitle"><span class="no" aria-hidden="true"></span><span><span class="t-ar">لقطات</span><span class="t-en">Moments</span></span></h2>
-      <div class="gallery" id="galGrid">
-        <figure class="gframe"><span class="gph" aria-hidden="true">&#10035;</span><img id="ph1" alt="" width="800" height="600" loading="lazy" decoding="async" hidden></figure>
-        <figure class="gframe"><span class="gph" aria-hidden="true">&#10035;</span><img id="ph2" alt="" width="600" height="800" loading="lazy" decoding="async" hidden></figure>
-        <figure class="gframe"><span class="gph" aria-hidden="true">&#10035;</span><img id="ph3" alt="" width="600" height="800" loading="lazy" decoding="async" hidden></figure>
-      </div>
-    </div></div>
-  </section>
-
-  <!-- ═══════ GIFTS ═══════ -->
-  <section class="sec numbered" id="gift" aria-labelledby="gfTitle">
-    <div class="wrap"><div class="sec-grid">
-      <h2 class="sec-h" id="gfTitle"><span class="no" aria-hidden="true"></span><span><span class="t-ar">الهدايا</span><span class="t-en">Gifts</span></span></h2>
-      <p class="note"><span class="t-ar" id="giftAr">وجودكم معانا هو أحلى هدية.</span><span class="t-en" id="giftEn">Having you there is the only gift we want.</span></p>
-    </div></div>
-  </section>
-
-  <!-- ═══════ RSVP ═══════ -->
-  <section class="sec numbered" aria-labelledby="rsTitle" data-shot="rsvp">
-    <div class="wrap"><div class="sec-grid">
-      <h2 class="sec-h" id="rsTitle"><span class="no" aria-hidden="true"></span><span><span class="t-ar">تأكيد الحضور</span><span class="t-en">RSVP</span></span></h2>
-      <div>
-        <p class="lede"><span class="t-ar">قولولنا هتيجوا ولا لأ، والرد بيوصلنا على واتساب على طول.</span><span class="t-en">Let us know if you can make it. Your reply comes straight to us on WhatsApp.</span></p>
-        <div class="guests" role="group" aria-labelledby="guestsLbl">
-          <span class="guests-lbl" id="guestsLbl"><span class="t-ar">عدد الأفراد</span><span class="t-en">How many of you</span></span>
-          <div class="guest-chips">
-            <button type="button" class="chip" data-n="1" aria-pressed="true"><span class="t-ar">١</span><span class="t-en">1</span></button>
-            <button type="button" class="chip" data-n="2" aria-pressed="false"><span class="t-ar">٢</span><span class="t-en">2</span></button>
-            <button type="button" class="chip" data-n="3" aria-pressed="false"><span class="t-ar">٣</span><span class="t-en">3</span></button>
-            <button type="button" class="chip" data-n="4+" aria-pressed="false"><span class="t-ar">+٤</span><span class="t-en">4+</span></button>
-          </div>
-        </div>
-        <a class="rsvp-yes" id="rsvpYes" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="t-ar">أكّدوا الحضور على واتساب</span><span class="t-en">Confirm on WhatsApp</span></a>
-        <div class="rsvp-more">
-          <a class="tlink" id="rsvpNo" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="t-ar">مش هنقدر نيجي</span><span class="t-en">We can&rsquo;t make it</span></a>
-          <a class="tlink" id="shareBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/"><span class="t-ar">ابعتوا الدعوة لحبايبكم</span><span class="t-en">Share the invitation</span></a>
-        </div>
-      </div>
-    </div></div>
-  </section>
-
-  <!-- ═══════ CLOSING ═══════ -->
-  <footer class="closing wrap">
-    <div class="sign-rule">
-      <p class="closing-big" data-fit data-max="200" data-maxvh="0.22" data-min="40">
-        <span class="t-ar"><span class="ln">مستنيينكم</span></span>
-        <span class="t-en"><span class="ln">See you there</span></span>
-      </p>
-      <p class="sign">
-        <span><span class="t-ar js-names-ar">عمر وسلمى</span><span class="t-en js-names-en">Omar &amp; Salma</span></span>
-        <span class="sub"><bdi dir="ltr" class="t-ar js-num-ar">٢٢/٨/٢٠٢٦</bdi><bdi dir="ltr" class="t-en js-num-en">22.08.2026</bdi></span>
-      </p>
-    </div>
-  </footer>
-
-</main>
-
-<button class="music-toggle" id="musicBtn" type="button" aria-pressed="false"
-        aria-label="موسيقى هادئة / Ambient music on or off">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-    <path d="M9 18V5l10-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>
-  </svg>
-</button>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400..900&family=Almarai:wght@400;700;800&family=Archivo:wdth,wght@62..125,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap" media="print" onload="this.onload=null;this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400..900&family=Almarai:wght@400;700;800&family=Archivo:wdth,wght@62..125,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap"></noscript>
 
 <script>
 /* Rolling demo date: without a real order date (?d=) the demo always counts
@@ -605,389 +41,846 @@ html.en .mono .t-ar,html:not(.en) .mono .t-en{display:none}
 })();
 </script>
 <script>
+/* The poster arrives folded. Set before the first paint so it never flashes open; intro=0 skips. */
+(function () {
+  try { if (new URLSearchParams(window.__D3WA__ || location.search).get("intro") !== "0") document.documentElement.classList.add("folded"); } catch (e) {}
+})();
+</script>
+
+<style>
+/* Modern Editorial (D3-011): a two-colour risograph poster, black and brick-orange on
+   off-white stock, posted folded in quarters. The page is the sheet opened on a table:
+   four panels on a strict grid, creases where it was folded, the second ink a hair off
+   register. Each panel is laid out like its own spread. */
+:root{
+  --wall:#e7e2d8;
+  --paper:#f7f5f0;
+  --ink:#171615; --ink-2:#56524b;
+  --red:#c4552d; --red-d:#a3421e;
+  /* Arabic: Alexandria for display (names, figures, headings), Almarai for text.
+     Latin: Archivo for display, Newsreader for text and the italic second voice. */
+  --ar-d:"Alexandria","Almarai",Tahoma,sans-serif;
+  --ar:"Almarai",Tahoma,"Segoe UI",sans-serif;
+  --en-d:"Archivo","Helvetica Neue",Arial,"Alexandria",sans-serif;
+  --en:"Newsreader",Georgia,"Times New Roman","Almarai",serif;
+  --m:12px;                                   /* table showing round the sheet */
+  --top:calc(64px + env(safe-area-inset-top));
+  --qw:calc(100vw - 2 * var(--m));            /* one quarter of the sheet */
+  --u:calc(var(--qw) / 100);                  /* the poster's own unit: type scales with the paper */
+  --ph:calc(var(--qw) * 4 / 3);               /* 45 x 60 cm sheet: every quarter is 3:4 */
+  --mx:1.5px; --my:-1px;                      /* the orange drum prints a hair off the black */
+  --ease:cubic-bezier(.55,.06,.2,1);
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' seed='7' stitchTiles='stitch' result='f'/%3E%3CfeColorMatrix in='f' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -30 0 0 0 23.3' result='s'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.018' numOctaves='2' seed='3' stitchTiles='stitch' result='l'/%3E%3CfeColorMatrix in='l' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -.3 0 0 0 1.14' result='m'/%3E%3CfeComposite in='s' in2='m' operator='in'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23g)'/%3E%3C/svg%3E");
+  --mottle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.02' numOctaves='3' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -.3 0 0 0 1.12'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23m)'/%3E%3C/svg%3E");
+  --fibre:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .36 0 0 0 0 .29 0 0 0 0 .2 0 0 0 .085 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+@media (min-width:600px){ :root{ --qw:min(540px, calc(100vw - 64px)) } }
+@media (min-width:1000px){ :root{ --qw:min(46vw, 700px) } }
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{
+  margin:0;min-height:100vh;overflow-x:hidden;
+  color:var(--ink);font:400 16px/1.6 var(--en);
+  background-color:var(--wall);
+  /* the table: one warm light falling from the window, a little grit */
+  background-image:
+    radial-gradient(80% 55% at 50% 8%,rgba(255,252,246,.85),rgba(255,252,246,0) 70%),
+    radial-gradient(150% 110% at 50% 30%,rgba(80,64,44,0) 55%,rgba(80,64,44,.14)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .25 0 0 0 0 .18 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  -webkit-font-smoothing:antialiased;
+}
+html.ar body{font-family:var(--ar);line-height:1.85}
+html.folded body{overflow:hidden}
+a{color:inherit}
+p{margin:0}
+img{display:block;max-width:100%}
+::selection{background:var(--red);color:var(--paper)}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+[hidden]{display:none!important}
+html.ar .t-en{display:none}
+html:not(.ar) .t-ar{display:none}
+
+/* ── two slips of paper on the table: music and language ── */
+.ctls{position:absolute;top:calc(14px + env(safe-area-inset-top));inset-inline-end:var(--m);z-index:50;display:flex;gap:8px}
+@media (min-width:1000px){ .ctls{inset-inline-end:max(var(--m), calc(50% - var(--qw)))} }
+.ctl{appearance:none;margin:0;min-height:40px;min-width:44px;padding:0 13px;border:0;border-radius:0;cursor:pointer;
+  background:#fbfaf6;color:var(--ink);font:500 14px/40px var(--en-d);
+  box-shadow:0 1px 1px rgba(50,38,26,.14),0 3px 6px -3px rgba(50,38,26,.22);-webkit-tap-highlight-color:transparent}
+.lang-toggle .t-en{font:500 15px/40px var(--ar)}
+.music-toggle{font-family:var(--ar);font-size:14px}
+html:not(.ar) .music-toggle{font-family:var(--en-d)}
+.ctl:hover{background:#fff}
+.music-toggle[aria-pressed="true"]{background:var(--red);color:var(--paper)}
+
+/* ── the sheet ── */
+.sheet{
+  position:relative;width:var(--qw);margin:var(--top) auto 0;
+  display:grid;grid-template-columns:var(--qw);
+  counter-reset:sec;
+  perspective:2000px;perspective-origin:50% calc(var(--ph) / 2);
+  /* one sheet lying on the table: its shadow follows the paper, folded or open */
+  filter:drop-shadow(0 1px 1px rgba(50,38,26,.18)) drop-shadow(0 16px 20px rgba(60,45,30,.13));
+  transition:transform 1.15s var(--ease);
+}
+.panel{position:relative;display:grid;aspect-ratio:3/4;min-width:0}
+.pp{
+  position:relative;isolation:isolate;grid-area:1 / 1;min-width:0;
+  display:flex;flex-direction:column;
+  padding:calc(var(--u) * 7.5) calc(var(--u) * 7);
+  background:var(--paper) var(--fibre);
+  font-size:clamp(16px, calc(var(--u) * 4.5), 20px);
+}
+html:not(.ar) .pp{font-size:clamp(15.5px, calc(var(--u) * 4.1), 18.5px);line-height:1.5}
+
+/* folds: each facet catches the light a little differently, so the creases show
+   (JS marks every panel with its row parity and its side of the sheet) */
+.pp::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+  background:var(--ct,linear-gradient(transparent,transparent)),var(--cs,linear-gradient(transparent,transparent)),var(--lh,linear-gradient(transparent,transparent)),var(--lv,linear-gradient(transparent,transparent))}
+.panel[data-f="a"] > .pp{--lv:linear-gradient(to bottom,rgba(255,255,255,.26),rgba(255,255,255,0) 38%,rgba(70,52,34,0) 62%,rgba(70,52,34,.06))}
+.panel[data-f="b"] > .pp{--lv:linear-gradient(to top,rgba(255,255,255,.26),rgba(255,255,255,0) 38%,rgba(70,52,34,0) 62%,rgba(70,52,34,.06))}
+.panel[data-s="l"] > .pp{--lh:linear-gradient(to right,rgba(255,255,255,.16),rgba(255,255,255,0) 40%,rgba(70,52,34,0) 70%,rgba(70,52,34,.05))}
+.panel[data-s="r"] > .pp{--lh:linear-gradient(to left,rgba(255,255,255,.1),rgba(255,255,255,0) 40%,rgba(70,52,34,0) 70%,rgba(70,52,34,.06))}
+.panel[data-t="1"] > .pp{--ct:linear-gradient(to bottom,rgba(70,52,34,.2) 0,rgba(70,52,34,.2) 1px,rgba(255,255,255,.8) 1px,rgba(255,255,255,.8) 2px,rgba(255,255,255,0) 2px,rgba(255,255,255,0) 100%)}
+.panel[data-s="r"] > .pp{--cs:linear-gradient(to right,rgba(70,52,34,.2) 0,rgba(70,52,34,.2) 1px,rgba(255,255,255,.8) 1px,rgba(255,255,255,.8) 2px,rgba(255,255,255,0) 2px,rgba(255,255,255,0) 100%)}
+
+/* riso ink: large solids never print perfectly; the paper shows through in specks */
+.grain{-webkit-mask-image:var(--grain);mask-image:var(--grain);-webkit-mask-size:200px 200px;mask-size:200px 200px}
+/* black is the denser drum: no pinholes, only the uneven lay of the ink */
+.mottle{-webkit-mask-image:var(--mottle);mask-image:var(--mottle);-webkit-mask-size:240px 240px;mask-size:240px 240px}
+/* a mask clips to its box: give the ink room for dots and descenders that hang outside the line */
+.names > span{display:flex;flex-direction:column;align-items:flex-start}   /* flex: the lines' margins add up instead of collapsing */
+.names .ln{padding-block:.5em;margin-block:-.5em}
+.sh .no,.d-big .d-num,.d-side .d-my,.c-foot .c-date{padding-block:.3em;margin-block:-.3em}
+.verso .v-occ{padding-block:.3em;margin-top:-.3em;margin-bottom:calc(var(--u) * -1 - .3em)}
+.prog .closing{padding-block:.3em}
+/* the second ink: overprints the black and sits a hair off register */
+.ink2{color:var(--red);mix-blend-mode:multiply;translate:var(--mx) var(--my)}
+
+/* section openers: a heavy black rule, the number in the second ink, a plain heading */
+.numbered{counter-increment:sec}
+.sh{margin:0 0 calc(var(--u) * 4);display:flex;align-items:baseline;gap:calc(var(--u) * 3);
+  border-top:calc(var(--u) * .9) solid var(--ink);padding-top:calc(var(--u) * 2.2);
+  font:800 calc(var(--u) * 6)/1.3 var(--ar-d)}
+html:not(.ar) .sh{font:750 calc(var(--u) * 5.6)/1.2 var(--en-d);letter-spacing:-.01em}
+.sh .no{flex:none;font:800 calc(var(--u) * 12.5)/.8 var(--ar-d)}
+.sh .no::before{content:counter(sec,arabic-indic)}
+html:not(.ar) .sh .no{font-family:var(--en-d);font-stretch:72%;font-variant-numeric:tabular-nums}
+html:not(.ar) .sh .no::before{content:counter(sec)}
+
+/* ── panel 1: the face of the poster ── */
+.cover .pp{justify-content:space-between}
+.c-top{display:flex;flex-direction:column;gap:calc(var(--u) * 1.5)}
+.hosts .hv{font-size:.9em;color:var(--ink-2)}
+.hosts-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 calc(var(--u) * 4);margin:0;font-size:.94em;font-weight:600;line-height:1.5}
+.hosts-cols.one,.hosts-cols.stack{grid-template-columns:1fr;gap:2px}
+html.ar .hosts-cols.t-en{display:none}
+html:not(.ar) .hosts-cols.t-en{display:block;text-wrap:balance;font-family:var(--en)}
+.hosts-cols.t-en .host{display:inline}
+.host{min-width:0;white-space:nowrap}
+.host .ttl{display:block;font-weight:400;font-size:.9em;color:var(--ink-2)}
+html:not(.ar) .host .ttl{display:inline;font-size:1em;color:inherit;font-weight:600}
+.lead{font-weight:500;line-height:1.6;max-width:21em;text-wrap:balance}
+html:not(.ar) .lead{font-style:italic;font-weight:400}
+
+.c-mid{margin-block:auto;padding-block:calc(var(--u) * 3)}
+/* the names: JS sets the size so the longer one fills the measure */
+.names{margin:0;font:900 calc(var(--u) * 26)/1 var(--ar-d)}
+.names .ln{display:block;width:max-content;max-width:none;white-space:nowrap;unicode-bidi:plaintext}
+.names .t-ar .ln{line-height:1.08}
+.names .ln.o{margin-inline-start:auto;margin-top:-.1em}
+.names .t-en .ln{font-family:var(--en-d);font-weight:800;font-stretch:78%;letter-spacing:-.02em;line-height:.92}
+.names .t-en .ln.o{margin-top:-.48em}
+.names .t-en .amp{font-family:var(--en);font-style:italic;font-weight:400;font-size:.7em;letter-spacing:0}
+.names .t-en.is-ar .ln{font-family:var(--ar-d);font-weight:900;font-stretch:100%;letter-spacing:0;line-height:1.08}
+.names .t-en.is-ar .ln.o{margin-top:-.1em}
+.names .t-en.is-ar .amp{font-family:var(--ar-d);font-style:normal;font-weight:900;font-size:1em}
+.names.wrap .ln{width:auto;white-space:normal}
+.voice2{margin:calc(var(--u) * 2.5) 0 0;font:italic 400 calc(var(--u) * 5.8)/1.25 var(--en)}
+.voice2 .t-en{font:600 calc(var(--u) * 5.4)/1.5 var(--ar-d)}
+.c-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:calc(var(--u) * 4);
+  border-top:2px solid var(--ink);padding-top:calc(var(--u) * 2.6)}
+.verse{font-size:.9em;line-height:1.65}
+html:not(.ar) .verse{font-style:italic}
+.verse small{display:block;font-size:.84em;color:var(--ink-2);font-style:normal}
+.c-date{flex:none;font:800 calc(var(--u) * 6)/1 var(--en-d);font-stretch:72%;font-variant-numeric:tabular-nums;white-space:nowrap}
+.c-date .t-ar{font-family:var(--ar-d);font-weight:800;font-size:.86em}
+
+/* ── panel 2: the date, as big as the sheet allows ── */
+.d-big{display:flex;align-items:flex-end;margin-top:auto;padding-top:calc(var(--u) * 2)}
+.d-big{--k:1}  /* JS lowers --k if a long month would push past the panel edge */
+.d-num{margin:0;flex:none;font:800 calc(var(--u) * 58 * var(--k))/.74 var(--ar-d);font-variant-numeric:tabular-nums}
+html:not(.ar) .d-num{font:800 calc(var(--u) * 64 * var(--k))/.74 var(--en-d);font-stretch:70%;letter-spacing:-.03em}
+.d-num.dd{font-size:calc(var(--u) * 44 * var(--k))}
+html:not(.ar) .d-num.dd{font-size:calc(var(--u) * 50 * var(--k))}
+/* the black month overprints the foot of the orange numeral */
+.d-side{position:relative;z-index:1;margin-inline-start:calc(var(--u) * -5);padding-bottom:calc(var(--u) * 1)}
+.d-wd{display:block;font:600 calc(var(--u) * 6 * var(--k))/1.25 var(--ar-d)}
+.d-my{display:block;font:850 calc(var(--u) * 10.5 * var(--k))/1.08 var(--ar-d);white-space:nowrap}
+.d-my b{display:block;font-weight:inherit}
+/* the orange was knocked out under the black type, and the drums did not quite meet: a sliver of paper shows */
+.d-side{text-shadow:calc(var(--mx) * -1.5) calc(var(--my) * -1.5) 0 var(--paper)}
+html:not(.ar) .d-wd{font:400 italic calc(var(--u) * 6.4 * var(--k))/1.2 var(--en)}
+html:not(.ar) .d-my{font:800 calc(var(--u) * 10.5 * var(--k))/1 var(--en-d);font-stretch:78%;letter-spacing:-.015em}
+.d-left{margin:calc(var(--u) * 3) 0 0;font:700 calc(var(--u) * 5.2)/1.3 var(--ar-d);color:var(--red-d)}
+html:not(.ar) .d-left{font:700 calc(var(--u) * 4.8)/1.3 var(--en-d)}
+.d-left .num{font-variant-numeric:tabular-nums}
+.d-sent{margin:auto 0 0;padding-top:calc(var(--u) * 3.5);border-top:1px solid rgba(23,22,21,.3);line-height:1.75;text-wrap:pretty}
+html:not(.ar) .d-sent{line-height:1.55}
+.d-sent b{font-weight:700;white-space:nowrap}
+html:not(.ar) .d-sent b{font-weight:600}
+.d-sent .is-ar,.v-to .is-ar{font-family:var(--ar)}
+.d-links{display:flex;flex-wrap:wrap;gap:0 calc(var(--u) * 6);margin-top:calc(var(--u) * 2)}
+.tl{display:inline-flex;align-items:center;min-height:44px;font-size:.94em;font-weight:600;
+  text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:6px;text-decoration-color:var(--red)}
+.tl:hover{color:var(--red-d)}
+
+/* the outside of the folded poster: the address panel, printed on the back */
+.verso{justify-content:space-between}
+.v-from{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:calc(var(--u) * .9) solid var(--ink);padding-top:calc(var(--u) * 2.2);font-weight:700}
+.v-from bdi{font:800 calc(var(--u) * 5)/1 var(--en-d);font-stretch:72%;font-variant-numeric:tabular-nums}
+.v-from .t-ar bdi{font-family:var(--ar-d);font-size:.9em}
+.v-to small{display:block;font-size:.95em;color:var(--ink-2)}
+html:not(.ar) .v-to small{font-style:italic}
+.v-to b{display:block;font:850 calc(var(--u) * 9)/1.25 var(--ar-d);text-wrap:balance}
+html:not(.ar) .v-to b{font:800 calc(var(--u) * 8.4)/1.1 var(--en-d);font-stretch:85%;letter-spacing:-.01em}
+.v-to b.is-ar{font-family:var(--ar-d);font-stretch:100%;letter-spacing:0}
+.v-occ{font:900 calc(var(--u) * 13.5)/1.05 var(--ar-d);white-space:nowrap;margin-bottom:calc(var(--u) * -1)}
+html:not(.ar) .v-occ{font:800 calc(var(--u) * 11)/.95 var(--en-d);font-stretch:72%;letter-spacing:-.02em}
+
+/* ── the couple's photographs, printed on the sheet in black ink ── */
+.photos .pp{justify-content:center}
+.prints{display:grid;gap:calc(var(--u) * 4);flex:1;min-height:0}
+.prints.n1{grid-template:minmax(0,1fr) / minmax(0,1fr)}
+.prints.n2{grid-template:repeat(2,minmax(0,1fr)) / minmax(0,1fr)}
+.prints.n3{grid-template:minmax(0,1.05fr) minmax(0,1fr) / repeat(2,minmax(0,1fr))}
+.prints.n3 .pr:first-child{grid-column:1 / -1}
+.pr{position:relative;margin:0;overflow:hidden;min-height:0;min-width:0;background:var(--paper)}
+.pr img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;filter:grayscale(1) contrast(1.22) brightness(1.06);mix-blend-mode:multiply}
+/* a coarse screen, the way a riso drum breaks up a photograph */
+.pr::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle,rgba(247,245,240,0) 40%,rgba(247,245,240,.3) 62%) 0 0/3px 3px}
+
+/* ── panel 3: the programme, set as a timetable ── */
+.tt{list-style:none;margin:calc(var(--u) * 1) 0 0;padding:0}
+.tt li{display:grid;grid-template-columns:calc(var(--u) * 25) minmax(0,1fr);gap:calc(var(--u) * 4);align-items:baseline;
+  padding:calc(var(--u) * 2.6) 0;border-bottom:1px solid rgba(23,22,21,.28)}
+.tt li:first-child{padding-top:0}
+.tm{direction:ltr;text-align:right;white-space:nowrap;font:600 calc(var(--u) * 8)/1 var(--ar-d);font-variant-numeric:tabular-nums}
+.tm small,.tm .dg{unicode-bidi:isolate}
+.tm small{font-size:.42em;font-weight:600;margin:0 .3em;vertical-align:.25em}
+html:not(.ar) .tm{font:800 calc(var(--u) * 8.4)/1 var(--en-d);font-stretch:70%;letter-spacing:-.01em}
+html:not(.ar) .tm small{font-stretch:100%;letter-spacing:0;font-weight:600}
+.tm.word{font-size:calc(var(--u) * 5.4)}
+.tt li:first-child .tm{color:var(--red);mix-blend-mode:multiply;translate:var(--mx) var(--my)}
+.what{font-weight:600;line-height:1.45}
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u) * 5);margin-top:auto;padding-top:calc(var(--u) * 5)}
+.notes.one{grid-template-columns:1fr}
+.note{font-size:.9em;line-height:1.6;border-top:2px solid var(--ink);padding-top:calc(var(--u) * 2)}
+.note b{display:block;font-weight:800;margin-bottom:2px}
+.prog.notes-only .notes{margin-top:0;grid-template-columns:1fr;gap:calc(var(--u) * 6)}
+.prog.notes-only .note{font-size:1.15em}
+.closing{margin:auto 0;font:900 calc(var(--u) * 14)/1.15 var(--ar-d);text-wrap:balance}
+html:not(.ar) .closing{font:800 calc(var(--u) * 13)/.98 var(--en-d);font-stretch:74%;letter-spacing:-.02em}
+.closing small{display:block;margin-top:calc(var(--u) * 4);font:600 calc(var(--u) * 5)/1.4 var(--ar-d);letter-spacing:0;color:var(--ink)}
+html:not(.ar) .closing small{font:italic 400 calc(var(--u) * 5.4)/1.3 var(--en)}
+
+/* ── panel 4: the reply form, printed as lines ── */
+.r-by{margin:calc(var(--u) * -1.5) 0 0;color:var(--ink-2)}
+.r-form{margin-block:auto}
+.line{display:flex;align-items:baseline;gap:calc(var(--u) * 3);margin:0 0 calc(var(--u) * 5)}
+.line label{white-space:nowrap;font-weight:700}
+.line input{flex:1;min-width:0;margin:0;border:0;border-bottom:1.5px solid var(--ink);border-radius:0;background:transparent;
+  padding:2px 4px 4px;font:500 max(16px, 1.05em)/1.4 var(--ar);color:var(--ink);outline:none}
+html:not(.ar) .line input{font-family:var(--en)}
+.line input.is-ar{font-family:var(--ar)}
+.line input:focus{border-bottom-color:var(--red);border-bottom-width:2px}
+.line.count input{flex:0 0 calc(var(--u) * 16);text-align:center;font-variant-numeric:tabular-nums}
+.tick{display:flex;align-items:center;gap:calc(var(--u) * 3.5);width:max-content;max-width:100%;margin-top:calc(var(--u) * 2);
+  text-decoration:none;color:var(--ink);font:850 clamp(22px, calc(var(--u) * 7.6), 40px)/1.25 var(--ar-d);-webkit-tap-highlight-color:transparent}
+html:not(.ar) .tick{font:800 clamp(22px, calc(var(--u) * 7.4), 40px)/1.1 var(--en-d);font-stretch:82%;letter-spacing:-.01em}
+.tick .box{flex:none;position:relative;width:1.05em;height:1.05em;border:max(3px, calc(var(--u) * .9)) solid var(--red);mix-blend-mode:multiply;translate:var(--mx) var(--my)}
+.tick:hover .box{background:rgba(196,85,45,.12)}
+/* the guest's mark: two strokes of black through the box */
+.tick.done .box::before,.tick.done .box::after{content:"";position:absolute;left:-14%;right:-14%;top:calc(50% - .06em);height:.12em;background:var(--ink);rotate:42deg}
+.tick.done .box::after{rotate:-48deg}
+.tick-hint{margin:calc(var(--u) * 1.5) 0 0;padding-inline-start:calc(1.05em * 1.6);font-size:.86em;color:var(--ink-2)}
+.r-more{display:flex;flex-wrap:wrap;gap:0 calc(var(--u) * 6);border-top:1px solid rgba(23,22,21,.3);padding-top:calc(var(--u) * 1.5)}
+.r-more .tl{text-decoration-color:rgba(23,22,21,.35);font-weight:500}
+
+.d3wa-credit{position:relative}
+
+/* ── the opening: the poster arrives folded; one tap unfolds the last fold ──
+   Phone: panel 2 lies folded up over panel 1, back outwards, and drops open.
+   Desktop: panel 2 lies folded over panel 1 like a book cover, and swings open. */
+.date{transform-style:preserve-3d;transform-origin:50% 0;transition:transform 1.15s var(--ease)}
+.face,.verso{-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.verso{transform:rotateX(180deg)}
+html.folded .date{transform:rotateX(180deg)}
+/* the folded packet sits in the middle of the screen, a little smaller if the screen is short */
+.sheet{transform-origin:50% calc(var(--ph) / 2)}
+html.folded .sheet{transform:translateY(calc((100vh - var(--ph)) / 2 - var(--top))) scale(var(--fs,1))}
+@supports (height:100svh){ html.folded .sheet{transform:translateY(calc((100svh - var(--ph)) / 2 - var(--top))) scale(var(--fs,1))} }
+.later{transition:opacity .5s ease .8s,visibility 0s linear .8s}
+html.folded .later{opacity:0;visibility:hidden;transition:none}
+
+.intro{position:fixed;inset:0;z-index:40;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.intro:focus-visible{outline:none}
+.intro.open{pointer-events:none}
+.intro-hint{position:absolute;left:0;right:0;top:calc(50% + var(--ph) / 2 + 20px);margin:0;padding:0 24px;text-align:center;
+  font:500 15px/1.5 var(--ar);color:var(--ink-2);transition:opacity .2s ease}
+html:not(.ar) .intro-hint{font:italic 400 17px/1.5 var(--en)}
+.intro:focus-visible .intro-hint{text-decoration:underline;text-underline-offset:5px}
+.intro.open .intro-hint{opacity:0}
+
+/* ── desktop: the whole sheet opened flat, quarters side by side ── */
+@media (min-width:1000px){
+  .sheet{grid-template-columns:var(--qw) var(--qw);width:calc(var(--qw) * 2);align-items:stretch;perspective:2600px;perspective-origin:75% calc(var(--ph) / 2)}
+  html:not(.ar) .sheet{perspective-origin:25% calc(var(--ph) / 2)}
+  .photos{grid-column:1 / -1;aspect-ratio:3 / 2}
+  /* the vertical fold runs on through the photographs */
+  .panel[data-s="w"] > .pp{--cs:linear-gradient(to right,rgba(0,0,0,0) calc(50% - 1px),rgba(70,52,34,.2) calc(50% - 1px),rgba(70,52,34,.2) 50%,rgba(255,255,255,.8) 50%,rgba(255,255,255,.8) calc(50% + 1px),rgba(0,0,0,0) calc(50% + 1px))}
+  .photos .prints{position:relative}
+  .photos .prints::after{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 1px);width:2px;pointer-events:none;background:linear-gradient(to right,rgba(40,30,20,.22) 50%,rgba(255,255,255,.35) 50%)}
+  .prints.n1{grid-template:minmax(0,1fr) / minmax(0,1fr)}
+  .prints.n2{grid-template:minmax(0,1fr) / repeat(2,minmax(0,1fr))}
+  .prints.n3{grid-template:repeat(2,minmax(0,1fr)) / repeat(2,minmax(0,1fr))}
+  .prints.n3 .pr:first-child{grid-column:auto;grid-row:1 / -1}
+  .date{transform-origin:100% 50%}
+  html:not(.ar) .date{transform-origin:0 50%}
+  .verso{transform:rotateY(180deg)}
+  html.folded .date{transform:rotateY(180deg)}
+  html.folded:not(.ar) .date{transform:rotateY(-180deg)}
+  .sheet{transform-origin:75% calc(var(--ph) / 2)}
+  html:not(.ar) .sheet{transform-origin:25% calc(var(--ph) / 2)}
+  html.folded .sheet{transform:translate(calc(var(--qw) / -2), calc((100vh - var(--ph)) / 2 - var(--top))) scale(var(--fs,1))}
+  html.folded:not(.ar) .sheet{transform:translate(calc(var(--qw) / 2), calc((100vh - var(--ph)) / 2 - var(--top))) scale(var(--fs,1))}
+  .intro-hint{top:50%;left:auto;right:auto;inset-inline-end:0;width:calc(50% - var(--qw) / 2);translate:0 -50%;padding:0 40px;font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+
+<body>
+
+<div class="ctls">
+  <button class="ctl music-toggle" id="musicBtn" type="button" aria-pressed="false" aria-label="الموسيقى / Music"><span class="t-ar">موسيقى</span><span class="t-en">Music</span></button>
+  <button class="ctl lang-toggle" id="langBtn" type="button" aria-label="Switch language / تبديل اللغة"><span class="t-ar">English</span><span class="t-en">العربية</span></button>
+</div>
+
+<!-- tap to unfold (shown by the script; intro=0 skips) -->
+<div class="intro" id="intro" hidden role="button" tabindex="0" aria-label="افتحوا الدعوة / Open the invitation">
+  <p class="intro-hint"><span class="t-ar">دوسوا على الورقة عشان تتفتح</span><span class="t-en">Tap the poster to unfold it</span></p>
+</div>
+
+<main class="sheet" id="sheet">
+
+  <!-- panel 1: the face of the poster -->
+  <section class="panel cover" id="cover" aria-labelledby="names">
+    <div class="pp">
+      <div class="c-top">
+        <div class="hosts" id="hosts" hidden>
+          <p class="hv t-ar">يتشرف</p>
+          <p class="hosts-cols t-ar" id="hostsAr"></p>
+          <p class="hosts-cols t-en" id="hostsEn"></p>
+        </div>
+        <p class="lead"><span class="t-ar" id="leadAr">يسعدنا دعوتكم لحضور حفل زفاف</span><span class="t-en" id="leadEn">We would be delighted to have you with us at the wedding of</span></p>
+      </div>
+      <div class="c-mid">
+        <h1 class="names" id="names">
+          <span class="t-ar" id="namesAr"><span class="ln mottle" id="nAr1">علي</span><span class="ln o grain ink2" id="nAr2L"><span class="amp" id="ampAr">و</span><span id="nAr2">دينا</span></span></span>
+          <span class="t-en" id="namesEn"><span class="ln mottle" id="nEn1">Ali</span><span class="ln o grain ink2" id="nEn2L"><span class="amp" id="ampEn">and </span><span id="nEn2">Dina</span></span></span>
+        </h1>
+        <p class="voice2" id="voice2"><span class="t-ar" id="v2Ar" lang="en" dir="ltr">Ali and Dina</span><span class="t-en" id="v2En" lang="ar" dir="rtl">علي ودينا</span></p>
+      </div>
+      <div class="c-foot">
+        <p class="verse" id="quote"><span class="t-ar">«وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً»<small>سورة الروم، ٢١</small></span><span class="t-en">&ldquo;And He placed between you affection and mercy.&rdquo;<small>Surat Ar-Rum, 30:21</small></span></p>
+        <p class="c-date mottle"><bdi dir="ltr" class="t-ar" id="numAr">٤/٢/٢٠٢٧</bdi><bdi dir="ltr" class="t-en" id="numEn">04.02.2027</bdi></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- panel 2: the date. Folded over panel 1 until the guest opens it; its back is the address panel -->
+  <section class="panel date numbered" id="datePanel" data-shot="details" aria-labelledby="dateTitle">
+    <div class="pp face">
+      <h2 class="sh" id="dateTitle"><span class="no ink2 grain" aria-hidden="true"></span><span><span class="t-ar">الموعد والمكان</span><span class="t-en">When and where</span></span></h2>
+      <div class="d-big">
+        <p class="d-num ink2 grain" id="dNum"><span class="t-ar" id="dNumAr">٤</span><span class="t-en" id="dNumEn">4</span></p>
+        <p class="d-side">
+          <span class="d-wd"><span class="t-ar" id="dWdAr">الخميس</span><span class="t-en" id="dWdEn">Thursday</span></span>
+          <span class="d-my mottle"><span class="t-ar"><b id="dMoAr">فبراير</b><b id="dYrAr">٢٠٢٧</b></span><span class="t-en"><b id="dMoEn">February</b><b id="dYrEn">2027</b></span></span>
+        </p>
+      </div>
+      <p class="d-left" id="left" aria-live="off"></p>
+      <p class="d-sent"><span class="t-ar" id="sentAr">يُقام حفل زفاف علي ودينا بمشيئة الله يوم <b>الخميس ٤ فبراير ٢٠٢٧</b>، في تمام الساعة الثامنة مساءً، بفيلا روز، المعادي، القاهرة.</span><span class="t-en" id="sentEn">The wedding of Ali and Dina will be held on <b>Thursday, 4 February 2027</b>, at eight o'clock in the evening, at Villa Rose, Maadi, Cairo.</span></p>
+      <p class="d-links">
+        <a class="tl" id="mapBtn" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Villa%20Rose%2C%20Maadi%2C%20Cairo"><span class="t-ar">الخريطة</span><span class="t-en">Map</span></a>
+        <a class="tl" id="calBtn" target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/render?action=TEMPLATE"><span class="t-ar">أضيفوا الموعد للتقويم</span><span class="t-en">Add to calendar</span></a>
+      </p>
+    </div>
+    <div class="pp verso" aria-hidden="true">
+      <p class="v-from"><span class="t-ar"><span id="vFromAr">علي ودينا</span></span><span class="t-en"><span id="vFromEn">Ali and Dina</span></span><span><bdi dir="ltr" class="t-ar" id="vNumAr">٤/٢/٢٠٢٧</bdi><bdi dir="ltr" class="t-en" id="vNumEn">04.02.2027</bdi></span></p>
+      <p class="v-to"><span class="t-ar"><small id="toLbl">إلى</small><b id="toAr">أحبابنا الغاليين</b></span><span class="t-en"><small>For</small><b id="toEn">our dearest family and friends</b></span></p>
+      <p class="v-occ ink2 grain"><span class="t-ar" id="vOccAr">دعوة زفاف</span><span class="t-en" id="vOccEn">A wedding invitation</span></p>
+    </div>
+  </section>
+
+  <!-- the couple's photographs, printed in black (only when they send them) -->
+  <section class="panel photos later" id="gallerySec" hidden aria-label="صور / Photos">
+    <div class="pp"><div class="prints" id="prints"></div></div>
+  </section>
+
+  <!-- panel 3: the programme -->
+  <section class="panel prog numbered later" id="progPanel" aria-labelledby="progTitle">
+    <div class="pp">
+      <h2 class="sh" id="progTitle"><span class="no ink2 grain" aria-hidden="true"></span><span><span class="t-ar" id="progAr">برنامج الحفل</span><span class="t-en" id="progEn">The evening</span></span></h2>
+      <ol class="tt" id="agList"></ol>
+      <div class="notes" id="notes">
+        <p class="note" id="dressSec"><b><span class="t-ar">الملابس</span><span class="t-en">Dress</span></b><span class="nt"><span class="t-ar">ملابس سهرة رسمية، ونرجو ترك الأبيض للعروس.</span><span class="t-en">Formal evening wear. Please leave white to the bride.</span></span></p>
+        <p class="note" id="giftSec"><b><span class="t-ar">الهدايا</span><span class="t-en">Gifts</span></b><span class="nt"><span class="t-ar">تشريفكم هو أجمل هدية.</span><span class="t-en">Your company is the only gift we hope for.</span></span></p>
+      </div>
+      <p class="closing mottle" id="closing" hidden><span class="t-ar">بحضوركم تكتمل فرحتنا<small id="closeAr">علي ودينا</small></span><span class="t-en">Your presence completes our joy<small id="closeEn">Ali and Dina</small></span></p>
+    </div>
+  </section>
+
+  <!-- panel 4: the reply -->
+  <section class="panel reply numbered later" id="rsvpPanel" data-shot="rsvp" aria-labelledby="replyTitle">
+    <div class="pp">
+      <h2 class="sh" id="replyTitle"><span class="no ink2 grain" aria-hidden="true"></span><span><span class="t-ar">نرجو التكرم بالرد</span><span class="t-en">Kindly reply</span></span></h2>
+      <p class="r-by" id="replyBy"></p>
+      <div class="r-form">
+        <div class="line"><label for="guestName"><span class="t-ar">الاسم</span><span class="t-en">Name</span></label><input id="guestName" autocomplete="name" maxlength="60"></div>
+        <div class="line count"><label for="guestCount"><span class="t-ar">عدد الأفراد</span><span class="t-en">Number attending</span></label><input id="guestCount" inputmode="numeric" maxlength="2" autocomplete="off"></div>
+        <a class="tick" id="rsvpBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="box" aria-hidden="true"></span><span><span class="t-ar">سنحضر بإذن الله</span><span class="t-en">We will be there</span></span></a>
+        <p class="tick-hint"><span class="t-ar">علّموا هنا، والرد بيوصلنا على واتساب</span><span class="t-en">Tick it and your reply reaches us on WhatsApp</span></p>
+      </div>
+      <p class="r-more">
+        <a class="tl" id="noBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="t-ar">نعتذر عن الحضور</span><span class="t-en">Sadly, we can't make it</span></a>
+        <a class="tl" id="waBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/"><span class="t-ar">ابعتوا الدعوة لحبايبكم</span><span class="t-en">Send the invitation to family</span></a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<script>
 (function () {
   "use strict";
   var docEl = document.documentElement;
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function (id) { return document.getElementById(id); };
 
-  /* ── URL-parameter personalization (D3wa param contract) ──
+  /* ── D3wa param contract ──
      n_ar / n_en · d (ISO date) · t (24h time) · v_ar / v_en · map · q · wa
-     agenda · dress · gift · photos · ph1-3 · music · intro
-     Any missing param keeps the placeholder content. */
+     h_ar / h_en (the hosts, optional) · g (the guest's name, optional; per-guest links)
+     o = wedding | engagement (the occasion; wedding if absent)
+     agenda = time~عربي~english|… (or time~text), 0 hides · dress / gift = "عربي~english", one text, or 0
+     ph1..ph3 = photo URLs (http(s) or relative) · photos=0 · music = audio URL · intro=0
+     Read from window.__D3WA__ (published invitations) or the URL. */
   var qs = null;
   try { qs = new URLSearchParams(window.__D3WA__ || location.search); } catch (e) {}
   function qp (k) { var v = qs && qs.get(k); return (v && v.trim()) ? v.trim() : null; }
-  var pNamesEn = qp("n_en"), pNamesAr = qp("n_ar"), pDate = qp("d"), pTime = qp("t"),
-      pVenEn = qp("v_en"), pVenAr = qp("v_ar"), pMap = qp("map"), pQuote = qp("q"), pWa = qp("wa");
-  var pDateOk = (pDate && /^\d{4}-\d{2}-\d{2}$/.test(pDate)) ? pDate : null;
-  var tMatch = pTime ? pTime.match(/^(\d{1,2}):(\d{2})$/) : null;
-  var pTimeNorm = tMatch ? ("0" + tMatch[1]).slice(-2) + ":" + tMatch[2] : null;
+  function ar9 (s) { return String(s).replace(/[0-9]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩"[+d]; }); }
+  function txt (id, v) { var el = $(id); if (el) el.textContent = v; }
+  var hasAr = function (x) { return /[؀-ۿ]/.test(x || ""); };
 
-  /* Message building blocks: defaults mirror the placeholder */
-  var namesEn = "Omar & Salma", namesAr = "عمر وسلمى",
-      dateFullEn = "Saturday, 22 August 2026", dateFullAr = "السبت ٢٢ أغسطس ٢٠٢٦",
-      wdEn = "Saturday", wdAr = "السبت", numDate = "22.08.2026", numDateAr = "22/8/2026",
-      timeEn = "8:00 PM", timeAr = "٨:٠٠ مساءً",
-      venueMsgEn = "Villa Rose, Maadi", venueMsgAr = "فيلا روز، المعادي",
-      waNum = "201005509418", guestN = "1", isEn = false;
+  var OCC = {
+    wedding:    { ar: "حفل زفاف",  en: "the wedding of",    word: "wedding",    vAr: "دعوة زفاف",  vEn: "A wedding invitation" },
+    engagement: { ar: "حفل خطوبة", en: "the engagement of", word: "engagement", vAr: "دعوة خطوبة", vEn: "An engagement invitation" }
+  };
+  var occ = OCC[qp("o")] ? qp("o") : "wedding", O = OCC[occ];
 
-  function arDigits (s) {
-    return String(s).replace(/[0-9]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩"[+d]; });
+  /* names: one language given shows in both, never the sample couple */
+  var nEnRaw = qp("n_en") || qp("n_ar") || "Ali & Dina", nArRaw = qp("n_ar") || qp("n_en") || "علي ودينا";
+  var splitAr = function (s) { var m = s.match(/^(.+?)\s+و\s*(.+)$/); return m ? [m[1].trim(), m[2].trim()] : [s]; };
+  var splitEn = function (s) { var p = s.split(/\s*&\s*|\s+and\s+/i); return p.length > 1 && p[0] && p[1] ? [p[0].trim(), p[1].trim()] : [s]; };
+  var split = function (s) { return hasAr(s) ? splitAr(s) : splitEn(s); };
+  var arParts = split(nArRaw), enParts = split(nEnRaw);
+  var join = function (p, inAr) { return p.length > 1 ? (hasAr(p[0]) ? p[0] + " و" + p[1] : p[0] + (inAr ? " & " : " and ") + p[1]) : p[0]; };
+  var namesAr = join(arParts, true), namesEn = join(enParts);
+
+  function paintNames (l1, l2line, amp, l2, parts) {
+    txt(l1, parts[0]);
+    var two = parts.length > 1;
+    txt(amp, two ? (hasAr(parts[0]) ? "و" : hasAr(parts[1]) ? "و" : "and ") : "");
+    txt(l2, two ? parts[1] : "");
+    $(l2line).hidden = !two;
   }
-  function each (sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
-  function setVal (el, main, small) {
-    if (!el) return;
+  paintNames("nAr1", "nAr2L", "ampAr", "nAr2", arParts);
+  paintNames("nEn1", "nEn2L", "ampEn", "nEn2", enParts);
+  if (!hasAr(arParts[0])) txt("ampAr", arParts.length > 1 ? "& " : "");
+  $("namesEn").classList.toggle("is-ar", hasAr(nEnRaw));
+  /* the second voice: the names in the other script, only when the couple gave both */
+  var bothScripts = hasAr(nArRaw) && !hasAr(nEnRaw);
+  $("voice2").hidden = !bothScripts;
+  txt("v2Ar", namesEn); txt("v2En", namesAr);
+  txt("vFromAr", namesAr); txt("vFromEn", namesEn);
+  txt("closeAr", namesAr); txt("closeEn", namesEn);
+  if (qp("n_en") || qp("n_ar")) document.title = namesAr + " | " + namesEn;
+
+  /* the families who send the card, when given: two columns in Arabic, the groom's side
+     first (on the right); one line joined by "and" in English. A name never breaks. */
+  var JOIN_AR = /\s+و\s*(?=(?:ال(?:سيد|سيدة|أستاذ|أستاذة|مهندس|مهندسة|دكتور|دكتورة|لواء|مستشار|حاج|حاجة|عميد|عقيد|شيخ)|أسرة|عائلة|آل\s|[دمأ]\s*[./]))/;
+  function hostsInto (el, raw) {
+    var ar = hasAr(raw);
+    var parts = (ar ? raw.replace(/^يتشرف\s+/, "").split(JOIN_AR) : raw.replace(/^together with\s+/i, "").split(/\s+(?:and|&)\s+/i))
+      .map(function (h) { return h.trim(); }).filter(Boolean).slice(0, 2);
     el.textContent = "";
-    el.appendChild(document.createTextNode(main));
-    if (small) { var s = document.createElement("small"); s.textContent = small; el.appendChild(s); }
-  }
-  function venueParts (v) {
-    var i = v.search(/[,،]/);
-    return i < 0 ? [v, ""] : [v.slice(0, i).trim(), v.slice(i + 1).trim()];
-  }
-  function splitEn (s) {
-    var m = s.match(/^(.+?)\s*(?:&|\band\b)\s*(.+)$/i);
-    return m ? [m[1].trim(), m[2].trim()] : null;
-  }
-  function splitAr (s) {
-    var m = s.match(/^(.+?)\s+و\s*(.+)$/);
-    return m ? [m[1].trim(), m[2].trim()] : null;
-  }
-
-  function applyParams () {
-    /* stacked poster lines: line 1 = first name + ✱ mark, line 2 = connector + second name */
-    var buildLines = function (l1, l2, parts, joiner, whole) {
-      if (!l1) return;
-      l1.textContent = "";
-      if (!parts) { l1.textContent = whole; if (l2) l2.textContent = ""; }
-      else { l1.appendChild(document.createTextNode(parts[0])); if (l2) l2.textContent = joiner + parts[1]; }
-      var mk = document.createElement("span");
-      mk.className = "mark"; mk.setAttribute("aria-hidden", "true"); mk.textContent = "✱";
-      l1.appendChild(mk);
-      if (l2) l2.hidden = !parts;
-    };
-
-    if (pNamesEn) { namesEn = pNamesEn; buildLines(document.getElementById("enL1"), document.getElementById("enL2"), splitEn(pNamesEn), "& ", pNamesEn); }
-    if (pNamesAr) { namesAr = pNamesAr; buildLines(document.getElementById("arL1"), document.getElementById("arL2"), splitAr(pNamesAr), "و", pNamesAr); }
-    if (pNamesEn || pNamesAr) document.title = namesAr + "، دعوة خطوبة | " + namesEn;
-    each(".js-names-ar", function (el) { el.textContent = namesAr; });
-    each(".js-names-en", function (el) { el.textContent = namesEn; });
-
-    /* monogram: initials from the names (Arabic initials for Arabic, Latin for English) */
-    var pe = splitEn(namesEn), pa = splitAr(namesAr);
-    var iniEn = pe ? [pe[0].charAt(0), pe[1].replace(/^&\s*/, "").charAt(0)] : [namesEn.charAt(0)];
-    var iniAr = pa ? [pa[0].charAt(0), pa[1].charAt(0)] : [namesAr.charAt(0)];
-    each(".mono", function (m) {
-      var ea = m.querySelector(".t-en"), aa = m.querySelector(".t-ar");
-      ea.querySelector(".m1").textContent = iniEn[0].toUpperCase();
-      ea.querySelector(".m2").textContent = (iniEn[1] || "").toUpperCase();
-      aa.querySelector(".m1").textContent = iniAr[0];
-      aa.querySelector(".m2").textContent = iniAr[1] || "";
-      m.classList.toggle("single", !(pe && pa));
+    parts.forEach(function (h, i) {
+      if (i && el.id === "hostsEn") el.appendChild(document.createTextNode(ar ? " و" : " and "));
+      var m = h.match(/^(\S+\/)\s*(.+)$/) || (ar ? null : h.match(/^((?:Mr|Mrs|Ms|Dr|Eng|Gen)\.?)\s+(.+)$/i));
+      var sp = document.createElement("span"); sp.className = "host";
+      if (m) { var t = document.createElement("span"); t.className = "ttl"; t.textContent = m[1]; sp.appendChild(t); sp.appendChild(document.createTextNode(" ")); }
+      var n = document.createElement("span"); n.className = "nm"; n.textContent = m ? m[2] : h; sp.appendChild(n);
+      el.appendChild(sp);
     });
-
-    /* date: Intl in both languages, incl. weekday and the numeric poster date */
-    if (pDateOk) {
-      var dObj = new Date(pDateOk + "T12:00:00");
-      if (!isNaN(dObj)) {
-        var enMain = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(dObj);
-        var arMain = new Intl.DateTimeFormat("ar-EG", { day: "numeric", month: "long", year: "numeric" }).format(dObj);
-        wdEn = new Intl.DateTimeFormat("en-GB", { weekday: "long" }).format(dObj);
-        wdAr = new Intl.DateTimeFormat("ar-EG", { weekday: "long" }).format(dObj);
-        setVal(document.getElementById("dateEn"), enMain, wdEn);
-        setVal(document.getElementById("dateAr"), arMain, "يوم " + wdAr);
-        dateFullEn = wdEn + ", " + enMain;
-        dateFullAr = wdAr + " " + arMain;
-        var dp = pDateOk.split("-");
-        numDate = dp[2] + "." + dp[1] + "." + dp[0];
-        numDateAr = (+dp[2]) + "/" + (+dp[1]) + "/" + dp[0];
-      }
-    }
-    each(".js-num-en", function (el) { el.textContent = numDate; });
-    each(".js-num-ar", function (el) { el.textContent = arDigits(numDateAr); });
-
-    /* time */
-    if (tMatch) {
-      var hh = +tMatch[1], mm = tMatch[2], h12 = hh % 12 || 12;
-      timeEn = h12 + ":" + mm + " " + (hh < 12 ? "AM" : "PM");
-      timeAr = arDigits(h12 + ":" + mm) + " " + (hh < 12 ? "صباحاً" : "مساءً");
-      setVal(document.getElementById("timeEn"), timeEn, "");
-      setVal(document.getElementById("timeAr"), timeAr, "");
-    }
-    var hwE = document.getElementById("heroWhenEn"), hwA = document.getElementById("heroWhenAr");
-    if (hwE) hwE.textContent = wdEn + ", " + timeEn;
-    if (hwA) hwA.textContent = wdAr + "، " + timeAr;
-
-    /* venue */
-    if (pVenEn) {
-      venueMsgEn = pVenEn;
-      var vpe = venueParts(pVenEn);
-      setVal(document.getElementById("venueEn"), vpe[0], vpe[1]);
-    }
-    if (pVenAr) {
-      venueMsgAr = pVenAr;
-      var vpa = venueParts(pVenAr);
-      setVal(document.getElementById("venueAr"), vpa[0], vpa[1]);
-    }
-    var hvE = document.getElementById("heroWhereEn"), hvA = document.getElementById("heroWhereAr");
-    /* the poster foot keeps the venue short; the full address lives in the details */
-    var shortVenue = function (v) { return v.length > 26 ? venueParts(v)[0] : v; };
-    if (hvE) hvE.textContent = shortVenue(venueMsgEn);
-    if (hvA) hvA.textContent = shortVenue(venueMsgAr);
-
-    /* quote */
-    if (pQuote) {
-      var qa = document.getElementById("quoteAr"), qe = document.getElementById("quoteEn");
-      if (qa) qa.textContent = pQuote;
-      if (qe) qe.textContent = pQuote;
-    }
-
-    /* maps link */
-    if (pMap && /^https:\/\//.test(pMap)) {
-      var mapBtn = document.getElementById("mapBtn");
-      if (mapBtn) mapBtn.href = pMap;
-    }
-
-    /* Google Calendar link, built from the params */
-    var calBtn = document.getElementById("calBtn");
-    if (calBtn) {
-      var startDt = new Date((pDateOk || "2026-08-22") + "T" + (pTimeNorm || "20:00") + ":00");
-      var endDt = new Date(startDt.getTime() + 3 * 36e5);
-      var cal = function (dt) {
-        var p = function (n) { return ("0" + n).slice(-2); };
-        return dt.getFullYear() + p(dt.getMonth() + 1) + p(dt.getDate()) + "T" + p(dt.getHours()) + p(dt.getMinutes()) + "00";
-      };
-      calBtn.href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
-        + "&text=" + encodeURIComponent(namesEn + "'s engagement")
-        + "&dates=" + cal(startDt) + "/" + cal(endDt)
-        + "&ctz=Africa/Cairo"
-        + "&location=" + encodeURIComponent(pVenEn || "Villa Rose, Maadi, Cairo")
-        + "&details=" + encodeURIComponent(pQuote || ("The engagement of " + namesEn + "."));
-    }
-
-    /* WhatsApp RSVP number */
-    if (pWa) waNum = pWa.replace(/[^\d]/g, "") || waNum;
+    el.classList.toggle("one", parts.length < 2);
+    el.classList.remove("stack");
+    if (ar && el.id === "hostsEn") el.classList.add("is-ar");
+    return parts.length;
   }
-  try { applyParams(); } catch (e) {}
-
-  /* ── v2 content params: agenda / dress / gift / photos ── */
-  function applyV2Params () {
-    var pAgenda = qp("agenda"), pDress = qp("dress"), pGift = qp("gift"), pPhotos = qp("photos");
-    var hideSec = function (id) { var s = document.getElementById(id); if (s) s.hidden = true; };
-    var mkSpan = function (cls, txt) { var s = document.createElement("span"); s.className = cls; s.textContent = txt; return s; };
-    var setPair = function (arId, enId, raw) {
-      var parts = raw.split("~");
-      var arEl = document.getElementById(arId), enEl = document.getElementById(enId);
-      if (arEl) arEl.textContent = parts[0].trim();
-      if (enEl) enEl.textContent = (parts[1] || parts[0]).trim();
-    };
-    if (pAgenda === "0") hideSec("agenda");
-    else if (pAgenda) {
-      var list = document.getElementById("agList");
-      var rows = pAgenda.split("|").map(function (r) { return r.split("~"); })
-        .filter(function (p) { return p.length >= 2 && p[0].trim() && p[1].trim(); });
-      if (list && rows.length) {
-        list.textContent = "";
-        rows.forEach(function (p) {
-          var li = document.createElement("li");
-          var tm = document.createElement("span"); tm.className = "ag-time";
-          tm.appendChild(mkSpan("t-ar", arDigits(p[0].trim())));
-          tm.appendChild(mkSpan("t-en", p[0].trim()));
-          var wh = document.createElement("span"); wh.className = "ag-what";
-          wh.appendChild(mkSpan("t-ar", p[1].trim()));
-          wh.appendChild(mkSpan("t-en", (p[2] || p[1]).trim()));
-          li.appendChild(tm); li.appendChild(wh);
-          list.appendChild(li);
-        });
-      }
-    }
-    if (pDress === "0") hideSec("dress");
-    else if (pDress) setPair("dressAr", "dressEn", pDress);
-    if (pGift === "0") hideSec("gift");
-    else if (pGift) setPair("giftAr", "giftEn", pGift);
-    if ((pPhotos && pPhotos !== "0") || qp("ph1")) document.getElementById("gallery").style.display = "";
-    if (pPhotos === "0") hideSec("gallery");
-    var anyImg = false;
-    for (var gi = 1; gi <= 3; gi++) {
-      var pu = qp("ph" + gi);
-      if (pu && /^https:\/\//.test(pu)) {
-        var img = document.getElementById("ph" + gi);
-        if (img) {
-          img.src = pu;
-          img.hidden = false;
-          anyImg = true;
-          if (img.parentNode && img.parentNode.classList) img.parentNode.classList.add("has-img");
-        }
-      }
-    }
-    if (anyImg) document.getElementById("galGrid").classList.add("has-any");
-  }
-  try { applyV2Params(); } catch (e) {}
-
-  /* ── Fit-to-measure: the poster names and the sign-off fill the column ── */
-  function fitAll () {
-    each("[data-fit]", function (box) {
-      var vis = box.querySelector(isEn ? ".t-en" : ".t-ar");
-      if (!vis) return;
-      box.classList.remove("fit-wrap");
-      box.style.fontSize = "100px";
-      var avail = box.clientWidth;
-      if (!avail) return;
-      var w = 0;
-      Array.prototype.forEach.call(vis.querySelectorAll(".ln"), function (l) {
-        if (!l.hidden) w = Math.max(w, l.getBoundingClientRect().width);
-      });
-      if (!w) return;
-      var fs = Math.min(100 * avail / w * 0.985, +box.getAttribute("data-max") || 220,
-                        window.innerHeight * (+box.getAttribute("data-maxvh") || 0.25));
-      var min = +box.getAttribute("data-min") || 40;
-      if (fs < min) { fs = min; box.classList.add("fit-wrap"); }
-      box.style.fontSize = fs.toFixed(1) + "px";
+  function fitHosts () {
+    document.querySelectorAll(".hosts-cols.t-ar").forEach(function (el) {
+      if (el.offsetParent === null) return;
+      el.classList.remove("stack");
+      var over = Array.prototype.some.call(el.children, function (h) { return h.scrollWidth > h.clientWidth + 1; });
+      el.classList.toggle("stack", over);
     });
   }
-  var fitRaf = 0;
-  window.addEventListener("resize", function () { cancelAnimationFrame(fitRaf); fitRaf = requestAnimationFrame(fitAll); });
-  if (document.fonts) {
-    if (document.fonts.ready) document.fonts.ready.then(fitAll);
-    if (document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", fitAll);
+  var hAr = qp("h_ar") || qp("h_en"), hEn = qp("h_en") || qp("h_ar");
+  if (hAr) {
+    $("hosts").hidden = false;
+    var twoHosts = hostsInto($("hostsAr"), hAr) > 1;
+    hostsInto($("hostsEn"), hEn);
+    txt("leadAr", "بدعوتكم لحضور " + O.ar);
+    txt("leadEn", "request the pleasure of your company at " + (twoHosts ? O.en.replace(/ of$/, "") + " of their children" : O.en));
+  } else {
+    txt("leadAr", "يسعدنا دعوتكم لحضور " + O.ar);
+    txt("leadEn", "We would be delighted to have you with us at " + O.en);
   }
 
-  /* ── Language toggle: Arabic is the default; html.en switches to English ── */
-  var langBtn = document.getElementById("langBtn");
-  function applyLang () {
-    docEl.classList.toggle("en", isEn);
-    docEl.lang = isEn ? "en" : "ar";
-    docEl.dir  = isEn ? "ltr" : "rtl";
-    updateLinks();
-    renderCountdown(true);
-    fitAll();
-  }
-  if (langBtn) langBtn.addEventListener("click", function () { isEn = !isEn; applyLang(); });
+  /* date and time: one source, the card's own d and t */
+  var pDate = qp("d"), pTime = qp("t");
+  var dOk = pDate && /^\d{4}-\d{2}-\d{2}$/.test(pDate) && !isNaN(new Date(pDate + "T12:00:00")) ? pDate : "2027-02-04";
+  var tm = (pTime || "20:00").match(/^(\d{1,2}):(\d{2})$/);
+  if (!tm || +tm[1] > 23 || +tm[2] > 59) tm = ["", "20", "00"];
+  var hh = +tm[1], mm = tm[2], tNorm = ("0" + hh).slice(-2) + ":" + mm;
+  var dObj = new Date(dOk + "T12:00:00");
+  var I = function (loc, o) { return new Intl.DateTimeFormat(loc, o).format(dObj); };
+  var dd = dObj.getDate(), mo = dObj.getMonth() + 1, yy = dObj.getFullYear();
+  var wdAr = I("ar-EG", { weekday: "long" }), wdEn = I("en-GB", { weekday: "long" });
+  var monAr = I("ar-EG", { month: "long" }), monEn = I("en-GB", { month: "long" });
+  txt("dNumAr", ar9(dd)); txt("dNumEn", String(dd));
+  $("dNum").classList.toggle("dd", dd > 9);
+  txt("dWdAr", wdAr); txt("dWdEn", wdEn);
+  txt("dMoAr", monAr); txt("dYrAr", ar9(yy)); txt("dMoEn", monEn); txt("dYrEn", String(yy));
+  var numAr = ar9(dd + "/" + mo + "/" + yy), numEn = ("0" + dd).slice(-2) + "." + ("0" + mo).slice(-2) + "." + yy;
+  txt("numAr", numAr); txt("numEn", numEn); txt("vNumAr", numAr); txt("vNumEn", numEn);
+  var dateAr = wdAr + " " + ar9(dd) + " " + monAr + " " + ar9(yy), dateEn = wdEn + ", " + dd + " " + monEn + " " + yy;
 
-  /* ── Countdown: to the ?d= / ?t= date (Cairo) ── */
-  var target = new Date((pDateOk || "2026-08-22") + "T" + (pTimeNorm || "20:00") + ":00+02:00").getTime();
-  var wrap = document.getElementById("cdWrap");
-  var cells = { d: document.getElementById("cdD"), h: document.getElementById("cdH"),
-                m: document.getElementById("cdM"), s: document.getElementById("cdS") };
-  var last = {};
-  function fmt (n) {
-    var s = String(n).length < 2 ? "0" + n : String(n);
-    return isEn ? s : arDigits(s);
-  }
-  function renderCountdown (force) {
-    if (!wrap) return;
-    var diff = target - Date.now();
-    if (diff <= 0) { wrap.classList.add("is-done"); return; }
-    wrap.classList.remove("is-done");
-    var v = {
-      d: Math.floor(diff / 864e5),
-      h: Math.floor(diff % 864e5 / 36e5),
-      m: Math.floor(diff % 36e5 / 6e4),
-      s: Math.floor(diff % 6e4 / 1e3)
-    };
-    for (var k in v) {
-      if (force === true || v[k] !== last[k]) { cells[k].textContent = fmt(v[k]); last[k] = v[k]; }
-    }
-  }
-  setInterval(renderCountdown, 1000);
+  /* the time in words, the way a printed card says it */
+  var AR_H = ["الثانية عشرة", "الواحدة", "الثانية", "الثالثة", "الرابعة", "الخامسة", "السادسة", "السابعة", "الثامنة", "التاسعة", "العاشرة", "الحادية عشرة"];
+  var EN_H = ["twelve", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven"];
+  var h12 = hh % 12, midnight = hh === 0 && mm === "00";
+  var partAr = hh < 12 ? "صباحاً" : hh < 15 ? "ظهراً" : hh < 18 ? "عصراً" : "مساءً";
+  var partEn = hh < 12 ? "in the morning" : hh < 18 ? "in the afternoon" : "in the evening";
+  var timeWordsAr = midnight ? "في منتصف الليل" : "في تمام الساعة " + AR_H[h12] + (mm === "00" ? "" : mm === "30" ? " والنصف" : mm === "15" ? " والربع" : ":" + ar9(mm)) + " " + partAr;
+  var timeWordsEn = midnight ? "at midnight" : "at " + (mm === "00" ? EN_H[h12] + " o'clock " + partEn : mm === "30" ? "half past " + EN_H[h12] + " " + partEn : (h12 || 12) + ":" + mm + " " + partEn);
+  var timeEnShort = midnight ? "midnight" : (h12 || 12) + ":" + mm + " " + (hh < 12 ? "am" : "pm");
+  var timeArShort = midnight ? "منتصف الليل" : ar9((h12 || 12) + ":" + mm) + " " + (hh < 12 ? "صباحاً" : "مساءً");
 
-  /* ── WhatsApp links: RSVP (with guest count), regrets, share. Language-aware ── */
-  var rsvpYes = document.getElementById("rsvpYes"), rsvpNo = document.getElementById("rsvpNo"),
-      shareBtn = document.getElementById("shareBtn");
-  function updateLinks () {
-    var url = location.href.split("#")[0];
-    var yes = isEn
-      ? "Hi! Confirming we'll attend " + namesEn + "'s engagement on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Guests: " + guestN
-      : "أهلاً! تأكيد حضور خطوبة " + namesAr + "، " + dateFullAr + " الساعة " + timeAr + " في " + venueMsgAr + ". عدد الأفراد: " + arDigits(guestN);
-    var no = isEn
-      ? "Hi! Sadly we can't make it to " + namesEn + "'s engagement. Congratulations and warmest wishes to you both."
-      : "أهلاً! للأسف مش هنقدر نحضر خطوبة " + namesAr + ". ألف مبروك، وربنا يتمم على خير.";
-    var share = isEn
-      ? "You're invited to " + namesEn + "'s engagement, " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Invitation: " + url
-      : "إنتم معزومين على خطوبة " + namesAr + "، " + dateFullAr + " الساعة " + timeAr + " في " + venueMsgAr + ". الدعوة هنا: " + url;
-    if (rsvpYes) rsvpYes.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(yes);
-    if (rsvpNo)  rsvpNo.href  = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(no);
-    if (shareBtn) shareBtn.href = "https://wa.me/?text=" + encodeURIComponent(share);
-  }
-
-  /* ── Guest-count chips: count rides along in the accept message ── */
-  var chips = document.querySelectorAll(".guest-chips .chip");
-  Array.prototype.forEach.call(chips, function (ch) {
-    ch.addEventListener("click", function () {
-      guestN = ch.getAttribute("data-n") || "1";
-      Array.prototype.forEach.call(chips, function (c) { c.setAttribute("aria-pressed", c === ch ? "true" : "false"); });
-      updateLinks();
+  var vEn = qp("v_en") || qp("v_ar") || "Villa Rose, Maadi, Cairo";
+  var vAr = qp("v_ar") || qp("v_en") || "فيلا روز، المعادي، القاهرة";
+  var vArIn = !hasAr(vAr) ? "في " + vAr : /^(ب|في |المكان)/.test(vAr) ? vAr : "ب" + vAr;
+  /* names and venue sit in their own bidi runs, so a name in the other script never scrambles the sentence */
+  function sentence (id, parts) {
+    var el = $(id); el.textContent = "";
+    parts.forEach(function (x) {
+      if (typeof x === "string") el.appendChild(document.createTextNode(x));
+      else { var b = document.createElement(x[2] || "bdi"); b.textContent = x[0]; if (x[1]) b.className = x[1]; el.appendChild(b); }
     });
+  }
+  /* the full date never splits across lines */
+  sentence("sentAr", ["يُقام " + O.ar + " ", [namesAr], " بمشيئة الله يوم ", [dateAr, "", "b"], "، " + timeWordsAr + "، ", [vArIn], "."]);
+  sentence("sentEn", [O.en.charAt(0).toUpperCase() + O.en.slice(1) + " ", [namesEn], " will be held on ", [dateEn, "", "b"], ", " + timeWordsEn + ", at ", [vEn, hasAr(vEn) ? "is-ar" : ""], "."]);
+  txt("vOccAr", O.vAr); txt("vOccEn", O.vEn);
+
+  /* q replaces the verse */
+  var pQuote = qp("q");
+  if (pQuote) {
+    $("quote").querySelector(".t-ar").textContent = "«" + pQuote + "»";
+    $("quote").querySelector(".t-en").textContent = "“" + pQuote + "”";
+  }
+
+  /* who it is addressed to */
+  var guest = qp("g");
+  if (guest) {
+    txt("toLbl", "حضرة"); txt("toAr", guest); txt("toEn", guest);
+    if (hasAr(guest)) $("toEn").className = "is-ar";
+    $("guestName").value = guest;
+    $("waBtn").hidden = true;   /* an invitation addressed to one guest is not for forwarding */
+  }
+
+  /* map: the couple's link, or a search for their venue */
+  var pMap = qp("map");
+  $("mapBtn").href = pMap && /^https:\/\//.test(pMap) ? pMap : "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(vEn);
+  var start = new Date(dOk + "T" + tNorm + ":00"), end = new Date(start.getTime() + 3 * 36e5);
+  var cal = function (dt) { var p = function (n) { return ("0" + n).slice(-2); }; return dt.getFullYear() + p(dt.getMonth() + 1) + p(dt.getDate()) + "T" + p(dt.getHours()) + p(dt.getMinutes()) + "00"; };
+
+  /* reply by: two weeks before, when there is still time */
+  var by = new Date(dObj.getTime() - 14 * 864e5);
+  var replyByAr = by.getTime() > Date.now() + 2 * 864e5 ? "قبل " + new Intl.DateTimeFormat("ar-EG", { day: "numeric", month: "long" }).format(by) : "";
+  var replyByEn = replyByAr ? "By " + new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long" }).format(by) : "";
+
+  /* programme: agenda=time~عربي~english|… or, by default, the occasion's own evening
+     counted from the time on the card, so the card and the programme always agree */
+  var PROG = {
+    wedding:    [[0, "الاستقبال", "Reception"], [45, "الزفة ودخول العروسين", "The zaffa and the couple's entrance"], [120, "العشاء", "Dinner"], [180, "التورتة والسهرة", "Cake and dancing"]],
+    engagement: [[0, "الاستقبال", "Reception"], [60, "لبس الشبكة", "The shabka"], [120, "العشاء", "Dinner"], [180, "التورتة والسهرة", "Cake and dancing"]]
+  };
+  function addRow (time, wAr, wEn) {
+    var li = document.createElement("li");
+    li.innerHTML = '<span class="tm"><span class="t-ar"></span><span class="t-en"></span></span><span class="what"><span class="t-ar"></span><span class="t-en"></span></span>';
+    var tA = li.querySelector(".tm .t-ar"), tE = li.querySelector(".tm .t-en");
+    var m = time.match(/^(\d{1,2}):(\d{2})$/);
+    if (m && +m[1] < 24 && +m[2] < 60) {
+      var h = +m[1], x = h % 12 || 12;
+      if (h === 0 && m[2] === "00") { tA.textContent = "منتصف الليل"; tE.textContent = "midnight"; li.firstChild.classList.add("word"); }
+      else {
+        var sA = document.createElement("small"); sA.textContent = h < 12 ? "ص" : "م";
+        var dA = document.createElement("span"); dA.className = "dg"; dA.textContent = ar9(x + ":" + m[2]);
+        tA.appendChild(sA); tA.appendChild(dA);
+        tE.appendChild(document.createTextNode(x + ":" + m[2]));
+        var sE = document.createElement("small"); sE.textContent = h < 12 ? "am" : "pm"; tE.appendChild(sE);
+      }
+    } else { tA.textContent = ar9(time); tE.textContent = time; li.firstChild.classList.add("word"); }
+    li.querySelector(".what .t-ar").textContent = wAr; li.querySelector(".what .t-en").textContent = wEn;
+    $("agList").appendChild(li);
+  }
+  var pAg = qp("agenda");
+  var agRows = pAg && pAg !== "0" ? pAg.split("|").map(function (e) { return e.split("~").map(function (s) { return s.trim(); }); })
+    .filter(function (p) { return p.length >= 2 && p[0] && p[1]; }) : [];
+  if (pAg === "0") $("agList").hidden = true;
+  else if (agRows.length) agRows.forEach(function (p) { addRow(p[0], p[1], p[2] || p[1]); });
+  else PROG[occ].forEach(function (r) {
+    var t = (hh * 60 + +mm + r[0]) % 1440;
+    addRow(Math.floor(t / 60) + ":" + ("0" + t % 60).slice(-2), r[1], r[2]);
   });
 
-  /* ── Intro: the folded poster tears open on tap (intro=0 skips) ── */
-  var intro = document.getElementById("intro");
-  if (intro && qp("intro") !== "0") {
-    intro.hidden = false;
-    docEl.classList.add("pre");
-    document.body.style.overflow = "hidden";
-    try { intro.focus({ preventScroll: true }); } catch (eF) { try { intro.focus(); } catch (eF2) {} }
-    var introDone = false;
-    var openIntro = function () {
-      if (introDone) return;
-      introDone = true;
-      intro.classList.add("open");
-      docEl.classList.remove("pre");
-      document.body.style.overflow = "";
-      setTimeout(function () { intro.hidden = true; }, reduced ? 60 : 1150);
-    };
-    intro.addEventListener("click", openIntro);
-    intro.addEventListener("keydown", function (ev) {
-      if (ev.key === "Enter" || ev.key === " " || ev.key === "Spacebar") { ev.preventDefault(); openIntro(); }
-    });
+  /* dress code and gift note, at the foot of the programme */
+  function note (key, id) {
+    var v = qp(key), sec = $(id);
+    if (!v) return;
+    if (v === "0") { sec.hidden = true; return; }
+    var p = v.indexOf("~") >= 0 ? v.split("~") : [v, v];
+    var a = (p[0] || "").trim() || (p[1] || "").trim(), e = (p[1] || "").trim() || a;
+    sec.querySelector(".nt .t-ar").textContent = a;
+    sec.querySelector(".nt .t-en").textContent = e;
+  }
+  note("dress", "dressSec"); note("gift", "giftSec");
+  var nNotes = (!$("dressSec").hidden ? 1 : 0) + (!$("giftSec").hidden ? 1 : 0);
+  $("notes").hidden = !nNotes;
+  $("notes").classList.toggle("one", nNotes === 1);
+  if ($("agList").hidden) {
+    var prog = $("progPanel");
+    if (nNotes) { prog.classList.add("notes-only"); txt("progAr", "ملاحظات"); txt("progEn", "Notes"); }
+    else {
+      /* nothing left to list: the quarter carries the closing line instead of standing empty */
+      prog.classList.remove("numbered"); $("progTitle").hidden = true; $("closing").hidden = false;
+      prog.setAttribute("aria-label", "بحضوركم تكتمل فرحتنا / Your presence completes our joy"); prog.removeAttribute("aria-labelledby");
+    }
   }
 
-  /* ── Ambient music: OFF by default; WebAudio pad, or ?music= audio URL ── */
-  var musicBtn = document.getElementById("musicBtn");
-  if (musicBtn) {
-    var pMusic = qp("music");
-    var musicOn = false, audioEl = null, actx = null, masterG = null;
-    var startPad = function () {
-      if (!actx) {
-        var AC = window.AudioContext || window.webkitAudioContext;
-        if (!AC) return;
-        actx = new AC();
-        masterG = actx.createGain();
-        masterG.gain.value = 0;
-        var filt = actx.createBiquadFilter();
-        filt.type = "lowpass"; filt.frequency.value = 900; filt.Q.value = 0.4;
-        masterG.connect(filt); filt.connect(actx.destination);
-        var lfo = actx.createOscillator(), lfoG = actx.createGain();
-        lfo.frequency.value = 0.07; lfoG.gain.value = 0.012;
-        lfo.connect(lfoG); lfoG.connect(masterG.gain); lfo.start();
-        [220, 329.63].forEach(function (f, i) {
-          [-4, 3].forEach(function (det) {
-            var o = actx.createOscillator(), g = actx.createGain();
-            o.type = "sine"; o.frequency.value = f; o.detune.value = det;
-            g.gain.value = [0.22, 0.12][i];
-            o.connect(g); g.connect(masterG); o.start();
-          });
-        });
-      }
-      if (actx.state === "suspended") actx.resume();
-      masterG.gain.cancelScheduledValues(actx.currentTime);
-      masterG.gain.setTargetAtTime(0.05, actx.currentTime, 0.6);
-    };
-    var stopPad = function () {
-      if (!actx) return;
-      masterG.gain.cancelScheduledValues(actx.currentTime);
-      masterG.gain.setTargetAtTime(0, actx.currentTime, 0.25);
-      setTimeout(function () { if (actx && !musicOn) actx.suspend(); }, 1200);
-    };
-    musicBtn.addEventListener("click", function () {
-      musicOn = !musicOn;
-      musicBtn.setAttribute("aria-pressed", musicOn ? "true" : "false");
-      if (pMusic && /^https:\/\//.test(pMusic)) {
-        if (!audioEl) { audioEl = new Audio(pMusic); audioEl.loop = true; audioEl.volume = 0.25; }
-        if (musicOn) audioEl.play().catch(function () {}); else audioEl.pause();
-      } else if (musicOn) startPad(); else stopPad();
+  /* photographs: printed on the sheet, 1, 2 or 3 of them */
+  var nPh = 0;
+  if (qp("photos") !== "0") ["ph1", "ph2", "ph3"].forEach(function (k) {
+    var u = qp(k);
+    if (!u || !(/^https?:\/\//.test(u) || !/:/.test(u))) return;
+    var f = document.createElement("figure"); f.className = "pr";
+    var img = document.createElement("img"); img.alt = ""; img.loading = "lazy"; img.decoding = "async"; img.width = 600; img.height = 800; img.src = u;
+    f.appendChild(img); $("prints").appendChild(f); nPh++;
+  });
+  if (nPh) { $("gallerySec").hidden = false; $("prints").classList.add("n" + nPh); }
+
+  /* ── language ── */
+  var isAr = true; /* Arabic first, like every D3wa design; English is one tap away */
+  function applyLang () {
+    docEl.classList.toggle("ar", isAr);
+    docEl.lang = isAr ? "ar" : "en";
+    docEl.dir = isAr ? "rtl" : "ltr";
+    $("guestName").placeholder = "";
+    txt("replyBy", isAr ? replyByAr : replyByEn);
+    $("replyBy").hidden = !replyByAr;
+    renderLeft(); updateLinks(); layout();
+  }
+  $("langBtn").addEventListener("click", function () { isAr = !isAr; applyLang(); });
+
+  /* ── the names fill the measure; the folds are marked by where each quarter sits ── */
+  var sheet = $("sheet");
+  function fitNames () {
+    var box = $("names"), cover = $("cover");
+    if (!box.offsetWidth) return;
+    var vis = box.querySelector(isAr ? ".t-ar" : ".t-en");
+    box.classList.remove("wrap");
+    box.style.fontSize = "100px";
+    var w = 0;
+    vis.querySelectorAll(".ln").forEach(function (l) { if (!l.hidden) w = Math.max(w, l.getBoundingClientRect().width); });
+    if (!w) return;
+    var cap = cover.offsetWidth * (hAr ? .25 : .3);
+    var fs = Math.min(100 * box.clientWidth / w * .97, cap);
+    /* a long name gets smaller rather than break: a person's name stays on one line */
+    if (fs < 18) { fs = 18; box.classList.add("wrap"); }
+    box.style.fontSize = fs.toFixed(1) + "px";
+  }
+  function markPanels () {
+    var vis = Array.prototype.filter.call(sheet.querySelectorAll(".panel"), function (p) { return !p.hidden; });
+    var tops = [];
+    vis.forEach(function (p) { if (tops.indexOf(p.offsetTop) < 0) tops.push(p.offsetTop); });
+    tops.sort(function (a, b) { return a - b; });
+    var W = sheet.clientWidth;
+    vis.forEach(function (p) {
+      var r = tops.indexOf(p.offsetTop);
+      p.setAttribute("data-f", r % 2 ? "b" : "a");
+      p.setAttribute("data-t", r ? "1" : "0");
+      var mid = p.offsetLeft + p.offsetWidth / 2;
+      p.setAttribute("data-s", p.offsetWidth > W * .75 ? "w" : mid < W / 2 ? "l" : "r");
     });
   }
+  function layout () {
+    fitNames(); fitHosts(); markPanels();
+    var big = document.querySelector(".d-big");
+    big.style.setProperty("--k", "1");
+    if (big.scrollWidth > big.clientWidth + 1) big.style.setProperty("--k", (big.clientWidth / big.scrollWidth * .97).toFixed(3));
+    var ph = $("cover").offsetHeight;
+    if (ph) docEl.style.setProperty("--fs", Math.min(1, (window.innerHeight - 120) / ph).toFixed(3));
+  }
+  var raf = 0;
+  window.addEventListener("resize", function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(layout); });
+  if (document.fonts) {
+    if (document.fonts.ready) document.fonts.ready.then(layout);
+    if (document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", layout);
+  }
+
+  /* ── how many days are left: one typeset line, counted on Cairo's calendar ── */
+  function cairoToday () {
+    var t = "";
+    try { t = new Intl.DateTimeFormat("en-CA", { timeZone: "Africa/Cairo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()); } catch (e) {}
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(t)) { var n = new Date(); t = n.getFullYear() + "-" + ("0" + (n.getMonth() + 1)).slice(-2) + "-" + ("0" + n.getDate()).slice(-2); }
+    return t;
+  }
+  var utc = function (iso) { return Date.UTC(+iso.slice(0, 4), +iso.slice(5, 7) - 1, +iso.slice(8, 10)); };
+  function renderLeft () {
+    var days = Math.round((utc(dOk) - utc(cairoToday())) / 864e5), el = $("left");
+    if (days < 0) { el.hidden = true; return; }
+    el.hidden = false;
+    var r = days % 100, unit = days >= 3 && days <= 10 ? " أيام" : days > 100 && r >= 3 && r <= 10 ? " أيام" : (days > 10 && (days < 100 || r > 10)) ? " يوماً" : " يوم";
+    var parts = isAr
+      ? (days === 0 ? ["اليوم"] : days === 1 ? ["غداً"] : days === 2 ? ["بعد يومين"] : ["بعد ", ar9(days), unit])
+      : (days === 0 ? ["Today"] : days === 1 ? ["Tomorrow"] : ["In ", String(days), " days"]);
+    el.textContent = "";
+    parts.forEach(function (t, i) {
+      if (i === 1) { var b = document.createElement("span"); b.className = "num"; b.textContent = t; el.appendChild(b); }
+      else el.appendChild(document.createTextNode(t));
+    });
+  }
+  setInterval(renderLeft, 6e4);
+
+  /* ── WhatsApp: the reply with name and count, the apology, and sharing ── */
+  var waNum = (qp("wa") || "201005509418").replace(/[^\d]/g, "") || "201005509418";
+  var latin = function (v) { return String(v).replace(/[٠-٩]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩".indexOf(d); }).replace(/\D/g, ""); };
+  function markName () { $("guestName").classList.toggle("is-ar", hasAr($("guestName").value)); }
+  $("guestName").addEventListener("input", function () { markName(); updateLinks(); });
+  $("guestCount").addEventListener("input", updateLinks);
+  markName();
+  function updateLinks () {
+    var url = location.protocol === "file:" ? "" : location.href.split("#")[0];
+    var who = $("guestName").value.trim();
+    var hiAr = who ? "أهلاً، معاكم " + who + ". " : "أهلاً! ", hiEn = who ? "Hello, this is " + who + ". " : "Hello! ";
+    var n = latin($("guestCount").value);
+    var count = n ? (isAr ? " عدد الأفراد: " + ar9(n) : " Number attending: " + n) : "";
+    var wish = occ === "wedding" ? "ألف مبروك، وربنا يسعدكم." : "ألف مبروك، وربنا يتمم بخير.";
+    var yes = isAr
+      ? hiAr + "هنحضر بإذن الله " + O.ar + " " + namesAr + " يوم " + dateAr + " الساعة " + timeArShort + " في " + vAr + "." + count
+      : hiEn + "We'll be there for " + O.en + " " + namesEn + " on " + dateEn + " at " + timeEnShort + ", " + vEn + "." + count;
+    var no = isAr
+      ? hiAr + "للأسف مش هنقدر نحضر " + O.ar + " " + namesAr + ". " + wish
+      : hiEn + "Sadly we can't make it to " + O.en + " " + namesEn + ". Congratulations to you both.";
+    var share = isAr
+      ? "أنتم مدعوون ل" + O.ar + " " + namesAr + " يوم " + dateAr + " الساعة " + timeArShort + " في " + vAr + "." + (url ? " الدعوة هنا: " + url : "")
+      : "You're invited to " + O.en + " " + namesEn + " on " + dateEn + " at " + timeEnShort + ", " + vEn + "." + (url ? " The invitation: " + url : "");
+    $("rsvpBtn").href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(yes);
+    $("noBtn").href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(no);
+    $("waBtn").href = "https://wa.me/?text=" + encodeURIComponent(share);
+    $("calBtn").href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text="
+      + encodeURIComponent(isAr ? O.ar + " " + namesAr : O.en.charAt(0).toUpperCase() + O.en.slice(1) + " " + namesEn)
+      + "&dates=" + cal(start) + "/" + cal(end) + "&ctz=Africa/Cairo&location=" + encodeURIComponent(isAr ? vAr : vEn)
+      + "&details=" + encodeURIComponent(pQuote || (isAr ? "وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً" : "And He placed between you affection and mercy."));
+  }
+  /* the guest's mark stays in the box once they have ticked it */
+  $("rsvpBtn").addEventListener("click", function () { $("rsvpBtn").classList.add("done"); });
+
+  /* ── the fold: one tap and the last fold opens ── */
+  var intro = $("intro");
+  if (qp("intro") !== "0") {
+    docEl.classList.add("folded");
+    intro.hidden = false;
+    var opened = false;
+    var open = function () {
+      if (opened) return; opened = true;
+      intro.classList.add("open");
+      docEl.classList.remove("folded");
+      setTimeout(function () { intro.hidden = true; }, reduced ? 50 : 1250);
+    };
+    intro.addEventListener("click", open);
+    intro.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); open(); } });
+    try { intro.focus({ preventScroll: true }); } catch (e) {}
+  } else docEl.classList.remove("folded");
+
+  /* ── music: off until tapped; a soft pad, or ?music=<url> ── */
+  var musicBtn = $("musicBtn");
+  var pMusic = qp("music");
+  var musicOn = false, audioEl = null, actx = null, masterG = null;
+  var startPad = function () {
+    if (!actx) {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      actx = new AC();
+      masterG = actx.createGain(); masterG.gain.value = 0;
+      var filt = actx.createBiquadFilter(); filt.type = "lowpass"; filt.frequency.value = 900; filt.Q.value = 0.4;
+      masterG.connect(filt); filt.connect(actx.destination);
+      var lfo = actx.createOscillator(), lfoG = actx.createGain();
+      lfo.frequency.value = 0.07; lfoG.gain.value = 0.012;
+      lfo.connect(lfoG); lfoG.connect(masterG.gain); lfo.start();
+      [220, 329.63].forEach(function (f, i) {
+        [-4, 3].forEach(function (det) {
+          var o = actx.createOscillator(), g = actx.createGain();
+          o.type = "sine"; o.frequency.value = f; o.detune.value = det;
+          g.gain.value = [0.22, 0.12][i];
+          o.connect(g); g.connect(masterG); o.start();
+        });
+      });
+    }
+    if (actx.state === "suspended") actx.resume();
+    masterG.gain.cancelScheduledValues(actx.currentTime);
+    masterG.gain.setTargetAtTime(0.05, actx.currentTime, 0.6);
+  };
+  var stopPad = function () {
+    if (!actx) return;
+    masterG.gain.cancelScheduledValues(actx.currentTime);
+    masterG.gain.setTargetAtTime(0, actx.currentTime, 0.25);
+    setTimeout(function () { if (actx && !musicOn) actx.suspend(); }, 1200);
+  };
+  musicBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    musicOn = !musicOn;
+    musicBtn.setAttribute("aria-pressed", musicOn ? "true" : "false");
+    if (pMusic && /^https?:\/\//.test(pMusic)) {
+      if (!audioEl) { audioEl = new Audio(pMusic); audioEl.loop = true; audioEl.volume = 0.25; }
+      if (musicOn) audioEl.play().catch(function () {}); else audioEl.pause();
+    } else if (musicOn) startPad(); else stopPad();
+  });
 
   applyLang();
 })();

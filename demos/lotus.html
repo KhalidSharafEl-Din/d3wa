@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>تصميم سبوع اللوتس | Lotus Sebou3 | دعوة D3wa</title>
-<meta name="description" content="ديمو دعوة سبوع اللوتس: باستيل وقمر ولوتس. A D3wa invitation demo: Lotus Sebou3, pastels, a moon and a lotus.">
-<meta name="theme-color" content="#fdf8f0">
+<meta name="description" content="ديمو دعوة سبوع اللوتس: شنطة سبوع من التل بشريطة ستان وبطاقة مطبوعة. A D3wa invitation demo: Lotus Sebou3, a tulle sebou3 bag with a satin ribbon and a printed tag.">
+<meta name="theme-color" content="#efe6d9">
 <meta name="color-scheme" content="light">
 
 <meta property="og:type" content="website">
@@ -16,797 +16,13 @@
 <meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/demos/lotus.html">
 <link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/demos/lotus.html">
 <meta property="og:title" content="تصميم سبوع اللوتس | Lotus Sebou3 | دعوة D3wa">
-<meta property="og:description" content="ديمو دعوة سبوع اللوتس: باستيل وقمر ولوتس. A D3wa invitation demo: Lotus Sebou3, pastels, a moon and a lotus.">
+<meta property="og:description" content="ديمو دعوة سبوع اللوتس: شنطة سبوع من التل بشريطة ستان وبطاقة مطبوعة. A D3wa invitation demo: Lotus Sebou3, a tulle sebou3 bag with a satin ribbon and a printed tag.">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23fdf8f0'/%3E%3Cpath d='M16 24c-4-2.5-6-6-6-9 2.5.5 4.5 2 6 4.5 1.5-2.5 3.5-4 6-4.5 0 3-2 6.5-6 9z' fill='%23e8b4bc'/%3E%3Ccircle cx='16' cy='9' r='2' fill='%23a8c3a0'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23efe6d9'/%3E%3Cpath d='M10 4h12l5 5v19H5V9z' fill='%23f3d9de'/%3E%3Ccircle cx='16' cy='9' r='2' fill='%23efe6d9' stroke='%23b8955a'/%3E%3Cpath d='M9 18c2 6 12 6 14 0-3 3-11 3-14 0z' fill='%23b8955a'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Quicksand:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
-
-<style>
-/* ───────────────  TOKENS — Lotus Sebou3 (D3-007)  ─────────────── */
-:root{
-  --milk:#fdf8f0;
-  --paper:#fffbf5;
-  --blush-band:#f7e6e8;
-  --blush:#f3d9de;
-  --blush-mid:#e8b4bc;
-  --sage-band:#e7efe3;
-  --ink:#5a4a52;
-  --ink-soft:#725f69;
-  --rose:#9e465b;
-  --rose-hover:#86394c;
-  --sage-ink:#4f6e4a;
-  --line:rgba(158,70,91,.18);
-  --ar:"El Messiri","Segoe UI",Tahoma,sans-serif;
-  --en:"Quicksand",ui-sans-serif,-apple-system,"Segoe UI",sans-serif;
-  --disp:"Cormorant Garamond",Garamond,Georgia,serif;
-}
-
-*,*::before,*::after{box-sizing:border-box}
-[hidden]{display:none !important}
-/* Arabic is set 1.15x larger than Latin: every size below is in rem */
-html{font-size:100%;-webkit-text-size-adjust:100%}
-html:not(.en){font-size:115%}
-body{
-  margin:0;overflow-x:hidden;
-  background:var(--milk);color:var(--ink);
-  font-family:var(--ar);font-size:1rem;line-height:1.8;
-  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-}
-html.en body{font-family:var(--en);font-weight:500;line-height:1.6;font-variant-numeric:lining-nums}
-h1,h2,h3,p,figure,blockquote{margin:0}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
-::selection{background:var(--blush-mid);color:var(--ink)}
-html{scrollbar-color:var(--blush-mid) var(--milk)}
-
-/* ───────────────  LANGUAGE SWITCHING (AR default, html.en flips)  ─────────────── */
-html.en .t-ar{display:none}
-html:not(.en) .t-en{display:none}
-.t-ar{letter-spacing:0}
-
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.wrap{width:min(100%,500px);margin-inline:auto;padding-inline:20px}
-
-/* ───────────────  FLOATING CONTROLS  ─────────────── */
-.lang-toggle,.music-btn{
-  position:fixed;z-index:60;
-  display:inline-flex;align-items:center;justify-content:center;
-  border:1px solid var(--line);
-  background:rgba(253,248,240,.9);
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
-  color:var(--rose);cursor:pointer;
-  box-shadow:0 6px 16px -8px rgba(90,74,82,.35);
-  -webkit-tap-highlight-color:transparent;
-  transition:background-color .25s ease,color .25s ease;
-}
-.lang-toggle{
-  top:calc(12px + env(safe-area-inset-top));inset-inline-end:12px;
-  min-width:48px;height:44px;padding:0 14px;border-radius:999px;
-}
-.lang-toggle .t-ar{font-family:var(--en);font-size:13px;font-weight:700;letter-spacing:.06em}
-.lang-toggle .t-en{font-family:var(--ar);font-size:16px;font-weight:600}
-.lang-toggle:hover{background:var(--blush)}
-.music-btn{
-  bottom:calc(14px + env(safe-area-inset-bottom));inset-inline-end:12px;
-  width:46px;height:46px;border-radius:50%;
-}
-.music-btn svg{width:20px;height:20px}
-.music-btn[aria-pressed="true"]{background:var(--rose);color:var(--paper);border-color:var(--rose)}
-
-/* ───────────────  SHARED SECTION TYPE  ─────────────── */
-.sec{padding-block:3.25rem}
-.sec-head{text-align:center;margin-bottom:1.6rem}
-.sec-title{font-size:1.6rem;font-weight:600;line-height:1.4;color:var(--ink);text-wrap:balance}
-html.en .sec-title{font-family:var(--disp);font-weight:500;font-size:2.05rem;line-height:1.15}
-.sec-lede{margin-top:.45rem;font-size:1rem;color:var(--ink-soft);max-width:24em;margin-inline:auto;text-wrap:balance}
-.bud{display:block;width:34px;height:20px;margin:0 auto .7rem}
-
-/* soft single wave where a colour band begins or ends */
-.band{position:relative;margin-block:26px}
-.wave{position:absolute;left:0;width:100%;height:26px;display:block;pointer-events:none}
-.wave.top{bottom:100%}
-.wave.bot{top:100%;transform:scaleY(-1)}
-.rituals .wave path,.rsvp .wave path{fill:var(--blush-band)}
-.where .wave path{fill:var(--sage-band)}
-
-/* ───────────────  HERO — the nursery mobile, name, lotus  ─────────────── */
-.hero{
-  text-align:center;
-  padding:0 20px 2.6rem;
-  background:radial-gradient(120% 52% at 50% 0%,#e6eee1 0%,rgba(230,238,225,0) 72%) var(--milk);
-}
-.mobile{display:block;width:168px;height:auto;margin:0 auto;transform-origin:50% 0;animation:sway 7s ease-in-out infinite}
-@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
-.hero-parents{margin-top:.4rem;font-size:1.3rem;font-weight:600;line-height:1.5;color:var(--ink)}
-html.en .hero-parents{font-family:var(--disp);font-size:1.7rem;font-weight:600;line-height:1.25}
-.hero-lead{margin-top:.1rem;font-size:1rem;color:var(--ink-soft)}
-.hero-name{
-  margin-top:.2rem;
-  font-size:min(4.7rem,22vw);font-weight:700;line-height:1.25;
-  color:var(--rose);overflow-wrap:break-word;
-}
-html.en .hero-name{font-family:var(--disp);font-weight:500;font-size:min(5.4rem,22vw);line-height:1.02;margin-top:.45rem}
-.hero-name.long-ar .t-ar,.hero-name.long-en .t-en{font-size:.68em}
-.hero-date{margin-top:.5rem;font-size:1.08rem;font-weight:600;color:var(--ink)}
-.hero-lotus{display:block;width:150px;height:auto;margin:1.1rem auto 0}
-
-/* countdown: type and hairlines, no boxes */
-.cd{margin-top:1.4rem}
-.cd-title{font-size:.95rem;font-weight:600;color:var(--sage-ink)}
-.countdown{display:flex;justify-content:center;margin-top:.35rem}
-.cd-cell{min-width:4.1rem;padding:0 .55rem;display:flex;flex-direction:column;align-items:center}
-.cd-cell + .cd-cell{border-inline-start:1px solid rgba(158,70,91,.22)}
-.cd-num{font-size:2rem;font-weight:600;line-height:1.25;color:var(--ink);font-variant-numeric:tabular-nums}
-html.en .cd-num{font-family:var(--en);font-weight:600;font-size:1.9rem}
-.cd-lbl{font-size:.82rem;line-height:1.5;color:var(--ink-soft)}
-.cd-done{display:none;font-size:1.2rem;font-weight:600;color:var(--rose)}
-.countdown-wrap.is-done .countdown{display:none}
-.countdown-wrap.is-done .cd-done{display:block}
-
-/* ───────────────  VERSE  ─────────────── */
-.verse{padding:1.2rem 20px 3rem;text-align:center}
-.verse blockquote{font-size:1.32rem;font-weight:500;line-height:2;color:var(--ink);max-width:20em;margin-inline:auto;text-wrap:balance}
-html.en .verse blockquote{font-family:var(--disp);font-style:italic;font-size:1.55rem;line-height:1.45;max-width:18em}
-.verse figcaption{margin-top:.6rem;font-size:.9rem;color:var(--sage-ink);font-weight:600}
-
-/* ───────────────  RITUALS — a little procession path  ─────────────── */
-.rituals{background:var(--blush-band);padding-block:2.6rem 3rem}
-.rit-list{max-width:420px;margin:0 auto}
-.rit{display:grid;grid-template-columns:108px 1fr;gap:16px;align-items:center}
-.rit.flip{grid-template-columns:1fr 108px}
-.rit.flip .plate{order:2}
-.rit.flip .rit-txt{text-align:end}
-.plate{
-  width:108px;height:108px;border-radius:50%;
-  background:var(--paper);
-  display:grid;place-items:center;
-  box-shadow:0 14px 26px -16px rgba(158,70,91,.55);
-}
-.plate svg{width:86px;height:86px}
-.rit h3{font-size:1.28rem;font-weight:600;line-height:1.45;color:var(--ink)}
-html.en .rit h3{font-family:var(--disp);font-size:1.6rem;line-height:1.15}
-.rit p{margin-top:.2rem;font-size:.98rem;line-height:1.75;color:var(--ink-soft)}
-html.en .rit p{line-height:1.55}
-.arc{display:block;width:calc(100% - 108px);height:40px;margin-inline:54px;overflow:visible}
-.arc path{fill:none;stroke:#c98a99;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:0 9}
-html[dir="rtl"] .arc.a,html[dir="ltr"] .arc.b{transform:scaleX(-1)}
-
-/* ───────────────  SCHEDULE — a quiet timeline  ─────────────── */
-.agenda-list{list-style:none;margin:0 auto;padding:0;max-width:360px}
-.agenda-list li{
-  position:relative;
-  display:grid;grid-template-columns:5rem 22px 1fr;column-gap:12px;align-items:start;
-  padding-bottom:1.15rem;
-}
-.agenda-list li:last-child{padding-bottom:0}
-.agenda-list li::before{
-  content:"";grid-column:2;grid-row:1;justify-self:center;
-  width:11px;height:11px;margin-top:.62em;border-radius:50%;
-  background:var(--blush-mid);
-  box-shadow:0 0 0 4px var(--milk),0 0 0 5px rgba(158,70,91,.3);
-  position:relative;z-index:1;
-}
-.agenda-list li::after{
-  content:"";position:absolute;top:1.3em;bottom:-.2em;
-  inset-inline-start:calc(5rem + 12px + 10.5px);
-  width:1px;background:rgba(158,70,91,.25);
-}
-.agenda-list li:last-child::after{display:none}
-.ag-time{grid-column:1;grid-row:1;text-align:end;font-weight:600;color:var(--rose);font-variant-numeric:tabular-nums}
-html.en .ag-time{font-weight:700}
-.ag-what{grid-column:3;grid-row:1;color:var(--ink);font-weight:500}
-
-/* ───────────────  DETAILS — arch-top card  ─────────────── */
-.where{background:var(--sage-band);padding-block:2.8rem 3rem}
-.card{
-  position:relative;max-width:370px;margin:0 auto;
-  padding:3.6rem 1rem 1.25rem;
-  text-align:center;
-  background:var(--paper);
-  border:1px solid rgba(79,110,74,.14);
-  border-radius:185px 185px 26px 26px / 150px 150px 26px 26px;
-  box-shadow:0 22px 40px -28px rgba(79,110,74,.6);
-}
-.card-moon{position:absolute;top:1.15rem;left:50%;width:34px;height:34px;margin-left:-17px}
-.when-wd{font-size:1rem;font-weight:600;color:var(--sage-ink)}
-.when-date{font-size:1.95rem;font-weight:600;line-height:1.35;color:var(--ink)}
-html.en .when-date{font-family:var(--disp);font-size:2.35rem;font-weight:600;line-height:1.1}
-.card-grid{display:grid;grid-template-columns:1fr 1fr;margin-top:1.1rem;border-top:1px solid var(--line)}
-.card-grid > div{padding:.9rem .4rem 0;min-width:0}
-.card-grid > div + div{border-inline-start:1px solid var(--line)}
-.k{font-size:.85rem;font-weight:600;color:var(--sage-ink)}
-.v{font-size:1.1rem;font-weight:600;line-height:1.5;color:var(--ink);overflow-wrap:break-word}
-.v small{display:block;font-size:.86rem;font-weight:500;color:var(--ink-soft)}
-.card-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.3rem}
-.card-actions .btn{flex:1 1 128px;padding-inline:.6rem;font-size:.9rem;white-space:nowrap}
-
-/* ───────────────  BUTTONS  ─────────────── */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
-  min-height:50px;padding:0 1.2rem;
-  border:1.5px solid currentColor;border-radius:999px;
-  background:transparent;color:var(--rose);
-  font-family:inherit;font-size:.95rem;font-weight:600;line-height:1.3;
-  text-decoration:none;cursor:pointer;
-  transition:background-color .25s ease,color .25s ease,border-color .25s ease;
-  -webkit-tap-highlight-color:transparent;
-}
-html.en .btn{font-weight:700}
-.btn svg{width:18px;height:18px;flex:none}
-.btn:hover{background:rgba(158,70,91,.07)}
-.btn.sage{color:var(--sage-ink)}
-.btn.sage:hover{background:rgba(79,110,74,.08)}
-.btn.solid{background:var(--rose);border-color:var(--rose);color:var(--paper);min-height:56px;font-size:1.02rem}
-.btn.solid:hover{background:var(--rose-hover);border-color:var(--rose-hover)}
-
-/* ───────────────  DRESS / GALLERY / GIFT  ─────────────── */
-.note-sec{padding-block:2.4rem;text-align:center}
-.note-sec + .note-sec{padding-top:0}
-.note-sec .sec-head{margin-bottom:.6rem}
-.note-sec .sec-title{font-size:1.4rem}
-html.en .note-sec .sec-title{font-size:1.85rem}
-.note{max-width:22em;margin:0 auto;color:var(--ink)}
-.swatches{display:flex;justify-content:center;gap:10px;margin-top:1rem}
-.swatches span{width:28px;height:28px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(90,74,82,.16)}
-.gift-ico{display:block;width:34px;height:34px;margin:0 auto .5rem}
-.ph-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.ph{
-  position:relative;aspect-ratio:3/4;overflow:hidden;
-  display:grid;place-items:center;
-  border-radius:999px 999px 18px 18px;
-  background:var(--paper);box-shadow:inset 0 0 0 1px var(--line);
-}
-.ph svg{width:40%;height:auto}
-.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.divider{display:block;width:60px;height:1px;margin:0 auto;background:var(--line)}
-
-/* ───────────────  RSVP + CLOSING  ─────────────── */
-.rsvp{background:var(--blush-band);padding-block:2.8rem 3.2rem;text-align:center}
-.rsvp-note{margin-top:.45rem;color:var(--ink-soft);max-width:22em;margin-inline:auto}
-.guests{margin-top:1.4rem}
-.guests-lbl{font-size:.9rem;font-weight:600;color:var(--sage-ink)}
-.guest-chips{display:flex;justify-content:center;gap:10px;margin-top:.55rem}
-.gchip{
-  width:52px;height:52px;border-radius:50%;
-  border:1.5px solid rgba(158,70,91,.45);
-  background:var(--paper);color:var(--rose);
-  font-family:inherit;font-size:1.1rem;font-weight:600;
-  cursor:pointer;transition:background-color .25s ease,color .25s ease;
-  -webkit-tap-highlight-color:transparent;
-}
-html.en .gchip{font-weight:700}
-.gchip:hover{background:var(--blush)}
-.gchip[aria-pressed="true"]{background:var(--rose);border-color:var(--rose);color:var(--paper)}
-.rsvp-actions{display:grid;gap:10px;max-width:340px;margin:1.5rem auto 0}
-.share{
-  display:inline-flex;align-items:center;gap:.45rem;min-height:44px;margin-top:.8rem;
-  font-size:.95rem;font-weight:600;color:var(--ink);
-  text-decoration:underline;text-decoration-color:rgba(158,70,91,.45);text-underline-offset:5px;
-}
-.share svg{width:18px;height:18px;color:var(--sage-ink)}
-.closing{margin-top:2.6rem}
-.closing p{font-size:1.3rem;font-weight:600;line-height:1.6;color:var(--ink);text-wrap:balance}
-html.en .closing p{font-family:var(--disp);font-style:italic;font-weight:500;font-size:1.6rem;line-height:1.3}
-
-/* ───────────────  OPENING MOMENT — the sebou3 envelope  ─────────────── */
-body.intro-lock{overflow:hidden}
-body.intro-lock main{display:none}
-.intro{
-  position:fixed;inset:0;z-index:100;
-  display:flex;align-items:center;justify-content:center;
-  padding:24px;cursor:pointer;
-  background:
-    radial-gradient(90% 46% at 50% 0%,#e6eee1 0%,rgba(230,238,225,0) 72%),
-    radial-gradient(90% 42% at 50% 100%,#f6dee2 0%,rgba(246,222,226,0) 72%),
-    var(--milk);
-  transition:opacity .55s ease 1.2s,visibility 0s linear 1.8s;
-  -webkit-tap-highlight-color:transparent;
-}
-.intro:focus-visible{outline:none}
-.intro:focus-visible .intro-hint{outline:2px solid var(--ink);outline-offset:4px}
-.intro-inner{display:flex;flex-direction:column;align-items:center;text-align:center}
-.intro-moon{width:30px;height:30px;margin-bottom:.4rem}
-.intro-kicker{font-size:1rem;color:var(--ink-soft)}
-.intro-name{font-size:3.3rem;font-weight:700;line-height:1.3;color:var(--rose)}
-html.en .intro-name{font-family:var(--disp);font-weight:500;font-size:3.9rem;line-height:1.1}
-
-.env{position:relative;width:min(270px,72vw);aspect-ratio:10/7;margin-top:1.7rem;perspective:900px;filter:drop-shadow(0 16px 20px rgba(158,70,91,.18))}
-.env-back{position:absolute;inset:0;border-radius:14px;background:#ecc2cb}
-.env-card{
-  position:absolute;left:7%;right:7%;top:7%;height:86%;z-index:1;
-  border-radius:10px;background:var(--paper);
-  display:flex;flex-direction:column;align-items:center;padding-top:8%;
-  font-weight:600;
-  transition:transform .7s cubic-bezier(.2,.7,.2,1) .5s;
-}
-.env-card svg{width:36px;height:22px}
-.env-card .card-word{font-size:.95rem;color:var(--ink-soft);line-height:1.6}
-.env-card .card-name{font-size:1.7rem;font-weight:700;line-height:1.3;color:var(--rose)}
-html.en .env-card .card-word{font-size:1rem}
-html.en .env-card .card-name{font-family:var(--disp);font-weight:500;font-size:2rem;line-height:1.15}
-.intro-moon,.intro-kicker,.intro-name{transition:opacity .3s ease}
-.intro.open .intro-moon,.intro.open .intro-kicker,.intro.open .intro-name{opacity:0}
-.env-front{
-  position:absolute;inset:0;z-index:2;border-radius:14px;
-  background:#f6dde2;
-  clip-path:polygon(0 0,50% 54%,100% 0,100% 100%,0 100%);
-}
-.env-front::after{
-  content:"";position:absolute;inset:0;border-radius:14px;
-  background:#f1d0d7;
-  clip-path:polygon(0 100%,50% 50%,100% 100%);
-}
-.env-flap{
-  position:absolute;left:0;right:0;top:0;height:58%;z-index:3;
-  background:#efc8d0;border-radius:14px 14px 0 0;
-  clip-path:polygon(0 0,100% 0,50% 100%);
-  transform-origin:50% 0;
-  transition:transform .6s cubic-bezier(.5,0,.3,1) .15s,z-index 0s linear .45s;
-}
-.env-seal{
-  position:absolute;z-index:4;left:50%;top:58%;
-  width:62px;height:62px;margin:-31px 0 0 -31px;border-radius:50%;
-  display:grid;place-items:center;
-  background:var(--rose);color:var(--paper);
-  box-shadow:inset 0 0 0 4px var(--rose),inset 0 0 0 5px rgba(255,251,245,.6),0 6px 12px -4px rgba(90,74,82,.45);
-  font-size:1.6rem;font-weight:700;line-height:1;
-  transition:transform .3s ease,opacity .3s ease;
-}
-.env-seal .t-en{font-family:var(--disp);font-style:italic;font-weight:600;font-size:2.1rem}
-.intro-hint{
-  margin-top:2rem;
-  display:inline-flex;align-items:center;justify-content:center;
-  min-height:48px;padding:0 1.6rem;border-radius:999px;
-  background:var(--rose);color:var(--paper);
-  font-size:1rem;font-weight:600;
-  transition:opacity .3s ease;
-}
-html.en .intro-hint{font-weight:700}
-.intro.open{opacity:0;visibility:hidden;pointer-events:none}
-.intro.open .env-seal{transform:scale(.6);opacity:0}
-.intro.open .env-flap{transform:rotateX(180deg);z-index:0}
-.intro.open .env-card{transform:translateY(-46%)}
-.intro.open .intro-hint{opacity:0}
-
-@media (min-width:720px){
-  .hero{padding-bottom:3.2rem}
-  .wrap.wide{width:min(100%,560px)}
-}
-@media (max-width:359px){
-  .rit{grid-template-columns:92px 1fr;gap:12px}
-  .rit.flip{grid-template-columns:1fr 92px}
-  .plate{width:92px;height:92px}
-  .plate svg{width:74px;height:74px}
-  .arc{width:calc(100% - 92px);margin-inline:46px}
-  .cd-cell{min-width:3.6rem;padding:0 .35rem}
-}
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none !important;transition:none !important}
-}
-</style>
-</head>
-
-<body>
-
-<!-- ═════════  OPENING MOMENT: tap, the seal lifts and the card rises  ═════════ -->
-<div class="intro" id="intro" role="button" tabindex="0" hidden
-     aria-label="افتحوا دعوة السبوع / Open the sebou3 invitation">
-  <div class="intro-inner">
-    <svg class="intro-moon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-      <path d="M14 5.2A12 12 0 1 0 27.1 21.5A10.5 10.5 0 0 1 14 5.2Z" fill="#f3d9a4" stroke="#d2b072" stroke-width="1.2"/>
-    </svg>
-    <p class="intro-kicker">
-      <span class="t-ar">إنتو معزومين على سبوع</span>
-      <span class="t-en">You're invited to the sebou3 of</span>
-    </p>
-    <p class="intro-name">
-      <span class="t-ar" id="introNameAr">ياسين</span>
-      <span class="t-en" id="introNameEn">Yassin</span>
-    </p>
-    <div class="env" aria-hidden="true">
-      <div class="env-back"></div>
-      <div class="env-card">
-        <svg viewBox="0 0 34 20" fill="none">
-          <path d="M17 2c-2.4 3.6-2.4 8.4 0 12 2.4-3.6 2.4-8.4 0-12z" fill="#e8b4bc" stroke="#c98a99" stroke-width=".9"/>
-          <path d="M6 8c1.4 4.6 5 7 11 6-1.4-4.6-5-7-11-6zM28 8c-1.4 4.6-5 7-11 6 1.4-4.6 5-7 11-6z" fill="#f6dee2" stroke="#c98a99" stroke-width=".9"/>
-        </svg>
-        <span class="card-word"><span class="t-ar">سبوع</span><span class="t-en">The sebou3 of</span></span>
-        <span class="card-name"><span class="t-ar" id="cardNameAr">ياسين</span><span class="t-en" id="cardNameEn">Yassin</span></span>
-      </div>
-      <div class="env-front"></div>
-      <div class="env-flap"></div>
-      <div class="env-seal"><span class="t-ar" id="sealAr">ي</span><span class="t-en" id="sealEn">Y</span></div>
-    </div>
-    <p class="intro-hint">
-      <span class="t-ar">دوسوا لفتح الدعوة</span>
-      <span class="t-en">Tap to open</span>
-    </p>
-  </div>
-</div>
-
-<button class="lang-toggle" id="langBtn" type="button" aria-label="Switch language / تبديل اللغة">
-  <span class="t-ar">EN</span>
-  <span class="t-en">عربي</span>
-</button>
-
-<button class="music-btn" id="musicBtn" type="button" aria-pressed="false" aria-label="تشغيل موسيقى هادئة / Toggle soft music">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 18V5l10-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>
-</button>
-
-<main>
-
-<!-- ═════════  HERO: the crescent mobile, the name, the lotus  ═════════ -->
-<section class="hero" aria-labelledby="heroName">
-  <svg class="mobile" viewBox="0 0 168 132" aria-hidden="true" focusable="false">
-    <g stroke="#cdb3bb" stroke-width="1">
-      <path d="M78 0v62"/>
-      <path d="M34 0v92"/>
-      <path d="M134 0v68"/>
-    </g>
-    <path d="M77.8 62.6A32 32 0 1 0 114.1 104.9A28 28 0 0 1 77.8 62.6Z" fill="#f3d9a4" stroke="#d2b072" stroke-width="1.4" stroke-linejoin="round"/>
-    <path d="M102 73l1.6 4.4 4.4 1.6-4.4 1.6-1.6 4.4-1.6-4.4-4.4-1.6 4.4-1.6z" fill="#e8b4bc"/>
-    <path d="M34 92l2.6 7.4 7.4 2.6-7.4 2.6-2.6 7.4-2.6-7.4-7.4-2.6 7.4-2.6z" fill="#f3d9a4" stroke="#d2b072" stroke-width="1.1" stroke-linejoin="round"/>
-    <path d="M134 68l2 5.6 5.6 2-5.6 2-2 5.6-2-5.6-5.6-2 5.6-2z" fill="#a8c3a0" stroke="#7fa077" stroke-width="1.1" stroke-linejoin="round"/>
-  </svg>
-
-  <p class="hero-parents">
-    <span class="t-ar" id="parentsAr">عمر وسلمى</span>
-    <span class="t-en" id="parentsEn">Omar &amp; Salma</span>
-  </p>
-  <p class="hero-lead">
-    <span class="t-ar">يتشرفوا بدعوتكم لحضور سبوع</span>
-    <span class="t-en">invite you to the sebou3 of</span>
-  </p>
-  <h1 class="hero-name" id="heroName">
-    <span class="t-ar" id="heroNameAr">ياسين</span>
-    <span class="t-en" id="heroNameEn">Yassin</span>
-  </h1>
-  <p class="hero-date">
-    <span class="t-ar" id="heroDateAr">الجمعة ٤ سبتمبر ٢٠٢٦</span>
-    <span class="t-en" id="heroDateEn">Friday, 4 September 2026</span>
-  </p>
-
-  <svg class="hero-lotus" viewBox="0 0 160 76" aria-hidden="true" focusable="false">
-    <g transform="translate(80 54) scale(.9)" stroke-width="1.2" stroke-linejoin="round">
-      <path d="M0-38C-7-26-7-12 0-2 7-12 7-26 0-38z" fill="#e8b4bc" stroke="#c98a99"/>
-      <path d="M-26-28C-24-14-16-4 0-2c-2-12-10-22-26-26z" fill="#f6dee2" stroke="#c98a99"/>
-      <path d="M26-28C24-14 16-4 0-2c2-12 10-22 26-26z" fill="#f6dee2" stroke="#c98a99"/>
-      <path d="M-44-10C-36-2-20 4 0-2c-8-8-24-12-44-8z" fill="#e8b4bc" stroke="#c98a99"/>
-      <path d="M44-10C36-2 20 4 0-2c8-8 24-12 44-8z" fill="#e8b4bc" stroke="#c98a99"/>
-      <path d="M-58 6c14 4 40 4 58-8-18-2-44 0-58 8z" fill="#a8c3a0" stroke="#7fa077"/>
-      <path d="M58 6C44 10 18 10 0-2c18-2 44 0 58 8z" fill="#a8c3a0" stroke="#7fa077"/>
-    </g>
-    <path d="M28 67c10-4 20-4 30 0s20 4 30 0 20-4 30 0" fill="none" stroke="#a8c3a0" stroke-width="1.4" stroke-linecap="round"/>
-    <path d="M52 74c7-2.6 14-2.6 21 0s14 2.6 21 0" fill="none" stroke="#c9dac3" stroke-width="1.4" stroke-linecap="round"/>
-  </svg>
-
-  <div class="cd countdown-wrap" id="cdWrap">
-    <p class="cd-title">
-      <span class="t-ar">باقي على السبوع</span>
-      <span class="t-en">Until the sebou3</span>
-    </p>
-    <div class="countdown" role="timer" aria-live="off">
-      <div class="cd-cell"><span class="cd-num" id="cdD">-</span><span class="cd-lbl"><span class="t-ar">يوم</span><span class="t-en">Days</span></span></div>
-      <div class="cd-cell"><span class="cd-num" id="cdH">-</span><span class="cd-lbl"><span class="t-ar">ساعة</span><span class="t-en">Hours</span></span></div>
-      <div class="cd-cell"><span class="cd-num" id="cdM">-</span><span class="cd-lbl"><span class="t-ar">دقيقة</span><span class="t-en">Minutes</span></span></div>
-      <div class="cd-cell"><span class="cd-num" id="cdS">-</span><span class="cd-lbl"><span class="t-ar">ثانية</span><span class="t-en">Seconds</span></span></div>
-    </div>
-    <p class="cd-done">
-      <span class="t-ar">النهارده السبوع، مستنيينكم</span>
-      <span class="t-en">It's sebou3 day. See you there.</span>
-    </p>
-  </div>
-</section>
-
-<!-- ═════════  VERSE (or the family's own words via ?q=)  ═════════ -->
-<figure class="verse">
-  <svg class="bud" viewBox="0 0 34 20" fill="none" aria-hidden="true">
-    <path d="M17 2c-2.4 3.6-2.4 8.4 0 12 2.4-3.6 2.4-8.4 0-12z" fill="#e8b4bc" stroke="#c98a99" stroke-width=".9"/>
-    <path d="M6 8c1.4 4.6 5 7 11 6-1.4-4.6-5-7-11-6zM28 8c-1.4 4.6-5 7-11 6 1.4-4.6 5-7 11-6z" fill="#f6dee2" stroke="#c98a99" stroke-width=".9"/>
-  </svg>
-  <blockquote>
-    <span class="t-ar" id="duaAr">رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ</span>
-    <span class="t-en" id="duaEn">Our Lord, grant us from our spouses and our children the comfort of our eyes.</span>
-  </blockquote>
-  <figcaption id="duaSrc">
-    <span class="t-ar">سورة الفرقان، الآية ٧٤</span>
-    <span class="t-en">The Quran, 25:74</span>
-  </figcaption>
-</figure>
-
-<!-- ═════════  THE SEBOU3 RITUALS  ═════════ -->
-<section class="rituals band" aria-labelledby="ritTitle">
-  <svg class="wave top" viewBox="0 0 400 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26V13C70 1 130 0 200 9S330 24 400 8V26Z"/></svg>
-  <div class="wrap wide">
-    <header class="sec-head">
-      <h2 class="sec-title" id="ritTitle">
-        <span class="t-ar">ليلة السبوع على أصولها</span>
-        <span class="t-en">A proper Egyptian sebou3</span>
-      </h2>
-      <p class="sec-lede">
-        <span class="t-ar">من الغربال لشنطة السبوع، كل حاجة زي ما اتربّينا عليها</span>
-        <span class="t-en">From the sieve to the sweets, all the traditions we grew up with.</span>
-      </p>
-    </header>
-
-    <div class="rit-list" role="list">
-      <div class="rit" role="listitem">
-        <span class="plate" aria-hidden="true">
-          <svg viewBox="0 0 96 96" fill="none" stroke="#7a5664" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <defs><clipPath id="meshClip"><ellipse cx="48" cy="50" rx="25" ry="9"/></clipPath></defs>
-            <g stroke="none">
-              <ellipse cx="38" cy="25" rx="2.4" ry="1.5" fill="#a8c3a0" transform="rotate(-20 38 25)"/>
-              <ellipse cx="50" cy="19" rx="2.4" ry="1.5" fill="#e8b4bc"/>
-              <ellipse cx="60" cy="28" rx="2.4" ry="1.5" fill="#d8b97a" transform="rotate(25 60 28)"/>
-              <circle cx="45" cy="33" r="1.6" fill="#d8b97a"/>
-              <circle cx="55" cy="37" r="1.5" fill="#a8c3a0"/>
-            </g>
-            <path d="M18 50v7c0 6.6 13.4 12 30 12s30-5.4 30-12v-7" fill="#ebcb8f"/>
-            <ellipse cx="48" cy="50" rx="30" ry="12" fill="#f3d9a4"/>
-            <ellipse cx="48" cy="50" rx="25" ry="9" fill="#fff8ec" stroke-width="1.3"/>
-            <g clip-path="url(#meshClip)" stroke="#d8b97a" stroke-width="1">
-              <path d="M18 44l30 20M26 40l30 20M34 38l30 20M42 36l30 20M50 35l30 20M10 48l30 20"/>
-              <path d="M78 44L48 64M70 40L40 60M62 38L32 58M54 36L24 56M46 35L16 55M86 48L56 68"/>
-            </g>
-            <path d="M10 46c-2.4 3.6-2.4 8.4 0 12M86 46c2.4 3.6 2.4 8.4 0 12" stroke="#c98a99"/>
-          </svg>
-        </span>
-        <div class="rit-txt">
-          <h3><span class="t-ar">الغربال</span><span class="t-en">The sieve</span></h3>
-          <p><span class="t-ar">نهزّ قمرنا في الغربال بالراحة، أول هزّة حلوة في الدنيا</span><span class="t-en">A gentle rock in the sieve, the baby's first sweet sway.</span></p>
-        </div>
-      </div>
-
-      <svg class="arc a" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0C0 26 100 14 100 40" vector-effect="non-scaling-stroke"/></svg>
-
-      <div class="rit flip" role="listitem">
-        <span class="plate" aria-hidden="true">
-          <svg viewBox="0 0 96 96" fill="none" stroke="#7a5664" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="55" y="12" width="8" height="40" rx="4" transform="rotate(32 59 32)" fill="#ebcb8f"/>
-            <path d="M27 46h42l-5.5 24.5A5 5 0 0 1 58.6 74H37.4a5 5 0 0 1-4.9-3.5z" fill="#f3d9a4"/>
-            <rect x="24" y="41" width="48" height="7" rx="3.5" fill="#ebcb8f"/>
-            <path d="M38 74h20l2 6H36z" fill="#ebcb8f"/>
-            <path d="M37 53l2.4 13" stroke="#fff6e2" stroke-width="2.4"/>
-            <path d="M15 40c-3 3.4-3 9.6 0 13M9 36c-5 5.6-5 15.4 0 21M81 40c3 3.4 3 9.6 0 13M87 36c5 5.6 5 15.4 0 21" stroke="#c98a99"/>
-          </svg>
-        </span>
-        <div class="rit-txt">
-          <h3><span class="t-ar">دقّة الهون</span><span class="t-en">The mortar</span></h3>
-          <p><span class="t-ar">الهون النحاس يرنّ، ووصايا التيتة اللي كلنا حافظينها</span><span class="t-en">The brass mortar rings while grandma shares the advice we all know by heart.</span></p>
-        </div>
-      </div>
-
-      <svg class="arc b" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0C0 26 100 14 100 40" vector-effect="non-scaling-stroke"/></svg>
-
-      <div class="rit" role="listitem">
-        <span class="plate" aria-hidden="true">
-          <svg viewBox="0 0 96 96" fill="none" stroke="#7a5664" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <g stroke="none" fill="#fff1d2">
-              <circle cx="32" cy="38" r="10"/><circle cx="48" cy="28" r="11"/><circle cx="64" cy="42" r="10"/>
-            </g>
-            <rect x="27" y="48" width="10" height="28" rx="3" fill="#f6dee2"/>
-            <rect x="43" y="38" width="10" height="38" rx="3" fill="#dce8d6"/>
-            <rect x="59" y="52" width="10" height="24" rx="3" fill="#f6dee2"/>
-            <path d="M32 48v-3M48 38v-3M64 52v-3" stroke-width="1.4"/>
-            <path d="M32 45c-3.4 0-5-2.6-5-5.2 0-3.4 3-5.6 5-9.8 2 4.2 5 6.4 5 9.8 0 2.6-1.6 5.2-5 5.2z" fill="#f3d9a4" stroke="#c9a25e" stroke-width="1.4"/>
-            <path d="M48 35c-3.4 0-5-2.6-5-5.2 0-3.4 3-5.6 5-9.8 2 4.2 5 6.4 5 9.8 0 2.6-1.6 5.2-5 5.2z" fill="#f3d9a4" stroke="#c9a25e" stroke-width="1.4"/>
-            <path d="M64 49c-3.4 0-5-2.6-5-5.2 0-3.4 3-5.6 5-9.8 2 4.2 5 6.4 5 9.8 0 2.6-1.6 5.2-5 5.2z" fill="#f3d9a4" stroke="#c9a25e" stroke-width="1.4"/>
-            <path d="M22 76c2 4 8 6 26 6s24-2 26-6z" fill="#ebcb8f"/>
-          </svg>
-        </span>
-        <div class="rit-txt">
-          <h3><span class="t-ar">زفّة الشموع</span><span class="t-en">The candle procession</span></h3>
-          <p><span class="t-ar">الصغيرين بالشموع والأغاني حوالين قمرنا</span><span class="t-en">The kids carry candles and sing around the baby.</span></p>
-        </div>
-      </div>
-
-      <svg class="arc a" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0C0 26 100 14 100 40" vector-effect="non-scaling-stroke"/></svg>
-
-      <div class="rit flip" role="listitem">
-        <span class="plate" aria-hidden="true">
-          <svg viewBox="0 0 96 96" fill="none" stroke="#7a5664" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M38 38c0-7 4.5-11 10-11s10 4 10 11"/>
-            <path d="M27 38h42l-3.5 36.5a3 3 0 0 1-3 2.5H33.5a3 3 0 0 1-3-2.5z" fill="#f6dee2"/>
-            <path d="M53 52a8 8 0 1 0 0 14a7 7 0 0 1 0-14z" fill="#f3d9a4" stroke-width="1.3"/>
-            <path d="M48 42c-4-4-9-4-9 0s5 4 9 0zm0 0c4-4 9-4 9 0s-5 4-9 0z" fill="#a8c3a0" stroke-width="1.3"/>
-            <ellipse cx="18" cy="74" rx="4.5" ry="3.4" fill="#e8b4bc" stroke-width="1.3"/>
-            <ellipse cx="78" cy="72" rx="4.5" ry="3.4" fill="#a8c3a0" stroke-width="1.3"/>
-            <ellipse cx="82" cy="81" rx="4" ry="3" fill="#f3d9a4" stroke-width="1.3"/>
-            <ellipse cx="13" cy="83" rx="4" ry="3" fill="#f3d9a4" stroke-width="1.3"/>
-          </svg>
-        </span>
-        <div class="rit-txt">
-          <h3><span class="t-ar">شنطة السبوع</span><span class="t-en">The sebou3 bags</span></h3>
-          <p><span class="t-ar">ملبّس وحلويات للصغيرين والكبار، محدش يروّح إيده فاضية</span><span class="t-en">Sweets and sugared almonds for little ones and grown-ups. Nobody leaves empty-handed.</span></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <svg class="wave bot" viewBox="0 0 400 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26V13C70 1 130 0 200 9S330 24 400 8V26Z"/></svg>
-</section>
-
-<!-- ═════════  SCHEDULE  ═════════ -->
-<section class="sec agenda" id="agendaSec" aria-labelledby="agendaTitle">
-  <div class="wrap">
-    <header class="sec-head">
-      <h2 class="sec-title" id="agendaTitle">
-        <span class="t-ar">برنامج الليلة</span>
-        <span class="t-en">The evening</span>
-      </h2>
-    </header>
-    <ol class="agenda-list" id="agendaList">
-      <li><span class="ag-time"><span class="t-ar">٦:٠٠</span><span class="t-en">6:00</span></span><span class="ag-what"><span class="t-ar">الاستقبال</span><span class="t-en">Guests arrive</span></span></li>
-      <li><span class="ag-time"><span class="t-ar">٦:٣٠</span><span class="t-en">6:30</span></span><span class="ag-what"><span class="t-ar">الغربال ودقّة الهون</span><span class="t-en">The sieve and the mortar</span></span></li>
-      <li><span class="ag-time"><span class="t-ar">٧:٠٠</span><span class="t-en">7:00</span></span><span class="ag-what"><span class="t-ar">زفّة الشموع</span><span class="t-en">The candle procession</span></span></li>
-      <li><span class="ag-time"><span class="t-ar">٧:٣٠</span><span class="t-en">7:30</span></span><span class="ag-what"><span class="t-ar">الحلويات وشنط السبوع</span><span class="t-en">Sweets and sebou3 bags</span></span></li>
-    </ol>
-  </div>
-</section>
-
-<!-- ═════════  DATE / TIME / VENUE  ═════════ -->
-<section class="where band" id="details" data-shot="details" aria-labelledby="whereTitle">
-  <svg class="wave top" viewBox="0 0 400 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26V10C80 24 150 22 210 12S330 0 400 14V26Z"/></svg>
-  <div class="wrap">
-    <h2 class="sr-only" id="whereTitle"><span class="t-ar">الميعاد والمكان</span><span class="t-en">When and where</span></h2>
-    <div class="card">
-      <svg class="card-moon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-        <path d="M14 5.2A12 12 0 1 0 27.1 21.5A10.5 10.5 0 0 1 14 5.2Z" fill="#f3d9a4" stroke="#d2b072" stroke-width="1.2"/>
-        <path d="M24 6l1 2.8 2.8 1-2.8 1-1 2.8-1-2.8-2.8-1 2.8-1z" fill="#e8b4bc"/>
-      </svg>
-      <p class="when-wd"><span class="t-ar" id="wdAr">الجمعة</span><span class="t-en" id="wdEn">Friday</span></p>
-      <p class="when-date"><span class="t-ar" id="dateAr">٤ سبتمبر ٢٠٢٦</span><span class="t-en" id="dateEn">4 September 2026</span></p>
-      <div class="card-grid">
-        <div>
-          <p class="k"><span class="t-ar">الساعة</span><span class="t-en">Time</span></p>
-          <p class="v"><span class="t-ar" id="timeAr">٦:٠٠ مساءً</span><span class="t-en" id="timeEn">6:00 PM</span></p>
-        </div>
-        <div>
-          <p class="k"><span class="t-ar">المكان</span><span class="t-en">Venue</span></p>
-          <p class="v">
-            <span class="t-ar"><span id="venAr">منزل العائلة</span><small id="venAr2">المعادي، القاهرة</small></span>
-            <span class="t-en"><span id="venEn">The family home</span><small id="venEn2">Maadi, Cairo</small></span>
-          </p>
-        </div>
-      </div>
-      <div class="card-actions">
-        <a class="btn sage" id="mapBtn" href="https://www.google.com/maps/search/?api=1&amp;query=Maadi%2C%20Cairo%2C%20Egypt" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-7.2-7-12a7 7 0 1 1 14 0c0 4.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          <span class="t-ar">الخريطة</span>
-          <span class="t-en">Open map</span>
-        </a>
-        <a class="btn" id="calBtn" target="_blank" rel="noopener noreferrer"
-           href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Sebou3%20of%20Yassin&amp;dates=20260904T180000/20260904T210000&amp;ctz=Africa/Cairo&amp;location=The%20family%20home%2C%20Maadi%2C%20Cairo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="4"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
-          <span class="t-ar">أضيفوها للتقويم</span>
-          <span class="t-en">Add to calendar</span>
-        </a>
-      </div>
-    </div>
-  </div>
-  <svg class="wave bot" viewBox="0 0 400 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26V10C80 24 150 22 210 12S330 0 400 14V26Z"/></svg>
-</section>
-
-<!-- ═════════  DRESS CODE  ═════════ -->
-<section class="note-sec" id="dressSec" aria-labelledby="dressTitle">
-  <div class="wrap">
-    <header class="sec-head">
-      <h2 class="sec-title" id="dressTitle"><span class="t-ar">الدريس كود</span><span class="t-en">Dress code</span></h2>
-    </header>
-    <p class="note">
-      <span class="t-ar" id="dressAr">ألوان باستيل هادية، وردي وأخضر فاتح، عشان الصور تطلع زي القمر</span>
-      <span class="t-en" id="dressEn">Soft pastels, please. Blush and sage look lovely in the photos.</span>
-    </p>
-    <div class="swatches" aria-hidden="true">
-      <span style="background:#e8b4bc"></span>
-      <span style="background:#f6dee2"></span>
-      <span style="background:#a8c3a0"></span>
-      <span style="background:#f3d9a4"></span>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════  PHOTO GALLERY (hidden unless photos / ph1 given)  ═════════ -->
-<section class="note-sec" id="gallerySec" aria-labelledby="galleryTitle" style="display:none">
-  <div class="wrap">
-    <span class="divider" aria-hidden="true"></span>
-    <header class="sec-head" style="margin-top:2.4rem;margin-bottom:1.2rem">
-      <h2 class="sec-title" id="galleryTitle"><span class="t-ar">أول صور لقمرنا</span><span class="t-en">First little memories</span></h2>
-    </header>
-    <div class="ph-grid">
-      <figure class="ph" id="ph1">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M14 5.2A12 12 0 1 0 27.1 21.5A10.5 10.5 0 0 1 14 5.2Z" fill="#f3d9a4" stroke="#d2b072" stroke-width="1.2"/></svg>
-      </figure>
-      <figure class="ph" id="ph2">
-        <svg viewBox="0 0 34 20" fill="none" aria-hidden="true"><path d="M17 2c-2.4 3.6-2.4 8.4 0 12 2.4-3.6 2.4-8.4 0-12z" fill="#e8b4bc" stroke="#c98a99" stroke-width=".9"/><path d="M6 8c1.4 4.6 5 7 11 6-1.4-4.6-5-7-11-6zM28 8c-1.4 4.6-5 7-11 6 1.4-4.6 5-7 11-6z" fill="#f6dee2" stroke="#c98a99" stroke-width=".9"/></svg>
-      </figure>
-      <figure class="ph" id="ph3">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z" fill="#a8c3a0" stroke="#7fa077" stroke-width="1" stroke-linejoin="round"/></svg>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════  GIFT NOTE  ═════════ -->
-<section class="note-sec" id="giftSec" aria-labelledby="giftTitle">
-  <div class="wrap">
-    <span class="divider" aria-hidden="true" style="margin-bottom:2.4rem"></span>
-    <svg class="gift-ico" viewBox="0 0 32 32" fill="none" stroke="#9e465b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <rect x="5" y="12" width="22" height="15" rx="2.5" fill="#f6dee2"/>
-      <path d="M4 12h24M16 12v15"/>
-      <path d="M16 12c-2-4-7-5-7-2s5 2 7 2zm0 0c2-4 7-5 7-2s-5 2-7 2z" fill="#fffbf5"/>
-    </svg>
-    <header class="sec-head">
-      <h2 class="sec-title" id="giftTitle"><span class="t-ar">الهدايا</span><span class="t-en">Gifts</span></h2>
-    </header>
-    <p class="note">
-      <span class="t-ar" id="giftAr">حضوركم ودعواتكم لقمرنا <span id="giftNameAr">ياسين</span> أغلى هدية</span>
-      <span class="t-en" id="giftEn">Your presence and prayers for <span id="giftNameEn">Yassin</span> are the sweetest gift.</span>
-    </p>
-  </div>
-</section>
-
-<!-- ═════════  RSVP + CLOSING  ═════════ -->
-<section class="rsvp band" aria-labelledby="rsvpTitle">
-  <svg class="wave top" viewBox="0 0 400 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26V13C70 1 130 0 200 9S330 24 400 8V26Z"/></svg>
-  <div class="wrap">
-    <div data-shot="rsvp">
-      <h2 class="sec-title" id="rsvpTitle">
-        <span class="t-ar">هتنوّرونا؟</span>
-        <span class="t-en">Will you join us?</span>
-      </h2>
-      <p class="rsvp-note">
-        <span class="t-ar">اختاروا عدد الأفراد، وابعتوا ردكم على واتساب بضغطة واحدة</span>
-        <span class="t-en">Pick how many of you are coming, then send your reply on WhatsApp in one tap.</span>
-      </p>
-
-      <div class="guests">
-        <p class="guests-lbl" id="guestsLbl"><span class="t-ar">عدد الأفراد</span><span class="t-en">Guests</span></p>
-        <div class="guest-chips" role="group" aria-labelledby="guestsLbl">
-          <button type="button" class="gchip" data-n="1" data-n-ar="١" aria-pressed="true"><span class="t-ar">١</span><span class="t-en">1</span></button>
-          <button type="button" class="gchip" data-n="2" data-n-ar="٢" aria-pressed="false"><span class="t-ar">٢</span><span class="t-en">2</span></button>
-          <button type="button" class="gchip" data-n="3" data-n-ar="٣" aria-pressed="false"><span class="t-ar">٣</span><span class="t-en">3</span></button>
-          <button type="button" class="gchip" data-n="4+" data-n-ar="٤+" aria-pressed="false"><span class="t-ar">٤+</span><span class="t-en">4+</span></button>
-        </div>
-      </div>
-
-      <div class="rsvp-actions">
-        <a class="btn solid" id="acceptBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.94.56 3.75 1.5 5.29L2 22l4.96-1.6a9.9 9.9 0 0 0 5.08 1.4h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.07c-.25.7-1.45 1.34-2 1.43-.5.08-1.13.11-1.83-.12-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.37-.15-.2-1.18-1.57-1.18-3 0-1.42.74-2.12 1-2.41.25-.28.55-.35.74-.35h.53c.17 0 .4-.03.62.48.25.58.84 2.02.91 2.17.07.15.12.32.02.51-.09.2-.16.32-.31.49-.15.17-.32.38-.45.51-.15.15-.3.31-.13.6.18.3.8 1.32 1.71 2.13 1.18 1.05 2.17 1.38 2.5 1.53.25.12.55.1.74-.11.25-.28.55-.74.86-1.2.22-.32.49-.36.82-.24.34.12 2.15 1.01 2.51 1.2.37.18.61.27.7.43.1.16.1.9-.15 1.6z"/></svg>
-          <span class="t-ar">أكّدوا الحضور على واتساب</span>
-          <span class="t-en">Confirm on WhatsApp</span>
-        </a>
-        <a class="btn" id="declineBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418">
-          <span class="t-ar">للأسف مش هنقدر نيجي</span>
-          <span class="t-en">Sorry, we can't make it</span>
-        </a>
-      </div>
-
-      <a class="share" id="shareBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.4M8.3 13.2l7.4 4.4"/></svg>
-        <span class="t-ar">ابعتوا الدعوة للعيلة</span>
-        <span class="t-en">Share the invitation</span>
-      </a>
-    </div>
-
-    <div class="closing">
-      <svg class="bud" viewBox="0 0 34 20" fill="none" aria-hidden="true">
-        <path d="M17 2c-2.4 3.6-2.4 8.4 0 12 2.4-3.6 2.4-8.4 0-12z" fill="#e8b4bc" stroke="#c98a99" stroke-width=".9"/>
-        <path d="M6 8c1.4 4.6 5 7 11 6-1.4-4.6-5-7-11-6zM28 8c-1.4 4.6-5 7-11 6 1.4-4.6 5-7 11-6z" fill="#f6dee2" stroke="#c98a99" stroke-width=".9"/>
-      </svg>
-      <p>
-        <span class="t-ar" id="closeAr">حضوركم هيكمّل فرحتنا بياسين</span>
-        <span class="t-en">Seeing you there will make our joy complete.</span>
-      </p>
-    </div>
-  </div>
-  <svg class="wave bot" viewBox="0 0 400 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26V13C70 1 130 0 200 9S330 24 400 8V26Z"/></svg>
-</section>
-
-</main>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gulzar&family=Markazi+Text:wght@400;500;600&family=Gilda+Display&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Playpen+Sans+Arabic:wght@300;400&display=swap">
 
 <script>
 /* Rolling demo date: without a real order date (?d=) the demo always counts
@@ -822,354 +38,814 @@ html.en .intro-hint{font-weight:700}
   } catch (e) {}
 })();
 </script>
+
+<style>
+/* Lotus Sebou3 (D3-007): a sebou3 favour bag. A blush tulle bag tied with sage satin
+   ribbon, a printed tag threaded on the ribbon, and inside it the invitation card with
+   the evening's rituals. The page is the linen table the bag is opened on. */
+:root{
+  --linen:#efe6d9;
+  --ivory:#fffaf2;            /* the invitation card: cotton */
+  --blush:#f3d9de;            /* the tag: tinted board */
+  --sage-tint:#e4ebdf;        /* the reply card: thin tinted stock */
+  --sage:#a8c3a0; --sage-d:#62805b;
+  --ink:#5a4a52; --ink-2:#7a6870;
+  --rose:#9e465b; --rose-d:#86394c;
+  --gold:#b08a4f;
+  --ar:"Markazi Text","Noto Naskh Arabic",serif;
+  --ar-name:"Gulzar","Markazi Text",serif;
+  --en:"Newsreader",Georgia,serif;
+  --en-name:"Gilda Display",Georgia,serif;
+  --hand:"Playpen Sans Arabic","Segoe Print",cursive;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .3 0 0 0 0 .3 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;overflow-x:hidden;color:var(--ink);
+  font:400 20px/1.9 var(--ar);-webkit-font-smoothing:antialiased;
+  background-color:var(--linen);
+  /* linen: a loose weave, and one warm light falling from the window side */
+  background-image:
+    radial-gradient(120% 65% at 72% 0%,rgba(255,251,243,.85),rgba(255,251,243,0) 64%),
+    radial-gradient(90% 60% at 10% 100%,rgba(120,92,80,.07),transparent 70%),
+    repeating-linear-gradient(0deg,rgba(110,88,72,.045) 0 1px,transparent 1px 3px),
+    repeating-linear-gradient(90deg,rgba(110,88,72,.035) 0 1px,transparent 1px 4px),
+    var(--grain);
+  background-attachment:fixed,fixed,scroll,scroll,scroll}
+html.en body{font:400 17px/1.65 var(--en)}
+body.intro-lock{overflow:hidden}
+h1,h2,p,figure,ul{margin:0}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--blush);color:var(--ink)}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+html.en .t-ar{display:none}
+html:not(.en) .t-en{display:none}
+.num{font-family:var(--ar);font-weight:500}
+html.en .num{font-family:var(--en)}
+
+/* ── corner controls: two paper slips ── */
+.slip{position:fixed;top:calc(10px + env(safe-area-inset-top));z-index:50;min-height:40px;min-width:44px;padding:0 13px;
+  display:grid;place-items:center;border:0;border-radius:1px;cursor:pointer;color:var(--rose);
+  background:var(--ivory) var(--grain);box-shadow:0 1px 1px rgba(90,60,55,.2),0 5px 10px -7px rgba(90,60,55,.45);
+  -webkit-tap-highlight-color:transparent}
+.lang-slip{inset-inline-end:10px;font:italic 400 15px/1 var(--en)}
+html.en .lang-slip{font:500 17px/1 var(--ar);font-style:normal}
+.music-slip{inset-inline-start:10px}
+.music-slip svg{width:17px;height:17px}
+.music-slip[aria-pressed="true"]{background-color:var(--blush)}
+
+/* ── the bag, closed: tap and the ribbon comes undone ── */
+.intro{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:20px;overflow:hidden;cursor:pointer;
+  background-color:var(--linen);
+  background-image:radial-gradient(90% 60% at 60% 20%,rgba(255,251,243,.9),rgba(255,251,243,0) 70%),
+    repeating-linear-gradient(0deg,rgba(110,88,72,.045) 0 1px,transparent 1px 3px),
+    repeating-linear-gradient(90deg,rgba(110,88,72,.035) 0 1px,transparent 1px 4px),var(--grain);
+  transition:opacity .55s ease 1.95s;-webkit-tap-highlight-color:transparent}
+.intro.open{opacity:0;pointer-events:none}
+.intro:focus-visible{outline:none}
+.intro:focus-visible .intro-hint{outline:2px solid var(--rose);outline-offset:4px}
+.intro-in{display:flex;flex-direction:column;align-items:center}
+.bag{position:relative;width:min(300px,74vw);aspect-ratio:320/400}
+.bag>svg,.bag>.bag-card{position:absolute}
+.bag>svg{inset:0;width:100%;height:100%;overflow:visible}
+.bag svg g{transform-box:fill-box}
+.closed-set{transition:opacity .45s ease .45s}
+.open-set{opacity:0;transform-origin:50% 100%;scale:.86 1;transition:opacity .45s ease .45s,scale .6s cubic-bezier(.3,.7,.3,1) .45s}
+.intro.open .closed-set{opacity:0}
+.intro.open .open-set{opacity:1;scale:1 1}
+/* the card stands in the bag, behind the sweets; it rises out once the neck is loose */
+.bag-card{left:31.5%;width:37%;top:39%;height:49%;background:var(--ivory) var(--grain);border-radius:1px;
+  box-shadow:0 1px 2px rgba(90,60,55,.25);padding:9% 8% 0;text-align:center;
+  transition:translate 1s cubic-bezier(.2,.8,.2,1) .85s}
+.bag-card p{font:400 7.5px/1.9 var(--ar);color:var(--ink-2)}
+.bag-card i{display:block;width:30%;height:1px;margin:8px auto;background:var(--sage-d)}
+.bag-card b{display:block;height:2px;margin:7px 8%;background:rgba(90,74,82,.18)}
+.intro.open .bag-card{translate:0 -74%}
+/* the bow: the loops slip, the tails pull through, the ribbon drops away */
+.bow .loop{transform-origin:center;transition:scale .5s cubic-bezier(.5,0,.6,1),opacity .3s ease .25s}
+.bow .loop-r{transform-origin:0% 50%}
+.bow .loop-l{transform-origin:100% 50%}
+.intro.open .bow .loop{scale:.1 .6;opacity:0}
+.bow .ribbon-rest{transition:translate .5s cubic-bezier(.5,0,.75,0) .4s,opacity .3s ease .65s}
+.intro.open .bow .ribbon-rest{translate:0 70px;opacity:0}
+/* the tag drops off the loosened ribbon and lies on the cloth */
+.itag-wrap{position:absolute;left:50%;top:46.5%;width:54%;translate:-50% 0;rotate:-4deg;
+  filter:drop-shadow(0 8px 9px rgba(90,60,60,.22));
+  transition:translate .7s cubic-bezier(.5,0,.3,1) .35s,rotate .7s cubic-bezier(.5,0,.3,1) .35s}
+.intro.open .itag-wrap{translate:-104% 38%;rotate:-13deg}
+.itag{position:relative;clip-path:polygon(22px 0,calc(100% - 22px) 0,100% 22px,100% 100%,0 100%,0 22px);
+  background:var(--blush) var(--grain);padding:30px 10px 12px;text-align:center;color:var(--ink)}
+.itag::before{content:"";position:absolute;top:8px;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;
+  background:radial-gradient(circle,#6f5a4c 0 2.6px,#e9dcc0 3px 4.4px,#c3a878 4.8px)}
+.itag .motif{width:58px;height:auto;margin:0 auto 2px}
+.itag .sm{font:400 12.5px/1.4 var(--ar);color:var(--ink-2);margin-bottom:-4px}
+html.en .itag .sm{font:italic 400 11.5px/1.4 var(--en)}
+.itag .nm{font:400 34px/1.55 var(--ar-name);color:var(--rose);white-space:nowrap}
+html.en .itag .nm{font:400 28px/1.3 var(--en-name)}
+.itag .to{font:300 11px/1.5 var(--hand);color:var(--ink);margin-top:2px}
+.intro-hint{margin-top:30px;font:400 17px/1.5 var(--ar);color:var(--ink-2);text-align:center;transition:opacity .2s}
+html.en .intro-hint{font:italic 400 15px/1.5 var(--en)}
+.intro.open .intro-hint{opacity:0}
+
+/* ── the suite, laid out on the cloth ── */
+.suite{max-width:470px;margin:0 auto;padding:calc(92px + env(safe-area-inset-top)) 14px 24px;display:flex;flex-direction:column;align-items:center}
+.pair{display:flex;flex-direction:column;align-items:center;width:100%}
+
+/* the tag: thick blush board, die-cut corners, an eyelet with the ribbon through it */
+.tag-wrap{position:relative;z-index:2;width:min(318px,84vw);rotate:-2.5deg;
+  filter:drop-shadow(0 1px 1px rgba(90,60,60,.2)) drop-shadow(0 16px 16px rgba(90,60,60,.2))}
+.ribbon{position:absolute;left:50%;top:-60px;width:290px;height:auto;translate:-50% 0;z-index:1;overflow:visible;pointer-events:none}
+.tag{position:relative;clip-path:polygon(44px 0,calc(100% - 44px) 0,100% 44px,100% 100%,0 100%,0 44px);
+  background:var(--blush) var(--grain);padding:46px 22px 26px;text-align:center}
+.tag .motif{display:block;width:128px;height:auto;margin:0 auto 10px}
+.hv{font-size:17px;line-height:1.5;color:var(--ink-2)}
+.hosts-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;margin:2px 0 4px;font-size:20px;font-weight:600;line-height:1.5}
+.hosts-cols.one,.hosts-cols.stack{grid-template-columns:1fr;gap:2px}
+html.en .hosts-cols.t-en{display:block;text-wrap:balance;font:500 17.5px/1.45 var(--en)}
+.hosts-cols.t-en .host{display:inline}
+.host{min-width:0;white-space:nowrap}
+.host .ttl{display:block;font-size:.82em;font-weight:400;color:var(--ink-2)}
+.hosts-cols.stack .host .ttl{display:inline}
+html.en .host .ttl{display:inline;font-size:1em;font-weight:inherit;color:inherit}
+.lead{font-size:18px;line-height:1.6;color:var(--ink);text-wrap:balance}
+html.en .lead{font:italic 400 16px/1.5 var(--en);max-width:23ch;margin:0 auto}
+/* the baby's name, printed in rose: a pressed lip below, a shade above */
+.name{margin:2px 0 0;font:400 60px/1.6 var(--ar-name);color:var(--rose);
+  text-shadow:0 1px 0 rgba(255,246,247,.8),0 -1px 0 rgba(110,40,55,.16)}
+html.en .name{font:400 50px/1.2 var(--en-name);margin:8px 0 6px}
+.name .n{display:block;white-space:nowrap}
+.name .amp{font-size:.72em;margin-inline-end:0}
+html.en .name .amp{font:italic 400 .62em/1 var(--en);margin-inline-end:.2em}
+.to{display:flex;align-items:baseline;justify-content:center;gap:8px;margin-top:6px;font-size:16px;color:var(--ink-2)}
+html.en .to{font:italic 400 14.5px/1.5 var(--en)}
+.to .hand{min-width:0;padding:0 6px 1px;border-bottom:1px solid rgba(90,74,82,.35);
+  font:300 18px/1.5 var(--hand);color:#46394a}
+html.en .to .hand{font-size:15px;font-style:normal}
+.to .hand.ar{font-size:18px}
+
+/* the invitation card: cotton, 5 by 7, the tag tucked over its head */
+.invite{position:relative;z-index:1;width:min(354px,92vw);aspect-ratio:5/7;margin-top:-26px;
+  display:flex;flex-direction:column;justify-content:center;padding:38px 24px 28px;text-align:center;
+  background:var(--ivory) var(--grain);border-radius:1px;
+  box-shadow:0 1px 1px rgba(90,60,55,.22),0 26px 44px -24px rgba(90,55,55,.55)}
+.verse{font-size:15px;line-height:1.75;color:var(--ink-2);max-width:27ch;margin:0 auto 8px;text-wrap:balance}
+.verse small{font-size:.86em;opacity:.85;white-space:nowrap}
+html.en .verse{font:italic 400 14px/1.55 var(--en);max-width:30ch}
+.formal{font-size:19px;line-height:1.85;max-width:29ch;margin:0 auto;text-wrap:pretty}
+html.en .formal{font-size:16.5px;line-height:1.6}
+.formal b{font-weight:600;white-space:nowrap}
+.iso{unicode-bidi:isolate}
+html.en .formal b{font-weight:500}
+.rule{width:46px;height:2px;margin:12px auto 10px;border:0;background:var(--sage-d)}
+.invite h2{font:600 19px/1.5 var(--ar);color:var(--rose);margin:0 0 4px}
+html.en .invite h2{font:italic 400 18px/1.4 var(--en)}
+.prog{list-style:none;padding:0;margin:0 auto;display:grid;grid-template-columns:auto auto;justify-content:center;gap:0 16px;text-align:start}
+.prog li{display:contents}
+.prog .when{font-size:17px;line-height:1.75;color:var(--rose);white-space:nowrap;font-variant-numeric:tabular-nums}
+.prog .what{font-size:18px;line-height:1.75}
+html.en .prog .when{font:italic 400 15px/1.85 var(--en)}
+html.en .prog .what{font-size:16px;line-height:1.85}
+.notes{margin-top:18px;padding-top:12px;border-top:1px solid rgba(98,128,91,.28);font-size:15.5px;line-height:1.7;color:var(--ink-2)}
+html.en .notes{font-size:14px;line-height:1.5}
+.notes b{font-weight:600;color:var(--ink)}
+html.en .notes b{font-weight:500}
+.notes p+p{margin-top:2px}
+.go{margin-top:8px;font-size:16px}
+html.en .go{font-size:14.5px}
+.go a{margin:0 8px;text-decoration:underline;text-decoration-color:var(--sage);text-decoration-thickness:1.5px;text-underline-offset:5px}
+/* the countdown, added by hand in the corner of the card */
+.left{position:absolute;inset-inline-start:18px;bottom:10px;margin:0;font:300 15px/1.4 var(--hand);color:var(--rose-d)}
+html.en .left{font-size:13.5px}
+
+/* the reply card: thinner sage stock, smaller, square on the cloth */
+.reply{width:min(318px,86vw);margin-top:34px;padding:28px 24px 24px;text-align:center;
+  background:var(--sage-tint) repeating-linear-gradient(0deg,rgba(70,95,65,.03) 0 1px,transparent 1px 6px);border-radius:1px;
+  box-shadow:0 1px 1px rgba(60,80,60,.16),0 8px 14px -12px rgba(60,80,60,.4)}
+.reply h2{font:600 21px/1.4 var(--ar);color:var(--ink);margin:0}
+html.en .reply h2{font:400 21px/1.3 var(--en-name)}
+.by{margin:2px 0 16px;font-size:16px;color:var(--ink-2)}
+html.en .by{font:italic 400 14.5px/1.5 var(--en)}
+.line{display:flex;align-items:baseline;gap:10px;text-align:start}
+.line label{white-space:nowrap;font-size:17px}
+html.en .line label{font-size:15px}
+.line input{flex:1;min-width:0;border:0;border-bottom:1px solid var(--sage-d);border-radius:0;background:transparent;padding:2px 4px;
+  font:300 19px/1.4 var(--hand);color:#3f3447;outline:none}
+.line input::placeholder{font:400 15px/1.4 var(--ar);color:rgba(90,74,82,.45)}
+html.en .line input::placeholder{font:italic 400 14px/1.4 var(--en)}
+.line input:focus{border-bottom-width:2px}
+.line.count{margin-top:16px;align-items:flex-end}
+.line.count label{line-height:1.5}
+.line.count input{flex:0 0 64px;text-align:center;font:500 20px/1.4 var(--ar)}
+html.en .line.count input{font:400 17px/1.4 var(--en)}
+/* the reply goes out under a favour sticker */
+.sticker{position:relative;display:grid;place-items:center;width:232px;height:78px;margin:22px auto 0;text-decoration:none;color:var(--ivory);
+  -webkit-tap-highlight-color:transparent}
+.sticker svg{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 1px 1px rgba(80,30,40,.35))}
+.sticker span{position:relative;font:600 21px/1.2 var(--ar);text-shadow:0 1px 0 rgba(70,20,30,.35)}
+html.en .sticker span{font:500 18px/1.2 var(--en)}
+.sticker:hover svg path{fill:var(--rose-d)}
+.decline{display:inline-block;margin-top:12px;font-size:16px;color:var(--ink-2);text-underline-offset:4px}
+html.en .decline{font-size:14.5px}
+
+/* prints of the baby, when the family sends them */
+.prints{width:min(350px,92vw);margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.print{background:#fffdf8;padding:7px;box-shadow:0 1px 1px rgba(90,60,55,.18),0 10px 16px -12px rgba(90,60,55,.45);display:none}
+.print.has-img{display:block}
+.print img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:#eadfd2}
+.prints.n1{grid-template-columns:1fr;width:min(270px,76vw)}
+.prints.n3 .print:first-child{grid-column:1 / -1}
+.prints.n3 .print:first-child img{aspect-ratio:4/3}
+
+.share{margin:30px 0 0;text-align:center}
+.share a{font-size:16px;color:var(--ink-2);text-underline-offset:5px;text-decoration-color:var(--sage)}
+html.en .share a{font-size:14.5px}
+
+@media (max-width:359px){
+  .name{font-size:52px}
+  .formal{font-size:18px}
+  .prog .what{font-size:17px}
+}
+
+/* desktop: the tag and the reply card on one side, the invitation card beside them */
+@media (min-width:1000px){
+  .suite{max-width:1320px;padding:96px 40px 30px;display:grid;column-gap:72px;align-items:start;
+    grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
+    grid-template-areas:"tag card" "reply card" "prints prints" "share share"}
+  .pair{display:contents}
+  .tag-wrap{grid-area:tag;justify-self:center;width:min(380px,100%);margin-top:74px}
+  .tag{padding:56px 30px 32px}
+  .tag .motif{width:150px}
+  .name{font-size:70px}
+  html.en .name{font-size:58px}
+  .invite{grid-area:card;justify-self:center;width:100%;max-width:680px;margin:0;padding:80px 80px 70px}
+  .verse{font-size:22px;margin-bottom:24px;max-width:30ch}
+  html.en .verse{font-size:21px}
+  .formal{font-size:30px;line-height:1.9}
+  html.en .formal{font-size:27px;line-height:1.55}
+  .rule{width:64px;margin:30px auto 24px}
+  .invite h2{font-size:27px}
+  html.en .invite h2{font-size:27px}
+  .prog{column-gap:28px}
+  .prog .when{font-size:24px}
+  .prog .what{font-size:27px}
+  html.en .prog .when{font-size:21px}
+  html.en .prog .what{font-size:25px}
+  .go{margin-top:22px;font-size:20px}
+  html.en .go{font-size:17px}
+  .left{inset-inline-start:30px;bottom:22px;font-size:18px}
+  html.en .left{font-size:16px}
+  .reply{grid-area:reply;justify-self:center;width:360px;margin-top:56px}
+  .prints{grid-area:prints;justify-self:center;width:min(760px,100%);margin-top:64px;grid-template-columns:1fr 1fr 1fr;gap:22px}
+  .prints.n2{width:min(560px,100%);grid-template-columns:1fr 1fr}
+  .prints.n1{width:340px}
+  .prints.n3 .print:first-child{grid-column:auto}
+  .prints.n3 .print:first-child img{aspect-ratio:4/5}
+  .share{grid-area:share;margin-top:48px}
+  .bag{width:380px}
+}
+@media (prefers-reduced-motion:reduce){
+  .intro,.intro *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- the closed bag: tulle gathered at the neck, a satin bow, the tag on a thread -->
+<div class="intro" id="intro" hidden role="button" tabindex="0" aria-label="فكّوا الشريطة وافتحوا الدعوة / Untie the ribbon and open the invitation">
+  <div class="intro-in">
+    <div class="bag" aria-hidden="true">
+      <svg viewBox="0 0 320 400" focusable="false">
+        <defs>
+          <pattern id="net" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(28)"><path d="M0 0L5 5M5 0L0 5" stroke="#fff" stroke-opacity=".55" stroke-width=".55"/></pattern>
+          <linearGradient id="satin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c4d8bd"/><stop offset=".45" stop-color="#9dba94"/><stop offset=".7" stop-color="#b3cbab"/><stop offset="1" stop-color="#86a37e"/></linearGradient>
+          <linearGradient id="satinX" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8eab86"/><stop offset=".5" stop-color="#bdd3b5"/><stop offset="1" stop-color="#8eab86"/></linearGradient>
+        </defs>
+        <!-- back of the bag: closed, then open -->
+        <g class="closed-set">
+          <path d="M134 130C126 108 100 82 74 62Q88 50 102 60Q116 46 131 57Q146 44 160 55Q174 44 189 57Q204 46 218 60Q232 50 246 62C220 82 194 108 186 130Z" fill="#eec9d1" fill-opacity=".55"/>
+          <path d="M134 130C104 138 66 168 58 236C50 306 58 366 92 382C122 394 198 394 228 382C262 366 270 306 262 236C254 168 216 138 186 130Z" fill="#eec9d1" fill-opacity=".5"/>
+        </g>
+        <g class="open-set">
+          <path d="M74 112Q92 96 110 104Q130 90 148 100Q160 92 172 100Q190 90 210 104Q228 96 246 112C246 150 260 190 262 236C270 306 262 366 228 382C198 394 122 394 92 382C58 366 50 306 58 236C60 190 74 150 74 112Z" fill="#e9bfc9" fill-opacity=".62"/>
+        </g>
+      </svg>
+      <div class="bag-card"><p>رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ</p><i></i><b></b><b></b><b></b><b style="margin-inline:22%"></b></div>
+      <svg viewBox="0 0 320 400" focusable="false">
+        <!-- sugared almonds in the bottom of the bag -->
+        <g stroke="#b99aa2" stroke-opacity=".5" stroke-width=".8">
+          <ellipse cx="100" cy="362" rx="11" ry="7" fill="#fbf3ea" transform="rotate(-18 100 362)"/>
+          <ellipse cx="122" cy="372" rx="11" ry="7" fill="#f2c9d2" transform="rotate(12 122 372)"/>
+          <ellipse cx="146" cy="364" rx="11" ry="7" fill="#d4e3cc" transform="rotate(-6 146 364)"/>
+          <ellipse cx="170" cy="374" rx="11" ry="7" fill="#fbf3ea" transform="rotate(20 170 374)"/>
+          <ellipse cx="194" cy="365" rx="11" ry="7" fill="#f1e1b6" transform="rotate(-14 194 365)"/>
+          <ellipse cx="218" cy="372" rx="11" ry="7" fill="#f2c9d2" transform="rotate(8 218 372)"/>
+          <ellipse cx="112" cy="350" rx="11" ry="7" fill="#d4e3cc" transform="rotate(24 112 350)"/>
+          <ellipse cx="136" cy="347" rx="11" ry="7" fill="#f1e1b6" transform="rotate(-20 136 347)"/>
+          <ellipse cx="160" cy="352" rx="11" ry="7" fill="#f2c9d2" transform="rotate(4 160 352)"/>
+          <ellipse cx="184" cy="348" rx="11" ry="7" fill="#fbf3ea" transform="rotate(-24 184 348)"/>
+          <ellipse cx="207" cy="352" rx="11" ry="7" fill="#d4e3cc" transform="rotate(16 207 352)"/>
+          <ellipse cx="146" cy="384" rx="10" ry="6.5" fill="#f1e1b6" transform="rotate(-4 146 384)"/>
+          <ellipse cx="190" cy="385" rx="10" ry="6.5" fill="#d4e3cc" transform="rotate(10 190 385)"/>
+        </g>
+        <!-- the tulle front: gathered at the neck, then loose -->
+        <g class="closed-set">
+          <path d="M134 130C104 138 66 168 58 236C50 306 58 366 92 382C122 394 198 394 228 382C262 366 270 306 262 236C254 168 216 138 186 130Z" fill="#f3d3db" fill-opacity=".55"/>
+          <path d="M134 130C104 138 66 168 58 236C50 306 58 366 92 382C122 394 198 394 228 382C262 366 270 306 262 236C254 168 216 138 186 130Z" fill="url(#net)" stroke="#d7a6b2" stroke-opacity=".7" stroke-width="1.2"/>
+          <g fill="none" stroke-linecap="round">
+            <path d="M138 134C104 162 76 222 72 330M147 134C124 180 104 262 100 384M160 136C158 200 156 300 160 392M173 134C198 180 218 262 222 384M182 134C218 162 246 222 250 330" stroke="#fff" stroke-opacity=".55" stroke-width="2.2"/>
+            <path d="M142 135C114 170 90 236 86 352M166 136C176 200 186 300 190 390" stroke="#cf98a6" stroke-opacity=".35" stroke-width="1"/>
+          </g>
+          <path d="M134 130C126 108 100 82 74 62Q88 50 102 60Q116 46 131 57Q146 44 160 55Q174 44 189 57Q204 46 218 60Q232 50 246 62C220 82 194 108 186 130Z" fill="#f3d3db" fill-opacity=".6"/>
+          <path d="M134 130C126 108 100 82 74 62Q88 50 102 60Q116 46 131 57Q146 44 160 55Q174 44 189 57Q204 46 218 60Q232 50 246 62C220 82 194 108 186 130Z" fill="url(#net)" stroke="#d7a6b2" stroke-opacity=".7" stroke-width="1.2"/>
+          <path d="M140 128C130 106 112 82 96 60M150 128C146 104 136 78 126 56M160 128V56M170 128C174 104 184 78 194 56M180 128C190 106 208 82 224 60" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1.8" stroke-linecap="round"/>
+        </g>
+        <g class="open-set">
+          <path d="M74 112Q92 128 110 118Q130 134 148 122Q160 132 172 122Q190 134 210 118Q228 128 246 112C246 150 260 190 262 236C270 306 262 366 228 382C198 394 122 394 92 382C58 366 50 306 58 236C60 190 74 150 74 112Z" fill="#f3d3db" fill-opacity=".55"/>
+          <path d="M74 112Q92 128 110 118Q130 134 148 122Q160 132 172 122Q190 134 210 118Q228 128 246 112C246 150 260 190 262 236C270 306 262 366 228 382C198 394 122 394 92 382C58 366 50 306 58 236C60 190 74 150 74 112Z" fill="url(#net)" stroke="#d7a6b2" stroke-opacity=".7" stroke-width="1.2"/>
+          <path d="M94 124C86 180 66 260 80 368M130 130C124 200 114 300 122 388M190 130C196 200 206 300 198 388M226 124C234 180 254 260 240 368" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/>
+        </g>
+      </svg>
+      <svg class="bow" viewBox="0 0 320 400" focusable="false">
+        <g class="ribbon-rest">
+          <path d="M160 140C158 160 161 176 160 192" fill="none" stroke="#c2a675" stroke-width="1.3"/>
+          <path d="M132 123Q160 129 188 123L189 137Q160 143 131 137Z" fill="url(#satinX)"/>
+          <path d="M154 138C148 162 138 186 126 206L136 202L139 214C150 190 158 164 161 140Z" fill="url(#satinX)"/>
+          <path d="M166 138C172 160 186 184 200 204L190 202L188 214C176 192 166 166 159 140Z" fill="url(#satinX)"/>
+        </g>
+        <g class="loop loop-l"><path d="M152 125C138 109 112 97 103 107C94 119 112 143 152 136Z" fill="url(#satin)"/><path d="M150 130C134 123 116 114 107 110" fill="none" stroke="#7d9a75" stroke-width="1"/></g>
+        <g class="loop loop-r"><path d="M168 125C182 109 208 97 217 107C226 119 208 143 168 136Z" fill="url(#satin)"/><path d="M170 130C186 123 204 114 213 110" fill="none" stroke="#7d9a75" stroke-width="1"/></g>
+        <g class="loop"><path d="M151 121H169Q173 121 173 125V135Q173 139 169 139H151Q147 139 147 135V125Q147 121 151 121Z" fill="url(#satin)"/></g>
+      </svg>
+      <div class="itag-wrap">
+        <div class="itag">
+          <svg class="motif" viewBox="0 0 120 80" aria-hidden="true" focusable="false"><use href="#motif"/></svg>
+          <p class="sm"><span class="t-ar">سبوع</span><span class="t-en">The sebou3 of</span></p>
+          <p class="nm"><span class="t-ar" id="inNameAr">ياسين</span><span class="t-en" id="inNameEn">Yassin</span></p>
+          <p class="to"><span class="t-ar" id="inToAr">إلى أحبابنا الغاليين</span><span class="t-en" id="inToEn">For our dearest family and friends</span></p>
+        </div>
+      </div>
+    </div>
+    <p class="intro-hint"><span class="t-ar">دوسوا على الشريطة عشان تفكّوها</span><span class="t-en">Tap the ribbon to untie it</span></p>
+  </div>
+</div>
+
+<!-- the printed motif, drawn once: a crescent cradling a lotus -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="motif" viewBox="0 0 120 80">
+    <g stroke-linejoin="round">
+      <path d="M60 58C46 58 30 50 24 38C38 38 52 46 60 58Z" fill="#f0c4cd" stroke="#b25a6e" stroke-width="1.3"/>
+      <path d="M60 58C74 58 90 50 96 38C82 38 68 46 60 58Z" fill="#f0c4cd" stroke="#b25a6e" stroke-width="1.3"/>
+      <path d="M60 57C50 51 40 39 38 24C48 28 56 39 60 57Z" fill="#f7dde2" stroke="#b25a6e" stroke-width="1.3"/>
+      <path d="M60 57C70 51 80 39 82 24C72 28 64 39 60 57Z" fill="#f7dde2" stroke="#b25a6e" stroke-width="1.3"/>
+      <path d="M60 12C53 25 53 42 60 57C67 42 67 25 60 12Z" fill="#f0c4cd" stroke="#b25a6e" stroke-width="1.3"/>
+      <path d="M60 22V50" stroke="#b25a6e" stroke-width=".8" fill="none"/>
+      <path d="M14 36C20 64 44 76 60 76C76 76 100 64 106 36C96 56 80 64 60 64C40 64 24 56 14 36Z" fill="#dcc08c" stroke="#a07c42" stroke-width="1.3"/>
+      <path d="M30 56C36 60 44 63 50 64" fill="none" stroke="#fbf1dc" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+  </symbol>
+</svg>
+
+<button class="slip lang-slip" id="langBtn" type="button"><span class="t-ar">English</span><span class="t-en">العربية</span></button>
+<button class="slip music-slip" id="musicBtn" type="button" aria-pressed="false" aria-label="موسيقى هادية / Soft music">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17.5V6l10-2v11.5"/><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="15.5" r="2.5"/></svg>
+</button>
+
+<main class="suite">
+
+  <div class="pair" data-shot="details">
+    <!-- the tag, still on its ribbon -->
+    <div class="tag-wrap">
+      <svg class="ribbon" viewBox="-30 0 290 160" aria-hidden="true" focusable="false">
+        <defs>
+          <mask id="vcut" maskUnits="userSpaceOnUse" x="-30" y="0" width="290" height="160">
+            <rect x="-30" y="0" width="290" height="160" fill="#fff"/>
+            <path d="M8.8 158.4L10.4 154.7L6.7 145.6L-2.4 149.3L-4 153Z" fill="#000"/>
+            <path d="M229.1 33.9L225.7 36L216 33.7L218.3 24L221.7 21.9Z" fill="#000"/>
+          </mask>
+        </defs>
+        <g mask="url(#vcut)" fill="none" stroke-linecap="butt">
+          <path d="M113 84C104 58 70 46 46 62C28 74 22 100 16 120C13 132 10 142 4 152" stroke="#9cb993" stroke-width="11"/>
+          <path d="M112 82C103 57 70 45 46 61C29 72 22 98 16 118" stroke="#c6dabf" stroke-width="3" stroke-opacity=".85"/>
+          <path d="M117 84C124 60 148 46 172 48C190 50 198 44 222 30" stroke="#93b18a" stroke-width="11"/>
+          <path d="M118 81C125 59 148 45 172 47C189 49 197 43 214 33" stroke="#c6dabf" stroke-width="3" stroke-opacity=".85"/>
+        </g>
+        <circle cx="115" cy="84" r="8.5" fill="#e6d7b8" stroke="#b39463" stroke-width="1.2"/>
+        <circle cx="115" cy="84" r="4.6" fill="#6a564a"/>
+        <path d="M110.5 86C110 80 109.5 75 109 70L116 68C117 74 118.5 80 119.5 86Z" fill="#9cb993"/>
+      </svg>
+      <article class="tag" aria-labelledby="babyName">
+        <svg class="motif" viewBox="0 0 120 80" aria-hidden="true" focusable="false"><use href="#motif"/></svg>
+        <div class="hosts" id="hosts" hidden>
+          <p class="hv t-ar">يتشرف</p>
+          <p class="hosts-cols t-ar" id="hostsAr"></p>
+          <p class="hosts-cols t-en" id="hostsEn"></p>
+        </div>
+        <p class="lead"><span class="t-ar" id="leadAr">بدعوتكم لحضور سبوع مولودهما</span><span class="t-en" id="leadEn">request the pleasure of your company at the sebou3 of their son</span></p>
+        <h1 class="name" id="babyName">
+          <span class="t-ar"><span class="n" id="nAr1">ياسين</span><span class="n" hidden><span class="amp">و</span><span id="nAr2"></span></span></span>
+          <span class="t-en"><span class="n" id="nEn1">Yassin</span><span class="n" hidden><span class="amp">and</span><span id="nEn2"></span></span></span>
+        </h1>
+        <p class="to"><span class="t-ar">إلى</span><span class="t-en">For</span><span class="hand" id="toHand">أحبابنا الغاليين</span></p>
+      </article>
+    </div>
+
+    <!-- the card that came out of the bag -->
+    <article class="invite" aria-label="الموعد والمكان / When and where">
+      <p class="verse" id="quote"><span class="t-ar">«رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ» <small>الفرقان، ٧٤</small></span><span class="t-en">“Our Lord, grant us from our spouses and our children the comfort of our eyes.” <small>25:74</small></span></p>
+      <p class="formal">
+        <span class="t-ar">وذلك بمشيئة الله يوم <b id="dateAr">الأربعاء ١١ نوفمبر ٢٠٢٦</b>، في تمام <span id="timeAr">الساعة السادسة مساءً</span>، <span id="venueAr">بمنزل العائلة، المعادي، القاهرة</span>.</span>
+        <span class="t-en">on <b id="dateEn">Wednesday, 11 November 2026</b>, at <span id="timeEn">six o'clock in the evening</span>, <span id="venueEnPre">at </span><span id="venueEn" class="iso">the family home, Maadi, Cairo</span>.</span>
+      </p>
+      <div id="agendaSec">
+        <hr class="rule">
+        <h2><span class="t-ar">فقرات السبوع</span><span class="t-en">The order of the evening</span></h2>
+        <ul class="prog" id="agList"></ul>
+      </div>
+      <p class="go">
+        <a id="mapBtn" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=Maadi%2C%20Cairo%2C%20Egypt"><span class="t-ar">الخريطة</span><span class="t-en">Map</span></a>
+        <a id="calBtn" target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/render?action=TEMPLATE"><span class="t-ar">أضيفوا الموعد للتقويم</span><span class="t-en">Add to calendar</span></a>
+      </p>
+      <p class="left" id="left" aria-live="off"></p>
+    </article>
+  </div>
+
+  <article class="reply" id="rsvpBlock" data-shot="rsvp" aria-labelledby="replyTitle">
+    <h2 id="replyTitle"><span class="t-ar">نرجو التكرم بالرد</span><span class="t-en">Kindly reply</span></h2>
+    <p class="by" id="replyBy"></p>
+    <div class="line"><label for="guestName"><span class="t-ar">الاسم:</span><span class="t-en">Name:</span></label><input id="guestName" dir="auto" autocomplete="name" maxlength="60"></div>
+    <div class="line count" id="guestSec"><label for="guestCount"><span class="t-ar">عدد الأفراد:</span><span class="t-en">Number attending:</span></label><input id="guestCount" inputmode="numeric" maxlength="2" autocomplete="off"></div>
+    <a class="sticker" id="rsvpBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418">
+      <svg viewBox="-4 -4 248 88" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="#9e465b" d="M233.0 40.0Q239.0 43.4 231.3 45.7Q235.4 50.2 226.2 51.3Q228.3 56.7 217.9 56.5Q217.9 62.7 206.6 61.2Q204.5 67.9 192.6 65.3Q188.5 72.4 176.5 68.6Q170.5 75.8 158.6 71.0Q150.9 78.2 139.6 72.5Q130.4 79.3 120.0 73.0Q109.6 79.3 100.4 72.5Q89.1 78.2 81.4 71.0Q69.5 75.8 63.5 68.6Q51.5 72.4 47.4 65.3Q35.5 67.9 33.4 61.2Q22.1 62.7 22.1 56.5Q11.7 56.7 13.8 51.3Q4.6 50.2 8.7 45.7Q1.0 43.4 7.0 40.0Q1.0 36.6 8.7 34.3Q4.6 29.8 13.8 28.7Q11.7 23.3 22.1 23.5Q22.1 17.3 33.4 18.8Q35.5 12.1 47.4 14.7Q51.5 7.6 63.5 11.4Q69.5 4.2 81.4 9.0Q89.1 1.8 100.4 7.5Q109.6 0.7 120.0 7.0Q130.4 0.7 139.6 7.5Q150.9 1.8 158.6 9.0Q170.5 4.2 176.5 11.4Q188.5 7.6 192.6 14.7Q204.5 12.1 206.6 18.8Q217.9 17.3 217.9 23.5Q228.3 23.3 226.2 28.7Q235.4 29.8 231.3 34.3Q239.0 36.6 233.0 40.0Z"/></svg>
+      <span><span class="t-ar">سنحضر بإذن الله</span><span class="t-en">We will be there</span></span>
+    </a>
+    <a class="decline" id="noBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/201005509418"><span class="t-ar">نعتذر عن الحضور</span><span class="t-en">We can't make it</span></a>
+    <div class="notes" id="notesCard">
+      <p id="dressSec"><b><span class="t-ar">الملابس:</span><span class="t-en">Dress:</span></b> <span class="note"><span class="t-ar">ألوان الباستيل، الوردي والأخضر الفاتح</span><span class="t-en">soft pastels, blush and sage</span></span></p>
+      <p id="giftSec"><b><span class="t-ar">الهدايا:</span><span class="t-en">Gifts:</span></b> <span class="note"><span class="t-ar" id="giftAr">حضوركم ودعواتكم لياسين أغلى هدية</span><span class="t-en" id="giftEn">your company and your prayers for Yassin are the best gift</span></span></p>
+    </div>
+  </article>
+
+  <section class="prints" id="gallerySec" hidden aria-label="صور / Photos">
+    <figure class="print"></figure><figure class="print"></figure><figure class="print"></figure>
+  </section>
+
+  <p class="share"><a id="waBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/"><span class="t-ar">ابعتوا الدعوة للعيلة على واتساب</span><span class="t-en">Send the invitation to family on WhatsApp</span></a></p>
+</main>
+
+<p class="d3wa-credit" style="margin:0;padding:28px 16px 96px;text-align:center;font-size:12px;line-height:1.8;opacity:.92"><a href="../index.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><span class="t-ar">دعوة من D3wa · اطلبوا دعوتكم</span><span class="t-en">Invitation by D3wa. Order yours.</span></a></p>
+
 <script>
 (function () {
   "use strict";
   var docEl = document.documentElement;
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function (id) { return document.getElementById(id); };
 
-  /* ── URL-parameter personalization (D3wa param contract) ──
-     n_ar / n_en (baby name) · p_ar / p_en (parents) · d (ISO date) · t (24h time)
-     v_ar / v_en · map · q · wa · agenda · dress · gift · photos · ph1-3 · music · intro
-     Any missing param keeps the hardcoded content. */
+  /* ── D3wa param contract ──
+     n_ar / n_en (the baby) · p_ar / p_en (the parents; h_ar / h_en also read) · b = boy | girl (optional)
+     d (ISO date) · t (24h time) · v_ar / v_en · map · q · wa · g (the guest, optional)
+     agenda=time~عربي~english|… or 0 · dress / gift = "عربي~english", one text, or 0
+     photos=0 · ph1..ph3 (photo URLs or relative paths) · music (audio URL) · intro=0
+     Read from window.__D3WA__ (published invitations) or the URL. */
   var qs = null;
   try { qs = new URLSearchParams(window.__D3WA__ || location.search); } catch (e) {}
   function qp (k) { var v = qs && qs.get(k); return (v && v.trim()) ? v.trim() : null; }
-  var pNameEn = qp("n_en"), pNameAr = qp("n_ar"), pParEn = qp("p_en"), pParAr = qp("p_ar"),
-      pDate = qp("d"), pTime = qp("t"),
-      pVenEn = qp("v_en"), pVenAr = qp("v_ar"), pMap = qp("map"), pQuote = qp("q"), pWa = qp("wa");
-  var pAgenda = qp("agenda"), pDress = qp("dress"), pGift = qp("gift"), pPhotos = qp("photos"),
-      pPh = [qp("ph1"), qp("ph2"), qp("ph3")], pIntro = qp("intro"), pMusic = qp("music");
-  var arDig = function (s) { return String(s).replace(/[0-9]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩"[+d]; }); };
-  var pDateOk = (pDate && /^\d{4}-\d{2}-\d{2}$/.test(pDate)) ? pDate : null;
-  var tMatch = pTime ? pTime.match(/^(\d{1,2}):(\d{2})$/) : null;
-  var pTimeNorm = tMatch ? ("0" + tMatch[1]).slice(-2) + ":" + tMatch[2] : null;
+  function ar9 (s) { return String(s).replace(/[0-9]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩"[+d]; }); }
+  function txt (id, v) { var el = $(id); if (el) el.textContent = v; }
+  var hasAr = function (x) { return /[؀-ۿ]/.test(x || ""); };
 
-  /* Message building blocks: defaults mirror the hardcoded placeholder */
-  var nameEn = "Yassin", nameAr = "ياسين",
-      parentsEn = "Omar & Salma", parentsAr = "عمر وسلمى",
-      dateFullEn = "Friday, 4 September 2026", dateFullAr = "الجمعة ٤ سبتمبر ٢٠٢٦",
-      timeEn = "6:00 PM", timeAr = "٦:٠٠ مساءً",
-      venueMsgEn = "the family home in Maadi", venueMsgAr = "منزل العائلة بالمعادي",
-      waNum = "201005509418";
+  /* names: one language given shows in both, never the sample baby */
+  var given = qp("n_ar") || qp("n_en");
+  var nAr = qp("n_ar") || qp("n_en") || "ياسين", nEn = qp("n_en") || qp("n_ar") || "Yassin";
+  var pAr = qp("p_ar") || qp("h_ar") || qp("p_en") || qp("h_en");
+  var pEn = qp("p_en") || qp("h_en") || qp("p_ar") || qp("h_ar");
+  if (!pAr && !given) { pAr = "عمر وسلمى"; pEn = "Omar and Salma"; }   /* the sample parents, in the bare demo only */
+  var bRaw = (qp("b") || "").toLowerCase();
+  var sex = /^(boy|m|son|ولد)$/.test(bRaw) ? "m" : /^(girl|f|daughter|بنت)$/.test(bRaw) ? "f" : (given ? "" : "m");
+  var pDate = qp("d"), pTime = qp("t");
+  var dOk = pDate && /^\d{4}-\d{2}-\d{2}$/.test(pDate) ? pDate : "2026-09-04";
+  var tm = (pTime || "18:00").match(/^(\d{1,2}):(\d{2})$/);
+  if (!tm || +tm[1] > 23 || +tm[2] > 59) tm = ["", "18", "00"];
+  var hh = +tm[1], mm = tm[2], tNorm = ("0" + hh).slice(-2) + ":" + mm;
+  var vAr = qp("v_ar") || qp("v_en") || "منزل العائلة، المعادي، القاهرة";
+  var vEn = qp("v_en") || qp("v_ar") || "the family home, Maadi, Cairo";
+  var waNum = (qp("wa") || "201005509418").replace(/[^\d]/g, "") || "201005509418";
+  var guest = qp("g");
 
-  var byId = function (id) { return document.getElementById(id); };
-  var setId = function (id, txt) { var el = byId(id); if (el) el.textContent = txt; };
-  var chars = function (s) { return Array.from ? Array.from(String(s).trim()) : String(s).trim().split(""); };
-
-  function applyParams () {
-    var venueParts = function (v) {
-      var i = v.search(/[,،]/);
-      return i < 0 ? [v, ""] : [v.slice(0, i).trim(), v.slice(i + 1).trim()];
-    };
-
-    /* baby name: intro, hero, gift note, closing line, title */
-    if (pNameEn) {
-      nameEn = pNameEn;
-      ["introNameEn", "cardNameEn", "heroNameEn", "giftNameEn"].forEach(function (id) { setId(id, pNameEn); });
-    }
-    if (pNameAr) {
-      nameAr = pNameAr;
-      ["introNameAr", "cardNameAr", "heroNameAr", "giftNameAr"].forEach(function (id) { setId(id, pNameAr); });
-      setId("closeAr", "حضوركم هيكمّل فرحتنا ب" + pNameAr);
-    }
-    if (pNameEn || pNameAr) document.title = "سبوع " + nameAr + " | " + nameEn + "'s Sebou3";
-
-    /* monogram on the envelope seal: Arabic initial for AR, Latin for EN */
-    setId("sealAr", chars(nameAr)[0] || "");
-    setId("sealEn", (chars(nameEn)[0] || "").toUpperCase());
-
-    /* very long names step down a size so they never overflow at 375px */
-    var h1 = byId("heroName");
-    if (h1) {
-      h1.classList.toggle("long-ar", chars(nameAr).length > 8);
-      h1.classList.toggle("long-en", chars(nameEn).length > 9);
-    }
-
-    /* parents */
-    if (pParEn) { parentsEn = pParEn; setId("parentsEn", pParEn); }
-    if (pParAr) { parentsAr = pParAr; setId("parentsAr", pParAr); }
-
-    /* date: hero line, details card, message strings (Intl, Arabic digits for ar-EG) */
-    if (pDateOk) {
-      var dObj = new Date(pDateOk + "T12:00:00");
-      if (!isNaN(dObj)) {
-        var enMain = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(dObj);
-        var enWd   = new Intl.DateTimeFormat("en-GB", { weekday: "long" }).format(dObj);
-        var arMain = new Intl.DateTimeFormat("ar-EG", { day: "numeric", month: "long", year: "numeric" }).format(dObj);
-        var arWd   = new Intl.DateTimeFormat("ar-EG", { weekday: "long" }).format(dObj);
-        dateFullEn = enWd + ", " + enMain;
-        dateFullAr = arWd + " " + arMain;
-        setId("wdEn", enWd); setId("dateEn", enMain);
-        setId("wdAr", arWd); setId("dateAr", arMain);
-        setId("heroDateEn", dateFullEn); setId("heroDateAr", dateFullAr);
-      }
-    }
-
-    /* time */
-    if (tMatch) {
-      var hh = +tMatch[1], mm = tMatch[2];
-      var h12 = hh % 12 || 12;
-      timeEn = h12 + ":" + mm + " " + (hh < 12 ? "AM" : "PM");
-      timeAr = arDig(h12 + ":" + mm) + " " + (hh < 12 ? "صباحاً" : "مساءً");
-      setId("timeEn", timeEn);
-      setId("timeAr", timeAr);
-    }
-
-    /* venue */
-    if (pVenEn) {
-      venueMsgEn = pVenEn;
-      var vpe = venueParts(pVenEn);
-      setId("venEn", vpe[0]); setId("venEn2", vpe[1]);
-    }
-    if (pVenAr) {
-      venueMsgAr = pVenAr;
-      var vpa = venueParts(pVenAr);
-      setId("venAr", vpa[0]); setId("venAr2", vpa[1]);
-    }
-
-    /* maps link */
-    if (pMap && /^https:\/\//.test(pMap)) {
-      var mapBtn = byId("mapBtn");
-      if (mapBtn) mapBtn.href = pMap;
-    }
-
-    /* quote: replaces the verse; the verse reference is hidden */
-    if (pQuote) {
-      setId("duaAr", pQuote);
-      setId("duaEn", pQuote);
-      var src = byId("duaSrc");
-      if (src) src.hidden = true;
-    }
-
-    /* Google Calendar link */
-    if (pNameEn || pNameAr || pParEn || pDateOk || tMatch || pVenEn || pQuote) {
-      var calBtn = byId("calBtn");
-      if (calBtn) {
-        var startDt = new Date((pDateOk || "2026-09-04") + "T" + (pTimeNorm || "18:00") + ":00");
-        var endDt = new Date(startDt.getTime() + 3 * 36e5);
-        var cal = function (dt) {
-          var p = function (n) { return ("0" + n).slice(-2); };
-          return dt.getFullYear() + p(dt.getMonth() + 1) + p(dt.getDate()) + "T" + p(dt.getHours()) + p(dt.getMinutes()) + "00";
-        };
-        calBtn.href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
-          + "&text=" + encodeURIComponent("Sebou3 of " + nameEn + " / سبوع " + nameAr)
-          + "&dates=" + cal(startDt) + "/" + cal(endDt)
-          + "&ctz=Africa/Cairo"
-          + "&location=" + encodeURIComponent(pVenEn || "The family home, Maadi, Cairo")
-          + "&details=" + encodeURIComponent(pQuote || ("Join " + parentsEn + " to celebrate baby " + nameEn + "'s sebou3."));
-      }
-    }
-
-    /* WhatsApp RSVP number */
-    if (pWa) waNum = pWa.replace(/[^\d]/g, "") || waNum;
+  /* twins: "ياسين وليلى" / "Yassin & Layla" split only when both languages agree */
+  var enSplit = nEn.split(/\s*&\s*|\s+and\s+/i);
+  var arM = nAr.match(/^(.+?)\s+و\s*(.+)$/);
+  var twins = enSplit.length === 2 && enSplit[0] && enSplit[1] && (hasAr(nAr) ? !!arM : true);
+  var arParts = twins && arM ? [arM[1], arM[2]] : [nAr];
+  var enParts = twins ? enSplit : [nEn];
+  function paintName (a, b, parts) {
+    txt(a, parts[0]);
+    txt(b, parts[1] || "");
+    $(b).parentNode.hidden = parts.length < 2;
   }
-  try { applyParams(); } catch (e) {}
+  paintName("nAr1", "nAr2", arParts);
+  paintName("nEn1", "nEn2", enParts);
+  txt("inNameAr", nAr); txt("inNameEn", nEn);
+  if (given) document.title = "سبوع " + nAr + " | " + nEn + "'s sebou3";
 
-  /* ── v2 content: agenda / dress code / gallery / gift note ── */
-  function applyV2 () {
-    var hide = function (id) { var el = byId(id); if (el) el.hidden = true; };
-    if (pAgenda === "0") hide("agendaSec");
-    else if (pAgenda) {
-      var list = byId("agendaList");
-      if (list) {
-        var frag = document.createDocumentFragment(), rows = pAgenda.split("|");
-        for (var i = 0; i < rows.length; i++) {
-          var parts = rows[i].split("~");
-          var time = (parts[0] || "").trim();
-          if (!time) continue;
-          var li = document.createElement("li");
-          var tm = document.createElement("span"); tm.className = "ag-time";
-          var ta = document.createElement("span"); ta.className = "t-ar"; ta.textContent = arDig(time);
-          var te = document.createElement("span"); te.className = "t-en"; te.textContent = time;
-          tm.appendChild(ta); tm.appendChild(te);
-          var wh = document.createElement("span"); wh.className = "ag-what";
-          var wa = document.createElement("span"); wa.className = "t-ar"; wa.textContent = (parts[1] || parts[2] || "").trim();
-          var we = document.createElement("span"); we.className = "t-en"; we.textContent = (parts[2] || parts[1] || "").trim();
-          wh.appendChild(wa); wh.appendChild(we);
-          li.appendChild(tm); li.appendChild(wh);
-          frag.appendChild(li);
-        }
-        if (frag.childNodes.length) { list.textContent = ""; list.appendChild(frag); }
-      }
-    }
-    if (pDress === "0") hide("dressSec");
-    else if (pDress) {
-      var dp = pDress.split("~");
-      setId("dressAr", dp[0].trim());
-      setId("dressEn", (dp[1] || dp[0]).trim());
-    }
-    if (pGift === "0") hide("giftSec");
-    else if (pGift) {
-      var gp = pGift.split("~");
-      setId("giftAr", gp[0].trim());
-      setId("giftEn", (gp[1] || gp[0]).trim());
-    }
-    if ((pPhotos && pPhotos !== "0") || qp("ph1")) byId("gallerySec").style.display = "";
-    if (pPhotos === "0") hide("gallerySec");
-    else {
-      for (var j = 0; j < 3; j++) {
-        if (pPh[j] && /^https?:\/\//.test(pPh[j])) {
-          var f = byId("ph" + (j + 1));
-          if (f) {
-            var img = document.createElement("img");
-            img.src = pPh[j]; img.alt = ""; img.loading = "lazy"; img.decoding = "async";
-            img.width = 300; img.height = 400;
-            f.appendChild(img);
-          }
-        }
-      }
-    }
-  }
-  try { applyV2(); } catch (e) {}
-
-  /* ── Opening moment: tap, the seal lifts, the flap opens, the card rises ── */
-  var intro = byId("intro");
-  if (intro && pIntro !== "0") {
-    intro.hidden = false;
-    document.body.classList.add("intro-lock");
-    var introDone = false;
-    var openIntro = function () {
-      if (introDone) return;
-      introDone = true;
-      document.body.classList.remove("intro-lock");
-      if (reduced) { intro.hidden = true; return; }
-      intro.classList.add("open");
-      window.setTimeout(function () { intro.hidden = true; }, 1850);
-    };
-    intro.addEventListener("click", openIntro);
-    intro.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); openIntro(); }
+  /* the parents, as the card prints them: two titled hosts sit in two columns, the father
+     first (on the right in Arabic); in English one line joined by "and". A name never breaks. */
+  var JOIN_AR = /\s+و\s*(?=(?:ال(?:سيد|سيدة|أستاذ|أستاذة|مهندس|مهندسة|دكتور|دكتورة|لواء|مستشار|حاج|حاجة|عميد|عقيد|شيخ)|أسرة|عائلة|آل\s|[دمأ]\s*[./]))/;
+  function hostsInto (el, raw) {
+    var ar = hasAr(raw);
+    var parts = (ar ? raw.replace(/^يتشرف\s+/, "").split(JOIN_AR) : raw.replace(/^together with\s+/i, "").split(/\s+(?:and|&)\s+/i))
+      .map(function (h) { return h.trim(); }).filter(Boolean).slice(0, 2);
+    el.textContent = "";
+    parts.forEach(function (h, i) {
+      if (i && el.id === "hostsEn") el.appendChild(document.createTextNode(ar ? " و" : " and "));
+      var m = h.match(/^(\S+\/)\s*(.+)$/) || (ar ? null : h.match(/^((?:Mr|Mrs|Ms|Dr|Eng|Gen)\.?)\s+(.+)$/i));
+      var sp = document.createElement("span"); sp.className = "host";
+      if (m) { var t = document.createElement("span"); t.className = "ttl"; t.textContent = m[1]; sp.appendChild(t); sp.appendChild(document.createTextNode(" ")); }
+      var n = document.createElement("span"); n.className = "nm"; n.textContent = m ? m[2] : h; sp.appendChild(n);
+      el.appendChild(sp);
     });
-    try { intro.focus({ preventScroll: true }); } catch (e) {}
+    el.classList.toggle("one", parts.length < 2);
+    el.classList.remove("stack");
+    return parts.length;
+  }
+  /* two columns while each name fits its column, else one under the other; a name longer
+     than the whole tag steps its size down rather than break */
+  function fitHosts () {
+    document.querySelectorAll(".hosts-cols").forEach(function (el) {
+      el.style.fontSize = "";
+      if (el.offsetParent === null) return;
+      var hosts = el.querySelectorAll(".host");
+      if (el.classList.contains("t-ar")) {
+        el.classList.remove("stack");
+        var over = Array.prototype.some.call(hosts, function (h) { return h.scrollWidth > h.clientWidth + 1; });
+        el.classList.toggle("stack", over);
+      }
+      var fs = parseFloat(getComputedStyle(el).fontSize), w = el.clientWidth;
+      var wide = function () { return Array.prototype.some.call(hosts, function (h) { return h.getBoundingClientRect().width > w + 1 || h.scrollWidth > w + 1; }); };
+      while (wide() && fs > 12) { fs -= 1; el.style.fontSize = fs + "px"; }
+    });
+  }
+  var parentsEn = pEn || "";
+  if (pAr) {
+    $("hosts").hidden = false;
+    var cols = hostsInto($("hostsAr"), pAr);
+    hostsInto($("hostsEn"), pEn);
+    if (hasAr(pEn)) $("hostsEn").dir = "rtl";
+    /* "his son" needs to know who is speaking: the dual form only for two parents and a given sex */
+    var two = !twins && (cols > 1 || /\s+و\s*\S/.test(pAr) || /\s+(?:and|&)\s+/i.test(pEn));
+    var kinAr = two && sex === "m" ? " مولودهما" : two && sex === "f" ? " مولودتهما" : "";
+    var kinEn = two && sex === "m" ? " their son" : two && sex === "f" ? " their daughter" : "";
+    txt("leadAr", "بدعوتكم لحضور سبوع" + kinAr);
+    txt("leadEn", "request the pleasure of your company at the sebou3 of" + kinEn);
+  } else {
+    txt("leadAr", "يسعدنا دعوتكم لحضور سبوع");
+    txt("leadEn", "We would love you to join us for the sebou3 of");
   }
 
-  /* ── Language toggle: Arabic is the default, html.en flips to English ── */
-  var langBtn = byId("langBtn");
-  var isAr = true;
+  /* the time in words, the way a printed card says it */
+  var AR_H = ["الثانية عشرة", "الواحدة", "الثانية", "الثالثة", "الرابعة", "الخامسة", "السادسة", "السابعة", "الثامنة", "التاسعة", "العاشرة", "الحادية عشرة"];
+  var EN_H = ["twelve", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven"];
+  var h12 = hh % 12;
+  var partAr = hh < 12 ? "صباحاً" : hh < 15 ? "ظهراً" : hh < 18 ? "عصراً" : "مساءً";
+  var partEn = hh < 12 ? "in the morning" : hh < 18 ? "in the afternoon" : "in the evening";
+  var timeWordsAr = hh === 0 && mm === "00" ? "منتصف الليل" : "الساعة " + AR_H[h12] + (mm === "00" ? "" : mm === "30" ? " والنصف" : mm === "15" ? " والربع" : ":" + ar9(mm)) + " " + partAr;
+  var timeWordsEn = hh === 0 && mm === "00" ? "midnight" : mm === "00" ? EN_H[h12] + " o'clock " + partEn : mm === "30" ? "half past " + EN_H[h12] + " " + partEn : (h12 || 12) + ":" + mm + " " + partEn;
+  var timeEnShort = hh === 0 && mm === "00" ? "midnight" : (h12 || 12) + ":" + mm + " " + (hh < 12 ? "AM" : "PM");
+  var timeArShort = hh === 0 && mm === "00" ? "منتصف الليل" : ar9((h12 || 12) + ":" + mm) + " " + (hh < 12 ? "صباحاً" : "مساءً");
+
+  var dObj = new Date(dOk + "T12:00:00");
+  var fmtAr = function (o, x) { return new Intl.DateTimeFormat("ar-EG", x).format(o).replace("،", ""); };
+  var fmtEn = function (o, x) { return new Intl.DateTimeFormat("en-GB", x).format(o).replace(/^(\w+) /, "$1, "); };
+  var full = { weekday: "long", day: "numeric", month: "long", year: "numeric" };
+  var dateAr = fmtAr(dObj, full), dateEn = fmtEn(dObj, full);
+  txt("dateAr", dateAr); txt("dateEn", dateEn);
+  txt("timeAr", timeWordsAr); txt("timeEn", timeWordsEn);
+  txt("venueAr", /^(ب|في\s)/.test(vAr) ? vAr : "ب" + vAr);
+  txt("venueEn", vEn); txt("venueEnPre", /^(at|in)\s/i.test(vEn) || hasAr(vEn) ? "" : "at ");
+  if (hasAr(vEn)) $("venueEn").dir = "rtl";
+
+  /* reply by: two days before, when there is still time */
+  var by = new Date(dObj.getTime() - 2 * 864e5);
+  var byOn = by.getTime() > Date.now() + 864e5;
+  var replyByAr = byOn ? "قبل " + fmtAr(by, { weekday: "long", day: "numeric", month: "long" }) : "";
+  var replyByEn = byOn ? "by " + fmtEn(by, { weekday: "long", day: "numeric", month: "long" }) : "";
+
+  var pQuote = qp("q");
+  if (pQuote) {
+    $("quote").querySelector(".t-ar").textContent = "«" + pQuote + "»";
+    $("quote").querySelector(".t-en").textContent = "“" + pQuote + "”";
+  }
+
+  /* the guest: written on the tag by hand, and on the reply card */
+  if (guest) {
+    txt("toHand", guest); txt("inToAr", "إلى " + guest); txt("inToEn", "For " + guest);
+    $("guestName").value = guest;
+    $("waBtn").parentNode.hidden = true;   /* an invitation addressed to one guest is not for forwarding */
+  }
+  function handFace () { $("toHand").classList.toggle("ar", hasAr($("toHand").textContent)); }
+  handFace();
+
+  /* map: the family's link, or a search for the venue */
+  var pMap = qp("map");
+  $("mapBtn").href = pMap && /^https:\/\//.test(pMap) ? pMap
+    : "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(qp("v_en") || qp("v_ar") || "Maadi, Cairo, Egypt");
+  var start = new Date(dOk + "T" + tNorm + ":00"), end = new Date(start.getTime() + 3 * 36e5);
+  var cal = function (dt) { var p = function (n) { return ("0" + n).slice(-2); }; return dt.getFullYear() + p(dt.getMonth() + 1) + p(dt.getDate()) + "T" + p(dt.getHours()) + p(dt.getMinutes()) + "00"; };
+  $("calBtn").href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("Sebou3 of " + nEn + " / سبوع " + nAr)
+    + "&dates=" + cal(start) + "/" + cal(end) + "&ctz=Africa/Cairo&location=" + encodeURIComponent(vEn)
+    + "&details=" + encodeURIComponent(pQuote || (parentsEn ? parentsEn + " invite you to the sebou3 of " + nEn + "." : "The sebou3 of " + nEn + "."));
+
+  /* the rituals in their order, counted from the time on the card so the two always agree,
+     or the family's own programme: agenda=time~عربي~english|… */
+  var PROG = [[0, "الاستقبال", "Welcome"], [45, "دق الهون والغربال", "The mortar and the sieve"], [75, "الشموع والزفة", "Candles and the zaffa"], [120, "توزيع الشنط", "The sebou3 bags"]];
+  function addRow (time, wAr, wEn) {
+    var tEn = time, tAr = ar9(time), m = time.match(/^(\d{1,2}):(\d{2})$/);
+    if (m && +m[1] < 24 && +m[2] < 60) {
+      var h = +m[1], x = h % 12 || 12;
+      tEn = x + ":" + m[2] + (h < 12 ? " am" : " pm"); tAr = ar9(x + ":" + m[2]) + (h < 12 ? " ص" : " م");
+      if (h === 0 && m[2] === "00") { tEn = "midnight"; tAr = "منتصف الليل"; }
+    }
+    var li = document.createElement("li");
+    li.innerHTML = '<span class="when"><span class="t-ar"></span><span class="t-en"></span></span><span class="what"><span class="t-ar"></span><span class="t-en"></span></span>';
+    li.querySelector(".what .t-ar").textContent = wAr; li.querySelector(".what .t-en").textContent = wEn;
+    li.querySelector(".when .t-ar").textContent = tAr; li.querySelector(".when .t-en").textContent = tEn;
+    $("agList").appendChild(li);
+  }
+  var pAg = qp("agenda");
+  var agRows = pAg && pAg !== "0" ? pAg.split("|").map(function (e) { return e.split("~").map(function (s) { return s.trim(); }); })
+    .filter(function (p) { return p[0] && (p[1] || p[2]); }) : [];
+  if (pAg === "0") $("agendaSec").hidden = true;
+  else if (agRows.length) agRows.forEach(function (p) { addRow(p[0], p[1] || p[2], p[2] || p[1]); });
+  else PROG.forEach(function (r) {
+    var t = (hh * 60 + +mm + r[0]) % 1440;
+    addRow(Math.floor(t / 60) + ":" + ("0" + t % 60).slice(-2), r[1], r[2]);
+  });
+
+  /* dress code and gift note, at the foot of the reply card */
+  txt("giftAr", "حضوركم ودعواتكم ل" + arParts.join(" و") + " أغلى هدية");
+  txt("giftEn", "your company and your prayers for " + enParts.join(" and ") + " are the best gift");
+  function note (key, id) {
+    var v = qp(key), sec = $(id);
+    if (!v) return;
+    if (v === "0") { sec.hidden = true; return; }
+    var p = v.indexOf("~") >= 0 ? v.split("~") : [v, v];
+    var a = (p[0] || "").trim() || (p[1] || "").trim(), e = (p[1] || "").trim() || a;
+    sec.querySelector(".note .t-ar").textContent = a;
+    sec.querySelector(".note .t-en").textContent = e;
+  }
+  note("dress", "dressSec"); note("gift", "giftSec");
+  if ($("dressSec").hidden && $("giftSec").hidden) $("notesCard").hidden = true;
+
+  /* prints: one, two or three, laid out differently */
+  var frames = document.querySelectorAll("#gallerySec .print"), nPh = 0;
+  if (qp("photos") !== "0") ["ph1", "ph2", "ph3"].forEach(function (k) {
+    var u = qp(k);
+    if (!u || !(/^https?:\/\//.test(u) || !/:/.test(u))) return;
+    var img = document.createElement("img"); img.alt = ""; img.loading = "lazy"; img.decoding = "async"; img.width = 400; img.height = 500; img.src = u;
+    frames[nPh].appendChild(img); frames[nPh].classList.add("has-img"); nPh++;
+  });
+  if (nPh) { $("gallerySec").hidden = false; $("gallerySec").classList.add("n" + nPh); }
+
+  /* names set in calligraphy never wrap: a long one steps down until it fits */
+  function fitNames () {
+    document.querySelectorAll(".name .n, .itag .nm").forEach(function (el) {
+      el.style.fontSize = "";
+      if (el.offsetParent === null) return;
+      var fs = parseFloat(getComputedStyle(el).fontSize), min = fs * .5;
+      var box = el.parentNode.clientWidth || el.clientWidth;
+      if (el.classList.contains("nm")) box = el.clientWidth;
+      while (el.scrollWidth > box + 1 && fs > min) { fs -= 2; el.style.fontSize = fs + "px"; }
+    });
+  }
+
+  /* ── language ── */
+  var isAr = true; /* Arabic first, like every D3wa design; English is one tap away */
   function applyLang () {
     docEl.classList.toggle("en", !isAr);
     docEl.lang = isAr ? "ar" : "en";
-    docEl.dir  = isAr ? "rtl" : "ltr";
-    updateLinks();
-    renderCountdown(true);
+    docEl.dir = isAr ? "rtl" : "ltr";
+    $("guestName").placeholder = isAr ? "اكتبوا اسمكم هنا" : "Your name";
+    txt("replyBy", isAr ? (replyByAr || "يسعدنا ردكم") : (replyByEn || "We look forward to hearing from you"));
+    if (!guest) txt("toHand", isAr ? "أحبابنا الغاليين" : "our dearest family and friends");
+    handFace();
+    renderLeft(); updateLinks(); fitHosts(); fitNames();
   }
-  if (langBtn) langBtn.addEventListener("click", function () { isAr = !isAr; applyLang(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitHosts(); fitNames(); });
+  window.addEventListener("resize", function () { fitHosts(); fitNames(); });
+  $("langBtn").addEventListener("click", function () { isAr = !isAr; applyLang(); });
 
-  /* ── Countdown to the event date (?d= / ?t=, Cairo time) ── */
-  var target = new Date((pDateOk || "2026-09-04") + "T" + (pTimeNorm || "18:00") + ":00+02:00").getTime();
-  var wrap = byId("cdWrap");
-  var elD = byId("cdD"), elH = byId("cdH"), elM = byId("cdM"), elS = byId("cdS");
-  var last = {};
-  function fmt (n) {
-    var s = String(n).length < 2 ? "0" + n : String(n);
-    return isAr ? arDig(s) : s;
+  /* ── the countdown, added by hand on the card ── */
+  function cairoToday () {
+    var t = "";
+    try { t = new Intl.DateTimeFormat("en-CA", { timeZone: "Africa/Cairo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()); } catch (e) {}
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(t)) { var n = new Date(); t = n.getFullYear() + "-" + ("0" + (n.getMonth() + 1)).slice(-2) + "-" + ("0" + n.getDate()).slice(-2); }
+    return t;
   }
-  function renderCountdown (force) {
-    if (!wrap) return;
-    var diff = target - Date.now();
-    if (diff <= 0) { wrap.classList.add("is-done"); return; }
-    wrap.classList.remove("is-done");
-    var v = {
-      d: Math.floor(diff / 864e5),
-      h: Math.floor(diff % 864e5 / 36e5),
-      m: Math.floor(diff % 36e5 / 6e4),
-      s: Math.floor(diff % 6e4 / 1e3)
-    };
-    for (var k in v) {
-      if (force || v[k] !== last[k]) {
-        ({ d: elD, h: elH, m: elM, s: elS })[k].textContent = fmt(v[k]);
-        last[k] = v[k];
-      }
-    }
-  }
-  setInterval(renderCountdown, 1000);
-
-  /* ── WhatsApp links follow the active language ── */
-  var acceptBtn = byId("acceptBtn"), declineBtn = byId("declineBtn"), shareBtn = byId("shareBtn");
-  function updateLinks () {
-    var url = "";
-    if (location.protocol !== "file:") url = location.href.split("#")[0];
-    var accept = isAr
-      ? "مرحباً! يسعدنا نأكد حضورنا سبوع " + nameAr + "، " + dateFullAr + "، " + timeAr + "، " + venueMsgAr + ". عدد الحضور: " + guestAr
-      : "Hello! We're happy to confirm we'll be at " + nameEn + "'s sebou3, " + dateFullEn + ", " + timeEn + ", " + venueMsgEn + ". Guests: " + guestEn;
-    var decline = isAr
-      ? "مرحباً! للأسف مش هنقدر نحضر سبوع " + nameAr + ". ألف مبروك، وربنا يبارك لكم ويفرّح قلوبكم دايماً."
-      : "Hello! We're so sorry we can't make it to " + nameEn + "'s sebou3. Sending love and blessings to your little one.";
-    var share = isAr
-      ? "إنتو معزومين على سبوع " + nameAr + "، " + dateFullAr + "، " + timeAr + "، " + venueMsgAr + "." + (url ? " افتحوا الدعوة: " + url : "")
-      : "You're invited to " + nameEn + "'s sebou3, " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + "." + (url ? " Open the invitation: " + url : "");
-    if (acceptBtn) acceptBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(accept);
-    if (declineBtn) declineBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(decline);
-    if (shareBtn) shareBtn.href = "https://wa.me/?text=" + encodeURIComponent(share);
-  }
-
-  /* ── RSVP guest count chips (default ١ / 1) ── */
-  var guestAr = "١", guestEn = "1";
-  var chips = document.querySelectorAll(".gchip");
-  function pickChip (btn) {
-    for (var i = 0; i < chips.length; i++) chips[i].setAttribute("aria-pressed", chips[i] === btn ? "true" : "false");
-    guestEn = btn.getAttribute("data-n") || "1";
-    guestAr = btn.getAttribute("data-n-ar") || "١";
-    updateLinks();
-  }
-  for (var ci = 0; ci < chips.length; ci++) (function (btn) {
-    btn.addEventListener("click", function () { pickChip(btn); });
-  })(chips[ci]);
-
-  /* ── Music toggle: soft lullaby pad (or ?music= URL), OFF until the guest taps ── */
-  var musicBtn = byId("musicBtn");
-  if (musicBtn) {
-    var actx = null, master = null, audioEl = null, playing = false;
-    var musicUrl = (pMusic && /^https?:\/\//.test(pMusic)) ? pMusic : null;
-    var startSynth = function () {
-      var AC = window.AudioContext || window.webkitAudioContext;
-      if (!AC) return false;
-      actx = new AC();
-      master = actx.createGain();
-      master.gain.value = 0;
-      master.connect(actx.destination);
-      var notes = [261.63, 329.63, 392.0, 523.25]; /* soft C-major lullaby pad */
-      for (var i = 0; i < notes.length; i++) {
-        var o = actx.createOscillator(); o.type = "sine"; o.frequency.value = notes[i];
-        var og = actx.createGain(); og.gain.value = i === 3 ? 0.10 : 0.28;
-        var lfo = actx.createOscillator(); lfo.type = "sine"; lfo.frequency.value = 0.06 + i * 0.045;
-        var lg = actx.createGain(); lg.gain.value = og.gain.value * 0.5;
-        lfo.connect(lg); lg.connect(og.gain);
-        o.connect(og); og.connect(master);
-        o.start(); lfo.start();
-      }
-      return true;
-    };
-    musicBtn.addEventListener("click", function () {
-      playing = !playing;
-      if (playing) {
-        if (musicUrl) {
-          if (!audioEl) { audioEl = new Audio(musicUrl); audioEl.loop = true; audioEl.volume = 0.55; }
-          audioEl.play()["catch"](function () {});
-        } else if (!actx) {
-          if (!startSynth()) { playing = false; return; }
-          master.gain.linearRampToValueAtTime(0.05, actx.currentTime + 1.5);
-        } else {
-          actx.resume();
-          master.gain.linearRampToValueAtTime(0.05, actx.currentTime + 1);
-        }
-      } else {
-        if (audioEl) audioEl.pause();
-        if (actx) {
-          master.gain.linearRampToValueAtTime(0.0001, actx.currentTime + 0.4);
-          window.setTimeout(function () { if (!playing && actx) actx.suspend(); }, 500);
-        }
-      }
-      musicBtn.setAttribute("aria-pressed", playing ? "true" : "false");
+  var utc = function (iso) { return Date.UTC(+iso.slice(0, 4), +iso.slice(5, 7) - 1, +iso.slice(8, 10)); };
+  function renderLeft () {
+    var days = Math.round((utc(dOk) - utc(cairoToday())) / 864e5), el = $("left");
+    if (days < 0) { el.hidden = true; return; }
+    el.hidden = false;
+    var parts = isAr
+      ? (days === 0 ? ["النهارده السبوع"] : days === 1 ? ["بكرة السبوع"] : days === 2 ? ["باقي يومين"] : ["باقي ", ar9(days), days <= 10 ? " أيام" : " يوم"])
+      : (days === 0 ? ["Today"] : days === 1 ? ["Tomorrow"] : ["", String(days), " days to go"]);
+    el.textContent = "";
+    parts.forEach(function (t, i) {
+      if (i === 1) { var b = document.createElement("span"); b.className = "num"; b.textContent = t; el.appendChild(b); }
+      else if (t) el.appendChild(document.createTextNode(t));
     });
   }
+  setInterval(renderLeft, 6e4);
+
+  /* ── the reply: name and count written on the card, the sticker sends it on WhatsApp ── */
+  var latin = function (v) { return String(v).replace(/[٠-٩]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩".indexOf(d); }).replace(/[۰-۹]/g, function (d) { return "۰۱۲۳۴۵۶۷۸۹".indexOf(d); }).replace(/\D/g, ""); };
+  $("guestName").addEventListener("input", updateLinks);
+  $("guestCount").addEventListener("input", updateLinks);
+  function updateLinks () {
+    var url = location.protocol === "file:" ? "" : location.href.split("#")[0];
+    var who = $("guestName").value.trim();
+    var hiAr = who ? "مرحباً، معاكم " + who + ". " : "مرحباً! ", hiEn = who ? "Hello, this is " + who + ". " : "Hello! ";
+    var n = latin($("guestCount").value).replace(/^0+/, "");
+    var cnt = n ? (isAr ? " عدد الأفراد: " + ar9(n) : " Number attending: " + n) : "";
+    var yes = isAr
+      ? hiAr + "يسعدنا نأكد حضورنا سبوع " + nAr + " يوم " + dateAr + " الساعة " + timeArShort + " في " + vAr + "." + cnt
+      : hiEn + "We'd love to confirm we'll be at " + nEn + "'s sebou3 on " + dateEn + " at " + timeEnShort + ", " + vEn + "." + cnt;
+    var no = isAr
+      ? hiAr + "للأسف مش هنقدر نحضر سبوع " + nAr + ". ألف مبروك، وربنا يبارك لكم ويفرّح قلوبكم دايماً."
+      : hiEn + "Sadly we can't make it to " + nEn + "'s sebou3. Congratulations, and blessings to your little one.";
+    var share = isAr
+      ? "أنتم مدعوون لسبوع " + nAr + " يوم " + dateAr + " الساعة " + timeArShort + " في " + vAr + "." + (url ? " افتحوا الدعوة من هنا: " + url : "")
+      : "You're invited to " + nEn + "'s sebou3 on " + dateEn + " at " + timeEnShort + ", " + vEn + "." + (url ? " Open the invitation: " + url : "");
+    $("rsvpBtn").href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(yes);
+    $("noBtn").href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(no);
+    $("waBtn").href = "https://wa.me/?text=" + encodeURIComponent(share);
+  }
+
+  /* ── the bag: tap, the ribbon comes undone and the card rises out ── */
+  var intro = $("intro");
+  if (qp("intro") !== "0") {
+    intro.hidden = false;
+    document.body.classList.add("intro-lock");
+    var opened = false;
+    var open = function () {
+      if (opened) return; opened = true;
+      document.body.classList.remove("intro-lock");
+      if (reduced) { intro.hidden = true; return; }
+      intro.classList.add("open");
+      setTimeout(function () { intro.hidden = true; }, 2550);
+    };
+    intro.addEventListener("click", open);
+    intro.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); open(); } });
+    try { intro.focus({ preventScroll: true }); } catch (e) {}
+  }
+
+  /* ── music: off until tapped; a soft lullaby pad, or ?music=<url> ── */
+  var musicBtn = $("musicBtn"), pMusic = qp("music");
+  var playing = false, actx = null, master = null, audioEl = null;
+  var musicUrl = pMusic && /^https?:\/\//.test(pMusic) ? pMusic : null;
+  function startSynth () {
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return false;
+    actx = new AC(); master = actx.createGain(); master.gain.value = 0; master.connect(actx.destination);
+    [261.63, 329.63, 392.0, 523.25].forEach(function (f, i) {
+      var o = actx.createOscillator(); o.type = "sine"; o.frequency.value = f;
+      var og = actx.createGain(); og.gain.value = i === 3 ? 0.10 : 0.28;
+      var lfo = actx.createOscillator(); lfo.type = "sine"; lfo.frequency.value = 0.06 + i * 0.045;
+      var lg = actx.createGain(); lg.gain.value = og.gain.value * 0.5;
+      lfo.connect(lg); lg.connect(og.gain); o.connect(og); og.connect(master); o.start(); lfo.start();
+    });
+    return true;
+  }
+  musicBtn.addEventListener("click", function () {
+    playing = !playing;
+    if (playing) {
+      if (musicUrl) {
+        if (!audioEl) { audioEl = new Audio(musicUrl); audioEl.loop = true; audioEl.volume = 0.55; }
+        audioEl.play()["catch"](function () {});
+      } else if (!actx) {
+        if (!startSynth()) { playing = false; return; }
+        master.gain.linearRampToValueAtTime(0.05, actx.currentTime + 1.5);
+      } else {
+        actx.resume();
+        master.gain.cancelScheduledValues(actx.currentTime);
+        master.gain.linearRampToValueAtTime(0.05, actx.currentTime + 1);
+      }
+    } else {
+      if (audioEl) audioEl.pause();
+      if (actx) {
+        master.gain.cancelScheduledValues(actx.currentTime);
+        master.gain.linearRampToValueAtTime(0.0001, actx.currentTime + 0.4);
+        setTimeout(function () { if (!playing && actx) actx.suspend(); }, 500);
+      }
+    }
+    musicBtn.setAttribute("aria-pressed", playing ? "true" : "false");
+  });
 
   applyLang();
 })();
 </script>
-
-<p class="d3wa-credit" style="margin:0;padding:28px 16px 96px;text-align:center;font-size:12px;line-height:1.8;opacity:.92"><a href="../index.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><span class="t-ar">دعوة من D3wa · اطلبوا دعوتكم</span><span class="t-en">Invitation by D3wa. Order yours.</span></a></p>
 <script src="../assets/demo-bar.js" defer></script>
 </body>
 </html>
