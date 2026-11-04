@@ -938,8 +938,8 @@ html.ar .intro-hint{font-weight:600}
       ? "أنتم معزومين على خطوبة " + namesAr + "، يوم " + dateFullAr + " الساعة " + timeAr + "، في " + venueMsgAr + ". افتحوا الدعوة من هنا: " + url
       : "You're invited to the engagement of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Open the invitation: " + url;
     var rsvp = ar
-      ? "أهلاً! يسعدني تأكيد حضوري خطوبة " + namesAr + "، يوم " + dateFullAr + " الساعة " + timeAr + "، في " + venueMsgAr + ". عدد الحضور: " + ar9(guestCount)
-      : "Hello! I'd love to confirm I'm coming to the engagement of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Number of guests: " + guestCount;
+      ? "أهلاً! يسعدنا تأكيد حضورنا خطوبة " + namesAr + "، يوم " + dateFullAr + " الساعة " + timeAr + "، في " + venueMsgAr + ". عدد الحضور: " + ar9(guestCount)
+      : "Hello! We'd love to confirm we're coming to the engagement of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Number of guests: " + guestCount;
     var plain = function (t) { return encodeURIComponent(t.replace(/\u00a0/g, " ")); };
     byId("waBtn").href = "https://wa.me/?text=" + plain(share);
     byId("rsvpBtn").href = "https://wa.me/" + waNum + "?text=" + plain(rsvp);

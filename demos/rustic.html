@@ -913,8 +913,8 @@ html.ar .intro-hint{font-size:17px;letter-spacing:0}
       ? "أنتم معزومين على فرح " + namesAr + "، يوم " + dateFullAr + " الساعة " + timeAr + "، في " + venueMsgAr + ". افتحوا الدعوة من هنا: " + url
       : "You're invited to the wedding of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Open the invitation: " + url;
     var rsvp = ar
-      ? "أهلاً! يسعدني تأكيد حضوري فرح " + namesAr + "، يوم " + dateFullAr + " الساعة " + timeAr + "، في " + venueMsgAr + ". عدد الحضور: " + ar9(guestCount)
-      : "Hello! I'd love to confirm I'm coming to the wedding of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Number of guests: " + guestCount;
+      ? "أهلاً! يسعدنا تأكيد حضورنا فرح " + namesAr + "، يوم " + dateFullAr + " الساعة " + timeAr + "، في " + venueMsgAr + ". عدد الحضور: " + ar9(guestCount)
+      : "Hello! We'd love to confirm we're coming to the wedding of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Number of guests: " + guestCount;
     var plain = function (t) { return encodeURIComponent(t.replace(/ /g, " ")); };
     byId("waBtn").href = "https://wa.me/?text=" + plain(share);
     byId("rsvpBtn").href = "https://wa.me/" + waNum + "?text=" + plain(rsvp);

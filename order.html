@@ -85,8 +85,8 @@
           </div>
           <div class="field">
             <label for="n_ar"><span class="t-ar">الأسامي بالعربي</span><span class="t-en">Names in Arabic</span></label>
-            <input id="n_ar" autocomplete="off" maxlength="120" placeholder="يوسف ومريم" required>
-            <span class="err" id="n_arErr"><span class="t-ar">اكتبوا الأسامي بالعربي.</span><span class="t-en">Add the names in Arabic.</span></span>
+            <input id="n_ar" autocomplete="off" maxlength="120" placeholder="يوسف ومريم">
+            <span class="err" id="n_arErr"><span class="t-ar">اكتبوا الأسامي، بالعربي أو بالإنجليزي.</span><span class="t-en">Add the names, in Arabic or English.</span></span>
           </div>
           <div class="field">
             <label for="n_en"><span class="t-ar">الأسامي بالإنجليزي</span><span class="t-en">Names in English</span> <span class="opt-tag"><span class="t-ar">(اختياري)</span><span class="t-en">(optional)</span></span></label>
@@ -410,7 +410,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var v = function (k) { return el(k).value.trim(); };
     /* the preview must only ever show this couple's details, never the design's sample text */
     var vAr = v("v_ar") || v("v_en") || "المكان هيتحدد قريب", vEn = v("v_en") || v("v_ar") || "Venue to be announced";
-    var put = { n_ar: v("n_ar"), n_en: v("n_en") || v("n_ar"), d: v("d"), t: v("t"), v_ar: vAr, v_en: vEn, map: v("map") };
+    var put = { n_ar: v("n_ar") || v("n_en"), n_en: v("n_en") || v("n_ar"), d: v("d"), t: v("t"), v_ar: vAr, v_en: vEn, map: v("map") };
     Object.keys(put).forEach(function (k) { if (put[k]) u.searchParams.set(k, put[k]); });
     if (state.pkg === "royale") u.searchParams.set("credit", "0");
     if (state.pkg !== "classic" && el("q").value.trim()) u.searchParams.set("q", el("q").value.trim());
@@ -442,7 +442,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function validStep(n) {
     var ok = true;
     if (n === 2) {
-      ok = mark("n_ar", !el("n_ar").value.trim()) &
+      ok = mark("n_ar", !el("n_ar").value.trim() && !el("n_en").value.trim()) &
         mark("d", !/^\d{4}-\d{2}-\d{2}$/.test(el("d").value) || el("d").value < el("d").min) &
         mark("t", !/^\d{2}:\d{2}$/.test(el("t").value)) &
         mark("map", !!el("map").value.trim() && !/^https:\/\//.test(el("map").value.trim()));
@@ -488,7 +488,7 @@ document.addEventListener("DOMContentLoaded", function () {
       [en() ? "Design" : "التصميم", L(t) + " (" + t.code + ")"],
       [en() ? "Package" : "الباقة", L(PKG[state.pkg])],
       [en() ? "Occasion" : "المناسبة", occLabel()],
-      [en() ? "Names" : "الأسامي", el("n_ar").value + (el("n_en").value ? " / " + el("n_en").value : "")],
+      [en() ? "Names" : "الأسامي", [el("n_ar").value.trim(), el("n_en").value.trim()].filter(Boolean).join(" / ")],
       [en() ? "Date" : "التاريخ", niceDate(!en()) + (niceTime(!en()) ? (en() ? ", " : "، ") + niceTime(!en()) : "")],
       [en() ? "Venue" : "المكان", (en() ? el("v_en").value || el("v_ar").value : el("v_ar").value || el("v_en").value) || (en() ? "To confirm later" : "هنأكده بعدين")],
       [en() ? "RSVPs go to" : "التأكيدات على", el("wa").value, 1],
@@ -506,7 +506,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "التصميم Design: " + t.ar + " / " + t.en + " (" + t.code + ")",
       "الباقة Package: " + p.ar + " / " + p.en + " · " + total() + " EGP" + (state.rush ? " (rush)" : ""),
       "المناسبة Occasion: " + (o ? o.getAttribute("data-ar") + " / " + o.getAttribute("data-en") : ""),
-      "الأسامي Names: " + el("n_ar").value.trim() + (el("n_en").value.trim() ? " / " + el("n_en").value.trim() : ""),
+      "الأسامي Names: " + [el("n_ar").value.trim(), el("n_en").value.trim()].filter(Boolean).join(" / "),
       "التاريخ Date: " + niceDate(true) + "، " + niceTime(true) + " / " + niceDate(false) + ", " + niceTime(false) + " (" + el("d").value + " " + el("t").value + ")"
     ];
     if (el("v_ar").value.trim() || el("v_en").value.trim()) L2.push("المكان Venue: " + [el("v_ar").value.trim(), el("v_en").value.trim()].filter(Boolean).join(" / "));
@@ -554,7 +554,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function payload() {
     return {
       template: state.tpl, package: state.pkg, occasion: el("occ").value,
-      n_ar: el("n_ar").value.trim(), n_en: el("n_en").value.trim(),
+      n_ar: el("n_ar").value.trim() || el("n_en").value.trim(), n_en: el("n_en").value.trim(),
       event_date: el("d").value, event_time: el("t").value,
       v_ar: el("v_ar").value.trim(), v_en: el("v_en").value.trim(),
       map_url: el("map").value.trim(), quote: state.pkg !== "classic" ? el("q").value.trim() : "",
