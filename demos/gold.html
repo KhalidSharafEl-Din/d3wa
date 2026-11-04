@@ -1055,8 +1055,8 @@ body.intro-lock{overflow:hidden}
       ? "أنتم مدعوون لحفل خطوبة " + namesAr + " يوم " + dateFullAr + " " + shareTimeAr + " في " + venueMsgAr + ". افتحوا دعوتكم من هنا: " + url
       : "You're invited to the engagement of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Open your invitation: " + url;
     var rsvp = isAr
-      ? "مرحباً! يسعدني أأكد حضوري حفل خطوبة " + namesAr + " يوم " + dateFullAr + " " + shareTimeAr + " في " + venueMsgAr + "."
-      : "Hello! I'd love to confirm my attendance at the engagement of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ".";
+      ? "مرحباً! يسعدنا نأكد حضورنا حفل خطوبة " + namesAr + " يوم " + dateFullAr + " " + shareTimeAr + " في " + venueMsgAr + "."
+      : "Hello! We'd love to confirm our attendance at the engagement of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ".";
     if (waBtn) waBtn.href = "https://wa.me/?text=" + encodeURIComponent(share);
     if (rsvpBtn) rsvpBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(rsvp);
   }
