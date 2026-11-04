@@ -114,7 +114,7 @@ window.D3WA = {
         ar: "كحلي غامق ودهب ومونوجرام بحروفكم. فيها نسخة ليلي ونسخة نهاري، وهي تصميم باقة رويال.",
         en: "Deep navy, gold foil and a monogram of your initials. It comes with a night and a day version, and it is the Royale package design."
       },
-      look: ["#0d1730", "#22335c", "#cfa658", "#f4efe4"], fonts: "Italiana, Aref Ruqaa",
+      look: ["#0d1730", "#22335c", "#cfa658", "#f4efe4"], fonts: "Bodoni Moda, Amiri",
       demo: { n_ar: "أحمد وفريدة", n_en: "Ahmed & Farida" }
     },
     {
