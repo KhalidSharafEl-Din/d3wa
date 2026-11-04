@@ -349,7 +349,9 @@ ${opts}
     <p style="margin-top:14px;font-size:15px"><a class="link" href="${ask}" target="_blank" rel="noopener">${bi({ ar: "عندكم سؤال؟ اسألونا على واتساب", en: "A question? Ask us on WhatsApp" })}</a></p>
     <ul class="promise">
       <li>${icon("eye")}<span>${bi({ ar: "بتشوفوا الدعوة بأساميكم قبل ما تدفعوا أي حاجة.", en: "You see the invitation with your names before you pay anything." })}</span></li>
-      <li>${icon("clock")}<span>${bi({ ar: "بتوصلكم خلال ٤٨ ساعة من تأكيد التفاصيل، و٢٤ ساعة في رويال.", en: "Ready within 48 hours of confirming your details, 24 with Royale." })}</span></li>
+      <li>${icon("clock")}<span>${bi(t.minPkg === "royale"
+        ? { ar: "بتوصلكم خلال ٢٤ ساعة من تأكيد التفاصيل.", en: "Ready within 24 hours of confirming your details." }
+        : { ar: "بتوصلكم خلال ٤٨ ساعة من تأكيد التفاصيل، و٢٤ ساعة في رويال.", en: "Ready within 48 hours of confirming your details, 24 with Royale." })}</span></li>
       <li>${icon("cal")}<span>${bi({ ar: "اللينك شغال سنة كاملة، وتعديل المعاد أو المكان مجاني لحد أسبوع قبل المناسبة.", en: "The link stays live for a year. Date or venue changes are free until a week before." })}</span></li>
     </ul>
     <dl class="spec">
