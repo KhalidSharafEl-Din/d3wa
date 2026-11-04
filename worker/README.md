@@ -52,6 +52,8 @@ Create the tables:
 
 ```bash
 wrangler d1 execute d3wa --remote --file=worker/schema.sql
+# only if the database was created before the hosts column existed:
+# wrangler d1 execute d3wa --remote --command "ALTER TABLE orders ADD COLUMN hosts TEXT"
 ```
 
 Set the admin password (any long random string; this is what you type into

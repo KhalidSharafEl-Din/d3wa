@@ -60,7 +60,7 @@ button.ghost:hover,.abtn.ghost:hover{background:rgba(156,74,26,.08)}
   <p class="sub">الصق رسالة الطلب اللي جاتلك على واتساب، أو املا الخانات يدوي، وهيطلعلك لينك معاينة شخصي فورًا على أي قالب. اللينك ده هو نفسه اللي تبعته للعميل بعد ما يدفع المقدم.</p>
 
   <h2>١ · الصق رسالة الطلب <small style="font-weight:300;color:var(--ink-2)">(اختياري)</small></h2>
-  <textarea class="paste" id="paste" placeholder="طلب دعوة جديد 🤍 New order&#10;القالب Template: ...&#10;الأسماء Names: ..."></textarea>
+  <textarea class="paste" id="paste" placeholder="طلب دعوة جديد · D3wa order #...&#10;التصميم Design: ...&#10;الأسامي Names: ..."></textarea>
 
   <h2>٢ · التفاصيل</h2>
   <div class="grid">
@@ -79,6 +79,18 @@ button.ghost:hover,.abtn.ghost:hover{background:rgba(156,74,26,.08)}
         <option value="garden">D3-010 · جاردن</option>
         <option value="modern">D3-011 · مودرن</option>
         <option value="grad">D3-012 · تخرج</option>
+      </select>
+    </div>
+    <div>
+      <label>المناسبة <small>(بتغير كلام الكارت في القوالب اللي بتخدم أكتر من مناسبة)</small></label>
+      <select id="o">
+        <option value="">حسب القالب</option>
+        <option value="wedding">فرح</option>
+        <option value="engagement">خطوبة</option>
+        <option value="katb">كتب كتاب</option>
+        <option value="henna">حنة</option>
+        <option value="baby">سبوع</option>
+        <option value="grad">تخرج</option>
       </select>
     </div>
     <div><label>رقم واتساب العروسين <small>(الـ RSVP هيروح له)</small></label><input id="wa" placeholder="2010xxxxxxxx" dir="ltr"></div>
@@ -110,7 +122,7 @@ button.ghost:hover,.abtn.ghost:hover{background:rgba(156,74,26,.08)}
 <script>
 (function () {
   "use strict";
-  var F = ["n_ar","n_en","d","t","v_ar","v_en","map","h_ar","h_en","q","wa","p_ar"];
+  var F = ["o","n_ar","n_en","d","t","v_ar","v_en","map","h_ar","h_en","q","wa","p_ar"];
   function el (id) { return document.getElementById(id); }
 
   var TPL_LOOKUP = {
@@ -132,9 +144,15 @@ button.ghost:hover,.abtn.ghost:hover{background:rgba(156,74,26,.08)}
   el("paste").addEventListener("input", function () {
     var s = this.value;
     function grab (re) { var m = s.match(re); return m ? m[1].trim() : ""; }
-    var tplLine = grab(/Template:\s*(.+)/);
+    var tplLine = grab(/(?:Design|Template):\s*(.+)/);
     if (tplLine) {
       for (var k in TPL_LOOKUP) if (tplLine.indexOf(k) !== -1) { el("tpl").value = TPL_LOOKUP[k]; break; }
+      el("parentsRow").style.display = el("tpl").value === "lotus" ? "" : "none";
+    }
+    var occ = grab(/Occasion:\s*(.+)/);
+    if (occ) {
+      var OCC = { wedding: /Wedding|فرح/, engagement: /Engagement|خطوبة/, katb: /Katb|كتب كتاب/, henna: /Henna|حنة/, baby: /Sebou|سبوع/, grad: /Graduation|تخرج/ };
+      for (var o in OCC) if (OCC[o].test(occ)) { el("o").value = o; break; }
     }
     var names = grab(/Names:\s*(.+)/);
     if (names) {
@@ -142,16 +160,27 @@ button.ghost:hover,.abtn.ghost:hover{background:rgba(156,74,26,.08)}
       el("n_ar").value = (parts[0] || "").trim();
       el("n_en").value = (parts[1] || "").trim();
     }
-    var date = grab(/Date:\s*([0-9]{4}-[0-9]{2}-[0-9]{2})/);
-    if (date) el("d").value = date;
-    var time = grab(/·\s*([0-9]{2}:[0-9]{2})/);
-    if (time) el("t").value = time;
+    /* "Date: …, … / …, … (2027-02-04 20:00)" */
+    var when = s.match(/\((\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2})\)/);
+    if (when) { el("d").value = when[1]; el("t").value = when[2]; }
+    else {
+      var date = grab(/Date:\s*([0-9]{4}-[0-9]{2}-[0-9]{2})/);
+      if (date) el("d").value = date;
+    }
     var venue = grab(/Venue:\s*(.+)/);
-    if (venue) el("v_ar").value = venue;
+    if (venue) {
+      var vp = venue.split(" / ");
+      el("v_ar").value = (vp[0] || "").trim();
+      if (vp[1]) el("v_en").value = vp[1].trim();
+    }
     var map = grab(/Map:\s*(\S+)/);
     if (map) el("map").value = map;
+    var hosts = grab(/Hosts:\s*(.+)/);
+    if (hosts) el("h_ar").value = hosts;
     var quote = grab(/Quote:\s*(.+)/);
     if (quote) el("q").value = quote;
+    var rsvp = grab(/RSVP:\s*(.+)/);
+    if (rsvp) { var w = rsvp.replace(/\D/g, "").replace(/^0/, "20"); if (w) el("wa").value = w; }
     build();
   });
 
@@ -160,6 +189,7 @@ button.ghost:hover,.abtn.ghost:hover{background:rgba(156,74,26,.08)}
     build();
   });
   F.forEach(function (id) { el(id).addEventListener("input", build); });
+  el("o").addEventListener("change", build);
 
   function build () {
     var base = location.href.replace(/studio\.html.*$/, "");

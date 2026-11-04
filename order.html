@@ -549,7 +549,7 @@ document.addEventListener("DOMContentLoaded", function () {
       save();
     });
   });
-  el("occ").addEventListener("change", function () { occTouched = true; save(); });
+  el("occ").addEventListener("change", function () { occTouched = true; renderPreview(); if (state.step === 4) renderReview(); save(); });
   el("agree").addEventListener("change", function () { el("agreeErr").classList.remove("show"); });
   el("pvOpenBtn").addEventListener("click", function () { el("pv").classList.add("open"); fitFrame(); el("pvClose").focus(); });
   el("pvClose").addEventListener("click", function () { el("pv").classList.remove("open"); el("pvOpenBtn").focus(); });
