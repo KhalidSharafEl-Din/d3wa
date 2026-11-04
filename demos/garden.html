@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>عمر وسلمى — حفل زفاف | Omar &amp; Salma</title>
-<meta name="description" content="دعوة لحضور حفل زفاف عمر وسلمى — السبت ٢٢ أغسطس ٢٠٢٦، ٦:٠٠ مساءً، قاعة الحديقة، الجيزة. You are invited to the wedding of Omar &amp; Salma.">
+<title>عمر وسلمى، حفل زفاف | Omar &amp; Salma</title>
+<meta name="description" content="دعوة لحضور حفل زفاف عمر وسلمى، السبت ٢٢ أغسطس ٢٠٢٦، ٦:٠٠ مساءً، قاعة الحديقة، الجيزة. You are invited to the wedding of Omar &amp; Salma.">
 <meta name="theme-color" content="#FAF8F2">
 <meta name="color-scheme" content="light">
 
@@ -14,8 +14,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/demos/garden.html">
 <link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/demos/garden.html">
-<meta property="og:title" content="عمر وسلمى — حفل زفاف · Omar &amp; Salma">
-<meta property="og:description" content="السبت ٢٢ أغسطس ٢٠٢٦ · ٦:٠٠ مساءً · قاعة الحديقة، الجيزة — Saturday, 22 August 2026, 6:00 PM">
+<meta property="og:title" content="عمر وسلمى، حفل زفاف | Omar &amp; Salma">
+<meta property="og:description" content="السبت ٢٢ أغسطس ٢٠٢٦، ٦:٠٠ مساءً، قاعة الحديقة، الجيزة. Saturday, 22 August 2026, 6:00 PM">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FAF8F2'/%3E%3Cpath d='M8 26 C10 16 14 9 24 5 C22 16 17 22 8 26 Z' fill='%239CAF88'/%3E%3C/svg%3E">
 
@@ -28,15 +28,19 @@
 /* ─────────  TOKENS · D3-010 “جاردن / Botanical Garden”  ───────── */
 :root{
   --paper:#FAF8F2;
-  --ink:#3F4A3C;
-  --ink-soft:#71796a;
-  --sage:#9CAF88;
-  --euc:#5F7161;
-  --olive:#7A8450;
+  --leaf-card:rgba(255,255,251,.78);
+  --ink:#2C3829;          /* body text: ~11:1 on paper */
+  --ink-soft:#4C5848;     /* secondary text: ~7:1 on paper */
+  --sage:#9CAF88;         /* decorative only */
+  --euc:#4D6150;          /* text-safe eucalyptus: ~6.5:1 */
+  --euc-deep:#3E5141;
+  --olive:#5A6537;        /* text-safe olive for labels: ~6:1 */
   --blush:#E8C4B8;
   --gold:#B79A5B;          /* one restrained moment: the wax-seal monogram */
-  --hair:rgba(95,113,97,.26);
-  --hair-soft:rgba(95,113,97,.14);
+  --gold-lt:#F1E4BF;
+  --hair:rgba(77,97,80,.3);
+  --hair-soft:rgba(77,97,80,.16);
+  --gap:clamp(40px,10vw,60px);
   --serif:"EB Garamond",Garamond,Georgia,"Times New Roman",serif;
   --arabic:"Amiri","Traditional Arabic",serif;
 }
@@ -48,8 +52,8 @@ body{
   overflow-x:clip;
   color:var(--ink);
   font-family:var(--arabic);
-  font-size:16px;
-  line-height:1.6;
+  font-size:18px;
+  line-height:1.8;
   background:var(--paper);
   background-image:
     radial-gradient(90% 46% at 88% -4%, rgba(156,175,136,.16), transparent 62%),
@@ -57,7 +61,8 @@ body{
     radial-gradient(52% 30% at 12% 24%, rgba(122,132,80,.06), transparent 70%);
   -webkit-font-smoothing:antialiased;
 }
-html.en body{font-family:var(--serif)}
+html.en body{font-family:var(--serif);font-size:17px;line-height:1.6}
+::selection{background:rgba(156,175,136,.45);color:var(--ink)}
 /* faint cold-press paper grain */
 body::after{
   content:"";
@@ -93,7 +98,7 @@ html:not(.en) .t-en{display:none}
 
 /* ─────────  SECTIONS — airy scroll, whitespace as rhythm  ───────── */
 .leaf-scene{position:relative;overflow-x:clip}
-section{position:relative;padding:clamp(56px,14vw,96px) 22px}
+section{position:relative;padding:var(--gap) 22px}
 .inner{width:min(100%,430px);margin-inline:auto;position:relative;z-index:2}
 
 /* corner sprays — anchored in two opposite corners, bleeding off-canvas */
@@ -142,9 +147,8 @@ section{position:relative;padding:clamp(56px,14vw,96px) 22px}
 }
 .eyebrow .t-en{font-size:12px;font-weight:500;letter-spacing:.34em;text-indent:.34em;text-transform:uppercase}
 .eyebrow .t-ar{font-size:18px}
-.eyebrow.faded{color:var(--ink-soft)}
-.eyebrow.faded .t-en{font-size:10.5px}
-.eyebrow.faded .t-ar{font-size:15.5px}
+.eyebrow .t-en{font-size:13px}
+.eyebrow .t-ar{font-size:19px;font-weight:700}
 
 /* the greenery arch that frames the names */
 .arch-wrap{
@@ -178,22 +182,31 @@ html:not(.en) .names .t-en{display:none}
 .names .t-ar .and{font-style:normal;font-size:.4em}
 
 .hero-when{
-  margin:0;color:var(--ink-soft);
-  font-size:clamp(16px,4.4vw,18px);
+  margin:0;color:var(--ink);
+  font-size:clamp(17px,4.8vw,19px);font-weight:500;
 }
+html:not(.en) .hero-when{font-weight:700}
 .hero-when .t-en{font-style:italic;letter-spacing:.04em}
 
-/* wax seal — the single gold moment */
-.seal{width:clamp(76px,20vw,92px);height:auto;filter:drop-shadow(0 8px 16px rgba(63,74,60,.16))}
-.seal text{font-family:var(--serif);font-style:italic;font-weight:500}
+/* wax seal — the single gold moment; the monogram is live text (Arabic or Latin initials) */
+.seal{position:relative;display:block;width:clamp(80px,21vw,94px);aspect-ratio:1;filter:drop-shadow(0 8px 14px rgba(44,56,41,.22))}
+.seal svg{display:block;width:100%;height:100%}
+.mono{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:.12em;
+  color:var(--gold-lt);line-height:1;
+  font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(22px,6vw,26px);
+  text-shadow:0 1px 1px rgba(30,40,28,.45);
+}
+.mono i{font-size:.62em;font-style:normal;opacity:.9}
+html:not(.en) .mono{font-family:var(--arabic);font-style:normal;font-weight:700;font-size:clamp(25px,6.8vw,30px)}
 
 .scroll-cue{
   display:inline-flex;flex-direction:column;align-items:center;gap:6px;
   color:var(--euc);text-decoration:none;
   -webkit-tap-highlight-color:transparent;
 }
-.scroll-cue .t-en{font-size:10.5px;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase}
-.scroll-cue .t-ar{font-size:15px}
+.scroll-cue .t-en{font-size:12px;letter-spacing:.24em;text-indent:.24em;text-transform:uppercase}
+.scroll-cue .t-ar{font-size:17px;font-weight:700}
 .scroll-cue svg{width:14px;height:18px;animation:drip 2.6s ease-in-out infinite}
 @keyframes drip{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(5px);opacity:1}}
 
@@ -202,9 +215,8 @@ html:not(.en) .names .t-en{display:none}
 .stem-divider svg{width:min(58vw,220px);height:auto}
 
 /* ─────────  COUNTDOWN  ───────── */
-.count-sec{padding-top:clamp(30px,8vw,48px)}
+.count-sec{padding-top:clamp(32px,8vw,44px);padding-bottom:clamp(24px,6vw,32px)}
 .count-sec .inner{text-align:center}
-.count-title{margin:0 0 clamp(20px,6vw,30px)}
 .countdown{
   display:flex;justify-content:center;align-items:flex-start;
   gap:clamp(14px,4.6vw,26px);
@@ -221,32 +233,51 @@ html:not(.en) .names .t-en{display:none}
 }
 html:not(.en) .cd-num{font-family:var(--arabic)}
 .cd-lbl{display:block;margin-top:8px;color:var(--ink-soft)}
-.cd-lbl .t-en{font-size:10px;letter-spacing:.26em;text-indent:.26em;text-transform:uppercase}
-.cd-lbl .t-ar{font-size:14px}
+.cd-lbl .t-en{font-size:12px;letter-spacing:.18em;text-indent:.18em;text-transform:uppercase}
+.cd-lbl .t-ar{font-size:16px;font-weight:700}
 .cd-done{display:none;margin:0;font-size:clamp(18px,5vw,21px);color:var(--olive)}
 .cd-done .t-en{font-style:italic}
 .countdown-wrap.is-done .countdown{display:none}
 .countdown-wrap.is-done .cd-done{display:block}
 
-/* ─────────  DETAILS — asymmetric ledger  ───────── */
+/* ─────────  SHARED SECTION TITLE  ───────── */
+.sec-title{margin:0 0 clamp(16px,4.6vw,22px);text-align:center;color:var(--euc-deep);line-height:1.3}
+.sec-title .t-ar{font-size:clamp(25px,7vw,28px);font-weight:700;line-height:1.5}
+.sec-title .t-en{font-size:clamp(24px,6.6vw,27px);font-style:italic;font-weight:500}
+.sec-sub{display:block;margin-top:2px;color:var(--ink-soft);font-size:.62em;font-style:normal;font-weight:400}
+
+/* ─────────  DETAILS — a pressed-leaf card  ───────── */
+.details-card{
+  position:relative;
+  background:var(--leaf-card);
+  border:1px solid var(--hair);
+  border-radius:120px 120px 20px 20px;
+  padding:clamp(40px,11vw,52px) clamp(20px,6vw,28px) clamp(22px,6vw,28px);
+  box-shadow:0 22px 40px -26px rgba(44,56,41,.45);
+}
+.details-card::before{content:"";position:absolute;inset:7px;border:1px solid var(--hair-soft);border-radius:113px 113px 15px 15px;pointer-events:none}
+.card-sprig{position:absolute;top:-50px;inset-inline-end:-12px;width:108px;height:auto;pointer-events:none}
+html:not(.en) .card-sprig{transform:scaleX(-1)}
 .details{list-style:none;margin:0;padding:0;text-align:start}
-.details li{padding:clamp(20px,5.6vw,26px) 0}
-.details li:nth-child(2){margin-inline-start:clamp(24px,9vw,48px)}
-.details li:nth-child(3){margin-inline-start:clamp(10px,4vw,20px)}
-.details .lbl{display:block;color:var(--olive);margin-bottom:6px}
-.details .lbl .t-en{font-size:10.5px;font-weight:500;letter-spacing:.3em;text-transform:uppercase}
-.details .lbl .t-ar{font-size:15px;font-weight:700}
-.details .val{display:block;font-size:clamp(21px,6vw,25px);line-height:1.35;color:var(--ink)}
-.details .val small{display:block;font-size:.68em;color:var(--ink-soft);margin-top:3px}
-.details .val .t-ar small{font-size:.78em}
-.leaf-mark{display:inline-block;vertical-align:-2px;margin-inline-end:9px;line-height:0}
-.leaf-mark svg{width:17px;height:17px}
-.details .row-stem{margin-top:clamp(18px,5vw,24px);line-height:0;opacity:.85}
-.details .row-stem svg{width:min(46vw,180px);height:auto}
+.details li{display:grid;grid-template-columns:34px 1fr;gap:0 12px;align-items:start;padding:14px 0;border-top:1px solid var(--hair-soft)}
+.details li:first-child{border-top:0}
+.details .ico{grid-row:span 2;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(156,175,136,.2);color:var(--euc)}
+.details .ico svg{width:17px;height:17px}
+.details .lbl{display:block;color:var(--olive);line-height:1.3}
+.details .lbl .t-en{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.details .lbl .t-ar{font-size:16px;font-weight:700}
+.details .val{display:block;margin-top:2px;font-size:clamp(21px,5.8vw,24px);line-height:1.35;color:var(--ink)}
+html:not(.en) .details .val{font-weight:700}
+.details .val small{display:block;font-size:.7em;font-weight:400;color:var(--ink-soft);margin-top:1px}
+.details .val .t-ar small{font-size:.76em}
+.card-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.card-actions .btn{flex:1 1 130px;min-height:50px;padding:4px 16px}
+.card-actions .btn .t-en{font-size:12px;letter-spacing:.14em;text-indent:0}
+.card-actions .btn .t-ar{font-size:17px}
 
 /* ─────────  RSVP + ACTIONS  ───────── */
 .rsvp .inner{text-align:center}
-.rsvp-lead{margin:clamp(10px,3vw,14px) 0 clamp(24px,7vw,32px);color:var(--ink-soft);font-size:clamp(16px,4.5vw,18px)}
+.rsvp-lead{margin:0 0 clamp(20px,6vw,26px);color:var(--ink-soft);font-size:clamp(17px,4.6vw,19px)}
 .rsvp-lead .t-en{font-style:italic}
 .actions{display:flex;flex-direction:column;gap:12px;align-items:stretch}
 .btn{
@@ -267,35 +298,29 @@ html:not(.en) .cd-num{font-family:var(--arabic)}
 .btn.no:hover,.btn.no:active{background:rgba(232,196,184,.22);color:var(--ink)}
 .btn:hover{transform:translateY(-1px)}
 .btn:focus-visible{outline:1.5px solid var(--ink);outline-offset:4px}
-.util-links{
-  margin-top:clamp(22px,6vw,28px);
-  display:flex;justify-content:center;gap:clamp(20px,7vw,34px);flex-wrap:wrap;
-}
-.util-links a{
-  display:inline-flex;align-items:center;gap:7px;
-  color:var(--olive);text-decoration:none;
-  border-bottom:1px solid var(--hair);padding-bottom:3px;
-  transition:color .3s ease,border-color .3s ease;
-  -webkit-tap-highlight-color:transparent;
-}
-.util-links a:hover{color:var(--euc);border-color:var(--euc)}
-.util-links a:focus-visible{outline:1.5px solid var(--euc);outline-offset:3px}
-.util-links svg{width:15px;height:15px;flex:none}
-.util-links .t-en{font-size:12px;letter-spacing:.16em;text-transform:uppercase}
-.util-links .t-ar{font-size:15.5px}
+.share-line{margin-top:12px}
+.btn.share .t-en{font-size:12px;letter-spacing:.14em}
+.btn.share .t-ar{font-size:16px}
+.btn.share{min-height:48px;border-color:var(--hair);color:var(--euc)}
 
-/* ─────────  CLOSING  ───────── */
-.closing{padding-bottom:clamp(120px,32vw,180px)}   /* room for the bottom spray */
-.closing .inner{text-align:center}
+/* ─────────  VERSE  ───────── */
+.verse{padding-top:clamp(8px,3vw,16px);padding-bottom:clamp(28px,7vw,40px)}
+.verse .inner{text-align:center}
 .quote{
-  margin:0 0 clamp(22px,6vw,30px);
-  font-size:clamp(18px,5.2vw,21px);line-height:1.75;color:var(--ink-soft);
+  margin:0;
+  font-size:clamp(23px,6.4vw,27px);line-height:1.6;color:var(--ink);
+  text-wrap:balance;
 }
 .quote .t-en{font-style:italic}
-.farewell{margin:0;font-size:clamp(20px,5.8vw,24px);color:var(--ink)}
-.credit{margin:clamp(26px,7vw,34px) 0 0;color:var(--ink-soft);opacity:.75}
-.credit .t-en{font-size:10.5px;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase}
-.credit .t-ar{font-size:13.5px}
+html:not(.en) .quote{font-size:clamp(26px,7.2vw,30px);line-height:1.75}
+.verse .stem-divider{margin-top:clamp(14px,4vw,20px)}
+
+/* ─────────  CLOSING  ───────── */
+.closing{padding-top:clamp(36px,9vw,48px);padding-bottom:clamp(120px,32vw,170px)}   /* room for the bottom spray */
+.closing .inner{text-align:center}
+.farewell{margin:0;font-size:clamp(24px,6.8vw,28px);line-height:1.5;color:var(--euc-deep)}
+html.en .farewell{font-style:italic}
+.signoff{margin:8px 0 0;font-size:clamp(18px,5vw,20px);color:var(--ink-soft)}
 
 /* reveal on scroll */
 .rv{opacity:0;transform:translateY(14px);transition:opacity .9s cubic-bezier(.22,.7,.25,1),transform .9s cubic-bezier(.22,.7,.25,1)}
@@ -335,51 +360,60 @@ html:not(.en) .cd-num{font-family:var(--arabic)}
   transition:opacity .4s ease;
 }
 .intro-eyebrow{margin:0;color:var(--euc)}
-.intro-eyebrow .t-en{font-size:11px;font-weight:500;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase}
-.intro-eyebrow .t-ar{font-size:17px}
-.intro-names{margin:0;font-weight:400;font-size:clamp(42px,12vw,64px);line-height:1.3;color:var(--ink)}
-.intro-hint{
-  position:relative;margin:clamp(6px,2vw,12px) 0 0;
-  width:116px;height:116px;border-radius:50%;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
-  background:rgba(156,175,136,.55);
-  box-shadow:0 8px 18px rgba(63,74,60,.18);
-  color:var(--ink);
-  animation:sealPulse 2.6s ease-in-out infinite;
-}
-.intro-hint::before{content:"";position:absolute;inset:9px;border-radius:50%;border:1px dashed var(--gold);opacity:.85}
-.intro-hint .t-ar{font-size:15px;font-weight:700}
-.intro-hint .t-en{font-size:10px;letter-spacing:.16em;text-indent:.16em;text-transform:uppercase;font-style:italic}
+.intro-eyebrow .t-en{font-size:13px;font-weight:500;letter-spacing:.26em;text-indent:.26em;text-transform:uppercase}
+.intro-eyebrow .t-ar{font-size:20px;font-weight:700}
+.intro-names{margin:0;font-weight:400;font-size:clamp(46px,13vw,66px);line-height:1.3;color:var(--ink)}
+.intro-names .t-en{font-style:italic}
+.intro-seal{width:clamp(104px,28vw,120px);margin-top:clamp(4px,2vw,10px);animation:sealPulse 2.6s ease-in-out infinite}
+.intro-seal .mono{font-size:clamp(28px,7.6vw,32px)}
+html:not(.en) .intro-seal .mono{font-size:clamp(31px,8.4vw,36px)}
+.intro-tap{margin:0;color:var(--euc-deep);font-weight:700}
+.intro-tap .t-ar{font-size:18px}
+.intro-tap .t-en{font-size:13px;letter-spacing:.2em;text-indent:.2em;text-transform:uppercase}
 @keyframes sealPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
 .intro:focus-visible{outline:none}
-.intro:focus-visible .intro-hint{outline:1.5px solid var(--euc);outline-offset:4px}
+.intro:focus-visible .intro-seal{outline:2px solid var(--euc);outline-offset:5px;border-radius:50%}
 .intro.open{opacity:0;pointer-events:none}
 .intro.open .intro-core{opacity:0}
 .intro.open .il-l{transform:translateX(-75%) rotate(-6deg);opacity:0}
 .intro.open .il-r{transform:translateX(75%) rotate(6deg);opacity:0}
 
-/* ─────────  SHARED SECTION TITLE (v2 sections)  ───────── */
-.sec-title{margin:0 0 clamp(20px,6vw,30px);text-align:center}
-
 /* ─────────  AGENDA — STEM TIMELINE  ───────── */
 .agenda{
-  list-style:none;margin:0;padding:0;text-align:start;
-  border-inline-start:1px solid var(--hair);
+  list-style:none;margin:0 auto;padding:0;text-align:start;
+  max-width:340px;
+  border-inline-start:1.5px solid var(--hair);
   padding-inline-start:24px;
 }
-.ag-item{position:relative;padding:clamp(16px,4.5vw,22px) 0}
+.ag-item{position:relative;display:flex;align-items:baseline;gap:14px;padding:11px 0}
 .ag-item::before{
-  content:"";position:absolute;inset-inline-start:-29.5px;top:28px;
-  width:10px;height:10px;border-radius:0 60% 0 60%;
-  background:var(--sage);transform:rotate(45deg);opacity:.85;
+  content:"";position:absolute;inset-inline-start:-30.5px;top:22px;
+  width:11px;height:11px;border-radius:0 60% 0 60%;
+  background:var(--sage);transform:rotate(45deg);
 }
-.ag-time{display:block;font-family:var(--serif);font-size:clamp(19px,5.2vw,22px);color:var(--euc)}
-html:not(.en) .ag-time{font-family:var(--arabic)}
-.ag-what{display:block;margin-top:2px;color:var(--ink);font-size:clamp(16px,4.4vw,18px)}
+.ag-time{flex:none;min-width:84px;font-family:var(--serif);font-size:clamp(18px,5vw,20px);font-weight:500;color:var(--euc)}
+html:not(.en) .ag-time{font-family:var(--arabic);font-weight:700;min-width:92px}
+.ag-what{flex:1 1 auto;color:var(--ink);font-size:clamp(17px,4.6vw,19px);line-height:1.45}
 
-/* ─────────  NOTE LINES (dress / gift)  ───────── */
-.note-line{margin:0;text-align:center;color:var(--ink-soft);font-size:clamp(17px,4.8vw,19px);line-height:1.8}
+/* ─────────  NOTES — dress code, gallery, gift  ───────── */
+.notes-wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:stretch}
+.note-card{
+  flex:1 1 150px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;
+  background:var(--leaf-card);
+  border:1px solid var(--hair);border-radius:22px;
+  padding:20px 16px 18px;
+}
+.note-card .ico{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(232,196,184,.32);color:var(--euc)}
+.note-card .ico svg{width:19px;height:19px}
+.note-title{margin:4px 0 0;color:var(--euc-deep);font-weight:700;line-height:1.3}
+.note-title .t-ar{font-size:20px}
+.note-title .t-en{font-size:19px;font-style:italic;font-weight:500}
+.note-line{margin:0;color:var(--ink-soft);font-size:clamp(16px,4.4vw,18px);line-height:1.6;text-wrap:balance}
+html:not(.en) .note-line{line-height:1.75}
 .note-line .t-en{font-style:italic}
+.gallery-block{flex:1 1 100%;padding:10px 0 6px}
+.gallery-block .note-title{text-align:center;margin-bottom:14px}
 
 /* ─────────  GALLERY — ARCH FRAMES  ───────── */
 .gallery{display:flex;gap:clamp(10px,3vw,16px);justify-content:center;align-items:stretch}
@@ -400,8 +434,8 @@ html:not(.en) .ag-time{font-family:var(--arabic)}
 /* ─────────  GUEST COUNT CHIPS  ───────── */
 .guests{margin:0 0 clamp(24px,7vw,32px)}
 .guests-lbl{display:block;margin-bottom:10px;color:var(--olive)}
-.guests-lbl .t-en{font-size:10.5px;font-weight:500;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase}
-.guests-lbl .t-ar{font-size:15px;font-weight:700}
+.guests-lbl .t-en{font-size:12px;font-weight:600;letter-spacing:.2em;text-indent:.2em;text-transform:uppercase}
+.guests-lbl .t-ar{font-size:17px;font-weight:700}
 .guest-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .chip{
   min-width:46px;min-height:46px;padding:0 14px;
@@ -464,7 +498,7 @@ html.en .pb-line{font-weight:500}
   .spray-top svg,.spray-bottom svg,.scroll-cue svg{animation:none !important}
   .hero-photo{animation:none !important}
   .rv{opacity:1;transform:none;transition:none}
-  .intro-hint{animation:none !important}
+  .intro-seal{animation:none !important}
   .intro,.intro-leaf,.intro-core{transition:none}
   .intro{transition:opacity .25s ease}
   .intro.open{opacity:0}
@@ -494,12 +528,20 @@ html.en .pb-line{font-weight:500}
       <use href="#blob" fill="#FAF8F2" opacity=".3" transform="rotate(78) scale(.4)"/>
       <circle r="2.6" fill="#7A8450" opacity=".55"/>
     </g>
+    <!-- sage wax seal; the monogram is set in HTML on top -->
+    <symbol id="sealArt" viewBox="0 0 96 96">
+      <path d="M48 7 C68.5 5.5 86.5 21 88.8 43.5 C91 66 74.5 86.5 50.5 88.8 C27.5 91 8.4 74.5 7.4 49.5 C6.5 27 26.5 8.5 48 7 Z" fill="#93A880"/>
+      <path d="M49 11 C66.5 10 82.5 23.5 84.6 43.8 C86.8 64.5 72 82.5 51 84.6 C30.5 86.5 12.6 72 11.6 50 C10.7 29.5 29 12.2 49 11 Z" fill="#5F7161"/>
+      <path d="M52 16 C66 16.5 78.5 27.5 80.2 44.5 C82 61.5 69.5 77 51.5 78.6 C34 80 19.4 67.5 18.4 49.5 C17.5 32 36 15.5 52 16 Z" fill="#4A5D4D" opacity=".55"/>
+      <circle cx="48" cy="48" r="30.5" fill="none" stroke="#D9C38E" stroke-width="1.1" stroke-dasharray="2.5 4.5" opacity=".9"/>
+      <ellipse cx="34" cy="26" rx="12" ry="5" fill="#fff" opacity=".14" transform="rotate(-30 34 26)"/>
+    </symbol>
   </defs>
 </svg>
 
 <!-- ═════  INTRO — TAP TO OPEN (unhidden only via script; intro=0 skips)  ═════ -->
 <div class="intro" id="intro" hidden role="button" tabindex="0"
-     aria-label="افتحوا الدعوة — دوسوا للفتح / Open the invitation — tap to open">
+     aria-label="دوسوا لفتح الدعوة / Tap to open the invitation">
   <div class="intro-leaf il-l" aria-hidden="true">
     <svg viewBox="0 0 200 700" preserveAspectRatio="xMinYMid slice" xmlns="http://www.w3.org/2000/svg">
       <path d="M40 -20 C80 120 60 300 90 460 C104 540 92 640 60 720" fill="none" stroke="#5F7161" stroke-width="2" stroke-linecap="round" opacity=".5"/>
@@ -544,10 +586,14 @@ html.en .pb-line{font-weight:500}
       <span class="t-ar" id="introNamesAr">عمر وسلمى</span>
       <span class="t-en" id="introNamesEn">Omar &amp; Salma</span>
     </p>
-    <span class="intro-hint" aria-hidden="true">
-      <span class="t-ar">دوسوا للفتح</span>
-      <span class="t-en">Tap to open</span>
+    <span class="seal intro-seal" aria-hidden="true">
+      <svg viewBox="0 0 96 96" focusable="false"><use href="#sealArt"/></svg>
+      <span class="mono"><span class="t-ar" data-mono="ar">ع<i>و</i>س</span><span class="t-en" data-mono="en">O<i>&amp;</i>S</span></span>
     </span>
+    <p class="intro-tap">
+      <span class="t-ar">دوسوا على الختم لفتح الدعوة</span>
+      <span class="t-en">Tap the seal to open</span>
+    </p>
   </div>
 </div>
 
@@ -643,18 +689,15 @@ html.en .pb-line{font-weight:500}
     </div>
 
     <p class="hero-when rv d3" id="heroWhen">
-      <span class="t-ar" id="heroWhenAr">السبت ٢٢ أغسطس ٢٠٢٦ · ٦:٠٠ مساءً</span>
-      <span class="t-en" id="heroWhenEn">Saturday, 22 August 2026 · 6:00 PM</span>
+      <span class="t-ar" id="heroWhenAr">السبت ٢٢ أغسطس ٢٠٢٦، الساعة&nbsp;٦:٠٠&nbsp;مساءً</span>
+      <span class="t-en" id="heroWhenEn">Saturday, 22 August 2026 at&nbsp;6:00&nbsp;PM</span>
     </p>
 
     <!-- wax seal — sage wax, gold monogram: the page's only gold -->
-    <svg class="seal rv d3" viewBox="0 0 96 96" role="img" aria-label="Monogram">
-      <path d="M48 7 C68.5 5.5 86.5 21 88.8 43.5 C91 66 74.5 86.5 50.5 88.8 C27.5 91 8.4 74.5 7.4 49.5 C6.5 27 26.5 8.5 48 7 Z" fill="#9CAF88" opacity=".5"/>
-      <path d="M49 11 C66.5 10 82.5 23.5 84.6 43.8 C86.8 64.5 72 82.5 51 84.6 C30.5 86.5 12.6 72 11.6 50 C10.7 29.5 29 12.2 49 11 Z" fill="#9CAF88" opacity=".72"/>
-      <path d="M52 16 C66 16.5 78.5 27.5 80.2 44.5 C82 61.5 69.5 77 51.5 78.6 C34 80 19.4 67.5 18.4 49.5 C17.5 32 36 15.5 52 16 Z" fill="#7A8450" opacity=".3"/>
-      <circle cx="48" cy="48" r="30.5" fill="none" stroke="#B79A5B" stroke-width="1" stroke-dasharray="2.5 4.5" opacity=".8"/>
-      <text id="sealMono" x="48" y="57" text-anchor="middle" font-size="25" fill="#B79A5B">O·S</text>
-    </svg>
+    <span class="seal rv d3" aria-hidden="true">
+      <svg viewBox="0 0 96 96" focusable="false"><use href="#sealArt"/></svg>
+      <span class="mono"><span class="t-ar" data-mono="ar">ع<i>و</i>س</span><span class="t-en" data-mono="en">O<i>&amp;</i>S</span></span>
+    </span>
 
     <a class="scroll-cue rv d3" href="#invite">
       <span class="t-ar">التفاصيل</span>
@@ -667,10 +710,10 @@ html.en .pb-line{font-weight:500}
 <!-- ═════  COUNTDOWN  ═════ -->
 <section class="count-sec" id="invite" aria-labelledby="count-title">
   <div class="inner">
-    <p class="eyebrow faded count-title rv" id="count-title">
+    <h2 class="sec-title rv" id="count-title">
       <span class="t-ar">حتى يزهر يومنا</span>
       <span class="t-en">Until our day blooms</span>
-    </p>
+    </h2>
     <div class="countdown-wrap rv d2" id="cdWrap">
       <div class="countdown" role="timer" aria-live="off">
         <div class="cd-cell"><span class="cd-num" id="cdD">–</span><span class="cd-lbl"><span class="t-ar">يوم</span><span class="t-en">Days</span></span></div>
@@ -679,74 +722,39 @@ html.en .pb-line{font-weight:500}
         <div class="cd-cell"><span class="cd-num" id="cdS">–</span><span class="cd-lbl"><span class="t-ar">ثانية</span><span class="t-en">Sec</span></span></div>
       </div>
       <p class="cd-done">
-        <span class="t-ar">اليوم يومنا — نلقاكم بين الورود</span>
-        <span class="t-en">Today is the day — meet us in the garden</span>
+        <span class="t-ar">النهارده يومنا، نشوفكم بين الورد</span>
+        <span class="t-en">Today is the day. Meet us in the garden.</span>
       </p>
     </div>
   </div>
 </section>
 
-<div class="stem-divider" aria-hidden="true">
-  <svg viewBox="0 0 220 30" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 17 C48 14.5 96 18 150 15.5 C176 14.4 196 15.4 212 15" fill="none" stroke="#5F7161" stroke-width="1.3" stroke-linecap="round" opacity=".55"/>
-    <use href="#lf2" transform="translate(56 15) rotate(-158) scale(.52)" fill="#9CAF88" opacity=".6"/>
-    <use href="#lf2" transform="translate(96 17) rotate(16) scale(.46)" fill="#7A8450" opacity=".5"/>
-    <use href="#lf2" transform="translate(138 14) rotate(-168) scale(.5)" fill="#9CAF88" opacity=".55"/>
-    <circle cx="176" cy="15.4" r="2.2" fill="#E8C4B8" opacity=".85"/>
-  </svg>
-</div>
-
-<!-- ═════  DETAILS  ═════ -->
-<section aria-label="Details · التفاصيل">
+<!-- ═════  VERSE  ═════ -->
+<section class="verse" aria-label="كلمة منا / A few words from us">
   <div class="inner">
-    <ul class="details">
-      <li class="rv">
-        <span class="lbl">
-          <span class="leaf-mark" aria-hidden="true"><svg viewBox="0 0 17 17"><path d="M2.5 14.5 C3.5 8.5 6.5 4.5 14 2.5 C12.5 9.5 9 13 2.5 14.5 Z" fill="#9CAF88" opacity=".8"/></svg></span>
-          <span class="t-ar">التاريخ</span><span class="t-en">The date</span>
-        </span>
-        <span class="val">
-          <span class="t-ar" id="dAr">٢٢ أغسطس ٢٠٢٦<small>يوم السبت</small></span>
-          <span class="t-en" id="dEn">22 August 2026<small>Saturday</small></span>
-        </span>
-        <div class="row-stem" aria-hidden="true">
-          <svg viewBox="0 0 180 22"><path d="M4 12 C40 10 90 13.5 176 11" fill="none" stroke="#9CAF88" stroke-width="1.1" stroke-linecap="round" opacity=".55"/><use href="#lf2" transform="translate(120 11.6) rotate(14) scale(.4)" fill="#9CAF88" opacity=".55"/></svg>
-        </div>
-      </li>
-      <li class="rv">
-        <span class="lbl">
-          <span class="leaf-mark" aria-hidden="true"><svg viewBox="0 0 17 17"><path d="M2.5 14.5 C3.5 8.5 6.5 4.5 14 2.5 C12.5 9.5 9 13 2.5 14.5 Z" fill="#7A8450" opacity=".75"/></svg></span>
-          <span class="t-ar">الوقت</span><span class="t-en">The hour</span>
-        </span>
-        <span class="val">
-          <span class="t-ar" id="tAr">٦:٠٠ مساءً<small>مع غروب الشمس في الحديقة</small></span>
-          <span class="t-en" id="tEn">6:00 PM<small>As the garden turns golden</small></span>
-        </span>
-        <div class="row-stem" aria-hidden="true">
-          <svg viewBox="0 0 180 22"><path d="M4 11 C56 13 110 9.5 176 12" fill="none" stroke="#9CAF88" stroke-width="1.1" stroke-linecap="round" opacity=".55"/><use href="#lf2" transform="translate(52 11.5) rotate(-166) scale(.4)" fill="#7A8450" opacity=".5"/></svg>
-        </div>
-      </li>
-      <li class="rv">
-        <span class="lbl">
-          <span class="leaf-mark" aria-hidden="true"><svg viewBox="0 0 17 17"><path d="M2.5 14.5 C3.5 8.5 6.5 4.5 14 2.5 C12.5 9.5 9 13 2.5 14.5 Z" fill="#E8C4B8" opacity=".9"/></svg></span>
-          <span class="t-ar">المكان</span><span class="t-en">The garden</span>
-        </span>
-        <span class="val">
-          <span class="t-ar" id="vAr">قاعة الحديقة<small>الجيزة</small></span>
-          <span class="t-en" id="vEn">The Garden Hall<small>Giza</small></span>
-        </span>
-      </li>
-    </ul>
+<div class="stem-divider" aria-hidden="true">
+      <svg viewBox="0 0 220 30" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 17 C48 14.5 96 18 150 15.5 C176 14.4 196 15.4 212 15" fill="none" stroke="#5F7161" stroke-width="1.3" stroke-linecap="round" opacity=".55"/>
+        <use href="#lf2" transform="translate(56 15) rotate(-158) scale(.52)" fill="#9CAF88" opacity=".6"/>
+        <use href="#lf2" transform="translate(96 17) rotate(16) scale(.46)" fill="#7A8450" opacity=".5"/>
+        <use href="#lf2" transform="translate(138 14) rotate(-168) scale(.5)" fill="#9CAF88" opacity=".55"/>
+        <circle cx="176" cy="15.4" r="2.2" fill="#E8C4B8" opacity=".85"/>
+      </svg>
+    </div>
+    <p class="quote rv" id="quoteEl">
+      <span class="t-ar" id="qAr">«وفي حديقة أيّامنا، أزهر الحبّ»</span>
+      <span class="t-en" id="qEn">“And in the garden of our days, love bloomed.”</span>
+    </p>
   </div>
 </section>
 
 <!-- ═════  AGENDA  ═════ -->
 <section id="agenda" aria-labelledby="agenda-title">
   <div class="inner">
-    <p class="eyebrow faded sec-title rv" id="agenda-title">
+    <h2 class="sec-title rv" id="agenda-title">
       <span class="t-ar">برنامج اليوم</span>
       <span class="t-en">How the day blooms</span>
-    </p>
+    </h2>
     <ol class="agenda rv d2" id="agList">
       <li class="ag-item">
         <span class="ag-time"><span class="t-ar">٦:٠٠ مساءً</span><span class="t-en">6:00 PM</span></span>
@@ -768,28 +776,79 @@ html.en .pb-line{font-weight:500}
   </div>
 </section>
 
-<!-- ═════  DRESS CODE  ═════ -->
-<section id="dress" aria-labelledby="dress-title">
+<!-- ═════  DATE · TIME · VENUE  ═════ -->
+<section id="details" aria-labelledby="details-title">
   <div class="inner">
-    <p class="eyebrow faded sec-title rv" id="dress-title">
-      <span class="t-ar">ملابس الحضور</span>
-      <span class="t-en">Dress code</span>
-    </p>
-    <p class="note-line rv d2">
-      <span class="t-ar" id="dressAr">درجات ترابية وباستيل ناعم — أناقة تليق بالحديقة</span>
-      <span class="t-en" id="dressEn">Earth tones and soft pastels — garden-party elegance</span>
-    </p>
+    <div class="details-card rv" data-shot="details">
+      <svg class="card-sprig" viewBox="0 0 120 90" aria-hidden="true" focusable="false">
+        <path d="M6 84 C30 70 60 48 104 14" fill="none" stroke="#5F7161" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>
+        <use href="#lf"  transform="translate(30 66) rotate(-140) scale(.9)" fill="#9CAF88" opacity=".7"/>
+        <use href="#lf2" transform="translate(50 52) rotate(20) scale(.9)" fill="#7A8450" opacity=".55"/>
+        <use href="#lf"  transform="translate(74 34) rotate(-150) scale(.8)" fill="#9CAF88" opacity=".65"/>
+        <use href="#bloom" transform="translate(98 20) scale(1.15)"/>
+        <use href="#bloom" transform="translate(60 48) scale(.62) rotate(40)"/>
+      </svg>
+      <h2 class="sec-title" id="details-title">
+        <span class="t-ar">موعدنا</span>
+        <span class="t-en">When and where</span>
+      </h2>
+      <ul class="details">
+        <li>
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span>
+          <span class="lbl"><span class="t-ar">التاريخ</span><span class="t-en">The date</span></span>
+          <span class="val">
+            <span class="t-ar" id="dAr">٢٢ أغسطس ٢٠٢٦<small>يوم السبت</small></span>
+            <span class="t-en" id="dEn">22 August 2026<small>Saturday</small></span>
+          </span>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+          <span class="lbl"><span class="t-ar">الوقت</span><span class="t-en">The hour</span></span>
+          <span class="val">
+            <span class="t-ar" id="tAr">٦:٠٠ مساءً<small>مع غروب الشمس في الحديقة</small></span>
+            <span class="t-en" id="tEn">6:00 PM<small>As the garden turns golden</small></span>
+          </span>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-7.2-7-12a7 7 0 1 1 14 0c0 4.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+          <span class="lbl"><span class="t-ar">المكان</span><span class="t-en">The garden</span></span>
+          <span class="val">
+            <span class="t-ar" id="vAr">قاعة الحديقة<small>الجيزة</small></span>
+            <span class="t-en" id="vEn">The Garden Hall<small>Giza</small></span>
+          </span>
+        </li>
+      </ul>
+      <div class="card-actions">
+        <a class="btn" id="mapBtn" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=The+Garden+Hall%2C+Giza">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-7.2-7-12a7 7 0 1 1 14 0c0 4.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span class="t-ar">افتحوا الخريطة</span>
+          <span class="t-en">Map</span>
+        </a>
+        <a class="btn" id="calBtn" target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Omar%20%26%20Salma%27s%20wedding&amp;dates=20260822T180000/20260822T230000&amp;ctz=Africa/Cairo&amp;location=The%20Garden%20Hall%2C%20Giza&amp;details=And%20in%20the%20garden%20of%20our%20days%2C%20love%20bloomed.">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+          <span class="t-ar">أضيفوه للتقويم</span>
+          <span class="t-en">Calendar</span>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ═════  GALLERY  ═════ -->
-<section id="gallery" aria-labelledby="gallery-title" style="display:none">
-  <div class="inner">
-    <p class="eyebrow faded sec-title rv" id="gallery-title">
-      <span class="t-ar">لحظاتنا</span>
-      <span class="t-en">Our moments</span>
-    </p>
-    <div class="gallery rv d2">
+<!-- ═════  DRESS CODE · GALLERY · GIFT  ═════ -->
+<section class="notes" aria-label="ملاحظات / Notes">
+  <div class="inner notes-wrap">
+    <div class="note-card rv" id="dress">
+      <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6.2a2 2 0 1 1 2.6 1.9c-.4.1-.6.5-.6.9v1L3.6 15.6a1.4 1.4 0 0 0 .8 2.6h15.2a1.4 1.4 0 0 0 .8-2.6L12 10"/></svg></span>
+      <h2 class="note-title" id="dress-title"><span class="t-ar">ملابس الحضور</span><span class="t-en">Dress code</span></h2>
+      <p class="note-line">
+        <span class="t-ar" id="dressAr">درجات ترابية وباستيل ناعم، أناقة تليق بالحديقة</span>
+        <span class="t-en" id="dressEn">Earth tones and soft pastels. Garden-party elegance.</span>
+      </p>
+    </div>
+
+    <div class="gallery-block" id="gallery" style="display:none">
+      <h2 class="note-title" id="gallery-title"><span class="t-ar">لحظاتنا</span><span class="t-en">Our moments</span></h2>
+    <div class="gallery">
       <figure class="gframe">
         <svg class="gph" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M5 29 C7 17 13 8 29 4 C26 18 19 25 5 29 Z" fill="#9CAF88" opacity=".8"/>
@@ -809,20 +868,16 @@ html.en .pb-line{font-weight:500}
         <img id="ph3" alt="" loading="lazy" hidden>
       </figure>
     </div>
-  </div>
-</section>
+    </div>
 
-<!-- ═════  GIFT NOTE  ═════ -->
-<section id="gift" aria-labelledby="gift-title">
-  <div class="inner">
-    <p class="eyebrow faded sec-title rv" id="gift-title">
-      <span class="t-ar">الهدايا</span>
-      <span class="t-en">Gifts</span>
-    </p>
-    <p class="note-line rv d2">
-      <span class="t-ar" id="giftAr">حضوركم ودعواتكم أغلى هدية</span>
-      <span class="t-en" id="giftEn">Your presence is the greatest gift</span>
-    </p>
+    <div class="note-card rv d2" id="gift">
+      <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="10.5" rx="1.5"/><path d="M3 10h18M12 10v10.5M12 10C10.5 6.5 6.5 5.6 6.5 8c0 1.5 2.6 2 5.5 2zm0 0c1.5-3.5 5.5-4.4 5.5-2 0 1.5-2.6 2-5.5 2z"/></svg></span>
+      <h2 class="note-title" id="gift-title"><span class="t-ar">الهدايا</span><span class="t-en">Gifts</span></h2>
+      <p class="note-line">
+        <span class="t-ar" id="giftAr">حضوركم ودعواتكم أغلى هدية</span>
+        <span class="t-en" id="giftEn">Your presence is the greatest gift.</span>
+      </p>
+    </div>
   </div>
 </section>
 
@@ -845,14 +900,14 @@ html.en .pb-line{font-weight:500}
 
 <!-- ═════  RSVP  ═════ -->
 <section class="rsvp" aria-labelledby="rsvp-title">
-  <div class="inner">
-    <p class="eyebrow faded rv" id="rsvp-title">
+  <div class="inner" data-shot="rsvp">
+    <h2 class="sec-title rv" id="rsvp-title">
       <span class="t-ar">شاركونا الفرح</span>
       <span class="t-en">Kindly respond</span>
-    </p>
+    </h2>
     <p class="rsvp-lead rv">
-      <span class="t-ar">حضوركم أجمل هدية — أخبرونا عبر واتساب</span>
-      <span class="t-en">Your presence is the sweetest gift — let us know on WhatsApp</span>
+      <span class="t-ar">وجودكم يكمّل فرحتنا. ردّوا علينا على واتساب</span>
+      <span class="t-en">Your being there completes our day. Let us know on WhatsApp.</span>
     </p>
 
     <div class="guests rv d2" role="group" aria-label="عدد الحضور / Number of guests">
@@ -877,16 +932,11 @@ html.en .pb-line{font-weight:500}
       </a>
     </div>
 
-    <div class="util-links rv d3">
-      <a id="mapBtn" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=The+Garden+Hall%2C+Giza">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-7.2-7-12a7 7 0 1 1 14 0c0 4.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-        <span class="t-ar">الموقع على الخريطة</span>
-        <span class="t-en">Map</span>
-      </a>
-      <a id="calBtn" target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Wedding%20%E2%80%94%20Omar%20%26%20Salma&amp;dates=20260822T180000/20260822T230000&amp;ctz=Africa/Cairo&amp;location=The%20Garden%20Hall%2C%20Giza&amp;details=And%20in%20the%20garden%20of%20our%20days%2C%20love%20bloomed.">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
-        <span class="t-ar">أضف إلى التقويم</span>
-        <span class="t-en">Calendar</span>
+    <div class="share-line rv d3">
+      <a class="btn share" id="shareBtn" target="_blank" rel="noopener noreferrer" href="https://wa.me/">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.94.56 3.75 1.5 5.29L2 22l4.96-1.6a9.9 9.9 0 0 0 5.08 1.4h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.07c-.25.7-1.45 1.34-2 1.43-.5.08-1.13.11-1.83-.12-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.37-.15-.2-1.18-1.57-1.18-3 0-1.42.74-2.12 1-2.41.25-.28.55-.35.74-.35h.53c.17 0 .4-.03.62.48.25.58.84 2.02.91 2.17.07.15.12.32.02.51-.09.2-.16.32-.31.49-.15.17-.32.38-.45.51-.15.15-.3.31-.13.6.18.3.8 1.32 1.71 2.13 1.18 1.05 2.17 1.38 2.5 1.53.25.12.55.1.74-.11.25-.28.55-.74.86-1.2.22-.32.49-.36.82-.24.34.12 2.15 1.01 2.51 1.2.37.18.61.27.7.43.1.16.1.9-.15 1.6z"/></svg>
+        <span class="t-ar">شاركوا الدعوة</span>
+        <span class="t-en">Share the invitation</span>
       </a>
     </div>
   </div>
@@ -920,17 +970,13 @@ html.en .pb-line{font-weight:500}
   </div>
 
   <div class="inner">
-    <p class="quote rv" id="quoteEl">
-      <span class="t-ar" id="qAr">«وفي حديقة أيّامنا، أزهر الحبّ»</span>
-      <span class="t-en" id="qEn">“And in the garden of our days, love bloomed.”</span>
-    </p>
-    <p class="farewell rv d2">
+    <p class="farewell rv">
       <span class="t-ar">ننتظركم بفارغ الصبر</span>
       <span class="t-en">We can’t wait to celebrate with you</span>
     </p>
-    <p class="credit rv d3" aria-hidden="true">
-      <span class="t-ar">دعوة · D3wa</span>
-      <span class="t-en">D3wa · Digital invitations</span>
+    <p class="signoff rv d2">
+      <span class="t-ar" id="signAr">عمر وسلمى</span>
+      <span class="t-en" id="signEn">Omar &amp; Salma</span>
     </p>
   </div>
 </section>
@@ -1021,15 +1067,27 @@ html.en .pb-line{font-weight:500}
     if (pNamesEn) {
       namesEn = pNamesEn;
       buildStack($("#namesEn"), pNamesEn, /^(.+?)\s*(?:&|\band\b)\s*(.+)$/i, "&", "and");
-      var seal = $("#sealMono");
-      if (seal) {
-        var em = pNamesEn.match(/^(.+?)\s*(?:&|\band\b)\s*(.+)$/i);
-        seal.textContent = em
-          ? (em[1].trim().charAt(0) + "·" + em[2].trim().charAt(0)).toUpperCase()
-          : pNamesEn.trim().charAt(0).toUpperCase();
-      }
     }
-    if (pNamesAr || pNamesEn) document.title = namesAr + " — حفل زفاف | " + namesEn;
+    /* seal monograms: Arabic initials in Arabic, Latin initials in English.
+       ZWNJ keeps the Arabic letters in their isolated forms. */
+    var paintMono = function (node, whole, isAr) {
+      var m = isAr ? whole.match(/^(.+?)\s+و\s*(.+)$/) : whole.match(/^(.+?)\s*(?:&|\band\b)\s*(.+)$/i);
+      var z = isAr ? "‌" : "";
+      var first = function (x) { x = String(x).trim(); return isAr ? x.charAt(0) : x.charAt(0).toUpperCase(); };
+      node.textContent = "";
+      node.appendChild(document.createTextNode(first(m ? m[1] : whole) + z));
+      if (m) {
+        var amp = document.createElement("i");
+        amp.textContent = z + (isAr ? "و" : "&") + z;
+        node.appendChild(amp);
+        node.appendChild(document.createTextNode(z + first(m[2])));
+      }
+    };
+    Array.prototype.forEach.call(document.querySelectorAll('[data-mono="ar"]'), function (n) { paintMono(n, namesAr, true); });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-mono="en"]'), function (n) { paintMono(n, namesEn, false); });
+    if ($("#signAr")) $("#signAr").textContent = namesAr;
+    if ($("#signEn")) $("#signEn").textContent = namesEn;
+    if (pNamesAr || pNamesEn) document.title = namesAr + "، حفل زفاف | " + namesEn;
 
     /* date — Intl-formatted in both languages, incl. weekday */
     if (pDateOk) {
@@ -1056,11 +1114,11 @@ html.en .pb-line{font-weight:500}
       setVal($("#tAr"), timeAr, "");
     }
 
-    /* hero date · time line */
+    /* hero date + time line (time kept on one line) */
     if (pDateOk || tMatch) {
       var hAr = $("#heroWhenAr"), hEn = $("#heroWhenEn");
-      if (hAr) hAr.textContent = dateFullAr + " · " + timeAr;
-      if (hEn) hEn.textContent = dateFullEn + " · " + timeEn;
+      if (hAr) hAr.textContent = dateFullAr + "، الساعة " + timeAr.replace(" ", " ");
+      if (hEn) hEn.textContent = dateFullEn + " at " + timeEn.replace(" ", " ");
     }
 
     /* venue */
@@ -1075,11 +1133,10 @@ html.en .pb-line{font-weight:500}
       setVal($("#vEn"), vpe[0], vpe[1]);
     }
 
-    /* maps link */
-    if (pMap && /^https:\/\//.test(pMap)) {
-      var mapBtn = $("#mapBtn");
-      if (mapBtn) mapBtn.href = pMap;
-    }
+    /* maps link: the order's link, else a search for the venue they typed */
+    var mapBtn = $("#mapBtn");
+    if (mapBtn && pMap && /^https:\/\//.test(pMap)) mapBtn.href = pMap;
+    else if (mapBtn && (pVenEn || pVenAr)) mapBtn.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(pVenEn || pVenAr);
 
     /* quote */
     if (pQuote) {
@@ -1099,10 +1156,10 @@ html.en .pb-line{font-weight:500}
           return dt.getFullYear() + p(dt.getMonth() + 1) + p(dt.getDate()) + "T" + p(dt.getHours()) + p(dt.getMinutes()) + "00";
         };
         calBtn.href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
-          + "&text=" + encodeURIComponent("Wedding — " + namesEn)
+          + "&text=" + encodeURIComponent(namesEn + "'s wedding")
           + "&dates=" + cal(startDt) + "/" + cal(endDt)
           + "&ctz=Africa/Cairo"
-          + "&location=" + encodeURIComponent(venueEn)
+          + "&location=" + encodeURIComponent(pVenEn || pVenAr || venueEn)
           + "&details=" + encodeURIComponent(pQuote || "And in the garden of our days, love bloomed.");
       }
     }
@@ -1133,8 +1190,16 @@ html.en .pb-line{font-weight:500}
         rows.forEach(function (p) {
           var li = document.createElement("li"); li.className = "ag-item";
           var tm = document.createElement("span"); tm.className = "ag-time";
-          tm.appendChild(mkSpan("t-ar", arDigits(p[0].trim())));
-          tm.appendChild(mkSpan("t-en", p[0].trim()));
+          /* 24h "HH:MM" reads as 12h per language; anything else shows as typed */
+          var raw = p[0].trim(), tEn = raw, tAr = arDigits(raw);
+          var hm = raw.match(/^(\d{1,2}):(\d{2})$/);
+          if (hm && +hm[1] < 24 && +hm[2] < 60) {
+            var h = +hm[1], h12 = h % 12 || 12;
+            tEn = h12 + ":" + hm[2] + " " + (h < 12 ? "AM" : "PM");
+            tAr = arDigits(h12 + ":" + hm[2]) + " " + (h < 12 ? "صباحاً" : "مساءً");
+          }
+          tm.appendChild(mkSpan("t-ar", tAr));
+          tm.appendChild(mkSpan("t-en", tEn));
           var wh = document.createElement("span"); wh.className = "ag-what";
           wh.appendChild(mkSpan("t-ar", p[1].trim()));
           wh.appendChild(mkSpan("t-en", (p[2] || p[1]).trim()));
@@ -1147,7 +1212,7 @@ html.en .pb-line{font-weight:500}
     else if (pDress) setPair("dressAr", "dressEn", pDress);
     if (pGift === "0") hideSec("gift");
     else if (pGift) setPair("giftAr", "giftEn", pGift);
-    if ((pPhotos && pPhotos !== "0") || qp("ph1")) document.getElementById("gallery").style.display = "";
+    if ((pPhotos && pPhotos !== "0") || qp("ph1") || qp("ph2") || qp("ph3")) document.getElementById("gallery").style.display = "";
     if (pPhotos === "0") hideSec("gallery");
     for (var gi = 1; gi <= 3; gi++) {
       var pu = qp("ph" + gi);
@@ -1210,16 +1275,22 @@ html.en .pb-line{font-weight:500}
   /* ── WhatsApp accept / decline links — language-aware, URL-encoded ── */
   var yesBtn = document.getElementById("rsvpYes");
   var noBtn = document.getElementById("rsvpNo");
+  var shareBtn = document.getElementById("shareBtn");
   function updateLinks () {
     var accept = isEn
-      ? "Hello! We joyfully confirm our attendance at the wedding of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueEn + ""
-      : "مرحباً! يسعدنا تأكيد حضورنا حفل زفاف " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueAr;
-    accept += isEn ? " — Guests: " + guestN : " — عدد الحضور: " + arDigits(guestN);
+      ? "Hello! We joyfully confirm our attendance at the wedding of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueEn + "."
+      : "مرحباً! يسعدنا تأكيد حضورنا حفل زفاف " + namesAr + "، يوم " + dateFullAr + " الساعة " + timeAr + "، في " + venueAr + ".";
+    accept += isEn ? " Guests: " + guestN : " عدد الحضور: " + arDigits(guestN);
     var decline = isEn
-      ? "Hello! We're so sorry we won't be able to attend the wedding of " + namesEn + " on " + dateFullEn + ". Wishing you a lifetime of love and joy"
+      ? "Hello! We're so sorry we won't be able to attend the wedding of " + namesEn + " on " + dateFullEn + ". Wishing you a lifetime of love and joy."
       : "مرحباً! نعتذر بشدة عن عدم تمكننا من حضور حفل زفاف " + namesAr + " يوم " + dateFullAr + "، مع أطيب التمنيات بحياة مليئة بالحب والسعادة";
+    var url = location.protocol === "file:" ? "https://khalidsharafel-din.github.io/d3wa/demos/garden.html" : location.href.split("#")[0];
+    var share = isEn
+      ? "You're invited to the wedding of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueEn + ". Open the invitation: " + url
+      : "أنتم معزومين على فرح " + namesAr + "، يوم " + dateFullAr + " الساعة " + timeAr + "، في " + venueAr + ". افتحوا الدعوة من هنا: " + url;
     if (yesBtn) yesBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(accept);
     if (noBtn)  noBtn.href  = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(decline);
+    if (shareBtn) shareBtn.href = "https://wa.me/?text=" + encodeURIComponent(share);
   }
 
   /* ── Gentle reveal on scroll ── */
@@ -1321,5 +1392,6 @@ html.en .pb-line{font-weight:500}
 </script>
 
 <p class="d3wa-credit" style="margin:0;padding:28px 16px 96px;text-align:center;font-size:12px;line-height:1.8;opacity:.6"><a href="../index.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><span class="t-ar">دعوة من D3wa · اطلب دعوتك</span><span class="t-en">Invitation by D3wa. Order yours.</span></a></p>
+<script src="../assets/demo-bar.js" defer></script>
 </body>
 </html>

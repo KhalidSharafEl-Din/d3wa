@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Omar &amp; Salma — Engagement | عمر وسلمى</title>
+<title>Omar &amp; Salma, engagement invitation | عمر وسلمى</title>
 <meta name="description" content="You are invited to the engagement of Omar &amp; Salma. Saturday, 22 August 2026, 8:00 PM at Villa Rose, Maadi, Cairo.">
 <meta name="theme-color" content="#faf6ee">
 <meta name="color-scheme" content="light">
@@ -14,8 +14,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://khalidsharafel-din.github.io/d3wa/demos/gold.html">
 <link rel="canonical" href="https://khalidsharafel-din.github.io/d3wa/demos/gold.html">
-<meta property="og:title" content="Omar &amp; Salma — Engagement · عمر وسلمى">
-<meta property="og:description" content="Saturday, 22 August 2026 · 8:00 PM · Villa Rose, Maadi, Cairo — السبت ٢٢ أغسطس ٢٠٢٦">
+<meta property="og:title" content="Omar &amp; Salma, engagement invitation | عمر وسلمى">
+<meta property="og:description" content="Saturday, 22 August 2026, 8:00 PM, Villa Rose, Maadi, Cairo. السبت ٢٢ أغسطس ٢٠٢٦">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23faf6ee'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%23a9843f' stroke-width='3'/%3E%3C/svg%3E">
 
@@ -30,7 +30,8 @@
   --paper:#fdfaf4;
   --ink:#332f28;
   --ink-soft:#6f6555;
-  --gold:#a9843f;
+  --gold:#86662a;          /* text, outlines, solid buttons: 5:1 on ivory */
+  --gold-fill:#b08d4a;     /* decoration: seal, dots, rules */
   --gold-lt:#d8bd85;
   --line:rgba(169,132,63,.28);
   --line-soft:rgba(169,132,63,.16);
@@ -42,6 +43,7 @@
 }
 
 *,*::before,*::after{box-sizing:border-box}
+::selection{background:#e6d2a2;color:#2b2117}
 html{scroll-behavior:smooth}
 body{
   margin:0;
@@ -70,15 +72,16 @@ html:not(.ar) .t-ar{display:none}
   text-indent:0 !important;
   text-transform:none;
 }
-.eyebrow .t-ar{font-size:1.5em;font-weight:400}
-.btn .t-ar{font-size:14.5px;font-weight:700}
-.details .lbl .t-ar{font-size:12px;font-weight:700}
+.eyebrow .t-ar{font-size:1.45em;font-weight:700}
+.btn .t-ar{font-size:16px;font-weight:700}
+.details .lbl .t-ar{font-size:14px;font-weight:700}
+html.ar body{line-height:1.8}
 .gate-names .t-ar,.names .t-ar{font-family:var(--arabic-display);font-weight:400}
 .names .t-ar{font-size:.92em;line-height:1.5}
 .gate-names .t-ar{font-size:.94em;line-height:1.55}
-.quote .t-ar{font-size:1.06em}
+.quote .t-ar{font-size:1.15em;line-height:1.8}
 .closing .t-ar{font-family:var(--arabic-display);font-size:.94em}
-.cd-lbl .t-ar{font-size:1.55em}
+.cd-lbl .t-ar{font-size:1.45em;font-weight:700}
 
 .lang-toggle{
   position:fixed;
@@ -128,7 +131,7 @@ html:not(.ar) .t-ar{display:none}
 
 .eyebrow{
   font-family:var(--sans);
-  font-size:9.5px;font-weight:500;
+  font-size:11px;font-weight:600;
   letter-spacing:.38em;text-indent:.38em;text-transform:uppercase;
   color:var(--gold);
   margin:0;
@@ -196,7 +199,7 @@ html:not(.ar) .t-ar{display:none}
 html.ar .cd-num{font-family:var(--arabic);font-weight:700}
 .cd-lbl{
   display:block;margin-top:7px;
-  font-family:var(--sans);font-size:8.5px;font-weight:600;
+  font-family:var(--sans);font-size:10px;font-weight:600;
   letter-spacing:.22em;text-indent:.22em;text-transform:uppercase;
   color:var(--gold);
 }
@@ -216,15 +219,15 @@ html.ar .cd-num{font-family:var(--arabic);font-weight:700}
   min-height:52px;padding:0 30px;
   border:1px solid var(--gold);border-radius:2px;
   background:transparent;color:var(--gold);
-  font-family:var(--sans);font-size:10.5px;font-weight:600;
-  letter-spacing:.26em;text-indent:.26em;text-transform:uppercase;
+  font-family:var(--sans);font-size:11.5px;font-weight:600;
+  letter-spacing:.2em;text-indent:.2em;text-transform:uppercase;
   text-decoration:none;cursor:pointer;
   transition:background-color .35s ease,color .35s ease,border-color .35s ease,transform .35s ease;
   -webkit-tap-highlight-color:transparent;
 }
 .btn svg{width:15px;height:15px;flex:none}
 .btn.solid{background:var(--gold);color:#fffaf0;border-color:var(--gold)}
-.btn.solid:hover,.btn.solid:active{background:#8f6d31;border-color:#8f6d31}
+.btn.solid:hover,.btn.solid:active{background:#6f5421;border-color:#6f5421}
 .btn:hover,.btn:active{background:rgba(169,132,63,.10)}
 .btn:hover{transform:translateY(-1px)}
 .btn:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
@@ -248,6 +251,7 @@ html.ar .cd-num{font-family:var(--arabic);font-weight:700}
 }
 
 /* Content is visible by default; arriving via button or scroll replays it as a reveal */
+.card.pre .rv{opacity:0}
 #card:target .rv,.card.in .rv{animation:rise .9s cubic-bezier(.22,.7,.25,1) both}
 #card:target .d2,.card.in .d2{animation-delay:.18s}
 #card:target .d3,.card.in .d3{animation-delay:.36s}
@@ -272,8 +276,8 @@ html.ar .names .t-en{display:none}
 html:not(.ar) .names .t-ar{display:none}
 
 .ornament{display:flex;align-items:center;justify-content:center;gap:12px;margin:clamp(22px,6vw,28px) 0}
-.ornament .rule{height:1px;width:clamp(40px,15vw,70px);background:linear-gradient(90deg,transparent,var(--gold-lt))}
-.ornament .rule:last-child{background:linear-gradient(270deg,transparent,var(--gold-lt))}
+.ornament .rule{height:1px;width:clamp(40px,15vw,70px);background:linear-gradient(90deg,transparent,var(--gold-fill))}
+.ornament .rule:last-child{background:linear-gradient(270deg,transparent,var(--gold-fill))}
 
 .details{list-style:none;margin:0;padding:0;text-align:start}
 .details li{display:flex;align-items:center;gap:14px;padding:15px 2px;border-top:1px solid var(--line-soft)}
@@ -284,25 +288,36 @@ html:not(.ar) .names .t-ar{display:none}
 }
 .details .ico svg{width:16px;height:16px}
 .details .lbl{
-  display:block;font-family:var(--sans);font-size:8.5px;font-weight:600;
-  letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;
+  display:block;font-family:var(--sans);font-size:10.5px;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;
 }
 .details .val{display:block;font-size:clamp(17px,4.8vw,19px);line-height:1.3;color:var(--ink)}
 .details .val small{display:block;font-size:.76em;color:var(--ink-soft);margin-top:2px}
-.details .val .t-ar small,.details .val .t-ar{font-size:1em}
-.details .val .t-ar{font-size:1.02em}
+.details .val .t-ar{font-size:1.1em;line-height:1.6}
+.details .val .t-ar small{font-size:.8em}
 
 .quote{
-  margin:clamp(24px,7vw,32px) 0 clamp(24px,7vw,30px);
+  margin:0;
+  text-wrap:balance;
   font-style:italic;font-weight:300;
   font-size:clamp(16px,4.6vw,18px);line-height:1.6;color:var(--ink-soft);
 }
 
 .actions{display:flex;flex-direction:column;gap:10px}
+.block{margin:clamp(26px,7vw,34px) 0 0}
+.block .actions{margin-top:16px}
+.rsvp{
+  margin:clamp(30px,8vw,38px) 0 0;
+  padding-top:clamp(24px,6.5vw,30px);
+  border-top:1px solid var(--line-soft);
+}
+.rsvp .rsvp-note{margin:8px 0 0;font-style:italic;font-size:clamp(16px,4.6vw,18px);line-height:1.5;color:var(--ink-soft);text-wrap:balance}
+.rsvp .rsvp-note .t-ar{font-size:1.12em;line-height:1.7}
+.rsvp .actions{margin-top:16px}
 
 .closing{margin-top:clamp(26px,7vw,32px)}
-.closing p{margin:0;font-family:var(--display);font-size:clamp(19px,5.4vw,22px);color:var(--ink)}
-.closing .dot{display:block;margin-top:10px;color:var(--gold-lt);font-size:12px;letter-spacing:.6em;text-indent:.6em}
+.closing p{margin:0;font-family:var(--display);font-size:clamp(20px,5.6vw,23px);line-height:1.35;color:var(--ink);text-wrap:balance}
+.closing .dot{display:block;margin-top:10px;color:var(--gold-fill);font-size:12px;letter-spacing:.6em;text-indent:.6em}
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
@@ -321,7 +336,7 @@ body.intro-lock{overflow:hidden}
 .intro{
   position:fixed;inset:0;z-index:90;
   display:flex;align-items:center;justify-content:center;
-  padding:24px;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  padding:24px;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent;
   background:var(--paper);
   background-image:radial-gradient(120% 60% at 50% 0%, #fffdf8 0%, #f5ecdc 55%, #e9dcc4 100%);
   transition:opacity .5s ease .9s;
@@ -340,11 +355,11 @@ body.intro-lock{overflow:hidden}
 .intro-names .t-ar{font-family:var(--arabic-display);font-weight:400;font-size:.94em;line-height:1.5}
 .intro-names .t-ar i{font-family:var(--arabic);font-style:normal}
 .intro-hint{
-  margin:0;font-family:var(--sans);font-size:10px;font-weight:600;
+  margin:0;font-family:var(--sans);font-size:11px;font-weight:600;
   letter-spacing:.3em;text-indent:.3em;text-transform:uppercase;color:var(--gold);
   animation:hintPulse 2.6s ease-in-out infinite;
 }
-.intro-hint .t-ar{font-size:1.6em}
+.intro-hint .t-ar{font-size:1.45em;font-weight:700}
 @keyframes hintPulse{0%,100%{opacity:.45}50%{opacity:1}}
 
 .env{position:relative;display:block;width:min(64vw,250px);aspect-ratio:10/7;perspective:800px}
@@ -370,17 +385,21 @@ body.intro-lock{overflow:hidden}
 .intro.open .env-flap{transform:rotateX(178deg)}
 .env-seal{
   position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);
-  width:46px;height:46px;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,var(--gold-lt),var(--gold));
-  box-shadow:0 4px 10px rgba(120,95,50,.35);
+  width:62px;height:62px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#ead3a0,var(--gold-fill) 62%,#8f6f33);
+  box-shadow:0 4px 12px rgba(100,76,34,.4),inset 0 0 0 3px rgba(255,250,240,.22),inset 0 0 0 4px rgba(120,90,40,.35);
   display:grid;place-items:center;
+  color:#fffaf0;
   transition:opacity .4s ease,transform .45s ease;
 }
-.env-seal svg{width:22px;height:12px}
+.seal-mono{font-family:var(--display);font-size:21px;line-height:1;letter-spacing:.02em;text-shadow:0 1px 2px rgba(80,58,20,.45);white-space:nowrap}
+.seal-mono i{font-family:var(--serif);font-style:italic;font-size:.72em;margin:0 .08em}
+.seal-mono.t-ar{font-family:var(--arabic-display);font-size:22px;line-height:1.3}
+.seal-mono .sd{display:inline-block;width:4px;height:4px;margin:0 5px;border-radius:50%;background:currentColor;vertical-align:middle;opacity:.85}
 .intro.open .env-seal{opacity:0;transform:translate(-50%,-50%) scale(.55)}
 
 /* agenda — برنامج اليوم */
-.agenda{margin:clamp(24px,7vw,32px) 0 0}
+.agenda{margin:clamp(26px,7vw,34px) 0 0}
 .agenda>.eyebrow{margin-bottom:14px}
 .ag-list{list-style:none;margin:0;padding:0;text-align:start;position:relative}
 .ag-list::before{
@@ -388,20 +407,20 @@ body.intro-lock{overflow:hidden}
   background:linear-gradient(180deg,transparent,var(--gold-lt) 18%,var(--gold-lt) 82%,transparent);
 }
 .ag-list li{position:relative;display:flex;align-items:center;gap:13px;padding:8px 0}
-.ag-time{flex:none;width:57px;text-align:end;font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.06em;color:var(--gold);font-variant-numeric:tabular-nums}
-.ag-time .t-ar{font-family:var(--arabic);font-size:14px;font-weight:700}
-.ag-dot{flex:none;width:7px;height:7px;border-radius:50%;border:1px solid var(--gold);background:var(--paper);position:relative;z-index:1}
-.ag-what{font-size:clamp(16px,4.6vw,18px);line-height:1.35;color:var(--ink)}
-.ag-what .t-ar{font-size:1.04em}
+.ag-time{flex:none;width:57px;text-align:end;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--gold);font-variant-numeric:tabular-nums}
+.ag-time .t-ar{font-family:var(--arabic);font-size:15px;font-weight:700}
+.ag-dot{flex:none;width:7px;height:7px;border-radius:50%;border:1px solid var(--gold-fill);background:var(--paper);position:relative;z-index:1}
+.ag-what{font-size:clamp(17px,4.8vw,19px);line-height:1.35;color:var(--ink)}
+.ag-what .t-ar{font-size:1.12em;line-height:1.6}
 
 /* small centred notes — dress code, gift */
-.mini{margin:clamp(24px,7vw,30px) 0 0}
+.mini{margin:clamp(26px,7vw,32px) 0 0}
 .mini>.eyebrow{margin-bottom:9px}
-.mini p{margin:0;font-style:italic;font-weight:300;font-size:clamp(16px,4.6vw,18px);line-height:1.6;color:var(--ink-soft)}
-.mini p .t-ar{font-size:1.06em}
+.mini .note{margin:0;font-style:italic;font-weight:400;font-size:clamp(17px,4.8vw,19px);line-height:1.55;color:var(--ink-soft);text-wrap:balance}
+.mini .note .t-ar{font-size:1.12em;line-height:1.75}
 
 /* photo gallery — three arch frames */
-.gallery{margin:clamp(24px,7vw,30px) 0 0}
+.gallery{margin:clamp(26px,7vw,32px) 0 0}
 .gallery>.eyebrow{margin-bottom:13px}
 .ph-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .ph{
@@ -416,17 +435,17 @@ body.intro-lock{overflow:hidden}
 .ph.has-img svg{display:none}
 
 /* guest-count chips */
-.guests{display:flex;flex-direction:column;align-items:center;gap:9px;margin:clamp(14px,4vw,18px) 0 4px}
+.guests{display:flex;flex-direction:column;align-items:center;gap:9px;margin:clamp(16px,4.5vw,20px) 0 0}
 .chips{display:flex;justify-content:center;gap:8px}
 .chip{
-  min-width:48px;min-height:42px;padding:0 12px;
+  min-width:52px;min-height:46px;padding:0 12px;
   border:1px solid var(--line);border-radius:2px;
   background:transparent;color:var(--gold);
-  font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.06em;
+  font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.04em;
   cursor:pointer;-webkit-tap-highlight-color:transparent;
   transition:background-color .3s ease,color .3s ease,border-color .3s ease;
 }
-.chip .t-ar{font-family:var(--arabic);font-size:16px;font-weight:700}
+.chip .t-ar{font-family:var(--arabic);font-size:18px;font-weight:700}
 .chip[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#fffaf0}
 .chip:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
 
@@ -518,8 +537,8 @@ body.intro-lock{overflow:hidden}
 
 <!-- ═════════  V2 — OPENING MOMENT (unhidden only via JS; ?intro=0 skips it)  ═════════ -->
 <div class="intro" id="intro" hidden role="button" tabindex="0"
-     aria-label="دوسوا للفتح — افتح الدعوة / Tap to open the invitation">
-  <img class="intro-photo" src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1600&q=80" alt="" decoding="async" aria-hidden="true">
+     aria-label="دوسوا لفتح الدعوة / Tap to open the invitation">
+  <img class="intro-photo" src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1600&q=80" alt="" width="1600" height="1067" decoding="async" aria-hidden="true">
   <span class="intro-scrim" aria-hidden="true"></span>
   <div class="intro-cover">
     <p class="eyebrow lg">
@@ -532,7 +551,8 @@ body.intro-lock{overflow:hidden}
       <span class="env-front"></span>
       <span class="env-flap"></span>
       <span class="env-seal">
-        <svg viewBox="0 0 26 14" fill="none"><path d="M13 1c-3.2 3-3.2 9 0 12 3.2-3 3.2-9 0-12z" stroke="#fffaf0" stroke-width="1.2"/></svg>
+        <span class="seal-mono t-en" id="sealEn">O<i>&amp;</i>S</span>
+        <span class="seal-mono t-ar" id="sealAr">ع<i class="sd"></i>س</span>
       </span>
     </span>
     <h2 class="intro-names">
@@ -541,7 +561,7 @@ body.intro-lock{overflow:hidden}
     </h2>
     <p class="intro-hint">
       <span class="t-en">Tap to open</span>
-      <span class="t-ar">دوسوا للفتح</span>
+      <span class="t-ar">دوسوا لفتح الدعوة</span>
     </p>
   </div>
 </div>
@@ -559,7 +579,7 @@ body.intro-lock{overflow:hidden}
 <!-- ═════════  SCREEN 1 — THE OPENING  ═════════ -->
 <section class="scene" id="gate" aria-labelledby="gate-title">
   <div class="hero-bg" aria-hidden="true">
-    <img class="hero-photo" src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1600&q=80" alt="" decoding="async" fetchpriority="high">
+    <img class="hero-photo" src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1600&q=80" alt="" width="1600" height="1067" decoding="async" fetchpriority="high">
     <span class="hero-tint"></span>
     <span class="hero-scrim"></span>
   </div>
@@ -624,8 +644,8 @@ body.intro-lock{overflow:hidden}
         <div class="cd-cell"><span class="cd-num" id="cdS">–</span><span class="cd-lbl"><span class="t-en">Sec</span><span class="t-ar">ثانية</span></span></div>
       </div>
       <p class="cd-done">
-        <span class="t-en">Today is the day — see you at eight!</span>
-        <span class="t-ar">اليوم هو الموعد — نلقاكم في الثامنة</span>
+        <span class="t-en">Today is the day. See you this evening.</span>
+        <span class="t-ar">النهارده الميعاد، ومستنيينكم بالليل</span>
       </p>
     </div>
 
@@ -658,7 +678,41 @@ body.intro-lock{overflow:hidden}
       <span class="rule"></span>
     </div>
 
-    <ul class="details rv d3">
+    <p class="quote rv d2">
+      <span class="t-en">“Two hearts, one beautiful beginning.”</span>
+      <span class="t-ar">«قلبان، وبداية واحدة جميلة»</span>
+    </p>
+
+    <!-- the day's schedule: ?agenda=time~عربي~english|… -->
+    <div class="agenda rv d3" id="agendaSec">
+      <p class="eyebrow"><span class="t-en">The day&rsquo;s schedule</span><span class="t-ar">برنامج اليوم</span></p>
+      <ul class="ag-list" id="agList">
+        <li>
+          <span class="ag-time"><span class="t-en">7:00 PM</span><span class="t-ar">٧:٠٠ م</span></span>
+          <span class="ag-dot" aria-hidden="true"></span>
+          <span class="ag-what"><span class="t-en">Reception</span><span class="t-ar">الاستقبال</span></span>
+        </li>
+        <li>
+          <span class="ag-time"><span class="t-en">8:00 PM</span><span class="t-ar">٨:٠٠ م</span></span>
+          <span class="ag-dot" aria-hidden="true"></span>
+          <span class="ag-what"><span class="t-en">The Zaffa</span><span class="t-ar">الزفة</span></span>
+        </li>
+        <li>
+          <span class="ag-time"><span class="t-en">9:30 PM</span><span class="t-ar">٩:٣٠ م</span></span>
+          <span class="ag-dot" aria-hidden="true"></span>
+          <span class="ag-what"><span class="t-en">Dinner</span><span class="t-ar">العشاء</span></span>
+        </li>
+        <li>
+          <span class="ag-time"><span class="t-en">11:00 PM</span><span class="t-ar">١١:٠٠ م</span></span>
+          <span class="ag-dot" aria-hidden="true"></span>
+          <span class="ag-what"><span class="t-en">Cake &amp; celebration</span><span class="t-ar">التورتة والسهرة</span></span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- date · time · venue, with map and calendar -->
+    <div class="block rv d4" id="detailsBlock" data-shot="details">
+    <ul class="details">
       <li>
         <span class="ico" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
@@ -696,49 +750,31 @@ body.intro-lock{overflow:hidden}
         </span>
       </li>
     </ul>
-
-    <!-- V2 — agenda / برنامج اليوم -->
-    <div class="agenda rv d4" id="agendaSec">
-      <p class="eyebrow"><span class="t-en">The day&rsquo;s schedule</span><span class="t-ar">برنامج اليوم</span></p>
-      <ul class="ag-list" id="agList">
-        <li>
-          <span class="ag-time"><span class="t-en">7:00 PM</span><span class="t-ar">٧:٠٠ م</span></span>
-          <span class="ag-dot" aria-hidden="true"></span>
-          <span class="ag-what"><span class="t-en">Reception</span><span class="t-ar">الاستقبال</span></span>
-        </li>
-        <li>
-          <span class="ag-time"><span class="t-en">8:00 PM</span><span class="t-ar">٨:٠٠ م</span></span>
-          <span class="ag-dot" aria-hidden="true"></span>
-          <span class="ag-what"><span class="t-en">The Zaffa</span><span class="t-ar">الزفة</span></span>
-        </li>
-        <li>
-          <span class="ag-time"><span class="t-en">9:30 PM</span><span class="t-ar">٩:٣٠ م</span></span>
-          <span class="ag-dot" aria-hidden="true"></span>
-          <span class="ag-what"><span class="t-en">Dinner</span><span class="t-ar">العشاء</span></span>
-        </li>
-        <li>
-          <span class="ag-time"><span class="t-en">11:00 PM</span><span class="t-ar">١١:٠٠ م</span></span>
-          <span class="ag-dot" aria-hidden="true"></span>
-          <span class="ag-what"><span class="t-en">Cake &amp; celebration</span><span class="t-ar">التورتة والسهرة</span></span>
-        </li>
-      </ul>
+      <div class="actions">
+      <a class="btn" href="https://maps.app.goo.gl/K2izAmdtfuKVcS138" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21s-7-7.2-7-12a7 7 0 1 1 14 0c0 4.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <span class="t-en">View location</span>
+        <span class="t-ar">الموقع على الخريطة</span>
+      </a>
+      <a class="btn" target="_blank" rel="noopener noreferrer"
+         href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Omar%20%26%20Salma%27s%20engagement&amp;dates=20260822T200000/20260822T230000&amp;ctz=Africa/Cairo&amp;location=Villa%20Rose%2C%20Maadi%2C%20Cairo&amp;details=Two%20hearts%2C%20one%20beautiful%20beginning.">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        <span class="t-en">Add to calendar</span>
+        <span class="t-ar">أضف إلى التقويم</span>
+      </a>
+      </div>
     </div>
 
-    <p class="quote rv d4">
-      <span class="t-en">“Two hearts, one beautiful beginning.”</span>
-      <span class="t-ar">«قلبان، وبداية واحدة جميلة»</span>
-    </p>
-
-    <!-- V2 — dress code -->
+    <!-- dress code: ?dress=عربي~english, one text for both, or 0 to hide -->
     <div class="mini rv d4" id="dressSec">
-      <p class="eyebrow"><span class="t-en">Dress code</span><span class="t-ar">الدرس كود</span></p>
-      <p>
-        <span class="t-en">Black tie optional — evening elegance</span>
-        <span class="t-ar">سهرة رسمية: بدل وفساتين سواريه</span>
+      <p class="eyebrow"><span class="t-en">Dress code</span><span class="t-ar">الدريس كود</span></p>
+      <p class="note">
+        <span class="t-en">Black tie optional. Evening elegance.</span>
+        <span class="t-ar">سواريه: بدل وفساتين سهرة</span>
       </p>
     </div>
 
-    <!-- V2 — photo gallery -->
+    <!-- photo gallery (hidden unless photos / ph1..ph3) -->
     <div class="gallery rv d4" id="gallerySec" style="display:none">
       <p class="eyebrow"><span class="t-en">Our moments</span><span class="t-ar">لحظاتنا</span></p>
       <div class="ph-row">
@@ -754,53 +790,45 @@ body.intro-lock{overflow:hidden}
       </div>
     </div>
 
-    <!-- V2 — gift note -->
+    <!-- gift note: ?gift=عربي~english, one text for both, or 0 to hide -->
     <div class="mini rv d4" id="giftSec">
-      <p class="eyebrow"><span class="t-en">A note</span><span class="t-ar">كلمة من القلب</span></p>
-      <p>
+      <p class="eyebrow"><span class="t-en">A note on gifts</span><span class="t-ar">كلمة من القلب</span></p>
+      <p class="note">
         <span class="t-en">Your presence is the greatest gift</span>
         <span class="t-ar">حضوركم ودعواتكم أغلى هدية</span>
       </p>
     </div>
 
-    <div class="actions rv d5">
-
-      <!-- V2 — guest count -->
+    <!-- RSVP: guest count rides along in the WhatsApp message -->
+    <div class="rsvp rv d5" id="rsvpBlock" data-shot="rsvp">
+      <p class="eyebrow"><span class="t-en">Kindly reply</span><span class="t-ar">تأكيد الحضور</span></p>
+      <p class="rsvp-note">
+        <span class="t-en">Let us know on WhatsApp how many of you are coming.</span>
+        <span class="t-ar">قولولنا على واتساب هتشرفونا كام فرد.</span>
+      </p>
       <div class="guests" id="guestSec">
-        <p class="eyebrow"><span class="t-en">Number of guests</span><span class="t-ar">عدد الحضور</span></p>
-        <div class="chips" role="group" aria-label="عدد الحضور / Number of guests">
+        <p class="eyebrow" id="guestLbl"><span class="t-en">Number of guests</span><span class="t-ar">عدد الحضور</span></p>
+        <div class="chips" role="group" aria-labelledby="guestLbl">
           <button type="button" class="chip" data-count="1" aria-pressed="true"><span class="t-en">1</span><span class="t-ar">١</span></button>
           <button type="button" class="chip" data-count="2" aria-pressed="false"><span class="t-en">2</span><span class="t-ar">٢</span></button>
           <button type="button" class="chip" data-count="3" aria-pressed="false"><span class="t-en">3</span><span class="t-ar">٣</span></button>
           <button type="button" class="chip" data-count="4+" aria-pressed="false"><span class="t-en">4+</span><span class="t-ar">٤+</span></button>
         </div>
       </div>
+      <div class="actions">
       <a class="btn solid" id="rsvpBtn" target="_blank" rel="noopener noreferrer"
-         href="https://wa.me/201005509418?text=Hello!%20I%27d%20love%20to%20confirm%20my%20attendance%20at%20the%20engagement%20of%20Omar%20%26%20Salma%20%E2%80%94%20Saturday%2C%2022%20August%202026%2C%208%3A00%20PM%2C%20Villa%20Rose%2C%20Maadi%20%F0%9F%A4%8D">
+         href="https://wa.me/201005509418?text=Hello!%20I%27d%20love%20to%20confirm%20my%20attendance%20at%20the%20engagement%20of%20Omar%20%26%20Salma.">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
         <span class="t-en">RSVP on WhatsApp</span>
-        <span class="t-ar">تأكيد الحضور</span>
+        <span class="t-ar">أكد حضورك على واتساب</span>
       </a>
-
-      <a class="btn" href="https://maps.app.goo.gl/K2izAmdtfuKVcS138" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21s-7-7.2-7-12a7 7 0 1 1 14 0c0 4.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-        <span class="t-en">View location</span>
-        <span class="t-ar">الموقع على الخريطة</span>
-      </a>
-
-      <a class="btn" target="_blank" rel="noopener noreferrer"
-         href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Engagement%20%E2%80%94%20Omar%20%26%20Salma&amp;dates=20260822T200000/20260822T230000&amp;ctz=Africa/Cairo&amp;location=Villa%20Rose%2C%20Maadi%2C%20Cairo&amp;details=Two%20hearts%2C%20one%20beautiful%20beginning.">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
-        <span class="t-en">Add to calendar</span>
-        <span class="t-ar">أضف إلى التقويم</span>
-      </a>
-
       <a class="btn" id="waBtn" target="_blank" rel="noopener noreferrer"
-         href="https://wa.me/?text=You%27re%20invited%20%F0%9F%A4%8D%20The%20engagement%20of%20Omar%20%26%20Salma%20%E2%80%94%20Saturday%2C%2022%20August%202026%20at%208%3A00%20PM%2C%20Villa%20Rose%2C%20Maadi.%20Open%20your%20invitation%3A%20https%3A%2F%2Fkhalid-mariam.netlify.app">
+         href="https://wa.me/?text=You%27re%20invited%20to%20the%20engagement%20of%20Omar%20%26%20Salma.%20https%3A%2F%2Fkhalidsharafel-din.github.io%2Fd3wa%2Fdemos%2Fgold.html">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.94.56 3.75 1.5 5.29L2 22l4.96-1.6a9.9 9.9 0 0 0 5.08 1.4h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.07c-.25.7-1.45 1.34-2 1.43-.5.08-1.13.11-1.83-.12-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.37-.15-.2-1.18-1.57-1.18-3 0-1.42.74-2.12 1-2.41.25-.28.55-.35.74-.35h.53c.17 0 .4-.03.62.48.25.58.84 2.02.91 2.17.07.15.12.32.02.51-.09.2-.16.32-.31.49-.15.17-.32.38-.45.51-.15.15-.3.31-.13.6.18.3.8 1.32 1.71 2.13 1.18 1.05 2.17 1.38 2.5 1.53.25.12.55.1.74-.11.25-.28.55-.74.86-1.2.22-.32.49-.36.82-.24.34.12 2.15 1.01 2.51 1.2.37.18.61.27.7.43.1.16.1.9-.15 1.6z"/></svg>
         <span class="t-en">Share invitation</span>
-        <span class="t-ar">مشاركة الدعوة</span>
+        <span class="t-ar">ابعت الدعوة لحد</span>
       </a>
+      </div>
     </div>
 
     <div class="closing rv d6">
@@ -895,7 +923,7 @@ body.intro-lock{overflow:hidden}
       buildName($(".gate-names .t-ar"), a1, a2, "و", "i", null, pNamesAr);
       buildName($(".names .t-ar"), a1, a2, "و", "span", null, pNamesAr);
     }
-    if (pNamesEn || pNamesAr) document.title = namesEn + " — Engagement | " + namesAr;
+    if (pNamesEn || pNamesAr) document.title = namesEn + ", engagement invitation | " + namesAr;
 
     /* date — details row + message strings */
     if (pDateOk) {
@@ -959,7 +987,7 @@ body.intro-lock{overflow:hidden}
           return dt.getFullYear() + p(dt.getMonth() + 1) + p(dt.getDate()) + "T" + p(dt.getHours()) + p(dt.getMinutes()) + "00";
         };
         calBtn.href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
-          + "&text=" + encodeURIComponent("Engagement — " + namesEn)
+          + "&text=" + encodeURIComponent(namesEn + "'s engagement")
           + "&dates=" + cal(startDt) + "/" + cal(endDt)
           + "&ctz=Africa/Cairo"
           + "&location=" + encodeURIComponent(pVenEn || "Villa Rose, Maadi, Cairo")
@@ -1025,23 +1053,24 @@ body.intro-lock{overflow:hidden}
     var url = "https://khalid-mariam.netlify.app";
     if (location.protocol !== "file:") url = location.href.split("#")[0];
     var share = isAr
-      ? "أنتم مدعوون لحفل خطوبة " + namesAr + " — " + dateFullAr + " " + shareTimeAr + "، " + venueMsgAr + ". افتحوا دعوتكم: " + url
-      : "You're invited to the engagement of " + namesEn + " — " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Open your invitation: " + url;
+      ? "أنتم مدعوون لحفل خطوبة " + namesAr + " يوم " + dateFullAr + " " + shareTimeAr + " في " + venueMsgAr + ". افتحوا دعوتكم من هنا: " + url
+      : "You're invited to the engagement of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ". Open your invitation: " + url;
     var rsvp = isAr
-      ? "مرحباً! يسعدني تأكيد حضوري حفل خطوبة " + namesAr + " — " + dateFullAr + "، " + timeAr + "، " + venueMsgAr + ""
-      : "Hello! I'd love to confirm my attendance at the engagement of " + namesEn + " — " + dateFullEn + ", " + timeEn + ", " + venueMsgEn;
+      ? "مرحباً! يسعدني أأكد حضوري حفل خطوبة " + namesAr + " يوم " + dateFullAr + " " + shareTimeAr + " في " + venueMsgAr + "."
+      : "Hello! I'd love to confirm my attendance at the engagement of " + namesEn + " on " + dateFullEn + " at " + timeEn + ", " + venueMsgEn + ".";
     if (waBtn) waBtn.href = "https://wa.me/?text=" + encodeURIComponent(share);
     if (rsvpBtn) rsvpBtn.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(rsvp);
   }
 
-  /* ── Reveal the card when it scrolls into view ── */
+  /* ── Reveal the card once, as its top scrolls into view ── */
   var card = document.getElementById("cardEl");
   if (card && "IntersectionObserver" in window && !reduced) {
+    card.classList.add("pre");
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) { card.classList.add("in"); io.disconnect(); }
+        if (en.isIntersecting) { card.classList.add("in"); card.classList.remove("pre"); io.disconnect(); }
       });
-    }, { threshold: 0.25 });
+    }, { threshold: 0, rootMargin: "0px 0px -12% 0px" });
     io.observe(card);
   }
 
@@ -1102,6 +1131,23 @@ body.intro-lock{overflow:hidden}
     var nEn = qp("n_en"), nAr = qp("n_ar");
     if (nEn) setIntroName(".intro-names .t-en", nEn, false);
     if (nAr) setIntroName(".intro-names .t-ar", nAr, true);
+    /* wax-seal monogram: Latin initials in English, Arabic initials in Arabic */
+    var initial = function (w) { w = (w || "").trim(); return w ? (Array.from ? Array.from(w)[0] : w.charAt(0)).toUpperCase() : ""; };
+    var setSeal = function (id, val, isArName) {
+      var el = document.getElementById(id); if (!el || !val) return;
+      var m = isArName ? val.match(/^(.+?)\s+و\s*(.+)$/) : null;
+      var parts = isArName ? (m ? [m[1], m[2]] : [val]) : val.split(/\s*&\s*/);
+      el.textContent = "";
+      el.appendChild(document.createTextNode(initial(parts[0])));
+      if (parts.length > 1 && parts[1]) {
+        var it = document.createElement("i");
+        if (isArName) it.className = "sd"; else it.textContent = "&";
+        el.appendChild(it);
+        el.appendChild(document.createTextNode(initial(parts[1])));
+      }
+    };
+    setSeal("sealEn", nEn, false);
+    setSeal("sealAr", nAr, true);
     intro.hidden = false;
     document.body.classList.add("intro-lock");
     var opened = false;
@@ -1151,17 +1197,16 @@ body.intro-lock{overflow:hidden}
     }
   }
 
-  /* ── Dress code / gift note — "عربي~english" overrides, "0" hides ── */
+  /* ── Dress code / gift note: "عربي~english", one text for both languages, or "0" to hide ── */
   function miniParam (key, secId) {
     var v = qp(key), sec = document.getElementById(secId);
     if (!sec || !v) return;
     if (v === "0") { sec.hidden = true; return; }
-    var p = v.split("~");
-    if (p.length >= 2 && p[0] && p[1]) {
-      var a = sec.querySelector("p .t-ar"), e = sec.querySelector("p .t-en");
-      if (a) a.textContent = p[0];
-      if (e) e.textContent = p[1];
-    }
+    var p = v.indexOf("~") >= 0 ? v.split("~") : [v, v];
+    var arTxt = (p[0] || "").trim() || (p[1] || "").trim(), enTxt = (p[1] || "").trim() || arTxt;
+    var a = sec.querySelector(".note .t-ar"), e = sec.querySelector(".note .t-en");
+    if (a && arTxt) a.textContent = arTxt;
+    if (e && enTxt) e.textContent = enTxt;
   }
   miniParam("dress", "dressSec");
   miniParam("gift", "giftSec");
@@ -1175,7 +1220,7 @@ body.intro-lock{overflow:hidden}
       var u = qp(k);
       if (!u || !/^https?:\/\//.test(u) || !frames[i]) return;
       var img = document.createElement("img");
-      img.alt = ""; img.loading = "lazy"; img.src = u;
+      img.alt = ""; img.loading = "lazy"; img.decoding = "async"; img.width = 300; img.height = 400; img.src = u;
       frames[i].appendChild(img);
       frames[i].classList.add("has-img");
       any = true;
@@ -1194,8 +1239,8 @@ body.intro-lock{overflow:hidden}
     var href = rsvpBtn2.getAttribute("href") || "";
     if (lastSuffix && href.slice(-lastSuffix.length) === lastSuffix) href = href.slice(0, -lastSuffix.length);
     var txt = isArNow()
-      ? " — عدد الحضور: " + ar9(guestCount)
-      : " — Number of guests: " + guestCount;
+      ? " عدد الحضور: " + ar9(guestCount)
+      : " Number of guests: " + guestCount;
     lastSuffix = encodeURIComponent(txt);
     rsvpBtn2.setAttribute("href", href + lastSuffix);
   }
@@ -1264,5 +1309,6 @@ body.intro-lock{overflow:hidden}
 </script>
 
 <p class="d3wa-credit" style="margin:0;padding:28px 16px 96px;text-align:center;font-size:12px;line-height:1.8;opacity:.6"><a href="../index.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><span class="t-ar">دعوة من D3wa · اطلب دعوتك</span><span class="t-en">Invitation by D3wa. Order yours.</span></a></p>
+<script src="../assets/demo-bar.js" defer></script>
 </body>
 </html>

@@ -92,7 +92,7 @@ window.D3WA = {
         ar: "ورق وردي فاتح وورد مرسوم بإيد، والأسامي مكتوبة بخط رقعة ناعم. رومانسية وهادية، للفرح والخطوبة.",
         en: "Blush paper, hand-drawn roses and your names in a soft Ruqaa script. Romantic and calm, for weddings and engagements."
       },
-      look: ["#fff7f8", "#f3d6de", "#b3305c", "#3a1f2a"], fonts: "Aref Ruqaa, Cormorant",
+      look: ["#fff7f8", "#f3d6de", "#b3305c", "#3a1f2a"], fonts: "Aref Ruqaa, Fraunces",
       demo: { n_ar: "كريم ونور", n_en: "Karim & Nour" }
     },
     {
@@ -103,7 +103,7 @@ window.D3WA = {
         ar: "ورق كرافت وأوراق شجر خريفية وختم شمع أحمر. دافية وقريبة، لفرح في جنينة أو مزرعة.",
         en: "Kraft paper, autumn leaves and a red wax stamp. Warm and close, for a garden or farm wedding."
       },
-      look: ["#f6ecdc", "#d9c3a0", "#9e3f34", "#2e2119"], fonts: "Cormorant, Amiri",
+      look: ["#f6ecdc", "#d9c3a0", "#9e3f34", "#2e2119"], fonts: "Lalezar, Corben",
       demo: { n_ar: "محمود وهنا", n_en: "Mahmoud & Hana" }
     },
     {
